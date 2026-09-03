@@ -17,17 +17,37 @@ const MONTH_SHEETS = {
   '12': 'DEC2026',
 };
 
+function getCanonicalMachineName(raw) {
+  let s = String(raw).trim();
+  if (!s) return 'Unknown';
+  
+  let norm = s.replace(/#/g, '').replace(/\s+/g, ' ').toLowerCase();
+
+  if (norm.match(/^(mix|mixer)\s*1$/)) return 'Mixer 1';
+  if (norm.match(/^(mix|mixer)\s*2$/)) return 'Mixer 2';
+  if (norm.match(/^hot\s*apex\s*2$/)) return 'Hot Apex 2';
+  if (norm.match(/^bead\s*flapping\s*1$/) || norm === 'bead flap') return 'Bead Flapping 1';
+  if (norm.match(/^4\s*roll\s*1$/)) return '4 Roll 1';
+  if (norm.match(/^4\s*roll\s*2$/)) return '4 Roll 2';
+  if (norm.match(/^3\s*roll$/)) return '3 Roll';
+  if (norm.match(/^tuber\s*6"?x8"?$/)) return 'Tuber 6"x8"';
+  if (norm.match(/^auto\s*pigment$/)) return 'Auto Pigment';
+  if (norm.match(/^loading\s*carbon\s*1$/)) return 'Loading Carbon 1';
+
+  return s.replace(/\s+/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
 /**
  * Parse Breakdown BD% and Top 5 Loss from Issue log 2026 _ BCA 14AUG2026.xlsx
  */
 function parseBreakdown(dateStr) {
   try {
     const [year, month, day] = dateStr.split('-');
-    const dayIndex = parseInt(day, 10) - 1; // 0-based index for columns starting at col 5
+    const dayIndex = parseInt(day, 10) - 1;
 
     const wb = XLSX.readFile(BREAKDOWN_FILE);
 
-    // 1. Read BD% from Sheet (SEP2026 / MONTH_SHEETS)
+    // 1. Read BD% from Sheet
     let sheetName = MONTH_SHEETS[month] || `SEP${year}`;
     if (!wb.SheetNames.includes(sheetName)) {
       sheetName = wb.SheetNames.find(s => s.toUpperCase().includes(`SEP`)) || wb.SheetNames[0];
@@ -98,13 +118,13 @@ function parseBreakdown(dateStr) {
       };
     }
 
-    // 2. Read Top 5 Loss from Daliy seen Sep2 (or matching daily sheet)
+    // 2. Read Top 5 Loss from Daliy seen Sep2 (or matching daily sheet), grouped by Machine
     const dailySheetName = wb.SheetNames.find(s => s.toLowerCase().includes('daliy seen') || s.toLowerCase().includes('daily seen')) || 'Daliy seen Sep2';
     const wsDaily = wb.Sheets[dailySheetName];
 
     if (wsDaily) {
       const dailyData = XLSX.utils.sheet_to_json(wsDaily, { header: 1, defval: '' });
-      const issuesForDate = [];
+      const machineMap = {};
 
       dailyData.slice(1).forEach(row => {
         if (!row.some(c => c !== '')) return;
@@ -119,10 +139,23 @@ function parseBreakdown(dateStr) {
         }
 
         if (rowDateStr === dateStr) {
+          const rawMachine = String(row[2]).trim();
+          if (!rawMachine) return;
+
+          const canonicalMachine = getCanonicalMachineName(rawMachine);
           const durationMin = Number(row[14]) || 0;
-          issuesForDate.push({
+
+          if (!machineMap[canonicalMachine]) {
+            machineMap[canonicalMachine] = {
+              machine: canonicalMachine,
+              totalDurationMin: 0,
+              details: []
+            };
+          }
+
+          machineMap[canonicalMachine].totalDurationMin += durationMin;
+          machineMap[canonicalMachine].details.push({
             shift: String(row[1]).trim(),
-            machine: String(row[2]).trim(),
             zone: String(row[3]).trim(),
             symptom: String(row[4]).trim(),
             cause: String(row[5]).trim(),
@@ -135,9 +168,9 @@ function parseBreakdown(dateStr) {
         }
       });
 
-      // Sort by durationMin descending & pick Top 5
-      issuesForDate.sort((a, b) => b.durationMin - a.durationMin);
-      result.topLoss = issuesForDate.slice(0, 5);
+      // Sort machines by totalDurationMin descending & pick Top 5
+      const sortedMachines = Object.values(machineMap).sort((a, b) => b.totalDurationMin - a.totalDurationMin);
+      result.topLoss = sortedMachines.slice(0, 5);
     }
 
     return result;
