@@ -72,6 +72,17 @@ export default async function handler(req, res) {
     reportData.append('orapwd', orapwd);
     reportData.append('mixer', '1,2,3,12,13,81,83,84,');
     reportData.append('navuserlang', 'en-US');
+    
+    // Checkboxes required by the CMS form for each mixer
+    reportData.append('cb1', '1');
+    reportData.append('cb2', '2');
+    reportData.append('cb3', '3');
+    reportData.append('cb4', '12');
+    reportData.append('cb5', '13');
+    reportData.append('cb81', '81');
+    reportData.append('cb82', '83');
+    reportData.append('cb83', '84');
+    
     reportData.append('crew', 'ALL');
     
     reportData.append('startmonth', parseInt(month, 10).toString());
