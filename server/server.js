@@ -28,6 +28,8 @@ app.get('/api/breakdown', (req, res) => {
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
+});
+
 // Fischer parser (reads local Excel on T: drive)
 const { parseFischerData } = require('./fischer_parser');
 
