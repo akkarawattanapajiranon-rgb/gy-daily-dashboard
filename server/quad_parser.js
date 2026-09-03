@@ -37,12 +37,19 @@ function getQuadOee(dateStr) {
   const [yearStr, monthStr, dayStr] = dateStr.split('-');
   const monthNum = parseInt(monthStr, 10);
   const dayNum = parseInt(dayStr, 10);
+  const yearShort = yearStr.slice(2);
 
   const file = getOeeFile(monthNum, yearStr);
   if (!file) return { error: `Quad OEE file for month ${monthStr} not found` };
 
   const wb = XLSX.readFile(file);
-  const sheetName = wb.SheetNames.find(s => s.toLowerCase().includes('quad')) || wb.SheetNames[0];
+  
+  // Strictly select 2026 Quad sheet (e.g. 'ALL OEE ( Sep, 26) QUAD ')
+  const sheetName = wb.SheetNames.find(s => {
+    const l = s.toLowerCase();
+    return (l.includes(yearShort) || l.includes(yearStr)) && l.includes('quad');
+  }) || wb.SheetNames.find(s => s.toLowerCase().includes('quad')) || wb.SheetNames[0];
+
   const ws = wb.Sheets[sheetName];
   if (!ws) return { error: `Sheet ${sheetName} not found` };
 
@@ -65,7 +72,6 @@ function getQuadOee(dateStr) {
   const oee1 = Number(dayRow[7]) || 0;
   const oee2 = Number(dayRow[8]) || 0;
 
-  // % BD Actual is at Col 26, fallback to Col 16
   let bdVal = dayRow[26] !== '' ? Number(dayRow[26]) : Number(dayRow[16]);
   if (isNaN(bdVal)) bdVal = 0;
   if (bdVal > 1) bdVal = bdVal / 100;

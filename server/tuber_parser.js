@@ -7,9 +7,6 @@ const TUBER_BOOKING_DIR = "T:\\10.30 A.M. Production Meeting\\5 BTA\\Q -TUBER 6'
 
 const MONTH_NAMES_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-/**
- * Find OEE File for target month
- */
 function getOeeFile(monthNum, yearStr) {
   if (!fs.existsSync(QUAD_DIR)) return null;
   const files = fs.readdirSync(QUAD_DIR);
@@ -23,9 +20,6 @@ function getOeeFile(monthNum, yearStr) {
   return file ? path.join(QUAD_DIR, file) : null;
 }
 
-/**
- * Find Tuber Booking File for target month
- */
 function getBookingFile(monthNum, yearStr) {
   if (!fs.existsSync(TUBER_BOOKING_DIR)) return null;
   const files = fs.readdirSync(TUBER_BOOKING_DIR);
@@ -39,19 +33,23 @@ function getBookingFile(monthNum, yearStr) {
   return file ? path.join(TUBER_BOOKING_DIR, file) : null;
 }
 
-/**
- * Parse Tuber OEE metrics from ALL OEE ( Sep, 26) 6x8 Ext.
- */
 function getTuberOee(dateStr) {
   const [yearStr, monthStr, dayStr] = dateStr.split('-');
   const monthNum = parseInt(monthStr, 10);
   const dayNum = parseInt(dayStr, 10);
+  const yearShort = yearStr.slice(2);
 
   const file = getOeeFile(monthNum, yearStr);
   if (!file) return { error: `Tuber OEE file for month ${monthStr} not found` };
 
   const wb = XLSX.readFile(file);
-  const sheetName = wb.SheetNames.find(s => s.toLowerCase().includes('6x8') || s.toLowerCase().includes('tuber')) || wb.SheetNames[4];
+  
+  // Strictly select 2026 Tuber sheet (e.g. 'ALL OEE ( Sep, 26) 6x8 Ext. ')
+  const sheetName = wb.SheetNames.find(s => {
+    const l = s.toLowerCase();
+    return (l.includes(yearShort) || l.includes(yearStr)) && (l.includes('6x8') || l.includes('ext') || l.includes('tuber'));
+  }) || wb.SheetNames.find(s => s.toLowerCase().includes('6x8') || s.toLowerCase().includes('tuber')) || wb.SheetNames[4];
+
   const ws = wb.Sheets[sheetName];
   if (!ws) return { error: `Sheet ${sheetName} not found` };
 
@@ -73,7 +71,10 @@ function getTuberOee(dateStr) {
   const qr = Number(dayRow[5]) || 0;
   const oee1 = Number(dayRow[6]) || 0;
   const oee2 = Number(dayRow[7]) || 0;
-  const bd = Number(dayRow[8]) || 0;
+
+  let bdVal = dayRow[14] !== '' ? Number(dayRow[14]) : Number(dayRow[8]);
+  if (isNaN(bdVal)) bdVal = 0;
+  if (bdVal > 1) bdVal = bdVal / 100;
 
   const hasData = (sr > 0 || ar > 0 || pr > 0 || oee2 > 0);
 
@@ -85,13 +86,10 @@ function getTuberOee(dateStr) {
     qr_pct: parseFloat((qr * 100).toFixed(2)),
     oee1_pct: parseFloat((oee1 * 100).toFixed(2)),
     oee2_pct: parseFloat((oee2 * 100).toFixed(2)),
-    bd_pct: parseFloat((bd * 100).toFixed(2)),
+    bd_pct: parseFloat((bdVal * 100).toFixed(2)),
   };
 }
 
-/**
- * Parse Tuber Output & Code breakdown per Shift
- */
 function getTuberOutput(dateStr) {
   const [yearStr, monthStr, dayStr] = dateStr.split('-');
   const monthNum = parseInt(monthStr, 10);
