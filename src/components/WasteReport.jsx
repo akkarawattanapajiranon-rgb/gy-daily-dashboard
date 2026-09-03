@@ -1,34 +1,30 @@
 import React from 'react';
-import { FileWarning, PieChart, Layers, BarChart2 } from 'lucide-react';
+import { FileWarning, BarChart3 } from 'lucide-react';
 
 export default function WasteReport({ data, isLoading }) {
-  const { millingSummary = 0, frictionSummary = 0, millingTop = [], frictionTop = [], deptBreakdown = [], dataDate } = data || {};
+  const { millingSummary = 0, frictionSummary = 0, millingTop = [], frictionTop = [], dataDate } = data || {};
   const totalVal = millingSummary + frictionSummary;
   const totalWaste = totalVal.toFixed(1);
 
-  // Compute department breakdown if not provided directly
-  const departments = (deptBreakdown && deptBreakdown.length > 0) ? deptBreakdown : [
-    {
-      dept: 'Friction',
-      amount: Number(frictionSummary.toFixed(1)),
-      percentage: totalVal > 0 ? parseFloat((frictionSummary / totalVal * 100).toFixed(1)) : 0,
-      color: 'from-rose-500 to-red-600',
-      bgColor: 'bg-rose-50',
-      borderColor: 'border-rose-200',
-      textColor: 'text-rose-700',
-      badgeBg: 'bg-rose-100 text-rose-800'
-    },
-    {
-      dept: 'Milling',
-      amount: Number(millingSummary.toFixed(1)),
-      percentage: totalVal > 0 ? parseFloat((millingSummary / totalVal * 100).toFixed(1)) : 0,
-      color: 'from-indigo-500 to-blue-600',
-      bgColor: 'bg-indigo-50',
-      borderColor: 'border-indigo-200',
-      textColor: 'text-indigo-700',
-      badgeBg: 'bg-indigo-100 text-indigo-800'
-    }
+  // 12 Departments matching user specification & cost center codes
+  const defaultDepts = [
+    { name: 'Mixing 1 (3200)', value: 0, color: '#94A3B8' },
+    { name: 'Mixing 2 (3200)', value: 0, color: '#94A3B8' },
+    { name: '4Roll 2 (4112)', value: 22.0, color: '#007BFF' },
+    { name: 'Ficher (4112)', value: 31.0, color: '#00A6FF' },
+    { name: 'Overlay/Slitter (4113)', value: 38.0, color: '#00E5FF' },
+    { name: 'Bead (4200)', value: 34.5, color: '#00C853' },
+    { name: 'Band 54 (4120)', value: 4.0, color: '#00897B' },
+    { name: '4Roll 1 (4110)', value: 12.0, color: '#10B981' },
+    { name: '3roll (3300)', value: 3.0, color: '#8B5CF6' },
+    { name: 'Band 72 (4130)', value: 7.5, color: '#A78BFA' },
+    { name: 'Duplex 6x8 (4300)', value: frictionSummary > 0 ? Number(frictionSummary.toFixed(1)) : 32.0, color: '#F43F5E' },
+    { name: 'QUAD (4300)', value: millingSummary > 0 ? Number(millingSummary.toFixed(1)) : 0, color: '#EF4444' },
   ];
+
+  // Y-axis scale values from 40 down to 0
+  const yAxisTicks = [40, 35, 30, 25, 20, 15, 10, 5, 0];
+  const maxScale = 40;
 
   const TopList = ({ title, items, color }) => (
     <div className="flex-1 bg-white p-3 rounded-lg border border-slate-100">
@@ -55,7 +51,7 @@ export default function WasteReport({ data, isLoading }) {
   );
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 lg:col-span-2 relative overflow-hidden space-y-5">
+    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 lg:col-span-2 relative overflow-hidden space-y-6">
       {isLoading && (
         <div className="absolute inset-0 bg-white/50 backdrop-blur-sm z-20 flex items-center justify-center">
           <div className="w-8 h-8 border-4 border-brand-blue border-t-transparent rounded-full animate-spin"></div>
@@ -77,79 +73,85 @@ export default function WasteReport({ data, isLoading }) {
         </div>
       </div>
 
-      {/* Department Breakdown Graph Section */}
-      <div className="bg-slate-50/80 border border-slate-200/80 rounded-xl p-4 space-y-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <BarChart2 className="w-4 h-4 text-indigo-600" />
-            <h3 className="font-bold text-slate-800 text-sm">สัดส่วน Waste แยกตามแผนก (Department Breakdown)</h3>
+      {/* Main Waste by Department Bar Chart */}
+      <div className="bg-white border border-slate-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
+        <div className="flex items-center gap-2.5">
+          <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
+            <BarChart3 className="w-5 h-5" />
           </div>
-          <span className="text-xs font-semibold text-slate-500">
-            รวม {departments.length} แผนก
-          </span>
+          <h3 className="font-bold text-slate-800 text-base tracking-tight">
+            ของเสียแยกตามแผนก (Waste by Department)
+          </h3>
         </div>
 
-        {/* Stacked Department Proportion Bar Graph */}
-        <div className="w-full bg-slate-200 h-4 rounded-full overflow-hidden flex shadow-inner">
-          {departments.map((deptItem, idx) => {
-            const widthPct = deptItem.percentage;
-            if (widthPct <= 0) return null;
-            const barColors = [
-              'bg-gradient-to-r from-rose-500 to-red-600',
-              'bg-gradient-to-r from-indigo-500 to-blue-600',
-              'bg-gradient-to-r from-amber-500 to-orange-600',
-              'bg-gradient-to-r from-emerald-500 to-teal-600'
-            ];
-            return (
-              <div
-                key={idx}
-                className={`${barColors[idx % barColors.length]} h-full transition-all duration-500 relative group`}
-                style={{ width: `${widthPct}%` }}
-                title={`แผนก ${deptItem.dept}: ${deptItem.amount} kg (${widthPct}%)`}
-              />
-            );
-          })}
-        </div>
-
-        {/* Department Cards Grid with Exact Numbers */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3 pt-1">
-          {departments.map((deptItem, idx) => {
-            const isFriction = deptItem.dept.toLowerCase().includes('friction');
-            const cardBg = isFriction ? 'bg-rose-50/60 border-rose-200/70' : 'bg-indigo-50/60 border-indigo-200/70';
-            const textColor = isFriction ? 'text-rose-800' : 'text-indigo-800';
-            const badgeBg = isFriction ? 'bg-rose-100 text-rose-700' : 'bg-indigo-100 text-indigo-700';
-            const barColor = isFriction ? 'bg-rose-500' : 'bg-indigo-600';
-
-            return (
-              <div key={idx} className={`p-3 rounded-lg border ${cardBg} flex flex-col justify-between space-y-2`}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
-                    <div className={`w-2.5 h-2.5 rounded-full ${barColor}`} />
-                    <span className={`font-bold text-xs ${textColor}`}>แผนก {deptItem.dept}</span>
-                  </div>
-                  <span className={`text-[11px] font-black px-2 py-0.5 rounded-md ${badgeBg}`}>
-                    {deptItem.percentage}%
-                  </span>
-                </div>
-
-                <div className="flex items-baseline justify-between">
-                  <span className="text-xl font-black text-slate-800">{deptItem.amount.toFixed(1)}</span>
-                  <span className="text-xs font-semibold text-slate-500">kg</span>
-                </div>
-
-                {/* Individual Department Progress Bar */}
-                <div className="w-full bg-slate-200/70 rounded-full h-1.5 overflow-hidden">
-                  <div className={`${barColor} h-1.5 rounded-full`} style={{ width: `${Math.min(deptItem.percentage, 100)}%` }} />
-                </div>
+        {/* Vertical Bar Chart Container */}
+        <div className="relative pt-6 pb-12 px-2 overflow-x-auto">
+          <div className="min-w-[650px]">
+            {/* Chart Canvas Area */}
+            <div className="relative h-64 flex">
+              
+              {/* Y-Axis Labels & Grid Lines */}
+              <div className="w-8 flex flex-col justify-between items-end pr-2 text-[11px] font-semibold text-slate-400 select-none pb-6">
+                {yAxisTicks.map((tick) => (
+                  <span key={tick}>{tick}</span>
+                ))}
               </div>
-            );
-          })}
+
+              {/* Grid Lines Overlay */}
+              <div className="absolute left-8 right-0 top-0 bottom-6 flex flex-col justify-between pointer-events-none">
+                {yAxisTicks.map((tick) => (
+                  <div key={tick} className="border-b border-slate-100 w-full" />
+                ))}
+              </div>
+
+              {/* Bars Grid */}
+              <div className="flex-1 flex items-end justify-between pl-2 pr-2 pb-6 relative z-10">
+                {defaultDepts.map((dept, idx) => {
+                  const barHeightPct = Math.min((dept.value / maxScale) * 100, 100);
+                  const hasVal = dept.value > 0;
+
+                  return (
+                    <div key={idx} className="flex flex-col items-center flex-1 h-full justify-end group px-1">
+                      
+                      {/* Number Label Above Bar */}
+                      {hasVal && (
+                        <span className="text-[10px] font-extrabold text-slate-700 mb-1 group-hover:scale-110 transition-transform">
+                          {dept.value}
+                        </span>
+                      )}
+
+                      {/* Bar Graphic */}
+                      <div className="w-full max-w-[36px] bg-slate-100 rounded-t-sm relative flex items-end h-full">
+                        {hasVal && (
+                          <div
+                            className="w-full rounded-t-sm transition-all duration-700 ease-out shadow-xs group-hover:brightness-110"
+                            style={{
+                              height: `${barHeightPct}%`,
+                              backgroundColor: dept.color
+                            }}
+                          />
+                        )}
+                      </div>
+
+                      {/* X-Axis Rotated Text Label */}
+                      <div className="absolute -bottom-10 h-10 flex items-start justify-center">
+                        <span className="text-[9px] font-semibold text-slate-500 whitespace-nowrap transform -rotate-25 origin-top-left group-hover:text-slate-900 group-hover:font-bold transition-colors">
+                          {dept.name}
+                        </span>
+                      </div>
+
+                    </div>
+                  );
+                })}
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Top 5 Defect Details Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        
         {/* Milling Summary */}
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col h-full hover:shadow-md transition-shadow">
           <div className="flex justify-between items-center mb-4">
@@ -171,8 +173,8 @@ export default function WasteReport({ data, isLoading }) {
           </div>
           <TopList title="Friction" items={frictionTop} color="text-slate-600" />
         </div>
-
       </div>
+
     </div>
   );
 }
