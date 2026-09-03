@@ -19,99 +19,93 @@ const MONTH_SHEETS = {
 };
 
 /**
- * Parse Breakdown data from the Excel file for a given date (YYYY-MM-DD)
- * Returns { equipment: { target_bd_pct, actual_bd_pct, fail_hr_target, fail_hr_actual, sch_hr } }
+ * Parse Breakdown BD% data from the Excel file for a given date (YYYY-MM-DD)
+ * Reads BD% directly from Target and Actual rows in the monthly sheet.
+ * col[5] = Day 1, col[6] = Day 2, ... col[5 + dayIndex] = Day N
  */
 function parseBreakdown(dateStr) {
   try {
     const [year, month, day] = dateStr.split('-');
-    const dayIndex = parseInt(day, 10) - 1; // 0-based, column offset 5 = Day 1
+    const dayIndex = parseInt(day, 10) - 1; // 0-based -> column offset from col[5]
 
     const wb = XLSX.readFile(BREAKDOWN_FILE);
-    
-    // Find matching sheet for the month
-    const monthKey = month;
-    let sheetName = MONTH_SHEETS[monthKey];
-    
-    // Try fuzzy match if exact not found
+
+    // Find matching sheet
+    let sheetName = MONTH_SHEETS[month] || '';
     if (!sheetName || !wb.SheetNames.includes(sheetName)) {
-      const monthNum = parseInt(month, 10);
-      const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-      const monthName = monthNames[monthNum - 1];
-      sheetName = wb.SheetNames.find(s => s.toLowerCase().includes(monthName.toLowerCase()));
+      const monthNames = ['January','February','March','April','May','June',
+                          'July','August','September','October','November','December'];
+      const monthName = monthNames[parseInt(month, 10) - 1];
+      sheetName = wb.SheetNames.find(s => s.toLowerCase().includes(monthName.toLowerCase())) || '';
     }
 
     if (!sheetName) {
-      return { error: 'Sheet not found for month ' + month };
+      return { error: `ไม่พบข้อมูลสำหรับเดือน ${month} ในไฟล์ Excel` };
     }
 
     const ws = wb.Sheets[sheetName];
     const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
 
-    // Filter Thailand Breakdown rows
+    // Filter rows: Thailand | Breakdown | <Area> | BD% | Target/Actual
     const bdRows = data.filter(row =>
       String(row[0]).trim() === 'Thailand' &&
-      String(row[1]).trim() === 'Breakdown'
+      String(row[1]).trim() === 'Breakdown' &&
+      String(row[3]).trim() === 'BD%'
     );
 
-    // Build result
-    // row[2] = Area (Banbury, Extruder, Tire Room, Curing, Calender, Cutting)
-    // row[3] = "Fail hour" or "Schedule hour" or "BD%"
-    // row[4] = "Target" or "Actual"
-    // row[5+dayIndex] = value for that day
+    const colIdx = 5 + dayIndex; // column for the selected day
 
+    const equipments = ['Banbury', 'Extruder', 'Calender', 'Cutting'];
     const result = {};
-    const equipments = ['Banbury', 'Extruder', 'Tire Room', 'Curing', 'Calender', 'Cutting'];
-    
+
     equipments.forEach(eq => {
-      const eqNorm = eq.toLowerCase().replace(/\s/g, '');
-      
-      // Fail hour Target
-      const fhTarget = bdRows.find(r =>
-        String(r[2]).trim().toLowerCase().replace(/\s/g, '') === eqNorm &&
-        String(r[3]).trim() === 'Fail hour' &&
-        String(r[4]).trim() === 'Target'
-      );
-      
-      // Fail hour Actual
-      const fhActual = bdRows.find(r =>
-        String(r[2]).trim().toLowerCase().replace(/\s/g, '') === eqNorm &&
-        String(r[3]).trim() === 'Fail hour' &&
-        String(r[4]).trim() === 'Actual'
-      );
-      
-      // Schedule hour Target
-      const schTarget = bdRows.find(r =>
-        String(r[2]).trim().toLowerCase().replace(/\s/g, '') === eqNorm &&
-        String(r[3]).trim() === 'Schedule hour' &&
+      const eqNorm = eq.toLowerCase().replace(/\s+/g, '');
+
+      const targetRow = bdRows.find(r =>
+        String(r[2]).trim().toLowerCase().replace(/\s+/g, '') === eqNorm &&
         String(r[4]).trim() === 'Target'
       );
 
-      // Schedule hour Actual
-      const schActual = bdRows.find(r =>
-        String(r[2]).trim().toLowerCase().replace(/\s/g, '') === eqNorm &&
-        String(r[3]).trim() === 'Schedule hour' &&
+      const actualRow = bdRows.find(r =>
+        String(r[2]).trim().toLowerCase().replace(/\s+/g, '') === eqNorm &&
         String(r[4]).trim() === 'Actual'
       );
 
-      const colIdx = 5 + dayIndex;
-      const fhT = fhTarget ? (Number(fhTarget[colIdx]) || 0) : 0;
-      const fhA = fhActual ? (Number(fhActual[colIdx]) || 0) : 0;
-      const schT = schTarget ? (Number(schTarget[colIdx]) || 1) : 1;
-      const schA = schActual ? (Number(schActual[colIdx]) || schT) : schT;
-
-      // BD% = Fail hour / Schedule hour * 100
-      const targetBdPct = schT > 0 ? (fhT / schT * 100) : 0;
-      const actualBdPct = schA > 0 ? (fhA / schA * 100) : 0;
+      const targetVal = targetRow ? (Number(targetRow[colIdx]) || 0) : 0;
+      const actualVal = actualRow
+        ? (actualRow[colIdx] === '' ? null : Number(actualRow[colIdx]) || 0)
+        : null;
 
       result[eq] = {
-        fail_hr_target: parseFloat(fhT.toFixed(2)),
-        fail_hr_actual: parseFloat(fhA.toFixed(2)),
-        sch_hr: parseFloat(schT.toFixed(2)),
-        target_bd_pct: parseFloat(targetBdPct.toFixed(4)),
-        actual_bd_pct: parseFloat(actualBdPct.toFixed(4)),
+        target_bd_pct: parseFloat((targetVal * 100).toFixed(4)),     // e.g. 0.5826
+        actual_bd_pct: actualVal !== null ? parseFloat((actualVal * 100).toFixed(4)) : null,
+        hasData: actualVal !== null,
       };
     });
+
+    // Also compute overall (Total row)
+    const totalTarget = bdRows.find(r =>
+      String(r[2]).trim().toLowerCase().includes('total') &&
+      String(r[4]).trim() === 'Target'
+    );
+    const totalActual = bdRows.find(r =>
+      String(r[2]).trim().toLowerCase().includes('total') &&
+      String(r[4]).trim() === 'Actual'
+    );
+
+    const ttVal = totalTarget ? (Number(totalTarget[colIdx]) || 0) : 0;
+    const taVal = totalActual
+      ? (totalActual[colIdx] === '' ? null : Number(totalActual[colIdx]) || 0)
+      : null;
+
+    result['_total'] = {
+      target_bd_pct: parseFloat((ttVal * 100).toFixed(4)),
+      actual_bd_pct: taVal !== null ? parseFloat((taVal * 100).toFixed(4)) : null,
+      hasData: taVal !== null,
+    };
+
+    result['_sheet'] = sheetName;
+    result['_date'] = dateStr;
 
     return result;
   } catch (e) {
