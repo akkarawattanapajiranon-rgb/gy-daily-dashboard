@@ -90,7 +90,7 @@ function App() {
         {/* Header */}
         <header className="bg-brand-blue text-white rounded-2xl p-6 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl md:text-3xl font-black tracking-tight">Daily Operations Report (DOR)</h1>
+            <h1 className="text-2xl md:text-3xl font-black tracking-tight">MU_DOR (Daily Operations Report)</h1>
             <div className="flex items-center gap-2 mt-2">
               <Calendar className="w-5 h-5 text-brand-yellow" />
               <input 
