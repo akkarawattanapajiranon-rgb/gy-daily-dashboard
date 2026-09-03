@@ -64,11 +64,11 @@ function getQuadOee(dateStr) {
   const qr = Number(dayRow[5]) || 0;
   const oee1 = Number(dayRow[7]) || 0;
   const oee2 = Number(dayRow[8]) || 0;
-  let bd = Number(dayRow[26]);
-  if (isNaN(bd) || bd === 0) {
-    bd = Number(dayRow[16]) || 0;
-  }
-  if (bd > 1) bd = bd / 100;
+
+  // % BD Actual is at Col 26, fallback to Col 16
+  let bdVal = dayRow[26] !== '' ? Number(dayRow[26]) : Number(dayRow[16]);
+  if (isNaN(bdVal)) bdVal = 0;
+  if (bdVal > 1) bdVal = bdVal / 100;
 
   const hasData = (sr > 0 || ar > 0 || pr > 0 || oee2 > 0);
 
@@ -80,7 +80,7 @@ function getQuadOee(dateStr) {
     qr_pct: parseFloat((qr * 100).toFixed(2)),
     oee1_pct: parseFloat((oee1 * 100).toFixed(2)),
     oee2_pct: parseFloat((oee2 * 100).toFixed(2)),
-    bd_pct: parseFloat((bd * 100).toFixed(2)),
+    bd_pct: parseFloat((bdVal * 100).toFixed(2)),
   };
 }
 
