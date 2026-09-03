@@ -136,4 +136,17 @@ export async function fetchFischerData(dateStr) {
   }
 }
 
+export async function fetch3RollDetail(dateStr) {
+  try {
+    const url = `/api/3roll?date=${dateStr}`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (err) {
+    console.error('3 Roll Fetch Error:', err);
+    return null;
+  }
+}
+
+
 

@@ -7,7 +7,7 @@ import WasteReport from './components/WasteReport';
 import BreakdownStats from './components/BreakdownStats';
 import FischerReport from './components/FischerReport';
 import { Calendar, RefreshCw } from 'lucide-react';
-import { fetchWasteData, fetchCmsData, fetchTarget3Roll, fetchBreakdownData, fetchFischerData } from './services/api';
+import { fetchWasteData, fetchCmsData, fetchTarget3Roll, fetchBreakdownData, fetchFischerData, fetch3RollDetail } from './services/api';
 
 function App() {
   const [wasteData, setWasteData] = useState(mockData.wasteReport);
@@ -15,6 +15,7 @@ function App() {
   const [output3RollData, setOutput3RollData] = useState(mockData.output3Roll);
   const [breakdownData, setBreakdownData] = useState(null);
   const [fischerData, setFischerData] = useState(null);
+  const [roll3Detail, setRoll3Detail] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedDate, setSelectedDate] = useState(() => {
@@ -26,12 +27,13 @@ function App() {
     setIsLoading(true);
     try {
       const dateToFetch = dateStr || selectedDate;
-      const [waste, cms, target3Roll, breakdown, fischer] = await Promise.all([
+      const [waste, cms, target3Roll, breakdown, fischer, roll3] = await Promise.all([
         fetchWasteData(dateToFetch),
         fetchCmsData(dateToFetch),
         fetchTarget3Roll(dateToFetch),
         fetchBreakdownData(dateToFetch),
         fetchFischerData(dateToFetch),
+        fetch3RollDetail(dateToFetch),
       ]);
 
       if (waste) {
@@ -74,6 +76,10 @@ function App() {
 
       if (fischer) {
         setFischerData(fischer);
+      }
+
+      if (roll3) {
+        setRoll3Detail(roll3);
       }
     } catch (error) {
       console.error('Error in loadData:', error);
@@ -132,7 +138,7 @@ function App() {
             <MachineOEE data={machineOEEData} />
           </div>
           <div className="lg:col-span-1">
-            <Output3Roll data={output3RollData} />
+            <Output3Roll data={output3RollData} rollDetail={roll3Detail} isLoading={isLoading} />
           </div>
         </div>
 

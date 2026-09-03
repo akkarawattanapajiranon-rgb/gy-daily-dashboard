@@ -41,8 +41,20 @@ app.get('/api/fischer', (req, res) => {
   if (data.error) {
     return res.status(404).json({ error: data.error });
   }
+// 3 Roll parser (reads local Excel on T: drive)
+const { parse3RollData } = require('./roll3_parser');
+
+// 3 Roll API endpoint
+app.get('/api/3roll', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  console.log(`Fetching 3 Roll WINDUP data for date: ${date}`);
+  const data = parse3RollData(date);
+  if (data.error) {
+    return res.status(404).json({ error: data.error });
+  }
   res.json(data);
 });
+
 
 
 
