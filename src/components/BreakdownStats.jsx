@@ -4,8 +4,6 @@ import { Wrench, AlertTriangle, CheckCircle } from 'lucide-react';
 const EQUIPMENT_COLORS = {
   'Banbury':   { bar: '#3b82f6', bg: '#eff6ff' },
   'Extruder':  { bar: '#8b5cf6', bg: '#f5f3ff' },
-  'Tire Room': { bar: '#f59e0b', bg: '#fffbeb' },
-  'Curing':    { bar: '#10b981', bg: '#ecfdf5' },
   'Calender':  { bar: '#f97316', bg: '#fff7ed' },
   'Cutting':   { bar: '#06b6d4', bg: '#ecfeff' },
 };
@@ -59,7 +57,7 @@ function BDBar({ label, targetPct, actualPct, colors }) {
 }
 
 export default function BreakdownStats({ data, isLoading }) {
-  const equipments = ['Banbury', 'Extruder', 'Tire Room', 'Curing', 'Calender', 'Cutting'];
+  const equipments = ['Banbury', 'Extruder', 'Calender', 'Cutting'];
 
   // Calculate overall BD% weighted average
   let totalFailTarget = 0, totalFailActual = 0, totalSch = 0;
