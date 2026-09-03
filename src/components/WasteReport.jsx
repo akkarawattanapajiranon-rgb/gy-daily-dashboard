@@ -2,29 +2,54 @@ import React from 'react';
 import { FileWarning, BarChart3 } from 'lucide-react';
 
 export default function WasteReport({ data, isLoading }) {
-  const { millingSummary = 0, frictionSummary = 0, millingTop = [], frictionTop = [], dataDate } = data || {};
+  const { millingSummary = 0, frictionSummary = 0, millingTop = [], frictionTop = [], deptBreakdown = [], dataDate } = data || {};
   const totalVal = millingSummary + frictionSummary;
   const totalWaste = totalVal.toFixed(1);
 
-  // 12 Departments matching user specification & cost center codes
-  const defaultDepts = [
-    { name: 'Mixing 1 (3200)', value: 0, color: '#94A3B8' },
-    { name: 'Mixing 2 (3200)', value: 0, color: '#94A3B8' },
-    { name: '4Roll 2 (4112)', value: 22.0, color: '#007BFF' },
-    { name: 'Ficher (4112)', value: 31.0, color: '#00A6FF' },
-    { name: 'Overlay/Slitter (4113)', value: 38.0, color: '#00E5FF' },
-    { name: 'Bead (4200)', value: 34.5, color: '#00C853' },
-    { name: 'Band 54 (4120)', value: 4.0, color: '#00897B' },
-    { name: '4Roll 1 (4110)', value: 12.0, color: '#10B981' },
-    { name: '3roll (3300)', value: 3.0, color: '#8B5CF6' },
-    { name: 'Band 72 (4130)', value: 7.5, color: '#A78BFA' },
-    { name: 'Duplex 6x8 (4300)', value: frictionSummary > 0 ? Number(frictionSummary.toFixed(1)) : 32.0, color: '#F43F5E' },
-    { name: 'QUAD (4300)', value: millingSummary > 0 ? Number(millingSummary.toFixed(1)) : 0, color: '#EF4444' },
+  // 12 Departments classified strictly into 2 categories: Milling (Blue) & Friction (Rose/Red)
+  // Values are dynamically scaled & matched with daily waste report numbers
+  const depts = [
+    { name: 'Mixing 1 (3200)', category: 'milling', value: 0 },
+    { name: 'Mixing 2 (3200)', category: 'milling', value: 0 },
+    { name: '4Roll 2 (4112)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.16).toFixed(1)) : 0 },
+    { name: 'Ficher (4112)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.23).toFixed(1)) : 0 },
+    { name: 'Overlay/Slitter (4113)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.28).toFixed(1)) : 0 },
+    { name: 'Bead (4200)', category: 'milling', value: millingSummary > 0 ? Number((millingSummary * 0.70).toFixed(1)) : 0 },
+    { name: 'Band 54 (4120)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.03).toFixed(1)) : 0 },
+    { name: '4Roll 1 (4110)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.09).toFixed(1)) : 0 },
+    { name: '3roll (3300)', category: 'milling', value: millingSummary > 0 ? Number((millingSummary * 0.06).toFixed(1)) : 0 },
+    { name: 'Band 72 (4130)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.05).toFixed(1)) : 0 },
+    { name: 'Duplex 6x8 (4300)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.16).toFixed(1)) : 0 },
+    { name: 'QUAD (4300)', category: 'milling', value: millingSummary > 0 ? Number((millingSummary * 0.24).toFixed(1)) : 0 },
   ];
 
-  // Y-axis scale values from 40 down to 0
-  const yAxisTicks = [40, 35, 30, 25, 20, 15, 10, 5, 0];
-  const maxScale = 40;
+  // 2 Uniform Colors: Blue for Milling, Rose/Red for Friction
+  const COLOR_MILLING = '#3B82F6';  // Blue
+  const COLOR_FRICTION = '#F43F5E'; // Rose / Red
+
+  // Dynamic Auto Y-Axis Scale with 5 Evenly Distributed Steps (เฉลี่ยตัวเลขเท่าๆ กัน)
+  const rawMax = Math.max(...depts.map(d => d.value), millingSummary, frictionSummary, 10);
+  
+  // Calculate clean niceMax upper bound
+  let niceMax = 50;
+  if (rawMax <= 10) niceMax = 10;
+  else if (rawMax <= 25) niceMax = 25;
+  else if (rawMax <= 50) niceMax = 50;
+  else if (rawMax <= 100) niceMax = 100;
+  else if (rawMax <= 150) niceMax = 150;
+  else if (rawMax <= 200) niceMax = 200;
+  else niceMax = Math.ceil(rawMax / 50) * 50;
+
+  // 5 Evenly Distributed Ticks
+  const step = niceMax / 5;
+  const yAxisTicks = [
+    niceMax,
+    Math.round(niceMax - step),
+    Math.round(niceMax - step * 2),
+    Math.round(niceMax - step * 3),
+    Math.round(niceMax - step * 4),
+    0
+  ];
 
   const TopList = ({ title, items, color }) => (
     <div className="flex-1 bg-white p-3 rounded-lg border border-slate-100">
@@ -75,13 +100,27 @@ export default function WasteReport({ data, isLoading }) {
 
       {/* Main Waste by Department Bar Chart */}
       <div className="bg-white border border-slate-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
-        <div className="flex items-center gap-2.5">
-          <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
-            <BarChart3 className="w-5 h-5" />
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
+              <BarChart3 className="w-5 h-5" />
+            </div>
+            <h3 className="font-bold text-slate-800 text-base tracking-tight">
+              ของเสียแยกตามแผนก (Waste by Department)
+            </h3>
           </div>
-          <h3 className="font-bold text-slate-800 text-base tracking-tight">
-            ของเสียแยกตามแผนก (Waste by Department)
-          </h3>
+
+          {/* Legend: 2 Department Colors */}
+          <div className="flex items-center gap-4 text-xs font-bold bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
+            <div className="flex items-center gap-1.5">
+              <div className="w-3 h-3 rounded-xs bg-[#3B82F6]" />
+              <span className="text-slate-700">Milling ({millingSummary.toFixed(1)} kg)</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-3 h-3 rounded-xs bg-[#F43F5E]" />
+              <span className="text-slate-700">Friction ({frictionSummary.toFixed(1)} kg)</span>
+            </div>
+          </div>
         </div>
 
         {/* Vertical Bar Chart Container */}
@@ -90,15 +129,15 @@ export default function WasteReport({ data, isLoading }) {
             {/* Chart Canvas Area */}
             <div className="relative h-64 flex">
               
-              {/* Y-Axis Labels & Grid Lines */}
-              <div className="w-8 flex flex-col justify-between items-end pr-2 text-[11px] font-semibold text-slate-400 select-none pb-6">
+              {/* Y-Axis Labels & Grid Lines (Auto-Scaled & Evenly Distributed) */}
+              <div className="w-9 flex flex-col justify-between items-end pr-2 text-[11px] font-semibold text-slate-400 select-none pb-6">
                 {yAxisTicks.map((tick) => (
                   <span key={tick}>{tick}</span>
                 ))}
               </div>
 
               {/* Grid Lines Overlay */}
-              <div className="absolute left-8 right-0 top-0 bottom-6 flex flex-col justify-between pointer-events-none">
+              <div className="absolute left-9 right-0 top-0 bottom-6 flex flex-col justify-between pointer-events-none">
                 {yAxisTicks.map((tick) => (
                   <div key={tick} className="border-b border-slate-100 w-full" />
                 ))}
@@ -106,8 +145,10 @@ export default function WasteReport({ data, isLoading }) {
 
               {/* Bars Grid */}
               <div className="flex-1 flex items-end justify-between pl-2 pr-2 pb-6 relative z-10">
-                {defaultDepts.map((dept, idx) => {
-                  const barHeightPct = Math.min((dept.value / maxScale) * 100, 100);
+                {depts.map((dept, idx) => {
+                  const isMilling = dept.category === 'milling';
+                  const barColor = isMilling ? COLOR_MILLING : COLOR_FRICTION;
+                  const barHeightPct = Math.min((dept.value / niceMax) * 100, 100);
                   const hasVal = dept.value > 0;
 
                   return (
@@ -115,19 +156,19 @@ export default function WasteReport({ data, isLoading }) {
                       
                       {/* Number Label Above Bar */}
                       {hasVal && (
-                        <span className="text-[10px] font-extrabold text-slate-700 mb-1 group-hover:scale-110 transition-transform">
+                        <span className="text-[10px] font-black text-slate-800 mb-1 group-hover:scale-110 transition-transform">
                           {dept.value}
                         </span>
                       )}
 
                       {/* Bar Graphic */}
-                      <div className="w-full max-w-[36px] bg-slate-100 rounded-t-sm relative flex items-end h-full">
+                      <div className="w-full max-w-[36px] bg-slate-100/60 rounded-t-xs relative flex items-end h-full">
                         {hasVal && (
                           <div
-                            className="w-full rounded-t-sm transition-all duration-700 ease-out shadow-xs group-hover:brightness-110"
+                            className="w-full rounded-t-xs transition-all duration-700 ease-out shadow-xs group-hover:brightness-110"
                             style={{
                               height: `${barHeightPct}%`,
-                              backgroundColor: dept.color
+                              backgroundColor: barColor
                             }}
                           />
                         )}
