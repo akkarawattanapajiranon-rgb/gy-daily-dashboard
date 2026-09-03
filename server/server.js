@@ -72,8 +72,18 @@ app.get('/api/tuber', (req, res) => {
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
-});
+// Waste parser (reads local Excel on T: drive)
+const { parseWasteData } = require('./waste_parser');
 
+app.get('/api/waste', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  console.log(`Fetching Waste data for date: ${date}`);
+  const data = parseWasteData(date);
+  if (data.error) {
+    return res.status(404).json({ error: data.error });
+  }
+  res.json(data);
+});
 
 // CMS live parser
 const { fetchLiveCmsData } = require('./cms_parser');

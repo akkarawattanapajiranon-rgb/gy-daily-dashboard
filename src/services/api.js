@@ -3,21 +3,23 @@ import { collection, query, where, getDocs, limit, orderBy } from 'firebase/fire
 import { db } from './firebase';
 
 export async function fetchWasteData(dateStr) {
+  const targetDate = dateStr || new Date().toISOString().split('T')[0];
+
+  // 1. Try fetching official Waste Report Excel data from backend
   try {
-    let targetDate = dateStr;
-    
-    // If no date provided, fetch the latest record to determine the date
-    if (!targetDate) {
-      const qLatest = query(collection(db, 'gy_reports'), orderBy('createdAt', 'desc'), limit(1));
-      const snapLatest = await getDocs(qLatest);
-      if (!snapLatest.empty) {
-        targetDate = snapLatest.docs[0].data().date;
-      } else {
-        targetDate = new Date().toISOString().split('T')[0]; // fallback to today
+    const res = await fetch(`/api/waste?date=${targetDate}`);
+    if (res.ok) {
+      const data = await res.json();
+      if (data && !data.error && data.hasData) {
+        return data;
       }
     }
+  } catch (err) {
+    console.warn('Backend waste fetch failed, attempting Firestore query...', err.message);
+  }
 
-    // Query documents for the target date
+  // 2. Fallback to Firestore query
+  try {
     const q = query(collection(db, 'gy_reports'), where('date', '==', targetDate));
     const snapshot = await getDocs(q);
     
@@ -45,11 +47,9 @@ export async function fetchWasteData(dateStr) {
       }
     });
 
-    // Sort and get top 5
     const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
     const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
 
-    // Mark high values (e.g. top 2)
     millingTop.forEach((item, index) => { item.isHigh = index < 2; });
     frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
 
@@ -68,19 +68,26 @@ export async function fetchWasteData(dateStr) {
       percentage: totalWeight > 0 ? parseFloat((amount / totalWeight * 100).toFixed(1)) : 0
     })).sort((a, b) => b.amount - a.amount);
 
-    return {
-      millingSummary: Number(millingSummary.toFixed(1)),
-      frictionSummary: Number(frictionSummary.toFixed(1)),
-      millingTop,
-      frictionTop,
-      deptBreakdown,
-      deptDetailsMap: deptMap,
-      dataDate: targetDate
-    };
+    if (recentReports.length > 0) {
+      return {
+        millingSummary: Number(millingSummary.toFixed(1)),
+        frictionSummary: Number(frictionSummary.toFixed(1)),
+        millingTop,
+        frictionTop,
+        deptBreakdown,
+        deptDetailsMap: deptMap,
+        dataDate: targetDate
+      };
+    }
   } catch (err) {
     console.error('Firebase Fetch Error:', err);
-    return mockData.wasteReport;
   }
+
+  // 3. Fallback mockData
+  return {
+    ...mockData.wasteReport,
+    dataDate: targetDate
+  };
 }
 
 export async function fetchCmsData(dateStr) {
