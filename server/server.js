@@ -9,6 +9,9 @@ const { wrapper } = require('axios-cookiejar-support');
 
 const app = express();
 app.use(cors());
+const path = require('path');
+// Serve built Vite assets
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 const CMS_USER = process.env.CMS_USER;
 const CMS_PASS = process.env.CMS_PASS;
@@ -226,6 +229,11 @@ app.get('/api/cms', async (req, res) => {
       totalOee2: (68 + (Math.abs(hash*8) % 10)).toFixed(1)
     });
   }
+});
+
+// SPA fallback – serve index.html for any non‑API route
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
 const PORT = 3001;
