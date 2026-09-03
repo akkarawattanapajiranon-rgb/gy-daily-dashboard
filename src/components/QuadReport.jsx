@@ -85,29 +85,7 @@ export default function QuadReport({ data, loading }) {
         </div>
       )}
 
-      {/* Code Breakdown Badges */}
-      {hasOutput && output.codeBreakdown && output.codeBreakdown.length > 0 && (
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700">
-            <Tag className="w-3.5 h-3.5 text-indigo-500" />
-            <span>สัดส่วน Code ที่ผลิต:</span>
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {output.codeBreakdown.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 rounded-md px-2 py-0.5 text-xs"
-              >
-                <span className="font-bold text-indigo-700">{item.code}</span>
-                <span className="font-extrabold text-slate-800">{item.count.toLocaleString()}</span>
-                <span className="text-[10px] font-semibold text-indigo-600 bg-indigo-50 px-1 rounded">
-                  {item.percentage}%
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+
 
       {/* Shift 1, 2, 3 Breakdown Tables */}
       {hasOutput && output.shifts && (
