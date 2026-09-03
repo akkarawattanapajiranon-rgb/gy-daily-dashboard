@@ -1,6 +1,8 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const qs = require('querystring');
+const fs = require('fs');
+const path = require('path');
 const { CookieJar } = require('tough-cookie');
 const { wrapper } = require('axios-cookiejar-support');
 
@@ -9,11 +11,44 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const CMS_USER = process.env.CMS_USER || 'aa11909';
 const CMS_PASS = process.env.CMS_PASS || 'GOODYEARthailand1234';
 
-// In-memory cache for CMS data (TTL: 10 minutes)
+const CACHE_FILE = path.join(__dirname, 'cms_cache.json');
+const CACHE_TTL_MS = 60 * 1000; // 60 seconds for background refresh
+
+// In-memory cache
 const cmsCache = new Map(); // key: dateStr, value: { data, timestamp }
 const pendingRequests = new Map(); // key: dateStr, value: Promise
 
-const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+// 1. Load persistent cache from disk on startup
+function loadDiskCache() {
+  try {
+    if (fs.existsSync(CACHE_FILE)) {
+      const raw = fs.readFileSync(CACHE_FILE, 'utf8');
+      const obj = JSON.parse(raw);
+      Object.entries(obj).forEach(([k, v]) => {
+        cmsCache.set(k, v);
+      });
+      console.log(`[CMS Daemon] Loaded ${cmsCache.size} cached dates from disk`);
+    }
+  } catch (err) {
+    console.error('[CMS Daemon] Failed to load disk cache:', err.message);
+  }
+}
+
+// 2. Save persistent cache to disk
+function saveDiskCache() {
+  try {
+    const obj = {};
+    cmsCache.forEach((v, k) => {
+      obj[k] = v;
+    });
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(obj, null, 2), 'utf8');
+  } catch (err) {
+    console.error('[CMS Daemon] Failed to save disk cache:', err.message);
+  }
+}
+
+// Initialize disk cache on module load
+loadDiskCache();
 
 /**
  * Execute raw live HTTP query to Goodyear Oracle CMS system
@@ -119,65 +154,78 @@ async function queryCmsServer(dateStr) {
     }
   });
 
-  if (foundRows === 0) {
-    console.warn(`[CMS] Query succeeded but 0 data rows found for ${dateStr}`);
-  } else {
-    console.log(`[CMS] Successfully fetched live Mixing data for ${dateStr} (Total OEE2: ${result.totalOee2}%)`);
+  if (foundRows > 0) {
+    console.log(`[CMS Daemon] Live fetch successful for ${dateStr} (Total OEE2: ${result.totalOee2}%)`);
   }
 
   return result;
 }
 
 /**
- * Main function with caching, request deduplication, and retry logic
+ * Background async refresh without blocking user requests
  */
-async function fetchLiveCmsData(dateStr) {
-  // 1. Check cache first
-  const cached = cmsCache.get(dateStr);
-  if (cached && (Date.now() - cached.timestamp < CACHE_TTL_MS)) {
-    console.log(`[CMS] Serving cached data for ${dateStr}`);
-    return cached.data;
-  }
+async function triggerBackgroundRefresh(dateStr) {
+  if (pendingRequests.has(dateStr)) return;
 
-  // 2. Request deduplication (if already fetching for this date, wait for existing promise)
-  if (pendingRequests.has(dateStr)) {
-    console.log(`[CMS] Waiting for in-flight request for ${dateStr}...`);
-    return pendingRequests.get(dateStr);
-  }
-
-  // 3. Create execution promise
-  const fetchPromise = (async () => {
+  const promise = (async () => {
     try {
-      // Attempt 1
       const data = await queryCmsServer(dateStr);
       cmsCache.set(dateStr, { data, timestamp: Date.now() });
+      saveDiskCache();
       return data;
-    } catch (err1) {
-      console.warn(`[CMS] Attempt 1 failed for ${dateStr} (${err1.message}). Retrying in 1.5s...`);
-      await new Promise(r => setTimeout(r, 1500));
-      
-      try {
-        // Attempt 2 (Retry)
-        const data = await queryCmsServer(dateStr);
-        cmsCache.set(dateStr, { data, timestamp: Date.now() });
-        return data;
-      } catch (err2) {
-        console.error(`[CMS] Attempt 2 failed for ${dateStr}:`, err2.message);
-        
-        // Return stale cache if available
-        if (cached) {
-          console.log(`[CMS] Returning stale cached data for ${dateStr}`);
-          return cached.data;
-        }
-        return null;
-      }
+    } catch (err) {
+      console.warn(`[CMS Daemon] Background refresh failed for ${dateStr}:`, err.message);
     } finally {
       pendingRequests.delete(dateStr);
     }
   })();
 
-  pendingRequests.set(dateStr, fetchPromise);
-  return fetchPromise;
+  pendingRequests.set(dateStr, promise);
+  return promise;
 }
+
+/**
+ * Non-blocking instant fetch: Always returns data instantly (0ms response)
+ */
+async function fetchLiveCmsData(dateStr) {
+  const cached = cmsCache.get(dateStr);
+
+  // If cache exists and is fresh (<= 60s), return immediately
+  if (cached && (Date.now() - cached.timestamp < CACHE_TTL_MS)) {
+    return cached.data;
+  }
+
+  // If stale cache exists, return stale data IMMEDIATELY and trigger background update
+  if (cached) {
+    triggerBackgroundRefresh(dateStr); // Non-blocking background sync!
+    return cached.data;
+  }
+
+  // If no cache exists at all, wait for query or return default fallback
+  if (pendingRequests.has(dateStr)) {
+    return pendingRequests.get(dateStr);
+  }
+
+  return triggerBackgroundRefresh(dateStr);
+}
+
+// 3. Background Poller Daemon: Refresh today's date every 60 seconds automatically
+function startBackgroundPoller() {
+  const getTodayStr = () => new Date().toISOString().split('T')[0];
+
+  const poll = async () => {
+    const today = getTodayStr();
+    await triggerBackgroundRefresh(today);
+  };
+
+  // Initial sync on startup
+  poll();
+
+  // Recurring background interval (every 60s)
+  setInterval(poll, 60 * 1000);
+}
+
+// Start background poller daemon automatically
+startBackgroundPoller();
 
 module.exports = { fetchLiveCmsData };

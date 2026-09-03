@@ -84,7 +84,7 @@ export async function fetchWasteData(dateStr) {
 
 export async function fetchCmsData(dateStr) {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+  const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
 
   try {
     let url = '/api/cms';
