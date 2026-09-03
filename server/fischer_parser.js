@@ -145,7 +145,17 @@ function getChecksheetData(dateStr) {
     }
 
     if (dStr === dateStr) {
-      dayRows.push(row);
+      const tmCode = String(row[5] || '').trim();
+      const sapCode = String(row[6] || '').trim();
+      const specCode = String(row[7] || '').trim();
+      const speedMode = String(row[11] || '').trim();
+      const carQty = Number(row[27]) || 0;
+
+      // Only count rows that have actual production/material data (ignore blank template rows)
+      const hasProductionData = (tmCode !== '' || sapCode !== '' || specCode !== '' || speedMode !== '' || carQty > 0);
+      if (hasProductionData) {
+        dayRows.push(row);
+      }
     }
   });
 
