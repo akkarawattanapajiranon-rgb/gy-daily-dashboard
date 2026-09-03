@@ -28,7 +28,20 @@ app.get('/api/breakdown', (req, res) => {
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
+// Fischer parser (reads local Excel on T: drive)
+const { parseFischerData } = require('./fischer_parser');
+
+// Fischer API endpoint
+app.get('/api/fischer', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  console.log(`Fetching Fischer data for date: ${date}`);
+  const data = parseFischerData(date);
+  if (data.error) {
+    return res.status(404).json({ error: data.error });
+  }
+  res.json(data);
 });
+
 
 
 

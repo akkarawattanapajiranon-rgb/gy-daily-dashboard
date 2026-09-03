@@ -124,3 +124,16 @@ export async function fetchBreakdownData(dateStr) {
   }
 }
 
+export async function fetchFischerData(dateStr) {
+  try {
+    const url = `/api/fischer?date=${dateStr}`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (err) {
+    console.error('Fischer Fetch Error:', err);
+    return null;
+  }
+}
+
+

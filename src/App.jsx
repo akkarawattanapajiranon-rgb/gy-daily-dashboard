@@ -5,14 +5,16 @@ import MachineOEE from './components/MachineOEE';
 import Output3Roll from './components/Output3Roll';
 import WasteReport from './components/WasteReport';
 import BreakdownStats from './components/BreakdownStats';
+import FischerReport from './components/FischerReport';
 import { Calendar, RefreshCw } from 'lucide-react';
-import { fetchWasteData, fetchCmsData, fetchTarget3Roll, fetchBreakdownData } from './services/api';
+import { fetchWasteData, fetchCmsData, fetchTarget3Roll, fetchBreakdownData, fetchFischerData } from './services/api';
 
 function App() {
   const [wasteData, setWasteData] = useState(mockData.wasteReport);
   const [mixingData, setMixingData] = useState(mockData.mixing);
   const [output3RollData, setOutput3RollData] = useState(mockData.output3Roll);
   const [breakdownData, setBreakdownData] = useState(null);
+  const [fischerData, setFischerData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedDate, setSelectedDate] = useState(() => {
@@ -24,11 +26,12 @@ function App() {
     setIsLoading(true);
     try {
       const dateToFetch = dateStr || selectedDate;
-      const [waste, cms, target3Roll, breakdown] = await Promise.all([
+      const [waste, cms, target3Roll, breakdown, fischer] = await Promise.all([
         fetchWasteData(dateToFetch),
         fetchCmsData(dateToFetch),
         fetchTarget3Roll(dateToFetch),
         fetchBreakdownData(dateToFetch),
+        fetchFischerData(dateToFetch),
       ]);
 
       if (waste) {
@@ -68,6 +71,10 @@ function App() {
       if (breakdown) {
         setBreakdownData(breakdown);
       }
+
+      if (fischer) {
+        setFischerData(fischer);
+      }
     } catch (error) {
       console.error('Error in loadData:', error);
     } finally {
@@ -81,6 +88,12 @@ function App() {
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
+  };
+
+  // Dynamic Machine OEE 2 values
+  const machineOEEData = {
+    ...mockData.machineOEE2,
+    fiscer: fischerData?.oee?.hasData ? fischerData.oee.oee2_pct : mockData.machineOEE2.fiscer
   };
 
   return (
@@ -116,11 +129,16 @@ function App() {
             <MixingKPIs data={mixingData} />
           </div>
           <div className="lg:col-span-1">
-            <MachineOEE data={mockData.machineOEE2} />
+            <MachineOEE data={machineOEEData} />
           </div>
           <div className="lg:col-span-1">
             <Output3Roll data={output3RollData} />
           </div>
+        </div>
+
+        {/* Middle Section: Fischer Shear Performance & Checksheet Calculations */}
+        <div className="grid grid-cols-1 gap-6">
+          <FischerReport data={fischerData} isLoading={isLoading} />
         </div>
 
         {/* Bottom Grid: Waste and Breakdown */}
