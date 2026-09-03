@@ -10,14 +10,13 @@ const { wrapper } = require('axios-cookiejar-support');
 const app = express();
 app.use(cors());
 
-// Configure axios to support cookies
-const jar = new CookieJar();
-const client = wrapper(axios.create({ jar }));
-
 const CMS_USER = process.env.CMS_USER;
 const CMS_PASS = process.env.CMS_PASS;
 
 app.get('/api/cms', async (req, res) => {
+  // Configure axios to support cookies per request
+  const jar = new CookieJar();
+  const client = wrapper(axios.create({ jar }));
   try {
     const targetDate = req.query.date || new Date().toISOString().split('T')[0];
     console.log(`Fetching CMS Data for date: ${targetDate}`);

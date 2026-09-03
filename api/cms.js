@@ -6,10 +6,9 @@ import { wrapper } from 'axios-cookiejar-support';
 // Ensure TLS issues don't block the request in serverless environment
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const jar = new CookieJar();
-const client = wrapper(axios.create({ jar }));
-
 export default async function handler(req, res) {
+  const jar = new CookieJar();
+  const client = wrapper(axios.create({ jar }));
   // Allow CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
