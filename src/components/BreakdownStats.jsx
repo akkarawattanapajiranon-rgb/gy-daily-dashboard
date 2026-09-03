@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrench, AlertTriangle, CheckCircle, MinusCircle } from 'lucide-react';
+import { Wrench, AlertTriangle, CheckCircle, MinusCircle, Clock, AlertCircle } from 'lucide-react';
 
 const EQUIPMENT_COLORS = {
   'Banbury':  { bar: '#3b82f6' },
@@ -79,11 +79,12 @@ export default function BreakdownStats({ data, isLoading }) {
 
   const total = data ? data['_total'] : null;
   const totalOver = total?.hasData && total.actual_bd_pct > total.target_bd_pct;
+  const topLoss = data?.topLoss || [];
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 col-span-1 md:col-span-2 lg:col-span-2">
+    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 col-span-1 md:col-span-2 lg:col-span-2 space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between">
         <h2 className="text-lg font-bold text-brand-blue flex items-center gap-2">
           <Wrench className="w-5 h-5 text-slate-400" />
           Engineering Breakdown (BD%)
@@ -117,7 +118,7 @@ export default function BreakdownStats({ data, isLoading }) {
       ) : (
         <>
           {/* Overall Summary */}
-          <div className="grid grid-cols-2 gap-3 mb-5">
+          <div className="grid grid-cols-2 gap-3">
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center">
               <p className="text-xs text-slate-500 font-semibold uppercase mb-1">Overall BD% Target</p>
               <p className="text-2xl font-black text-slate-700">
@@ -152,7 +153,7 @@ export default function BreakdownStats({ data, isLoading }) {
           </div>
 
           {/* Per-equipment bars */}
-          <div className="mb-5">
+          <div>
             {equipments.map(eq => {
               const d = data[eq];
               if (!d) return null;
@@ -232,6 +233,55 @@ export default function BreakdownStats({ data, isLoading }) {
                 )}
               </tbody>
             </table>
+          </div>
+
+          {/* Top 5 Machine Loss Section */}
+          <div className="pt-4 border-t border-slate-200">
+            <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-3">
+              <AlertCircle className="w-4 h-4 text-amber-500" />
+              Top 5 Machine Lossประจำวัน (นาที)
+            </h3>
+            {topLoss.length === 0 ? (
+              <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 text-center text-slate-400 text-xs italic">
+                ไม่มีรายงานเครื่องเสียประจำวันที่เลือก
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {topLoss.map((item, idx) => (
+                  <div key={idx} className="bg-slate-50 border border-slate-200 rounded-lg p-3 hover:bg-slate-100/80 transition-colors">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="flex items-center justify-center w-5 h-5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold shrink-0">
+                          {idx + 1}
+                        </span>
+                        <div>
+                          <p className="font-bold text-slate-800 text-sm">
+                            {item.machine} <span className="text-xs font-normal text-slate-500">({item.zone})</span>
+                          </p>
+                          <p className="text-xs text-slate-600 mt-0.5">
+                            <span className="font-semibold text-slate-700">อาการ:</span> {item.symptom || '—'}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-800 px-2 py-1 rounded-md text-xs font-black shrink-0">
+                        <Clock className="w-3 h-3 text-amber-600" />
+                        {item.durationMin} นาที
+                      </div>
+                    </div>
+                    {item.cause && (
+                      <p className="text-xs text-slate-500 mt-1 pl-7">
+                        <span className="font-semibold text-slate-600">สาเหตุ:</span> {item.cause}
+                      </p>
+                    )}
+                    {item.action && (
+                      <p className="text-xs text-slate-500 mt-0.5 pl-7">
+                        <span className="font-semibold text-slate-600">การแก้ไข:</span> {item.action} {item.fixBy ? `(${item.fixBy})` : ''}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </>
       )}
