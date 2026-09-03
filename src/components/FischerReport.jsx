@@ -128,7 +128,7 @@ export default function FischerReport({ data, isLoading }) {
                   <div className="flex items-center justify-between text-xs font-bold">
                     <span className="flex items-center gap-1 text-slate-700">
                       <Zap className="w-3.5 h-3.5 text-emerald-500" />
-                      Speed Mode Ratio
+                      Speed Mode Ratio (เฉพาะ WBR)
                     </span>
                     <div className="flex gap-3 text-[11px]">
                       <span className="text-emerald-700 font-bold">Normal: {checksheet.normalPct}%</span>

@@ -91,7 +91,7 @@ function getOeeData(dateStr) {
 }
 
 /**
- * 2. Parse Check Sheet Data & Compute Angle Change, WBR, Sapphire, Normal %, Sticky %
+ * 2. Parse Check Sheet Data & Compute Angle Change, WBR, Sapphire, WBR Normal %, WBR Sticky %
  */
 function getChecksheetData(dateStr) {
   if (!fs.existsSync(FISCHER_CHECK_DIR)) {
@@ -103,7 +103,6 @@ function getChecksheetData(dateStr) {
   const monthPrefix = String(monthNum).padStart(2, '0');
   const monthShort = MONTH_NAMES_SHORT[monthNum - 1];
 
-  // Find check sheet file in FISCHER_CHECK_DIR
   const files = fs.readdirSync(FISCHER_CHECK_DIR);
   const checkFile = files.find(f => {
     const l = f.toLowerCase();
@@ -117,7 +116,6 @@ function getChecksheetData(dateStr) {
   const fullPath = path.join(FISCHER_CHECK_DIR, checkFile);
   const wb = XLSX.readFile(fullPath);
 
-  // Sapphire codes from 'SPEC GAUGE TREATMENT SAPPHIRE'
   const sapphireCodes = new Set();
   const wsSapphire = wb.Sheets['SPEC GAUGE TREATMENT SAPPHIRE'];
   if (wsSapphire) {
@@ -128,15 +126,11 @@ function getChecksheetData(dateStr) {
     });
   }
 
-  // Monthly sheet (e.g. SEP 2026)
   let sheetName = wb.SheetNames.find(s => s.toLowerCase().includes(monthShort.toLowerCase())) || wb.SheetNames[0];
   const ws = wb.Sheets[sheetName];
   if (!ws) return { error: `Sheet ${sheetName} not found` };
 
   const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
-
-  // Filter rows for dateStr
-  const targetDateCode = XLSX.SSF.parse_date_code ? null : null; // we match parsed date
   const dayRows = [];
 
   data.slice(5).forEach(row => {
@@ -159,15 +153,14 @@ function getChecksheetData(dateStr) {
     return { hasData: false };
   }
 
-  // Shifts computation
   const shifts = {
     1: { wbr: 0, sapphire: 0, angleChanges: 0, normal: 0, sticky: 0 },
     2: { wbr: 0, sapphire: 0, angleChanges: 0, normal: 0, sticky: 0 },
     3: { wbr: 0, sapphire: 0, angleChanges: 0, normal: 0, sticky: 0 }
   };
 
-  let totalNormal = 0;
-  let totalSticky = 0;
+  let totalWbrNormal = 0;
+  let totalWbrSticky = 0;
   let lastShift = null;
   let lastAngle = null;
 
@@ -181,15 +174,18 @@ function getChecksheetData(dateStr) {
     const isSapphire = sapphireCodes.has(tmCode) || sapphireCodes.has(sapCode);
 
     if (shifts[shift]) {
-      if (isSapphire) shifts[shift].sapphire++;
-      else shifts[shift].wbr++;
-
-      if (speedMode === 'STICKY') {
-        shifts[shift].sticky++;
-        totalSticky++;
+      if (isSapphire) {
+        shifts[shift].sapphire++;
       } else {
-        shifts[shift].normal++;
-        totalNormal++;
+        shifts[shift].wbr++;
+        // WBR Speed Mode ratio calculation (excluding Sapphire)
+        if (speedMode === 'STICKY') {
+          shifts[shift].sticky++;
+          totalWbrSticky++;
+        } else {
+          shifts[shift].normal++;
+          totalWbrNormal++;
+        }
       }
 
       if (lastShift !== shift) {
@@ -209,8 +205,9 @@ function getChecksheetData(dateStr) {
   const totalSapphire = shifts[1].sapphire + shifts[2].sapphire + shifts[3].sapphire;
   const totalAngleChanges = shifts[1].angleChanges + shifts[2].angleChanges + shifts[3].angleChanges;
 
-  const normalPct = totalProduce > 0 ? parseFloat((totalNormal / totalProduce * 100).toFixed(2)) : 0;
-  const stickyPct = totalProduce > 0 ? parseFloat((totalSticky / totalProduce * 100).toFixed(2)) : 0;
+  // WBR Speed Mode Ratio (excluding Sapphire)
+  const normalPct = totalWbr > 0 ? parseFloat((totalWbrNormal / totalWbr * 100).toFixed(2)) : 0;
+  const stickyPct = totalWbr > 0 ? parseFloat((totalWbrSticky / totalWbr * 100).toFixed(2)) : 0;
 
   return {
     hasData: true,
@@ -218,8 +215,8 @@ function getChecksheetData(dateStr) {
     totalWbr,
     totalSapphire,
     totalAngleChanges,
-    totalNormal,
-    totalSticky,
+    totalNormal: totalWbrNormal,
+    totalSticky: totalWbrSticky,
     normalPct,
     stickyPct,
     shifts: {
@@ -230,9 +227,6 @@ function getChecksheetData(dateStr) {
   };
 }
 
-/**
- * Combined API response for Fischer Shear Machine
- */
 function parseFischerData(dateStr) {
   const oee = getOeeData(dateStr);
   const checksheet = getChecksheetData(dateStr);
