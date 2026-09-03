@@ -1,78 +1,5 @@
 import React from 'react';
-import { Wrench, AlertTriangle, CheckCircle, MinusCircle, Clock, AlertCircle } from 'lucide-react';
-
-const EQUIPMENT_COLORS = {
-  'Banbury':  { bar: '#3b82f6' },
-  'Extruder': { bar: '#8b5cf6' },
-  'Calender': { bar: '#f97316' },
-  'Cutting':  { bar: '#06b6d4' },
-};
-
-function BDBar({ label, targetPct, actualPct, hasData, colors }) {
-  const isOver = hasData && actualPct > targetPct;
-  const maxVal = Math.max(targetPct, hasData ? actualPct : 0, 0.001);
-  const scale = 100 / (maxVal * 1.4);
-
-  const targetWidth = Math.min(targetPct * scale, 100);
-  const actualWidth = hasData ? Math.min(actualPct * scale, 100) : 0;
-
-  return (
-    <div className="mb-3">
-      <div className="flex items-center justify-between mb-1">
-        <span className="text-sm font-bold text-slate-700 w-24">{label}</span>
-        <div className="flex items-center gap-3 text-xs">
-          <span className="text-slate-400">
-            Target: <span className="font-semibold text-slate-600">{targetPct.toFixed(2)}%</span>
-          </span>
-          {hasData ? (
-            <span className={`font-bold ${isOver ? 'text-red-600' : 'text-emerald-600'}`}>
-              Actual: {actualPct.toFixed(2)}%
-            </span>
-          ) : (
-            <span className="text-slate-300 italic text-xs">Actual: —</span>
-          )}
-          {hasData
-            ? isOver
-              ? <AlertTriangle className="w-3.5 h-3.5 text-red-500" />
-              : <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />
-            : <MinusCircle className="w-3.5 h-3.5 text-slate-300" />
-          }
-        </div>
-      </div>
-
-      {/* Bar track */}
-      <div className="relative h-5 rounded-full overflow-hidden bg-slate-100">
-        {/* Target fill (light) */}
-        <div
-          className="absolute top-0 left-0 h-full rounded-full transition-all duration-500"
-          style={{ width: `${targetWidth}%`, background: colors.bar, opacity: 0.2 }}
-        />
-        {/* Actual fill */}
-        {hasData && (
-          <div
-            className="absolute top-0 left-0 h-full rounded-full transition-all duration-700"
-            style={{
-              width: `${actualWidth}%`,
-              background: isOver ? '#ef4444' : colors.bar,
-            }}
-          />
-        )}
-        {/* Target marker line */}
-        <div
-          className="absolute top-0 h-full w-0.5 bg-white/70 z-10"
-          style={{ left: `${targetWidth}%` }}
-        />
-        {/* Target label on bar */}
-        <div
-          className="absolute top-0.5 h-4 flex items-center z-20 pr-1"
-          style={{ left: `calc(${targetWidth}% + 3px)` }}
-        >
-          <span className="text-[9px] text-slate-400 font-medium">{targetPct.toFixed(2)}%</span>
-        </div>
-      </div>
-    </div>
-  );
-}
+import { Wrench, Clock, AlertCircle } from 'lucide-react';
 
 export default function BreakdownStats({ data, isLoading }) {
   const equipments = ['Banbury', 'Extruder', 'Calender', 'Cutting'];
@@ -92,16 +19,6 @@ export default function BreakdownStats({ data, isLoading }) {
             <span className="text-xs font-normal text-slate-400 ml-1">[{data._sheet}]</span>
           )}
         </h2>
-        <div className="flex gap-3 text-xs text-slate-400">
-          <span className="flex items-center gap-1">
-            <span className="inline-block w-5 h-2 rounded-full bg-blue-200" />
-            Target
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="inline-block w-5 h-2 rounded-full bg-blue-500" />
-            Actual
-          </span>
-        </div>
       </div>
 
       {isLoading ? (
@@ -150,25 +67,6 @@ export default function BreakdownStats({ data, isLoading }) {
                 <p className="text-xl font-bold text-slate-300 mt-1">ยังไม่มีข้อมูล</p>
               )}
             </div>
-          </div>
-
-          {/* Per-equipment bars */}
-          <div>
-            {equipments.map(eq => {
-              const d = data[eq];
-              if (!d) return null;
-              const colors = EQUIPMENT_COLORS[eq] || { bar: '#6b7280' };
-              return (
-                <BDBar
-                  key={eq}
-                  label={eq}
-                  targetPct={d.target_bd_pct || 0}
-                  actualPct={d.actual_bd_pct ?? 0}
-                  hasData={d.hasData}
-                  colors={colors}
-                />
-              );
-            })}
           </div>
 
           {/* Table */}
