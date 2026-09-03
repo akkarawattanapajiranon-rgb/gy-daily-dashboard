@@ -1,35 +1,22 @@
 const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
+const { findMonthlyFile, findMonthlySheet } = require('./month_utils');
 
 const QUAD_DIR = "T:\\10.30 A.M. Production Meeting\\5 BTA\\Quad";
 const TUBER_BOOKING_DIR = "T:\\10.30 A.M. Production Meeting\\5 BTA\\Q -TUBER 6''X 8''\\Booker Sheet - 6'' x 8 ''\\2026";
 
-const MONTH_NAMES_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
 function getOeeFile(monthNum, yearStr) {
   if (!fs.existsSync(QUAD_DIR)) return null;
   const files = fs.readdirSync(QUAD_DIR);
-  const mShort = MONTH_NAMES_SHORT[monthNum - 1].toLowerCase();
-  
-  const file = files.find(f => {
-    const l = f.toLowerCase();
-    return l.startsWith('oee') && l.includes(mShort) && (l.includes(yearStr) || l.includes('2026'));
-  });
-
+  const file = findMonthlyFile(files, monthNum, yearStr, ['oee']);
   return file ? path.join(QUAD_DIR, file) : null;
 }
 
 function getBookingFile(monthNum, yearStr) {
   if (!fs.existsSync(TUBER_BOOKING_DIR)) return null;
   const files = fs.readdirSync(TUBER_BOOKING_DIR);
-  const mShort = MONTH_NAMES_SHORT[monthNum - 1].toLowerCase();
-  
-  const file = files.find(f => {
-    const l = f.toLowerCase();
-    return (l.includes(`${monthNum}.`) || l.includes(`${monthNum} `) || l.includes(mShort)) && l.includes('booking');
-  });
-
+  const file = findMonthlyFile(files, monthNum, yearStr, ['booking']);
   return file ? path.join(TUBER_BOOKING_DIR, file) : null;
 }
 
@@ -37,18 +24,17 @@ function getTuberOee(dateStr) {
   const [yearStr, monthStr, dayStr] = dateStr.split('-');
   const monthNum = parseInt(monthStr, 10);
   const dayNum = parseInt(dayStr, 10);
-  const yearShort = yearStr.slice(2);
 
   const file = getOeeFile(monthNum, yearStr);
   if (!file) return { error: `Tuber OEE file for month ${monthStr} not found` };
 
   const wb = XLSX.readFile(file);
   
-  // Strictly select 2026 Tuber sheet (e.g. 'ALL OEE ( Sep, 26) 6x8 Ext. ')
-  const sheetName = wb.SheetNames.find(s => {
-    const l = s.toLowerCase();
-    return (l.includes(yearShort) || l.includes(yearStr)) && (l.includes('6x8') || l.includes('ext') || l.includes('tuber'));
-  }) || wb.SheetNames.find(s => s.toLowerCase().includes('6x8') || s.toLowerCase().includes('tuber')) || wb.SheetNames[4];
+  // Find matching 2026 Tuber sheet for selected month
+  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['6x8']) ||
+                    findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['ext']) ||
+                    wb.SheetNames.find(s => s.toLowerCase().includes('6x8') || s.toLowerCase().includes('ext')) ||
+                    wb.SheetNames[4];
 
   const ws = wb.Sheets[sheetName];
   if (!ws) return { error: `Sheet ${sheetName} not found` };

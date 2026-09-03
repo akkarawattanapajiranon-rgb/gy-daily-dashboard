@@ -1,85 +1,99 @@
 const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
+const { findMonthlyFile } = require('./month_utils');
 
 const ROLL3_DIR = 'T:\\10.30 A.M. Production Meeting\\5 BTA\\3 Roll\\2026';
 
-const MONTH_NAMES_SHORT = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+function getRoll3File(monthNum, yearStr) {
+  if (!fs.existsSync(ROLL3_DIR)) return null;
+  const files = fs.readdirSync(ROLL3_DIR);
+  const file = findMonthlyFile(files, monthNum, yearStr, ['treatment', 'release']);
+  return file ? path.join(ROLL3_DIR, file) : null;
+}
 
-/**
- * Parse 3 Roll WINDUP data for a given date (YYYY-MM-DD)
- */
 function parse3RollData(dateStr) {
   try {
-    if (!fs.existsSync(ROLL3_DIR)) {
-      return { error: 'Folder 3 Roll 2026 not found' };
+    const [yearStr, monthStr, dayStr] = dateStr.split('-');
+    const monthNum = parseInt(monthStr, 10);
+    const dayNum = parseInt(dayStr, 10);
+
+    const file = getRoll3File(monthNum, yearStr);
+    if (!file) {
+      return { error: `3 Roll file for month ${monthStr} not found` };
     }
 
-    const [year, month, day] = dateStr.split('-');
-    const monthNum = parseInt(month, 10);
-    const monthPrefix = String(monthNum); // e.g. "9" or "09"
-    const monthShort = MONTH_NAMES_SHORT[monthNum - 1];
+    const wb = XLSX.readFile(file);
 
-    // Find file matching month and treatment release
-    const files = fs.readdirSync(ROLL3_DIR);
-    const matchedFile = files.find(f => {
-      const l = f.toLowerCase();
-      return l.includes('treatment release') && (l.includes(monthShort.toLowerCase()) || l.startsWith(`${monthPrefix} `) || l.startsWith(`${monthPrefix}-`));
-    });
-
-    if (!matchedFile) {
-      return { error: `File 3 Roll for month ${month} not found` };
-    }
-
-    const fullPath = path.join(ROLL3_DIR, matchedFile);
-    const wb = XLSX.readFile(fullPath);
-
-    // Find WINDUP sheet
-    const sheetName = wb.SheetNames.find(s => s.toLowerCase().includes('windup')) || 'WINDUP';
+    // Dynamically match WIND / WINDUP sheet name
+    const sheetName = wb.SheetNames.find(s => s.toLowerCase().includes('wind')) || wb.SheetNames[0];
     const ws = wb.Sheets[sheetName];
 
     if (!ws) {
-      return { error: `Sheet WINDUP not found in ${matchedFile}` };
+      return { error: `Sheet ${sheetName} not found in ${path.basename(file)}` };
     }
 
     const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
 
+    const targetRow = data.find(row => {
+      const col0 = String(row[0]).trim();
+      const col1 = String(row[1]).trim();
+      return col0 === '3' && col1.includes('CALENDER 3 ROLL');
+    });
+
+    let targetValue = null;
+    if (targetRow) {
+      const targetColIdx = 2 + (dayNum - 1);
+      const val = targetRow[targetColIdx];
+      if (val !== '' && val !== undefined && !isNaN(val)) {
+        targetValue = Number(val);
+      }
+    }
+
     const codeCounts = {};
     let totalRolls = 0;
+    const matchingRows = [];
 
-    data.slice(5).forEach(row => {
-      const rawDate = row[1]; // Col B (index 1) = CALENDER DATE
+    data.forEach((row, i) => {
+      if (i < 10) return;
+
+      const rawDate = row[0];
       if (rawDate === '' || rawDate === undefined) return;
 
-      let dStr = '';
+      let dDay = null;
       if (typeof rawDate === 'number') {
         const d = XLSX.SSF.parse_date_code(rawDate);
-        dStr = `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`;
+        dDay = d.d;
       } else if (typeof rawDate === 'string') {
-        dStr = rawDate.trim();
+        const parsed = parseInt(rawDate.trim(), 10);
+        if (!isNaN(parsed)) dDay = parsed;
       }
 
-      if (dStr === dateStr) {
-        totalRolls++;
-        const code = String(row[2]).trim().toUpperCase() || 'UNKNOWN'; // Col C (index 2) = LOCAL TREATMENT CODE
-        codeCounts[code] = (codeCounts[code] || 0) + 1;
+      if (dDay === dayNum) {
+        matchingRows.push(row);
+        totalRolls += 1;
+        const code = String(row[2]).trim();
+        if (code) {
+          codeCounts[code] = (codeCounts[code] || 0) + 1;
+        }
       }
     });
 
-    // Format code breakdown as array sorted by count desc
-    const codeBreakdown = Object.entries(codeCounts).map(([code, count]) => ({
-      code,
-      count,
-      pct: totalRolls > 0 ? parseFloat((count / totalRolls * 100).toFixed(1)) : 0
-    })).sort((a, b) => b.count - a.count);
+    const codeBreakdown = Object.entries(codeCounts)
+      .map(([code, count]) => ({
+        code,
+        count,
+        percentage: totalRolls > 0 ? parseFloat((count / totalRolls * 100).toFixed(2)) : 0
+      }))
+      .sort((a, b) => b.count - a.count);
 
     return {
       date: dateStr,
-      hasData: totalRolls > 0,
+      day: dayNum,
+      target: targetValue,
       totalRolls,
       codeBreakdown,
-      file: matchedFile,
-      sheet: sheetName
+      hasData: totalRolls > 0 || targetValue !== null
     };
   } catch (e) {
     return { error: e.message };

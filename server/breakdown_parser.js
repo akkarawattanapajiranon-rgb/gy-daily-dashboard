@@ -1,21 +1,7 @@
 const XLSX = require('xlsx');
+const { findMonthlySheet } = require('./month_utils');
 
 const BREAKDOWN_FILE = 'T:\\10.30 A.M. Production Meeting\\5 BTA\\Engineering Breakdown\\Issue log 2026 _ BCA 14AUG2026.xlsx';
-
-const MONTH_SHEETS = {
-  '01': 'JAN2026',
-  '02': 'FEB2026',
-  '03': 'MAR2026',
-  '04': 'APR2026',
-  '05': 'MAY2026',
-  '06': 'JUN2026',
-  '07': 'JUL2026',
-  '08': 'AUG2026',
-  '09': 'SEP2026',
-  '10': 'OCT2026',
-  '11': 'NOV2026',
-  '12': 'DEC2026',
-};
 
 function getCanonicalMachineName(raw) {
   let s = String(raw).trim();
@@ -43,15 +29,15 @@ function getCanonicalMachineName(raw) {
 function parseBreakdown(dateStr) {
   try {
     const [year, month, day] = dateStr.split('-');
+    const monthNum = parseInt(month, 10);
     const dayIndex = parseInt(day, 10) - 1;
 
     const wb = XLSX.readFile(BREAKDOWN_FILE);
 
-    // 1. Read BD% from Sheet
-    let sheetName = MONTH_SHEETS[month] || `SEP${year}`;
-    if (!wb.SheetNames.includes(sheetName)) {
-      sheetName = wb.SheetNames.find(s => s.toUpperCase().includes(`SEP`)) || wb.SheetNames[0];
-    }
+    // 1. Find matching sheet for the month (e.g. JAN2026, FEB2026, SEP2026)
+    const sheetName = findMonthlySheet(wb.SheetNames, monthNum, year) ||
+                      wb.SheetNames.find(s => s.toUpperCase().includes('2026')) ||
+                      wb.SheetNames[0];
 
     const ws = wb.Sheets[sheetName];
     const result = {
@@ -118,8 +104,12 @@ function parseBreakdown(dateStr) {
       };
     }
 
-    // 2. Read Top 5 Loss from Daliy seen Sep2 (or matching daily sheet), grouped by Machine
-    const dailySheetName = wb.SheetNames.find(s => s.toLowerCase().includes('daliy seen') || s.toLowerCase().includes('daily seen')) || 'Daliy seen Sep2';
+    // 2. Read Top 5 Loss from Daliy seen sheet
+    const dailySheetName = findMonthlySheet(wb.SheetNames, monthNum, year, ['daliy seen']) ||
+                           findMonthlySheet(wb.SheetNames, monthNum, year, ['daily seen']) ||
+                           wb.SheetNames.find(s => s.toLowerCase().includes('daliy seen') || s.toLowerCase().includes('daily seen')) ||
+                           'Daliy seen Sep2';
+
     const wsDaily = wb.Sheets[dailySheetName];
 
     if (wsDaily) {

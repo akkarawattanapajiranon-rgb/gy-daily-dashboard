@@ -1,27 +1,11 @@
 const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
+const { findMonthlyFile, findMonthlySheet } = require('./month_utils');
 
 const FISCHER_DIR = 'T:\\10.30 A.M. Production Meeting\\5 BTA\\6 Fischer';
 const FISCHER_OEE_FILE = path.join(FISCHER_DIR, 'OEE - 2026 TRACKING - SHEAR FISCHER.xlsx');
 const FISCHER_CHECK_DIR = path.join(FISCHER_DIR, '2026');
-
-const MONTH_OEE_SHEETS = {
-  '01': 'oee_summary_JAN 26',
-  '02': 'oee_summary_FEB 26',
-  '03': 'oee_summary_MAR 26',
-  '04': 'oee_summary_APR 26',
-  '05': 'oee_summary_MAY 26',
-  '06': 'oee_summary_JUN 26',
-  '07': 'oee_summary_JUL 26',
-  '08': 'oee_summary_AUG 26',
-  '09': 'oee_summary_SEP 26',
-  '10': 'oee_summary_OCT 26',
-  '11': 'oee_summary_NOV 26',
-  '12': 'oee_summary_DEC 26',
-};
-
-const MONTH_NAMES_SHORT = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
 /**
  * 1. Parse OEE Data from OEE - 2026 TRACKING - SHEAR FISCHER.xlsx
@@ -31,14 +15,14 @@ function getOeeData(dateStr) {
     return { error: 'OEE File not found' };
   }
 
-  const [year, month, day] = dateStr.split('-');
+  const [yearStr, monthStr, dayStr] = dateStr.split('-');
+  const monthNum = parseInt(monthStr, 10);
+
   const wb = XLSX.readFile(FISCHER_OEE_FILE);
 
-  let sheetName = MONTH_OEE_SHEETS[month];
-  if (!sheetName || !wb.SheetNames.includes(sheetName)) {
-    const monthNameShort = MONTH_NAMES_SHORT[parseInt(month, 10) - 1];
-    sheetName = wb.SheetNames.find(s => s.toLowerCase().includes(monthNameShort.toLowerCase())) || wb.SheetNames[0];
-  }
+  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['oee']) ||
+                    wb.SheetNames.find(s => s.toLowerCase().includes('oee')) ||
+                    wb.SheetNames[0];
 
   const ws = wb.Sheets[sheetName];
   if (!ws) return { error: `Sheet ${sheetName} not found` };
@@ -98,19 +82,14 @@ function getChecksheetData(dateStr) {
     return { error: 'Check Sheet Directory not found' };
   }
 
-  const [year, month, day] = dateStr.split('-');
-  const monthNum = parseInt(month, 10);
-  const monthPrefix = String(monthNum).padStart(2, '0');
-  const monthShort = MONTH_NAMES_SHORT[monthNum - 1];
+  const [yearStr, monthStr, dayStr] = dateStr.split('-');
+  const monthNum = parseInt(monthStr, 10);
 
   const files = fs.readdirSync(FISCHER_CHECK_DIR);
-  const checkFile = files.find(f => {
-    const l = f.toLowerCase();
-    return l.includes(monthPrefix) && l.includes('fischer check sheet');
-  });
+  const checkFile = findMonthlyFile(files, monthNum, yearStr, ['fischer', 'check']);
 
   if (!checkFile) {
-    return { error: `Check sheet file for month ${month} not found` };
+    return { error: `Check sheet file for month ${monthStr} not found` };
   }
 
   const fullPath = path.join(FISCHER_CHECK_DIR, checkFile);
@@ -126,7 +105,7 @@ function getChecksheetData(dateStr) {
     });
   }
 
-  let sheetName = wb.SheetNames.find(s => s.toLowerCase().includes(monthShort.toLowerCase())) || wb.SheetNames[0];
+  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr) || wb.SheetNames[1] || wb.SheetNames[0];
   const ws = wb.Sheets[sheetName];
   if (!ws) return { error: `Sheet ${sheetName} not found` };
 

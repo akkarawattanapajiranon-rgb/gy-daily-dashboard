@@ -1,35 +1,22 @@
 const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
+const { findMonthlyFile, findMonthlySheet } = require('./month_utils');
 
 const QUAD_DIR = "T:\\10.30 A.M. Production Meeting\\5 BTA\\Quad";
 const QUAD_BOOKING_DIR = path.join(QUAD_DIR, "Booker Sheet", "2026");
 
-const MONTH_NAMES_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
 function getOeeFile(monthNum, yearStr) {
   if (!fs.existsSync(QUAD_DIR)) return null;
   const files = fs.readdirSync(QUAD_DIR);
-  const mShort = MONTH_NAMES_SHORT[monthNum - 1].toLowerCase();
-  
-  const file = files.find(f => {
-    const l = f.toLowerCase();
-    return l.startsWith('oee') && l.includes(mShort) && (l.includes(yearStr) || l.includes('2026'));
-  });
-
+  const file = findMonthlyFile(files, monthNum, yearStr, ['oee']);
   return file ? path.join(QUAD_DIR, file) : null;
 }
 
 function getBookingFile(monthNum, yearStr) {
   if (!fs.existsSync(QUAD_BOOKING_DIR)) return null;
   const files = fs.readdirSync(QUAD_BOOKING_DIR);
-  const mShort = MONTH_NAMES_SHORT[monthNum - 1].toLowerCase();
-  
-  const file = files.find(f => {
-    const l = f.toLowerCase();
-    return l.includes(`${monthNum}.`) || l.includes(`${monthNum} `) || l.includes(mShort);
-  });
-
+  const file = findMonthlyFile(files, monthNum, yearStr, ['booking']);
   return file ? path.join(QUAD_BOOKING_DIR, file) : null;
 }
 
@@ -37,18 +24,16 @@ function getQuadOee(dateStr) {
   const [yearStr, monthStr, dayStr] = dateStr.split('-');
   const monthNum = parseInt(monthStr, 10);
   const dayNum = parseInt(dayStr, 10);
-  const yearShort = yearStr.slice(2);
 
   const file = getOeeFile(monthNum, yearStr);
   if (!file) return { error: `Quad OEE file for month ${monthStr} not found` };
 
   const wb = XLSX.readFile(file);
   
-  // Strictly select 2026 Quad sheet (e.g. 'ALL OEE ( Sep, 26) QUAD ')
-  const sheetName = wb.SheetNames.find(s => {
-    const l = s.toLowerCase();
-    return (l.includes(yearShort) || l.includes(yearStr)) && l.includes('quad');
-  }) || wb.SheetNames.find(s => s.toLowerCase().includes('quad')) || wb.SheetNames[0];
+  // Find matching 2026 Quad sheet for selected month
+  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['quad']) ||
+                    wb.SheetNames.find(s => s.toLowerCase().includes('quad')) ||
+                    wb.SheetNames[0];
 
   const ws = wb.Sheets[sheetName];
   if (!ws) return { error: `Sheet ${sheetName} not found` };
