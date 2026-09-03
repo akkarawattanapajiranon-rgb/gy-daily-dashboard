@@ -135,13 +135,12 @@ export default function QuadReport({ data, loading }) {
                           <th className="py-1 px-1">Code</th>
                           <th className="py-1 px-1 text-right">เป้าหมาย</th>
                           <th className="py-1 px-1 text-right">ทำได้</th>
-                          <th className="py-1 px-1 text-right">Sapphire</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100">
                         {shiftData.items.map((item, idx) => (
                           <tr key={idx} className="hover:bg-white transition-colors">
-                            <td className="py-0.5 px-1 font-mono text-slate-600 truncate max-w-[65px]" title={item.partId}>
+                            <td className="py-0.5 px-1 font-mono text-slate-600 truncate max-w-[75px]" title={item.partId}>
                               {item.partId || '-'}
                             </td>
                             <td className="py-0.5 px-1 font-bold text-indigo-700">{item.code || '-'}</td>
@@ -150,9 +149,6 @@ export default function QuadReport({ data, loading }) {
                             </td>
                             <td className="py-0.5 px-1 text-right font-extrabold text-slate-800">
                               {item.qtyProduced > 0 ? item.qtyProduced.toLocaleString() : '-'}
-                            </td>
-                            <td className="py-0.5 px-1 text-right font-bold text-purple-600">
-                              {item.qtySapphire > 0 ? item.qtySapphire.toLocaleString() : '-'}
                             </td>
                           </tr>
                         ))}
