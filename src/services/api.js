@@ -111,3 +111,16 @@ export async function fetchTarget3Roll(dateStr) {
     return null;
   }
 }
+
+export async function fetchBreakdownData(dateStr) {
+  try {
+    const url = `/api/breakdown?date=${dateStr}`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (err) {
+    console.error('Breakdown Fetch Error:', err);
+    return null;
+  }
+}
+

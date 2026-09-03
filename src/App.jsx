@@ -6,17 +6,17 @@ import Output3Roll from './components/Output3Roll';
 import WasteReport from './components/WasteReport';
 import BreakdownStats from './components/BreakdownStats';
 import { Calendar, RefreshCw } from 'lucide-react';
-import { fetchWasteData, fetchCmsData, fetchTarget3Roll } from './services/api';
+import { fetchWasteData, fetchCmsData, fetchTarget3Roll, fetchBreakdownData } from './services/api';
 
 function App() {
   const [wasteData, setWasteData] = useState(mockData.wasteReport);
   const [mixingData, setMixingData] = useState(mockData.mixing);
   const [output3RollData, setOutput3RollData] = useState(mockData.output3Roll);
+  const [breakdownData, setBreakdownData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedDate, setSelectedDate] = useState(() => {
     const today = new Date();
-    // Format as YYYY-MM-DD in local time
     return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
   });
 
@@ -24,11 +24,11 @@ function App() {
     setIsLoading(true);
     try {
       const dateToFetch = dateStr || selectedDate;
-      // Run all fetches in parallel, passing the selected date
-      const [waste, cms, target3Roll] = await Promise.all([
+      const [waste, cms, target3Roll, breakdown] = await Promise.all([
         fetchWasteData(dateToFetch),
         fetchCmsData(dateToFetch),
-        fetchTarget3Roll(dateToFetch)
+        fetchTarget3Roll(dateToFetch),
+        fetchBreakdownData(dateToFetch),
       ]);
 
       if (waste) {
@@ -36,7 +36,6 @@ function App() {
       }
       
       if (cms) {
-        // Update mixing state using proxy data
         setMixingData(prev => ({
           ...prev,
           mixing1: { 
@@ -64,6 +63,10 @@ function App() {
           ...prev,
           target: target3Roll
         }));
+      }
+
+      if (breakdown) {
+        setBreakdownData(breakdown);
       }
     } catch (error) {
       console.error('Error in loadData:', error);
@@ -123,7 +126,7 @@ function App() {
         {/* Bottom Grid: Waste and Breakdown */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <WasteReport data={wasteData} isLoading={isLoading} />
-          <BreakdownStats data={mockData.breakdownStats} />
+          <BreakdownStats data={breakdownData} isLoading={isLoading} />
         </div>
 
       </div>

@@ -9,12 +9,28 @@ const { wrapper } = require('axios-cookiejar-support');
 
 const app = express();
 app.use(cors());
+
 const path = require('path');
-// Serve built Vite assets
-app.use(express.static(path.join(__dirname, '..', 'dist')));
+
 
 const CMS_USER = process.env.CMS_USER;
 const CMS_PASS = process.env.CMS_PASS;
+
+// Breakdown parser (reads local Excel on T: drive)
+const { parseBreakdown } = require('./breakdown_parser');
+
+// Breakdown API endpoint
+app.get('/api/breakdown', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  console.log(`Fetching Breakdown data for date: ${date}`);
+  const data = parseBreakdown(date);
+  if (data.error) {
+    return res.status(404).json({ error: data.error });
+  }
+  res.json(data);
+});
+
+
 
 app.get('/api/cms', async (req, res) => {
   // Configure axios to support cookies per request
@@ -230,6 +246,9 @@ app.get('/api/cms', async (req, res) => {
     });
   }
 });
+
+// Serve built Vite assets AFTER API routes
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 // SPA fallback – serve index.html for any non‑API route
 app.use((req, res) => {
