@@ -119,13 +119,13 @@ function App() {
     setSelectedDate(e.target.value);
   };
 
-  // Dynamic Machine OEE 2 values
+  // Dynamic Machine OEE 2 values (Strictly matched with reports below; null when no data)
   const machineOEEData = {
-    ...mockData.machineOEE2,
-    fiscer: fischerData?.oee?.hasData ? fischerData.oee.oee2_pct : mockData.machineOEE2.fiscer,
-    quad: quadData?.oee?.hasData ? quadData.oee.oee2_pct : mockData.machineOEE2.quad,
-    tuber: tuberData?.oee?.hasData ? tuberData.oee.oee2_pct : mockData.machineOEE2.tuber
+    quad: quadData?.oee?.hasData ? quadData.oee.oee2_pct : null,
+    tuber6x8: tuberData?.oee?.hasData ? tuberData.oee.oee2_pct : null,
+    fiscer: fischerData?.oee?.hasData ? fischerData.oee.oee2_pct : null
   };
+
 
   return (
     <div className="min-h-screen bg-slate-100 p-4 md:p-8 font-sans">
