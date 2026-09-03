@@ -53,11 +53,27 @@ export async function fetchWasteData(dateStr) {
     millingTop.forEach((item, index) => { item.isHigh = index < 2; });
     frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
 
+    const deptMap = {};
+    recentReports.forEach(report => {
+      const w = Number(report.weight) || 0;
+      const deptName = report.department || report.wasteType || 'Other';
+      if (!deptMap[deptName]) deptMap[deptName] = 0;
+      deptMap[deptName] += w;
+    });
+
+    const totalWeight = millingSummary + frictionSummary;
+    const deptBreakdown = Object.entries(deptMap).map(([dept, amount]) => ({
+      dept,
+      amount: Number(amount.toFixed(1)),
+      percentage: totalWeight > 0 ? parseFloat((amount / totalWeight * 100).toFixed(1)) : 0
+    })).sort((a, b) => b.amount - a.amount);
+
     return {
       millingSummary: Number(millingSummary.toFixed(1)),
       frictionSummary: Number(frictionSummary.toFixed(1)),
       millingTop,
       frictionTop,
+      deptBreakdown,
       dataDate: targetDate
     };
   } catch (err) {
