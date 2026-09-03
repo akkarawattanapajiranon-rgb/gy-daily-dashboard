@@ -72,6 +72,8 @@ app.get('/api/tuber', (req, res) => {
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
+});
+
 // Waste parser (reads local Excel on T: drive)
 const { parseWasteData } = require('./waste_parser');
 
