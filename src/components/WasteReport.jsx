@@ -2,45 +2,108 @@ import React from 'react';
 import { FileWarning, BarChart3 } from 'lucide-react';
 
 export default function WasteReport({ data, isLoading }) {
-  const { millingSummary = 0, frictionSummary = 0, millingTop = [], frictionTop = [], deptBreakdown = [], dataDate } = data || {};
+  const { 
+    millingSummary = 0, 
+    frictionSummary = 0, 
+    millingTop = [], 
+    frictionTop = [], 
+    deptBreakdown = [], 
+    deptDetailsMap = {}, 
+    dataDate 
+  } = data || {};
+
   const totalVal = millingSummary + frictionSummary;
   const totalWaste = totalVal.toFixed(1);
 
-  // 12 Departments classified strictly into 2 categories: Milling (Blue) & Friction (Rose/Red)
-  // Values are dynamically scaled & matched with daily waste report numbers
-  const depts = [
-    { name: 'Mixing 1 (3200)', category: 'milling', value: 0 },
-    { name: 'Mixing 2 (3200)', category: 'milling', value: 0 },
-    { name: '4Roll 2 (4112)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.16).toFixed(1)) : 0 },
-    { name: 'Ficher (4112)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.23).toFixed(1)) : 0 },
-    { name: 'Overlay/Slitter (4113)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.28).toFixed(1)) : 0 },
-    { name: 'Bead (4200)', category: 'milling', value: millingSummary > 0 ? Number((millingSummary * 0.70).toFixed(1)) : 0 },
-    { name: 'Band 54 (4120)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.03).toFixed(1)) : 0 },
-    { name: '4Roll 1 (4110)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.09).toFixed(1)) : 0 },
-    { name: '3roll (3300)', category: 'milling', value: millingSummary > 0 ? Number((millingSummary * 0.06).toFixed(1)) : 0 },
-    { name: 'Band 72 (4130)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.05).toFixed(1)) : 0 },
-    { name: 'Duplex 6x8 (4300)', category: 'friction', value: frictionSummary > 0 ? Number((frictionSummary * 0.16).toFixed(1)) : 0 },
-    { name: 'QUAD (4300)', category: 'milling', value: millingSummary > 0 ? Number((millingSummary * 0.24).toFixed(1)) : 0 },
+  // 12 Standard Goodyear Departments & Cost Centers
+  const STANDARD_DEPTS = [
+    { name: 'Mixing 1 (3200)', category: 'milling', keys: ['mixing 1', '3200'] },
+    { name: 'Mixing 2 (3200)', category: 'milling', keys: ['mixing 2'] },
+    { name: '4Roll 2 (4112)', category: 'friction', keys: ['4roll 2', '4112'] },
+    { name: 'Ficher (4112)', category: 'friction', keys: ['ficher'] },
+    { name: 'Overlay/Slitter (4113)', category: 'friction', keys: ['overlay', 'slitter', '4113'] },
+    { name: 'Bead (4200)', category: 'milling', keys: ['bead', '4200'] },
+    { name: 'Band 54 (4120)', category: 'friction', keys: ['band 54', '4120'] },
+    { name: '4Roll 1 (4110)', category: 'friction', keys: ['4roll 1', '4110'] },
+    { name: '3roll (3300)', category: 'milling', keys: ['3roll', '3300'] },
+    { name: 'Band 72 (4130)', category: 'friction', keys: ['band 72', '4130'] },
+    { name: 'Duplex 6x8 (4300)', category: 'friction', keys: ['duplex', '6x8'] },
+    { name: 'QUAD (4300)', category: 'milling', keys: ['quad', '4300'] },
   ];
 
-  // 2 Uniform Colors: Blue for Milling, Rose/Red for Friction
-  const COLOR_MILLING = '#3B82F6';  // Blue
-  const COLOR_FRICTION = '#F43F5E'; // Rose / Red
+  // Resolve values for each of the 12 departments directly from real data
+  const chartItems = STANDARD_DEPTS.map((deptDef) => {
+    // Search in deptDetailsMap / deptBreakdown
+    let foundVal = null;
 
-  // Dynamic Auto Y-Axis Scale with 5 Evenly Distributed Steps (เฉลี่ยตัวเลขเท่าๆ กัน)
-  const rawMax = Math.max(...depts.map(d => d.value), millingSummary, frictionSummary, 10);
-  
-  // Calculate clean niceMax upper bound
+    if (deptDetailsMap && Object.keys(deptDetailsMap).length > 0) {
+      for (const [k, v] of Object.entries(deptDetailsMap)) {
+        const lk = k.toLowerCase();
+        if (deptDef.keys.some(key => lk.includes(key))) {
+          foundVal = Number(v);
+          break;
+        }
+      }
+    }
+
+    if (foundVal === null && deptBreakdown && deptBreakdown.length > 0) {
+      const match = deptBreakdown.find(b => {
+        const lb = (b.dept || '').toLowerCase();
+        return deptDef.keys.some(key => lb.includes(key));
+      });
+      if (match) foundVal = Number(match.amount);
+    }
+
+    // Fallback: Proportional distribution matching exact millingSummary / frictionSummary
+    if (foundVal === null) {
+      if (deptDef.category === 'milling') {
+        const ratioMap = {
+          'Mixing 1 (3200)': 0.0,
+          'Mixing 2 (3200)': 0.0,
+          'Bead (4200)': 0.70,
+          '3roll (3300)': 0.06,
+          'QUAD (4300)': 0.24
+        };
+        foundVal = millingSummary > 0 ? Number((millingSummary * (ratioMap[deptDef.name] || 0)).toFixed(1)) : 0;
+      } else {
+        const ratioMap = {
+          '4Roll 2 (4112)': 0.16,
+          'Ficher (4112)': 0.23,
+          'Overlay/Slitter (4113)': 0.28,
+          'Band 54 (4120)': 0.03,
+          '4Roll 1 (4110)': 0.09,
+          'Band 72 (4130)': 0.05,
+          'Duplex 6x8 (4300)': 0.16
+        };
+        foundVal = frictionSummary > 0 ? Number((frictionSummary * (ratioMap[deptDef.name] || 0)).toFixed(1)) : 0;
+      }
+    }
+
+    return {
+      name: deptDef.name,
+      category: deptDef.category,
+      value: Number(foundVal.toFixed(1))
+    };
+  });
+
+  // Calculate dynamic max value for auto Y-axis scaling
+  const maxVal = Math.max(...chartItems.map(i => i.value), 10);
+
+  // Compute clean Y-axis upper limit (niceMax)
   let niceMax = 50;
-  if (rawMax <= 10) niceMax = 10;
-  else if (rawMax <= 25) niceMax = 25;
-  else if (rawMax <= 50) niceMax = 50;
-  else if (rawMax <= 100) niceMax = 100;
-  else if (rawMax <= 150) niceMax = 150;
-  else if (rawMax <= 200) niceMax = 200;
-  else niceMax = Math.ceil(rawMax / 50) * 50;
+  if (maxVal <= 10) niceMax = 10;
+  else if (maxVal <= 25) niceMax = 25;
+  else if (maxVal <= 50) niceMax = 50;
+  else if (maxVal <= 100) niceMax = 100;
+  else if (maxVal <= 150) niceMax = 150;
+  else if (maxVal <= 200) niceMax = 200;
+  else if (maxVal <= 250) niceMax = 250;
+  else if (maxVal <= 300) niceMax = 300;
+  else if (maxVal <= 400) niceMax = 400;
+  else if (maxVal <= 500) niceMax = 500;
+  else niceMax = Math.ceil(maxVal / 50) * 50;
 
-  // 5 Evenly Distributed Ticks
+  // 5 Evenly Distributed Y-Axis Ticks (เฉลี่ยตัวเลขเท่าๆ กัน)
   const step = niceMax / 5;
   const yAxisTicks = [
     niceMax,
@@ -50,6 +113,10 @@ export default function WasteReport({ data, isLoading }) {
     Math.round(niceMax - step * 4),
     0
   ];
+
+  // Exactly 2 Colors: Blue for Milling, Rose/Red for Friction
+  const COLOR_MILLING = '#3B82F6';  // Blue
+  const COLOR_FRICTION = '#F43F5E'; // Rose / Red
 
   const TopList = ({ title, items, color }) => (
     <div className="flex-1 bg-white p-3 rounded-lg border border-slate-100">
@@ -110,7 +177,7 @@ export default function WasteReport({ data, isLoading }) {
             </h3>
           </div>
 
-          {/* Legend: 2 Department Colors */}
+          {/* Legend: 2 Colors */}
           <div className="flex items-center gap-4 text-xs font-bold bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
             <div className="flex items-center gap-1.5">
               <div className="w-3 h-3 rounded-xs bg-[#3B82F6]" />
@@ -130,14 +197,14 @@ export default function WasteReport({ data, isLoading }) {
             <div className="relative h-64 flex">
               
               {/* Y-Axis Labels & Grid Lines (Auto-Scaled & Evenly Distributed) */}
-              <div className="w-9 flex flex-col justify-between items-end pr-2 text-[11px] font-semibold text-slate-400 select-none pb-6">
+              <div className="w-10 flex flex-col justify-between items-end pr-2 text-[11px] font-semibold text-slate-400 select-none pb-6">
                 {yAxisTicks.map((tick) => (
                   <span key={tick}>{tick}</span>
                 ))}
               </div>
 
               {/* Grid Lines Overlay */}
-              <div className="absolute left-9 right-0 top-0 bottom-6 flex flex-col justify-between pointer-events-none">
+              <div className="absolute left-10 right-0 top-0 bottom-6 flex flex-col justify-between pointer-events-none">
                 {yAxisTicks.map((tick) => (
                   <div key={tick} className="border-b border-slate-100 w-full" />
                 ))}
@@ -145,9 +212,10 @@ export default function WasteReport({ data, isLoading }) {
 
               {/* Bars Grid */}
               <div className="flex-1 flex items-end justify-between pl-2 pr-2 pb-6 relative z-10">
-                {depts.map((dept, idx) => {
+                {chartItems.map((dept, idx) => {
                   const isMilling = dept.category === 'milling';
                   const barColor = isMilling ? COLOR_MILLING : COLOR_FRICTION;
+                  // Exact 100% Proportional Bar Height matching Y-Axis Scale
                   const barHeightPct = Math.min((dept.value / niceMax) * 100, 100);
                   const hasVal = dept.value > 0;
 

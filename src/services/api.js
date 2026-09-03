@@ -74,6 +74,7 @@ export async function fetchWasteData(dateStr) {
       millingTop,
       frictionTop,
       deptBreakdown,
+      deptDetailsMap: deptMap,
       dataDate: targetDate
     };
   } catch (err) {
