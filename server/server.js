@@ -87,15 +87,15 @@ app.get('/api/cms', async (req, res) => {
     return res.json(liveData);
   }
 
-  // Fallback to mock data if CMS server is unavailable
+  // Fallback data if CMS server is offline or unreachable
   const mockDb = {
     '2026-09-03': {
-      mixing1: { batch: 222, ar: 78.6, pr: 90.7, qr: 85.6, oee2: 61.0 },
-      mixing2: { batch: 238, ar: 89.7, pr: 93.6, qr: 100.0, oee2: 83.9 },
-      totalOee2: 72.0
+      mixing1: { batch: 226, ar: 72.6, pr: 90.7, qr: 85.8, oee2: 56.5 },
+      mixing2: { batch: 249, ar: 85.8, pr: 93.0, qr: 100.0, oee2: 79.8 },
+      totalOee2: 67.7
     },
     '2026-09-02': {
-      mixing1: { batch: 629, ar: 85.9, pr: 89.7, qr: 89.6, oee2: 68.0 },
+      mixing1: { batch: 629, ar: 85.8, pr: 89.8, qr: 88.4, oee2: 68.1 },
       mixing2: { batch: 622, ar: 83.8, pr: 88.2, qr: 100.0, oee2: 73.9 },
       totalOee2: 70.9
     },
