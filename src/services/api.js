@@ -148,5 +148,30 @@ export async function fetch3RollDetail(dateStr) {
   }
 }
 
+export async function fetchQuadDetail(dateStr) {
+  try {
+    const url = `/api/quad?date=${dateStr}`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (err) {
+    console.error('Quad Fetch Error:', err);
+    return null;
+  }
+}
+
+export async function fetchTuberDetail(dateStr) {
+  try {
+    const url = `/api/tuber?date=${dateStr}`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (err) {
+    console.error('Tuber Fetch Error:', err);
+    return null;
+  }
+}
+
+
 
 

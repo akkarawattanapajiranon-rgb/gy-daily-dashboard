@@ -50,6 +50,31 @@ app.get('/api/3roll', (req, res) => {
   res.json(data);
 });
 
+// Quad parser
+const { parseQuadData } = require('./quad_parser');
+app.get('/api/quad', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  console.log(`Fetching Quad data for date: ${date}`);
+  const data = parseQuadData(date);
+  if (data.error) {
+    return res.status(404).json({ error: data.error });
+  }
+  res.json(data);
+});
+
+// Tuber parser
+const { parseTuberData } = require('./tuber_parser');
+app.get('/api/tuber', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  console.log(`Fetching Tuber data for date: ${date}`);
+  const data = parseTuberData(date);
+  if (data.error) {
+    return res.status(404).json({ error: data.error });
+  }
+  res.json(data);
+});
+
+
 // CMS live parser
 const { fetchLiveCmsData } = require('./cms_parser');
 

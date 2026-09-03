@@ -6,8 +6,19 @@ import Output3Roll from './components/Output3Roll';
 import WasteReport from './components/WasteReport';
 import BreakdownStats from './components/BreakdownStats';
 import FischerReport from './components/FischerReport';
+import QuadReport from './components/QuadReport';
+import TuberReport from './components/TuberReport';
 import { Calendar, RefreshCw } from 'lucide-react';
-import { fetchWasteData, fetchCmsData, fetchTarget3Roll, fetchBreakdownData, fetchFischerData, fetch3RollDetail } from './services/api';
+import { 
+  fetchWasteData, 
+  fetchCmsData, 
+  fetchTarget3Roll, 
+  fetchBreakdownData, 
+  fetchFischerData, 
+  fetch3RollDetail,
+  fetchQuadDetail,
+  fetchTuberDetail
+} from './services/api';
 
 function App() {
   const [wasteData, setWasteData] = useState(mockData.wasteReport);
@@ -16,6 +27,8 @@ function App() {
   const [breakdownData, setBreakdownData] = useState(null);
   const [fischerData, setFischerData] = useState(null);
   const [roll3Detail, setRoll3Detail] = useState(null);
+  const [quadData, setQuadData] = useState(null);
+  const [tuberData, setTuberData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedDate, setSelectedDate] = useState(() => {
@@ -27,13 +40,15 @@ function App() {
     setIsLoading(true);
     try {
       const dateToFetch = dateStr || selectedDate;
-      const [waste, cms, target3Roll, breakdown, fischer, roll3] = await Promise.all([
+      const [waste, cms, target3Roll, breakdown, fischer, roll3, quad, tuber] = await Promise.all([
         fetchWasteData(dateToFetch),
         fetchCmsData(dateToFetch),
         fetchTarget3Roll(dateToFetch),
         fetchBreakdownData(dateToFetch),
         fetchFischerData(dateToFetch),
         fetch3RollDetail(dateToFetch),
+        fetchQuadDetail(dateToFetch),
+        fetchTuberDetail(dateToFetch)
       ]);
 
       if (waste) {
@@ -81,6 +96,14 @@ function App() {
       if (roll3) {
         setRoll3Detail(roll3);
       }
+
+      if (quad) {
+        setQuadData(quad);
+      }
+
+      if (tuber) {
+        setTuberData(tuber);
+      }
     } catch (error) {
       console.error('Error in loadData:', error);
     } finally {
@@ -99,7 +122,9 @@ function App() {
   // Dynamic Machine OEE 2 values
   const machineOEEData = {
     ...mockData.machineOEE2,
-    fiscer: fischerData?.oee?.hasData ? fischerData.oee.oee2_pct : mockData.machineOEE2.fiscer
+    fiscer: fischerData?.oee?.hasData ? fischerData.oee.oee2_pct : mockData.machineOEE2.fiscer,
+    quad: quadData?.oee?.hasData ? quadData.oee.oee2_pct : mockData.machineOEE2.quad,
+    tuber: tuberData?.oee?.hasData ? tuberData.oee.oee2_pct : mockData.machineOEE2.tuber
   };
 
   return (
@@ -142,9 +167,15 @@ function App() {
           </div>
         </div>
 
-        {/* Middle Section: Fischer Shear Performance & Checksheet Calculations */}
+        {/* Fischer Shear Section */}
         <div className="grid grid-cols-1 gap-6">
           <FischerReport data={fischerData} isLoading={isLoading} />
+        </div>
+
+        {/* Quad & Tuber Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <QuadReport data={quadData} loading={isLoading} />
+          <TuberReport data={tuberData} loading={isLoading} />
         </div>
 
         {/* Bottom Grid: Waste and Breakdown */}
