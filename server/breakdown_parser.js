@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
 
-const BREAKDOWN_DIR = 'T:\\10.30 A.M. Production Meeting\\5 BTA\\Engineering Breakdown';
+const BREAKDOWN_DIRS = [
+  'C:\\Users\\aa11909\\OneDrive - Goodyear\\ENGINEERING BREAKDOWN',
+  'T:\\10.30 A.M. Production Meeting\\5 BTA\\Engineering Breakdown'
+];
 
 function getCanonicalMachineName(raw) {
   let s = String(raw).trim();
@@ -25,19 +28,27 @@ function getCanonicalMachineName(raw) {
 }
 
 function getBreakdownFilePath(yearStr, monthNum) {
-  if (!fs.existsSync(BREAKDOWN_DIR)) return null;
-  const files = fs.readdirSync(BREAKDOWN_DIR).filter(f => f.endsWith('.xlsx') && !f.startsWith('~$'));
   const monthNames = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
   const mName = monthNames[monthNum - 1];
-  
-  const matched = files.find(f => {
-    const l = f.toLowerCase();
-    return (l.includes(mName) || l.includes(String(monthNum).padStart(2,'0'))) && l.includes(yearStr);
-  });
 
-  if (matched) return path.join(BREAKDOWN_DIR, matched);
-  const fallback = files.find(f => f.toLowerCase().includes('issue log'));
-  return fallback ? path.join(BREAKDOWN_DIR, fallback) : (files.length > 0 ? path.join(BREAKDOWN_DIR, files[0]) : null);
+  for (const dir of BREAKDOWN_DIRS) {
+    if (!fs.existsSync(dir)) continue;
+    const files = fs.readdirSync(dir).filter(f => (f.endsWith('.xlsx') || f.endsWith('.xls')) && !f.startsWith('~$'));
+    if (files.length === 0) continue;
+
+    const matched = files.find(f => {
+      const l = f.toLowerCase();
+      return (l.includes(mName) || l.includes(String(monthNum).padStart(2, '0'))) && l.includes(yearStr);
+    });
+    if (matched) return path.join(dir, matched);
+
+    const matchedMonth = files.find(f => f.toLowerCase().includes(mName));
+    if (matchedMonth) return path.join(dir, matchedMonth);
+
+    const fallback = files.find(f => f.toLowerCase().includes('issue log'));
+    if (fallback) return path.join(dir, fallback);
+  }
+  return null;
 }
 
 /**
