@@ -8,6 +8,7 @@ import BreakdownStats from './components/BreakdownStats';
 import FischerReport from './components/FischerReport';
 import QuadReport from './components/QuadReport';
 import TuberReport from './components/TuberReport';
+import WorkawayReport from './components/WorkawayReport';
 import { Calendar, RefreshCw } from 'lucide-react';
 import { 
   fetchWasteData, 
@@ -17,7 +18,8 @@ import {
   fetchFischerData, 
   fetch3RollDetail,
   fetchQuadDetail,
-  fetchTuberDetail
+  fetchTuberDetail,
+  fetchWorkawayData
 } from './services/api';
 
 function App() {
@@ -45,6 +47,7 @@ function App() {
   const [roll3Detail, setRoll3Detail] = useState(null);
   const [quadData, setQuadData] = useState(null);
   const [tuberData, setTuberData] = useState(null);
+  const [workawayData, setWorkawayData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedDate, setSelectedDate] = useState(() => {
@@ -56,7 +59,7 @@ function App() {
     setIsLoading(true);
     try {
       const dateToFetch = dateStr || selectedDate;
-      const [waste, cms, target3Roll, breakdown, fischer, roll3, quad, tuber] = await Promise.all([
+      const [waste, cms, target3Roll, breakdown, fischer, roll3, quad, tuber, workaway] = await Promise.all([
         fetchWasteData(dateToFetch),
         fetchCmsData(dateToFetch),
         fetchTarget3Roll(dateToFetch),
@@ -64,7 +67,8 @@ function App() {
         fetchFischerData(dateToFetch),
         fetch3RollDetail(dateToFetch),
         fetchQuadDetail(dateToFetch),
-        fetchTuberDetail(dateToFetch)
+        fetchTuberDetail(dateToFetch),
+        fetchWorkawayData(dateToFetch)
       ]);
 
       if (waste) {
@@ -108,6 +112,7 @@ function App() {
       setRoll3Detail(roll3);
       setQuadData(quad);
       setTuberData(tuber);
+      setWorkawayData(workaway);
     } catch (error) {
       console.error('Error in loadData:', error);
     } finally {
@@ -169,6 +174,11 @@ function App() {
           <div className="lg:col-span-1">
             <Output3Roll data={output3RollData} rollDetail={roll3Detail} isLoading={isLoading} />
           </div>
+        </div>
+
+        {/* Workaway Inventory Section */}
+        <div className="grid grid-cols-1 gap-6">
+          <WorkawayReport data={workawayData} isLoading={isLoading} />
         </div>
 
         {/* Fischer Shear Section */}

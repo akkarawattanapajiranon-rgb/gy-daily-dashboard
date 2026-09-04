@@ -50,6 +50,20 @@ app.get('/api/3roll', (req, res) => {
   res.json(data);
 });
 
+// Workaway parser (reads Disposition Non-moving Excel on T: drive)
+const { parseWorkawayData } = require('./workaway_parser');
+
+// Workaway API endpoint
+app.get('/api/workaway', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  console.log(`Fetching Workaway Inventory data for date: ${date}`);
+  const data = parseWorkawayData(date);
+  if (data.error) {
+    return res.status(404).json({ error: data.error });
+  }
+  res.json(data);
+});
+
 // Quad parser
 const { parseQuadData } = require('./quad_parser');
 app.get('/api/quad', (req, res) => {
