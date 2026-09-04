@@ -49,18 +49,17 @@ function parseWasteData(dateStr) {
     const millingMap = {};
     const beadMap = {};
 
-    let hasDailyFrictionDetails = false;
+    let hasDailyDetails = false;
 
-    // 1. Read Friction File (contains Friction, Bead, and some Milling)
+    // 1. Process Friction File Daily Sheet (Friction, Bead, & some Milling)
     if (frictionFileName) {
-      const wb = XLSX.readFile(path.join(monthFolderPath, frictionFileName));
-
-      // Check Daily Sheet for detailed defect breakdown & accurate summary
-      const dailySheet = wb.Sheets[String(dayNum)];
+      const wbF = XLSX.readFile(path.join(monthFolderPath, frictionFileName));
+      const dailySheet = wbF.Sheets[String(dayNum)];
       if (dailySheet) {
-        hasDailyFrictionDetails = true;
+        hasDailyDetails = true;
         const rows = XLSX.utils.sheet_to_json(dailySheet, { header: 1, defval: '' });
         let currentDept = '';
+        let currentDesc = '';
 
         rows.forEach((r, rIdx) => {
           if (rIdx < 2) return;
@@ -70,11 +69,11 @@ function parseWasteData(dateStr) {
           const defectName = String(r[5] || r[3] || '').trim();
 
           if (dept) currentDept = dept;
+          if (desc) currentDesc = desc;
 
           const lowerDept = currentDept.toLowerCase();
-          const lowerDesc = desc.toLowerCase();
+          const lowerDesc = currentDesc.toLowerCase();
 
-          // Determine category: Bead vs Milling vs Friction
           let category = 'Friction';
           if (lowerDept.includes('bead') || lowerDesc === 'a' || lowerDesc.includes('bead')) {
             category = 'Bead';
@@ -106,42 +105,39 @@ function parseWasteData(dateStr) {
           }
         });
       }
-
-      // Fallback summary from Grap sheet if daily sheet was empty
-      if (!hasDailyFrictionDetails) {
-        const grapSheet = wb.Sheets['Grap'];
-        if (grapSheet) {
-          const grapData = XLSX.utils.sheet_to_json(grapSheet, { header: 1, defval: '' });
-          const dayColIdx = dayNum;
-          if (grapData[1] && grapData[1][dayColIdx] !== undefined && grapData[1][dayColIdx] !== '') {
-            frictionSummary = Number(grapData[1][dayColIdx]) || 0;
-          }
-          if (grapData[2] && grapData[2][dayColIdx] !== undefined && grapData[2][dayColIdx] > 0) {
-            millingSummary = Number(grapData[2][dayColIdx]) || 0;
-          }
-        }
-      }
     }
 
-    // 2. Read Milling File
+    // 2. Process Milling File Daily Sheet (Milling & 3 Roll Friction)
     if (millingFileName) {
-      const wb = XLSX.readFile(path.join(monthFolderPath, millingFileName));
-      const grapSheet = wb.Sheets['Grap'];
-      if (grapSheet) {
-        const grapData = XLSX.utils.sheet_to_json(grapSheet, { header: 1, defval: '' });
-        const dayColIdx = dayNum;
-        if (grapData[2] && grapData[2][dayColIdx] !== undefined && grapData[2][dayColIdx] > 0) {
-          millingSummary = Number(grapData[2][dayColIdx]) || millingSummary;
-        }
-      }
-
-      const dailySheet = wb.Sheets[String(dayNum)];
+      const wbM = XLSX.readFile(path.join(monthFolderPath, millingFileName));
+      const dailySheet = wbM.Sheets[String(dayNum)];
       if (dailySheet) {
+        hasDailyDetails = true;
         const rows = XLSX.utils.sheet_to_json(dailySheet, { header: 1, defval: '' });
+        let currentDept = '';
+        let currentDesc = '';
+
         rows.forEach((r, rIdx) => {
           if (rIdx < 2) return;
-          const defectName = String(r[5] || r[1] || '').trim();
+          const dept = String(r[0] || '').trim();
+          const desc = String(r[2] || r[1] || '').trim();
           const code = String(r[3] || r[0] || '').trim();
+          const defectName = String(r[5] || r[1] || '').trim();
+
+          if (dept) currentDept = dept;
+          if (desc) currentDesc = desc;
+
+          const lowerDept = currentDept.toLowerCase();
+          const lowerDesc = currentDesc.toLowerCase();
+
+          let category = 'Milling';
+          if (lowerDesc.includes('compound') || lowerDesc.includes('milling') || lowerDept.includes('tuber') || lowerDept.includes('quad')) {
+            category = 'Milling';
+          } else if (lowerDept.includes('3 roll') || lowerDesc.includes('friction')) {
+            category = 'Friction';
+          } else if (lowerDept.includes('bead') || lowerDesc.includes('bead')) {
+            category = 'Bead';
+          }
 
           let rowSum = 0;
           for (let c = 6; c <= 9; c++) {
@@ -151,10 +147,45 @@ function parseWasteData(dateStr) {
 
           if (rowSum > 0 && defectName && !defectName.toLowerCase().includes('defect') && !defectName.toLowerCase().includes('ห้ามลบ')) {
             const key = code || defectName;
-            if (!millingMap[key]) millingMap[key] = { code: key, amount: 0, reason: defectName };
-            millingMap[key].amount += rowSum;
+            if (category === 'Bead') {
+              beadSummary += rowSum;
+              if (!beadMap[key]) beadMap[key] = { code: key, amount: 0, reason: defectName };
+              beadMap[key].amount += rowSum;
+            } else if (category === 'Milling') {
+              millingSummary += rowSum;
+              if (!millingMap[key]) millingMap[key] = { code: key, amount: 0, reason: defectName };
+              millingMap[key].amount += rowSum;
+            } else {
+              frictionSummary += rowSum;
+              if (!frictionMap[key]) frictionMap[key] = { code: key, amount: 0, reason: defectName };
+              frictionMap[key].amount += rowSum;
+            }
           }
         });
+      }
+    }
+
+    // 3. Fallback to Grap sheets if no daily rows found
+    if (!hasDailyDetails || (millingSummary === 0 && frictionSummary === 0 && beadSummary === 0)) {
+      if (frictionFileName) {
+        const wbF = XLSX.readFile(path.join(monthFolderPath, frictionFileName));
+        const grapSheet = wbF.Sheets['Grap'];
+        if (grapSheet) {
+          const grapData = XLSX.utils.sheet_to_json(grapSheet, { header: 1, defval: '' });
+          if (grapData[1] && grapData[1][dayNum] !== undefined) {
+            frictionSummary += Number(grapData[1][dayNum]) || 0;
+          }
+        }
+      }
+      if (millingFileName) {
+        const wbM = XLSX.readFile(path.join(monthFolderPath, millingFileName));
+        const grapSheet = wbM.Sheets['Grap'];
+        if (grapSheet) {
+          const grapData = XLSX.utils.sheet_to_json(grapSheet, { header: 1, defval: '' });
+          if (grapData[2] && grapData[2][dayNum] !== undefined) {
+            millingSummary += Number(grapData[2][dayNum]) || 0;
+          }
+        }
       }
     }
 
@@ -166,6 +197,8 @@ function parseWasteData(dateStr) {
     frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
     beadTop.forEach((item, index) => { item.isHigh = index < 2; });
 
+    const totalVal = millingSummary + frictionSummary + beadSummary;
+
     return {
       date: dateStr,
       millingSummary: Number(millingSummary.toFixed(1)),
@@ -175,7 +208,7 @@ function parseWasteData(dateStr) {
       frictionTop,
       beadTop,
       dataDate: dateStr,
-      hasData: millingSummary > 0 || frictionSummary > 0 || beadSummary > 0
+      hasData: totalVal > 0
     };
 
   } catch (e) {
