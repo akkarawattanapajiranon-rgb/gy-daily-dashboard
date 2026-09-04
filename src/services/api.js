@@ -18,79 +18,90 @@ export async function fetchWasteData(dateStr) {
     console.warn('Backend waste fetch failed, attempting Vercel API query...', err.message);
   }
 
-  // 2. Fetch from Vercel API endpoint (bta-waste-report.vercel.app)
+  // 2. Fetch from Vercel API endpoints (bta-waste-report.vercel.app)
   try {
-    const vRes = await fetch('https://bta-waste-report.vercel.app/api/reports');
-    if (vRes.ok) {
-      const reports = await vRes.json();
-      if (Array.isArray(reports)) {
-        const dayReports = reports.filter(r => r.date === targetDate);
-        if (dayReports.length > 0) {
-          let millingSummary = 0;
-          let frictionSummary = 0;
-          let beadSummary = 0;
-          const millingMap = {};
-          const frictionMap = {};
-          const beadMap = {};
+    let reports = null;
+    
+    // 2.1 Try target URL requested: /api/get-all-waste
+    try {
+      const gRes = await fetch('https://bta-waste-report.vercel.app/api/get-all-waste');
+      if (gRes.ok) {
+        const json = await gRes.json();
+        reports = Array.isArray(json) ? json : (json.reports || json.data || json.waste || null);
+      }
+    } catch (gErr) {
+      console.warn('get-all-waste endpoint failed:', gErr.message);
+    }
 
-          dayReports.forEach(report => {
-            const w = Number(report.weight) || 0;
-            const code = String(report.defectCode || report.materialCode || 'Waste').trim();
-            const reason = String(report.defectName || report.cause || code).trim();
-            const wasteType = (report.wasteType || '').toLowerCase();
-            const dept = (report.dept || report.department || '').toLowerCase();
+    // 2.2 Fallback to /api/reports if get-all-waste failed or exceeded Firebase quota
+    if (!reports || !Array.isArray(reports)) {
+      const rRes = await fetch('https://bta-waste-report.vercel.app/api/reports');
+      if (rRes.ok) {
+        const json = await rRes.json();
+        reports = Array.isArray(json) ? json : null;
+      }
+    }
 
-            let cat = 'Friction';
-            if (wasteType === 'milling' || dept.includes('milling') || dept.includes('compound') || dept.includes('extruder')) {
-              cat = 'Milling';
-            } else if (wasteType === 'bead' || dept.includes('bead')) {
-              cat = 'Bead';
-            } else if (wasteType === 'friction' || dept.includes('friction') || dept.includes('roll') || dept.includes('band')) {
-              cat = 'Friction';
-            } else {
-              if (code.startsWith('M') || reason.toLowerCase().includes('lumpy') || reason.toLowerCase().includes('clean')) {
-                cat = 'Milling';
-              } else if (code.startsWith('B') || reason.toLowerCase().includes('bead')) {
-                cat = 'Bead';
-              } else {
-                cat = 'Friction';
-              }
-            }
+    if (Array.isArray(reports)) {
+      const dayReports = reports.filter(r => r.date === targetDate);
+      if (dayReports.length > 0) {
+        let millingSummary = 0;
+        let frictionSummary = 0;
+        let beadSummary = 0;
+        const millingMap = {};
+        const frictionMap = {};
+        const beadMap = {};
 
-            if (cat === 'Bead') {
-              beadSummary += w;
-              if (!beadMap[code]) beadMap[code] = { code, amount: 0, reason };
-              beadMap[code].amount += w;
-            } else if (cat === 'Milling') {
-              millingSummary += w;
-              if (!millingMap[code]) millingMap[code] = { code, amount: 0, reason };
-              millingMap[code].amount += w;
-            } else {
-              frictionSummary += w;
-              if (!frictionMap[code]) frictionMap[code] = { code, amount: 0, reason };
-              frictionMap[code].amount += w;
-            }
-          });
+        dayReports.forEach(report => {
+          const w = Number(report.weight) || 0;
+          const code = String(report.defectCode || report.materialCode || 'Waste').trim();
+          const reason = String(report.defectName || report.cause || code).trim();
+          const wasteType = (report.wasteType || '').toLowerCase();
+          const dept = (report.dept || report.department || '').toLowerCase();
 
-          const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-          const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-          const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+          // Strict 3-category isolation: Check Bead first!
+          let cat = 'Friction';
+          if (wasteType === 'bead' || dept.includes('bead') || dept.includes('130') || dept.includes('42') || code.startsWith('B') || reason.toLowerCase().includes('bead')) {
+            cat = 'Bead';
+          } else if (wasteType === 'milling' || dept.includes('milling') || dept.includes('compound') || dept.includes('extruder') || dept.includes('135') || dept.includes('136') || dept.includes('137') || dept.includes('138') || dept.includes('139') || dept.includes('140') || code.startsWith('M')) {
+            cat = 'Milling';
+          } else {
+            cat = 'Friction';
+          }
 
-          millingTop.forEach((item, index) => { item.isHigh = index < 2; });
-          frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
-          beadTop.forEach((item, index) => { item.isHigh = index < 2; });
+          if (cat === 'Bead') {
+            beadSummary += w;
+            if (!beadMap[code]) beadMap[code] = { code, amount: 0, reason };
+            beadMap[code].amount += w;
+          } else if (cat === 'Milling') {
+            millingSummary += w;
+            if (!millingMap[code]) millingMap[code] = { code, amount: 0, reason };
+            millingMap[code].amount += w;
+          } else {
+            frictionSummary += w;
+            if (!frictionMap[code]) frictionMap[code] = { code, amount: 0, reason };
+            frictionMap[code].amount += w;
+          }
+        });
 
-          return {
-            millingSummary: Number(millingSummary.toFixed(1)),
-            frictionSummary: Number(frictionSummary.toFixed(1)),
-            beadSummary: Number(beadSummary.toFixed(1)),
-            millingTop,
-            frictionTop,
-            beadTop,
-            dataDate: targetDate,
-            hasData: true
-          };
-        }
+        const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+        const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+        const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+
+        millingTop.forEach((item, index) => { item.isHigh = index < 2; });
+        frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
+        beadTop.forEach((item, index) => { item.isHigh = index < 2; });
+
+        return {
+          millingSummary: Number(millingSummary.toFixed(1)),
+          frictionSummary: Number(frictionSummary.toFixed(1)),
+          beadSummary: Number(beadSummary.toFixed(1)),
+          millingTop,
+          frictionTop,
+          beadTop,
+          dataDate: targetDate,
+          hasData: true
+        };
       }
     }
   } catch (vErr) {
