@@ -123,7 +123,17 @@ function getTuberOutput(dateStr) {
       }
 
       const qtyTarget = Number(r[16]) || 0;
-      const qtyProduced = Number(r[17]) || 0;
+      const qtyProducedRaw = Number(r[17]) || 0;
+
+      const checkStr = (partId || code || '').trim().toUpperCase();
+      let divisor = 1;
+      if (checkStr.startsWith('TL')) {
+        divisor = 82;
+      } else if (checkStr.startsWith('SW')) {
+        divisor = 120;
+      }
+
+      const qtyProduced = divisor > 1 ? Math.round(qtyProducedRaw / divisor) : qtyProducedRaw;
 
       if ((code || partId) && qtyProduced > 0) {
         shifts[sr.shift].items.push({

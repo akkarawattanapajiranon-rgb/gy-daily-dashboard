@@ -118,10 +118,21 @@ function getQuadOutput(dateStr) {
       const code = code1 || code2;
 
       const qtyTarget = Number(r[4]) || 0;
-      const qtyProduced = Number(r[5]) || 0;
-      const qtySapphire = Number(r[7]) || 0;
+      const qtyProducedRaw = Number(r[5]) || 0;
+      const qtySapphireRaw = Number(r[7]) || 0;
+      const rawTotalItemQty = qtyProducedRaw + qtySapphireRaw;
 
-      const totalItemQty = qtyProduced + qtySapphire;
+      const checkStr = (partId || code || '').trim().toUpperCase();
+      let divisor = 1;
+      if (checkStr.startsWith('TL')) {
+        divisor = 82;
+      } else if (checkStr.startsWith('SW')) {
+        divisor = 120;
+      }
+
+      const totalItemQty = divisor > 1 ? Math.round(rawTotalItemQty / divisor) : rawTotalItemQty;
+      const qtyProduced = divisor > 1 ? Math.round(qtyProducedRaw / divisor) : qtyProducedRaw;
+      const qtySapphire = divisor > 1 ? Math.round(qtySapphireRaw / divisor) : qtySapphireRaw;
 
       if ((code || partId) && totalItemQty > 0) {
         shifts[sr.shift].items.push({
