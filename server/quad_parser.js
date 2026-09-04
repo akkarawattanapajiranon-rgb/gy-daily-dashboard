@@ -114,8 +114,9 @@ function getQuadOutput(dateStr) {
       }
 
       const code1 = String(r[1]).trim();
-      const code2 = String(r[3]).trim();
-      const code = code1 || code2;
+      const code2 = String(r[2]).trim();
+      const code3 = String(r[3]).trim();
+      const code = code1 || code2 || code3;
 
       const qtyTarget = Number(r[4]) || 0;
       const qtyProducedRaw = Number(r[5]) || 0;
@@ -124,8 +125,10 @@ function getQuadOutput(dateStr) {
 
       const checkCode = String(code || '').trim().toUpperCase();
       const checkPart = String(partId || '').trim().toUpperCase();
+      const checkCapBase = String(r[3] || '').trim().toUpperCase();
+
       let divisor = 1;
-      if (checkCode.includes('T1400') || checkPart.includes('T1400')) {
+      if (checkCode.includes('T1400') || checkPart.includes('T1400') || checkCapBase.includes('T1400') || checkPart.includes('SW06332') || checkCode === '6017' || checkCode === '6010') {
         divisor = 1;
       } else if (checkPart.startsWith('TL') || checkCode.startsWith('TL')) {
         divisor = 82;
