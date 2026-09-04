@@ -1,7 +1,7 @@
 import React from 'react';
-import { Package, Layers } from 'lucide-react';
+import { Package, Layers, Target } from 'lucide-react';
 
-export default function Output3Roll({ data, rollDetail, isLoading }) {
+export default function Output3Roll({ data = {}, rollDetail, isLoading }) {
   const actualVal = rollDetail?.hasData ? rollDetail.totalRolls : (data.actual || 0);
   const targetVal = data.target || 0;
   const percent = targetVal > 0 ? Math.min(100, Math.round((actualVal / targetVal) * 100)) : 0;
@@ -27,28 +27,40 @@ export default function Output3Roll({ data, rollDetail, isLoading }) {
         </div>
       ) : (
         <>
-          {/* Main Total Rolls Display */}
+          {/* Main Total Rolls Output Display */}
           <div className="text-center bg-slate-50 border border-slate-200/80 rounded-xl p-3.5">
             <p className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">
-              จำนวนม้วนทั้งหมด (Total Rolls)
+              จำนวนม้วนทั้งหมด (TOTAL ROLLS)
             </p>
             <div className="text-4xl font-black text-brand-blue">
               {actualVal.toLocaleString()} <span className="text-sm font-semibold text-slate-500">ม้วน</span>
             </div>
           </div>
 
-          {/* Progress to Target */}
-          {targetVal > 0 && (
-            <div>
-              <div className="flex justify-between text-xs mb-1 font-medium">
-                <span className="text-slate-500">Target ({targetVal.toLocaleString()} ม้วน)</span>
-                <span className="text-slate-900 font-bold">{percent}%</span>
-              </div>
-              <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                <div className="bg-brand-blue h-2.5 rounded-full transition-all duration-500" style={{ width: `${percent}%` }} />
-              </div>
+          {/* Target Order Display (from web link) */}
+          <div className="bg-slate-50 border border-slate-200/60 p-2.5 rounded-lg space-y-1.5">
+            <div className="flex justify-between items-center text-xs">
+              <span className="text-slate-600 font-bold flex items-center gap-1.5">
+                <Target className="w-3.5 h-3.5 text-amber-500" />
+                จำนวนที่สั่งทำ (Target Order)
+              </span>
+              <span className="text-slate-900 font-black text-xs bg-white px-2 py-0.5 rounded border border-slate-200 shadow-2xs">
+                {targetVal > 0 ? `${targetVal.toLocaleString()} ม้วน` : '0 ม้วน'}
+              </span>
             </div>
-          )}
+
+            {targetVal > 0 && (
+              <div className="space-y-1 pt-1">
+                <div className="flex justify-between text-[11px] font-medium text-slate-500">
+                  <span>ความคืบหน้า (Progress)</span>
+                  <span className="text-slate-900 font-bold">{percent}%</span>
+                </div>
+                <div className="w-full bg-slate-200/80 rounded-full h-2 overflow-hidden">
+                  <div className="bg-brand-blue h-2 rounded-full transition-all duration-500" style={{ width: `${percent}%` }} />
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* Code Breakdown (Col C - LOCAL TREATMENT CODE) */}
           <div className="flex-grow pt-1">
@@ -75,7 +87,9 @@ export default function Output3Roll({ data, rollDetail, isLoading }) {
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-slate-700">{item.count} <span className="text-[10px] font-normal text-slate-400">ม้วน</span></span>
-                      <span className="text-[10px] font-semibold text-slate-400 w-10 text-right">{item.pct}%</span>
+                      <span className="text-[10px] font-semibold text-slate-400 w-10 text-right">
+                        {item.pct !== undefined ? item.pct : item.percentage}%
+                      </span>
                     </div>
                   </div>
                 ))}

@@ -70,11 +70,12 @@ function parse3RollData(dateStr) {
       }
 
       if (dDay === dayNum) {
-        matchingRows.push(row);
-        totalRolls += 1;
-        const code = String(row[2]).trim();
-        if (code) {
-          codeCounts[code] = (codeCounts[code] || 0) + 1;
+        const rawCode = String(row[2] || '').trim();
+        // Ignore empty, zero, or blank template rows
+        if (rawCode !== '' && rawCode !== '0' && rawCode !== '0.0' && rawCode !== undefined) {
+          matchingRows.push(row);
+          totalRolls += 1;
+          codeCounts[rawCode] = (codeCounts[rawCode] || 0) + 1;
         }
       }
     });
