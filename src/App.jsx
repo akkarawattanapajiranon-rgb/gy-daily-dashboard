@@ -160,22 +160,17 @@ function App() {
           </div>
         </header>
 
-        {/* Top Grid: Mixing, Machine OEE, Output */}
+        {/* Top Grid: Machine OEE, Mixing, Output */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1">
-            <MixingKPIs data={mixingData} />
-          </div>
           <div className="lg:col-span-1">
             <MachineOEE weeklyData={weeklyOeeData} isLoading={isLoading} />
           </div>
           <div className="lg:col-span-1">
+            <MixingKPIs data={mixingData} />
+          </div>
+          <div className="lg:col-span-1">
             <Output3Roll data={output3RollData} rollDetail={roll3Detail} isLoading={isLoading} />
           </div>
-        </div>
-
-        {/* Workaway Inventory Section */}
-        <div className="grid grid-cols-1 gap-6">
-          <WorkawayReport data={workawayData} isLoading={isLoading} />
         </div>
 
         {/* Fischer Shear Section */}
@@ -189,10 +184,15 @@ function App() {
           <TuberReport data={tuberData} loading={isLoading} />
         </div>
 
-        {/* Bottom Grid: Waste and Breakdown */}
+        {/* Waste and Breakdown Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <WasteReport data={wasteData} isLoading={isLoading} />
           <BreakdownStats data={breakdownData} isLoading={isLoading} />
+        </div>
+
+        {/* Workaway Inventory Section */}
+        <div className="grid grid-cols-1 gap-6">
+          <WorkawayReport data={workawayData} isLoading={isLoading} />
         </div>
 
       </div>

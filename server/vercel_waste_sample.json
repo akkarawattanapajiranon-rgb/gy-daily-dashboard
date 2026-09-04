@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": 429,
+    "message": "Quota exceeded.",
+    "status": "RESOURCE_EXHAUSTED"
+  },
+  "message": "Firebase API Error: Quota exceeded."
+}
