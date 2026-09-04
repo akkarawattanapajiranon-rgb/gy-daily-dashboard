@@ -220,26 +220,27 @@ async function fetchLiveCmsData(dateStr) {
   const cached = cmsCache.get(dateStr);
 
   if (cached) {
-    // If stale, trigger background refresh silently
-    if (Date.now() - cached.timestamp > CACHE_TTL_MS) {
-      triggerBackgroundRefresh(dateStr);
+    if (Date.now() - cached.timestamp <= CACHE_TTL_MS) {
+      return cached.data;
     }
-    return cached.data;
   }
 
-  // If no cache exists, trigger refresh or return instant fallback
-  triggerBackgroundRefresh(dateStr);
-  const fallback = getFallbackData(dateStr);
-  cmsCache.set(dateStr, { data: fallback, timestamp: Date.now() });
-  saveDiskCache();
-  return fallback;
+  // Await live fetch to guarantee user receives actual live data for requested date
+  return await triggerBackgroundRefresh(dateStr);
 }
 
 // Background Poller Daemon (every 60s)
 function startBackgroundPoller() {
   const poll = async () => {
-    const today = new Date().toISOString().split('T')[0];
-    await triggerBackgroundRefresh(today);
+    const today = new Date();
+    for (let i = 0; i <= 3; i++) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().split('T')[0];
+      try {
+        await triggerBackgroundRefresh(dateStr);
+      } catch (e) {}
+    }
   };
   poll();
   setInterval(poll, 60 * 1000);
