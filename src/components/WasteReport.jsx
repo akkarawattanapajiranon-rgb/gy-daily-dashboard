@@ -6,8 +6,27 @@ export default function WasteReport({ data, isLoading }) {
   const totalVal = millingSummary + frictionSummary + beadSummary;
   const totalWaste = totalVal.toFixed(1);
 
+  const getWasteBadgeStyle = (val, maxTarget) => {
+    if (val <= maxTarget) {
+      return {
+        badgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        statusText: `✓ ไม่เกิน Target (${maxTarget} kg)`,
+        statusColor: 'text-emerald-600'
+      };
+    }
+    return {
+      badgeClass: 'bg-red-50 text-red-600 border-red-200',
+      statusText: `▲ เกิน Target (${maxTarget} kg)`,
+      statusColor: 'text-red-500'
+    };
+  };
+
+  const millingStyle = getWasteBadgeStyle(millingSummary, 265);
+  const frictionStyle = getWasteBadgeStyle(frictionSummary, 285);
+  const beadStyle = getWasteBadgeStyle(beadSummary, 30);
+
   const TopList = ({ title, items, color }) => (
-    <div className="flex-1 bg-white p-3 rounded-lg border border-slate-100">
+    <div className="flex-1 bg-white p-3 rounded-lg border border-slate-100 mt-2">
       <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${color}`}>{title} Top 5</h4>
       <div className="space-y-2">
         {items.length === 0 ? (
@@ -57,10 +76,15 @@ export default function WasteReport({ data, isLoading }) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Milling Summary */}
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col h-full hover:shadow-md transition-shadow">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="font-bold text-slate-700">Milling</h3>
-            <span className="bg-white px-3 py-1 rounded-md border border-slate-200 text-lg font-black text-slate-800 shadow-sm">
-              {millingSummary.toFixed(1)} <span className="text-xs text-slate-400">kg</span>
+          <div className="flex justify-between items-center mb-1">
+            <div>
+              <h3 className="font-bold text-slate-800">Milling</h3>
+              <p className={`text-[10px] font-semibold ${millingStyle.statusColor}`}>
+                {millingStyle.statusText}
+              </p>
+            </div>
+            <span className={`px-3 py-1 rounded-md border text-lg font-black shadow-2xs ${millingStyle.badgeClass}`}>
+              {millingSummary.toFixed(1)} <span className="text-xs font-semibold opacity-75">kg</span>
             </span>
           </div>
           <TopList title="Milling" items={millingTop} color="text-slate-600" />
@@ -68,10 +92,15 @@ export default function WasteReport({ data, isLoading }) {
 
         {/* Friction Summary */}
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col h-full hover:shadow-md transition-shadow">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="font-bold text-slate-700">Friction</h3>
-            <span className="bg-white px-3 py-1 rounded-md border border-slate-200 text-lg font-black text-slate-800 shadow-sm">
-              {frictionSummary.toFixed(1)} <span className="text-xs text-slate-400">kg</span>
+          <div className="flex justify-between items-center mb-1">
+            <div>
+              <h3 className="font-bold text-slate-800">Friction</h3>
+              <p className={`text-[10px] font-semibold ${frictionStyle.statusColor}`}>
+                {frictionStyle.statusText}
+              </p>
+            </div>
+            <span className={`px-3 py-1 rounded-md border text-lg font-black shadow-2xs ${frictionStyle.badgeClass}`}>
+              {frictionSummary.toFixed(1)} <span className="text-xs font-semibold opacity-75">kg</span>
             </span>
           </div>
           <TopList title="Friction" items={frictionTop} color="text-slate-600" />
@@ -79,10 +108,15 @@ export default function WasteReport({ data, isLoading }) {
 
         {/* Bead Summary */}
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col h-full hover:shadow-md transition-shadow">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="font-bold text-slate-700">Bead</h3>
-            <span className="bg-white px-3 py-1 rounded-md border border-slate-200 text-lg font-black text-slate-800 shadow-sm">
-              {beadSummary.toFixed(1)} <span className="text-xs text-slate-400">kg</span>
+          <div className="flex justify-between items-center mb-1">
+            <div>
+              <h3 className="font-bold text-slate-800">Bead</h3>
+              <p className={`text-[10px] font-semibold ${beadStyle.statusColor}`}>
+                {beadStyle.statusText}
+              </p>
+            </div>
+            <span className={`px-3 py-1 rounded-md border text-lg font-black shadow-2xs ${beadStyle.badgeClass}`}>
+              {beadSummary.toFixed(1)} <span className="text-xs font-semibold opacity-75">kg</span>
             </span>
           </div>
           <TopList title="Bead" items={beadTop} color="text-slate-600" />
