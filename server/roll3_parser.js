@@ -50,14 +50,18 @@ function parse3RollData(dateStr) {
       }
     }
 
-    const codeCounts = {};
-    let totalRolls = 0;
+    const releaseCodeCounts = {};
+    const holdCodeCounts = {};
+    const pendingCodeCounts = {};
+    const allCodeCounts = {};
+
+    let totalRelease = 0;
+    let totalHold = 0;
+    let totalPending = 0;
+    let totalScheduled = 0;
 
     data.forEach((row, i) => {
       if (i < 1) return;
-
-      const rawDate1 = row[1];
-      const rawDate0 = row[0];
 
       const parseDateVal = (val) => {
         if (val === '' || val === undefined) return null;
@@ -79,32 +83,63 @@ function parse3RollData(dateStr) {
         return null;
       };
 
-      const dDay = parseDateVal(rawDate1) || parseDateVal(rawDate0);
+      const dDay = parseDateVal(row[1]) || parseDateVal(row[0]);
 
       if (dDay === dayNum) {
         const rawCode = String(row[2] || '').trim();
         if (rawCode && rawCode !== '0' && rawCode !== '0.0') {
-          totalRolls += 1;
-          codeCounts[rawCode] = (codeCounts[rawCode] || 0) + 1;
+          totalScheduled += 1;
+          allCodeCounts[rawCode] = (allCodeCounts[rawCode] || 0) + 1;
+
+          const statusAD = String(row[29] || '').trim().toUpperCase();
+          if (statusAD.includes('RELEASE')) {
+            totalRelease += 1;
+            releaseCodeCounts[rawCode] = (releaseCodeCounts[rawCode] || 0) + 1;
+          } else if (statusAD.includes('HOLD')) {
+            totalHold += 1;
+            holdCodeCounts[rawCode] = (holdCodeCounts[rawCode] || 0) + 1;
+          } else {
+            totalPending += 1;
+            pendingCodeCounts[rawCode] = (pendingCodeCounts[rawCode] || 0) + 1;
+          }
         }
       }
     });
 
-    const codeBreakdown = Object.entries(codeCounts)
+    const hasStatus = totalRelease > 0 || totalHold > 0;
+    const effectiveTotal = hasStatus ? totalRelease : totalScheduled;
+    const effectiveReleaseCounts = hasStatus ? releaseCodeCounts : allCodeCounts;
+
+    const codeBreakdown = Object.entries(effectiveReleaseCounts)
       .map(([code, count]) => ({
         code,
         count,
-        percentage: totalRolls > 0 ? parseFloat((count / totalRolls * 100).toFixed(2)) : 0
+        percentage: effectiveTotal > 0 ? parseFloat((count / effectiveTotal * 100).toFixed(2)) : 0
+      }))
+      .sort((a, b) => b.count - a.count);
+
+    const holdBreakdown = Object.entries(holdCodeCounts)
+      .map(([code, count]) => ({
+        code,
+        count,
+        percentage: totalHold > 0 ? parseFloat((count / totalHold * 100).toFixed(2)) : 0
       }))
       .sort((a, b) => b.count - a.count);
 
     return {
       date: dateStr,
       day: dayNum,
+      sheet: sheetName,
+      file: path.basename(file),
       target: targetValue,
-      totalRolls,
+      totalRolls: effectiveTotal,
+      totalRelease,
+      totalHold,
+      totalPending,
+      totalScheduled,
       codeBreakdown,
-      hasData: totalRolls > 0 || targetValue !== null
+      holdBreakdown,
+      hasData: totalScheduled > 0 || targetValue !== null
     };
   } catch (e) {
     return { error: e.message };
