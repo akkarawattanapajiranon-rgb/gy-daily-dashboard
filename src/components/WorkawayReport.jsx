@@ -405,13 +405,14 @@ export default function WorkawayReport({ data, isLoading }) {
               TOP 10 Code ยาง Workaway ตกค้างสูงสุด
             </h3>
             <span className="text-[11px] font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-full">
-              Work awayTop 5 อันดับ.xlsx
+              {data.top10File || 'Work awayTop 5 อันดับ.xlsx'}
             </span>
           </div>
 
           {top10.length === 0 ? (
-            <div className="py-8 text-center text-slate-400 text-xs">
-              ไม่มีข้อมูล Top 10 Code ยาง
+            <div className="py-12 flex flex-col items-center justify-center text-slate-400 text-xs gap-2">
+              <BarChart3 className="w-8 h-8 opacity-30 text-slate-400" />
+              <span className="font-medium">ยังไม่มีข้อมูล Top 10 Code ยาง สำหรับวันที่เลือก</span>
             </div>
           ) : (
             <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1">

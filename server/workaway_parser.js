@@ -16,22 +16,36 @@ function getWorkawayFile(yearStr) {
   return fallback ? path.join(WORKAWAY_DIR, fallback) : null;
 }
 
-function getWorkawayTop10() {
+function getWorkawayTop10(monthNum = 9, dayNum = 1) {
   try {
-    const file = path.join(WORKAWAY_DIR, 'Work awayTop 5 อันดับ.xlsx');
-    if (!fs.existsSync(file)) return [];
+    if (!fs.existsSync(WORKAWAY_DIR)) return { list: [], fileName: 'Work awayTop 5 อันดับ' };
+    const files = fs.readdirSync(WORKAWAY_DIR);
+    const monthNamesUpper = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+    const targetMonthName = monthNamesUpper[monthNum - 1] || 'SEPTEMBER';
 
-    const wb = XLSX.readFile(file);
-    const ws = wb.Sheets[wb.SheetNames[0]];
-    if (!ws) return [];
+    const matchFile = files.find(f => f.toLowerCase().includes('work awaytop 5') && f.toUpperCase().includes(targetMonthName) && f.endsWith('.xlsx') && !f.startsWith('~$'))
+      || files.find(f => f.toLowerCase().includes('work awaytop 5') && f.endsWith('.xlsx') && !f.startsWith('~$'));
 
+    if (!matchFile) return { list: [], fileName: 'Work awayTop 5 อันดับ' };
+
+    const fullPath = path.join(WORKAWAY_DIR, matchFile);
+    const wb = XLSX.readFile(fullPath);
+
+    // Find tab for dayNum
+    const targetDayStr = String(dayNum);
+    const sheetName = wb.SheetNames.find(s => s.trim() === targetDayStr || parseInt(s, 10) === dayNum);
+    if (!sheetName || !wb.Sheets[sheetName]) return { list: [], fileName: matchFile };
+
+    const ws = wb.Sheets[sheetName];
     const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+    if (data.length <= 1) return { list: [], fileName: matchFile };
+
     const list = [];
     let grandTotal = 0;
 
     for (let i = 1; i < data.length; i++) {
       const r = data[i];
-      const code = String(r[0]).trim();
+      const code = String(r[0] || '').trim();
       const qty = Number(r[1]) || 0;
       if (code && code.toUpperCase() !== 'SUM' && qty > 0) {
         list.push({ code, qty });
@@ -39,17 +53,21 @@ function getWorkawayTop10() {
       }
     }
 
+    if (list.length === 0) return { list: [], fileName: matchFile };
+
     list.sort((a, b) => b.qty - a.qty);
-    return list.slice(0, 10).map((item, idx) => ({
+    const resultList = list.slice(0, 10).map((item, idx) => ({
       rank: idx + 1,
       code: item.code,
       qty: item.qty,
       qtyMt: Number((item.qty / 1000).toFixed(2)),
       percentage: grandTotal > 0 ? Number(((item.qty / grandTotal) * 100).toFixed(1)) : 0
     }));
+
+    return { list: resultList, fileName: matchFile };
   } catch (e) {
     console.error('Error parsing Workaway Top 10:', e.message);
-    return [];
+    return { list: [], fileName: 'Work awayTop 5 อันดับ' };
   }
 }
 
@@ -183,7 +201,7 @@ function parseWorkawayData(dateStr) {
       }
     }
 
-    const top10 = getWorkawayTop10();
+    const top10Result = getWorkawayTop10(monthNum, dayNum);
 
     return {
       date: dateStr,
@@ -202,7 +220,8 @@ function parseWorkawayData(dateStr) {
         hasData: activeItem.hasData
       } : null,
       dailyTrend: filteredTrend,
-      top10
+      top10: top10Result.list,
+      top10File: top10Result.fileName
     };
 
   } catch (e) {
