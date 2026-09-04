@@ -154,6 +154,10 @@ function parseBreakdown(dateStr) {
         }
 
         if (rowDateStr === dateStr) {
+          // Column P (index 15) is Job Type (ประเภทงาน: BD/CM/CC). Filter strictly for 'BD'
+          const jobType = String(row[15] || '').trim().toUpperCase();
+          if (!jobType.includes('BD')) return;
+
           const rawMachine = String(row[2] || '').trim();
           if (!rawMachine) return;
 
