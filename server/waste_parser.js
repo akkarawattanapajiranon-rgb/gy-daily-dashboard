@@ -22,7 +22,17 @@ function parseWasteData(dateStr) {
     });
 
     if (!monthFolder) {
-      return { error: `Month folder ${monthNum} not found in Waste Report` };
+      return {
+        date: dateStr,
+        millingSummary: 0,
+        frictionSummary: 0,
+        beadSummary: 0,
+        millingTop: [],
+        frictionTop: [],
+        beadTop: [],
+        dataDate: dateStr,
+        hasData: false
+      };
     }
 
     const monthFolderPath = path.join(WASTE_BASE_DIR, monthFolder);
@@ -169,7 +179,18 @@ function parseWasteData(dateStr) {
     };
 
   } catch (e) {
-    return { error: e.message };
+    return {
+      date: dateStr,
+      millingSummary: 0,
+      frictionSummary: 0,
+      beadSummary: 0,
+      millingTop: [],
+      frictionTop: [],
+      beadTop: [],
+      dataDate: dateStr,
+      hasData: false,
+      error: e.message
+    };
   }
 }
 

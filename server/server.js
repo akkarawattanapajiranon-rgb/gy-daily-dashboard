@@ -81,8 +81,18 @@ app.get('/api/waste', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   console.log(`Fetching Waste data for date: ${date}`);
   const data = parseWasteData(date);
-  if (data.error) {
-    return res.status(404).json({ error: data.error });
+  if (data.error && !data.hasData) {
+    return res.json({
+      date,
+      millingSummary: 0,
+      frictionSummary: 0,
+      beadSummary: 0,
+      millingTop: [],
+      frictionTop: [],
+      beadTop: [],
+      dataDate: date,
+      hasData: false
+    });
   }
   res.json(data);
 });

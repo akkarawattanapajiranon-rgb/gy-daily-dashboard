@@ -21,7 +21,15 @@ import {
 } from './services/api';
 
 function App() {
-  const [wasteData, setWasteData] = useState(mockData.wasteReport);
+  const [wasteData, setWasteData] = useState({
+    millingSummary: 0,
+    frictionSummary: 0,
+    beadSummary: 0,
+    millingTop: [],
+    frictionTop: [],
+    beadTop: [],
+    dataDate: 'N/A'
+  });
   const [mixingData, setMixingData] = useState(mockData.mixing);
   const [output3RollData, setOutput3RollData] = useState(mockData.output3Roll);
   const [breakdownData, setBreakdownData] = useState(null);

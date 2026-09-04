@@ -95,10 +95,16 @@ export async function fetchWasteData(dateStr) {
     console.error('Firebase Fetch Error:', err);
   }
 
-  // 3. Fallback mockData
+  // 3. Fallback when no data exists for targetDate
   return {
-    ...mockData.wasteReport,
-    dataDate: targetDate
+    millingSummary: 0,
+    frictionSummary: 0,
+    beadSummary: 0,
+    millingTop: [],
+    frictionTop: [],
+    beadTop: [],
+    dataDate: targetDate,
+    hasData: false
   };
 }
 
