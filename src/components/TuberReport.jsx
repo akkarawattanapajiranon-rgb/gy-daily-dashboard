@@ -116,20 +116,26 @@ export default function TuberReport({ data, loading }) {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100">
-                        {shiftData.items.map((item, idx) => (
-                          <tr key={idx} className="hover:bg-white transition-colors">
-                            <td className="py-0.5 px-1 font-mono text-slate-600 truncate max-w-[70px]" title={item.partId}>
-                              {item.partId || '-'}
-                            </td>
-                            <td className="py-0.5 px-1 font-bold text-emerald-700">{item.code || '-'}</td>
-                            <td className="py-0.5 px-1 text-right text-slate-500">
-                              {item.qtyTarget > 0 ? item.qtyTarget.toLocaleString() : '-'}
-                            </td>
-                            <td className="py-0.5 px-1 text-right font-extrabold text-slate-800">
-                              {item.qtyProduced > 0 ? item.qtyProduced.toLocaleString() : '-'}
-                            </td>
-                          </tr>
-                        ))}
+                        {shiftData.items.map((item, idx) => {
+                          const target = Number(item.qtyTarget) || 0;
+                          const actual = item.totalQty !== undefined ? Number(item.totalQty) : Number(item.qtyProduced);
+                          const isUnderTarget = target > 0 && actual < target;
+
+                          return (
+                            <tr key={idx} className="hover:bg-white transition-colors">
+                              <td className="py-0.5 px-1 font-mono text-slate-600 truncate max-w-[70px]" title={item.partId}>
+                                {item.partId || '-'}
+                              </td>
+                              <td className="py-0.5 px-1 font-bold text-emerald-700">{item.code || '-'}</td>
+                              <td className="py-0.5 px-1 text-right text-slate-500 font-medium">
+                                {target > 0 ? target.toLocaleString() : '-'}
+                              </td>
+                              <td className={`py-0.5 px-1 text-right font-black ${isUnderTarget ? 'text-rose-600' : 'text-slate-800'}`}>
+                                {actual > 0 ? actual.toLocaleString() : (target > 0 ? <span className="text-rose-600">0</span> : '-')}
+                              </td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                   ) : (
