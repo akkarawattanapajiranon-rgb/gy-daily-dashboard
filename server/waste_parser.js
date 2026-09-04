@@ -24,12 +24,30 @@ function parseWasteData(dateStr) {
 
     let hasData = false;
 
+    const DEFECT_NAME_MAP = {
+      '1': 'CALENDER DEFECT',
+      '6': '3 ROLLS / ROLL ENDS',
+      '10': 'CALENDER STOP',
+      '11': 'COAT OFF / BEAD COAT',
+      '24': 'BEAD DEFECT',
+      '30': 'FISCHER STOP / DEFECT',
+      '34': 'WIRE BEAD DEFECT',
+      '39': 'CALENDER STOP / CORD DEFECT',
+      '44': '3 ROLLS / ROLL ENDS',
+      '50': 'STOCK OUT',
+      '51': 'COAT OFF',
+      '52': 'WRINKLE / CORD DEFECT',
+      '56': 'FISCHER DEFECT'
+    };
+
     // Helper to add defect items into summary and top maps
     const addRecord = (category, weight, code, reason) => {
       if (isNaN(weight) || weight <= 0) return;
       hasData = true;
-      const key = String(code || reason || 'Waste').trim();
-      const desc = String(reason || code || 'Waste').trim();
+      const rawCode = String(code || reason || 'Waste').trim();
+      const mappedReason = DEFECT_NAME_MAP[rawCode] || (reason && reason !== rawCode ? reason : (DEFECT_NAME_MAP[rawCode] || rawCode));
+      const key = rawCode;
+      const desc = mappedReason;
 
       if (category === 'Bead') {
         beadSummary += weight;
@@ -78,7 +96,7 @@ function parseWasteData(dateStr) {
                 let category = 'Friction';
                 if (sName === 'A' || sName === 'G' || areaCode === '130' || areaCode === '42' || remark.toLowerCase().includes('bead')) {
                   category = 'Bead';
-                } else if (areaCode === '135' || areaCode === '136' || areaCode === '137' || areaCode === '139' || areaCode === '140' || remark.toLowerCase().includes('milling')) {
+                } else if (sName === 'RT27' || areaCode === '135' || areaCode === '136' || areaCode === '137' || areaCode === '139' || areaCode === '140' || remark.toLowerCase().includes('milling')) {
                   category = 'Milling';
                 }
                 addRecord(category, weight, defectCode, remark);
@@ -96,16 +114,17 @@ function parseWasteData(dateStr) {
             const recDay = parseInt(r[1], 10);
             if (recDay === dayNum) {
               const matCode = String(r[2] || '').trim();
+              const areaCode = String(r[3] || '').trim();
               const weight = parseFloat(r[5]) || 0;
               const cause = String(r[7] || r[6] || '').trim();
               const mcType = String(r[10] || '').trim();
 
               if (weight > 0) {
                 let category = 'Milling';
-                const lowerMc = mcType.toLowerCase();
-                if (lowerMc.includes('3 roll') || lowerMc.includes('friction')) {
+                const lowerCombine = (mcType + ' ' + cause).toLowerCase();
+                if (areaCode === '133' || areaCode === '128' || areaCode === '129' || lowerCombine.includes('3 roll') || lowerCombine.includes('friction') || lowerCombine.includes('calender') || lowerCombine.includes('fischer')) {
                   category = 'Friction';
-                } else if (lowerMc.includes('bead')) {
+                } else if (areaCode === '130' || areaCode === '42' || lowerCombine.includes('bead')) {
                   category = 'Bead';
                 }
                 addRecord(category, weight, matCode, cause || mcType);
