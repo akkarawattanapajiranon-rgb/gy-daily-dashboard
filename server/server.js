@@ -8,6 +8,8 @@ app.use(cors());
 
 const path = require('path');
 
+const { getSnapshot } = require('./snapshot_generator');
+
 // Breakdown parser (reads local Excel on T: drive)
 const { parseBreakdown } = require('./breakdown_parser');
 
@@ -17,6 +19,8 @@ app.get('/api/breakdown', (req, res) => {
   console.log(`Fetching Breakdown data for date: ${date}`);
   const data = parseBreakdown(date);
   if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.breakdown) return res.json(snap.breakdown);
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
@@ -31,6 +35,8 @@ app.get('/api/fischer', (req, res) => {
   console.log(`Fetching Fischer data for date: ${date}`);
   const data = parseFischerData(date);
   if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.fischer) return res.json(snap.fischer);
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
@@ -45,6 +51,8 @@ app.get('/api/3roll', (req, res) => {
   console.log(`Fetching 3 Roll WINDUP data for date: ${date}`);
   const data = parse3RollData(date);
   if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.roll3) return res.json(snap.roll3);
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
@@ -59,6 +67,8 @@ app.get('/api/oee-weekly', (req, res) => {
   console.log(`Fetching Weekly OEE WTD data for date: ${date}`);
   const data = parseWeeklyOee(date);
   if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.weeklyOee) return res.json(snap.weeklyOee);
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
@@ -73,6 +83,8 @@ app.get('/api/workaway', (req, res) => {
   console.log(`Fetching Workaway Inventory data for date: ${date}`);
   const data = parseWorkawayData(date);
   if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.workaway) return res.json(snap.workaway);
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
@@ -85,6 +97,8 @@ app.get('/api/quad', (req, res) => {
   console.log(`Fetching Quad data for date: ${date}`);
   const data = parseQuadData(date);
   if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.quad) return res.json(snap.quad);
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
@@ -97,6 +111,8 @@ app.get('/api/tuber', (req, res) => {
   console.log(`Fetching Tuber data for date: ${date}`);
   const data = parseTuberData(date);
   if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.tuber) return res.json(snap.tuber);
     return res.status(404).json({ error: data.error });
   }
   res.json(data);
@@ -110,6 +126,8 @@ app.get('/api/waste', (req, res) => {
   console.log(`Fetching Waste data for date: ${date}`);
   const data = parseWasteData(date);
   if (data.error && !data.hasData) {
+    const snap = getSnapshot(date);
+    if (snap && snap.waste) return res.json(snap.waste);
     return res.json({
       date,
       millingSummary: 0,

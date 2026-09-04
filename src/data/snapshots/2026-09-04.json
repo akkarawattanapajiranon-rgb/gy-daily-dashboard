@@ -1,0 +1,803 @@
+{
+  "date": "2026-09-04",
+  "generatedAt": "2026-09-04T07:39:15.892Z",
+  "waste": {
+    "date": "2026-09-04",
+    "millingSummary": 0,
+    "frictionSummary": 0,
+    "beadSummary": 0,
+    "millingTop": [],
+    "frictionTop": [],
+    "beadTop": [],
+    "dataDate": "2026-09-04",
+    "hasData": false
+  },
+  "cms": {
+    "date": "2026-09-04",
+    "mixing1": {
+      "batch": 214,
+      "ar": 88.8,
+      "pr": 87.5,
+      "qr": 87.1,
+      "oee2": 67.6
+    },
+    "mixing2": {
+      "batch": 209,
+      "ar": 88.6,
+      "pr": 92.3,
+      "qr": 100,
+      "oee2": 81.8
+    },
+    "totalAr": 88.7,
+    "totalPr": 89.9,
+    "totalQr": 93.2,
+    "totalOee2": 74.4
+  },
+  "target3Roll": 24,
+  "breakdown": {
+    "_file": "Issue log 2026 _Sep2026.xlsx",
+    "_sheet": "SEP2026",
+    "_date": "2026-09-04",
+    "topLoss": [],
+    "Banbury": {
+      "target_bd_pct": 0.5827,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Extruder": {
+      "target_bd_pct": 0.5098,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Calender": {
+      "target_bd_pct": 0.4662,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Cutting": {
+      "target_bd_pct": 0.1166,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "_total": {
+      "target_bd_pct": 0.6475,
+      "actual_bd_pct": null,
+      "hasData": false
+    }
+  },
+  "fischer": {
+    "date": "2026-09-04",
+    "oee": {
+      "hasData": false,
+      "target_pct": 60,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0
+    },
+    "checksheet": {
+      "hasData": true,
+      "totalProduce": 30,
+      "totalWbr": 22,
+      "totalSapphire": 8,
+      "totalAngleChanges": 9,
+      "totalNormal": 22,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 22,
+          "sapphire": 8,
+          "angleChanges": 9,
+          "normal": 22,
+          "sticky": 0,
+          "total": 30
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
+    }
+  },
+  "roll3": {
+    "date": "2026-09-04",
+    "day": 4,
+    "sheet": "WINDUP",
+    "file": "9 -Treatment Release SEP 2026.xls",
+    "target": null,
+    "totalRolls": 24,
+    "totalRelease": 24,
+    "totalHold": 3,
+    "totalPending": 14,
+    "totalScheduled": 41,
+    "codeBreakdown": [
+      {
+        "code": "RP08",
+        "count": 8,
+        "percentage": 33.33
+      },
+      {
+        "code": "RU53",
+        "count": 8,
+        "percentage": 33.33
+      },
+      {
+        "code": "NU27",
+        "count": 4,
+        "percentage": 16.67
+      },
+      {
+        "code": "RT27",
+        "count": 2,
+        "percentage": 8.33
+      },
+      {
+        "code": "JR11",
+        "count": 1,
+        "percentage": 4.17
+      },
+      {
+        "code": "JR45",
+        "count": 1,
+        "percentage": 4.17
+      }
+    ],
+    "holdBreakdown": [
+      {
+        "code": "DDSV",
+        "count": 1,
+        "percentage": 33.33
+      },
+      {
+        "code": "EESV",
+        "count": 1,
+        "percentage": 33.33
+      },
+      {
+        "code": "JR45",
+        "count": 1,
+        "percentage": 33.33
+      }
+    ],
+    "hasData": true
+  },
+  "quad": {
+    "date": "2026-09-04",
+    "oee": {
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
+    },
+    "output": {
+      "hasData": true,
+      "day": 4,
+      "grandTotal": 1042,
+      "codeBreakdown": [
+        {
+          "code": "6015",
+          "count": 334,
+          "percentage": 32.05
+        },
+        {
+          "code": "B427",
+          "count": 260,
+          "percentage": 24.95
+        },
+        {
+          "code": "B455",
+          "count": 241,
+          "percentage": 23.13
+        },
+        {
+          "code": "B309",
+          "count": 199,
+          "percentage": 19.1
+        },
+        {
+          "code": "W1CX",
+          "count": 8,
+          "percentage": 0.77
+        }
+      ],
+      "shifts": {
+        "1": {
+          "name": "Shift 1 (กะ 1)",
+          "items": [
+            {
+              "partId": "TR10892",
+              "code1": "6015",
+              "code2": "",
+              "code": "6015",
+              "qtyTarget": 280,
+              "qtyProduced": 320,
+              "qtySapphire": 14,
+              "totalQty": 334
+            },
+            {
+              "partId": "SC00526",
+              "code1": "",
+              "code2": "B427",
+              "code": "B427",
+              "qtyTarget": 300,
+              "qtyProduced": 252,
+              "qtySapphire": 8,
+              "totalQty": 260
+            },
+            {
+              "partId": "SC01212",
+              "code1": "",
+              "code2": "B309",
+              "code": "B309",
+              "qtyTarget": 200,
+              "qtyProduced": 192,
+              "qtySapphire": 7,
+              "totalQty": 199
+            },
+            {
+              "partId": "SC00962",
+              "code1": "",
+              "code2": "B455",
+              "code": "B455",
+              "qtyTarget": 200,
+              "qtyProduced": 230,
+              "qtySapphire": 11,
+              "totalQty": 241
+            },
+            {
+              "partId": "TL00203",
+              "code1": "W1CX",
+              "code2": "",
+              "code": "W1CX",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            }
+          ],
+          "totalQty": 1042
+        },
+        "2": {
+          "name": "Shift 2 (กะ 2)",
+          "items": [],
+          "totalQty": 0
+        },
+        "3": {
+          "name": "Shift 3 (กะ 3)",
+          "items": [],
+          "totalQty": 0
+        }
+      }
+    }
+  },
+  "tuber": {
+    "date": "2026-09-04",
+    "oee": {
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
+    },
+    "output": {
+      "hasData": true,
+      "day": 4,
+      "grandTotal": 681,
+      "codeBreakdown": [
+        {
+          "code": "A606",
+          "count": 348,
+          "percentage": 51.1
+        },
+        {
+          "code": "B362",
+          "count": 106,
+          "percentage": 15.57
+        },
+        {
+          "code": "B455",
+          "count": 98,
+          "percentage": 14.39
+        },
+        {
+          "code": "B627",
+          "count": 57,
+          "percentage": 8.37
+        },
+        {
+          "code": "B462",
+          "count": 34,
+          "percentage": 4.99
+        },
+        {
+          "code": "WAIS",
+          "count": 2,
+          "percentage": 0.29
+        }
+      ],
+      "shifts": {
+        "1": {
+          "name": "Shift 1 (กะ 1)",
+          "items": [
+            {
+              "partId": "SW08753",
+              "code": "WAIS",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "totalQty": 2
+            },
+            {
+              "partId": "TA00874",
+              "code": "B362",
+              "qtyTarget": 100,
+              "qtyProduced": 106,
+              "totalQty": 106
+            },
+            {
+              "partId": "TA008763",
+              "code": "B462",
+              "qtyTarget": 40,
+              "qtyProduced": 34,
+              "totalQty": 34
+            },
+            {
+              "partId": "TA00872",
+              "code": "B627",
+              "qtyTarget": 50,
+              "qtyProduced": 57,
+              "totalQty": 57
+            },
+            {
+              "partId": "TA01212",
+              "code": "B455",
+              "qtyTarget": 100,
+              "qtyProduced": 98,
+              "totalQty": 98
+            },
+            {
+              "partId": "TA01413",
+              "code": "A606",
+              "qtyTarget": 300,
+              "qtyProduced": 348,
+              "totalQty": 348
+            },
+            {
+              "partId": "XP002311",
+              "code": "",
+              "qtyTarget": 15,
+              "qtyProduced": 15,
+              "totalQty": 15
+            },
+            {
+              "partId": "XP02292",
+              "code": "",
+              "qtyTarget": 3,
+              "qtyProduced": 3,
+              "totalQty": 3
+            },
+            {
+              "partId": "XP02321",
+              "code": "",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "totalQty": 2
+            },
+            {
+              "partId": "XP02323",
+              "code": "",
+              "qtyTarget": 3,
+              "qtyProduced": 3,
+              "totalQty": 3
+            },
+            {
+              "partId": "XP02315",
+              "code": "",
+              "qtyTarget": 3,
+              "qtyProduced": 3,
+              "totalQty": 3
+            },
+            {
+              "partId": "XP02462",
+              "code": "",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "totalQty": 10
+            }
+          ],
+          "totalQty": 681
+        },
+        "2": {
+          "name": "Shift 2 (กะ 2)",
+          "items": [],
+          "totalQty": 0
+        },
+        "3": {
+          "name": "Shift 3 (กะ 3)",
+          "items": [],
+          "totalQty": 0
+        }
+      }
+    }
+  },
+  "workaway": {
+    "date": "2026-09-04",
+    "sheet": "SEPTEMBER 2026",
+    "file": "Slow Moving Work away 2026.xlsx",
+    "hasData": true,
+    "summary": {
+      "activeDate": "4/9",
+      "sum": 64964,
+      "target": 35056,
+      "minTarget": 20000,
+      "consume": 0,
+      "newGenerate": 12550,
+      "slowMoving": 43764,
+      "disposition": 8650,
+      "hasData": true
+    },
+    "dailyTrend": [
+      {
+        "day": 31,
+        "month": 8,
+        "dateLabel": "31/8",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 55029,
+        "consume": 0,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 45903,
+        "disposition": 9126,
+        "hasData": true
+      },
+      {
+        "day": 1,
+        "month": 9,
+        "dateLabel": "1/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 48889,
+        "consume": 11278,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 41205,
+        "disposition": 7684,
+        "hasData": true
+      },
+      {
+        "day": 2,
+        "month": 9,
+        "dateLabel": "2/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 67794,
+        "consume": 15158,
+        "newGenerate": 19890,
+        "newGenerateBTA": 16740,
+        "newGenerateWBR": 3150,
+        "slowMoving": 38844,
+        "disposition": 9060,
+        "hasData": true
+      },
+      {
+        "day": 3,
+        "month": 9,
+        "dateLabel": "3/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 67739,
+        "consume": 14635,
+        "newGenerate": 13010,
+        "newGenerateBTA": 10250,
+        "newGenerateWBR": 2760,
+        "slowMoving": 46119,
+        "disposition": 8610,
+        "hasData": true
+      },
+      {
+        "day": 4,
+        "month": 9,
+        "dateLabel": "4/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 64964,
+        "consume": 0,
+        "newGenerate": 12550,
+        "newGenerateBTA": 9460,
+        "newGenerateWBR": 3090,
+        "slowMoving": 43764,
+        "disposition": 8650,
+        "hasData": true
+      }
+    ],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1128",
+        "qty": 6589,
+        "qtyMt": 6.59,
+        "percentage": 12.1
+      },
+      {
+        "rank": 2,
+        "code": "N11F3",
+        "qty": 4450,
+        "qtyMt": 4.45,
+        "percentage": 8.2
+      },
+      {
+        "rank": 3,
+        "code": "K27T4",
+        "qty": 4440,
+        "qtyMt": 4.44,
+        "percentage": 8.2
+      },
+      {
+        "rank": 4,
+        "code": "M36F3",
+        "qty": 4150,
+        "qtyMt": 4.15,
+        "percentage": 7.6
+      },
+      {
+        "rank": 5,
+        "code": "K33M1",
+        "qty": 2920,
+        "qtyMt": 2.92,
+        "percentage": 5.4
+      },
+      {
+        "rank": 6,
+        "code": "K12J5",
+        "qty": 2530,
+        "qtyMt": 2.53,
+        "percentage": 4.7
+      },
+      {
+        "rank": 7,
+        "code": "K16V5",
+        "qty": 2430,
+        "qtyMt": 2.43,
+        "percentage": 4.5
+      },
+      {
+        "rank": 8,
+        "code": "K16D4",
+        "qty": 1650,
+        "qtyMt": 1.65,
+        "percentage": 3
+      },
+      {
+        "rank": 9,
+        "code": "B56N2",
+        "qty": 1640,
+        "qtyMt": 1.64,
+        "percentage": 3
+      },
+      {
+        "rank": 10,
+        "code": "N2139",
+        "qty": 1620,
+        "qtyMt": 1.62,
+        "percentage": 3
+      }
+    ],
+    "top10File": "Work awayTop 5 อันดับ September.xlsx"
+  },
+  "weeklyOee": {
+    "date": "2026-09-04",
+    "activeWeek": {
+      "weekNum": 1,
+      "startDay": 1,
+      "endDay": 6,
+      "label": "W1 (1/9 - 6/9)",
+      "isCurrentWeek": true,
+      "quad": {
+        "avg": 56.87,
+        "target": 62,
+        "count": 3,
+        "isMet": false
+      },
+      "tuber": {
+        "avg": 61.17,
+        "target": 62,
+        "count": 3,
+        "isMet": false
+      },
+      "fischer": {
+        "avg": 52.05,
+        "target": 60,
+        "count": 3,
+        "isMet": false
+      },
+      "mixing": {
+        "avg": 73.58,
+        "target": 76.6,
+        "count": 4,
+        "isMet": false
+      }
+    },
+    "weeks": [
+      {
+        "weekNum": 1,
+        "startDay": 1,
+        "endDay": 6,
+        "label": "W1 (1/9 - 6/9)",
+        "isCurrentWeek": true,
+        "quad": {
+          "avg": 56.87,
+          "target": 62,
+          "count": 3,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": 61.17,
+          "target": 62,
+          "count": 3,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": 52.05,
+          "target": 60,
+          "count": 3,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": 73.58,
+          "target": 76.6,
+          "count": 4,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 2,
+        "startDay": 7,
+        "endDay": 13,
+        "label": "W2 (7/9 - 13/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 3,
+        "startDay": 14,
+        "endDay": 20,
+        "label": "W3 (14/9 - 20/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 4,
+        "startDay": 21,
+        "endDay": 27,
+        "label": "W4 (21/9 - 27/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 5,
+        "startDay": 28,
+        "endDay": 30,
+        "label": "W5 (28/9 - 30/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      }
+    ]
+  }
+}

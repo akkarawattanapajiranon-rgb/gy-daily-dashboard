@@ -3,25 +3,25 @@
     "data": {
       "date": "2026-09-04",
       "mixing1": {
-        "batch": 200,
-        "ar": 93.2,
-        "pr": 87.1,
-        "qr": 87.7,
-        "oee2": 71.2
+        "batch": 214,
+        "ar": 88.8,
+        "pr": 87.5,
+        "qr": 87.1,
+        "oee2": 67.6
       },
       "mixing2": {
-        "batch": 189,
-        "ar": 90.7,
-        "pr": 92.6,
+        "batch": 210,
+        "ar": 88.6,
+        "pr": 92.3,
         "qr": 100,
-        "oee2": 84
+        "oee2": 81.8
       },
-      "totalAr": 92,
-      "totalPr": 89.8,
-      "totalQr": 93.5,
-      "totalOee2": 77.2
+      "totalAr": 88.7,
+      "totalPr": 89.9,
+      "totalQr": 93.3,
+      "totalOee2": 74.3
     },
-    "timestamp": 1788504650596
+    "timestamp": 1788507577679
   },
   "2026-09-05": {
     "data": {
@@ -70,7 +70,7 @@
       "totalQr": 93.9,
       "totalOee2": 75.4
     },
-    "timestamp": 1788504651982
+    "timestamp": 1788507579080
   },
   "2026-09-02": {
     "data": {
@@ -94,7 +94,7 @@
       "totalQr": 93.9,
       "totalOee2": 70.9
     },
-    "timestamp": 1788504653357
+    "timestamp": 1788507580496
   },
   "2026-09-01": {
     "data": {
@@ -118,11 +118,35 @@
       "totalQr": 95,
       "totalOee2": 69.2
     },
-    "timestamp": 1788504654709
+    "timestamp": 1788507581906
   },
   "2026-08-30": {
     "data": {
       "date": "2026-08-30",
+      "mixing1": {
+        "batch": 201,
+        "ar": 91.7,
+        "pr": 86.5,
+        "qr": 83.9,
+        "oee2": 66.5
+      },
+      "mixing2": {
+        "batch": 191,
+        "ar": 88.9,
+        "pr": 90.9,
+        "qr": 100,
+        "oee2": 80.9
+      },
+      "totalAr": 90.3,
+      "totalPr": 88.6,
+      "totalQr": 91.5,
+      "totalOee2": 73.2
+    },
+    "timestamp": 1788507572181
+  },
+  "2026-08-31": {
+    "data": {
+      "date": "2026-08-31",
       "mixing1": {
         "batch": 0,
         "ar": 0,
@@ -140,9 +164,8 @@
       "totalAr": 0,
       "totalPr": 0,
       "totalQr": 0,
-      "totalOee2": 0,
-      "hasData": false
+      "totalOee2": 0
     },
-    "timestamp": 1788500127855
+    "timestamp": 1788507565962
   }
 }
