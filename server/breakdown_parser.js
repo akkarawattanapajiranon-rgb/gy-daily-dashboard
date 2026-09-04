@@ -1,7 +1,8 @@
+const fs = require('fs');
+const path = require('path');
 const XLSX = require('xlsx');
-const { findMonthlySheet } = require('./month_utils');
 
-const BREAKDOWN_FILE = 'T:\\10.30 A.M. Production Meeting\\5 BTA\\Engineering Breakdown\\Issue log 2026 _ BCA 14AUG2026.xlsx';
+const BREAKDOWN_DIR = 'T:\\10.30 A.M. Production Meeting\\5 BTA\\Engineering Breakdown';
 
 function getCanonicalMachineName(raw) {
   let s = String(raw).trim();
@@ -23,29 +24,54 @@ function getCanonicalMachineName(raw) {
   return s.replace(/\s+/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 }
 
+function getBreakdownFilePath(yearStr, monthNum) {
+  if (!fs.existsSync(BREAKDOWN_DIR)) return null;
+  const files = fs.readdirSync(BREAKDOWN_DIR).filter(f => f.endsWith('.xlsx') && !f.startsWith('~$'));
+  const monthNames = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  const mName = monthNames[monthNum - 1];
+  
+  const matched = files.find(f => {
+    const l = f.toLowerCase();
+    return (l.includes(mName) || l.includes(String(monthNum).padStart(2,'0'))) && l.includes(yearStr);
+  });
+
+  if (matched) return path.join(BREAKDOWN_DIR, matched);
+  const fallback = files.find(f => f.toLowerCase().includes('issue log'));
+  return fallback ? path.join(BREAKDOWN_DIR, fallback) : (files.length > 0 ? path.join(BREAKDOWN_DIR, files[0]) : null);
+}
+
 /**
- * Parse Breakdown BD% and Top 5 Loss from Issue log 2026 _ BCA 14AUG2026.xlsx
+ * Parse Breakdown BD% and Top 5 Loss from Engineering Breakdown directory
  */
 function parseBreakdown(dateStr) {
   try {
     const [year, month, day] = dateStr.split('-');
     const monthNum = parseInt(month, 10);
-    const dayIndex = parseInt(day, 10) - 1;
+    const dayNum = parseInt(day, 10);
 
-    const wb = XLSX.readFile(BREAKDOWN_FILE);
+    const file = getBreakdownFilePath(year, monthNum);
+    if (!file || !fs.existsSync(file)) {
+      return { error: `Breakdown file not found for ${dateStr}` };
+    }
 
-    // 1. Find matching sheet for the month (e.g. JAN2026, FEB2026, SEP2026)
-    const sheetName = findMonthlySheet(wb.SheetNames, monthNum, year) ||
-                      wb.SheetNames.find(s => s.toUpperCase().includes('2026')) ||
-                      wb.SheetNames[0];
+    const wb = XLSX.readFile(file);
+    const monthNamesUpper = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    const mNameUpper = monthNamesUpper[monthNum - 1];
 
-    const ws = wb.Sheets[sheetName];
+    // 1. Find BD% KPI sheet (e.g., SEP2026)
+    const kpiSheetName = wb.SheetNames.find(s => {
+      const u = s.toUpperCase();
+      return u.includes(mNameUpper + year) || (u.includes(mNameUpper) && !u.includes('DALIY') && !u.includes('DAILY') && !u.includes('SUMMARY') && !u.includes('ACTION') && !u.includes('TRACK'));
+    }) || wb.SheetNames[0];
+
     const result = {
-      _sheet: sheetName,
+      _file: path.basename(file),
+      _sheet: kpiSheetName,
       _date: dateStr,
       topLoss: []
     };
 
+    const ws = wb.Sheets[kpiSheetName];
     if (ws) {
       const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
       const bdRows = data.filter(row =>
@@ -54,7 +80,7 @@ function parseBreakdown(dateStr) {
         String(row[3]).trim() === 'BD%'
       );
 
-      const colIdx = 5 + dayIndex;
+      const colIdx = 4 + dayNum;
       const equipments = ['Banbury', 'Extruder', 'Calender', 'Cutting'];
 
       equipments.forEach(eq => {
@@ -71,14 +97,14 @@ function parseBreakdown(dateStr) {
         );
 
         const targetVal = targetRow ? (Number(targetRow[colIdx]) || 0) : 0;
-        const actualVal = actualRow
-          ? (actualRow[colIdx] === '' || actualRow[colIdx] === undefined ? null : Number(actualRow[colIdx]) || 0)
+        const actualVal = actualRow && actualRow[colIdx] !== '' && actualRow[colIdx] !== undefined
+          ? (Number(actualRow[colIdx]) || 0)
           : null;
 
         result[eq] = {
           target_bd_pct: parseFloat((targetVal * 100).toFixed(4)),
           actual_bd_pct: actualVal !== null ? parseFloat((actualVal * 100).toFixed(4)) : null,
-          hasData: actualVal !== null,
+          hasData: actualVal !== null
         };
       });
 
@@ -93,26 +119,25 @@ function parseBreakdown(dateStr) {
       );
 
       const ttVal = totalTarget ? (Number(totalTarget[colIdx]) || 0) : 0;
-      const taVal = totalActual
-        ? (totalActual[colIdx] === '' || totalActual[colIdx] === undefined ? null : Number(totalActual[colIdx]) || 0)
+      const taVal = totalActual && totalActual[colIdx] !== '' && totalActual[colIdx] !== undefined
+        ? (Number(totalActual[colIdx]) || 0)
         : null;
 
       result['_total'] = {
         target_bd_pct: parseFloat((ttVal * 100).toFixed(4)),
         actual_bd_pct: taVal !== null ? parseFloat((taVal * 100).toFixed(4)) : null,
-        hasData: taVal !== null,
+        hasData: taVal !== null
       };
     }
 
-    // 2. Read Top 5 Loss from Daliy seen sheet
-    const dailySheetName = findMonthlySheet(wb.SheetNames, monthNum, year, ['daliy seen']) ||
-                           findMonthlySheet(wb.SheetNames, monthNum, year, ['daily seen']) ||
-                           wb.SheetNames.find(s => s.toLowerCase().includes('daliy seen') || s.toLowerCase().includes('daily seen')) ||
-                           'Daliy seen Sep2';
+    // 2. Read Top 5 Loss from Daily Seen sheet (e.g. Daliy seen Sep2)
+    const dailySheetName = wb.SheetNames.find(s => {
+      const u = s.toUpperCase();
+      return (u.includes('DALIY SEEN') || u.includes('DAILY SEEN')) && u.includes(mNameUpper);
+    }) || wb.SheetNames.find(s => s.toUpperCase().includes('DALIY SEEN') || s.toUpperCase().includes('DAILY SEEN'));
 
-    const wsDaily = wb.Sheets[dailySheetName];
-
-    if (wsDaily) {
+    if (dailySheetName) {
+      const wsDaily = wb.Sheets[dailySheetName];
       const dailyData = XLSX.utils.sheet_to_json(wsDaily, { header: 1, defval: '' });
       const machineMap = {};
 
@@ -123,17 +148,17 @@ function parseBreakdown(dateStr) {
 
         if (typeof rawDate === 'number') {
           const d = XLSX.SSF.parse_date_code(rawDate);
-          rowDateStr = `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`;
+          if (d) rowDateStr = `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`;
         } else if (typeof rawDate === 'string') {
           rowDateStr = rawDate.trim();
         }
 
         if (rowDateStr === dateStr) {
-          const rawMachine = String(row[2]).trim();
+          const rawMachine = String(row[2] || '').trim();
           if (!rawMachine) return;
 
           const canonicalMachine = getCanonicalMachineName(rawMachine);
-          const durationMin = Number(row[14]) || 0;
+          const durationMin = Number(row[14]) || Number(row[10]) || Number(row[11]) || Number(row[12]) || 0;
 
           if (!machineMap[canonicalMachine]) {
             machineMap[canonicalMachine] = {
@@ -152,13 +177,12 @@ function parseBreakdown(dateStr) {
             action: String(row[6]).trim(),
             fixType: String(row[7]).trim(),
             durationMin: durationMin,
-            jobType: String(row[15]).trim(),
-            fixBy: String(row[17]).trim()
+            jobType: String(row[15] || '').trim(),
+            fixBy: String(row[17] || '').trim()
           });
         }
       });
 
-      // Sort machines by totalDurationMin descending & pick Top 5
       const sortedMachines = Object.values(machineMap).sort((a, b) => b.totalDurationMin - a.totalDurationMin);
       result.topLoss = sortedMachines.slice(0, 5);
     }
