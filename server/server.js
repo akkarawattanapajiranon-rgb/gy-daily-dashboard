@@ -168,6 +168,26 @@ app.get('/api/cms', async (req, res) => {
   });
 });
 
+// Extruder Timeline parser
+const { getExtruderTimeline } = require('./extruder/dayStore');
+const { bangkokProductionDate, ExtruderTimelineInputError } = require('./extruder/buildTimeline');
+
+app.get('/api/extruder-timeline', async (req, res) => {
+  const date = req.query.date || bangkokProductionDate();
+  console.log(`Fetching Extruder Timeline for date: ${date}`);
+  try {
+    const data = await getExtruderTimeline(date);
+    res.setHeader('Cache-Control', 'no-store, max-age=0');
+    res.json(data);
+  } catch (err) {
+    if (err instanceof ExtruderTimelineInputError) {
+      return res.status(400).json({ success: false, error: err.message });
+    }
+    console.error('[extruder-timeline]', err);
+    res.status(500).json({ success: false, error: 'internal error' });
+  }
+});
+
 // Serve built Vite assets AFTER API routes
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 

@@ -19,9 +19,11 @@
     "express": "^5.2.1",
     "firebase": "^12.18.0",
     "lucide-react": "^1.39.0",
+    "oracledb": "^7.0.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "tough-cookie": "^6.0.2"
+    "tough-cookie": "^6.0.2",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",

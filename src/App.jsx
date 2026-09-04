@@ -9,7 +9,8 @@ import FischerReport from './components/FischerReport';
 import QuadReport from './components/QuadReport';
 import TuberReport from './components/TuberReport';
 import WorkawayReport from './components/WorkawayReport';
-import { Calendar, RefreshCw } from 'lucide-react';
+import ExtruderTimeline from './components/extruder-timeline/ExtruderTimeline';
+import { Calendar, RefreshCw, LayoutDashboard, Clock } from 'lucide-react';
 import { 
   fetchWasteData, 
   fetchCmsData, 
@@ -24,6 +25,7 @@ import {
 } from './services/api';
 
 function App() {
+  const [activeTab, setActiveTab] = useState('dor'); // 'dor' | 'extruder'
   const [wasteData, setWasteData] = useState({
     millingSummary: 0,
     frictionSummary: 0,
@@ -137,63 +139,106 @@ function App() {
     <div className="min-h-screen bg-slate-100 p-4 md:p-8 font-sans">
       <div className="max-w-7xl mx-auto space-y-6">
         
-        {/* Header */}
-        <header className="bg-brand-blue text-white rounded-2xl p-6 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            <h1 className="text-2xl md:text-3xl font-black tracking-tight">MU_DOR (Daily Operations Report)</h1>
-            <div className="flex items-center gap-2 mt-2">
-              <Calendar className="w-5 h-5 text-brand-yellow" />
-              <input 
-                type="date" 
-                value={selectedDate} 
-                onChange={handleDateChange}
-                className="bg-white/10 text-white border border-white/20 rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-yellow/50"
-              />
-            </div>
-          </div>
-          <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
-            <div className={`w-2 h-2 rounded-full ${isLoading ? 'bg-brand-yellow animate-pulse' : 'bg-emerald-400 animate-pulse'}`}></div>
-            <span className="text-sm font-medium">{isLoading ? 'Updating...' : 'Live Data'}</span>
-            <button onClick={() => loadData()} disabled={isLoading} className="ml-2 hover:bg-white/20 p-1.5 rounded-md transition-colors" title="Refresh">
-              <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+        {/* Navigation Tabs Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-2.5 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setActiveTab('dor')}
+              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all ${
+                activeTab === 'dor'
+                  ? 'bg-brand-blue text-white shadow-md'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              <LayoutDashboard className="w-4 h-4" />
+              <span>หน้า 1: Daily Operations (MU_DOR)</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('extruder')}
+              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all ${
+                activeTab === 'extruder'
+                  ? 'bg-brand-blue text-white shadow-md'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              <Clock className="w-4 h-4 text-brand-yellow" />
+              <span>หน้า 2: Extruder Timeline</span>
             </button>
           </div>
-        </header>
-
-        {/* Top Grid: Machine OEE, Mixing, Output */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1">
-            <MachineOEE weeklyData={weeklyOeeData} isLoading={isLoading} />
-          </div>
-          <div className="lg:col-span-1">
-            <MixingKPIs data={mixingData} />
-          </div>
-          <div className="lg:col-span-1">
-            <Output3Roll data={output3RollData} rollDetail={roll3Detail} isLoading={isLoading} />
+          <div className="text-xs font-semibold text-slate-400 px-3">
+            {activeTab === 'dor' ? 'Daily Operations Overview' : 'Extruder TAW Timeline & Conformance Monitor'}
           </div>
         </div>
 
-        {/* Fischer Shear Section */}
-        <div className="grid grid-cols-1 gap-6">
-          <FischerReport data={fischerData} isLoading={isLoading} />
-        </div>
+        {/* PAGE 1: Daily Operations Report (MU_DOR) */}
+        {activeTab === 'dor' && (
+          <div className="space-y-6">
+            {/* Header */}
+            <header className="bg-brand-blue text-white rounded-2xl p-6 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
+              <div>
+                <h1 className="text-2xl md:text-3xl font-black tracking-tight">MU_DOR (Daily Operations Report)</h1>
+                <div className="flex items-center gap-2 mt-2">
+                  <Calendar className="w-5 h-5 text-brand-yellow" />
+                  <input 
+                    type="date" 
+                    value={selectedDate} 
+                    onChange={handleDateChange}
+                    className="bg-white/10 text-white border border-white/20 rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-yellow/50"
+                  />
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
+                <div className={`w-2 h-2 rounded-full ${isLoading ? 'bg-brand-yellow animate-pulse' : 'bg-emerald-400 animate-pulse'}`}></div>
+                <span className="text-sm font-medium">{isLoading ? 'Updating...' : 'Live Data'}</span>
+                <button onClick={() => loadData()} disabled={isLoading} className="ml-2 hover:bg-white/20 p-1.5 rounded-md transition-colors" title="Refresh">
+                  <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+                </button>
+              </div>
+            </header>
 
-        {/* Quad & Tuber Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <QuadReport data={quadData} loading={isLoading} />
-          <TuberReport data={tuberData} loading={isLoading} />
-        </div>
+            {/* Top Grid: Machine OEE, Mixing, Output */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-1">
+                <MachineOEE weeklyData={weeklyOeeData} isLoading={isLoading} />
+              </div>
+              <div className="lg:col-span-1">
+                <MixingKPIs data={mixingData} />
+              </div>
+              <div className="lg:col-span-1">
+                <Output3Roll data={output3RollData} rollDetail={roll3Detail} isLoading={isLoading} />
+              </div>
+            </div>
 
-        {/* Workaway Inventory Section */}
-        <div className="grid grid-cols-1 gap-6">
-          <WorkawayReport data={workawayData} isLoading={isLoading} />
-        </div>
+            {/* Fischer Shear Section */}
+            <div className="grid grid-cols-1 gap-6">
+              <FischerReport data={fischerData} isLoading={isLoading} />
+            </div>
 
-        {/* Waste and Breakdown Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <WasteReport data={wasteData} isLoading={isLoading} />
-          <BreakdownStats data={breakdownData} isLoading={isLoading} />
-        </div>
+            {/* Quad & Tuber Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <QuadReport data={quadData} loading={isLoading} />
+              <TuberReport data={tuberData} loading={isLoading} />
+            </div>
+
+            {/* Workaway Inventory Section */}
+            <div className="grid grid-cols-1 gap-6">
+              <WorkawayReport data={workawayData} isLoading={isLoading} />
+            </div>
+
+            {/* Waste and Breakdown Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <WasteReport data={wasteData} isLoading={isLoading} />
+              <BreakdownStats data={breakdownData} isLoading={isLoading} />
+            </div>
+          </div>
+        )}
+
+        {/* PAGE 2: Extruder Timeline Dashboard */}
+        {activeTab === 'extruder' && (
+          <div className="space-y-6">
+            <ExtruderTimeline endpoint="/api/extruder-timeline" pollMs={15000} />
+          </div>
+        )}
 
       </div>
     </div>
