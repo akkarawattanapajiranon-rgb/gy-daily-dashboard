@@ -5,7 +5,75 @@ import { db } from './firebase';
 export async function fetchWasteData(dateStr) {
   const targetDate = dateStr || new Date().toISOString().split('T')[0];
 
-  // 1. Try fetching official Waste Report Excel data from local Express backend
+  // 1. Primary Source: Direct query to Firestore collection 'gy_reports' (same DB as bta-waste-report.vercel.app)
+  try {
+    const q = query(collection(db, 'gy_reports'), where('date', '==', targetDate));
+    const snap = await getDocs(q);
+    if (!snap.empty) {
+      let millingSummary = 0;
+      let frictionSummary = 0;
+      let beadSummary = 0;
+      const millingMap = {};
+      const frictionMap = {};
+      const beadMap = {};
+
+      snap.forEach(doc => {
+        const report = doc.data();
+        const w = Number(report.weight) || 0;
+        const code = String(report.defectCode || report.materialCode || 'Waste').trim();
+        const reason = String(report.defectName || report.cause || code).trim();
+        const wasteType = (report.wasteType || '').trim().toLowerCase();
+        const dept = (report.dept || report.department || '').trim().toLowerCase();
+
+        // Exact match logic with bta-waste-report.vercel.app dashboard
+        let cat = 'Friction';
+        if (wasteType === 'milling' || (wasteType !== 'bead' && (dept.includes('milling') || dept.includes('mixing') || dept.includes('compound') || dept.includes('extruder')))) {
+          cat = 'Milling';
+        } else if (wasteType === 'bead' || dept.includes('bead') || dept.includes('130')) {
+          cat = 'Bead';
+        } else {
+          cat = 'Friction';
+        }
+
+        if (cat === 'Bead') {
+          beadSummary += w;
+          if (!beadMap[code]) beadMap[code] = { code, amount: 0, reason };
+          beadMap[code].amount += w;
+        } else if (cat === 'Milling') {
+          millingSummary += w;
+          if (!millingMap[code]) millingMap[code] = { code, amount: 0, reason };
+          millingMap[code].amount += w;
+        } else {
+          frictionSummary += w;
+          if (!frictionMap[code]) frictionMap[code] = { code, amount: 0, reason };
+          frictionMap[code].amount += w;
+        }
+      });
+
+      const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+      const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+      const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+
+      millingTop.forEach((item, index) => { item.isHigh = index < 2; });
+      frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
+      beadTop.forEach((item, index) => { item.isHigh = index < 2; });
+
+      return {
+        millingSummary: Number(millingSummary.toFixed(1)),
+        frictionSummary: Number(frictionSummary.toFixed(1)),
+        beadSummary: Number(beadSummary.toFixed(1)),
+        millingTop,
+        frictionTop,
+        beadTop,
+        dataDate: targetDate,
+        hasData: true
+      };
+    }
+  } catch (fsErr) {
+    console.warn('Direct Firestore query failed, falling back to backend server...', fsErr.message);
+  }
+
+  // 2. Secondary Source: Local Express backend (/api/waste?date=...)
   try {
     const res = await fetch(`/api/waste?date=${targetDate}`);
     if (res.ok) {
@@ -18,22 +86,17 @@ export async function fetchWasteData(dateStr) {
     console.warn('Backend waste fetch failed, attempting Vercel API query...', err.message);
   }
 
-  // 2. Fetch from Vercel API endpoints (bta-waste-report.vercel.app)
+  // 3. Fallback: Fetch from Vercel API endpoint (/api/reports)
   try {
     let reports = null;
-    
-    // 2.1 Try target URL requested: /api/get-all-waste
     try {
       const gRes = await fetch('https://bta-waste-report.vercel.app/api/get-all-waste');
       if (gRes.ok) {
         const json = await gRes.json();
         reports = Array.isArray(json) ? json : (json.reports || json.data || json.waste || null);
       }
-    } catch (gErr) {
-      console.warn('get-all-waste endpoint failed:', gErr.message);
-    }
+    } catch (gErr) {}
 
-    // 2.2 Fallback to /api/reports if get-all-waste failed or exceeded Firebase quota
     if (!reports || !Array.isArray(reports)) {
       const rRes = await fetch('https://bta-waste-report.vercel.app/api/reports');
       if (rRes.ok) {
@@ -56,15 +119,14 @@ export async function fetchWasteData(dateStr) {
           const w = Number(report.weight) || 0;
           const code = String(report.defectCode || report.materialCode || 'Waste').trim();
           const reason = String(report.defectName || report.cause || code).trim();
-          const wasteType = (report.wasteType || '').toLowerCase();
-          const dept = (report.dept || report.department || '').toLowerCase();
+          const wasteType = (report.wasteType || '').trim().toLowerCase();
+          const dept = (report.dept || report.department || '').trim().toLowerCase();
 
-          // Strict 3-category isolation: Check Bead first!
           let cat = 'Friction';
-          if (wasteType === 'bead' || dept.includes('bead') || dept.includes('130') || dept.includes('42') || code.startsWith('B') || reason.toLowerCase().includes('bead')) {
-            cat = 'Bead';
-          } else if (wasteType === 'milling' || dept.includes('milling') || dept.includes('compound') || dept.includes('extruder') || dept.includes('135') || dept.includes('136') || dept.includes('137') || dept.includes('138') || dept.includes('139') || dept.includes('140') || code.startsWith('M')) {
+          if (wasteType === 'milling' || (wasteType !== 'bead' && (dept.includes('milling') || dept.includes('mixing') || dept.includes('compound') || dept.includes('extruder')))) {
             cat = 'Milling';
+          } else if (wasteType === 'bead' || dept.includes('bead') || dept.includes('130')) {
+            cat = 'Bead';
           } else {
             cat = 'Friction';
           }
