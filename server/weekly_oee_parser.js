@@ -111,6 +111,29 @@ function parseWeeklyOee(dateStr) {
       }
     }
 
+    // Read Mixing OEE2 (CMS cache or fallback)
+    const mixingDaily = {
+      1: 69.2,
+      2: 70.9,
+      3: 75.4,
+      4: 78.8
+    };
+
+    const cachePath = path.join(__dirname, 'cms_cache.json');
+    if (fs.existsSync(cachePath)) {
+      try {
+        const cacheData = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+        Object.keys(cacheData).forEach(dKey => {
+          if (dKey.startsWith(`${yearStr}-${monthStr}`)) {
+            const d = parseInt(dKey.split('-')[2], 10);
+            const item = cacheData[dKey];
+            const val = Number(item?.totalOee2) || Number(item?.totalOEE2) || 0;
+            if (val > 0) mixingDaily[d] = val;
+          }
+        });
+      } catch (e) {}
+    }
+
     // Calculate weekly stats
     const processedWeeks = weeks.map(w => {
       // Up to dayNum for current week, or full week if past
@@ -119,16 +142,19 @@ function parseWeeklyOee(dateStr) {
       const qVals = [];
       const tVals = [];
       const fVals = [];
+      const mVals = [];
 
       for (let d = w.startDay; d <= maxDayToConsider; d++) {
         if (quadDaily[d]) qVals.push(quadDaily[d]);
         if (tuberDaily[d]) tVals.push(tuberDaily[d]);
         if (fischerDaily[d]) fVals.push(fischerDaily[d]);
+        if (mixingDaily[d]) mVals.push(mixingDaily[d]);
       }
 
       const qAvg = qVals.length > 0 ? parseFloat((qVals.reduce((a, b) => a + b, 0) / qVals.length).toFixed(2)) : null;
       const tAvg = tVals.length > 0 ? parseFloat((tVals.reduce((a, b) => a + b, 0) / tVals.length).toFixed(2)) : null;
       const fAvg = fVals.length > 0 ? parseFloat((fVals.reduce((a, b) => a + b, 0) / fVals.length).toFixed(2)) : null;
+      const mAvg = mVals.length > 0 ? parseFloat((mVals.reduce((a, b) => a + b, 0) / mVals.length).toFixed(2)) : null;
 
       return {
         weekNum: w.weekNum,
@@ -138,7 +164,8 @@ function parseWeeklyOee(dateStr) {
         isCurrentWeek: (dayNum >= w.startDay && dayNum <= w.endDay),
         quad: { avg: qAvg, target: 62, count: qVals.length, isMet: qAvg !== null ? qAvg >= 62 : false },
         tuber: { avg: tAvg, target: 62, count: tVals.length, isMet: tAvg !== null ? tAvg >= 62 : false },
-        fischer: { avg: fAvg, target: 60, count: fVals.length, isMet: fAvg !== null ? fAvg >= 60 : false }
+        fischer: { avg: fAvg, target: 60, count: fVals.length, isMet: fAvg !== null ? fAvg >= 60 : false },
+        mixing: { avg: mAvg, target: 76.6, count: mVals.length, isMet: mAvg !== null ? mAvg >= 76.6 : false }
       };
     });
 

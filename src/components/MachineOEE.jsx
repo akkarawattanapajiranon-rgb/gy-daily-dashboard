@@ -26,6 +26,7 @@ export default function MachineOEE({ weeklyData, isLoading }) {
   const quad = currentWeekObj.quad || { avg: null, target: 62 };
   const tuber = currentWeekObj.tuber || { avg: null, target: 62 };
   const fischer = currentWeekObj.fischer || { avg: null, target: 60 };
+  const mixing = currentWeekObj.mixing || { avg: null, target: 76.6 };
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 h-full flex flex-col justify-between space-y-4">
@@ -79,7 +80,12 @@ export default function MachineOEE({ weeklyData, isLoading }) {
       )}
 
       {/* Machine OEE Bars */}
-      <div className="space-y-4 my-auto">
+      <div className="space-y-3.5 my-auto">
+        <OEEBar
+          label="Mixing (Total OEE2)"
+          value={mixing.avg}
+          target={76.6}
+        />
         <OEEBar
           label="QUAD"
           value={quad.avg}
