@@ -22,17 +22,23 @@ export async function fetchWasteData(dateStr) {
         const w = Number(report.weight) || 0;
         const code = String(report.defectCode || report.materialCode || 'Waste').trim();
         const reason = String(report.defectName || report.cause || code).trim();
-        const wasteType = (report.wasteType || '').trim().toLowerCase();
-        const dept = (report.dept || report.department || '').trim().toLowerCase();
+        const wasteType = String(report.wasteType || '').trim();
+        const materialCode = String(report.materialCode || '').trim();
+        const dept = String(report.dept || '').trim();
 
-        // Exact match logic with bta-waste-report.vercel.app dashboard
+        // Exact Vercel algorithm:
+        // 1. Milling: r.wasteType === 'Milling'
+        // 2. Bead: r.wasteType === 'Friction' (or Bead) AND (materialCode === 'G' || materialCode === 'A' || wasteType === 'Bead')
+        // 3. Friction: remaining Friction items
         let cat = 'Friction';
-        if (wasteType === 'milling' || (wasteType !== 'bead' && (dept.includes('milling') || dept.includes('mixing') || dept.includes('compound') || dept.includes('extruder')))) {
+        if (wasteType.toLowerCase() === 'milling') {
           cat = 'Milling';
-        } else if (wasteType === 'bead' || dept.includes('bead') || dept.includes('130')) {
-          cat = 'Bead';
         } else {
-          cat = 'Friction';
+          if (materialCode === 'G' || materialCode === 'A' || wasteType.toLowerCase() === 'bead') {
+            cat = 'Bead';
+          } else {
+            cat = 'Friction';
+          }
         }
 
         if (cat === 'Bead') {
@@ -119,16 +125,19 @@ export async function fetchWasteData(dateStr) {
           const w = Number(report.weight) || 0;
           const code = String(report.defectCode || report.materialCode || 'Waste').trim();
           const reason = String(report.defectName || report.cause || code).trim();
-          const wasteType = (report.wasteType || '').trim().toLowerCase();
-          const dept = (report.dept || report.department || '').trim().toLowerCase();
+          const wasteType = String(report.wasteType || '').trim();
+          const materialCode = String(report.materialCode || '').trim();
+          const dept = String(report.dept || '').trim();
 
           let cat = 'Friction';
-          if (wasteType === 'milling' || (wasteType !== 'bead' && (dept.includes('milling') || dept.includes('mixing') || dept.includes('compound') || dept.includes('extruder')))) {
+          if (wasteType.toLowerCase() === 'milling') {
             cat = 'Milling';
-          } else if (wasteType === 'bead' || dept.includes('bead') || dept.includes('130')) {
-            cat = 'Bead';
           } else {
-            cat = 'Friction';
+            if (materialCode === 'G' || materialCode === 'A' || wasteType.toLowerCase() === 'bead') {
+              cat = 'Bead';
+            } else {
+              cat = 'Friction';
+            }
           }
 
           if (cat === 'Bead') {
