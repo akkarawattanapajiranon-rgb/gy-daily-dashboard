@@ -3,25 +3,25 @@
     "data": {
       "date": "2026-09-04",
       "mixing1": {
-        "batch": 214,
-        "ar": 88.8,
+        "batch": 220,
+        "ar": 88.7,
         "pr": 87.5,
-        "qr": 87.1,
-        "oee2": 67.6
+        "qr": 87.4,
+        "oee2": 67.8
       },
       "mixing2": {
-        "batch": 210,
+        "batch": 217,
         "ar": 88.6,
-        "pr": 92.3,
+        "pr": 91.9,
         "qr": 100,
-        "oee2": 81.8
+        "oee2": 81.4
       },
-      "totalAr": 88.7,
-      "totalPr": 89.9,
-      "totalQr": 93.3,
+      "totalAr": 88.6,
+      "totalPr": 89.7,
+      "totalQr": 93.5,
       "totalOee2": 74.3
     },
-    "timestamp": 1788507577679
+    "timestamp": 1788508402985
   },
   "2026-09-05": {
     "data": {
@@ -70,7 +70,7 @@
       "totalQr": 93.9,
       "totalOee2": 75.4
     },
-    "timestamp": 1788507579080
+    "timestamp": 1788508406386
   },
   "2026-09-02": {
     "data": {
@@ -94,7 +94,7 @@
       "totalQr": 93.9,
       "totalOee2": 70.9
     },
-    "timestamp": 1788507580496
+    "timestamp": 1788508409730
   },
   "2026-09-01": {
     "data": {
@@ -118,7 +118,7 @@
       "totalQr": 95,
       "totalOee2": 69.2
     },
-    "timestamp": 1788507581906
+    "timestamp": 1788508412964
   },
   "2026-08-30": {
     "data": {
@@ -142,7 +142,7 @@
       "totalQr": 91.5,
       "totalOee2": 73.2
     },
-    "timestamp": 1788507572181
+    "timestamp": 1788508428501
   },
   "2026-08-31": {
     "data": {
@@ -166,6 +166,30 @@
       "totalQr": 0,
       "totalOee2": 0
     },
-    "timestamp": 1788507565962
+    "timestamp": 1788508415721
+  },
+  "2026-08-29": {
+    "data": {
+      "date": "2026-08-29",
+      "mixing1": {
+        "batch": 659,
+        "ar": 88.2,
+        "pr": 86.5,
+        "qr": 89.7,
+        "oee2": 68.4
+      },
+      "mixing2": {
+        "batch": 677,
+        "ar": 90.3,
+        "pr": 88,
+        "qr": 100,
+        "oee2": 79.5
+      },
+      "totalAr": 89.3,
+      "totalPr": 87.3,
+      "totalQr": 94.7,
+      "totalOee2": 73.8
+    },
+    "timestamp": 1788508434750
   }
 }

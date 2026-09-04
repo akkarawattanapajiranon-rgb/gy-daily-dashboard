@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-04T07:39:15.892Z",
+  "generatedAt": "2026-09-04T07:53:21.503Z",
   "waste": {
     "date": "2026-09-04",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-04",
     "mixing1": {
-      "batch": 214,
-      "ar": 88.8,
+      "batch": 219,
+      "ar": 88.6,
       "pr": 87.5,
-      "qr": 87.1,
-      "oee2": 67.6
+      "qr": 87.4,
+      "oee2": 67.7
     },
     "mixing2": {
-      "batch": 209,
+      "batch": 217,
       "ar": 88.6,
-      "pr": 92.3,
+      "pr": 91.9,
       "qr": 100,
-      "oee2": 81.8
+      "oee2": 81.4
     },
-    "totalAr": 88.7,
-    "totalPr": 89.9,
-    "totalQr": 93.2,
-    "totalOee2": 74.4
+    "totalAr": 88.6,
+    "totalPr": 89.7,
+    "totalQr": 93.4,
+    "totalOee2": 74.3
   },
-  "target3Roll": 24,
+  "target3Roll": 26,
   "breakdown": {
     "_file": "Issue log 2026 _Sep2026.xlsx",
     "_sheet": "SEP2026",
@@ -121,58 +121,58 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 24,
-    "totalRelease": 24,
-    "totalHold": 3,
-    "totalPending": 14,
+    "totalRolls": 26,
+    "totalRelease": 26,
+    "totalHold": 2,
+    "totalPending": 13,
     "totalScheduled": 41,
     "codeBreakdown": [
       {
         "code": "RP08",
         "count": 8,
-        "percentage": 33.33
+        "percentage": 30.77
       },
       {
         "code": "RU53",
         "count": 8,
-        "percentage": 33.33
+        "percentage": 30.77
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 16.67
+        "percentage": 15.38
       },
       {
         "code": "RT27",
         "count": 2,
-        "percentage": 8.33
+        "percentage": 7.69
+      },
+      {
+        "code": "JR45",
+        "count": 2,
+        "percentage": 7.69
       },
       {
         "code": "JR11",
         "count": 1,
-        "percentage": 4.17
+        "percentage": 3.85
       },
       {
-        "code": "JR45",
+        "code": "N815",
         "count": 1,
-        "percentage": 4.17
+        "percentage": 3.85
       }
     ],
     "holdBreakdown": [
       {
         "code": "DDSV",
         "count": 1,
-        "percentage": 33.33
+        "percentage": 50
       },
       {
         "code": "EESV",
         "count": 1,
-        "percentage": 33.33
-      },
-      {
-        "code": "JR45",
-        "count": 1,
-        "percentage": 33.33
+        "percentage": 50
       }
     ],
     "hasData": true

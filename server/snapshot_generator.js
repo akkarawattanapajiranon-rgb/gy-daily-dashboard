@@ -16,6 +16,21 @@ const CLIENT_SNAPSHOT_DIR = path.join(__dirname, '..', 'src', 'data', 'snapshots
 if (!fs.existsSync(SNAPSHOT_DIR)) fs.mkdirSync(SNAPSHOT_DIR, { recursive: true });
 if (!fs.existsSync(CLIENT_SNAPSHOT_DIR)) fs.mkdirSync(CLIENT_SNAPSHOT_DIR, { recursive: true });
 
+const { initializeApp } = require('firebase/app');
+const { getFirestore, doc, setDoc } = require('firebase/firestore');
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCg4iz5Jd0Ov2r-uWQkSNB0h1bG-0u50EI",
+  authDomain: "gy-waste-report.firebaseapp.com",
+  projectId: "gy-waste-report",
+  storageBucket: "gy-waste-report.firebasestorage.app",
+  messagingSenderId: "370824101494",
+  appId: "1:370824101494:web:65d088cdcffc0cf2706957"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 async function generateSnapshot(dateStr) {
   console.log(`[Snapshot Generator] Building daily snapshot for ${dateStr}...`);
   try {
@@ -51,6 +66,16 @@ async function generateSnapshot(dateStr) {
     fs.writeFileSync(path.join(CLIENT_SNAPSHOT_DIR, fileName), JSON.stringify(snapshot, null, 2), 'utf8');
 
     console.log(`[Snapshot Generator] Successfully saved ${fileName} (${(JSON.stringify(snapshot).length / 1024).toFixed(1)} KB)`);
+
+    // Save to Firebase Firestore
+    try {
+      const docRef = doc(db, 'daily_snapshots', dateStr);
+      await setDoc(docRef, snapshot);
+      console.log(`[Snapshot Generator] Uploaded ${dateStr} snapshot to Firebase Firestore!`);
+    } catch (fbErr) {
+      console.warn(`[Snapshot Generator] Firebase upload warning:`, fbErr.message);
+    }
+
     return snapshot;
   } catch (err) {
     console.error(`[Snapshot Generator] Error generating snapshot for ${dateStr}:`, err.message);

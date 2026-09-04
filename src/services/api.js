@@ -1,6 +1,19 @@
 import { mockData } from '../data/mockData';
-import { collection, query, where, getDocs, limit, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs, limit, orderBy, doc, getDoc } from 'firebase/firestore';
 import { db } from './firebase';
+
+export async function getFirebaseSnapshot(dateStr) {
+  try {
+    const docRef = doc(db, 'daily_snapshots', dateStr);
+    const snap = await getDoc(docRef);
+    if (snap.exists()) {
+      return snap.data();
+    }
+  } catch (e) {
+    console.warn(`Firebase snapshot query for ${dateStr} failed:`, e.message);
+  }
+  return null;
+}
 
 export async function fetchWasteData(dateStr) {
   const targetDate = dateStr || new Date().toISOString().split('T')[0];
@@ -26,10 +39,6 @@ export async function fetchWasteData(dateStr) {
         const materialCode = String(report.materialCode || '').trim();
         const dept = String(report.dept || '').trim();
 
-        // Exact Vercel algorithm:
-        // 1. Milling: r.wasteType === 'Milling'
-        // 2. Bead: r.wasteType === 'Friction' (or Bead) AND (materialCode === 'G' || materialCode === 'A' || wasteType === 'Bead')
-        // 3. Friction: remaining Friction items
         let cat = 'Friction';
         if (wasteType.toLowerCase() === 'milling') {
           cat = 'Milling';
@@ -92,7 +101,13 @@ export async function fetchWasteData(dateStr) {
     console.warn('Backend waste fetch failed, attempting Vercel API query...', err.message);
   }
 
-  // 3. Fallback: Fetch from Vercel API endpoint (/api/reports)
+  // 3. Fallback: Firebase Snapshot
+  const snapshot = await getFirebaseSnapshot(targetDate);
+  if (snapshot && snapshot.waste) {
+    return snapshot.waste;
+  }
+
+  // 4. Fallback: Fetch from Vercel API endpoint (/api/reports)
   try {
     let reports = null;
     try {
@@ -179,7 +194,6 @@ export async function fetchWasteData(dateStr) {
     console.warn('Vercel waste fetch failed:', vErr.message);
   }
 
-  // 3. Fallback when no data exists for targetDate
   return {
     millingSummary: 0,
     frictionSummary: 0,
@@ -194,7 +208,7 @@ export async function fetchWasteData(dateStr) {
 
 export async function fetchCmsData(dateStr) {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
 
   try {
     let url = '/api/cms';
@@ -207,8 +221,10 @@ export async function fetchCmsData(dateStr) {
     
     return await res.json();
   } catch (err) {
-    console.error('CMS Fetch Error:', err);
-    return null; // Return null so App.jsx handles fallback via mock state if needed, though App.jsx does partial update
+    console.warn('CMS Fetch Error, checking Firebase snapshot...', err.message);
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.cms) return snap.cms;
+    return null;
   }
 }
 
@@ -219,12 +235,7 @@ export async function fetchTarget3Roll(dateStr) {
     
     const plansData = await res.json();
     let totalRolls = 0;
-    
-    // plansData might be an object or array depending on how it was saved in RTDB.
-    // If it's an object with push IDs as keys, convert to array.
     const plans = Array.isArray(plansData) ? plansData : Object.values(plansData || {});
-
-    // Find the plan for the selected date
     const targetPlan = plans.find(plan => plan.date === dateStr);
     
     if (targetPlan && targetPlan.jobs) {
@@ -233,7 +244,8 @@ export async function fetchTarget3Roll(dateStr) {
     
     return totalRolls;
   } catch (err) {
-    console.error('Target 3 Roll Fetch Error:', err);
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.target3Roll !== undefined) return snap.target3Roll;
     return null;
   }
 }
@@ -242,10 +254,11 @@ export async function fetchBreakdownData(dateStr) {
   try {
     const url = `/api/breakdown?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error('Failed breakdown fetch');
     return await res.json();
   } catch (err) {
-    console.error('Breakdown Fetch Error:', err);
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.breakdown) return snap.breakdown;
     return null;
   }
 }
@@ -254,10 +267,11 @@ export async function fetchFischerData(dateStr) {
   try {
     const url = `/api/fischer?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error('Failed fischer fetch');
     return await res.json();
   } catch (err) {
-    console.error('Fischer Fetch Error:', err);
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.fischer) return snap.fischer;
     return null;
   }
 }
@@ -266,10 +280,11 @@ export async function fetch3RollDetail(dateStr) {
   try {
     const url = `/api/3roll?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error('Failed 3roll fetch');
     return await res.json();
   } catch (err) {
-    console.error('3 Roll Fetch Error:', err);
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.roll3) return snap.roll3;
     return null;
   }
 }
@@ -278,10 +293,11 @@ export async function fetchQuadDetail(dateStr) {
   try {
     const url = `/api/quad?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error('Failed quad fetch');
     return await res.json();
   } catch (err) {
-    console.error('Quad Fetch Error:', err);
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.quad) return snap.quad;
     return null;
   }
 }
@@ -290,10 +306,11 @@ export async function fetchTuberDetail(dateStr) {
   try {
     const url = `/api/tuber?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error('Failed tuber fetch');
     return await res.json();
   } catch (err) {
-    console.error('Tuber Fetch Error:', err);
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.tuber) return snap.tuber;
     return null;
   }
 }
@@ -302,10 +319,11 @@ export async function fetchWorkawayData(dateStr) {
   try {
     const url = `/api/workaway?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error('Failed workaway fetch');
     return await res.json();
   } catch (err) {
-    console.error('Workaway Fetch Error:', err);
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.workaway) return snap.workaway;
     return null;
   }
 }
@@ -314,10 +332,11 @@ export async function fetchWeeklyOeeData(dateStr) {
   try {
     const url = `/api/oee-weekly?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error('Failed weekly oee fetch');
     return await res.json();
   } catch (err) {
-    console.error('Weekly OEE Fetch Error:', err);
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.weeklyOee) return snap.weeklyOee;
     return null;
   }
 }
