@@ -5,7 +5,7 @@ import { db } from './firebase';
 export async function fetchWasteData(dateStr) {
   const targetDate = dateStr || new Date().toISOString().split('T')[0];
 
-  // 1. Try fetching official Waste Report Excel data from backend
+  // 1. Try fetching official Waste Report Excel data from local Express backend
   try {
     const res = await fetch(`/api/waste?date=${targetDate}`);
     if (res.ok) {
@@ -15,84 +15,86 @@ export async function fetchWasteData(dateStr) {
       }
     }
   } catch (err) {
-    console.warn('Backend waste fetch failed, attempting Firestore query...', err.message);
+    console.warn('Backend waste fetch failed, attempting Vercel API query...', err.message);
   }
 
-  // 2. Fallback to Firestore query
+  // 2. Fetch from Vercel API endpoint (bta-waste-report.vercel.app)
   try {
-    const q = query(collection(db, 'gy_reports'), where('date', '==', targetDate));
-    const snapshot = await getDocs(q);
-    
-    const recentReports = [];
-    snapshot.forEach(doc => recentReports.push(doc.data()));
+    const vRes = await fetch('https://bta-waste-report.vercel.app/api/reports');
+    if (vRes.ok) {
+      const reports = await vRes.json();
+      if (Array.isArray(reports)) {
+        const dayReports = reports.filter(r => r.date === targetDate);
+        if (dayReports.length > 0) {
+          let millingSummary = 0;
+          let frictionSummary = 0;
+          let beadSummary = 0;
+          const millingMap = {};
+          const frictionMap = {};
+          const beadMap = {};
 
-    let millingSummary = 0;
-    let frictionSummary = 0;
-    let beadSummary = 0;
-    const millingMap = {};
-    const frictionMap = {};
-    const beadMap = {};
+          dayReports.forEach(report => {
+            const w = Number(report.weight) || 0;
+            const code = String(report.defectCode || report.materialCode || 'Waste').trim();
+            const reason = String(report.defectName || report.cause || code).trim();
+            const wasteType = (report.wasteType || '').toLowerCase();
+            const dept = (report.dept || report.department || '').toLowerCase();
 
-    recentReports.forEach(report => {
-      const w = Number(report.weight) || 0;
-      const key = report.defectCode;
-      const reason = report.defectName || 'Unknown';
-      const wasteType = (report.wasteType || '').toLowerCase();
-      const dept = (report.department || '').toLowerCase();
+            let cat = 'Friction';
+            if (wasteType === 'milling' || dept.includes('milling') || dept.includes('compound') || dept.includes('extruder')) {
+              cat = 'Milling';
+            } else if (wasteType === 'bead' || dept.includes('bead')) {
+              cat = 'Bead';
+            } else if (wasteType === 'friction' || dept.includes('friction') || dept.includes('roll') || dept.includes('band')) {
+              cat = 'Friction';
+            } else {
+              if (code.startsWith('M') || reason.toLowerCase().includes('lumpy') || reason.toLowerCase().includes('clean')) {
+                cat = 'Milling';
+              } else if (code.startsWith('B') || reason.toLowerCase().includes('bead')) {
+                cat = 'Bead';
+              } else {
+                cat = 'Friction';
+              }
+            }
 
-      if (wasteType === 'milling' || dept.includes('milling')) {
-        millingSummary += w;
-        if (!millingMap[key]) millingMap[key] = { code: key, amount: 0, reason };
-        millingMap[key].amount += w;
-      } else if (wasteType === 'bead' || dept.includes('bead')) {
-        beadSummary += w;
-        if (!beadMap[key]) beadMap[key] = { code: key, amount: 0, reason };
-        beadMap[key].amount += w;
-      } else {
-        frictionSummary += w;
-        if (!frictionMap[key]) frictionMap[key] = { code: key, amount: 0, reason };
-        frictionMap[key].amount += w;
+            if (cat === 'Bead') {
+              beadSummary += w;
+              if (!beadMap[code]) beadMap[code] = { code, amount: 0, reason };
+              beadMap[code].amount += w;
+            } else if (cat === 'Milling') {
+              millingSummary += w;
+              if (!millingMap[code]) millingMap[code] = { code, amount: 0, reason };
+              millingMap[code].amount += w;
+            } else {
+              frictionSummary += w;
+              if (!frictionMap[code]) frictionMap[code] = { code, amount: 0, reason };
+              frictionMap[code].amount += w;
+            }
+          });
+
+          const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+          const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+          const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+
+          millingTop.forEach((item, index) => { item.isHigh = index < 2; });
+          frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
+          beadTop.forEach((item, index) => { item.isHigh = index < 2; });
+
+          return {
+            millingSummary: Number(millingSummary.toFixed(1)),
+            frictionSummary: Number(frictionSummary.toFixed(1)),
+            beadSummary: Number(beadSummary.toFixed(1)),
+            millingTop,
+            frictionTop,
+            beadTop,
+            dataDate: targetDate,
+            hasData: true
+          };
+        }
       }
-    });
-
-    const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-    const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-    const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-
-    millingTop.forEach((item, index) => { item.isHigh = index < 2; });
-    frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
-    beadTop.forEach((item, index) => { item.isHigh = index < 2; });
-
-    const deptMap = {};
-    recentReports.forEach(report => {
-      const w = Number(report.weight) || 0;
-      const deptName = report.department || report.wasteType || 'Other';
-      if (!deptMap[deptName]) deptMap[deptName] = 0;
-      deptMap[deptName] += w;
-    });
-
-    const totalWeight = millingSummary + frictionSummary + beadSummary;
-    const deptBreakdown = Object.entries(deptMap).map(([dept, amount]) => ({
-      dept,
-      amount: Number(amount.toFixed(1)),
-      percentage: totalWeight > 0 ? parseFloat((amount / totalWeight * 100).toFixed(1)) : 0
-    })).sort((a, b) => b.amount - a.amount);
-
-    if (recentReports.length > 0) {
-      return {
-        millingSummary: Number(millingSummary.toFixed(1)),
-        frictionSummary: Number(frictionSummary.toFixed(1)),
-        beadSummary: Number(beadSummary.toFixed(1)),
-        millingTop,
-        frictionTop,
-        beadTop,
-        deptBreakdown,
-        deptDetailsMap: deptMap,
-        dataDate: targetDate
-      };
     }
-  } catch (err) {
-    console.error('Firebase Fetch Error:', err);
+  } catch (vErr) {
+    console.warn('Vercel waste fetch failed:', vErr.message);
   }
 
   // 3. Fallback when no data exists for targetDate
