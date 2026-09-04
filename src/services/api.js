@@ -310,6 +310,19 @@ export async function fetchWorkawayData(dateStr) {
   }
 }
 
+export async function fetchWeeklyOeeData(dateStr) {
+  try {
+    const url = `/api/oee-weekly?date=${dateStr}`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (err) {
+    console.error('Weekly OEE Fetch Error:', err);
+    return null;
+  }
+}
+
+
 
 
 

@@ -50,6 +50,20 @@ app.get('/api/3roll', (req, res) => {
   res.json(data);
 });
 
+// Weekly OEE parser (reads QUAD, TUBER, FISCHER OEE for WTD AVG)
+const { parseWeeklyOee } = require('./weekly_oee_parser');
+
+// Weekly OEE API endpoint
+app.get('/api/oee-weekly', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  console.log(`Fetching Weekly OEE WTD data for date: ${date}`);
+  const data = parseWeeklyOee(date);
+  if (data.error) {
+    return res.status(404).json({ error: data.error });
+  }
+  res.json(data);
+});
+
 // Workaway parser (reads Disposition Non-moving Excel on T: drive)
 const { parseWorkawayData } = require('./workaway_parser');
 

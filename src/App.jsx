@@ -19,7 +19,8 @@ import {
   fetch3RollDetail,
   fetchQuadDetail,
   fetchTuberDetail,
-  fetchWorkawayData
+  fetchWorkawayData,
+  fetchWeeklyOeeData
 } from './services/api';
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
   const [quadData, setQuadData] = useState(null);
   const [tuberData, setTuberData] = useState(null);
   const [workawayData, setWorkawayData] = useState(null);
+  const [weeklyOeeData, setWeeklyOeeData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedDate, setSelectedDate] = useState(() => {
@@ -59,7 +61,7 @@ function App() {
     setIsLoading(true);
     try {
       const dateToFetch = dateStr || selectedDate;
-      const [waste, cms, target3Roll, breakdown, fischer, roll3, quad, tuber, workaway] = await Promise.all([
+      const [waste, cms, target3Roll, breakdown, fischer, roll3, quad, tuber, workaway, weeklyOee] = await Promise.all([
         fetchWasteData(dateToFetch),
         fetchCmsData(dateToFetch),
         fetchTarget3Roll(dateToFetch),
@@ -68,7 +70,8 @@ function App() {
         fetch3RollDetail(dateToFetch),
         fetchQuadDetail(dateToFetch),
         fetchTuberDetail(dateToFetch),
-        fetchWorkawayData(dateToFetch)
+        fetchWorkawayData(dateToFetch),
+        fetchWeeklyOeeData(dateToFetch)
       ]);
 
       if (waste) {
@@ -113,6 +116,7 @@ function App() {
       setQuadData(quad);
       setTuberData(tuber);
       setWorkawayData(workaway);
+      setWeeklyOeeData(weeklyOee);
     } catch (error) {
       console.error('Error in loadData:', error);
     } finally {
@@ -126,13 +130,6 @@ function App() {
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
-  };
-
-  // Dynamic Machine OEE 2 values (Strictly matched with reports below; null when no data)
-  const machineOEEData = {
-    quad: quadData?.oee?.hasData ? quadData.oee.oee2_pct : null,
-    tuber6x8: tuberData?.oee?.hasData ? tuberData.oee.oee2_pct : null,
-    fiscer: fischerData?.oee?.hasData ? fischerData.oee.oee2_pct : null
   };
 
 
@@ -169,7 +166,7 @@ function App() {
             <MixingKPIs data={mixingData} />
           </div>
           <div className="lg:col-span-1">
-            <MachineOEE data={machineOEEData} />
+            <MachineOEE weeklyData={weeklyOeeData} isLoading={isLoading} />
           </div>
           <div className="lg:col-span-1">
             <Output3Roll data={output3RollData} rollDetail={roll3Detail} isLoading={isLoading} />
