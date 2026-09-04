@@ -30,23 +30,37 @@ function getQuadOee(dateStr) {
 
   const wb = XLSX.readFile(file);
   
-  // Find matching 2026 Quad sheet for selected month
-  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['quad']) ||
-                    wb.SheetNames.find(s => s.toLowerCase().includes('quad')) ||
-                    wb.SheetNames[0];
-
-  const ws = wb.Sheets[sheetName];
-  if (!ws) return { error: `Sheet ${sheetName} not found` };
-
-  const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+  // Find matching 2026 Quad sheet for selected month, with fallback across sheets if empty
+  const candidateNames = [];
+  const primarySheet = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['quad']);
+  if (primarySheet) candidateNames.push(primarySheet);
+  wb.SheetNames.forEach(s => {
+    if (!candidateNames.includes(s)) candidateNames.push(s);
+  });
 
   let dayRow = null;
-  data.slice(2).forEach(r => {
-    const d = parseInt(r[0], 10);
-    if (d === dayNum) {
-      dayRow = r;
+  for (const sName of candidateNames) {
+    const ws = wb.Sheets[sName];
+    if (!ws) continue;
+    const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+    for (const r of data.slice(2)) {
+      const d = parseInt(r[0], 10);
+      if (d === dayNum) {
+        const srVal = Number(r[1]) || 0;
+        const arVal = Number(r[3]) || 0;
+        const prVal = Number(r[4]) || 0;
+        const oee2Val = Number(r[8]) || Number(r[7]) || 0;
+        if (srVal > 0 || arVal > 0 || prVal > 0 || oee2Val > 0) {
+          dayRow = r;
+          break;
+        }
+        if (!dayRow) dayRow = r;
+      }
     }
-  });
+    if (dayRow && (Number(dayRow[1]) > 0 || Number(dayRow[3]) > 0 || Number(dayRow[8]) > 0)) {
+      break;
+    }
+  }
 
   if (!dayRow) return { hasData: false };
 
@@ -54,8 +68,16 @@ function getQuadOee(dateStr) {
   const ar = Number(dayRow[3]) || 0;
   const pr = Number(dayRow[4]) || 0;
   const qr = Number(dayRow[5]) || 0;
-  const oee1 = Number(dayRow[7]) || 0;
-  const oee2 = Number(dayRow[8]) || 0;
+  
+  let oee1 = 0;
+  let oee2 = 0;
+  if (dayRow[8] !== '' && dayRow[8] !== undefined && !isNaN(Number(dayRow[8]))) {
+    oee1 = Number(dayRow[7]) || 0;
+    oee2 = Number(dayRow[8]) || 0;
+  } else {
+    oee1 = Number(dayRow[6]) || 0;
+    oee2 = Number(dayRow[7]) || 0;
+  }
 
   let bdVal = dayRow[26] !== '' ? Number(dayRow[26]) : Number(dayRow[16]);
   if (isNaN(bdVal)) bdVal = 0;
@@ -97,9 +119,9 @@ function getQuadOutput(dateStr) {
   };
 
   const shiftRanges = [
-    { shift: 1, start: 18, end: 43 },
-    { shift: 2, start: 60, end: 90 },
-    { shift: 3, start: 105, end: 135 }
+    { shift: 1, start: 7, end: 40 },
+    { shift: 2, start: 53, end: 87 },
+    { shift: 3, start: 99, end: 135 }
   ];
 
   const codeCounts = {};

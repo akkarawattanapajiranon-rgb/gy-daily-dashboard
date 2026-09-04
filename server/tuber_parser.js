@@ -30,24 +30,38 @@ function getTuberOee(dateStr) {
 
   const wb = XLSX.readFile(file);
   
-  // Find matching 2026 Tuber sheet for selected month
-  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['6x8']) ||
-                    findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['ext']) ||
-                    wb.SheetNames.find(s => s.toLowerCase().includes('6x8') || s.toLowerCase().includes('ext')) ||
-                    wb.SheetNames[4];
-
-  const ws = wb.Sheets[sheetName];
-  if (!ws) return { error: `Sheet ${sheetName} not found` };
-
-  const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+  // Find matching 2026 Tuber sheet for selected month, with fallback across sheets if empty
+  const candidateNames = [];
+  const primarySheet = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['6x8']) ||
+                       findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['ext']);
+  if (primarySheet) candidateNames.push(primarySheet);
+  wb.SheetNames.forEach(s => {
+    if (!candidateNames.includes(s)) candidateNames.push(s);
+  });
 
   let dayRow = null;
-  data.slice(2).forEach(r => {
-    const d = parseInt(r[0], 10);
-    if (d === dayNum) {
-      dayRow = r;
+  for (const sName of candidateNames) {
+    const ws = wb.Sheets[sName];
+    if (!ws) continue;
+    const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+    for (const r of data.slice(2)) {
+      const d = parseInt(r[0], 10);
+      if (d === dayNum) {
+        const srVal = Number(r[1]) || 0;
+        const arVal = Number(r[3]) || 0;
+        const prVal = Number(r[4]) || 0;
+        const oee2Val = Number(r[7]) || Number(r[6]) || 0;
+        if (srVal > 0 || arVal > 0 || prVal > 0 || oee2Val > 0) {
+          dayRow = r;
+          break;
+        }
+        if (!dayRow) dayRow = r;
+      }
     }
-  });
+    if (dayRow && (Number(dayRow[1]) > 0 || Number(dayRow[3]) > 0 || Number(dayRow[7]) > 0)) {
+      break;
+    }
+  }
 
   if (!dayRow) return { hasData: false };
 
