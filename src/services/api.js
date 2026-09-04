@@ -217,7 +217,10 @@ export async function fetchCmsData(dateStr) {
     }
     const res = await fetch(url, { signal: controller.signal });
     clearTimeout(timeoutId);
-    if (!res.ok) throw new Error('Failed to fetch CMS proxy data');
+    const contentType = res.headers.get('content-type');
+    if (!res.ok || (contentType && contentType.includes('text/html'))) {
+      throw new Error('Static HTML response from host');
+    }
     
     return await res.json();
   } catch (err) {
@@ -254,7 +257,8 @@ export async function fetchBreakdownData(dateStr) {
   try {
     const url = `/api/breakdown?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) throw new Error('Failed breakdown fetch');
+    const contentType = res.headers.get('content-type');
+    if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed breakdown fetch');
     return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr);
@@ -267,7 +271,8 @@ export async function fetchFischerData(dateStr) {
   try {
     const url = `/api/fischer?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) throw new Error('Failed fischer fetch');
+    const contentType = res.headers.get('content-type');
+    if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed fischer fetch');
     return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr);
@@ -280,7 +285,8 @@ export async function fetch3RollDetail(dateStr) {
   try {
     const url = `/api/3roll?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) throw new Error('Failed 3roll fetch');
+    const contentType = res.headers.get('content-type');
+    if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed 3roll fetch');
     return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr);
@@ -293,7 +299,8 @@ export async function fetchQuadDetail(dateStr) {
   try {
     const url = `/api/quad?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) throw new Error('Failed quad fetch');
+    const contentType = res.headers.get('content-type');
+    if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed quad fetch');
     return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr);
@@ -306,7 +313,8 @@ export async function fetchTuberDetail(dateStr) {
   try {
     const url = `/api/tuber?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) throw new Error('Failed tuber fetch');
+    const contentType = res.headers.get('content-type');
+    if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed tuber fetch');
     return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr);
@@ -319,7 +327,8 @@ export async function fetchWorkawayData(dateStr) {
   try {
     const url = `/api/workaway?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) throw new Error('Failed workaway fetch');
+    const contentType = res.headers.get('content-type');
+    if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed workaway fetch');
     return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr);
@@ -332,7 +341,8 @@ export async function fetchWeeklyOeeData(dateStr) {
   try {
     const url = `/api/oee-weekly?date=${dateStr}`;
     const res = await fetch(url);
-    if (!res.ok) throw new Error('Failed weekly oee fetch');
+    const contentType = res.headers.get('content-type');
+    if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed weekly oee fetch');
     return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr);
