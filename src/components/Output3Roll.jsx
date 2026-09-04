@@ -2,7 +2,7 @@ import React from 'react';
 import { Package, Layers, Target } from 'lucide-react';
 
 export default function Output3Roll({ data = {}, rollDetail, isLoading }) {
-  const actualVal = rollDetail?.hasData ? rollDetail.totalRolls : (data.actual || 0);
+  const actualVal = rollDetail ? (rollDetail.totalRolls || 0) : (data.actual || 0);
   const targetVal = data.target || 0;
   const percent = targetVal > 0 ? Math.min(100, Math.round((actualVal / targetVal) * 100)) : 0;
   const breakdown = rollDetail?.codeBreakdown || [];

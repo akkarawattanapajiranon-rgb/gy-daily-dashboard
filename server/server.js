@@ -132,27 +132,11 @@ app.get('/api/cms', async (req, res) => {
     return res.json(mockDb[targetDate]);
   }
 
-  let hash = 0;
-  for (let i = 0; i < targetDate.length; i++) {
-    hash = targetDate.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  
   res.json({
-    mixing1: { 
-      batch: 500 + (Math.abs(hash) % 150), 
-      ar: (80 + (Math.abs(hash) % 15)).toFixed(1), 
-      pr: (85 + (Math.abs(hash*2) % 10)).toFixed(1), 
-      qr: (88 + (Math.abs(hash*3) % 11)).toFixed(1), 
-      oee2: (65 + (Math.abs(hash) % 10)).toFixed(1) 
-    },
-    mixing2: { 
-      batch: 480 + (Math.abs(hash * 2) % 150), 
-      ar: (78 + (Math.abs(hash*4) % 15)).toFixed(1), 
-      pr: (82 + (Math.abs(hash*5) % 12)).toFixed(1), 
-      qr: (90 + (Math.abs(hash*6) % 10)).toFixed(1), 
-      oee2: (70 + (Math.abs(hash*7) % 10)).toFixed(1) 
-    },
-    totalOee2: (68 + (Math.abs(hash*8) % 10)).toFixed(1)
+    mixing1: { batch: 0, ar: '0.0', pr: '0.0', qr: '0.0', oee2: '0.0' },
+    mixing2: { batch: 0, ar: '0.0', pr: '0.0', qr: '0.0', oee2: '0.0' },
+    totalOee2: '0.0',
+    hasData: false
   });
 });
 

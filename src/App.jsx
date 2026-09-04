@@ -30,8 +30,16 @@ function App() {
     beadTop: [],
     dataDate: 'N/A'
   });
-  const [mixingData, setMixingData] = useState(mockData.mixing);
-  const [output3RollData, setOutput3RollData] = useState(mockData.output3Roll);
+  const [mixingData, setMixingData] = useState({
+    mixing1: { batch: 0, ar: 0, pr: 0, qr: 0, oee2: 0 },
+    mixing2: { batch: 0, ar: 0, pr: 0, qr: 0, oee2: 0 },
+    totalOee2: 0
+  });
+  const [output3RollData, setOutput3RollData] = useState({
+    actual: 0,
+    target: 0,
+    unit: 'meters'
+  });
   const [breakdownData, setBreakdownData] = useState(null);
   const [fischerData, setFischerData] = useState(null);
   const [roll3Detail, setRoll3Detail] = useState(null);
@@ -64,54 +72,42 @@ function App() {
       }
       
       if (cms) {
-        setMixingData(prev => ({
-          ...prev,
+        setMixingData({
           mixing1: { 
-            ...prev.mixing1, 
-            batch: cms.mixing1.batch,
-            ar: cms.mixing1.ar,
-            pr: cms.mixing1.pr,
-            qr: cms.mixing1.qr,
-            oee2: cms.mixing1.oee2 
+            batch: Number(cms.mixing1?.batch) || 0,
+            ar: Number(cms.mixing1?.ar) || 0,
+            pr: Number(cms.mixing1?.pr) || 0,
+            qr: Number(cms.mixing1?.qr) || 0,
+            oee2: Number(cms.mixing1?.oee2) || 0 
           },
           mixing2: { 
-            ...prev.mixing2, 
-            batch: cms.mixing2.batch,
-            ar: cms.mixing2.ar,
-            pr: cms.mixing2.pr,
-            qr: cms.mixing2.qr,
-            oee2: cms.mixing2.oee2 
+            batch: Number(cms.mixing2?.batch) || 0,
+            ar: Number(cms.mixing2?.ar) || 0,
+            pr: Number(cms.mixing2?.pr) || 0,
+            qr: Number(cms.mixing2?.qr) || 0,
+            oee2: Number(cms.mixing2?.oee2) || 0 
           },
-          totalOee2: cms.totalOee2
-        }));
+          totalOee2: Number(cms.totalOee2) || 0
+        });
+      } else {
+        setMixingData({
+          mixing1: { batch: 0, ar: 0, pr: 0, qr: 0, oee2: 0 },
+          mixing2: { batch: 0, ar: 0, pr: 0, qr: 0, oee2: 0 },
+          totalOee2: 0
+        });
       }
 
-      if (target3Roll !== null) {
-        setOutput3RollData(prev => ({
-          ...prev,
-          target: target3Roll
-        }));
-      }
+      setOutput3RollData({
+        actual: roll3?.totalRolls || 0,
+        target: target3Roll || 0,
+        unit: 'meters'
+      });
 
-      if (breakdown) {
-        setBreakdownData(breakdown);
-      }
-
-      if (fischer) {
-        setFischerData(fischer);
-      }
-
-      if (roll3) {
-        setRoll3Detail(roll3);
-      }
-
-      if (quad) {
-        setQuadData(quad);
-      }
-
-      if (tuber) {
-        setTuberData(tuber);
-      }
+      setBreakdownData(breakdown);
+      setFischerData(fischer);
+      setRoll3Detail(roll3);
+      setQuadData(quad);
+      setTuberData(tuber);
     } catch (error) {
       console.error('Error in loadData:', error);
     } finally {
