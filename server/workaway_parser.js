@@ -130,17 +130,19 @@ function parseWorkawayData(dateStr) {
       }
     }
 
-    // Pick active day data (selected date or latest day with recorded data)
+    // Filter daily trend up to the selected date (e.g. if selected date is 3/9, show up to 3/9)
+    const filteredTrend = dailyTrend.filter(d => d.month < monthNum || (d.month === monthNum && d.day <= dayNum));
+
+    // Pick active day data (exact selected day if found, otherwise activeItem)
     let activeItem = null;
-    if (selectedDayIndex >= 0 && dailyTrend[selectedDayIndex]?.hasData) {
+    if (selectedDayIndex >= 0) {
       activeItem = dailyTrend[selectedDayIndex];
     } else {
-      // Find latest day with data
-      const itemsWithData = dailyTrend.filter(item => item.hasData);
+      const itemsWithData = filteredTrend.filter(item => item.hasData);
       if (itemsWithData.length > 0) {
         activeItem = itemsWithData[itemsWithData.length - 1];
-      } else if (dailyTrend.length > 0) {
-        activeItem = dailyTrend[0];
+      } else if (filteredTrend.length > 0) {
+        activeItem = filteredTrend[0];
       }
     }
 
@@ -148,7 +150,7 @@ function parseWorkawayData(dateStr) {
       date: dateStr,
       sheet: sheetName,
       file: path.basename(file),
-      hasData: dailyTrend.some(d => d.hasData),
+      hasData: activeItem ? activeItem.hasData : false,
       summary: activeItem ? {
         activeDate: activeItem.dateLabel,
         sum: activeItem.sum,
@@ -157,9 +159,10 @@ function parseWorkawayData(dateStr) {
         consume: activeItem.consume,
         newGenerate: activeItem.newGenerate,
         slowMoving: activeItem.slowMoving,
-        disposition: activeItem.disposition
+        disposition: activeItem.disposition,
+        hasData: activeItem.hasData
       } : null,
-      dailyTrend
+      dailyTrend: filteredTrend
     };
 
   } catch (e) {
