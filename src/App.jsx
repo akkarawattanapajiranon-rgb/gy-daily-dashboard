@@ -184,15 +184,15 @@ function App() {
           <TuberReport data={tuberData} loading={isLoading} />
         </div>
 
+        {/* Workaway Inventory Section */}
+        <div className="grid grid-cols-1 gap-6">
+          <WorkawayReport data={workawayData} isLoading={isLoading} />
+        </div>
+
         {/* Waste and Breakdown Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <WasteReport data={wasteData} isLoading={isLoading} />
           <BreakdownStats data={breakdownData} isLoading={isLoading} />
-        </div>
-
-        {/* Workaway Inventory Section */}
-        <div className="grid grid-cols-1 gap-6">
-          <WorkawayReport data={workawayData} isLoading={isLoading} />
         </div>
 
       </div>
