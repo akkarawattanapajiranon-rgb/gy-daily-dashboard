@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-04T07:53:21.503Z",
+  "generatedAt": "2026-09-04T08:12:35.314Z",
   "waste": {
     "date": "2026-09-04",
     "millingSummary": 0,
@@ -15,11 +15,11 @@
   "cms": {
     "date": "2026-09-04",
     "mixing1": {
-      "batch": 219,
-      "ar": 88.6,
+      "batch": 226,
+      "ar": 87.5,
       "pr": 87.5,
-      "qr": 87.4,
-      "oee2": 67.7
+      "qr": 87.8,
+      "oee2": 67.3
     },
     "mixing2": {
       "batch": 217,
@@ -28,12 +28,12 @@
       "qr": 100,
       "oee2": 81.4
     },
-    "totalAr": 88.6,
+    "totalAr": 88,
     "totalPr": 89.7,
-    "totalQr": 93.4,
-    "totalOee2": 74.3
+    "totalQr": 93.6,
+    "totalOee2": 73.9
   },
-  "target3Roll": 26,
+  "target3Roll": 28,
   "breakdown": {
     "_file": "Issue log 2026 _Sep2026.xlsx",
     "_sheet": "SEP2026",
@@ -121,46 +121,46 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 26,
-    "totalRelease": 26,
+    "totalRolls": 28,
+    "totalRelease": 28,
     "totalHold": 2,
-    "totalPending": 13,
+    "totalPending": 11,
     "totalScheduled": 41,
     "codeBreakdown": [
       {
         "code": "RP08",
         "count": 8,
-        "percentage": 30.77
+        "percentage": 28.57
       },
       {
         "code": "RU53",
         "count": 8,
-        "percentage": 30.77
+        "percentage": 28.57
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 15.38
+        "percentage": 14.29
+      },
+      {
+        "code": "N815",
+        "count": 3,
+        "percentage": 10.71
       },
       {
         "code": "RT27",
         "count": 2,
-        "percentage": 7.69
+        "percentage": 7.14
       },
       {
         "code": "JR45",
         "count": 2,
-        "percentage": 7.69
+        "percentage": 7.14
       },
       {
         "code": "JR11",
         "count": 1,
-        "percentage": 3.85
-      },
-      {
-        "code": "N815",
-        "count": 1,
-        "percentage": 3.85
+        "percentage": 3.57
       }
     ],
     "holdBreakdown": [
