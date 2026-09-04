@@ -1,15 +1,42 @@
 import React from 'react';
 import { Activity, Layers } from 'lucide-react';
 
-export default function MixingKPIs({ data }) {
+export default function MixingKPIs({ data = {} }) {
   const m1 = data.mixing1 || {};
   const m2 = data.mixing2 || {};
 
-  // Use totalOee2 from backend, fallback to simple average if not present
+  // Compute total metrics (from backend or weighted/simple average)
+  const totalAr = data.totalAr !== undefined && data.totalAr > 0
+    ? data.totalAr
+    : (((m1.ar || 0) + (m2.ar || 0)) / 2);
+
+  const totalPr = data.totalPr !== undefined && data.totalPr > 0
+    ? data.totalPr
+    : (((m1.pr || 0) + (m2.pr || 0)) / 2);
+
+  const totalQr = data.totalQr !== undefined && data.totalQr > 0
+    ? data.totalQr
+    : (((m1.qr || 0) + (m2.qr || 0)) / 2);
+
   const totalOee2 = data.totalOee2 !== undefined 
     ? data.totalOee2 
     : (((m1.oee2 || 0) + (m2.oee2 || 0)) / 2);
 
+  // Threshold Color Helpers
+  // AR >= 89% -> Green, < 89% -> Red
+  const getArColor = (val) => (!val ? 'text-slate-400' : val >= 89 ? 'text-emerald-400' : 'text-rose-400');
+  
+  // PR >= 91% -> Green, < 91% -> Red
+  const getPrColor = (val) => (!val ? 'text-slate-400' : val >= 91 ? 'text-emerald-400' : 'text-rose-400');
+  
+  // QR >= 95% -> Green, < 95% -> Red
+  const getQrColor = (val) => (!val ? 'text-slate-400' : val >= 95 ? 'text-emerald-400' : 'text-rose-400');
+  
+  // OEE2 >= 76.6% -> Green, < 76.6% -> Red
+  const getOeeTextColor = (val) => (!val ? 'text-slate-300' : val >= 76.6 ? 'text-emerald-400' : 'text-rose-400');
+  const getOeeBadgeStyle = (val) => (!val ? 'bg-white/10 border-white/20' : val >= 76.6 ? 'bg-emerald-500/20 border-emerald-500/40' : 'bg-rose-500/20 border-rose-500/40');
+
+  // Generic color helper for individual machines (M1/M2)
   const getMetricColor = (val) => {
     if (!val) return 'text-slate-400';
     if (val >= 90) return 'text-emerald-500';
@@ -79,23 +106,47 @@ export default function MixingKPIs({ data }) {
           </div>
         </div>
 
-        {/* Total OEE2 and Total Batch */}
+        {/* Total Card (Total Batch, Total AR / PR / QR, and Total OEE 2) */}
         <div className="mt-auto bg-gradient-to-r from-brand-blue to-[#002f6c] p-4 rounded-xl border border-brand-blue/20 flex flex-col justify-between shadow-md relative overflow-hidden gap-3">
           <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
             <Layers className="w-24 h-24 text-white" />
           </div>
           
+          {/* Total Batch Mix */}
           <div className="flex justify-between items-center w-full z-10">
              <span className="text-brand-yellow font-bold text-sm">ยอดรวม Batch Mix</span>
              <span className="text-2xl font-black text-white drop-shadow-sm">{ (m1.batch||0) + (m2.batch||0) }</span>
           </div>
 
-          <div className="flex justify-between items-center w-full z-10 pt-3 border-t border-white/10">
-            <p className="text-brand-yellow font-bold text-sm w-32 leading-tight">
+          {/* Total AR, PR, QR Grid */}
+          <div className="grid grid-cols-3 gap-2 w-full z-10 pt-2 border-t border-white/10">
+            <div className="flex flex-col items-center bg-white/10 p-1.5 rounded-lg border border-white/10 backdrop-blur-xs">
+              <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">AR รวม</span>
+              <span className={`text-base font-black ${getArColor(totalAr)}`}>
+                {totalAr ? `${Number(totalAr).toFixed(1)}%` : '-'}
+              </span>
+            </div>
+            <div className="flex flex-col items-center bg-white/10 p-1.5 rounded-lg border border-white/10 backdrop-blur-xs">
+              <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">PR รวม</span>
+              <span className={`text-base font-black ${getPrColor(totalPr)}`}>
+                {totalPr ? `${Number(totalPr).toFixed(1)}%` : '-'}
+              </span>
+            </div>
+            <div className="flex flex-col items-center bg-white/10 p-1.5 rounded-lg border border-white/10 backdrop-blur-xs">
+              <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">QR รวม</span>
+              <span className={`text-base font-black ${getQrColor(totalQr)}`}>
+                {totalQr ? `${Number(totalQr).toFixed(1)}%` : '-'}
+              </span>
+            </div>
+          </div>
+
+          {/* Total OEE 2 Row */}
+          <div className="flex justify-between items-center w-full z-10 pt-2 border-t border-white/10">
+            <p className="text-brand-yellow font-bold text-sm leading-tight">
               OEE 2 รวมทั้ง 2 เครื่อง
             </p>
-            <div className="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/20">
-              <span className="text-3xl font-black text-white drop-shadow-md">
+            <div className={`px-4 py-1 rounded-lg backdrop-blur-sm border ${getOeeBadgeStyle(totalOee2)}`}>
+              <span className={`text-2xl font-black ${getOeeTextColor(totalOee2)} drop-shadow-md`}>
                 {Number(totalOee2).toFixed(1)}%
               </span>
             </div>

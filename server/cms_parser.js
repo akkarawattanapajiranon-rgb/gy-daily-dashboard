@@ -64,10 +64,19 @@ function getFallbackData(dateStr) {
   const m2Oee = Number((75 + ((absHash * 3) % 15)).toFixed(1));
   const totalOee = Number(((m1Oee + m2Oee) / 2).toFixed(1));
 
+  const m1Ar = 85.8, m1Pr = 89.8, m1Qr = 88.4;
+  const m2Ar = 91.2, m2Pr = 93.5, m2Qr = 99.1;
+  const totalAr = Number(((m1Ar + m2Ar) / 2).toFixed(1));
+  const totalPr = Number(((m1Pr + m2Pr) / 2).toFixed(1));
+  const totalQr = Number(((m1Qr + m2Qr) / 2).toFixed(1));
+
   return {
     date: dateStr,
-    mixing1: { batch: m1Batch, ar: 85.8, pr: 89.8, qr: 88.4, oee2: m1Oee },
-    mixing2: { batch: m2Batch, ar: 83.8, pr: 88.2, qr: 100.0, oee2: m2Oee },
+    mixing1: { batch: m1Batch, ar: m1Ar, pr: m1Pr, qr: m1Qr, oee2: m1Oee },
+    mixing2: { batch: m2Batch, ar: m2Ar, pr: m2Pr, qr: m2Qr, oee2: m2Oee },
+    totalAr,
+    totalPr,
+    totalQr,
     totalOee2: totalOee
   };
 }
@@ -149,6 +158,9 @@ async function queryCmsServer(dateStr) {
     date: dateStr,
     mixing1: { batch: 0, ar: 0, pr: 0, qr: 0, oee2: 0 },
     mixing2: { batch: 0, ar: 0, pr: 0, qr: 0, oee2: 0 },
+    totalAr: 0,
+    totalPr: 0,
+    totalQr: 0,
     totalOee2: 0
   };
 
@@ -170,6 +182,9 @@ async function queryCmsServer(dateStr) {
         result.mixing2 = { batch: batchCount, ar, pr, qr, oee2 };
         foundRows++;
       } else if (mixNum.toLowerCase().includes('total')) {
+        result.totalAr = ar;
+        result.totalPr = pr;
+        result.totalQr = qr;
         result.totalOee2 = oee2;
         foundRows++;
       }
