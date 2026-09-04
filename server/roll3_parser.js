@@ -52,28 +52,38 @@ function parse3RollData(dateStr) {
 
     const codeCounts = {};
     let totalRolls = 0;
-    const matchingRows = [];
 
     data.forEach((row, i) => {
-      if (i < 10) return;
+      if (i < 1) return;
 
-      const rawDate = row[0];
-      if (rawDate === '' || rawDate === undefined) return;
+      const rawDate1 = row[1];
+      const rawDate0 = row[0];
 
-      let dDay = null;
-      if (typeof rawDate === 'number') {
-        const d = XLSX.SSF.parse_date_code(rawDate);
-        dDay = d.d;
-      } else if (typeof rawDate === 'string') {
-        const parsed = parseInt(rawDate.trim(), 10);
-        if (!isNaN(parsed)) dDay = parsed;
-      }
+      const parseDateVal = (val) => {
+        if (val === '' || val === undefined) return null;
+        if (typeof val === 'number') {
+          try {
+            const d = XLSX.SSF.parse_date_code(val);
+            return d ? d.d : null;
+          } catch (e) { return null; }
+        }
+        if (typeof val === 'string') {
+          const s = val.trim().toLowerCase();
+          const m = s.match(/^(\d{1,2})[-/]/);
+          if (m) {
+            return parseInt(m[1], 10);
+          }
+          const parsed = parseInt(s, 10);
+          if (!isNaN(parsed) && parsed > 0 && parsed <= 31) return parsed;
+        }
+        return null;
+      };
+
+      const dDay = parseDateVal(rawDate1) || parseDateVal(rawDate0);
 
       if (dDay === dayNum) {
         const rawCode = String(row[2] || '').trim();
-        // Ignore empty, zero, or blank template rows
-        if (rawCode !== '' && rawCode !== '0' && rawCode !== '0.0' && rawCode !== undefined) {
-          matchingRows.push(row);
+        if (rawCode && rawCode !== '0' && rawCode !== '0.0') {
           totalRolls += 1;
           codeCounts[rawCode] = (codeCounts[rawCode] || 0) + 1;
         }
