@@ -17,6 +17,7 @@ export const mockData = {
   wasteReport: {
     millingSummary: 45.2,
     frictionSummary: 32.8,
+    beadSummary: 18.5,
     millingTop: [
       { code: 'M-101', amount: 25.4, reason: 'Temperature high', isHigh: true },
       { code: 'M-105', amount: 15.2, reason: 'Contamination', isHigh: true },
@@ -26,6 +27,10 @@ export const mockData = {
       { code: 'F-204', amount: 18.5, reason: 'Edge defect', isHigh: true },
       { code: 'F-201', amount: 10.1, reason: 'Thickness variation', isHigh: true },
       { code: 'F-203', amount: 4.2, reason: 'Tension loss' }
+    ],
+    beadTop: [
+      { code: 'B-11', amount: 12.5, reason: 'Coat Off', isHigh: true },
+      { code: 'B-51', amount: 6.0, reason: 'Strand Change', isHigh: true }
     ],
     dataDate: '2026-09-03'
   },

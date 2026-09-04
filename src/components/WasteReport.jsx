@@ -2,8 +2,8 @@ import React from 'react';
 import { FileWarning } from 'lucide-react';
 
 export default function WasteReport({ data, isLoading }) {
-  const { millingSummary = 0, frictionSummary = 0, millingTop = [], frictionTop = [], dataDate } = data || {};
-  const totalVal = millingSummary + frictionSummary;
+  const { millingSummary = 0, frictionSummary = 0, beadSummary = 0, millingTop = [], frictionTop = [], beadTop = [], dataDate } = data || {};
+  const totalVal = millingSummary + frictionSummary + beadSummary;
   const totalWaste = totalVal.toFixed(1);
 
   const TopList = ({ title, items, color }) => (
@@ -54,7 +54,7 @@ export default function WasteReport({ data, isLoading }) {
       </div>
 
       {/* Top 5 Defect Details Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Milling Summary */}
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col h-full hover:shadow-md transition-shadow">
           <div className="flex justify-between items-center mb-4">
@@ -75,6 +75,17 @@ export default function WasteReport({ data, isLoading }) {
             </span>
           </div>
           <TopList title="Friction" items={frictionTop} color="text-slate-600" />
+        </div>
+
+        {/* Bead Summary */}
+        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col h-full hover:shadow-md transition-shadow">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="font-bold text-slate-700">Bead</h3>
+            <span className="bg-white px-3 py-1 rounded-md border border-slate-200 text-lg font-black text-slate-800 shadow-sm">
+              {beadSummary.toFixed(1)} <span className="text-xs text-slate-400">kg</span>
+            </span>
+          </div>
+          <TopList title="Bead" items={beadTop} color="text-slate-600" />
         </div>
       </div>
 

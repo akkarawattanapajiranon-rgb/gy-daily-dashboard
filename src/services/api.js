@@ -28,18 +28,26 @@ export async function fetchWasteData(dateStr) {
 
     let millingSummary = 0;
     let frictionSummary = 0;
+    let beadSummary = 0;
     const millingMap = {};
     const frictionMap = {};
+    const beadMap = {};
 
     recentReports.forEach(report => {
       const w = Number(report.weight) || 0;
       const key = report.defectCode;
       const reason = report.defectName || 'Unknown';
+      const wasteType = (report.wasteType || '').toLowerCase();
+      const dept = (report.department || '').toLowerCase();
 
-      if (report.wasteType === 'Milling') {
+      if (wasteType === 'milling' || dept.includes('milling')) {
         millingSummary += w;
         if (!millingMap[key]) millingMap[key] = { code: key, amount: 0, reason };
         millingMap[key].amount += w;
+      } else if (wasteType === 'bead' || dept.includes('bead')) {
+        beadSummary += w;
+        if (!beadMap[key]) beadMap[key] = { code: key, amount: 0, reason };
+        beadMap[key].amount += w;
       } else {
         frictionSummary += w;
         if (!frictionMap[key]) frictionMap[key] = { code: key, amount: 0, reason };
@@ -49,9 +57,11 @@ export async function fetchWasteData(dateStr) {
 
     const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
     const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+    const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
 
     millingTop.forEach((item, index) => { item.isHigh = index < 2; });
     frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
+    beadTop.forEach((item, index) => { item.isHigh = index < 2; });
 
     const deptMap = {};
     recentReports.forEach(report => {
@@ -61,7 +71,7 @@ export async function fetchWasteData(dateStr) {
       deptMap[deptName] += w;
     });
 
-    const totalWeight = millingSummary + frictionSummary;
+    const totalWeight = millingSummary + frictionSummary + beadSummary;
     const deptBreakdown = Object.entries(deptMap).map(([dept, amount]) => ({
       dept,
       amount: Number(amount.toFixed(1)),
@@ -72,8 +82,10 @@ export async function fetchWasteData(dateStr) {
       return {
         millingSummary: Number(millingSummary.toFixed(1)),
         frictionSummary: Number(frictionSummary.toFixed(1)),
+        beadSummary: Number(beadSummary.toFixed(1)),
         millingTop,
         frictionTop,
+        beadTop,
         deptBreakdown,
         deptDetailsMap: deptMap,
         dataDate: targetDate
