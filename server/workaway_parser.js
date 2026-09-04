@@ -16,6 +16,43 @@ function getWorkawayFile(yearStr) {
   return fallback ? path.join(WORKAWAY_DIR, fallback) : null;
 }
 
+function getWorkawayTop10() {
+  try {
+    const file = path.join(WORKAWAY_DIR, 'Work awayTop 5 อันดับ.xlsx');
+    if (!fs.existsSync(file)) return [];
+
+    const wb = XLSX.readFile(file);
+    const ws = wb.Sheets[wb.SheetNames[0]];
+    if (!ws) return [];
+
+    const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+    const list = [];
+    let grandTotal = 0;
+
+    for (let i = 1; i < data.length; i++) {
+      const r = data[i];
+      const code = String(r[0]).trim();
+      const qty = Number(r[1]) || 0;
+      if (code && code.toUpperCase() !== 'SUM' && qty > 0) {
+        list.push({ code, qty });
+        grandTotal += qty;
+      }
+    }
+
+    list.sort((a, b) => b.qty - a.qty);
+    return list.slice(0, 10).map((item, idx) => ({
+      rank: idx + 1,
+      code: item.code,
+      qty: item.qty,
+      qtyMt: Number((item.qty / 1000).toFixed(2)),
+      percentage: grandTotal > 0 ? Number(((item.qty / grandTotal) * 100).toFixed(1)) : 0
+    }));
+  } catch (e) {
+    console.error('Error parsing Workaway Top 10:', e.message);
+    return [];
+  }
+}
+
 function parseWorkawayData(dateStr) {
   try {
     const [yearStr, monthStr, dayStr] = dateStr.split('-');
@@ -146,6 +183,8 @@ function parseWorkawayData(dateStr) {
       }
     }
 
+    const top10 = getWorkawayTop10();
+
     return {
       date: dateStr,
       sheet: sheetName,
@@ -162,7 +201,8 @@ function parseWorkawayData(dateStr) {
         disposition: activeItem.disposition,
         hasData: activeItem.hasData
       } : null,
-      dailyTrend: filteredTrend
+      dailyTrend: filteredTrend,
+      top10
     };
 
   } catch (e) {
