@@ -1,18 +1,25 @@
-import { mockData } from '../data/mockData';
-import { collection, query, where, getDocs, limit, orderBy, doc, getDoc } from 'firebase/firestore';
-import { db } from './firebase';
+const snapshotModules = import.meta.glob('../data/snapshots/*.json', { eager: true });
+
+export function getLocalSnapshot(dateStr) {
+  if (!dateStr) return null;
+  const key = `../data/snapshots/${dateStr}.json`;
+  if (snapshotModules[key]) {
+    return snapshotModules[key].default || snapshotModules[key];
+  }
+  return null;
+}
 
 export async function getFirebaseSnapshot(dateStr) {
   try {
     const docRef = doc(db, 'daily_snapshots', dateStr);
     const snap = await getDoc(docRef);
-    if (snap.exists()) {
+    if (snap && snap.exists()) {
       return snap.data();
     }
   } catch (e) {
     console.warn(`Firebase snapshot query for ${dateStr} failed:`, e.message);
   }
-  return null;
+  return getLocalSnapshot(dateStr);
 }
 
 export async function fetchWasteData(dateStr) {
