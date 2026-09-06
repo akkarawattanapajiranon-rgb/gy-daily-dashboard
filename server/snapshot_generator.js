@@ -68,14 +68,15 @@ async function generateSnapshot(dateStr) {
 
     console.log(`[Snapshot Generator] Successfully saved ${fileName} (${(JSON.stringify(snapshot).length / 1024).toFixed(1)} KB)`);
 
-    // Save to Firebase Firestore
-    try {
-      const docRef = doc(db, 'daily_snapshots', dateStr);
-      await setDoc(docRef, snapshot);
+    // Save to Firebase Firestore (non-blocking with timeout)
+    Promise.race([
+      setDoc(doc(db, 'daily_snapshots', dateStr), snapshot),
+      new Promise((_, reject) => setTimeout(() => reject(new Error('Firebase upload timeout')), 3000))
+    ]).then(() => {
       console.log(`[Snapshot Generator] Uploaded ${dateStr} snapshot to Firebase Firestore!`);
-    } catch (fbErr) {
-      console.warn(`[Snapshot Generator] Firebase upload warning:`, fbErr.message);
-    }
+    }).catch(fbErr => {
+      console.warn(`[Snapshot Generator] Firebase upload warning for ${dateStr}:`, fbErr.message);
+    });
 
     return snapshot;
   } catch (err) {

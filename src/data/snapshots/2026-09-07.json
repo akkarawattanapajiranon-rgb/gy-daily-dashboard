@@ -1,0 +1,504 @@
+{
+  "date": "2026-09-07",
+  "generatedAt": "2026-09-06T23:53:43.367Z",
+  "waste": {
+    "date": "2026-09-07",
+    "millingSummary": 0,
+    "frictionSummary": 0,
+    "beadSummary": 0,
+    "millingTop": [],
+    "frictionTop": [],
+    "beadTop": [],
+    "dataDate": "2026-09-07",
+    "hasData": false
+  },
+  "cms": {
+    "date": "2026-09-07",
+    "mixing1": {
+      "batch": 0,
+      "ar": 0,
+      "pr": 0,
+      "qr": 0,
+      "oee2": 0
+    },
+    "mixing2": {
+      "batch": 0,
+      "ar": 0,
+      "pr": 0,
+      "qr": 0,
+      "oee2": 0
+    },
+    "totalAr": 0,
+    "totalPr": 0,
+    "totalQr": 0,
+    "totalOee2": 0,
+    "hasData": false
+  },
+  "target3Roll": 0,
+  "breakdown": {
+    "_file": "Issue log 2026 _Sep2026.xlsx",
+    "_sheet": "SEP2026",
+    "_date": "2026-09-07",
+    "topLoss": [],
+    "Banbury": {
+      "target_bd_pct": 0.5827,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Extruder": {
+      "target_bd_pct": 0.5098,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Calender": {
+      "target_bd_pct": 0.4662,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Cutting": {
+      "target_bd_pct": 0.1166,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "_total": {
+      "target_bd_pct": 0.6475,
+      "actual_bd_pct": null,
+      "hasData": false
+    }
+  },
+  "fischer": {
+    "date": "2026-09-07",
+    "oee": {
+      "hasData": false,
+      "target_pct": 60,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0
+    },
+    "checksheet": {
+      "hasData": false
+    }
+  },
+  "roll3": {
+    "date": "2026-09-07",
+    "day": 7,
+    "sheet": "WINDUP",
+    "file": "9 -Treatment Release SEP 2026.xls",
+    "target": null,
+    "totalRolls": 0,
+    "totalRelease": 0,
+    "totalHold": 0,
+    "totalPending": 0,
+    "totalScheduled": 0,
+    "codeBreakdown": [],
+    "holdBreakdown": [],
+    "hasData": false
+  },
+  "quad": {
+    "date": "2026-09-07",
+    "oee": {
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
+    },
+    "output": {
+      "hasData": true,
+      "day": 7,
+      "grandTotal": 0,
+      "codeBreakdown": [],
+      "shifts": {
+        "1": {
+          "name": "Shift 1 (กะ 1)",
+          "items": [],
+          "totalQty": 0
+        },
+        "2": {
+          "name": "Shift 2 (กะ 2)",
+          "items": [],
+          "totalQty": 0
+        },
+        "3": {
+          "name": "Shift 3 (กะ 3)",
+          "items": [],
+          "totalQty": 0
+        }
+      }
+    }
+  },
+  "tuber": {
+    "date": "2026-09-07",
+    "oee": {
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
+    },
+    "output": {
+      "hasData": true,
+      "day": 7,
+      "grandTotal": 0,
+      "codeBreakdown": [],
+      "shifts": {
+        "1": {
+          "name": "Shift 1 (กะ 1)",
+          "items": [],
+          "totalQty": 0
+        },
+        "2": {
+          "name": "Shift 2 (กะ 2)",
+          "items": [],
+          "totalQty": 0
+        },
+        "3": {
+          "name": "Shift 3 (กะ 3)",
+          "items": [],
+          "totalQty": 0
+        }
+      }
+    }
+  },
+  "workaway": {
+    "date": "2026-09-07",
+    "sheet": "SEPTEMBER 2026",
+    "file": "Slow Moving Work away 2026.xlsx",
+    "hasData": false,
+    "summary": {
+      "activeDate": "7/9",
+      "sum": 0,
+      "target": 35056,
+      "minTarget": 20000,
+      "consume": 0,
+      "newGenerate": 0,
+      "slowMoving": 0,
+      "disposition": 0,
+      "hasData": false
+    },
+    "dailyTrend": [
+      {
+        "day": 31,
+        "month": 8,
+        "dateLabel": "31/8",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 55029,
+        "consume": 0,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 45903,
+        "disposition": 9126,
+        "hasData": true
+      },
+      {
+        "day": 1,
+        "month": 9,
+        "dateLabel": "1/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 48889,
+        "consume": 11278,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 41205,
+        "disposition": 7684,
+        "hasData": true
+      },
+      {
+        "day": 2,
+        "month": 9,
+        "dateLabel": "2/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 67794,
+        "consume": 15158,
+        "newGenerate": 19890,
+        "newGenerateBTA": 16740,
+        "newGenerateWBR": 3150,
+        "slowMoving": 38844,
+        "disposition": 9060,
+        "hasData": true
+      },
+      {
+        "day": 3,
+        "month": 9,
+        "dateLabel": "3/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 67739,
+        "consume": 14635,
+        "newGenerate": 13010,
+        "newGenerateBTA": 10250,
+        "newGenerateWBR": 2760,
+        "slowMoving": 46119,
+        "disposition": 8610,
+        "hasData": true
+      },
+      {
+        "day": 4,
+        "month": 9,
+        "dateLabel": "4/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 64964,
+        "consume": 13704,
+        "newGenerate": 12550,
+        "newGenerateBTA": 9460,
+        "newGenerateWBR": 3090,
+        "slowMoving": 43764,
+        "disposition": 8650,
+        "hasData": true
+      },
+      {
+        "day": 5,
+        "month": 9,
+        "dateLabel": "5/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 66584,
+        "consume": 0,
+        "newGenerate": 12460,
+        "newGenerateBTA": 9650,
+        "newGenerateWBR": 2810,
+        "slowMoving": 45974,
+        "disposition": 8150,
+        "hasData": true
+      },
+      {
+        "day": 6,
+        "month": 9,
+        "dateLabel": "6/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 0,
+        "consume": 0,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 0,
+        "disposition": 0,
+        "hasData": false
+      },
+      {
+        "day": 7,
+        "month": 9,
+        "dateLabel": "7/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 0,
+        "consume": 0,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 0,
+        "disposition": 0,
+        "hasData": false
+      }
+    ],
+    "top10": [],
+    "top10File": "Work awayTop 5 อันดับ September.xlsx"
+  },
+  "weeklyOee": {
+    "date": "2026-09-07",
+    "activeWeek": {
+      "weekNum": 2,
+      "startDay": 7,
+      "endDay": 13,
+      "label": "W2 (7/9 - 13/9)",
+      "isCurrentWeek": true,
+      "quad": {
+        "avg": null,
+        "target": 62,
+        "count": 0,
+        "isMet": false
+      },
+      "tuber": {
+        "avg": null,
+        "target": 62,
+        "count": 0,
+        "isMet": false
+      },
+      "fischer": {
+        "avg": null,
+        "target": 60,
+        "count": 0,
+        "isMet": false
+      },
+      "mixing": {
+        "avg": null,
+        "target": 76.6,
+        "count": 0,
+        "isMet": false
+      }
+    },
+    "weeks": [
+      {
+        "weekNum": 1,
+        "startDay": 1,
+        "endDay": 6,
+        "label": "W1 (1/9 - 6/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": 56.53,
+          "target": 62,
+          "count": 4,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": 62.65,
+          "target": 62,
+          "count": 4,
+          "isMet": true
+        },
+        "fischer": {
+          "avg": 51.54,
+          "target": 60,
+          "count": 4,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": 73.58,
+          "target": 76.6,
+          "count": 4,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 2,
+        "startDay": 7,
+        "endDay": 13,
+        "label": "W2 (7/9 - 13/9)",
+        "isCurrentWeek": true,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 3,
+        "startDay": 14,
+        "endDay": 20,
+        "label": "W3 (14/9 - 20/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 4,
+        "startDay": 21,
+        "endDay": 27,
+        "label": "W4 (21/9 - 27/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 5,
+        "startDay": 28,
+        "endDay": 30,
+        "label": "W5 (28/9 - 30/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      }
+    ]
+  }
+}
