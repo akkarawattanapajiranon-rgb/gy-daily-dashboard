@@ -24,8 +24,8 @@ function initThickClient() {
 }
 
 function lineConfigs() {
-  const user = process.env.EXTRUDER_ORA_USER || "QUADEXTR";
-  const password = process.env.EXTRUDER_ORA_PASS || "";
+  const user = process.env.EXTRUDER_ORA_USER || "quadextr";
+  const password = process.env.EXTRUDER_ORA_PASS || "quadextr";
   return [
     { line: "QUAD", connectString: process.env.EXTRUDER_QUAD_DSN || "10.124.147.20:1521/XE", user, password },
     { line: "DUPLEX", connectString: process.env.EXTRUDER_DUPLEX_DSN || "10.124.147.45:1521/XE", user, password },
