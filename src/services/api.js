@@ -127,8 +127,12 @@ export async function fetchWasteData(dateStr) {
 
   // 3. Fallback: Static / Firebase Snapshot
   const snapshot = await getFirebaseSnapshot(targetDate);
-  if (snapshot && snapshot.waste && snapshot.waste.hasData) {
-    return snapshot.waste;
+  if (snapshot && snapshot.waste) {
+    const w = snapshot.waste;
+    const totalW = (Number(w.millingSummary) || 0) + (Number(w.frictionSummary) || 0) + (Number(w.beadSummary) || 0);
+    if (w.hasData || totalW > 0) {
+      return { ...w, hasData: true };
+    }
   }
 
   return {
