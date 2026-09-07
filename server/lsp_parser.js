@@ -3,6 +3,7 @@ const path = require('path');
 const XLSX = require('xlsx');
 
 const LSP_PATHS = [
+  'T:\\10.30 A.M. Production Meeting\\1 Safety\\LSP update 2026\\LSP Tracking.xlsx',
   'C:\\Users\\aa11909\\OneDrive - Goodyear\\LSP Tracking.xlsx',
   'C:\\Users\\aa11909\\OneDrive - Goodyear\\Documents\\LSP Tracking.xlsx',
   'C:\\Users\\aa11909\\OneDrive - Goodyear\\ENGINEERING BREAKDOWN\\LSP Tracking.xlsx',
