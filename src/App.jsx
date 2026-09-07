@@ -10,7 +10,8 @@ import QuadReport from './components/QuadReport';
 import TuberReport from './components/TuberReport';
 import WorkawayReport from './components/WorkawayReport';
 import ExtruderTimeline from './components/extruder-timeline/ExtruderTimeline';
-import { Calendar, RefreshCw, LayoutDashboard, Clock } from 'lucide-react';
+import SafetyLspReport from './components/SafetyLspReport';
+import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck } from 'lucide-react';
 import { 
   fetchWasteData, 
   fetchCmsData, 
@@ -164,9 +165,20 @@ function App() {
               <Clock className="w-4 h-4 text-brand-yellow" />
               <span>หน้า 2: Extruder Timeline</span>
             </button>
+            <button
+              onClick={() => setActiveTab('safety')}
+              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all ${
+                activeTab === 'safety'
+                  ? 'bg-emerald-700 text-white shadow-md'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>หน้า 3: Safety (EHS & LSP)</span>
+            </button>
           </div>
           <div className="text-xs font-semibold text-slate-400 px-3">
-            {activeTab === 'dor' ? 'Daily Operations Overview' : 'Extruder TAW Timeline & Conformance Monitor'}
+            {activeTab === 'dor' ? 'Daily Operations Overview' : activeTab === 'extruder' ? 'Extruder TAW Timeline' : 'EHS Safety & Life Saving Principles'}
           </div>
         </div>
 
@@ -237,6 +249,13 @@ function App() {
         {activeTab === 'extruder' && (
           <div className="space-y-6">
             <ExtruderTimeline endpoint="/api/extruder-timeline" pollMs={15000} />
+          </div>
+        )}
+
+        {/* PAGE 3: Safety EHS & LSP Tracking Dashboard */}
+        {activeTab === 'safety' && (
+          <div className="space-y-6">
+            <SafetyLspReport />
           </div>
         )}
 

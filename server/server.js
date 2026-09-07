@@ -205,7 +205,13 @@ app.get('/api/extruder-timeline', async (req, res) => {
     }
     console.error('[extruder-timeline]', err);
     res.status(500).json({ success: false, error: 'internal error' });
-  }
+  // EHS Safety LSP Tracking parser
+const { parseLspData } = require('./lsp_parser');
+
+app.get('/api/lsp', (req, res) => {
+  console.log('Fetching EHS Safety LSP Tracking Data');
+  const data = parseLspData();
+  res.json(data);
 });
 
 // Serve built Vite assets AFTER API routes
