@@ -1,85 +1,73 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-07T01:36:01.567Z",
+  "generatedAt": "2026-09-07T01:48:42.223Z",
   "waste": {
     "date": "2026-09-04",
-    "millingSummary": 96,
-    "frictionSummary": 468,
-    "beadSummary": 53,
+    "millingSummary": 153.5,
+    "frictionSummary": 335.9,
+    "beadSummary": 33,
     "millingTop": [
       {
-        "code": "N11F3",
-        "amount": 26,
-        "reason": "เศษยางไหม้ในกะละมัง",
+        "code": "M01",
+        "amount": 58.099999999999994,
+        "reason": "LUMPY",
         "isHigh": true
       },
       {
-        "code": "B1423",
-        "amount": 14.2,
-        "reason": "ยางไหม้",
+        "code": "M04",
+        "amount": 46,
+        "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
       {
-        "code": "B1443",
-        "amount": 14,
-        "reason": "ขี้ยาง  6 \"",
+        "code": "M05",
+        "amount": 44.4,
+        "reason": "TAILING",
         "isHigh": false
       },
       {
-        "code": "B1578",
-        "amount": 13,
-        "reason": "ขี้ยาง  6 \"",
-        "isHigh": false
-      },
-      {
-        "code": "K33M1",
-        "amount": 13,
-        "reason": "เศษยางไหม้ในกะละมัง",
+        "code": "M06",
+        "amount": 5,
+        "reason": "CLEANER",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "39",
+        "code": "F39",
         "amount": 77,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "reason": "O'LAY TRIM",
         "isHigh": true
       },
       {
-        "code": "40",
-        "amount": 76.9,
-        "reason": "supphire",
+        "code": "F44",
+        "amount": 66.9,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "44",
-        "amount": 68,
-        "reason": "3 ROLLS / ROLL ENDS",
+        "code": "F01",
+        "amount": 33.3,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       },
       {
-        "code": "24",
-        "amount": 30,
-        "reason": "BEAD DEFECT",
+        "code": "F24",
+        "amount": 26,
+        "reason": "ELEC/MECH",
         "isHigh": false
       },
       {
-        "code": "1",
-        "amount": 27.299999999999997,
-        "reason": "CALENDER DEFECT",
+        "code": "F46",
+        "amount": 20.2,
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "11",
-        "amount": 43,
-        "reason": "COAT OFF / BEAD COAT",
-        "isHigh": true
-      },
-      {
-        "code": "51",
-        "amount": 10,
+        "code": "F11",
+        "amount": 33,
         "reason": "COAT OFF",
         "isHigh": true
       }

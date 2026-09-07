@@ -1,98 +1,86 @@
 {
   "date": "2026-09-03",
-  "generatedAt": "2026-09-07T01:36:06.629Z",
+  "generatedAt": "2026-09-07T01:48:48.462Z",
   "waste": {
     "date": "2026-09-03",
-    "millingSummary": 140,
-    "frictionSummary": 350,
-    "beadSummary": 59,
+    "millingSummary": 135,
+    "frictionSummary": 321.2,
+    "beadSummary": 46.6,
     "millingTop": [
       {
-        "code": "N11F3",
-        "amount": 29,
-        "reason": "ยางตัดขอบ",
+        "code": "M05",
+        "amount": 57,
+        "reason": "TAILING",
         "isHigh": true
       },
       {
-        "code": "N1717",
-        "amount": 24,
-        "reason": "ยางตัดขอบ",
+        "code": "M04",
+        "amount": 42,
+        "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
       {
-        "code": "B1443",
-        "amount": 22,
-        "reason": "ขี้ยาง  6 \"",
+        "code": "M01",
+        "amount": 35,
+        "reason": "LUMPY",
         "isHigh": false
       },
       {
-        "code": "B1423",
-        "amount": 16.6,
-        "reason": "ยางไหม้",
-        "isHigh": false
-      },
-      {
-        "code": "39",
-        "amount": 11,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "code": "M02",
+        "amount": 1,
+        "reason": "NO IDENTIFICATION",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "44",
-        "amount": 75.60000000000001,
-        "reason": "3 ROLLS / ROLL ENDS",
+        "code": "F44",
+        "amount": 79.89999999999999,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "39",
-        "amount": 43,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "code": "F39",
+        "amount": 54,
+        "reason": "O'LAY TRIM",
         "isHigh": true
       },
       {
-        "code": "6",
-        "amount": 20,
-        "reason": "3 ROLLS / ROLL ENDS",
+        "code": "F01",
+        "amount": 24.099999999999998,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       },
       {
-        "code": "F4111",
-        "amount": 20,
-        "reason": "ยางไหม้เป็นเม็ด",
+        "code": "F46",
+        "amount": 21.400000000000002,
+        "reason": "SHORT PIECES",
         "isHigh": false
       },
       {
-        "code": "1",
-        "amount": 19.200000000000003,
-        "reason": "CALENDER DEFECT",
+        "code": "F06",
+        "amount": 20,
+        "reason": "BROKEN CAL SPLICE",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "11",
+        "code": "F11",
         "amount": 32,
-        "reason": "COAT OFF / BEAD COAT",
-        "isHigh": true
-      },
-      {
-        "code": "24",
-        "amount": 12.4,
-        "reason": "BEAD DEFECT",
-        "isHigh": true
-      },
-      {
-        "code": "34",
-        "amount": 8,
-        "reason": "WIRE BEAD DEFECT",
-        "isHigh": false
-      },
-      {
-        "code": "51",
-        "amount": 6.6,
         "reason": "COAT OFF",
+        "isHigh": true
+      },
+      {
+        "code": "F34",
+        "amount": 8,
+        "reason": "OFF TICKET",
+        "isHigh": true
+      },
+      {
+        "code": "F51",
+        "amount": 6.6,
+        "reason": "STRAND CHANGE",
         "isHigh": false
       }
     ],

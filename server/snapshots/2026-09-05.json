@@ -1,37 +1,80 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-07T01:35:58.722Z",
+  "generatedAt": "2026-09-07T01:48:37.910Z",
   "waste": {
     "date": "2026-09-05",
-    "millingSummary": 28,
-    "frictionSummary": 0,
-    "beadSummary": 67,
+    "millingSummary": 185.9,
+    "frictionSummary": 308.6,
+    "beadSummary": 44,
     "millingTop": [
       {
-        "code": "39",
-        "amount": 26,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "code": "M04",
+        "amount": 124,
+        "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
       {
-        "code": "50",
-        "amount": 2,
-        "reason": "STOCK OUT",
+        "code": "M05",
+        "amount": 39,
+        "reason": "TAILING",
         "isHigh": true
+      },
+      {
+        "code": "M01",
+        "amount": 14.9,
+        "reason": "LUMPY",
+        "isHigh": false
+      },
+      {
+        "code": "M06",
+        "amount": 8,
+        "reason": "CLEANER",
+        "isHigh": false
       }
     ],
-    "frictionTop": [],
-    "beadTop": [
+    "frictionTop": [
       {
-        "code": "11",
-        "amount": 61,
-        "reason": "COAT OFF / BEAD COAT",
+        "code": "F44",
+        "amount": 81.8,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "51",
-        "amount": 6,
+        "code": "F39",
+        "amount": 65,
+        "reason": "O'LAY TRIM",
+        "isHigh": true
+      },
+      {
+        "code": "F01",
+        "amount": 34.6,
+        "reason": "ANGLE CHANGE",
+        "isHigh": false
+      },
+      {
+        "code": "F46",
+        "amount": 30.900000000000002,
+        "reason": "SHORT PIECES",
+        "isHigh": false
+      },
+      {
+        "code": "F11",
+        "amount": 22.6,
         "reason": "COAT OFF",
+        "isHigh": false
+      }
+    ],
+    "beadTop": [
+      {
+        "code": "F11",
+        "amount": 38,
+        "reason": "COAT OFF",
+        "isHigh": true
+      },
+      {
+        "code": "F51",
+        "amount": 6,
+        "reason": "STRAND CHANGE",
         "isHigh": true
       }
     ],
@@ -94,14 +137,14 @@
   "fischer": {
     "date": "2026-09-05",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 88.19,
+      "ar_pct": 56.47,
+      "pr_pct": 95.09,
+      "qr_pct": 99.62,
+      "oee1_pct": 47.18,
+      "oee2_pct": 53.5
     },
     "checksheet": {
       "hasData": true,
@@ -1184,9 +1227,9 @@
         "isMet": false
       },
       "fischer": {
-        "avg": 51.54,
+        "avg": 51.93,
         "target": 60,
-        "count": 4,
+        "count": 5,
         "isMet": false
       },
       "mixing": {
@@ -1216,9 +1259,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 51.54,
+          "avg": 51.93,
           "target": 60,
-          "count": 4,
+          "count": 5,
           "isMet": false
         },
         "mixing": {

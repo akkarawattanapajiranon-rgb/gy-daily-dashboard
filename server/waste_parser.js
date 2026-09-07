@@ -236,4 +236,83 @@ function parseWasteData(dateStr) {
   }
 }
 
-module.exports = { parseWasteData };
+const { initializeApp, getApps } = require('firebase/app');
+const { getFirestore, collection, query, where, getDocs } = require('firebase/firestore');
+
+const btaWasteConfig = {
+  apiKey: "AIzaSyCg4iz5Jd0Ov2r-uWQkSNB0h1bG-0u50EI",
+  authDomain: "gy-waste-report.firebaseapp.com",
+  projectId: "gy-waste-report",
+  storageBucket: "gy-waste-report.firebasestorage.app"
+};
+
+const btaApp = getApps().find(a => a.name === 'bta-waste-server') || initializeApp(btaWasteConfig, 'bta-waste-server');
+const btaDb = getFirestore(btaApp);
+
+async function parseWasteDataAsync(dateStr) {
+  try {
+    const q = query(collection(btaDb, 'gy_reports'), where('date', '==', dateStr));
+    const snap = await getDocs(q);
+    if (!snap.empty) {
+      let millingSummary = 0, frictionSummary = 0, beadSummary = 0;
+      const millingMap = {}, frictionMap = {}, beadMap = {};
+
+      snap.forEach(docSnap => {
+        const report = docSnap.data();
+        const w = Number(report.weight) || 0;
+        if (w <= 0) return;
+        const code = String(report.defectCode || report.materialCode || 'Waste').trim();
+        const reason = String(report.defectName || report.cause || code).trim();
+        const wasteType = String(report.wasteType || '').trim().toLowerCase();
+        const dept = String(report.dept || '').trim().toLowerCase();
+        const matCode = String(report.materialCode || '').trim();
+
+        let cat = 'Friction';
+        if (wasteType.includes('milling') || dept.includes('milling')) cat = 'Milling';
+        else if (wasteType.includes('bead') || matCode === 'G' || matCode === 'A' || dept.includes('bead')) cat = 'Bead';
+
+        if (cat === 'Bead') {
+          beadSummary += w;
+          if (!beadMap[code]) beadMap[code] = { code, amount: 0, reason };
+          beadMap[code].amount += w;
+        } else if (cat === 'Milling') {
+          millingSummary += w;
+          if (!millingMap[code]) millingMap[code] = { code, amount: 0, reason };
+          millingMap[code].amount += w;
+        } else {
+          frictionSummary += w;
+          if (!frictionMap[code]) frictionMap[code] = { code, amount: 0, reason };
+          frictionMap[code].amount += w;
+        }
+      });
+
+      const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+      const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+      const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+
+      millingTop.forEach((item, idx) => { item.isHigh = idx < 2; });
+      frictionTop.forEach((item, idx) => { item.isHigh = idx < 2; });
+      beadTop.forEach((item, idx) => { item.isHigh = idx < 2; });
+
+      const totalVal = millingSummary + frictionSummary + beadSummary;
+      if (totalVal > 0) {
+        return {
+          date: dateStr,
+          millingSummary: Number(millingSummary.toFixed(1)),
+          frictionSummary: Number(frictionSummary.toFixed(1)),
+          beadSummary: Number(beadSummary.toFixed(1)),
+          millingTop,
+          frictionTop,
+          beadTop,
+          dataDate: dateStr,
+          hasData: true
+        };
+      }
+    }
+  } catch (e) {
+    console.error('Firestore waste parse failed:', e.message);
+  }
+  return parseWasteData(dateStr);
+}
+
+module.exports = { parseWasteData, parseWasteDataAsync };

@@ -21,7 +21,7 @@
       "totalQr": 93.6,
       "totalOee2": 74.5
     },
-    "timestamp": 1788745456091
+    "timestamp": 1788745722653
   },
   "2026-09-05": {
     "data": {
@@ -45,7 +45,7 @@
       "totalQr": 95.1,
       "totalOee2": 75.6
     },
-    "timestamp": 1788745514058
+    "timestamp": 1788745718291
   },
   "2026-09-03": {
     "data": {
@@ -69,7 +69,7 @@
       "totalQr": 93.9,
       "totalOee2": 75.4
     },
-    "timestamp": 1788744281316
+    "timestamp": 1788745725041
   },
   "2026-09-02": {
     "data": {
@@ -93,7 +93,7 @@
       "totalQr": 93.9,
       "totalOee2": 70.9
     },
-    "timestamp": 1788744286713
+    "timestamp": 1788745731176
   },
   "2026-09-01": {
     "data": {
@@ -117,7 +117,7 @@
       "totalQr": 95,
       "totalOee2": 69.2
     },
-    "timestamp": 1788744291841
+    "timestamp": 1788745737313
   },
   "2026-08-30": {
     "data": {
@@ -156,40 +156,40 @@
       },
       "mixing2": {
         "batch": 688,
-        "ar": 89,
+        "ar": 90.4,
         "pr": 90.8,
         "qr": 100,
-        "oee2": 80.9
+        "oee2": 82.1
       },
-      "totalAr": 87.3,
+      "totalAr": 88,
       "totalPr": 89.3,
       "totalQr": 92.8,
-      "totalOee2": 72.3
+      "totalOee2": 72.9
     },
-    "timestamp": 1788745512002
+    "timestamp": 1788745714203
   },
   "2026-09-07": {
     "data": {
       "date": "2026-09-07",
       "mixing1": {
-        "batch": 44,
-        "ar": 81,
-        "pr": 89,
+        "batch": 45,
+        "ar": 81.5,
+        "pr": 88.7,
         "qr": 98.9,
         "oee2": 71.4
       },
       "mixing2": {
-        "batch": 56,
-        "ar": 95.6,
+        "batch": 58,
+        "ar": 95.8,
         "pr": 90.8,
         "qr": 100,
-        "oee2": 86.8
+        "oee2": 86.9
       },
-      "totalAr": 88.3,
-      "totalPr": 90,
+      "totalAr": 88.7,
+      "totalPr": 89.8,
       "totalQr": 99.5,
-      "totalOee2": 79.1
+      "totalOee2": 79.2
     },
-    "timestamp": 1788745509936
+    "timestamp": 1788745710193
   }
 }

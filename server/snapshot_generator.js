@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { parseWasteData } = require('./waste_parser');
+const { parseWasteData, parseWasteDataAsync } = require('./waste_parser');
 const { fetchLiveCmsData } = require('./cms_parser');
 const { parseBreakdown } = require('./breakdown_parser');
 const { parseFischerData } = require('./fischer_parser');
@@ -35,7 +35,7 @@ const db = getFirestore(app);
 async function generateSnapshot(dateStr) {
   console.log(`[Snapshot Generator] Building daily snapshot for ${dateStr}...`);
   try {
-    const waste = parseWasteData(dateStr);
+    const waste = await parseWasteDataAsync(dateStr);
     const cms = await fetchLiveCmsData(dateStr);
     const breakdown = parseBreakdown(dateStr);
     const fischer = parseFischerData(dateStr);

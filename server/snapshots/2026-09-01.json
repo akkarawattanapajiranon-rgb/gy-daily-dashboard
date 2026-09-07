@@ -1,98 +1,92 @@
 {
   "date": "2026-09-01",
-  "generatedAt": "2026-09-07T01:36:18.448Z",
+  "generatedAt": "2026-09-07T01:49:00.523Z",
   "waste": {
     "date": "2026-09-01",
-    "millingSummary": 210,
-    "frictionSummary": 424,
-    "beadSummary": 78,
+    "millingSummary": 250.8,
+    "frictionSummary": 304.3,
+    "beadSummary": 68.8,
     "millingTop": [
       {
-        "code": "B1182",
-        "amount": 59,
-        "reason": "ยางเป็นก้อน",
+        "code": "M04",
+        "amount": 133,
+        "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
       {
-        "code": "B1423",
-        "amount": 22.2,
-        "reason": "ยางไหม้",
+        "code": "M05",
+        "amount": 62,
+        "reason": "TAILING",
         "isHigh": true
       },
       {
-        "code": "N1508",
-        "amount": 18,
-        "reason": "ยางตัดขอบ",
+        "code": "M01",
+        "amount": 30.8,
+        "reason": "LUMPY",
         "isHigh": false
       },
       {
-        "code": "B61C7",
-        "amount": 17,
-        "reason": "ยางตัดขอบ",
-        "isHigh": false
-      },
-      {
-        "code": "B1443",
-        "amount": 16,
-        "reason": "ขี้ยาง  6 \"",
+        "code": "M06",
+        "amount": 25,
+        "reason": "CLEANER",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "40",
-        "amount": 87.7,
-        "reason": "supphire",
+        "code": "F44",
+        "amount": 75.1,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "44",
-        "amount": 75.39999999999999,
-        "reason": "3 ROLLS / ROLL ENDS",
+        "code": "F11",
+        "amount": 47,
+        "reason": "COAT OFF",
         "isHigh": true
       },
       {
-        "code": "39",
-        "amount": 38,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "code": "F39",
+        "amount": 46,
+        "reason": "O'LAY TRIM",
         "isHigh": false
       },
       {
-        "code": "F2471",
-        "amount": 31,
-        "reason": "ยางร่วงใต้ calender",
+        "code": "F01",
+        "amount": 25.4,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       },
       {
-        "code": "11",
-        "amount": 27,
-        "reason": "COAT OFF / BEAD COAT",
+        "code": "F24",
+        "amount": 21.599999999999998,
+        "reason": "ELEC/MECH",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "11",
-        "amount": 39.2,
-        "reason": "COAT OFF / BEAD COAT",
+        "code": "F11",
+        "amount": 30,
+        "reason": "COAT OFF",
         "isHigh": true
       },
       {
-        "code": "8",
+        "code": "F08",
         "amount": 19.8,
-        "reason": "8",
+        "reason": "BROKEN WIRE",
         "isHigh": true
       },
       {
-        "code": "34",
+        "code": "F34",
         "amount": 13,
-        "reason": "WIRE BEAD DEFECT",
+        "reason": "OFF TICKET",
         "isHigh": false
       },
       {
-        "code": "51",
+        "code": "F51",
         "amount": 6,
-        "reason": "COAT OFF",
+        "reason": "STRAND CHANGE",
         "isHigh": false
       }
     ],
