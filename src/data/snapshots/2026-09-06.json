@@ -1,6 +1,6 @@
 {
   "date": "2026-09-06",
-  "generatedAt": "2026-09-07T01:48:33.774Z",
+  "generatedAt": "2026-09-07T01:54:39.776Z",
   "waste": {
     "date": "2026-09-06",
     "millingSummary": 144,
@@ -94,7 +94,115 @@
     "_file": "Issue log 2026 _ BCA 14AUG2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-06",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Quad",
+        "totalDurationMin": 200,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Scale conveyor",
+            "symptom": "เวลาหยดสี เส้นสีแตก",
+            "cause": "ปลายหัวหยดสีไม่เรียบ",
+            "action": "ตัดปลายหัวหยดสีให้เรียบ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "NBD",
+            "fixBy": "มด/มิ้น/โฟล์ค"
+          },
+          {
+            "shift": "กะ2",
+            "zone": "Extruder",
+            "symptom": "สลับตำแหน่งพินใหม่",
+            "cause": "",
+            "action": "",
+            "fixType": "ชั่วคราว",
+            "durationMin": 180,
+            "jobType": "NBD",
+            "fixBy": "อ๋อย/แหลม/แอ๊ด"
+          }
+        ]
+      },
+      {
+        "machine": "Mixer 2",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "TSR",
+            "symptom": "Safety can't reset.",
+            "cause": "Safety cable loose.",
+            "action": "Repace safety cable.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "BD",
+            "fixBy": ""
+          },
+          {
+            "shift": "กะ2",
+            "zone": "Process Oil",
+            "symptom": "Process Oil Low Flow",
+            "cause": "น้ำมันหมดถัง ปิดวาล์วไว้",
+            "action": "เปิดวาล์ว",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "NBD",
+            "fixBy": "อ๊อฟ/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "Fischer",
+        "totalDurationMin": 15,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Cutter",
+            "symptom": "ตรวจเช็คน้ำในCylider",
+            "cause": "มีน้ำในระบบลม",
+            "action": "เดรนน้ำในกระบอกสูบ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 15,
+            "jobType": "BD",
+            "fixBy": "มด/มิ้น/โฟล์ค/ไพลิน"
+          }
+        ]
+      },
+      {
+        "machine": "Baby Mill",
+        "totalDurationMin": 10,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Calender",
+            "symptom": "Machine can not run.",
+            "cause": "Drive fault.",
+            "action": "Restart drive.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "BD",
+            "fixBy": ""
+          }
+        ]
+      },
+      {
+        "machine": "3 Roll",
+        "totalDurationMin": 10,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Colling room",
+            "symptom": "น้ำรั่ว",
+            "cause": "Rotary Joint รั่ว",
+            "action": "ปิดน้ำไว้ชั่วคราว,รอเวลาเครื่องหยุด",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "BD",
+            "fixBy": "มด/มิ้น/โฟล์ค"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
       "actual_bd_pct": 0.3333,

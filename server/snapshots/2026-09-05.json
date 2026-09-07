@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-07T01:48:37.910Z",
+  "generatedAt": "2026-09-07T01:54:43.833Z",
   "waste": {
     "date": "2026-09-05",
     "millingSummary": 185.9,
@@ -107,7 +107,115 @@
     "_file": "Issue log 2026 _ BCA 14AUG2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-05",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Quad",
+        "totalDurationMin": 210,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Deline Conv",
+            "symptom": "สายพานไม่หมุน",
+            "cause": "Sprocket สายพานสึกเยอะมาก",
+            "action": "เปลี่ยน Sprocket  11 ตัว",
+            "fixType": "ชั่วคราว",
+            "durationMin": 150,
+            "jobType": "BD",
+            "fixBy": "ทีป/อ๋อย/โฟร์ค/ริน/เอฟ/ทีมงาน PM"
+          },
+          {
+            "shift": "กะ1",
+            "zone": "Deline Conv",
+            "symptom": "Roller Bearing Failure",
+            "cause": "น้ำกรดจากสายพานหยดใส่",
+            "action": "เปลี่ยน Bearing",
+            "fixType": "ชั่วคราว",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "ทีป/อ๋อย/โฟร์ค/ริน/เอฟ/ทีมงาน PM"
+          }
+        ]
+      },
+      {
+        "machine": "Auto Pigment",
+        "totalDurationMin": 45,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "Loading # 41",
+            "symptom": "ดูดสารไม่ขึ้น",
+            "cause": "ชัตเตอร์ปิดไม่สนิท , มีเศษถุงสารเคมีติดอยู่",
+            "action": "ถอดเอาเศษถุงออก",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "มด/โต/ไพลิน"
+          },
+          {
+            "shift": "กะ2",
+            "zone": "Tank 12",
+            "symptom": "ค่าน้ำหนักเกิน",
+            "cause": "Load cell error.",
+            "action": "Caribete load cell.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 15,
+            "jobType": "BD",
+            "fixBy": ""
+          }
+        ]
+      },
+      {
+        "machine": "Mixer 2",
+        "totalDurationMin": 40,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "Oil",
+            "symptom": "",
+            "cause": "",
+            "action": "Refill oil.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 40,
+            "jobType": "NBD",
+            "fixBy": ""
+          }
+        ]
+      },
+      {
+        "machine": "Tuber",
+        "totalDurationMin": 40,
+        "details": [
+          {
+            "shift": "กะ3",
+            "zone": "8\"",
+            "symptom": "ไฟแสงสว่างไม่ติด",
+            "cause": "ขั้วหลอดเสีย",
+            "action": "เปลี่ยนโคมใหม่",
+            "fixType": "ถาวร",
+            "durationMin": 40,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/เทห์"
+          }
+        ]
+      },
+      {
+        "machine": "Band 54/4",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Conv",
+            "symptom": "Conveyor ไม่กาง",
+            "cause": "น๊อตยึดขาด",
+            "action": "เปลี่ยนน๊อตใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/อ๋อย/โฟร์ค"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
       "actual_bd_pct": 0,

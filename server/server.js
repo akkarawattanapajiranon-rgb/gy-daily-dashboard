@@ -118,16 +118,18 @@ app.get('/api/tuber', (req, res) => {
   res.json(data);
 });
 
-// Waste parser (reads local Excel on T: drive)
-const { parseWasteData } = require('./waste_parser');
+// Waste parser (reads gy_reports from gy-waste-report Firebase and local Excel fallback)
+const { parseWasteData, parseWasteDataAsync } = require('./waste_parser');
 
-app.get('/api/waste', (req, res) => {
+app.get('/api/waste', async (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   console.log(`Fetching Waste data for date: ${date}`);
-  const data = parseWasteData(date);
-  if (data.error && !data.hasData) {
+  const data = await parseWasteDataAsync(date);
+  if ((!data || data.error || !data.hasData)) {
     const snap = getSnapshot(date);
-    if (snap && snap.waste) return res.json(snap.waste);
+    if (snap && snap.waste && snap.waste.hasData) return res.json(snap.waste);
+  }
+  if (!data) {
     return res.json({
       date,
       millingSummary: 0,
