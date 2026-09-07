@@ -236,6 +236,20 @@ export async function fetch3RollDetail(dateStr) {
   }
 }
 
+export async function fetch4Roll2Detail(dateStr) {
+  try {
+    const url = `/api/4roll2?date=${dateStr}`;
+    const res = await fetchFast(url, 12000);
+    const contentType = res.headers.get('content-type');
+    if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed 4roll2 fetch');
+    return await res.json();
+  } catch (err) {
+    const snap = await getFirebaseSnapshot(dateStr);
+    if (snap && snap.roll42) return snap.roll42;
+    return null;
+  }
+}
+
 export async function fetchQuadDetail(dateStr) {
   try {
     const url = `/api/quad?date=${dateStr}`;

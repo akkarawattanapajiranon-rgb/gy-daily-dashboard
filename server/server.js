@@ -91,6 +91,26 @@ app.get('/api/3roll', (req, res) => {
   res.json(data);
 });
 
+// 4 Roll 2 parser (reads Productivity Check sheet on T: drive)
+const { parse4Roll2Data } = require('./roll42_parser');
+
+app.get('/api/4roll2', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `4roll2:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
+  console.log(`Fetching 4 Roll 2 Productivity data for date: ${date}`);
+  const data = parse4Roll2Data(date);
+  if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.roll42) return res.json(snap.roll42);
+    return res.status(404).json({ error: data.error });
+  }
+  setCached(cacheKey, data);
+  res.json(data);
+});
+
 // Weekly OEE parser (reads QUAD, TUBER, FISCHER OEE for WTD AVG)
 const { parseWeeklyOee } = require('./weekly_oee_parser');
 

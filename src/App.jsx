@@ -12,6 +12,7 @@ import WorkawayReport from './components/WorkawayReport';
 import ExtruderTimeline from './components/extruder-timeline/ExtruderTimeline';
 import SafetyLspReport from './components/SafetyLspReport';
 import DataExporter from './components/DataExporter';
+import Roll42Report from './components/Roll42Report';
 import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck, Download } from 'lucide-react';
 import { 
   fetchWasteData, 
@@ -20,6 +21,7 @@ import {
   fetchBreakdownData, 
   fetchFischerData, 
   fetch3RollDetail,
+  fetch4Roll2Detail,
   fetchQuadDetail,
   fetchTuberDetail,
   fetchWorkawayData,
@@ -50,6 +52,7 @@ function App() {
   const [breakdownData, setBreakdownData] = useState(null);
   const [fischerData, setFischerData] = useState(null);
   const [roll3Detail, setRoll3Detail] = useState(null);
+  const [roll42Data, setRoll42Data] = useState(null);
   const [quadData, setQuadData] = useState(null);
   const [tuberData, setTuberData] = useState(null);
   const [workawayData, setWorkawayData] = useState(null);
@@ -65,13 +68,14 @@ function App() {
     setIsLoading(true);
     try {
       const dateToFetch = dateStr || selectedDate;
-      const [waste, cms, target3Roll, breakdown, fischer, roll3, quad, tuber, workaway, weeklyOee] = await Promise.all([
+      const [waste, cms, target3Roll, breakdown, fischer, roll3, roll42, quad, tuber, workaway, weeklyOee] = await Promise.all([
         fetchWasteData(dateToFetch),
         fetchCmsData(dateToFetch),
         fetchTarget3Roll(dateToFetch),
         fetchBreakdownData(dateToFetch),
         fetchFischerData(dateToFetch),
         fetch3RollDetail(dateToFetch),
+        fetch4Roll2Detail(dateToFetch),
         fetchQuadDetail(dateToFetch),
         fetchTuberDetail(dateToFetch),
         fetchWorkawayData(dateToFetch),
@@ -117,6 +121,7 @@ function App() {
       setBreakdownData(breakdown);
       setFischerData(fischer);
       setRoll3Detail(roll3);
+      setRoll42Data(roll42);
       setQuadData(quad);
       setTuberData(tuber);
       setWorkawayData(workaway);
@@ -249,6 +254,11 @@ function App() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <QuadReport data={quadData} loading={isLoading} />
               <TuberReport data={tuberData} loading={isLoading} />
+            </div>
+
+            {/* 4 Roll #2 Section */}
+            <div className="grid grid-cols-1 gap-6">
+              <Roll42Report data={roll42Data} loading={isLoading} />
             </div>
 
             {/* Workaway Inventory Section */}
