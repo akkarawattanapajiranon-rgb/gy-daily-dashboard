@@ -91,9 +91,12 @@ export async function fetchWasteData(dateStr) {
     };
   };
 
-  // 1. Primary Source: Direct API from https://bta-waste-report.vercel.app/api/reports
+  // 1. Primary Source: Direct API from https://bta-waste-report.vercel.app/api/get-all-waste
   try {
-    const res = await fetch('https://bta-waste-report.vercel.app/api/reports');
+    let res = await fetch('https://bta-waste-report.vercel.app/api/get-all-waste');
+    if (!res.ok) {
+      res = await fetch('https://bta-waste-report.vercel.app/api/reports');
+    }
     if (res.ok) {
       const reports = await res.json();
       if (Array.isArray(reports)) {
