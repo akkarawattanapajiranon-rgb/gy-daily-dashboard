@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-07T01:24:21.322Z",
+  "generatedAt": "2026-09-07T01:35:52.763Z",
   "waste": {
     "date": "2026-09-07",
     "millingSummary": 0,
@@ -15,23 +15,23 @@
   "cms": {
     "date": "2026-09-07",
     "mixing1": {
-      "batch": 40,
-      "ar": 89.9,
-      "pr": 89.7,
-      "qr": 99.4,
+      "batch": 44,
+      "ar": 90.9,
+      "pr": 89,
+      "qr": 98.9,
       "oee2": 80.1
     },
     "mixing2": {
-      "batch": 46,
-      "ar": 96.8,
-      "pr": 90.7,
+      "batch": 51,
+      "ar": 95.2,
+      "pr": 90.6,
       "qr": 100,
-      "oee2": 87.8
+      "oee2": 86.2
     },
-    "totalAr": 93.3,
-    "totalPr": 90.2,
-    "totalQr": 99.7,
-    "totalOee2": 84
+    "totalAr": 93.1,
+    "totalPr": 89.8,
+    "totalQr": 99.5,
+    "totalOee2": 83.2
   },
   "target3Roll": 2,
   "breakdown": {
@@ -117,12 +117,27 @@
     "output": {
       "hasData": true,
       "day": 7,
-      "grandTotal": 8,
+      "grandTotal": 59,
       "codeBreakdown": [
+        {
+          "code": "WLAN",
+          "count": 23,
+          "percentage": 38.98
+        },
+        {
+          "code": "WAIS",
+          "count": 16,
+          "percentage": 27.12
+        },
+        {
+          "code": "WA8X",
+          "count": 12,
+          "percentage": 20.34
+        },
         {
           "code": "QUIR",
           "count": 8,
-          "percentage": 100
+          "percentage": 13.56
         }
       ],
       "shifts": {
@@ -138,9 +153,69 @@
               "qtyProduced": 8,
               "qtySapphire": 0,
               "totalQty": 8
+            },
+            {
+              "partId": "TL00192",
+              "code1": "WLAN",
+              "code2": "",
+              "code": "WLAN",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 7,
+              "totalQty": 17
+            },
+            {
+              "partId": "TL00192",
+              "code1": "WLAN",
+              "code2": "",
+              "code": "WLAN",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            },
+            {
+              "partId": "TL00038",
+              "code1": "WAIS",
+              "code2": "",
+              "code": "WAIS",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00038",
+              "code1": "WAIS",
+              "code2": "",
+              "code": "WAIS",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            },
+            {
+              "partId": "TL00184",
+              "code1": "WA8X",
+              "code2": "",
+              "code": "WA8X",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00184",
+              "code1": "WA8X",
+              "code2": "",
+              "code": "WA8X",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
             }
           ],
-          "totalQty": 8
+          "totalQty": 59
         },
         "2": {
           "name": "Shift 2 (กะ 2)",

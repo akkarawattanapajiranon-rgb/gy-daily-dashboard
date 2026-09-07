@@ -1,16 +1,42 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-07T01:24:32.720Z",
+  "generatedAt": "2026-09-07T01:35:58.722Z",
   "waste": {
     "date": "2026-09-05",
-    "millingSummary": 0,
+    "millingSummary": 28,
     "frictionSummary": 0,
-    "beadSummary": 0,
-    "millingTop": [],
+    "beadSummary": 67,
+    "millingTop": [
+      {
+        "code": "39",
+        "amount": 26,
+        "reason": "CALENDER STOP / CORD DEFECT",
+        "isHigh": true
+      },
+      {
+        "code": "50",
+        "amount": 2,
+        "reason": "STOCK OUT",
+        "isHigh": true
+      }
+    ],
     "frictionTop": [],
-    "beadTop": [],
+    "beadTop": [
+      {
+        "code": "11",
+        "amount": 61,
+        "reason": "COAT OFF / BEAD COAT",
+        "isHigh": true
+      },
+      {
+        "code": "51",
+        "amount": 6,
+        "reason": "COAT OFF",
+        "isHigh": true
+      }
+    ],
     "dataDate": "2026-09-05",
-    "hasData": false
+    "hasData": true
   },
   "cms": {
     "date": "2026-09-05",
