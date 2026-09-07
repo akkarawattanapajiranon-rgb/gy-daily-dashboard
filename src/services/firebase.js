@@ -15,4 +15,15 @@ const firebaseConfig = {
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 const db = getFirestore(app);
 
-export { db };
+// Initialize BTA Waste Report Firebase (gy-waste-report)
+const btaWasteConfig = {
+  apiKey: "AIzaSyCg4iz5Jd0Ov2r-uWQkSNB0h1bG-0u50EI",
+  authDomain: "gy-waste-report.firebaseapp.com",
+  projectId: "gy-waste-report",
+  storageBucket: "gy-waste-report.firebasestorage.app"
+};
+
+const btaApp = getApps().find(a => a.name === 'bta-waste') || initializeApp(btaWasteConfig, 'bta-waste');
+const btaWasteDb = getFirestore(btaApp);
+
+export { db, btaWasteDb };

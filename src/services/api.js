@@ -1,3 +1,6 @@
+import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { db, btaWasteDb } from './firebase.js';
+
 const snapshotModules = import.meta.glob('../data/snapshots/*.json', { eager: true });
 
 export function getLocalSnapshot(dateStr) {
@@ -91,7 +94,21 @@ export async function fetchWasteData(dateStr) {
     };
   };
 
-  // Sole Source: Direct API from https://bta-waste-report.vercel.app/api/get-all-waste
+  // 1. Direct Real-time Firestore Query to gy-waste-report (collection gy_reports)
+  try {
+    const q = query(collection(btaWasteDb, 'gy_reports'), where('date', '==', targetDate));
+    const snap = await getDocs(q);
+    if (!snap.empty) {
+      const dayReports = [];
+      snap.forEach(docSnap => dayReports.push(docSnap.data()));
+      const result = processReports(dayReports);
+      if (result.hasData) return result;
+    }
+  } catch (err) {
+    console.warn('Direct gy-waste-report Firestore query failed:', err.message);
+  }
+
+  // 2. Backup Source: Direct API from https://bta-waste-report.vercel.app/api/get-all-waste
   try {
     let res = await fetch('https://bta-waste-report.vercel.app/api/get-all-waste');
     if (!res.ok) {
