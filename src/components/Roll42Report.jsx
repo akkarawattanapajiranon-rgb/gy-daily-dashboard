@@ -16,14 +16,15 @@ export default function Roll42Report({ data, loading }) {
   }
 
   const hasData = data && data.hasData;
-  const totalRolls = data?.totalRolls || 0;
-  const totalMeters = data?.totalMeters || 0;
   const shifts = data?.shifts || {
-    shift1: { name: 'กะ 1 (Shift 1)', rolls: 0, meters: 0, items: [] },
-    shift2: { name: 'กะ 2 (Shift 2)', rolls: 0, meters: 0, items: [] },
-    shift3: { name: 'กะ 3 (Shift 3)', rolls: 0, meters: 0, items: [] }
+    shift1: { name: 'กะ 1 (Shift 1)', qty: 0, items: [] },
+    shift2: { name: 'กะ 2 (Shift 2)', qty: 0, items: [] },
+    shift3: { name: 'กะ 3 (Shift 3)', qty: 0, items: [] }
   };
   const topCodes = data?.topCodes || [];
+
+  const totalCarts = topCodes.filter(c => c.unit === 'คัน').reduce((sum, c) => sum + (c.qty || 0), 0);
+  const totalRollsCount = topCodes.filter(c => c.unit === 'ม้วน').reduce((sum, c) => sum + (c.qty || 0), 0);
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-6">
@@ -84,28 +85,40 @@ export default function Roll42Report({ data, loading }) {
       </div>
 
       {/* Main KPI Overview Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* Total Rolls Card */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {/* Total Carts Card */}
         <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-blue-950 text-white rounded-2xl p-5 shadow-md relative overflow-hidden">
-          <div className="text-xs font-bold text-indigo-300 uppercase tracking-wider">Total Rolls Produced</div>
-          <div className="text-3xl font-black mt-1 flex items-baseline gap-2">
-            {totalRolls.toLocaleString()} <span className="text-sm font-bold text-indigo-200">ม้วน (Rolls)</span>
+          <div className="text-xs font-bold text-indigo-300 uppercase tracking-wider">Total Carts (จำนวนคัน)</div>
+          <div className="text-3xl font-black mt-1 flex items-baseline gap-2 text-indigo-200">
+            {totalCarts.toLocaleString()} <span className="text-sm font-bold text-indigo-300">คัน</span>
           </div>
           <div className="text-[11px] text-indigo-200/80 mt-2 flex items-center gap-1 font-semibold">
             <Activity className="w-3.5 h-3.5 text-indigo-400" />
-            <span>4 Roll 2 Daily Production</span>
+            <span>Dual Liner & VMI Ply 1/2</span>
           </div>
         </div>
 
-        {/* Total Meters Card */}
+        {/* Total Rolls Card */}
         <div className="bg-gradient-to-br from-blue-900 via-slate-900 to-indigo-950 text-white rounded-2xl p-5 shadow-md relative overflow-hidden">
-          <div className="text-xs font-bold text-blue-300 uppercase tracking-wider">Total Output Length</div>
+          <div className="text-xs font-bold text-blue-300 uppercase tracking-wider">Total Rolls (จำนวนม้วน)</div>
           <div className="text-3xl font-black mt-1 text-emerald-400 flex items-baseline gap-2">
-            {totalMeters.toLocaleString()} <span className="text-sm font-bold text-blue-200">เมตร (Meters)</span>
+            {totalRollsCount.toLocaleString()} <span className="text-sm font-bold text-blue-200">ม้วน</span>
           </div>
           <div className="text-[11px] text-blue-200/80 mt-2 flex items-center gap-1 font-semibold">
             <BarChart2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Sum of All Component Lengths</span>
+            <span>R2.5 Ply & Gumstrip Rolls</span>
+          </div>
+        </div>
+
+        {/* Total Specs Card */}
+        <div className="bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 text-white rounded-2xl p-5 shadow-md relative overflow-hidden">
+          <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Active Specs (จำนวน Spec)</div>
+          <div className="text-3xl font-black mt-1 text-amber-400 flex items-baseline gap-2">
+            {topCodes.length.toLocaleString()} <span className="text-sm font-bold text-slate-300">Specs</span>
+          </div>
+          <div className="text-[11px] text-slate-400 mt-2 flex items-center gap-1 font-semibold">
+            <Layers3 className="w-3.5 h-3.5 text-amber-400" />
+            <span>Component Specs Produced Today</span>
           </div>
         </div>
       </div>
@@ -123,10 +136,9 @@ export default function Roll42Report({ data, loading }) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             {[1, 2, 3].map(sNum => {
               const shiftKey = `shift${sNum}`;
-              const shift = shifts[shiftKey] || { name: `กะ ${sNum}`, rolls: 0, meters: 0, items: [] };
+              const shift = shifts[shiftKey] || { name: `กะ ${sNum}`, qty: 0, items: [] };
               const isShift1 = sNum === 1;
               const isShift2 = sNum === 2;
-              const isShift3 = sNum === 3;
 
               const headerBg = isShift1
                 ? 'bg-indigo-900 text-white'
@@ -146,12 +158,9 @@ export default function Roll42Report({ data, loading }) {
                   <div className={`p-4 ${headerBg} flex items-center justify-between`}>
                     <div>
                       <h3 className="font-black text-sm">{shift.name}</h3>
-                      <div className="text-[11px] text-slate-300 mt-0.5 font-medium">
-                        {shift.meters.toLocaleString()} เมตร
-                      </div>
                     </div>
                     <span className={`px-2.5 py-1 rounded-xl text-xs font-black border ${badgeBg}`}>
-                      {shift.rolls} ม้วน
+                      {shift.items ? shift.items.length : 0} Specs
                     </span>
                   </div>
 
@@ -164,8 +173,7 @@ export default function Roll42Report({ data, loading }) {
                             <tr>
                               <th className="p-2 pl-3">SAP Code</th>
                               <th className="p-2">Component</th>
-                              <th className="p-2 text-center">จำนวน</th>
-                              <th className="p-2 text-right pr-3">ความยาว</th>
+                              <th className="p-2 text-right pr-3">จำนวนผลิต</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-slate-200/60 font-medium">
@@ -173,13 +181,10 @@ export default function Roll42Report({ data, loading }) {
                               <tr key={idx} className="hover:bg-white transition-colors">
                                 <td className="p-2 pl-3 font-mono text-[11px] text-slate-500">{item.sapCode}</td>
                                 <td className="p-2 font-black text-indigo-900">{item.code}</td>
-                                <td className="p-2 text-center font-extrabold text-slate-700">
-                                  <span className="px-2 py-0.5 bg-indigo-50 text-indigo-700 rounded-md border border-indigo-100 text-[11px]">
+                                <td className="p-2 text-right pr-3 font-extrabold text-slate-700">
+                                  <span className="px-2 py-0.5 bg-indigo-50 text-indigo-700 rounded-md border border-indigo-100 text-[11px] font-black">
                                     {item.qty} {item.unit || 'ม้วน'}
                                   </span>
-                                </td>
-                                <td className="p-2 text-right pr-3 font-bold text-slate-700">
-                                  {item.meters.toLocaleString()} m
                                 </td>
                               </tr>
                             ))}
@@ -196,7 +201,7 @@ export default function Roll42Report({ data, loading }) {
                     <div className="mt-3 pt-2.5 border-t border-slate-200 flex items-center justify-between text-xs font-extrabold text-slate-700">
                       <span>รวมกะ {sNum}:</span>
                       <span className="text-indigo-800 font-black">
-                        {shift.qty || shift.rolls} รายการ ({shift.meters.toLocaleString()} m)
+                        {shift.items ? shift.items.length : 0} รายการ
                       </span>
                     </div>
                   </div>
@@ -226,7 +231,6 @@ export default function Roll42Report({ data, loading }) {
                     <th className="p-3 text-center bg-blue-950 text-blue-200">กะ 2</th>
                     <th className="p-3 text-center bg-slate-950 text-slate-200">กะ 3</th>
                     <th className="p-3 text-center bg-emerald-950 text-emerald-200">รวมจำนวน</th>
-                    <th className="p-3 text-right pr-4">รวมความยาว (เมตร)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 font-medium">
@@ -259,9 +263,6 @@ export default function Roll42Report({ data, loading }) {
                         <span className="px-2.5 py-1 bg-emerald-100 text-emerald-900 rounded-lg">
                           {item.qty || item.rolls} {item.unit || 'ม้วน'}
                         </span>
-                      </td>
-                      <td className="p-3 text-right pr-4 font-black text-slate-800">
-                        {item.meters.toLocaleString()} m
                       </td>
                     </tr>
                   ))}
