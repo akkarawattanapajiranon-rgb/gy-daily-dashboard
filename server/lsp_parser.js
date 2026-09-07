@@ -36,7 +36,6 @@ function parseLspData() {
       { id: 12, legacy: '1461', name: 'Kamol Chansue (กมล จันเสือ)', dept: 'BCA', areaCode: '3200', isLspTarget: true, monthly: { JAN: 4, FEB: 4, MAR: 4, APR: 5, MAY: 4, JUN: 6, JUL: 4, AUG: 4, SEP: 4, OCT: 4, NOV: 4, DEC: 4 }, ytdPct: 77 },
       { id: 13, legacy: '12921', name: 'Kant Limpitaks (กันต์ ลิมปิทักษ์)', dept: 'BCA-Q', areaCode: '1022', isLspTarget: true, monthly: { JAN: 4, FEB: 4, MAR: 4, APR: 5, MAY: 4, JUN: 4, JUL: 4, AUG: 5, SEP: 4, OCT: 4, NOV: 4, DEC: 4 }, ytdPct: 71 },
       { id: 16, legacy: '12108', name: 'Kritsana Iyerakanjankun (กฤษณะ ไอียรากาญจนกุล)', dept: 'BCA-E', areaCode: '1100', isLspTarget: true, monthly: { JAN: 4, FEB: 0, MAR: 4, APR: 5, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 4, OCT: 4, NOV: 4, DEC: 4 }, ytdPct: 60 },
-      { id: 20, legacy: '12925', name: 'Krittanan Kadsanit (กฤตนนท์ คาดสนิท)', dept: 'BCA-Q', areaCode: '1022', isLspTarget: true, monthly: { JAN: 4, FEB: 3, MAR: 4, APR: 4, MAY: 0, JUN: 0, JUL: 0, AUG: 0, SEP: 0, OCT: 0, NOV: 0, DEC: 0 }, ytdPct: 23 },
       { id: 19, legacy: '12768', name: 'Narada Tempombribun (นารดา เต็มพรมบริบูรณ์)', dept: 'BCA-HR', areaCode: '1050', isLspTarget: true, monthly: { JAN: 4, FEB: 4, MAR: 4, APR: 4, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 4, OCT: 4, NOV: 4, DEC: 4 }, ytdPct: 69 },
       { id: 21, legacy: '12364', name: 'Nithit Raktham (นิธิศ รักธรรม)', dept: 'BCA-E', areaCode: '6320', isLspTarget: true, monthly: { JAN: 4, FEB: 0, MAR: 4, APR: 4, MAY: 4, JUN: 4, JUL: 1, AUG: 4, SEP: 5, OCT: 4, NOV: 4, DEC: 4 }, ytdPct: 54 },
       { id: 22, legacy: '12357', name: 'Paisal Phoompong (ไพศาล พูมพงษ์)', dept: 'BCA', areaCode: '3200', isLspTarget: true, monthly: { JAN: 4, FEB: 2, MAR: 4, APR: 4, MAY: 4, JUN: 4, JUL: 5, AUG: 4, SEP: 6, OCT: 4, NOV: 4, DEC: 4 }, ytdPct: 68 },
@@ -73,7 +72,11 @@ function parseLspData() {
 
         rows.slice(headerRowIndex + 1).forEach(r => {
           const name = String(r[workerCol !== -1 ? workerCol : 2] || '').trim();
+          const legacy = String(r[legacyCol !== -1 ? legacyCol : 1] || '').trim();
+          const rowId = String(r[idCol !== -1 ? idCol : 0] || '').trim();
+
           if (!name || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
+          if (rowId === '20' || legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์')) return;
 
           const monthlyData = {};
           let totalAudits = 0;
