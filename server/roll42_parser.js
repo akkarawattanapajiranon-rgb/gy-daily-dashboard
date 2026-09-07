@@ -78,7 +78,11 @@ function parse4Roll2Data(dateStr) {
       if (rStr.includes('shift 3') || rStr.includes('shift  3')) currentShift = 3;
 
       const sapCode = String(r[1] || '').trim();
+      const cartNo = String(r[16] || '').trim();
+
       if (sapCode && sapCode.toUpperCase() !== 'SAP CODE' && !sapCode.toLowerCase().includes('shift') && !sapCode.toLowerCase().includes('check sheet')) {
+        // Only include if Cart No in Col Q (r[16]) is filled in
+        if (!cartNo) return;
 
         const processCol = (compName, rawMeters, defaultUnit, calcRatioFunc) => {
           if (!compName && rawMeters <= 0) return;
