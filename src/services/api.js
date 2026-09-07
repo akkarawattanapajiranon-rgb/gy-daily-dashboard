@@ -91,7 +91,7 @@ export async function fetchWasteData(dateStr) {
     };
   };
 
-  // 1. Primary Source: Direct API from https://bta-waste-report.vercel.app/api/get-all-waste
+  // Sole Source: Direct API from https://bta-waste-report.vercel.app/api/get-all-waste
   try {
     let res = await fetch('https://bta-waste-report.vercel.app/api/get-all-waste');
     if (!res.ok) {
@@ -111,30 +111,7 @@ export async function fetchWasteData(dateStr) {
     console.warn('bta-waste-report API query failed:', err.message);
   }
 
-  // 2. Secondary Source: Local Express backend (/api/waste?date=...)
-  try {
-    const res = await fetch(`/api/waste?date=${targetDate}`);
-    if (res.ok) {
-      const contentType = res.headers.get('content-type');
-      if (contentType && contentType.includes('application/json')) {
-        const data = await res.json();
-        if (data && !data.error && data.hasData) {
-          return data;
-        }
-      }
-    }
-  } catch (err) {}
-
-  // 3. Fallback: Static / Firebase Snapshot
-  const snapshot = await getFirebaseSnapshot(targetDate);
-  if (snapshot && snapshot.waste) {
-    const w = snapshot.waste;
-    const totalW = (Number(w.millingSummary) || 0) + (Number(w.frictionSummary) || 0) + (Number(w.beadSummary) || 0);
-    if (w.hasData || totalW > 0) {
-      return { ...w, hasData: true };
-    }
-  }
-
+  // Strict Policy: Do not fall back to local Excel or local snapshots for Waste
   return {
     millingSummary: 0,
     frictionSummary: 0,
