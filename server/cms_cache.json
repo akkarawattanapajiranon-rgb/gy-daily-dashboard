@@ -21,7 +21,7 @@
       "totalQr": 93.6,
       "totalOee2": 74.5
     },
-    "timestamp": 1788739169004
+    "timestamp": 1788740205131
   },
   "2026-09-05": {
     "data": {
@@ -45,7 +45,7 @@
       "totalQr": 95.1,
       "totalOee2": 75.6
     },
-    "timestamp": 1788739164200
+    "timestamp": 1788740203140
   },
   "2026-09-03": {
     "data": {
@@ -69,7 +69,7 @@
       "totalQr": 93.9,
       "totalOee2": 75.4
     },
-    "timestamp": 1788739101307
+    "timestamp": 1788740205141
   },
   "2026-09-02": {
     "data": {
@@ -93,7 +93,7 @@
       "totalQr": 93.9,
       "totalOee2": 70.9
     },
-    "timestamp": 1788739164502
+    "timestamp": 1788740210678
   },
   "2026-09-01": {
     "data": {
@@ -117,7 +117,7 @@
       "totalQr": 95,
       "totalOee2": 69.2
     },
-    "timestamp": 1788739170665
+    "timestamp": 1788740216028
   },
   "2026-08-30": {
     "data": {
@@ -148,7 +148,7 @@
     "data": {
       "date": "2026-09-06",
       "mixing1": {
-        "batch": 659,
+        "batch": 660,
         "ar": 84.4,
         "pr": 87.7,
         "qr": 85.7,
@@ -156,41 +156,40 @@
       },
       "mixing2": {
         "batch": 688,
-        "ar": 89.7,
+        "ar": 89,
         "pr": 90.8,
         "qr": 100,
-        "oee2": 81.5
+        "oee2": 80.9
       },
-      "totalAr": 87,
+      "totalAr": 86.7,
       "totalPr": 89.3,
       "totalQr": 92.8,
-      "totalOee2": 72.1
+      "totalOee2": 71.8
     },
-    "timestamp": 1788739095257
+    "timestamp": 1788740186207
   },
   "2026-09-07": {
     "data": {
       "date": "2026-09-07",
       "mixing1": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
+        "batch": 8,
+        "ar": 100,
+        "pr": 84.2,
+        "qr": 100,
+        "oee2": 84.2
       },
       "mixing2": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
+        "batch": 9,
+        "ar": 99,
+        "pr": 90.8,
+        "qr": 100,
+        "oee2": 89.9
       },
-      "totalAr": 0,
-      "totalPr": 0,
-      "totalQr": 0,
-      "totalOee2": 0,
-      "hasData": false
+      "totalAr": 99.5,
+      "totalPr": 87.6,
+      "totalQr": 100,
+      "totalOee2": 87.1
     },
-    "timestamp": 1788738447087
+    "timestamp": 1788740175325
   }
 }

@@ -25,180 +25,107 @@ export async function getFirebaseSnapshot(dateStr) {
 export async function fetchWasteData(dateStr) {
   const targetDate = dateStr || new Date().toISOString().split('T')[0];
 
-  // 1. Primary Source: Direct query to Firestore collection 'gy_reports' (same DB as bta-waste-report.vercel.app)
+  const processReports = (dayReports) => {
+    let millingSummary = 0;
+    let frictionSummary = 0;
+    let beadSummary = 0;
+    const millingMap = {};
+    const frictionMap = {};
+    const beadMap = {};
+
+    dayReports.forEach(report => {
+      const w = Number(report.weight) || 0;
+      if (w <= 0) return;
+      const code = String(report.defectCode || report.materialCode || 'Waste').trim();
+      const reason = String(report.defectName || report.cause || code).trim();
+      const wasteType = String(report.wasteType || '').trim();
+      const materialCode = String(report.materialCode || '').trim();
+      const dept = String(report.dept || '').trim();
+
+      let cat = 'Friction';
+      const lowerW = wasteType.toLowerCase();
+      const lowerDept = dept.toLowerCase();
+
+      if (lowerW === 'milling' || lowerDept.includes('milling')) {
+        cat = 'Milling';
+      } else if (lowerW === 'bead' || materialCode === 'G' || materialCode === 'A' || lowerDept.includes('bead')) {
+        cat = 'Bead';
+      } else {
+        cat = 'Friction';
+      }
+
+      if (cat === 'Bead') {
+        beadSummary += w;
+        if (!beadMap[code]) beadMap[code] = { code, amount: 0, reason };
+        beadMap[code].amount += w;
+      } else if (cat === 'Milling') {
+        millingSummary += w;
+        if (!millingMap[code]) millingMap[code] = { code, amount: 0, reason };
+        millingMap[code].amount += w;
+      } else {
+        frictionSummary += w;
+        if (!frictionMap[code]) frictionMap[code] = { code, amount: 0, reason };
+        frictionMap[code].amount += w;
+      }
+    });
+
+    const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+    const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+    const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
+
+    millingTop.forEach((item, index) => { item.isHigh = index < 2; });
+    frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
+    beadTop.forEach((item, index) => { item.isHigh = index < 2; });
+
+    const totalW = millingSummary + frictionSummary + beadSummary;
+
+    return {
+      millingSummary: Number(millingSummary.toFixed(1)),
+      frictionSummary: Number(frictionSummary.toFixed(1)),
+      beadSummary: Number(beadSummary.toFixed(1)),
+      millingTop,
+      frictionTop,
+      beadTop,
+      dataDate: targetDate,
+      hasData: totalW > 0
+    };
+  };
+
+  // 1. Primary Source: Direct API from https://bta-waste-report.vercel.app/api/reports
   try {
-    const q = query(collection(db, 'gy_reports'), where('date', '==', targetDate));
-    const snap = await getDocs(q);
-    if (!snap.empty) {
-      let millingSummary = 0;
-      let frictionSummary = 0;
-      let beadSummary = 0;
-      const millingMap = {};
-      const frictionMap = {};
-      const beadMap = {};
-
-      snap.forEach(doc => {
-        const report = doc.data();
-        const w = Number(report.weight) || 0;
-        const code = String(report.defectCode || report.materialCode || 'Waste').trim();
-        const reason = String(report.defectName || report.cause || code).trim();
-        const wasteType = String(report.wasteType || '').trim();
-        const materialCode = String(report.materialCode || '').trim();
-        const dept = String(report.dept || '').trim();
-
-        let cat = 'Friction';
-        if (wasteType.toLowerCase() === 'milling') {
-          cat = 'Milling';
-        } else {
-          if (materialCode === 'G' || materialCode === 'A' || wasteType.toLowerCase() === 'bead') {
-            cat = 'Bead';
-          } else {
-            cat = 'Friction';
-          }
+    const res = await fetch('https://bta-waste-report.vercel.app/api/reports');
+    if (res.ok) {
+      const reports = await res.json();
+      if (Array.isArray(reports)) {
+        const dayReports = reports.filter(r => r.date === targetDate);
+        if (dayReports.length > 0) {
+          const result = processReports(dayReports);
+          if (result.hasData) return result;
         }
-
-        if (cat === 'Bead') {
-          beadSummary += w;
-          if (!beadMap[code]) beadMap[code] = { code, amount: 0, reason };
-          beadMap[code].amount += w;
-        } else if (cat === 'Milling') {
-          millingSummary += w;
-          if (!millingMap[code]) millingMap[code] = { code, amount: 0, reason };
-          millingMap[code].amount += w;
-        } else {
-          frictionSummary += w;
-          if (!frictionMap[code]) frictionMap[code] = { code, amount: 0, reason };
-          frictionMap[code].amount += w;
-        }
-      });
-
-      const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-      const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-      const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-
-      millingTop.forEach((item, index) => { item.isHigh = index < 2; });
-      frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
-      beadTop.forEach((item, index) => { item.isHigh = index < 2; });
-
-      return {
-        millingSummary: Number(millingSummary.toFixed(1)),
-        frictionSummary: Number(frictionSummary.toFixed(1)),
-        beadSummary: Number(beadSummary.toFixed(1)),
-        millingTop,
-        frictionTop,
-        beadTop,
-        dataDate: targetDate,
-        hasData: true
-      };
+      }
     }
-  } catch (fsErr) {
-    console.warn('Direct Firestore query failed, falling back to backend server...', fsErr.message);
+  } catch (err) {
+    console.warn('bta-waste-report API query failed:', err.message);
   }
 
   // 2. Secondary Source: Local Express backend (/api/waste?date=...)
   try {
     const res = await fetch(`/api/waste?date=${targetDate}`);
     if (res.ok) {
-      const data = await res.json();
-      if (data && !data.error && data.hasData) {
-        return data;
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const data = await res.json();
+        if (data && !data.error && data.hasData) {
+          return data;
+        }
       }
     }
-  } catch (err) {
-    console.warn('Backend waste fetch failed, attempting Vercel API query...', err.message);
-  }
+  } catch (err) {}
 
-  // 3. Fallback: Firebase Snapshot
+  // 3. Fallback: Static / Firebase Snapshot
   const snapshot = await getFirebaseSnapshot(targetDate);
-  if (snapshot && snapshot.waste) {
+  if (snapshot && snapshot.waste && snapshot.waste.hasData) {
     return snapshot.waste;
-  }
-
-  // 4. Fallback: Fetch from Vercel API endpoint (/api/reports)
-  try {
-    let reports = null;
-    try {
-      const gRes = await fetch('https://bta-waste-report.vercel.app/api/get-all-waste');
-      if (gRes.ok) {
-        const json = await gRes.json();
-        reports = Array.isArray(json) ? json : (json.reports || json.data || json.waste || null);
-      }
-    } catch (gErr) {}
-
-    if (!reports || !Array.isArray(reports)) {
-      const rRes = await fetch('https://bta-waste-report.vercel.app/api/reports');
-      if (rRes.ok) {
-        const json = await rRes.json();
-        reports = Array.isArray(json) ? json : null;
-      }
-    }
-
-    if (Array.isArray(reports)) {
-      const dayReports = reports.filter(r => r.date === targetDate);
-      if (dayReports.length > 0) {
-        let millingSummary = 0;
-        let frictionSummary = 0;
-        let beadSummary = 0;
-        const millingMap = {};
-        const frictionMap = {};
-        const beadMap = {};
-
-        dayReports.forEach(report => {
-          const w = Number(report.weight) || 0;
-          const code = String(report.defectCode || report.materialCode || 'Waste').trim();
-          const reason = String(report.defectName || report.cause || code).trim();
-          const wasteType = String(report.wasteType || '').trim();
-          const materialCode = String(report.materialCode || '').trim();
-          const dept = String(report.dept || '').trim();
-
-          let cat = 'Friction';
-          if (wasteType.toLowerCase() === 'milling') {
-            cat = 'Milling';
-          } else {
-            if (materialCode === 'G' || materialCode === 'A' || wasteType.toLowerCase() === 'bead') {
-              cat = 'Bead';
-            } else {
-              cat = 'Friction';
-            }
-          }
-
-          if (cat === 'Bead') {
-            beadSummary += w;
-            if (!beadMap[code]) beadMap[code] = { code, amount: 0, reason };
-            beadMap[code].amount += w;
-          } else if (cat === 'Milling') {
-            millingSummary += w;
-            if (!millingMap[code]) millingMap[code] = { code, amount: 0, reason };
-            millingMap[code].amount += w;
-          } else {
-            frictionSummary += w;
-            if (!frictionMap[code]) frictionMap[code] = { code, amount: 0, reason };
-            frictionMap[code].amount += w;
-          }
-        });
-
-        const millingTop = Object.values(millingMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-        const frictionTop = Object.values(frictionMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-        const beadTop = Object.values(beadMap).sort((a, b) => b.amount - a.amount).slice(0, 5);
-
-        millingTop.forEach((item, index) => { item.isHigh = index < 2; });
-        frictionTop.forEach((item, index) => { item.isHigh = index < 2; });
-        beadTop.forEach((item, index) => { item.isHigh = index < 2; });
-
-        return {
-          millingSummary: Number(millingSummary.toFixed(1)),
-          frictionSummary: Number(frictionSummary.toFixed(1)),
-          beadSummary: Number(beadSummary.toFixed(1)),
-          millingTop,
-          frictionTop,
-          beadTop,
-          dataDate: targetDate,
-          hasData: true
-        };
-      }
-    }
-  } catch (vErr) {
-    console.warn('Vercel waste fetch failed:', vErr.message);
   }
 
   return {

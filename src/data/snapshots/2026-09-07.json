@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-06T23:59:02.294Z",
+  "generatedAt": "2026-09-07T00:16:23.275Z",
   "waste": {
     "date": "2026-09-07",
     "millingSummary": 0,
@@ -15,26 +15,25 @@
   "cms": {
     "date": "2026-09-07",
     "mixing1": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 8,
+      "ar": 100,
+      "pr": 84.2,
+      "qr": 100,
+      "oee2": 84.2
     },
     "mixing2": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 9,
+      "ar": 99,
+      "pr": 90.8,
+      "qr": 100,
+      "oee2": 89.9
     },
-    "totalAr": 0,
-    "totalPr": 0,
-    "totalQr": 0,
-    "totalOee2": 0,
-    "hasData": false
+    "totalAr": 99.5,
+    "totalPr": 87.6,
+    "totalQr": 100,
+    "totalOee2": 87.1
   },
-  "target3Roll": 0,
+  "target3Roll": 22,
   "breakdown": {
     "_file": "Issue log 2026 _Sep2026.xlsx",
     "_sheet": "SEP2026",
@@ -88,14 +87,35 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
+    "totalRolls": 22,
     "totalRelease": 0,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 22,
+    "totalScheduled": 22,
+    "codeBreakdown": [
+      {
+        "code": "RP08",
+        "count": 8,
+        "percentage": 36.36
+      },
+      {
+        "code": "RU53",
+        "count": 8,
+        "percentage": 36.36
+      },
+      {
+        "code": "NU27",
+        "count": 4,
+        "percentage": 18.18
+      },
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 9.09
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "quad": {
     "date": "2026-09-07",
