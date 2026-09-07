@@ -3,8 +3,8 @@ const path = require('path');
 const XLSX = require('xlsx');
 
 const BREAKDOWN_DIRS = [
-  'C:\\Users\\aa11909\\OneDrive - Goodyear\\ENGINEERING BREAKDOWN',
-  'T:\\10.30 A.M. Production Meeting\\5 BTA\\Engineering Breakdown'
+  'T:\\10.30 A.M. Production Meeting\\5 BTA\\Engineering Breakdown',
+  'C:\\Users\\aa11909\\OneDrive - Goodyear\\ENGINEERING BREAKDOWN'
 ];
 
 function getCanonicalMachineName(raw) {
