@@ -129,8 +129,8 @@ function getQuadOutput(dateStr) {
 
       const qtyTarget = Number(r[4]) || 0;
 
-      // Only count Spools that have actual numeric values entered in Spool columns (indices 7 to 30 / H-Q)
-      const spoolCols = r.slice(7, 30);
+      // Only count Spools that have actual numeric values entered in Spool columns H-Q (indices 7 to 16)
+      const spoolCols = r.slice(7, 17);
       const filledSpools = spoolCols.filter(val => val !== '' && val !== null && val !== undefined && !isNaN(Number(val)) && Number(val) > 0);
       const qtyProduced = filledSpools.length;
 
