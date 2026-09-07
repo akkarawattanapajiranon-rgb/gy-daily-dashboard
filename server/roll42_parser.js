@@ -79,78 +79,142 @@ function parse4Roll2Data(dateStr) {
 
       const sapCode = String(r[1] || '').trim();
       if (sapCode && sapCode.toUpperCase() !== 'SAP CODE' && !sapCode.toLowerCase().includes('shift') && !sapCode.toLowerCase().includes('check sheet')) {
-        const compName = String(r[2] || r[4] || r[6] || r[8] || r[10] || r[12] || '').trim();
 
-        let rowMeters = 0;
-        [3, 5, 7, 9, 11, 13].forEach(colIdx => {
-          const val = Number(r[colIdx]);
-          if (!isNaN(val) && val > 0) rowMeters += val;
-        });
-
-        if (rowMeters > 0 || compName || sapCode.startsWith('PL') || sapCode.startsWith('LD') || sapCode.startsWith('PA') || sapCode.startsWith('GF') || sapCode.startsWith('GX')) {
+        const processCol = (compName, rawMeters, defaultUnit, calcRatioFunc) => {
+          if (!compName && rawMeters <= 0) return;
           const codeKey = compName || sapCode;
+          let unit = defaultUnit;
+          let qty = 1;
 
-          // Track in shift specific map
+          if (typeof calcRatioFunc === 'function') {
+            const res = calcRatioFunc(codeKey, rawMeters);
+            qty = res.qty;
+            unit = res.unit;
+          }
+
+          // Add to Shift map
           if (!shiftItems[currentShift][codeKey]) {
             shiftItems[currentShift][codeKey] = {
               sapCode,
               code: codeKey,
-              rolls: 0,
-              meters: 0
+              qty: 0,
+              meters: 0,
+              unit
             };
           }
-          shiftItems[currentShift][codeKey].rolls++;
-          shiftItems[currentShift][codeKey].meters += rowMeters;
+          shiftItems[currentShift][codeKey].qty += qty;
+          shiftItems[currentShift][codeKey].meters += rawMeters;
 
-          // Track overall map
+          // Add to Overall map
           if (!overallCodesMap[codeKey]) {
             overallCodesMap[codeKey] = {
               code: codeKey,
               sapCode,
-              rolls: 0,
+              qty: 0,
               meters: 0,
+              unit,
               shifts: { 1: 0, 2: 0, 3: 0 }
             };
           }
-          overallCodesMap[codeKey].rolls++;
-          overallCodesMap[codeKey].meters += rowMeters;
-          overallCodesMap[codeKey].shifts[currentShift]++;
+          overallCodesMap[codeKey].qty += qty;
+          overallCodesMap[codeKey].meters += rawMeters;
+          overallCodesMap[codeKey].shifts[currentShift] += qty;
+        };
+
+        // 1. Dual Liner (Col 2, Meter Col 3) -> 250m = 1 คัน
+        if ((r[2] !== undefined && r[2] !== '') || Number(r[3]) > 0) {
+          const m = Number(r[3]) || 0;
+          processCol(String(r[2] || '').trim(), m, 'คัน', (_, meters) => ({
+            qty: meters > 0 ? Math.round(meters / 250) || 1 : 1,
+            unit: 'คัน'
+          }));
+        }
+
+        // 2. VMI Ply 1 (Col 4, Meter Col 5) -> 250m = 1 คัน
+        if ((r[4] !== undefined && r[4] !== '') || Number(r[5]) > 0) {
+          const m = Number(r[5]) || 0;
+          processCol(String(r[4] || '').trim(), m, 'คัน', (_, meters) => ({
+            qty: meters > 0 ? Math.round(meters / 250) || 1 : 1,
+            unit: 'คัน'
+          }));
+        }
+
+        // 3. VMI Ply 2 (Col 6, Meter Col 7) -> 250m = 1 คัน
+        if ((r[6] !== undefined && r[6] !== '') || Number(r[7]) > 0) {
+          const m = Number(r[7]) || 0;
+          processCol(String(r[6] || '').trim(), m, 'คัน', (_, meters) => ({
+            qty: meters > 0 ? Math.round(meters / 250) || 1 : 1,
+            unit: 'คัน'
+          }));
+        }
+
+        // 4. R2.5 Ply 1 (Col 8, Meter Col 9) -> 35m = 1 ม้วน
+        if ((r[8] !== undefined && r[8] !== '') || Number(r[9]) > 0) {
+          const m = Number(r[9]) || 0;
+          processCol(String(r[8] || '').trim(), m, 'ม้วน', (_, meters) => ({
+            qty: meters > 0 ? Math.round(meters / 35) || 1 : 1,
+            unit: 'ม้วน'
+          }));
+        }
+
+        // 5. R2.5 Ply 2 (Col 10, Meter Col 11) -> 35m = 1 ม้วน
+        if ((r[10] !== undefined && r[10] !== '') || Number(r[11]) > 0) {
+          const m = Number(r[11]) || 0;
+          processCol(String(r[10] || '').trim(), m, 'ม้วน', (_, meters) => ({
+            qty: meters > 0 ? Math.round(meters / 35) || 1 : 1,
+            unit: 'ม้วน'
+          }));
+        }
+
+        // 6. Gumstrip Roll (Col 12, Meter Col 13) -> B1443/B1578 = 110m, F4111 = 200m
+        if ((r[12] !== undefined && r[12] !== '') || Number(r[13]) > 0) {
+          const m = Number(r[13]) || 0;
+          const gumCode = String(r[12] || '').trim();
+          processCol(gumCode, m, 'ม้วน', (code, meters) => {
+            const isF4111 = code.toUpperCase().includes('F4111') || sapCode.toUpperCase().includes('GF00013') || sapCode.toUpperCase().includes('GX00452');
+            const ratio = isF4111 ? 200 : 110;
+            return {
+              qty: meters > 0 ? Math.round(meters / ratio) || 1 : 1,
+              unit: 'ม้วน'
+            };
+          });
         }
       }
     });
 
     const shifts = {};
-    let totalRolls = 0;
+    let totalQty = 0;
     let totalMeters = 0;
 
     [1, 2, 3].forEach(sNum => {
-      const items = Object.values(shiftItems[sNum]).sort((a, b) => b.rolls - a.rolls);
-      const sRolls = items.reduce((acc, i) => acc + i.rolls, 0);
+      const items = Object.values(shiftItems[sNum]).sort((a, b) => b.qty - a.qty);
+      const sQty = items.reduce((acc, i) => acc + i.qty, 0);
       const sMeters = items.reduce((acc, i) => acc + i.meters, 0);
-      totalRolls += sRolls;
+      totalQty += sQty;
       totalMeters += sMeters;
 
       shifts[`shift${sNum}`] = {
         shiftNum: sNum,
         name: `กะ ${sNum} (Shift ${sNum})`,
-        rolls: sRolls,
+        qty: sQty,
         meters: sMeters,
         items
       };
     });
 
     const topCodes = Object.values(overallCodesMap)
-      .sort((a, b) => b.rolls - a.rolls);
+      .sort((a, b) => b.qty - a.qty);
 
     return {
       date: dateStr,
       day: dayNum,
       file: path.basename(file),
-      totalRolls,
+      totalQty,
+      totalRolls: totalQty,
       totalMeters,
       shifts,
       topCodes,
-      hasData: totalRolls > 0 || totalMeters > 0
+      hasData: totalQty > 0 || totalMeters > 0
     };
   } catch (err) {
     return { error: err.message, hasData: false };

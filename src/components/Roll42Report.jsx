@@ -164,8 +164,8 @@ export default function Roll42Report({ data, loading }) {
                             <tr>
                               <th className="p-2 pl-3">SAP Code</th>
                               <th className="p-2">Component</th>
-                              <th className="p-2 text-center">ม้วน</th>
-                              <th className="p-2 text-right pr-3">เมตร</th>
+                              <th className="p-2 text-center">จำนวน</th>
+                              <th className="p-2 text-right pr-3">ความยาว</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-slate-200/60 font-medium">
@@ -175,7 +175,7 @@ export default function Roll42Report({ data, loading }) {
                                 <td className="p-2 font-black text-indigo-900">{item.code}</td>
                                 <td className="p-2 text-center font-extrabold text-slate-700">
                                   <span className="px-2 py-0.5 bg-indigo-50 text-indigo-700 rounded-md border border-indigo-100 text-[11px]">
-                                    {item.rolls}
+                                    {item.qty} {item.unit || 'ม้วน'}
                                   </span>
                                 </td>
                                 <td className="p-2 text-right pr-3 font-bold text-slate-700">
@@ -196,7 +196,7 @@ export default function Roll42Report({ data, loading }) {
                     <div className="mt-3 pt-2.5 border-t border-slate-200 flex items-center justify-between text-xs font-extrabold text-slate-700">
                       <span>รวมกะ {sNum}:</span>
                       <span className="text-indigo-800 font-black">
-                        {shift.rolls} ม้วน ({shift.meters.toLocaleString()} m)
+                        {shift.qty || shift.rolls} รายการ ({shift.meters.toLocaleString()} m)
                       </span>
                     </div>
                   </div>
@@ -211,7 +211,7 @@ export default function Roll42Report({ data, loading }) {
       {activeView === 'summary' && topCodes.length > 0 && (
         <div className="space-y-3">
           <div className="text-xs font-extrabold text-slate-600 uppercase tracking-wider flex items-center justify-between">
-            <span>ตารางสรุปการผลิตตาม Component Spec (แบ่งตามกะ)</span>
+            <span>ตารางสรุปการผลิตตาม Component Spec (คำนวณตามหน่วย ม้วน / คัน)</span>
             <span className="text-[11px] text-slate-400 font-medium">{topCodes.length} Specs</span>
           </div>
 
@@ -222,10 +222,10 @@ export default function Roll42Report({ data, loading }) {
                   <tr>
                     <th className="p-3 pl-4">SAP Code</th>
                     <th className="p-3">Component / Spec</th>
-                    <th className="p-3 text-center bg-indigo-950 text-indigo-200">กะ 1 (ม้วน)</th>
-                    <th className="p-3 text-center bg-blue-950 text-blue-200">กะ 2 (ม้วน)</th>
-                    <th className="p-3 text-center bg-slate-950 text-slate-200">กะ 3 (ม้วน)</th>
-                    <th className="p-3 text-center bg-emerald-950 text-emerald-200">รวมม้วน</th>
+                    <th className="p-3 text-center bg-indigo-950 text-indigo-200">กะ 1</th>
+                    <th className="p-3 text-center bg-blue-950 text-blue-200">กะ 2</th>
+                    <th className="p-3 text-center bg-slate-950 text-slate-200">กะ 3</th>
+                    <th className="p-3 text-center bg-emerald-950 text-emerald-200">รวมจำนวน</th>
                     <th className="p-3 text-right pr-4">รวมความยาว (เมตร)</th>
                   </tr>
                 </thead>
@@ -237,27 +237,27 @@ export default function Roll42Report({ data, loading }) {
                       <td className="p-3 text-center font-extrabold text-indigo-700 bg-indigo-50/20">
                         {item.shifts[1] > 0 ? (
                           <span className="px-2 py-0.5 bg-indigo-100 text-indigo-900 rounded-md font-black">
-                            {item.shifts[1]}
+                            {item.shifts[1]} {item.unit || 'ม้วน'}
                           </span>
                         ) : '-'}
                       </td>
                       <td className="p-3 text-center font-extrabold text-blue-700 bg-blue-50/20">
                         {item.shifts[2] > 0 ? (
                           <span className="px-2 py-0.5 bg-blue-100 text-blue-900 rounded-md font-black">
-                            {item.shifts[2]}
+                            {item.shifts[2]} {item.unit || 'ม้วน'}
                           </span>
                         ) : '-'}
                       </td>
                       <td className="p-3 text-center font-extrabold text-slate-700 bg-slate-50/20">
                         {item.shifts[3] > 0 ? (
                           <span className="px-2 py-0.5 bg-slate-200 text-slate-900 rounded-md font-black">
-                            {item.shifts[3]}
+                            {item.shifts[3]} {item.unit || 'ม้วน'}
                           </span>
                         ) : '-'}
                       </td>
                       <td className="p-3 text-center font-black text-emerald-800 bg-emerald-50/30">
                         <span className="px-2.5 py-1 bg-emerald-100 text-emerald-900 rounded-lg">
-                          {item.rolls} ม้วน
+                          {item.qty || item.rolls} {item.unit || 'ม้วน'}
                         </span>
                       </td>
                       <td className="p-3 text-right pr-4 font-black text-slate-800">
