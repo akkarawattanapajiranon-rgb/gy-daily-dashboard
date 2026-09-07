@@ -115,38 +115,27 @@ function getQuadOutput(dateStr) {
   shiftRanges.forEach(sr => {
     const rows = data.slice(sr.start, sr.end);
     rows.forEach(r => {
-      const partId = String(r[0]).trim();
+      const partId = String(r[0] || '').trim();
       const upperPart = partId.toUpperCase();
+      if (!partId && !r[1] && !r[2] && !r[3]) return;
       if (upperPart.startsWith('TOTAL') || upperPart.includes('หมายเหตุ') || upperPart.startsWith('EXTRUDER') || upperPart.includes('BOOKER')) {
         return;
       }
 
-      const code1 = String(r[1]).trim();
-      const code2 = String(r[2]).trim();
-      const code3 = String(r[3]).trim();
+      const code1 = String(r[1] || '').trim();
+      const code2 = String(r[2] || '').trim();
+      const code3 = String(r[3] || '').trim();
       const code = code1 || code2 || code3;
 
       const qtyTarget = Number(r[4]) || 0;
-      const qtyProducedRaw = Number(r[5]) || 0;
-      const qtySapphireRaw = Number(r[7]) || 0;
-      const rawTotalItemQty = qtyProducedRaw + qtySapphireRaw;
 
-      const checkCode = String(code || '').trim().toUpperCase();
-      const checkPart = String(partId || '').trim().toUpperCase();
-      const checkCapBase = String(r[3] || '').trim().toUpperCase();
+      // Only count Spools that have actual numeric values entered in Spool columns (indices 7 to 30 / H-Q)
+      const spoolCols = r.slice(7, 30);
+      const filledSpools = spoolCols.filter(val => val !== '' && val !== null && val !== undefined && !isNaN(Number(val)) && Number(val) > 0);
+      const qtyProduced = filledSpools.length;
 
-      let divisor = 1;
-      if (checkCode.includes('T1400') || checkPart.includes('T1400') || checkCapBase.includes('T1400') || checkPart.includes('SW06332') || checkCode === '6017' || checkCode === '6010') {
-        divisor = 1;
-      } else if (checkPart.startsWith('TL') || checkCode.startsWith('TL')) {
-        divisor = 82;
-      } else if (checkPart.startsWith('SW') || checkCode.startsWith('SW')) {
-        divisor = 120;
-      }
-
-      const totalItemQty = divisor > 1 ? Math.round(rawTotalItemQty / divisor) : rawTotalItemQty;
-      const qtyProduced = divisor > 1 ? Math.round(qtyProducedRaw / divisor) : qtyProducedRaw;
-      const qtySapphire = divisor > 1 ? Math.round(qtySapphireRaw / divisor) : qtySapphireRaw;
+      const qtySapphire = (r[6] !== '' && !isNaN(Number(r[6]))) ? Number(r[6]) : 0;
+      const totalItemQty = qtyProduced + qtySapphire;
 
       if ((code || partId) && totalItemQty > 0) {
         shifts[sr.shift].items.push({
