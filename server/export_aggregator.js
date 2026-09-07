@@ -5,19 +5,37 @@ const { parseBreakdown } = require('./breakdown_parser');
 const { parseFischerData } = require('./fischer_parser');
 const { parseQuadData } = require('./quad_parser');
 const { parseTuberData } = require('./tuber_parser');
+const { fetchLiveCmsData } = require('./cms_parser');
 const { getSnapshot } = require('./snapshot_generator');
+
+const metricsMemoryCache = new Map();
+const CACHE_TTL_MS = 60 * 1000; // 1-minute TTL
 
 /**
  * Extract 11 metrics for a single date
  */
-function getMetricsForDate(dateStr) {
+async function getMetricsForDate(dateStr) {
+  const cached = metricsMemoryCache.get(dateStr);
+  if (cached && (Date.now() - cached.ts < CACHE_TTL_MS)) {
+    return cached.data;
+  }
+
   const snap = getSnapshot(dateStr) || {};
 
-  const cmsData = snap.cms || {};
-  const quadData = parseQuadData(dateStr) || snap.quad || {};
-  const tuberData = parseTuberData(dateStr) || snap.tuber || {};
-  const fischerData = parseFischerData(dateStr) || snap.fischer || {};
-  const bdData = parseBreakdown(dateStr) || snap.breakdown || {};
+  let cmsData = snap.cms;
+  if (!cmsData) {
+    try {
+      cmsData = await fetchLiveCmsData(dateStr);
+    } catch (e) {
+      cmsData = {};
+    }
+  }
+  cmsData = cmsData || {};
+
+  const quadData = snap.quad || parseQuadData(dateStr) || {};
+  const tuberData = snap.tuber || parseTuberData(dateStr) || {};
+  const fischerData = snap.fischer || parseFischerData(dateStr) || {};
+  const bdData = snap.breakdown || parseBreakdown(dateStr) || {};
   const wasteData = snap.waste || parseWasteData(dateStr) || {};
 
   const batch1 = Number(cmsData?.mixing1?.batch) || 0;
@@ -37,7 +55,7 @@ function getMetricsForDate(dateStr) {
   const frictionWaste = Number(wasteData?.frictionSummary) || 0;
   const millingWaste = Number(wasteData?.millingSummary) || 0;
 
-  return {
+  const res = {
     date: dateStr,
     mixerBatchmix,
     mixerOee2: Number(mixerOee2.toFixed(2)),
@@ -51,6 +69,9 @@ function getMetricsForDate(dateStr) {
     frictionWaste: Number(frictionWaste.toFixed(2)),
     millingWaste: Number(millingWaste.toFixed(2))
   };
+
+  metricsMemoryCache.set(dateStr, { data: res, ts: Date.now() });
+  return res;
 }
 
 /**
@@ -62,7 +83,7 @@ async function getExportMetricsRange(startDateStr, endDateStr) {
   const dates = [];
 
   if (start > end) {
-    return [getMetricsForDate(startDateStr)];
+    return [await getMetricsForDate(startDateStr)];
   }
 
   const curr = new Date(start);
@@ -76,7 +97,7 @@ async function getExportMetricsRange(startDateStr, endDateStr) {
     count++;
   }
 
-  const results = dates.map(d => getMetricsForDate(d));
+  const results = await Promise.all(dates.map(d => getMetricsForDate(d)));
   return results;
 }
 
