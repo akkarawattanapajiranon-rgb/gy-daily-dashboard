@@ -171,10 +171,13 @@ export default function SafetyLspReport() {
   }) : [];
 
   const getBadgeStyle = (val) => {
-    if (val >= 4) return 'bg-emerald-100 text-emerald-800 border-emerald-300 font-bold';
-    if (val >= 1) return 'bg-amber-100 text-amber-800 border-amber-300 font-semibold';
-    if (val === 0) return 'bg-rose-100 text-rose-800 border-rose-300 font-bold';
-    return 'bg-slate-50 text-slate-400 border-slate-200';
+    const num = Number(val);
+    if (val !== undefined && val !== '' && !isNaN(num)) {
+      if (num >= 4) return 'bg-emerald-500 text-white font-black shadow-sm'; // ครบ 4 หรือมากกว่า -> เขียว
+      if (num >= 1) return 'bg-amber-400 text-amber-950 font-black shadow-sm'; // ทำแล้ว ยังไม่ครบ 4 -> เหลือง
+      return 'bg-rose-500 text-white font-black shadow-sm'; // 0 -> แดง
+    }
+    return 'bg-rose-500 text-white font-black shadow-sm'; // ยังไม่ทำ / ว่าง -> แดง
   };
 
   if (loading || !data) {
@@ -319,6 +322,28 @@ export default function SafetyLspReport() {
         </div>
       </div>
 
+      {/* AOP vs ACT Color Legend Banner */}
+      <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-2 font-bold text-slate-700">
+          <span className="px-2.5 py-1 bg-slate-900 text-white rounded-lg text-[11px]">AOP vs ACT Rules</span>
+          <span>เกณฑ์เป้าหมาย AOP = 4 ครั้ง/เดือน</span>
+        </div>
+        <div className="flex flex-wrap items-center gap-3 font-extrabold text-[11px]">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-500 text-white rounded-xl shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+            <span>ยังไม่ทำ (0 ครั้ง) = สีแดง 🔴</span>
+          </div>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-400 text-amber-950 rounded-xl shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-amber-950"></span>
+            <span>ทำแล้วแต่ยังไม่ครบ 4 (1-3 ครั้ง) = สีเหลือง 🟡</span>
+          </div>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 text-white rounded-xl shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-white"></span>
+            <span>ครบ 4 หรือมากกว่า (≥ 4 ครั้ง) = สีเขียว 🟢</span>
+          </div>
+        </div>
+      </div>
+
       {/* Main Matrix Table */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
@@ -327,7 +352,7 @@ export default function SafetyLspReport() {
             <h2 className="font-extrabold text-slate-800 text-sm">2026 Worker LSP Audit Conformance Matrix</h2>
           </div>
           <div className="text-xs font-semibold text-slate-400">
-            Target = 4 Audits / Month per Target Worker
+            AOP Target = 4 Audits / Month per Target Worker
           </div>
         </div>
 
@@ -340,7 +365,10 @@ export default function SafetyLspReport() {
                 <th className="p-3 min-w-[200px]">Worker Name</th>
                 <th className="p-3 w-24">Dept</th>
                 {months.map(m => (
-                  <th key={m} className="p-2 text-center w-10">{m}</th>
+                  <th key={m} className="p-2 text-center min-w-[42px]">
+                    <div className="text-[9px] text-emerald-400 font-normal">AOP 4</div>
+                    <div className="font-extrabold">{m}</div>
+                  </th>
                 ))}
                 <th className="p-3 text-center min-w-[100px]">YTD %</th>
                 <th className="p-3 text-center pr-4 w-24">Status</th>
@@ -358,11 +386,11 @@ export default function SafetyLspReport() {
                     </span>
                   </td>
                   {months.map(m => {
-                    const val = w.monthly[m] !== undefined ? w.monthly[m] : '';
+                    const val = w.monthly && w.monthly[m] !== undefined ? w.monthly[m] : 0;
                     return (
                       <td key={m} className="p-1 text-center">
-                        <span className={`inline-block w-7 py-1 rounded-md border text-[11px] ${getBadgeStyle(val)}`}>
-                          {val !== undefined && val !== '' ? val : '-'}
+                        <span className={`inline-flex items-center justify-center w-7 h-7 rounded-lg text-[11px] transition-transform hover:scale-110 ${getBadgeStyle(val)}`}>
+                          {val !== undefined && val !== '' ? val : 0}
                         </span>
                       </td>
                     );
