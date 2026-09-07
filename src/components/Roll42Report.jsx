@@ -103,6 +103,17 @@ export default function Roll42Report({ data, loading }) {
             const isShift2 = sNum === 2;
 
             const itemCount = shift.items ? shift.items.length : 0;
+            const shiftCarts = shift.items ? shift.items.filter(i => i.unit === 'คัน').reduce((acc, i) => acc + (i.qty || 0), 0) : 0;
+            const shiftRolls = shift.items ? shift.items.filter(i => i.unit === 'ม้วน').reduce((acc, i) => acc + (i.qty || 0), 0) : 0;
+
+            let shiftTotalText = '0';
+            if (shiftCarts > 0 && shiftRolls > 0) {
+              shiftTotalText = `${shiftCarts} คัน, ${shiftRolls} ม้วน`;
+            } else if (shiftCarts > 0) {
+              shiftTotalText = `${shiftCarts} คัน`;
+            } else if (shiftRolls > 0) {
+              shiftTotalText = `${shiftRolls} ม้วน`;
+            }
 
             const headerBg = isShift1
               ? 'bg-indigo-900 text-white'
@@ -165,7 +176,7 @@ export default function Roll42Report({ data, loading }) {
                   <div className="mt-3 pt-2.5 border-t border-slate-200 flex items-center justify-between text-xs font-extrabold text-slate-700">
                     <span>รวมกะ {sNum}:</span>
                     <span className="text-indigo-800 font-black">
-                      {itemCount} รายการ
+                      {shiftTotalText}
                     </span>
                   </div>
                 </div>
