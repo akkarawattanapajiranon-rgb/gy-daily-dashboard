@@ -175,26 +175,10 @@ export default function DataExporter() {
             <button
               onClick={downloadExcel}
               disabled={loading || dataRows.length === 0}
-              className="flex items-center gap-2 px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 text-white rounded-xl text-xs font-black transition-all shadow-lg cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 text-white rounded-xl text-xs font-black transition-all shadow-lg cursor-pointer"
             >
               <Download className="w-4 h-4" />
               <span>Export Excel (.xlsx)</span>
-            </button>
-            <button
-              onClick={downloadCSV}
-              disabled={loading || dataRows.length === 0}
-              className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white rounded-xl text-xs font-black transition-all shadow-md cursor-pointer"
-            >
-              <Download className="w-4 h-4" />
-              <span>Export CSV</span>
-            </button>
-            <button
-              onClick={copyToClipboard}
-              disabled={loading || dataRows.length === 0}
-              className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-white border border-slate-700 rounded-xl text-xs font-black transition-all shadow-sm cursor-pointer"
-            >
-              {copied ? <CheckCircle2 className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-blue-300" />}
-              <span>{copied ? 'คัดลอกแล้ว!' : 'Copy to Clipboard'}</span>
             </button>
           </div>
         </div>
