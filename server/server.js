@@ -10,12 +10,34 @@ const path = require('path');
 
 const { getSnapshot } = require('./snapshot_generator');
 
+// In-memory API cache (30-second TTL) to avoid heavy synchronous re-parsing on every request
+const apiMemoryCache = new Map();
+const CACHE_TTL_MS = 30 * 1000;
+
+function getCached(key) {
+  const item = apiMemoryCache.get(key);
+  if (item && (Date.now() - item.ts < CACHE_TTL_MS)) {
+    return item.data;
+  }
+  return null;
+}
+
+function setCached(key, data) {
+  if (data && !data.error) {
+    apiMemoryCache.set(key, { data, ts: Date.now() });
+  }
+}
+
 // Breakdown parser (reads local Excel on T: drive)
 const { parseBreakdown } = require('./breakdown_parser');
 
 // Breakdown API endpoint
 app.get('/api/breakdown', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `breakdown:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
   console.log(`Fetching Breakdown data for date: ${date}`);
   const data = parseBreakdown(date);
   if (data.error) {
@@ -23,6 +45,7 @@ app.get('/api/breakdown', (req, res) => {
     if (snap && snap.breakdown) return res.json(snap.breakdown);
     return res.status(404).json({ error: data.error });
   }
+  setCached(cacheKey, data);
   res.json(data);
 });
 
@@ -32,6 +55,10 @@ const { parseFischerData } = require('./fischer_parser');
 // Fischer API endpoint
 app.get('/api/fischer', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `fischer:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
   console.log(`Fetching Fischer data for date: ${date}`);
   const data = parseFischerData(date);
   if (data.error) {
@@ -39,6 +66,7 @@ app.get('/api/fischer', (req, res) => {
     if (snap && snap.fischer) return res.json(snap.fischer);
     return res.status(404).json({ error: data.error });
   }
+  setCached(cacheKey, data);
   res.json(data);
 });
 
@@ -48,6 +76,10 @@ const { parse3RollData } = require('./roll3_parser');
 // 3 Roll API endpoint
 app.get('/api/3roll', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `3roll:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
   console.log(`Fetching 3 Roll WINDUP data for date: ${date}`);
   const data = parse3RollData(date);
   if (data.error) {
@@ -55,6 +87,7 @@ app.get('/api/3roll', (req, res) => {
     if (snap && snap.roll3) return res.json(snap.roll3);
     return res.status(404).json({ error: data.error });
   }
+  setCached(cacheKey, data);
   res.json(data);
 });
 
@@ -64,6 +97,10 @@ const { parseWeeklyOee } = require('./weekly_oee_parser');
 // Weekly OEE API endpoint
 app.get('/api/oee-weekly', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `oee-weekly:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
   console.log(`Fetching Weekly OEE WTD data for date: ${date}`);
   const data = parseWeeklyOee(date);
   if (data.error) {
@@ -71,6 +108,7 @@ app.get('/api/oee-weekly', (req, res) => {
     if (snap && snap.weeklyOee) return res.json(snap.weeklyOee);
     return res.status(404).json({ error: data.error });
   }
+  setCached(cacheKey, data);
   res.json(data);
 });
 
@@ -80,6 +118,10 @@ const { parseWorkawayData } = require('./workaway_parser');
 // Workaway API endpoint
 app.get('/api/workaway', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `workaway:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
   console.log(`Fetching Workaway Inventory data for date: ${date}`);
   const data = parseWorkawayData(date);
   if (data.error) {
@@ -87,6 +129,7 @@ app.get('/api/workaway', (req, res) => {
     if (snap && snap.workaway) return res.json(snap.workaway);
     return res.status(404).json({ error: data.error });
   }
+  setCached(cacheKey, data);
   res.json(data);
 });
 
@@ -94,6 +137,10 @@ app.get('/api/workaway', (req, res) => {
 const { parseQuadData } = require('./quad_parser');
 app.get('/api/quad', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `quad:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
   console.log(`Fetching Quad data for date: ${date}`);
   const data = parseQuadData(date);
   if (data.error) {
@@ -101,6 +148,7 @@ app.get('/api/quad', (req, res) => {
     if (snap && snap.quad) return res.json(snap.quad);
     return res.status(404).json({ error: data.error });
   }
+  setCached(cacheKey, data);
   res.json(data);
 });
 
@@ -108,6 +156,10 @@ app.get('/api/quad', (req, res) => {
 const { parseTuberData } = require('./tuber_parser');
 app.get('/api/tuber', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `tuber:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
   console.log(`Fetching Tuber data for date: ${date}`);
   const data = parseTuberData(date);
   if (data.error) {
@@ -115,6 +167,7 @@ app.get('/api/tuber', (req, res) => {
     if (snap && snap.tuber) return res.json(snap.tuber);
     return res.status(404).json({ error: data.error });
   }
+  setCached(cacheKey, data);
   res.json(data);
 });
 

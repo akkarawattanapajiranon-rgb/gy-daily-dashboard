@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-07T01:54:35.555Z",
+  "generatedAt": "2026-09-07T04:40:57.770Z",
   "waste": {
     "date": "2026-09-07",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-07",
     "mixing1": {
-      "batch": 46,
-      "ar": 79.5,
-      "pr": 88.3,
-      "qr": 98.8,
-      "oee2": 69.4
+      "batch": 117,
+      "ar": 78.5,
+      "pr": 85.8,
+      "qr": 93.8,
+      "oee2": 63.1
     },
     "mixing2": {
-      "batch": 61,
-      "ar": 96,
-      "pr": 90.7,
+      "batch": 140,
+      "ar": 93,
+      "pr": 91.2,
       "qr": 100,
-      "oee2": 87.1
+      "oee2": 84.8
     },
-    "totalAr": 87.8,
-    "totalPr": 89.6,
-    "totalQr": 99.4,
-    "totalOee2": 78.3
+    "totalAr": 85.7,
+    "totalPr": 88.7,
+    "totalQr": 97.1,
+    "totalOee2": 73.8
   },
-  "target3Roll": 5,
+  "target3Roll": 15,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA 14AUG2026.xlsx",
     "_sheet": "SEP2026",
@@ -87,21 +87,31 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 5,
-    "totalRelease": 5,
+    "totalRolls": 15,
+    "totalRelease": 15,
     "totalHold": 0,
-    "totalPending": 18,
-    "totalScheduled": 23,
+    "totalPending": 27,
+    "totalScheduled": 42,
     "codeBreakdown": [
       {
+        "code": "RP08",
+        "count": 8,
+        "percentage": 53.33
+      },
+      {
         "code": "NU27",
-        "count": 3,
-        "percentage": 60
+        "count": 4,
+        "percentage": 26.67
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 40
+        "percentage": 13.33
+      },
+      {
+        "code": "RU53",
+        "count": 1,
+        "percentage": 6.67
       }
     ],
     "holdBreakdown": [],
@@ -122,27 +132,52 @@
     "output": {
       "hasData": true,
       "day": 7,
-      "grandTotal": 59,
+      "grandTotal": 105,
       "codeBreakdown": [
         {
           "code": "WLAN",
           "count": 23,
-          "percentage": 38.98
+          "percentage": 21.9
         },
         {
           "code": "WAIS",
-          "count": 16,
-          "percentage": 27.12
+          "count": 17,
+          "percentage": 16.19
         },
         {
           "code": "WA8X",
-          "count": 12,
-          "percentage": 20.34
+          "count": 13,
+          "percentage": 12.38
+        },
+        {
+          "code": "WYAF",
+          "count": 10,
+          "percentage": 9.52
+        },
+        {
+          "code": "W1CL",
+          "count": 10,
+          "percentage": 9.52
         },
         {
           "code": "QUIR",
           "count": 8,
-          "percentage": 13.56
+          "percentage": 7.62
+        },
+        {
+          "code": "QLIX",
+          "count": 8,
+          "percentage": 7.62
+        },
+        {
+          "code": "W13F",
+          "count": 8,
+          "percentage": 7.62
+        },
+        {
+          "code": "W13L",
+          "count": 8,
+          "percentage": 7.62
         }
       ],
       "shifts": {
@@ -196,8 +231,8 @@
               "code": "WAIS",
               "qtyTarget": 6,
               "qtyProduced": 6,
-              "qtySapphire": 0,
-              "totalQty": 6
+              "qtySapphire": 1,
+              "totalQty": 7
             },
             {
               "partId": "TL00184",
@@ -206,8 +241,8 @@
               "code": "WA8X",
               "qtyTarget": 10,
               "qtyProduced": 10,
-              "qtySapphire": 0,
-              "totalQty": 10
+              "qtySapphire": 1,
+              "totalQty": 11
             },
             {
               "partId": "TL00184",
@@ -218,9 +253,59 @@
               "qtyProduced": 2,
               "qtySapphire": 0,
               "totalQty": 2
+            },
+            {
+              "partId": "TL00032",
+              "code1": "QLIX",
+              "code2": "",
+              "code": "QLIX",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00182",
+              "code1": "WYAF",
+              "code2": "",
+              "code": "WYAF",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00202",
+              "code1": "W1CL",
+              "code2": "",
+              "code": "W1CL",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00442",
+              "code1": "W13F",
+              "code2": "",
+              "code": "W13F",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00443",
+              "code1": "W13L",
+              "code2": "",
+              "code": "W13L",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
             }
           ],
-          "totalQty": 59
+          "totalQty": 105
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -275,17 +360,17 @@
     "date": "2026-09-07",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "7/9",
-      "sum": 0,
+      "sum": 61628,
       "target": 35056,
       "minTarget": 20000,
       "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "newGenerate": 12860,
+      "slowMoving": 40894,
+      "disposition": 7874,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -399,17 +484,88 @@
         "dateLabel": "7/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 61628,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 12860,
+        "newGenerateBTA": 11320,
+        "newGenerateWBR": 1540,
+        "slowMoving": 40894,
+        "disposition": 7874,
+        "hasData": true
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1128",
+        "qty": 7019,
+        "qtyMt": 7.02,
+        "percentage": 13.7
+      },
+      {
+        "rank": 2,
+        "code": "T1400",
+        "qty": 3910,
+        "qtyMt": 3.91,
+        "percentage": 7.6
+      },
+      {
+        "rank": 3,
+        "code": "M36F3",
+        "qty": 3660,
+        "qtyMt": 3.66,
+        "percentage": 7.1
+      },
+      {
+        "rank": 4,
+        "code": "N11F3",
+        "qty": 2460,
+        "qtyMt": 2.46,
+        "percentage": 4.8
+      },
+      {
+        "rank": 5,
+        "code": "K11M2",
+        "qty": 2240,
+        "qtyMt": 2.24,
+        "percentage": 4.4
+      },
+      {
+        "rank": 6,
+        "code": "N1692",
+        "qty": 1960,
+        "qtyMt": 1.96,
+        "percentage": 3.8
+      },
+      {
+        "rank": 7,
+        "code": "N1778",
+        "qty": 1910,
+        "qtyMt": 1.91,
+        "percentage": 3.7
+      },
+      {
+        "rank": 8,
+        "code": "K47J8",
+        "qty": 1860,
+        "qtyMt": 1.86,
+        "percentage": 3.6
+      },
+      {
+        "rank": 9,
+        "code": "K33M1",
+        "qty": 1790,
+        "qtyMt": 1.79,
+        "percentage": 3.5
+      },
+      {
+        "rank": 10,
+        "code": "K27T4",
+        "qty": 1780,
+        "qtyMt": 1.78,
+        "percentage": 3.5
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
