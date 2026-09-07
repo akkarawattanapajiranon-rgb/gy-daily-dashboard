@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { parseWasteData } = require('./waste_parser');
+const { parseWasteData, parseWasteDataAsync } = require('./waste_parser');
 const { parseBreakdown } = require('./breakdown_parser');
 const { parseFischerData } = require('./fischer_parser');
 const { parseQuadData } = require('./quad_parser');
@@ -22,7 +22,10 @@ async function getMetricsForDate(dateStr) {
 
   const snap = getSnapshot(dateStr) || {};
 
-  let cmsData = snap.cms;
+  const todayStr = new Date().toISOString().split('T')[0];
+  const isToday = (dateStr === todayStr);
+
+  let cmsData = (!isToday && snap.cms) ? snap.cms : null;
   if (!cmsData) {
     try {
       cmsData = await fetchLiveCmsData(dateStr);
@@ -30,13 +33,13 @@ async function getMetricsForDate(dateStr) {
       cmsData = {};
     }
   }
-  cmsData = cmsData || {};
+  cmsData = cmsData || snap.cms || {};
 
-  const quadData = snap.quad || parseQuadData(dateStr) || {};
-  const tuberData = snap.tuber || parseTuberData(dateStr) || {};
-  const fischerData = snap.fischer || parseFischerData(dateStr) || {};
-  const bdData = snap.breakdown || parseBreakdown(dateStr) || {};
-  const wasteData = snap.waste || parseWasteData(dateStr) || {};
+  const quadData = (!isToday && snap.quad) ? snap.quad : (parseQuadData(dateStr) || snap.quad || {});
+  const tuberData = (!isToday && snap.tuber) ? snap.tuber : (parseTuberData(dateStr) || snap.tuber || {});
+  const fischerData = (!isToday && snap.fischer) ? snap.fischer : (parseFischerData(dateStr) || snap.fischer || {});
+  const bdData = (!isToday && snap.breakdown) ? snap.breakdown : (parseBreakdown(dateStr) || snap.breakdown || {});
+  const wasteData = (!isToday && snap.waste) ? snap.waste : (await parseWasteDataAsync(dateStr) || snap.waste || {});
 
   const batch1 = Number(cmsData?.mixing1?.batch) || 0;
   const batch2 = Number(cmsData?.mixing2?.batch) || 0;
