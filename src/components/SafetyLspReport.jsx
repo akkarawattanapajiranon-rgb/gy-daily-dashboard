@@ -184,13 +184,27 @@ export default function SafetyLspReport() {
     reader.readAsBinaryString(file);
   };
 
+  const CURRENT_MONTH_KEY = 'SEP'; // September (Month 9)
+  const CURRENT_MONTH_INDEX = 9;
+
+  const getWorkerSepCount = (w) => {
+    const val = w.monthly && w.monthly[CURRENT_MONTH_KEY];
+    if (val !== undefined && val !== '' && val !== null) {
+      const num = Number(val);
+      return isNaN(num) ? 0 : num;
+    }
+    return 0;
+  };
+
   const staffList = data?.staffWorkers || defaultWorkers;
   const leaderList = data?.leaderWorkers || defaultLeaders;
   const activeWorkers = activeTeam === 'Staff' ? staffList : leaderList;
 
   const totalWorkers = activeWorkers.length;
-  const avgYtd = Math.round(activeWorkers.reduce((acc, w) => acc + w.ytdPct, 0) / (totalWorkers || 1));
-  const onTargetCount = activeWorkers.filter(w => w.ytdPct >= 65).length;
+  const sepAuditsSum = activeWorkers.reduce((acc, w) => acc + getWorkerSepCount(w), 0);
+  const avgSepAudits = (sepAuditsSum / (totalWorkers || 1)).toFixed(1);
+  const onTargetCount = activeWorkers.filter(w => getWorkerSepCount(w) >= 4).length;
+  const inProgressCount = activeWorkers.filter(w => { const c = getWorkerSepCount(w); return c >= 1 && c < 4; }).length;
   const belowTargetCount = totalWorkers - onTargetCount;
 
   const departments = ['ALL', ...new Set(activeWorkers.map(w => w.dept).filter(Boolean))];
@@ -200,8 +214,6 @@ export default function SafetyLspReport() {
     const matchesSearch = !searchTerm || w.name.toLowerCase().includes(searchTerm.toLowerCase()) || w.legacy.includes(searchTerm);
     return matchesDept && matchesSearch;
   });
-
-  const CURRENT_MONTH_INDEX = 9; // September = 9
 
   const getBadgeStyle = (val, monthIndex) => {
     const num = Number(val);
@@ -323,13 +335,13 @@ export default function SafetyLspReport() {
           </div>
         </div>
 
-        {/* Card 2: Average YTD % */}
+        {/* Card 2: Average Current Month Audits */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
           <div>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Average YTD Completion</div>
-            <div className="text-2xl font-black text-slate-800 mt-1">{avgYtd}%</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">SEP Average Audits</div>
+            <div className="text-2xl font-black text-slate-800 mt-1">{avgSepAudits} <span className="text-xs text-slate-500 font-normal">/ 4 ครั้ง</span></div>
             <div className="w-24 bg-slate-100 rounded-full h-1.5 mt-2">
-              <div className="bg-emerald-500 h-1.5 rounded-full" style={{ width: `${Math.min(100, avgYtd)}%` }}></div>
+              <div className="bg-emerald-500 h-1.5 rounded-full" style={{ width: `${Math.min(100, (Number(avgSepAudits) / 4) * 100)}%` }}></div>
             </div>
           </div>
           <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
@@ -340,9 +352,9 @@ export default function SafetyLspReport() {
         {/* Card 3: On Target */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
           <div>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">On Target (≥ 65%)</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">On Target (SEP ≥ 4)</div>
             <div className="text-2xl font-black text-emerald-600 mt-1">{onTargetCount} คน</div>
-            <div className="text-[11px] font-semibold text-emerald-600 mt-1">High Conformance</div>
+            <div className="text-[11px] font-semibold text-emerald-600 mt-1">Pass (ครบเป้าหมาย)</div>
           </div>
           <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
             <CheckCircle2 className="w-6 h-6" />
@@ -352,9 +364,9 @@ export default function SafetyLspReport() {
         {/* Card 4: Action Needed */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
           <div>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Action Needed (&lt; 65%)</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Action Needed (SEP &lt; 4)</div>
             <div className="text-2xl font-black text-rose-600 mt-1">{belowTargetCount} คน</div>
-            <div className="text-[11px] font-semibold text-rose-600 mt-1">Needs LSP Audits</div>
+            <div className="text-[11px] font-semibold text-rose-600 mt-1">{inProgressCount} ทำแล้วแต่ยังไม่ครบ, {belowTargetCount - inProgressCount} ยังไม่เริ่ม</div>
           </div>
           <div className="p-3 bg-rose-50 text-rose-600 rounded-xl">
             <AlertTriangle className="w-6 h-6" />
@@ -451,8 +463,8 @@ export default function SafetyLspReport() {
                     <div className="font-extrabold">{m}</div>
                   </th>
                 ))}
-                <th className="p-3 text-center min-w-[100px]">YTD %</th>
-                <th className="p-3 text-center pr-4 w-24">Status</th>
+                <th className="p-3 text-center min-w-[130px]">SEP (เดือนปัจจุบัน)</th>
+                <th className="p-3 text-center pr-4 w-28">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 font-medium">
@@ -485,31 +497,48 @@ export default function SafetyLspReport() {
                       </td>
                     );
                   })}
-                  <td className="p-3 text-center">
-                    <div className="flex items-center justify-center gap-2">
-                      <div className="w-16 bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                        <div
-                          className={`h-full rounded-full ${
-                            w.ytdPct >= 70 ? 'bg-emerald-500' : w.ytdPct >= 60 ? 'bg-amber-500' : 'bg-rose-500'
-                          }`}
-                          style={{ width: `${Math.min(100, w.ytdPct)}%` }}
-                        ></div>
-                      </div>
-                      <span className="font-extrabold text-slate-800 text-[11px] w-8">{w.ytdPct}%</span>
-                    </div>
+                  <td className="p-3 text-center font-bold">
+                    {(() => {
+                      const sepVal = getWorkerSepCount(w);
+                      return (
+                        <div className="flex items-center justify-center">
+                          <span className={`px-2.5 py-1 rounded-lg font-black text-xs min-w-[70px] text-center shadow-sm ${
+                            sepVal >= 4 ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' :
+                            sepVal >= 1 ? 'bg-amber-100 text-amber-900 border border-amber-300' :
+                            'bg-rose-100 text-rose-800 border border-rose-300'
+                          }`}>
+                            {sepVal} / 4 ครั้ง
+                          </span>
+                        </div>
+                      );
+                    })()}
                   </td>
                   <td className="p-3 text-center pr-4">
-                    {w.ytdPct >= 65 ? (
-                      <span className="px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1">
-                        <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                        Pass
-                      </span>
-                    ) : (
-                      <span className="px-2.5 py-1 bg-rose-50 text-rose-700 border border-rose-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1">
-                        <AlertTriangle className="w-3 h-3 text-rose-600" />
-                        Alert
-                      </span>
-                    )}
+                    {(() => {
+                      const sepVal = getWorkerSepCount(w);
+                      if (sepVal >= 4) {
+                        return (
+                          <span className="px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1 shadow-sm">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            Pass
+                          </span>
+                        );
+                      } else if (sepVal >= 1) {
+                        return (
+                          <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1 shadow-sm">
+                            <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+                            Alert ({sepVal}/4)
+                          </span>
+                        );
+                      } else {
+                        return (
+                          <span className="px-2.5 py-1 bg-rose-50 text-rose-700 border border-rose-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1 shadow-sm">
+                            <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
+                            Alert (0/4)
+                          </span>
+                        );
+                      }
+                    })()}
                   </td>
                 </tr>
               ))}
