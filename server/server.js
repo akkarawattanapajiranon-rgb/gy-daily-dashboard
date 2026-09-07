@@ -205,7 +205,10 @@ app.get('/api/extruder-timeline', async (req, res) => {
     }
     console.error('[extruder-timeline]', err);
     res.status(500).json({ success: false, error: 'internal error' });
-  // EHS Safety LSP Tracking parser
+  }
+});
+
+// EHS Safety LSP Tracking parser
 const { parseLspData } = require('./lsp_parser');
 
 app.get('/api/lsp', (req, res) => {
