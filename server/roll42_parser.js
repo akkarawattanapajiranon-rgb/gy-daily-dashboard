@@ -14,7 +14,6 @@ function find4Roll2File(dateStr) {
   const monthIdx = parseInt(monthStr, 10) - 1;
   const monthName = MONTH_NAMES[monthIdx];
 
-  // Try direct month subfolder
   if (fs.existsSync(BASE_4ROLL_DIR)) {
     const subdirs = fs.readdirSync(BASE_4ROLL_DIR);
     const monthSubdir = subdirs.find(d => 
@@ -32,7 +31,6 @@ function find4Roll2File(dateStr) {
     }
   }
 
-  // Fallbacks
   const fallbacks = [
     `T:\\10.30 A.M. Production Meeting\\5 BTA\\4 Roll\\2026\\9. Sep 2026\\4 Roll 2 Productivity Check sheet Sep 2026.xlsx`,
     `C:\\Users\\aa11909\\OneDrive - Goodyear\\4 Roll 2 Productivity Check sheet Sep 2026.xlsx`
@@ -66,9 +64,13 @@ function parse4Roll2Data(dateStr) {
     const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
     let currentShift = 1;
 
-    let s1Count = 0, s2Count = 0, s3Count = 0;
-    let s1Meters = 0, s2Meters = 0, s3Meters = 0;
-    const codesMap = {};
+    const shiftItems = {
+      1: {},
+      2: {},
+      3: {}
+    };
+
+    const overallCodesMap = {};
 
     rows.forEach((r) => {
       const rStr = r.join(' ').toLowerCase();
@@ -86,22 +88,58 @@ function parse4Roll2Data(dateStr) {
         });
 
         if (rowMeters > 0 || compName || sapCode.startsWith('PL') || sapCode.startsWith('LD') || sapCode.startsWith('PA') || sapCode.startsWith('GF') || sapCode.startsWith('GX')) {
-          if (currentShift === 1) { s1Count++; s1Meters += rowMeters; }
-          else if (currentShift === 2) { s2Count++; s2Meters += rowMeters; }
-          else if (currentShift === 3) { s3Count++; s3Meters += rowMeters; }
-
           const codeKey = compName || sapCode;
-          if (!codesMap[codeKey]) codesMap[codeKey] = { rolls: 0, meters: 0 };
-          codesMap[codeKey].rolls++;
-          codesMap[codeKey].meters += rowMeters;
+
+          // Track in shift specific map
+          if (!shiftItems[currentShift][codeKey]) {
+            shiftItems[currentShift][codeKey] = {
+              sapCode,
+              code: codeKey,
+              rolls: 0,
+              meters: 0
+            };
+          }
+          shiftItems[currentShift][codeKey].rolls++;
+          shiftItems[currentShift][codeKey].meters += rowMeters;
+
+          // Track overall map
+          if (!overallCodesMap[codeKey]) {
+            overallCodesMap[codeKey] = {
+              code: codeKey,
+              sapCode,
+              rolls: 0,
+              meters: 0,
+              shifts: { 1: 0, 2: 0, 3: 0 }
+            };
+          }
+          overallCodesMap[codeKey].rolls++;
+          overallCodesMap[codeKey].meters += rowMeters;
+          overallCodesMap[codeKey].shifts[currentShift]++;
         }
       }
     });
 
-    const totalRolls = s1Count + s2Count + s3Count;
-    const totalMeters = s1Meters + s2Meters + s3Meters;
-    const topCodes = Object.entries(codesMap)
-      .map(([code, d]) => ({ code, rolls: d.rolls, meters: d.meters }))
+    const shifts = {};
+    let totalRolls = 0;
+    let totalMeters = 0;
+
+    [1, 2, 3].forEach(sNum => {
+      const items = Object.values(shiftItems[sNum]).sort((a, b) => b.rolls - a.rolls);
+      const sRolls = items.reduce((acc, i) => acc + i.rolls, 0);
+      const sMeters = items.reduce((acc, i) => acc + i.meters, 0);
+      totalRolls += sRolls;
+      totalMeters += sMeters;
+
+      shifts[`shift${sNum}`] = {
+        shiftNum: sNum,
+        name: `กะ ${sNum} (Shift ${sNum})`,
+        rolls: sRolls,
+        meters: sMeters,
+        items
+      };
+    });
+
+    const topCodes = Object.values(overallCodesMap)
       .sort((a, b) => b.rolls - a.rolls);
 
     return {
@@ -110,11 +148,7 @@ function parse4Roll2Data(dateStr) {
       file: path.basename(file),
       totalRolls,
       totalMeters,
-      shifts: {
-        shift1: { rolls: s1Count, meters: s1Meters },
-        shift2: { rolls: s2Count, meters: s2Meters },
-        shift3: { rolls: s3Count, meters: s3Meters }
-      },
+      shifts,
       topCodes,
       hasData: totalRolls > 0 || totalMeters > 0
     };
