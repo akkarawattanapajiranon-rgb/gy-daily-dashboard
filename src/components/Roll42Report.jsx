@@ -102,17 +102,7 @@ export default function Roll42Report({ data, loading }) {
             const isShift1 = sNum === 1;
             const isShift2 = sNum === 2;
 
-            const shiftCarts = shift.items ? shift.items.filter(i => i.unit === 'คัน').reduce((acc, i) => acc + (i.qty || 0), 0) : 0;
-            const shiftRolls = shift.items ? shift.items.filter(i => i.unit === 'ม้วน').reduce((acc, i) => acc + (i.qty || 0), 0) : 0;
-
-            let shiftSummaryText = '0';
-            if (shiftCarts > 0 && shiftRolls > 0) {
-              shiftSummaryText = `${shiftCarts} คัน, ${shiftRolls} ม้วน`;
-            } else if (shiftCarts > 0) {
-              shiftSummaryText = `${shiftCarts} คัน`;
-            } else if (shiftRolls > 0) {
-              shiftSummaryText = `${shiftRolls} ม้วน`;
-            }
+            const itemCount = shift.items ? shift.items.length : 0;
 
             const headerBg = isShift1
               ? 'bg-indigo-900 text-white'
@@ -134,7 +124,7 @@ export default function Roll42Report({ data, loading }) {
                     <h3 className="font-black text-sm">{shift.name}</h3>
                   </div>
                   <span className={`px-2.5 py-1 rounded-xl text-xs font-black border ${badgeBg}`}>
-                    {shiftSummaryText}
+                    {itemCount} รายการ
                   </span>
                 </div>
 
@@ -175,7 +165,7 @@ export default function Roll42Report({ data, loading }) {
                   <div className="mt-3 pt-2.5 border-t border-slate-200 flex items-center justify-between text-xs font-extrabold text-slate-700">
                     <span>รวมกะ {sNum}:</span>
                     <span className="text-indigo-800 font-black">
-                      {shiftSummaryText}
+                      {itemCount} รายการ
                     </span>
                   </div>
                 </div>
