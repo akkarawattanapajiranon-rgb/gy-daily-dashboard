@@ -141,25 +141,31 @@ export async function fetchWasteData(dateStr) {
   };
 }
 
-export async function fetchCmsData(dateStr) {
+async function fetchFast(url, timeoutMs = 3000) {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 15000);
+  const id = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(id);
+    return res;
+  } catch (err) {
+    clearTimeout(id);
+    throw err;
+  }
+}
 
+export async function fetchCmsData(dateStr) {
   try {
     let url = '/api/cms';
-    if (dateStr) {
-      url += `?date=${dateStr}`;
-    }
-    const res = await fetch(url, { signal: controller.signal });
-    clearTimeout(timeoutId);
+    if (dateStr) url += `?date=${dateStr}`;
+    const res = await fetchFast(url, 3000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) {
       throw new Error('Static HTML response from host');
     }
-    
     return await res.json();
   } catch (err) {
-    console.warn('CMS Fetch Error, checking Firebase snapshot...', err.message);
+    console.warn('CMS Fetch Timeout/Error, fallback to snapshot:', err.message);
     const snap = await getFirebaseSnapshot(dateStr);
     if (snap && snap.cms) return snap.cms;
     return null;
@@ -168,7 +174,7 @@ export async function fetchCmsData(dateStr) {
 
 export async function fetchTarget3Roll(dateStr) {
   try {
-    const res = await fetch("https://roll-planning-default-rtdb.firebaseio.com/saved_plans.json");
+    const res = await fetchFast("https://roll-planning-default-rtdb.firebaseio.com/saved_plans.json", 3000);
     if (!res.ok) throw new Error('Failed to fetch target 3 roll data');
     
     const plansData = await res.json();
@@ -191,7 +197,7 @@ export async function fetchTarget3Roll(dateStr) {
 export async function fetchBreakdownData(dateStr) {
   try {
     const url = `/api/breakdown?date=${dateStr}`;
-    const res = await fetch(url);
+    const res = await fetchFast(url, 3000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed breakdown fetch');
     return await res.json();
@@ -205,7 +211,7 @@ export async function fetchBreakdownData(dateStr) {
 export async function fetchFischerData(dateStr) {
   try {
     const url = `/api/fischer?date=${dateStr}`;
-    const res = await fetch(url);
+    const res = await fetchFast(url, 3000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed fischer fetch');
     return await res.json();
@@ -219,7 +225,7 @@ export async function fetchFischerData(dateStr) {
 export async function fetch3RollDetail(dateStr) {
   try {
     const url = `/api/3roll?date=${dateStr}`;
-    const res = await fetch(url);
+    const res = await fetchFast(url, 3000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed 3roll fetch');
     return await res.json();
@@ -233,7 +239,7 @@ export async function fetch3RollDetail(dateStr) {
 export async function fetchQuadDetail(dateStr) {
   try {
     const url = `/api/quad?date=${dateStr}`;
-    const res = await fetch(url);
+    const res = await fetchFast(url, 3000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed quad fetch');
     return await res.json();
@@ -247,7 +253,7 @@ export async function fetchQuadDetail(dateStr) {
 export async function fetchTuberDetail(dateStr) {
   try {
     const url = `/api/tuber?date=${dateStr}`;
-    const res = await fetch(url);
+    const res = await fetchFast(url, 3000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed tuber fetch');
     return await res.json();
@@ -261,7 +267,7 @@ export async function fetchTuberDetail(dateStr) {
 export async function fetchWorkawayData(dateStr) {
   try {
     const url = `/api/workaway?date=${dateStr}`;
-    const res = await fetch(url);
+    const res = await fetchFast(url, 3000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed workaway fetch');
     return await res.json();
