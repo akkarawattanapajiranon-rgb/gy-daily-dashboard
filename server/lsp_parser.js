@@ -3,8 +3,11 @@ const path = require('path');
 const XLSX = require('xlsx');
 
 const LSP_PATHS = [
-  'C:\\Users\\aa11909\\OneDrive - Goodyear\\ENGINEERING BREAKDOWN\\LSP Tracking.xlsx',
   'C:\\Users\\aa11909\\OneDrive - Goodyear\\LSP Tracking.xlsx',
+  'C:\\Users\\aa11909\\OneDrive - Goodyear\\Documents\\LSP Tracking.xlsx',
+  'C:\\Users\\aa11909\\OneDrive - Goodyear\\ENGINEERING BREAKDOWN\\LSP Tracking.xlsx',
+  'C:\\Users\\aa11909\\Downloads\\LSP Tracking.xlsx',
+  'C:\\Users\\aa11909\\Documents\\LSP Tracking.xlsx',
   'T:\\10.30 A.M. Production Meeting\\5 BTA\\LSP Tracking.xlsx',
   'T:\\10.30 A.M. Production Meeting\\0 TRAINNING\\LSP Tracking.xlsx'
 ];
@@ -49,18 +52,18 @@ function parseLspData() {
 
     // Sample / default fallback workers for Leader Shopfloor team
     const defaultLeaders = [
-      { id: 5, legacy: '3141', name: 'Boonnue Umpimai (บุญเหลือ อุ้มพิมาย)', title: 'Production Team Leader', dept: 'FLM', areaCode: '3200', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 4, APR: 4, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 58 },
-      { id: 7, legacy: '1312', name: 'Chet Srimook (เชษฐ์ ศรีมุก)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4300', group: 'Leader', monthly: { JAN: 0, FEB: 5, MAR: 7, APR: 4, MAY: 8, JUN: 9, JUL: 5, AUG: 6, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 90 },
-      { id: 27, legacy: '1425', name: 'Preecha Chamwechesart (ปรีชา ชาญเวชศาสตร์)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 3, APR: 0, MAY: 5, JUN: 7, JUL: 4, AUG: 7, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 63 },
-      { id: 28, legacy: '1232', name: 'Rawat Puykunthod (เรวัตร์ ปุยขุนทด)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 0, MAY: 5, JUN: 8, JUL: 4, AUG: 7, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 54 },
-      { id: 30, legacy: '1339', name: 'Sek Kangsuk (เสก กองสุข)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4300', group: 'Leader', monthly: { JAN: 0, FEB: 4, MAR: 4, APR: 6, MAY: 5, JUN: 5, JUL: 4, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 77 },
-      { id: 33, legacy: '1327', name: 'Sivarin Juntasit (ศิวรินทร์ จันทสิทธิ์)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 5, APR: 0, MAY: 4, JUN: 5, JUL: 4, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 56 },
-      { id: 40, legacy: '9823', name: 'Suphol Sophaboon (สุพล โสภะบุญ)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 4, FEB: 4, MAR: 7, APR: 2, MAY: 4, JUN: 4, JUL: 4, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 71 },
-      { id: 41, legacy: '1333', name: 'Suthin Saenphai (สุทิน แสนภัย)', title: 'Group Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 0, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 42 },
-      { id: 45, legacy: '1459', name: 'Vichai Jomkamsing (วิชัย จอมคำสิงห์)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4300', group: 'Leader', monthly: { JAN: 12, FEB: 0, MAR: 0, APR: 0, MAY: 4, JUN: 4, JUL: 8, AUG: 7, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 81 },
-      { id: 46, legacy: '3062', name: 'Vinai Klinsrisuk (วินัย กลิ่นศรีสุข)', title: 'Production Team Leader', dept: 'FLM', areaCode: '3200', group: 'Leader', monthly: { JAN: 2, FEB: 1, MAR: 3, APR: 0, MAY: 6, JUN: 4, JUL: 4, AUG: 4, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 58 },
-      { id: 50, legacy: '12249', name: 'Chariphan Phonlaaiad (ชารีพันธุ์ พลละเอียด)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 1, MAY: 6, JUN: 4, JUL: 5, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 52 },
-      { id: 51, legacy: '12583', name: 'Niran Laedee (นิรันดร์ แลดี)', title: 'Production Team Leader', dept: 'FLM', areaCode: '3200', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 0, MAY: 4, JUN: 4, JUL: 4, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 44 }
+      { id: 5, legacy: '3141', name: 'Boonnue Umpimai (บุญเหลือ อุ้มพิมาย)', title: 'Production Team Leader', dept: 'FLM', areaCode: '3200', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 4, APR: 4, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 0, OCT: '', NOV: '', DEC: '' }, ytdPct: 50 },
+      { id: 7, legacy: '1312', name: 'Chet Srimook (เชษฐ์ ศรีมุก)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4300', group: 'Leader', monthly: { JAN: 0, FEB: 5, MAR: 7, APR: 4, MAY: 8, JUN: 9, JUL: 6, AUG: 6, SEP: 1, OCT: '', NOV: '', DEC: '' }, ytdPct: 96 },
+      { id: 27, legacy: '1425', name: 'Preecha Chamwechesart (ปรีชา ชาญเวชศาสตร์)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 3, APR: 0, MAY: 5, JUN: 7, JUL: 6, AUG: 7, SEP: 0, OCT: '', NOV: '', DEC: '' }, ytdPct: 58 },
+      { id: 28, legacy: '1232', name: 'Rawat Puykunthod (เรวัตร์ ปุยขุนทด)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 0, MAY: 5, JUN: 6, JUL: 4, AUG: 7, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 50 },
+      { id: 30, legacy: '1339', name: 'Sek Kangsuk (เสก กองสุข)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4300', group: 'Leader', monthly: { JAN: 0, FEB: 4, MAR: 4, APR: 6, MAY: 5, JUN: 5, JUL: 5, AUG: 5, SEP: 0, OCT: '', NOV: '', DEC: '' }, ytdPct: 71 },
+      { id: 33, legacy: '1327', name: 'Sivarin Juntasit (ศิวรินทร์ จันทสิทธิ์)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 5, APR: 0, MAY: 5, JUN: 5, JUL: 6, AUG: 5, SEP: 1, OCT: '', NOV: '', DEC: '' }, ytdPct: 56 },
+      { id: 40, legacy: '9823', name: 'Suphol Sophaboon (สุพล โสภะบุญ)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 4, FEB: 4, MAR: 7, APR: 2, MAY: 4, JUN: 4, JUL: 4, AUG: 5, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 71 },
+      { id: 41, legacy: '1333', name: 'Suthin Saenphai (สุทิน แสนภัย)', title: 'Group Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 0, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 0, OCT: '', NOV: '', DEC: '' }, ytdPct: 33 },
+      { id: 45, legacy: '1459', name: 'Vichai Jomkamsing (วิชัย จอมคำสิงห์)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4300', group: 'Leader', monthly: { JAN: 12, FEB: 8, MAR: 2, APR: 0, MAY: 4, JUN: 4, JUL: 6, AUG: 7, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 94 },
+      { id: 46, legacy: '3062', name: 'Vinai Klinsrisuk (วินัย กลิ่นศรีสุข)', title: 'Production Team Leader', dept: 'FLM', areaCode: '3200', group: 'Leader', monthly: { JAN: 2, FEB: 1, MAR: 3, APR: 0, MAY: 6, JUN: 4, JUL: 4, AUG: 5, SEP: 1, OCT: '', NOV: '', DEC: '' }, ytdPct: 54 },
+      { id: 50, legacy: '12249', name: 'Chariphan Phonlaaiad (ชารีพันธุ์ พลละเอียด)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 1, MAY: 6, JUN: 5, JUL: 4, AUG: 5, SEP: 0, OCT: '', NOV: '', DEC: '' }, ytdPct: 44 },
+      { id: 51, legacy: '12583', name: 'Niran Laedee (นิรันดร์ แลดี)', title: 'Production Team Leader', dept: 'FLM', areaCode: '3200', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 0, MAY: 4, JUN: 4, JUL: 5, AUG: 5, SEP: 1, OCT: '', NOV: '', DEC: '' }, ytdPct: 40 }
     ];
 
     let parsedWorkers = [];
