@@ -270,6 +270,21 @@ app.get('/api/lsp', (req, res) => {
   res.json(data);
 });
 
+// Data Exporter endpoint for range or single date
+const { getExportMetricsRange } = require('./export_aggregator');
+
+app.get('/api/export-metrics', async (req, res) => {
+  const startDate = req.query.startDate || req.query.date || new Date().toISOString().split('T')[0];
+  const endDate = req.query.endDate || startDate;
+  console.log(`Fetching Export Metrics from ${startDate} to ${endDate}`);
+  try {
+    const data = await getExportMetricsRange(startDate, endDate);
+    res.json({ startDate, endDate, totalDays: data.length, rows: data });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Serve built Vite assets AFTER API routes
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 

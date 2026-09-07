@@ -11,7 +11,8 @@ import TuberReport from './components/TuberReport';
 import WorkawayReport from './components/WorkawayReport';
 import ExtruderTimeline from './components/extruder-timeline/ExtruderTimeline';
 import SafetyLspReport from './components/SafetyLspReport';
-import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck } from 'lucide-react';
+import DataExporter from './components/DataExporter';
+import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck, Download } from 'lucide-react';
 import { 
   fetchWasteData, 
   fetchCmsData, 
@@ -176,9 +177,20 @@ function App() {
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <span>หน้า 3: Safety (EHS & LSP)</span>
             </button>
+            <button
+              onClick={() => setActiveTab('exporter')}
+              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all ${
+                activeTab === 'exporter'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              <Download className="w-4 h-4 text-blue-300" />
+              <span>หน้า 4: โหลดข้อมูลตัวเลข (Export)</span>
+            </button>
           </div>
           <div className="text-xs font-semibold text-slate-400 px-3">
-            {activeTab === 'dor' ? 'Daily Operations Overview' : activeTab === 'extruder' ? 'Extruder TAW Timeline' : 'EHS Safety & Life Saving Principles'}
+            {activeTab === 'dor' ? 'Daily Operations Overview' : activeTab === 'extruder' ? 'Extruder TAW Timeline' : activeTab === 'safety' ? 'EHS Safety & Life Saving Principles' : '11 Core Operational Metrics Exporter'}
           </div>
         </div>
 
@@ -189,7 +201,7 @@ function App() {
             <header className="bg-brand-blue text-white rounded-2xl p-6 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl md:text-3xl font-black tracking-tight">MU_DOR (Daily Operations Report)</h1>
-                <div className="flex items-center gap-2 mt-2">
+                <div className="flex flex-wrap items-center gap-2 mt-2">
                   <Calendar className="w-5 h-5 text-brand-yellow" />
                   <input 
                     type="date" 
@@ -197,6 +209,13 @@ function App() {
                     onChange={handleDateChange}
                     className="bg-white/10 text-white border border-white/20 rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-yellow/50"
                   />
+                  <button
+                    onClick={() => setActiveTab('exporter')}
+                    className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white border border-emerald-400/40 rounded-lg px-3.5 py-1.5 text-xs font-black transition-all shadow-md cursor-pointer ml-2"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>📥 โหลดข้อมูลตัวเลข (11 รายการ)</span>
+                  </button>
                 </div>
               </div>
               <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
@@ -256,6 +275,13 @@ function App() {
         {activeTab === 'safety' && (
           <div className="space-y-6">
             <SafetyLspReport />
+          </div>
+        )}
+
+        {/* PAGE 4: Operational Data Exporter */}
+        {activeTab === 'exporter' && (
+          <div className="space-y-6">
+            <DataExporter />
           </div>
         )}
 
