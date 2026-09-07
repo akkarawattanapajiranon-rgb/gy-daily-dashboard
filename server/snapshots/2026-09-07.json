@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-07T00:16:23.275Z",
+  "generatedAt": "2026-09-07T01:24:21.322Z",
   "waste": {
     "date": "2026-09-07",
     "millingSummary": 0,
@@ -15,27 +15,27 @@
   "cms": {
     "date": "2026-09-07",
     "mixing1": {
-      "batch": 8,
-      "ar": 100,
-      "pr": 84.2,
-      "qr": 100,
-      "oee2": 84.2
+      "batch": 40,
+      "ar": 89.9,
+      "pr": 89.7,
+      "qr": 99.4,
+      "oee2": 80.1
     },
     "mixing2": {
-      "batch": 9,
-      "ar": 99,
-      "pr": 90.8,
+      "batch": 46,
+      "ar": 96.8,
+      "pr": 90.7,
       "qr": 100,
-      "oee2": 89.9
+      "oee2": 87.8
     },
-    "totalAr": 99.5,
-    "totalPr": 87.6,
-    "totalQr": 100,
-    "totalOee2": 87.1
+    "totalAr": 93.3,
+    "totalPr": 90.2,
+    "totalQr": 99.7,
+    "totalOee2": 84
   },
-  "target3Roll": 22,
+  "target3Roll": 2,
   "breakdown": {
-    "_file": "Issue log 2026 _Sep2026.xlsx",
+    "_file": "Issue log 2026 _ BCA 14AUG2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-07",
     "topLoss": [],
@@ -87,31 +87,16 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 22,
-    "totalRelease": 0,
+    "totalRolls": 2,
+    "totalRelease": 2,
     "totalHold": 0,
-    "totalPending": 22,
-    "totalScheduled": 22,
+    "totalPending": 21,
+    "totalScheduled": 23,
     "codeBreakdown": [
-      {
-        "code": "RP08",
-        "count": 8,
-        "percentage": 36.36
-      },
-      {
-        "code": "RU53",
-        "count": 8,
-        "percentage": 36.36
-      },
-      {
-        "code": "NU27",
-        "count": 4,
-        "percentage": 18.18
-      },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 9.09
+        "percentage": 100
       }
     ],
     "holdBreakdown": [],
@@ -132,13 +117,30 @@
     "output": {
       "hasData": true,
       "day": 7,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 8,
+      "codeBreakdown": [
+        {
+          "code": "QUIR",
+          "count": 8,
+          "percentage": 100
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "TL00067",
+              "code1": "QUIR",
+              "code2": "",
+              "code": "QUIR",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            }
+          ],
+          "totalQty": 8
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -288,7 +290,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 66584,
-        "consume": 0,
+        "consume": 13156,
         "newGenerate": 12460,
         "newGenerateBTA": 9650,
         "newGenerateWBR": 2810,
@@ -302,14 +304,14 @@
         "dateLabel": "6/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
-        "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "sum": 66584,
+        "consume": 17599,
+        "newGenerate": 12460,
+        "newGenerateBTA": 9649,
+        "newGenerateWBR": 2811,
+        "slowMoving": 45974,
+        "disposition": 8150,
+        "hasData": true
       },
       {
         "day": 7,
@@ -371,16 +373,16 @@
         "label": "W1 (1/9 - 6/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 56.53,
+          "avg": 57.1,
           "target": 62,
-          "count": 4,
+          "count": 6,
           "isMet": false
         },
         "tuber": {
-          "avg": 62.65,
+          "avg": 61.93,
           "target": 62,
-          "count": 4,
-          "isMet": true
+          "count": 6,
+          "isMet": false
         },
         "fischer": {
           "avg": 51.54,

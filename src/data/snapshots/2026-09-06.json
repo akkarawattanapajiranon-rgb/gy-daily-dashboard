@@ -1,6 +1,6 @@
 {
   "date": "2026-09-06",
-  "generatedAt": "2026-09-07T00:16:30.040Z",
+  "generatedAt": "2026-09-07T01:24:26.697Z",
   "waste": {
     "date": "2026-09-06",
     "millingSummary": 0,
@@ -35,34 +35,34 @@
   },
   "target3Roll": 34,
   "breakdown": {
-    "_file": "Issue log 2026 _Sep2026.xlsx",
+    "_file": "Issue log 2026 _ BCA 14AUG2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-06",
     "topLoss": [],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.3333,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.0833,
+      "hasData": true
     }
   },
   "fischer": {
@@ -204,13 +204,13 @@
   "quad": {
     "date": "2026-09-06",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 30.21,
+      "ar_pct": 84.14,
+      "pr_pct": 78.23,
+      "qr_pct": 94.69,
+      "oee1_pct": 18.83,
+      "oee2_pct": 62.33,
       "bd_pct": 0
     },
     "output": {
@@ -412,13 +412,13 @@
   "tuber": {
     "date": "2026-09-06",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 83.33,
+      "ar_pct": 81.75,
+      "pr_pct": 80.81,
+      "qr_pct": 98.06,
+      "oee1_pct": 53.98,
+      "oee2_pct": 64.78,
       "bd_pct": 0
     },
     "output": {
@@ -697,17 +697,17 @@
     "date": "2026-09-06",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "6/9",
-      "sum": 0,
+      "sum": 66584,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "consume": 17599,
+      "newGenerate": 12460,
+      "slowMoving": 45974,
+      "disposition": 8150,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -792,7 +792,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 66584,
-        "consume": 0,
+        "consume": 13156,
         "newGenerate": 12460,
         "newGenerateBTA": 9650,
         "newGenerateWBR": 2810,
@@ -806,17 +806,88 @@
         "dateLabel": "6/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
-        "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "sum": 66584,
+        "consume": 17599,
+        "newGenerate": 12460,
+        "newGenerateBTA": 9649,
+        "newGenerateWBR": 2811,
+        "slowMoving": 45974,
+        "disposition": 8150,
+        "hasData": true
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1128",
+        "qty": 7289,
+        "qtyMt": 7.29,
+        "percentage": 12.9
+      },
+      {
+        "rank": 2,
+        "code": "M36F3",
+        "qty": 4580,
+        "qtyMt": 4.58,
+        "percentage": 8.1
+      },
+      {
+        "rank": 3,
+        "code": "K33M1",
+        "qty": 3800,
+        "qtyMt": 3.8,
+        "percentage": 6.7
+      },
+      {
+        "rank": 4,
+        "code": "K27T4",
+        "qty": 3630,
+        "qtyMt": 3.63,
+        "percentage": 6.4
+      },
+      {
+        "rank": 5,
+        "code": "N11F3",
+        "qty": 3010,
+        "qtyMt": 3.01,
+        "percentage": 5.3
+      },
+      {
+        "rank": 6,
+        "code": "N1692",
+        "qty": 2410,
+        "qtyMt": 2.41,
+        "percentage": 4.3
+      },
+      {
+        "rank": 7,
+        "code": "K12J5",
+        "qty": 2360,
+        "qtyMt": 2.36,
+        "percentage": 4.2
+      },
+      {
+        "rank": 8,
+        "code": "K47J8",
+        "qty": 1860,
+        "qtyMt": 1.86,
+        "percentage": 3.3
+      },
+      {
+        "rank": 9,
+        "code": "K16D4",
+        "qty": 1650,
+        "qtyMt": 1.65,
+        "percentage": 2.9
+      },
+      {
+        "rank": 10,
+        "code": "B56N2",
+        "qty": 1640,
+        "qtyMt": 1.64,
+        "percentage": 2.9
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
@@ -828,16 +899,16 @@
       "label": "W1 (1/9 - 6/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 56.53,
+        "avg": 57.1,
         "target": 62,
-        "count": 4,
+        "count": 6,
         "isMet": false
       },
       "tuber": {
-        "avg": 62.65,
+        "avg": 61.93,
         "target": 62,
-        "count": 4,
-        "isMet": true
+        "count": 6,
+        "isMet": false
       },
       "fischer": {
         "avg": 51.54,
@@ -860,16 +931,16 @@
         "label": "W1 (1/9 - 6/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 56.53,
+          "avg": 57.1,
           "target": 62,
-          "count": 4,
+          "count": 6,
           "isMet": false
         },
         "tuber": {
-          "avg": 62.65,
+          "avg": 61.93,
           "target": 62,
-          "count": 4,
-          "isMet": true
+          "count": 6,
+          "isMet": false
         },
         "fischer": {
           "avg": 51.54,
