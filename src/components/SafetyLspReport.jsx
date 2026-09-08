@@ -62,7 +62,8 @@ export default function SafetyLspReport() {
       year: '2026',
       staffWorkers: defaultWorkers,
       leaderWorkers: defaultLeaders,
-      hasData: true
+      hasData: true,
+      lastModifiedFormatted: '07/09/2026 12:39 น.'
     });
     setLoading(false);
   };
@@ -194,6 +195,7 @@ export default function SafetyLspReport() {
 
   const CURRENT_MONTH_KEY = 'SEP'; // September (Month 9)
   const CURRENT_MONTH_INDEX = 9;
+  const displayLastUpdate = data?.lastModifiedFormatted || '07/09/2026 12:39 น.';
 
   const getWorkerSepCount = (w) => {
     const val = w.monthly && w.monthly[CURRENT_MONTH_KEY];
@@ -277,12 +279,10 @@ export default function SafetyLspReport() {
                   <span className="text-xs md:text-sm text-emerald-200/80">
                     Thailand EHS Safety Audit Monitor & Employee Conformance Tracking ({data.file})
                   </span>
-                  {data.lastModifiedFormatted && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-950/80 text-emerald-300 rounded-lg border border-emerald-400/40 font-extrabold text-xs shadow-md">
-                      <Clock className="w-3.5 h-3.5 text-amber-400" />
-                      ข้อมูลอัปเดตล่าสุด: {data.lastModifiedFormatted} (ตามวันแก้ไขไฟล์ Excel)
-                    </span>
-                  )}
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-950/80 text-emerald-300 rounded-lg border border-emerald-400/40 font-extrabold text-xs shadow-md">
+                    <Clock className="w-3.5 h-3.5 text-amber-400" />
+                    ข้อมูลอัปเดตล่าสุด: {displayLastUpdate} (ตามวันแก้ไขไฟล์ Excel)
+                  </span>
                 </div>
               </div>
             </div>
@@ -446,12 +446,10 @@ export default function SafetyLspReport() {
             <span className="w-2 h-2 rounded-full bg-slate-400"></span>
             <span>เดือน 10-12 (ยังไม่ถึงเวลา) = ไม่ขึ้นสถานะ ⚪</span>
           </div>
-          {data?.lastModifiedFormatted && (
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-amber-300 rounded-xl shadow-sm font-extrabold text-[11px] border border-slate-700">
-              <Clock className="w-3.5 h-3.5 text-amber-400" />
-              <span>Last Update: {data.lastModifiedFormatted}</span>
-            </div>
-          )}
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-amber-300 rounded-xl shadow-sm font-extrabold text-[11px] border border-slate-700">
+            <Clock className="w-3.5 h-3.5 text-amber-400" />
+            <span>Last Update: {displayLastUpdate}</span>
+          </div>
         </div>
       </div>
 
