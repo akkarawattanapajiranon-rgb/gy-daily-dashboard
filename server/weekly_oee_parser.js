@@ -127,7 +127,7 @@ function parseWeeklyOee(dateStr) {
           if (dKey.startsWith(`${yearStr}-${monthStr}`)) {
             const d = parseInt(dKey.split('-')[2], 10);
             const item = cacheData[dKey];
-            const val = Number(item?.totalOee2) || Number(item?.totalOEE2) || 0;
+            const val = Number(item?.data?.totalOee2) || Number(item?.totalOee2) || Number(item?.totalOEE2) || 0;
             if (val > 0) mixingDaily[d] = val;
           }
         });
