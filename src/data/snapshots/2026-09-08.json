@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "generatedAt": "2026-09-08T08:11:48.143Z",
+  "generatedAt": "2026-09-08T08:23:26.849Z",
   "waste": {
     "date": "2026-09-08",
     "millingSummary": 23.6,
@@ -72,25 +72,25 @@
   "cms": {
     "date": "2026-09-08",
     "mixing1": {
-      "batch": 2,
-      "ar": 30.4,
-      "pr": 80.3,
-      "qr": 0,
-      "oee2": 0
+      "batch": 8,
+      "ar": 68.3,
+      "pr": 84.9,
+      "qr": 61,
+      "oee2": 35.4
     },
     "mixing2": {
-      "batch": 265,
-      "ar": 92.2,
-      "pr": 93,
+      "batch": 272,
+      "ar": 92.4,
+      "pr": 92.7,
       "qr": 100,
-      "oee2": 85.8
+      "oee2": 85.7
     },
-    "totalAr": 91,
-    "totalPr": 93,
-    "totalQr": 99.3,
-    "totalOee2": 84
+    "totalAr": 91.4,
+    "totalPr": 92.5,
+    "totalQr": 98.9,
+    "totalOee2": 83.7
   },
-  "target3Roll": 31,
+  "target3Roll": 32,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -178,46 +178,46 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 31,
-    "totalRelease": 31,
+    "totalRolls": 32,
+    "totalRelease": 32,
     "totalHold": 0,
-    "totalPending": 9,
+    "totalPending": 8,
     "totalScheduled": 40,
     "codeBreakdown": [
       {
         "code": "RP08",
         "count": 8,
-        "percentage": 25.81
+        "percentage": 25
       },
       {
         "code": "RU53",
         "count": 8,
-        "percentage": 25.81
+        "percentage": 25
       },
       {
         "code": "N815",
-        "count": 6,
-        "percentage": 19.35
+        "count": 7,
+        "percentage": 21.88
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 12.9
+        "percentage": 12.5
       },
       {
         "code": "RT27",
         "count": 2,
-        "percentage": 6.45
+        "percentage": 6.25
       },
       {
         "code": "JR45",
         "count": 2,
-        "percentage": 6.45
+        "percentage": 6.25
       },
       {
         "code": "JR11",
         "count": 1,
-        "percentage": 3.23
+        "percentage": 3.13
       }
     ],
     "holdBreakdown": [],
@@ -527,7 +527,7 @@
               "totalQty": 102
             },
             {
-              "partId": "TL01212",
+              "partId": "SC01212",
               "code1": "",
               "code2": "B309",
               "code": "B309",
@@ -950,7 +950,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 79.9,
+        "avg": 79.75,
         "target": 76.6,
         "count": 2,
         "isMet": true
@@ -1013,7 +1013,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 79.9,
+          "avg": 79.75,
           "target": 76.6,
           "count": 2,
           "isMet": true

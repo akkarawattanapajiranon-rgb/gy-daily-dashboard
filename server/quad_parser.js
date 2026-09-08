@@ -134,18 +134,17 @@ function getQuadOutput(dateStr) {
       let qtyProduced = 0;
       let qtySapphire = (r[6] !== '' && !isNaN(Number(r[6]))) ? Number(r[6]) : 0;
 
-      if (checkPart.startsWith('SC') || checkPart.startsWith('TR') || checkCode.startsWith('B') || qtyTarget > 20) {
-        // SC / Tread / Direct piece items: do NOT divide, use actual raw quantity from Column 5 (r[5])
+      if (checkPart.startsWith('SC') || checkPart.startsWith('SW') || checkPart.startsWith('TR') || checkCode.startsWith('B') || qtyTarget > 20) {
+        // SC / SW / Tread / Direct piece items: do NOT divide, use actual raw quantity from Column 5 (r[5]) or Sapphire
         qtyProduced = Number(r[5]) || 0;
         if (!qtyProduced && qtySapphire > 0) {
           qtyProduced = qtySapphire;
           qtySapphire = 0;
         }
       } else {
-        // TL / SW spool components
+        // TL spool components: divide by 82 m = 1 spool/roll
         let divisor = 1;
         if (checkPart.startsWith('TL') || checkCode.startsWith('TL')) divisor = 82;
-        else if (checkPart.startsWith('SW') || checkCode.startsWith('SW')) divisor = 120;
 
         const rawVal = Number(r[5]) || 0;
         if (rawVal > 0) {

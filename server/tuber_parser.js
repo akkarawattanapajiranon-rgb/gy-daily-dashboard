@@ -128,12 +128,10 @@ function getTuberOutput(dateStr) {
       const checkCode = String(code || '').trim().toUpperCase();
       const checkPart = String(partId || '').trim().toUpperCase();
       let divisor = 1;
-      if (checkCode.includes('T1400') || checkPart.includes('T1400') || checkPart.startsWith('SC') || checkPart.startsWith('TR') || checkCode.startsWith('B') || qtyTarget > 20) {
+      if (checkCode.includes('T1400') || checkPart.includes('T1400') || checkPart.startsWith('SC') || checkPart.startsWith('SW') || checkPart.startsWith('TR') || checkCode.startsWith('B') || qtyTarget > 20) {
         divisor = 1;
       } else if (checkPart.startsWith('TL') || checkCode.startsWith('TL')) {
         divisor = 82;
-      } else if (checkPart.startsWith('SW') || checkCode.startsWith('SW')) {
-        divisor = 120;
       }
 
       const qtyProduced = divisor > 1 ? Math.round(qtyProducedRaw / divisor) : qtyProducedRaw;

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-06",
-  "generatedAt": "2026-09-08T08:11:55.819Z",
+  "generatedAt": "2026-09-08T08:23:34.467Z",
   "waste": {
     "date": "2026-09-06",
     "millingSummary": 144,
@@ -798,97 +798,97 @@
     "output": {
       "hasData": true,
       "day": 6,
-      "grandTotal": 1689,
+      "grandTotal": 11725,
       "codeBreakdown": [
         {
-          "code": "A605",
-          "count": 564,
-          "percentage": 33.39
+          "code": "W1CL",
+          "count": 1800,
+          "percentage": 15.35
+        },
+        {
+          "code": "WAIS",
+          "count": 1680,
+          "percentage": 14.33
+        },
+        {
+          "code": "WYAF",
+          "count": 1440,
+          "percentage": 12.28
+        },
+        {
+          "code": "WA8X",
+          "count": 1200,
+          "percentage": 10.23
+        },
+        {
+          "code": "WLAN",
+          "count": 960,
+          "percentage": 8.19
+        },
+        {
+          "code": "6015",
+          "count": 800,
+          "percentage": 6.82
         },
         {
           "code": "6017",
-          "count": 403,
-          "percentage": 23.86
+          "count": 800,
+          "percentage": 6.82
+        },
+        {
+          "code": "W13F",
+          "count": 720,
+          "percentage": 6.14
         },
         {
           "code": "6010",
-          "count": 213,
-          "percentage": 12.61
+          "count": 610,
+          "percentage": 5.2
+        },
+        {
+          "code": "A605",
+          "count": 564,
+          "percentage": 4.81
+        },
+        {
+          "code": "W1LG",
+          "count": 360,
+          "percentage": 3.07
+        },
+        {
+          "code": "WG4B",
+          "count": 360,
+          "percentage": 3.07
         },
         {
           "code": "B200",
           "count": 146,
-          "percentage": 8.64
+          "percentage": 1.25
         },
         {
           "code": "B427",
           "count": 114,
-          "percentage": 6.75
+          "percentage": 0.97
         },
         {
           "code": "B362",
           "count": 112,
-          "percentage": 6.63
+          "percentage": 0.96
         },
         {
           "code": "B462",
           "count": 53,
-          "percentage": 3.14
-        },
-        {
-          "code": "W1CL",
-          "count": 15,
-          "percentage": 0.89
-        },
-        {
-          "code": "WAIS",
-          "count": 14,
-          "percentage": 0.83
-        },
-        {
-          "code": "WYAF",
-          "count": 12,
-          "percentage": 0.71
-        },
-        {
-          "code": "WA8X",
-          "count": 10,
-          "percentage": 0.59
-        },
-        {
-          "code": "WLAN",
-          "count": 8,
-          "percentage": 0.47
-        },
-        {
-          "code": "6015",
-          "count": 7,
-          "percentage": 0.41
-        },
-        {
-          "code": "W13F",
-          "count": 6,
-          "percentage": 0.36
+          "percentage": 0.45
         },
         {
           "code": "B435",
           "count": 3,
-          "percentage": 0.18
+          "percentage": 0.03
         },
         {
           "code": "B304",
           "count": 3,
-          "percentage": 0.18
-        },
-        {
-          "code": "W1LG",
-          "count": 3,
-          "percentage": 0.18
-        },
-        {
-          "code": "WG4B",
-          "count": 3,
-          "percentage": 0.18
+          "percentage": 0.03
         }
       ],
       "shifts": {
@@ -899,22 +899,22 @@
               "partId": "SW06332",
               "code": "6017",
               "qtyTarget": 4,
-              "qtyProduced": 3,
-              "totalQty": 3
+              "qtyProduced": 400,
+              "totalQty": 400
             },
             {
               "partId": "SW08965",
               "code": "6010",
               "qtyTarget": 4,
-              "qtyProduced": 3,
-              "totalQty": 3
+              "qtyProduced": 400,
+              "totalQty": 400
             },
             {
               "partId": "SW09142",
               "code": "6015",
               "qtyTarget": 8,
-              "qtyProduced": 7,
-              "totalQty": 7
+              "qtyProduced": 800,
+              "totalQty": 800
             },
             {
               "partId": "WD00352",
@@ -962,18 +962,18 @@
               "partId": "SW08662",
               "code": "WA8X",
               "qtyTarget": 10,
-              "qtyProduced": 10,
-              "totalQty": 10
+              "qtyProduced": 1200,
+              "totalQty": 1200
             },
             {
               "partId": "SW08800",
               "code": "W13F",
               "qtyTarget": 6,
-              "qtyProduced": 6,
-              "totalQty": 6
+              "qtyProduced": 720,
+              "totalQty": 720
             }
           ],
-          "totalQty": 654
+          "totalQty": 4145
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -982,46 +982,46 @@
               "partId": "SW08799",
               "code": "W1CL",
               "qtyTarget": 15,
-              "qtyProduced": 15,
-              "totalQty": 15
+              "qtyProduced": 1800,
+              "totalQty": 1800
             },
             {
               "partId": "SW08756",
               "code": "WLAN",
               "qtyTarget": 8,
-              "qtyProduced": 8,
-              "totalQty": 8
+              "qtyProduced": 960,
+              "totalQty": 960
             },
             {
               "partId": "SW08753",
               "code": "WAIS",
               "qtyTarget": 14,
-              "qtyProduced": 14,
-              "totalQty": 14
+              "qtyProduced": 1680,
+              "totalQty": 1680
             },
             {
               "partId": "SW08842",
               "code": "WYAF",
               "qtyTarget": 12,
-              "qtyProduced": 12,
-              "totalQty": 12
+              "qtyProduced": 1440,
+              "totalQty": 1440
             },
             {
               "partId": "SW08402",
               "code": "W1LG",
               "qtyTarget": 3,
-              "qtyProduced": 3,
-              "totalQty": 3
+              "qtyProduced": 360,
+              "totalQty": 360
             },
             {
               "partId": "SW09102",
               "code": "WG4B",
               "qtyTarget": 3,
-              "qtyProduced": 3,
-              "totalQty": 3
+              "qtyProduced": 360,
+              "totalQty": 360
             }
           ],
-          "totalQty": 55
+          "totalQty": 6600
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
@@ -1354,7 +1354,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 79.9,
+          "avg": 79.75,
           "target": 76.6,
           "count": 2,
           "isMet": true
