@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "generatedAt": "2026-09-08T00:11:10.543Z",
+  "generatedAt": "2026-09-08T00:22:57.534Z",
   "waste": {
     "date": "2026-09-08",
     "millingSummary": 0,
@@ -22,20 +22,20 @@
       "oee2": 0
     },
     "mixing2": {
-      "batch": 6,
-      "ar": 100,
-      "pr": 84.6,
+      "batch": 10,
+      "ar": 90.4,
+      "pr": 85.4,
       "qr": 100,
-      "oee2": 84.6
+      "oee2": 77.2
     },
-    "totalAr": 100,
-    "totalPr": 84.6,
+    "totalAr": 90.4,
+    "totalPr": 85.4,
     "totalQr": 100,
-    "totalOee2": 84.6
+    "totalOee2": 77.2
   },
   "target3Roll": 0,
   "breakdown": {
-    "_file": "Issue log 2026 _ BCA 14AUG2026.xlsx",
+    "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-08",
     "topLoss": [],
@@ -345,16 +345,16 @@
         "isMet": false
       },
       "fischer": {
-        "avg": null,
+        "avg": 56.46,
         "target": 60,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "mixing": {
-        "avg": 80.2,
+        "avg": 76.5,
         "target": 76.6,
         "count": 2,
-        "isMet": true
+        "isMet": false
       }
     },
     "weeks": [
@@ -408,16 +408,16 @@
           "isMet": false
         },
         "fischer": {
-          "avg": null,
+          "avg": 56.46,
           "target": 60,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "mixing": {
-          "avg": 80.2,
+          "avg": 76.5,
           "target": 76.6,
           "count": 2,
-          "isMet": true
+          "isMet": false
         }
       },
       {

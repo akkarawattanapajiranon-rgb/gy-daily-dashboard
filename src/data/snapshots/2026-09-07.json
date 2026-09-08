@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-08T00:11:06.937Z",
+  "generatedAt": "2026-09-08T00:22:52.097Z",
   "waste": {
     "date": "2026-09-07",
     "millingSummary": 124.8,
@@ -104,47 +104,133 @@
   },
   "target3Roll": 42,
   "breakdown": {
-    "_file": "Issue log 2026 _ BCA 14AUG2026.xlsx",
+    "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-07",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Fischer",
+        "totalDurationMin": 180,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Holder",
+            "symptom": "ต่อพายแล้วพายย่น",
+            "cause": "holder ยุบตัว และ ลมรั่ว 2,3,4 และตัวที่ 1 ท่อดูดขาด",
+            "action": "ถอดHolder ออกมาดัด ใช้ซิลิโคน อุดรอยรั่ว เปลี่ยนท่อดูดที่ขาด ถอดกระบอกสูบมาเอาน้ำออก",
+            "fixType": "ชั่วคราว",
+            "durationMin": 180,
+            "jobType": "BD",
+            "fixBy": "ทีป มด โฟร์ค เอ็ฟ ไพรินทร์"
+          }
+        ]
+      },
+      {
+        "machine": "Auto Pigment",
+        "totalDurationMin": 40,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "",
+            "symptom": "ลมรั่ว",
+            "cause": "สายลมแตก",
+            "action": "เปลี่ยนสายลมใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 40,
+            "jobType": "BD",
+            "fixBy": "โต/อ่อย"
+          }
+        ]
+      },
+      {
+        "machine": "Bead Flap#1",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "wind up",
+            "symptom": "ผ้าไหลเอียงไปข้างหนึ่ง",
+            "cause": "แขนไวอัพหลวมและมีเศษด้ายพัน",
+            "action": "ถอดแขนไวอัพเอาผ้าออก ประกอบกลับขันสกรูล็อคให้แ่น",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ทีป มด โฟร์ค เอ็ฟ ไพรินทร์"
+          }
+        ]
+      },
+      {
+        "machine": "Hot Apexcer#1",
+        "totalDurationMin": 15,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "ชุดส่งเอเป็ก",
+            "symptom": "ชุดส่งเอเป็กหลุด",
+            "cause": "สกรูล็อคคลายตัว",
+            "action": "ขันสกรูล็อคให้แน่น",
+            "fixType": "ชั่วคราว",
+            "durationMin": 15,
+            "jobType": "BD",
+            "fixBy": "โต โฟร์ค"
+          }
+        ]
+      },
+      {
+        "machine": "Bead Flapping 1",
+        "totalDurationMin": 15,
+        "details": [
+          {
+            "shift": "กะ3",
+            "zone": "",
+            "symptom": "ไม่เก็บผ้า",
+            "cause": "แกนหมุนแน่นไป",
+            "action": "คลายเกลียวออก",
+            "fixType": "ชั่วคราว",
+            "durationMin": 15,
+            "jobType": "BD",
+            "fixBy": "มินท์/แหลม"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.25,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.3125,
+      "hasData": true
     }
   },
   "fischer": {
     "date": "2026-09-07",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 68.75,
+      "ar_pct": 76.57,
+      "pr_pct": 74.14,
+      "qr_pct": 99.46,
+      "oee1_pct": 38.82,
+      "oee2_pct": 56.46
     },
     "checksheet": {
       "hasData": true,
@@ -1265,9 +1351,9 @@
         "isMet": false
       },
       "fischer": {
-        "avg": null,
+        "avg": 56.46,
         "target": 60,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "mixing": {
@@ -1328,9 +1414,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": null,
+          "avg": 56.46,
           "target": 60,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "mixing": {
