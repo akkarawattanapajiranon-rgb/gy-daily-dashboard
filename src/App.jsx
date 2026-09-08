@@ -64,22 +64,22 @@ function App() {
     return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
   });
 
-  const loadData = async (dateStr) => {
+  const loadData = async (dateStr, forceRefresh = false) => {
     setIsLoading(true);
     try {
       const dateToFetch = dateStr || selectedDate;
       const [waste, cms, target3Roll, breakdown, fischer, roll3, roll42, quad, tuber, workaway, weeklyOee] = await Promise.all([
         fetchWasteData(dateToFetch),
-        fetchCmsData(dateToFetch),
-        fetchTarget3Roll(dateToFetch),
-        fetchBreakdownData(dateToFetch),
-        fetchFischerData(dateToFetch),
-        fetch3RollDetail(dateToFetch),
-        fetch4Roll2Detail(dateToFetch),
-        fetchQuadDetail(dateToFetch),
-        fetchTuberDetail(dateToFetch),
-        fetchWorkawayData(dateToFetch),
-        fetchWeeklyOeeData(dateToFetch)
+        fetchCmsData(dateToFetch, forceRefresh),
+        fetchTarget3Roll(dateToFetch, forceRefresh),
+        fetchBreakdownData(dateToFetch, forceRefresh),
+        fetchFischerData(dateToFetch, forceRefresh),
+        fetch3RollDetail(dateToFetch, forceRefresh),
+        fetch4Roll2Detail(dateToFetch, forceRefresh),
+        fetchQuadDetail(dateToFetch, forceRefresh),
+        fetchTuberDetail(dateToFetch, forceRefresh),
+        fetchWorkawayData(dateToFetch, forceRefresh),
+        fetchWeeklyOeeData(dateToFetch, forceRefresh)
       ]);
 
       if (waste) {
@@ -216,13 +216,16 @@ function App() {
                   />
                 </div>
               </div>
-              <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
-                <div className={`w-2 h-2 rounded-full ${isLoading ? 'bg-brand-yellow animate-pulse' : 'bg-emerald-400 animate-pulse'}`}></div>
-                <span className="text-sm font-medium">{isLoading ? 'Updating...' : 'Live Data'}</span>
-                <button onClick={() => loadData()} disabled={isLoading} className="ml-2 hover:bg-white/20 p-1.5 rounded-md transition-colors" title="Refresh">
-                  <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-                </button>
-              </div>
+              <button
+                onClick={() => loadData(selectedDate, true)}
+                disabled={isLoading}
+                className="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 active:scale-95 px-3.5 py-1.5 rounded-lg backdrop-blur-sm transition-all cursor-pointer border border-white/20 shadow-md group"
+                title="กดเพื่ออ่านและ Parsing ข้อมูลจากไฟล์ Excel บนไดรฟ์ T: และ CMS สดๆ ทันที 100%"
+              >
+                <div className={`w-2.5 h-2.5 rounded-full ${isLoading ? 'bg-brand-yellow animate-pulse' : 'bg-emerald-400 animate-pulse'}`}></div>
+                <span className="text-xs md:text-sm font-bold tracking-wide">{isLoading ? 'Updating...' : 'Live Data (กดดึงข้อมูลสด)'}</span>
+                <RefreshCw className={`w-4 h-4 text-emerald-300 group-hover:rotate-180 transition-transform duration-500 ${isLoading ? 'animate-spin' : ''}`} />
+              </button>
             </header>
 
             {/* Top Grid: Machine OEE, Mixing, Output */}

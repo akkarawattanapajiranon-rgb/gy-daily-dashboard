@@ -14,9 +14,11 @@ export function getLocalSnapshot(dateStr) {
 
 const snapshotPromiseCache = {};
 
-export async function getFirebaseSnapshot(dateStr) {
+export async function getFirebaseSnapshot(dateStr, forceRefresh = false) {
   if (!dateStr) return null;
-  if (snapshotPromiseCache[dateStr]) {
+  if (forceRefresh) {
+    delete snapshotPromiseCache[dateStr];
+  } else if (snapshotPromiseCache[dateStr]) {
     return snapshotPromiseCache[dateStr];
   }
 
@@ -167,10 +169,11 @@ async function fetchFast(url, timeoutMs = 2500) {
   }
 }
 
-export async function fetchCmsData(dateStr) {
+export async function fetchCmsData(dateStr, forceRefresh = false) {
   try {
     let url = '/api/cms';
     if (dateStr) url += `?date=${dateStr}`;
+    if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 2500);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) {
@@ -179,15 +182,17 @@ export async function fetchCmsData(dateStr) {
     return await res.json();
   } catch (err) {
     console.warn('CMS Fetch Timeout/Error, fallback to snapshot:', err.message);
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.cms) return snap.cms;
     return null;
   }
 }
 
-export async function fetchTarget3Roll(dateStr) {
+export async function fetchTarget3Roll(dateStr, forceRefresh = false) {
   try {
-    const res = await fetchFast("https://roll-planning-default-rtdb.firebaseio.com/saved_plans.json", 2500);
+    let url = "https://roll-planning-default-rtdb.firebaseio.com/saved_plans.json";
+    if (forceRefresh) url += `?_t=${Date.now()}`;
+    const res = await fetchFast(url, 2500);
     if (!res.ok) throw new Error('Failed to fetch target 3 roll data');
     
     const plansData = await res.json();
@@ -201,119 +206,127 @@ export async function fetchTarget3Roll(dateStr) {
     
     return totalRolls;
   } catch (err) {
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.target3Roll !== undefined) return snap.target3Roll;
     return null;
   }
 }
 
-export async function fetchBreakdownData(dateStr) {
+export async function fetchBreakdownData(dateStr, forceRefresh = false) {
   try {
-    const url = `/api/breakdown?date=${dateStr}`;
+    let url = `/api/breakdown?date=${dateStr}`;
+    if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 2500);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed breakdown fetch');
     return await res.json();
   } catch (err) {
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.breakdown) return snap.breakdown;
     return null;
   }
 }
 
-export async function fetchFischerData(dateStr) {
+export async function fetchFischerData(dateStr, forceRefresh = false) {
   try {
-    const url = `/api/fischer?date=${dateStr}`;
+    let url = `/api/fischer?date=${dateStr}`;
+    if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 2500);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed fischer fetch');
     return await res.json();
   } catch (err) {
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.fischer) return snap.fischer;
     return null;
   }
 }
 
-export async function fetch3RollDetail(dateStr) {
+export async function fetch3RollDetail(dateStr, forceRefresh = false) {
   try {
-    const url = `/api/3roll?date=${dateStr}`;
+    let url = `/api/3roll?date=${dateStr}`;
+    if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 2500);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed 3roll fetch');
     return await res.json();
   } catch (err) {
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.roll3) return snap.roll3;
     return null;
   }
 }
 
-export async function fetch4Roll2Detail(dateStr) {
+export async function fetch4Roll2Detail(dateStr, forceRefresh = false) {
   try {
-    const url = `/api/4roll2?date=${dateStr}`;
+    let url = `/api/4roll2?date=${dateStr}`;
+    if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 2500);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed 4roll2 fetch');
     return await res.json();
   } catch (err) {
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.roll42) return snap.roll42;
     return null;
   }
 }
 
-export async function fetchQuadDetail(dateStr) {
+export async function fetchQuadDetail(dateStr, forceRefresh = false) {
   try {
-    const url = `/api/quad?date=${dateStr}`;
+    let url = `/api/quad?date=${dateStr}`;
+    if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 2500);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed quad fetch');
     return await res.json();
   } catch (err) {
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.quad) return snap.quad;
     return null;
   }
 }
 
-export async function fetchTuberDetail(dateStr) {
+export async function fetchTuberDetail(dateStr, forceRefresh = false) {
   try {
-    const url = `/api/tuber?date=${dateStr}`;
+    let url = `/api/tuber?date=${dateStr}`;
+    if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 2500);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed tuber fetch');
     return await res.json();
   } catch (err) {
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.tuber) return snap.tuber;
     return null;
   }
 }
 
-export async function fetchWorkawayData(dateStr) {
+export async function fetchWorkawayData(dateStr, forceRefresh = false) {
   try {
-    const url = `/api/workaway?date=${dateStr}`;
+    let url = `/api/workaway?date=${dateStr}`;
+    if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 2500);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed workaway fetch');
     return await res.json();
   } catch (err) {
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.workaway) return snap.workaway;
     return null;
   }
 }
 
-export async function fetchWeeklyOeeData(dateStr) {
+export async function fetchWeeklyOeeData(dateStr, forceRefresh = false) {
   try {
-    const url = `/api/oee-weekly?date=${dateStr}`;
+    let url = `/api/oee-weekly?date=${dateStr}`;
+    if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 2500);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed weekly oee fetch');
     return await res.json();
   } catch (err) {
-    const snap = await getFirebaseSnapshot(dateStr);
+    const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
     if (snap && snap.weeklyOee) return snap.weeklyOee;
     const local = getLocalSnapshot(dateStr);
     if (local && local.weeklyOee) return local.weeklyOee;
