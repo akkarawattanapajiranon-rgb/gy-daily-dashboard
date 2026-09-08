@@ -74,7 +74,15 @@ export default function MachineOEE({ weeklyData, isLoading }) {
             {currentWeekObj.label}
           </span>
           <span className="text-[11px] font-medium text-slate-500">
-            {currentWeekObj.quad?.count > 0 ? `เฉลี่ยจาก ${currentWeekObj.quad.count} วันที่มีข้อมูล` : 'ไม่มีข้อมูลในสัปดาห์นี้'}
+            {(() => {
+              const maxCount = Math.max(
+                currentWeekObj.quad?.count || 0,
+                currentWeekObj.mixing?.count || 0,
+                currentWeekObj.tuber?.count || 0,
+                currentWeekObj.fischer?.count || 0
+              );
+              return maxCount > 0 ? `เฉลี่ยจาก ${maxCount} วันที่มีข้อมูล` : 'ไม่มีข้อมูลในสัปดาห์นี้';
+            })()}
           </span>
         </div>
       )}
