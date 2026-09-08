@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-08T08:03:48.346Z",
+  "generatedAt": "2026-09-08T08:11:52.164Z",
   "waste": {
     "date": "2026-09-07",
     "millingSummary": 124.8,
@@ -757,92 +757,92 @@
     "output": {
       "hasData": true,
       "day": 7,
-      "grandTotal": 264,
+      "grandTotal": 340,
       "codeBreakdown": [
         {
+          "code": "WTWL",
+          "count": 82,
+          "percentage": 24.12
+        },
+        {
           "code": "WAIS",
-          "count": 48,
-          "percentage": 18.18
+          "count": 44,
+          "percentage": 12.94
         },
         {
           "code": "WA8X",
           "count": 40,
-          "percentage": 15.15
+          "percentage": 11.76
         },
         {
           "code": "WLAN",
           "count": 36,
-          "percentage": 13.64
+          "percentage": 10.59
         },
         {
           "code": "W1CL",
           "count": 24,
-          "percentage": 9.09
+          "percentage": 7.06
         },
         {
           "code": "QUIR",
           "count": 18,
-          "percentage": 6.82
+          "percentage": 5.29
         },
         {
           "code": "WYAF",
           "count": 18,
-          "percentage": 6.82
+          "percentage": 5.29
         },
         {
           "code": "W13F",
           "count": 15,
-          "percentage": 5.68
+          "percentage": 4.41
         },
         {
           "code": "QLIX",
           "count": 8,
-          "percentage": 3.03
+          "percentage": 2.35
         },
         {
           "code": "WLGW",
           "count": 8,
-          "percentage": 3.03
+          "percentage": 2.35
         },
         {
           "code": "Q2AH",
           "count": 8,
-          "percentage": 3.03
+          "percentage": 2.35
         },
         {
           "code": "WYAL",
           "count": 8,
-          "percentage": 3.03
+          "percentage": 2.35
         },
         {
           "code": "W1CX",
           "count": 8,
-          "percentage": 3.03
+          "percentage": 2.35
         },
         {
           "code": "WG4B",
           "count": 8,
-          "percentage": 3.03
+          "percentage": 2.35
         },
         {
           "code": "W13L",
           "count": 7,
-          "percentage": 2.65
+          "percentage": 2.06
         },
         {
           "code": "W1LG",
           "count": 6,
-          "percentage": 2.27
+          "percentage": 1.76
         },
         {
           "code": "WI3B",
           "count": 2,
-          "percentage": 0.76
-        },
-        {
-          "code": "WTWL",
-          "count": 2,
-          "percentage": 0.76
+          "percentage": 0.59
         }
       ],
       "shifts": {
@@ -1031,9 +1031,9 @@
               "code2": "",
               "code": "WTWL",
               "qtyTarget": 2,
-              "qtyProduced": 2,
+              "qtyProduced": 82,
               "qtySapphire": 0,
-              "totalQty": 2
+              "totalQty": 82
             },
             {
               "partId": "TL00184",
@@ -1106,7 +1106,7 @@
               "totalQty": 8
             }
           ],
-          "totalQty": 70
+          "totalQty": 150
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
@@ -1217,12 +1217,12 @@
               "code2": "",
               "code": "WAIS",
               "qtyTarget": 8,
-              "qtyProduced": 8,
+              "qtyProduced": 4,
               "qtySapphire": 0,
-              "totalQty": 8
+              "totalQty": 4
             }
           ],
-          "totalQty": 90
+          "totalQty": 86
         }
       }
     }

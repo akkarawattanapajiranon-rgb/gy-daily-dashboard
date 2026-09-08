@@ -1,6 +1,6 @@
 {
   "date": "2026-09-06",
-  "generatedAt": "2026-09-08T08:03:52.775Z",
+  "generatedAt": "2026-09-08T08:11:55.819Z",
   "waste": {
     "date": "2026-09-06",
     "millingSummary": 144,
@@ -590,57 +590,57 @@
     "output": {
       "hasData": true,
       "day": 6,
-      "grandTotal": 665,
+      "grandTotal": 922,
       "codeBreakdown": [
         {
           "code": "B427",
-          "count": 575,
-          "percentage": 86.47
+          "count": 832,
+          "percentage": 90.24
         },
         {
           "code": "WA8X",
           "count": 16,
-          "percentage": 2.41
+          "percentage": 1.74
         },
         {
           "code": "WYAF",
           "count": 16,
-          "percentage": 2.41
+          "percentage": 1.74
         },
         {
           "code": "WLGW",
           "count": 10,
-          "percentage": 1.5
+          "percentage": 1.08
         },
         {
           "code": "W1CX",
           "count": 10,
-          "percentage": 1.5
+          "percentage": 1.08
         },
         {
           "code": "W1CL",
           "count": 10,
-          "percentage": 1.5
+          "percentage": 1.08
         },
         {
           "code": "W1LG",
           "count": 10,
-          "percentage": 1.5
+          "percentage": 1.08
         },
         {
           "code": "WAIS",
           "count": 8,
-          "percentage": 1.2
+          "percentage": 0.87
         },
         {
           "code": "QE9A",
           "count": 6,
-          "percentage": 0.9
+          "percentage": 0.65
         },
         {
           "code": "WI3B",
           "count": 4,
-          "percentage": 0.6
+          "percentage": 0.43
         }
       ],
       "shifts": {
@@ -653,9 +653,9 @@
               "code2": "B427",
               "code": "B427",
               "qtyTarget": 400,
-              "qtyProduced": 3,
+              "qtyProduced": 260,
               "qtySapphire": 572,
-              "totalQty": 575
+              "totalQty": 832
             },
             {
               "partId": "TL00038",
@@ -768,7 +768,7 @@
               "totalQty": 10
             }
           ],
-          "totalQty": 665
+          "totalQty": 922
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -1354,7 +1354,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 80.85,
+          "avg": 79.9,
           "target": 76.6,
           "count": 2,
           "isMet": true

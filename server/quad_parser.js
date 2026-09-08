@@ -127,14 +127,39 @@ function getQuadOutput(dateStr) {
       const code3 = String(r[3] || '').trim();
       const code = code1 || code2 || code3;
 
+      const checkCode = String(code || '').trim().toUpperCase();
+      const checkPart = String(partId || '').trim().toUpperCase();
       const qtyTarget = Number(r[4]) || 0;
 
-      // Only count Spools that have actual numeric values entered in Spool columns H-Q (indices 7 to 16)
-      const spoolCols = r.slice(7, 17);
-      const filledSpools = spoolCols.filter(val => val !== '' && val !== null && val !== undefined && !isNaN(Number(val)) && Number(val) > 0);
-      const qtyProduced = filledSpools.length;
+      let qtyProduced = 0;
+      let qtySapphire = (r[6] !== '' && !isNaN(Number(r[6]))) ? Number(r[6]) : 0;
 
-      const qtySapphire = (r[6] !== '' && !isNaN(Number(r[6]))) ? Number(r[6]) : 0;
+      if (checkPart.startsWith('SC') || checkPart.startsWith('TR') || checkCode.startsWith('B') || qtyTarget > 20) {
+        // SC / Tread / Direct piece items: do NOT divide, use actual raw quantity from Column 5 (r[5])
+        qtyProduced = Number(r[5]) || 0;
+        if (!qtyProduced && qtySapphire > 0) {
+          qtyProduced = qtySapphire;
+          qtySapphire = 0;
+        }
+      } else {
+        // TL / SW spool components
+        let divisor = 1;
+        if (checkPart.startsWith('TL') || checkCode.startsWith('TL')) divisor = 82;
+        else if (checkPart.startsWith('SW') || checkCode.startsWith('SW')) divisor = 120;
+
+        const rawVal = Number(r[5]) || 0;
+        if (rawVal > 0) {
+          qtyProduced = divisor > 1 ? Math.round(rawVal / divisor) : rawVal;
+        } else if (qtySapphire > 0) {
+          qtyProduced = qtySapphire;
+          qtySapphire = 0;
+        } else {
+          const spoolCols = r.slice(7, 17);
+          const filledSpools = spoolCols.filter(val => val !== '' && val !== null && val !== undefined && !isNaN(Number(val)) && Number(val) > 0);
+          qtyProduced = filledSpools.length;
+        }
+      }
+
       const totalItemQty = qtyProduced + qtySapphire;
 
       if ((code || partId) && totalItemQty > 0) {
