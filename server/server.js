@@ -9,6 +9,20 @@ app.use(cors());
 const path = require('path');
 
 const { getSnapshot } = require('./snapshot_generator');
+const { runMorningSync } = require('./cron_morning_sync');
+
+// Morning Sync Schedule: Automatically update yesterday & today snapshots at 09:00 AM & 09:10 AM daily (before 09:15 AM)
+setInterval(() => {
+  const now = new Date();
+  const bangkokTime = new Date(now.getTime() + (7 * 3600 * 1000));
+  const hours = bangkokTime.getUTCHours();
+  const minutes = bangkokTime.getUTCMinutes();
+  
+  if (hours === 9 && (minutes === 0 || minutes === 10)) {
+    console.log(`[Server Schedule] Running automatic morning sync before 9:15 AM...`);
+    runMorningSync().catch(err => console.error('[Morning Sync Error]', err.message));
+  }
+}, 60 * 1000);
 
 // In-memory API cache (30-second TTL) to avoid heavy synchronous re-parsing on every request
 const apiMemoryCache = new Map();
