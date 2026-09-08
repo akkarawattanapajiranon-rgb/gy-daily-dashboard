@@ -137,6 +137,10 @@ function App() {
     loadData();
   }, [selectedDate]);
 
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+  };
+
   const handleLiveRefresh = () => {
     setIsLoading(true);
     window.location.reload();

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "generatedAt": "2026-09-08T08:45:07.344Z",
+  "generatedAt": "2026-09-08T08:49:51.859Z",
   "waste": {
     "date": "2026-09-08",
     "millingSummary": 23.6,
@@ -72,25 +72,25 @@
   "cms": {
     "date": "2026-09-08",
     "mixing1": {
-      "batch": 21,
+      "batch": 23,
       "ar": 100,
-      "pr": 88.4,
-      "qr": 72.8,
-      "oee2": 64.4
+      "pr": 88.7,
+      "qr": 73.5,
+      "oee2": 65.2
     },
     "mixing2": {
-      "batch": 283,
+      "batch": 285,
       "ar": 92.1,
       "pr": 92.8,
       "qr": 100,
-      "oee2": 85.4
+      "oee2": 85.5
     },
-    "totalAr": 92.6,
-    "totalPr": 92.4,
-    "totalQr": 98.2,
-    "totalOee2": 84
+    "totalAr": 92.7,
+    "totalPr": 92.5,
+    "totalQr": 98.1,
+    "totalOee2": 84.1
   },
-  "target3Roll": 33,
+  "target3Roll": 34,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -178,46 +178,46 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 33,
-    "totalRelease": 33,
+    "totalRolls": 34,
+    "totalRelease": 34,
     "totalHold": 0,
-    "totalPending": 7,
+    "totalPending": 6,
     "totalScheduled": 40,
     "codeBreakdown": [
       {
+        "code": "N815",
+        "count": 9,
+        "percentage": 26.47
+      },
+      {
         "code": "RP08",
         "count": 8,
-        "percentage": 24.24
+        "percentage": 23.53
       },
       {
         "code": "RU53",
         "count": 8,
-        "percentage": 24.24
-      },
-      {
-        "code": "N815",
-        "count": 8,
-        "percentage": 24.24
+        "percentage": 23.53
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 12.12
+        "percentage": 11.76
       },
       {
         "code": "RT27",
         "count": 2,
-        "percentage": 6.06
+        "percentage": 5.88
       },
       {
         "code": "JR45",
         "count": 2,
-        "percentage": 6.06
+        "percentage": 5.88
       },
       {
         "code": "JR11",
         "count": 1,
-        "percentage": 3.03
+        "percentage": 2.94
       }
     ],
     "holdBreakdown": [],
@@ -984,7 +984,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 79.9,
+        "avg": 79.95,
         "target": 76.6,
         "count": 2,
         "isMet": true
@@ -1047,7 +1047,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 79.9,
+          "avg": 79.95,
           "target": 76.6,
           "count": 2,
           "isMet": true
