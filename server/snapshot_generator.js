@@ -5,6 +5,7 @@ const { fetchLiveCmsData } = require('./cms_parser');
 const { parseBreakdown } = require('./breakdown_parser');
 const { parseFischerData } = require('./fischer_parser');
 const { parse3RollData } = require('./roll3_parser');
+const { parse4Roll2Data } = require('./roll42_parser');
 const { parseQuadData } = require('./quad_parser');
 const { parseTuberData } = require('./tuber_parser');
 const { parseWorkawayData } = require('./workaway_parser');
@@ -40,6 +41,7 @@ async function generateSnapshot(dateStr) {
     const breakdown = parseBreakdown(dateStr);
     const fischer = parseFischerData(dateStr);
     const roll3 = parse3RollData(dateStr);
+    const roll42 = parse4Roll2Data(dateStr);
     const quad = parseQuadData(dateStr);
     const tuber = parseTuberData(dateStr);
     const workaway = parseWorkawayData(dateStr);
@@ -56,6 +58,7 @@ async function generateSnapshot(dateStr) {
       breakdown: breakdown && !breakdown.error ? breakdown : null,
       fischer: fischer && !fischer.error ? fischer : null,
       roll3: roll3 && !roll3.error ? roll3 : null,
+      roll42: roll42 && !roll42.error ? roll42 : null,
       quad: quad && !quad.error ? quad : null,
       tuber: tuber && !tuber.error ? tuber : null,
       workaway: workaway && !workaway.error ? workaway : null,
