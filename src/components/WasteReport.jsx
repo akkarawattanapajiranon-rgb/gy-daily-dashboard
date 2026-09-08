@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileWarning } from 'lucide-react';
+import { FileWarning, ExternalLink } from 'lucide-react';
 
 export default function WasteReport({ data, isLoading }) {
   const { millingSummary = 0, frictionSummary = 0, beadSummary = 0, millingTop = [], frictionTop = [], beadTop = [], dataDate } = data || {};
@@ -60,10 +60,22 @@ export default function WasteReport({ data, isLoading }) {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4 mb-5">
         <div className="flex flex-col">
-          <h2 className="text-lg font-bold text-brand-blue flex items-center gap-2">
-            <FileWarning className="w-5 h-5 text-red-500" />
-            Waste Report
-          </h2>
+          <div className="flex items-center gap-2.5">
+            <h2 className="text-lg font-bold text-brand-blue flex items-center gap-2">
+              <FileWarning className="w-5 h-5 text-red-500" />
+              Waste Report
+            </h2>
+            <a
+              href="https://bta-waste-report.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200/80 rounded-lg text-xs font-bold transition-all shadow-2xs"
+              title="เปิดไปยัง BTA Waste Report Web App"
+            >
+              <ExternalLink className="w-3.5 h-3.5 text-red-600" />
+              <span>Waste Report App ↗</span>
+            </a>
+          </div>
           <p className="text-xs text-slate-400 font-medium mt-1">Data from: {dataDate || 'N/A'}</p>
         </div>
         <div className="bg-red-50 px-4 py-2 rounded-lg border border-red-100 flex items-center gap-3 shadow-sm">

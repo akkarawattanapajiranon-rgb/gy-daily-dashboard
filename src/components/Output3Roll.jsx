@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Package, Target, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { Package, Target, AlertTriangle, CheckCircle2, ExternalLink } from 'lucide-react';
 
 export default function Output3Roll({ data = {}, rollDetail, isLoading }) {
   const [activeTab, setActiveTab] = useState('release');
@@ -16,10 +16,22 @@ export default function Output3Roll({ data = {}, rollDetail, isLoading }) {
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 h-full flex flex-col justify-between space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-        <h2 className="text-lg font-bold text-brand-blue flex items-center gap-2">
-          <Package className="w-5 h-5 text-brand-yellow" />
-          Output 3 Roll
-        </h2>
+        <div className="flex items-center gap-2">
+          <h2 className="text-lg font-bold text-brand-blue flex items-center gap-2">
+            <Package className="w-5 h-5 text-brand-yellow" />
+            Output 3 Roll
+          </h2>
+          <a
+            href="https://3roll-daily-planning.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80 rounded-lg text-xs font-bold transition-all shadow-2xs"
+            title="เปิดไปยัง 3 Roll Daily Planning Web App"
+          >
+            <ExternalLink className="w-3.5 h-3.5 text-amber-600" />
+            <span>3 Roll Planning ↗</span>
+          </a>
+        </div>
         {rollDetail?.sheet && (
           <span className="text-[11px] font-medium text-slate-400">[{rollDetail.sheet}]</span>
         )}
