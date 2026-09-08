@@ -24,9 +24,9 @@ setInterval(() => {
   }
 }, 60 * 1000);
 
-// In-memory API cache (30-second TTL) to avoid heavy synchronous re-parsing on every request
+// In-memory API cache disabled (0ms TTL) so local intranet http://10.124.148.210:3001/ always returns real-time live data directly from Excel files on T: drive
 const apiMemoryCache = new Map();
-const CACHE_TTL_MS = 30 * 1000;
+const CACHE_TTL_MS = 0;
 
 function getCached(key) {
   const item = apiMemoryCache.get(key);
