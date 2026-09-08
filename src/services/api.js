@@ -40,7 +40,7 @@ export async function getFirebaseSnapshot(dateStr, forceRefresh = false) {
   return snapshotPromiseCache[dateStr];
 }
 
-export async function fetchWasteData(dateStr) {
+export async function fetchWasteData(dateStr, forceRefresh = false) {
   const targetDate = dateStr || new Date().toISOString().split('T')[0];
 
   const processReports = (dayReports) => {
