@@ -425,7 +425,7 @@ export default function SafetyLspReport() {
 
       {/* AOP vs ACT Color Legend Banner */}
       <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs">
-        <div className="flex items-center gap-2 font-bold text-slate-700">
+        <div className="flex flex-wrap items-center gap-2 font-bold text-slate-700">
           <span className="px-2.5 py-1 bg-slate-900 text-white rounded-lg text-[11px]">AOP vs ACT Rules</span>
           <span>เกณฑ์เป้าหมาย AOP = 4 ครั้ง/เดือน</span>
         </div>
@@ -446,6 +446,12 @@ export default function SafetyLspReport() {
             <span className="w-2 h-2 rounded-full bg-slate-400"></span>
             <span>เดือน 10-12 (ยังไม่ถึงเวลา) = ไม่ขึ้นสถานะ ⚪</span>
           </div>
+          {data?.lastModifiedFormatted && (
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-amber-300 rounded-xl shadow-sm font-extrabold text-[11px] border border-slate-700">
+              <Clock className="w-3.5 h-3.5 text-amber-400" />
+              <span>Last Update: {data.lastModifiedFormatted}</span>
+            </div>
+          )}
         </div>
       </div>
 
