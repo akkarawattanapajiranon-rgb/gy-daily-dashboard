@@ -14,10 +14,14 @@ const CACHE_TTL_MS = 60 * 1000; // 1-minute TTL
 /**
  * Extract 11 metrics for a single date
  */
-async function getMetricsForDate(dateStr) {
-  const cached = metricsMemoryCache.get(dateStr);
-  if (cached && (Date.now() - cached.ts < CACHE_TTL_MS)) {
-    return cached.data;
+async function getMetricsForDate(dateStr, forceRefresh = false) {
+  if (forceRefresh) {
+    metricsMemoryCache.delete(dateStr);
+  } else {
+    const cached = metricsMemoryCache.get(dateStr);
+    if (cached && (Date.now() - cached.ts < CACHE_TTL_MS)) {
+      return cached.data;
+    }
   }
 
   const snap = getSnapshot(dateStr) || {};
@@ -80,13 +84,13 @@ async function getMetricsForDate(dateStr) {
 /**
  * Extract 11 metrics for date range [startDate, endDate]
  */
-async function getExportMetricsRange(startDateStr, endDateStr) {
+async function getExportMetricsRange(startDateStr, endDateStr, forceRefresh = false) {
   const start = new Date(startDateStr);
   const end = new Date(endDateStr);
   const dates = [];
 
   if (start > end) {
-    return [await getMetricsForDate(startDateStr)];
+    return [await getMetricsForDate(startDateStr, forceRefresh)];
   }
 
   const curr = new Date(start);
@@ -100,7 +104,7 @@ async function getExportMetricsRange(startDateStr, endDateStr) {
     count++;
   }
 
-  const results = await Promise.all(dates.map(d => getMetricsForDate(d)));
+  const results = await Promise.all(dates.map(d => getMetricsForDate(d, forceRefresh)));
   return results;
 }
 

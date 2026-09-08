@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Download, FileSpreadsheet, Copy, Calendar, RefreshCw, CheckCircle2, Table, Sparkles } from 'lucide-react';
 import * as XLSX from 'xlsx';
+import { getFirebaseSnapshot, getLocalSnapshot } from '../services/api.js';
 
 export default function DataExporter() {
   const todayStr = new Date().toISOString().split('T')[0];
@@ -13,15 +14,61 @@ export default function DataExporter() {
   const fetchExportData = async (start, end) => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/export-metrics?startDate=${start}&endDate=${end}`);
-      if (res.ok) {
+      const res = await fetch(`/api/export-metrics?startDate=${start}&endDate=${end}&refresh=true&_t=${Date.now()}`);
+      const contentType = res.headers.get('content-type');
+      if (res.ok && contentType && contentType.includes('application/json')) {
         const json = await res.json();
-        setDataRows(json.rows || []);
-      } else {
-        console.error('Failed to fetch export metrics');
+        if (json.rows && json.rows.length > 0) {
+          setDataRows(json.rows);
+          return;
+        }
       }
+      throw new Error('API unavailable, falling back to snapshots');
     } catch (err) {
-      console.error('Error fetching export metrics:', err);
+      console.warn('Falling back to snapshot metrics calculation:', err.message);
+      const dates = [];
+      const sDate = new Date(start);
+      const eDate = new Date(end);
+      const curr = new Date(sDate);
+      let count = 0;
+      while (curr <= eDate && count < 60) {
+        const yyyy = curr.getFullYear();
+        const mm = String(curr.getMonth() + 1).padStart(2, '0');
+        const dd = String(curr.getDate()).padStart(2, '0');
+        dates.push(`${yyyy}-${mm}-${dd}`);
+        curr.setDate(curr.getDate() + 1);
+        count++;
+      }
+
+      const rows = await Promise.all(dates.map(async (dStr) => {
+        const snap = (await getFirebaseSnapshot(dStr)) || getLocalSnapshot(dStr) || {};
+        const cms = snap.cms || {};
+        const quad = snap.quad || {};
+        const tuber = snap.tuber || {};
+        const fischer = snap.fischer || {};
+        const bd = snap.breakdown || {};
+        const waste = snap.waste || {};
+
+        const batch1 = Number(cms.mixing1?.batch) || 0;
+        const batch2 = Number(cms.mixing2?.batch) || 0;
+
+        return {
+          date: dStr,
+          mixerBatchmix: batch1 + batch2,
+          mixerOee2: Number(Number(cms.totalOee2 || 0).toFixed(2)),
+          quadOee2: Number(Number(quad.oee?.oee2_pct || 0).toFixed(2)),
+          tuberOee2: Number(Number(tuber.oee?.oee2_pct || 0).toFixed(2)),
+          fischerOee2: Number(Number(fischer.oee?.oee2_pct || 0).toFixed(2)),
+          bdMixer: Number(Number(bd.Banbury?.actual_bd_pct || 0).toFixed(4)),
+          bdExtruder: Number(Number(bd.Extruder?.actual_bd_pct || 0).toFixed(4)),
+          bdCalender: Number(Number(bd.Calender?.actual_bd_pct || 0).toFixed(4)),
+          bdCutting: Number(Number(bd.Cutting?.actual_bd_pct || 0).toFixed(4)),
+          frictionWaste: Number(Number(waste.frictionSummary || 0).toFixed(2)),
+          millingWaste: Number(Number(waste.millingSummary || 0).toFixed(2))
+        };
+      }));
+
+      setDataRows(rows);
     } finally {
       setLoading(false);
     }

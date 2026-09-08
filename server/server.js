@@ -296,9 +296,10 @@ const { getExportMetricsRange } = require('./export_aggregator');
 app.get('/api/export-metrics', async (req, res) => {
   const startDate = req.query.startDate || req.query.date || new Date().toISOString().split('T')[0];
   const endDate = req.query.endDate || startDate;
-  console.log(`Fetching Export Metrics from ${startDate} to ${endDate}`);
+  const forceRefresh = req.query.refresh === 'true' || Boolean(req.query._t);
+  console.log(`Fetching Export Metrics from ${startDate} to ${endDate} (forceRefresh: ${forceRefresh})`);
   try {
-    const data = await getExportMetricsRange(startDate, endDate);
+    const data = await getExportMetricsRange(startDate, endDate, forceRefresh);
     res.json({ startDate, endDate, totalDays: data.length, rows: data });
   } catch (err) {
     res.status(500).json({ error: err.message });
