@@ -214,13 +214,6 @@ function App() {
                     onChange={handleDateChange}
                     className="bg-white/10 text-white border border-white/20 rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-yellow/50"
                   />
-                  <button
-                    onClick={() => setActiveTab('exporter')}
-                    className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white border border-emerald-400/40 rounded-lg px-3.5 py-1.5 text-xs font-black transition-all shadow-md cursor-pointer ml-2"
-                  >
-                    <Download className="w-4 h-4" />
-                    <span>📥 โหลดข้อมูลตัวเลข (11 รายการ)</span>
-                  </button>
                 </div>
               </div>
               <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
