@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriangle, Users, ExternalLink, Award, TrendingUp, UserCheck } from 'lucide-react';
+import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriangle, Users, ExternalLink, Award, TrendingUp, UserCheck, Clock } from 'lucide-react';
 import * as XLSX from 'xlsx';
 
 export default function SafetyLspReport() {
@@ -167,8 +167,16 @@ export default function SafetyLspReport() {
               else parsedStaff.push(item);
             });
 
+            const fileDate = file.lastModified ? new Date(file.lastModified) : new Date();
+            const dd = String(fileDate.getDate()).padStart(2, '0');
+            const mm = String(fileDate.getMonth() + 1).padStart(2, '0');
+            const yyyy = fileDate.getFullYear();
+            const hh = String(fileDate.getHours()).padStart(2, '0');
+            const mi = String(fileDate.getMinutes()).padStart(2, '0');
+
             setData({
               file: file.name,
+              lastModifiedFormatted: `${dd}/${mm}/${yyyy} ${hh}:${mi} น.`,
               year: '2026',
               staffWorkers: parsedStaff.length > 0 ? parsedStaff : defaultWorkers,
               leaderWorkers: parsedLeaders.length > 0 ? parsedLeaders : defaultLeaders,
@@ -265,9 +273,17 @@ export default function SafetyLspReport() {
                     Life Saving Principles
                   </span>
                 </h1>
-                <p className="text-xs md:text-sm text-emerald-200/80 mt-1">
-                  Thailand EHS Safety Audit Monitor & Employee Conformance Tracking ({data.file})
-                </p>
+                <div className="flex flex-wrap items-center gap-2.5 mt-1.5">
+                  <span className="text-xs md:text-sm text-emerald-200/80">
+                    Thailand EHS Safety Audit Monitor & Employee Conformance Tracking ({data.file})
+                  </span>
+                  {data.lastModifiedFormatted && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-950/80 text-emerald-300 rounded-lg border border-emerald-400/40 font-extrabold text-xs shadow-md">
+                      <Clock className="w-3.5 h-3.5 text-amber-400" />
+                      ข้อมูลอัปเดตล่าสุด: {data.lastModifiedFormatted} (ตามวันแก้ไขไฟล์ Excel)
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           </div>

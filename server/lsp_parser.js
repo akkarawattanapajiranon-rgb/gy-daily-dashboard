@@ -130,8 +130,26 @@ function parseLspData() {
     const onTargetCount = staffResult.filter(w => w.ytdPct >= 65).length;
     const belowTargetCount = totalWorkers - onTargetCount;
 
+    let lastModified = null;
+    let lastModifiedFormatted = null;
+    if (file && fs.existsSync(file)) {
+      try {
+        const stats = fs.statSync(file);
+        lastModified = stats.mtime.toISOString();
+        const d = new Date(stats.mtime);
+        const dd = String(d.getDate()).padStart(2, '0');
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const yyyy = d.getFullYear();
+        const hh = String(d.getHours()).padStart(2, '0');
+        const mi = String(d.getMinutes()).padStart(2, '0');
+        lastModifiedFormatted = `${dd}/${mm}/${yyyy} ${hh}:${mi} น.`;
+      } catch (err) {}
+    }
+
     return {
       file: file ? path.basename(file) : 'LSP Tracking.xlsx',
+      lastModified,
+      lastModifiedFormatted,
       year: '2026',
       totalWorkers,
       avgYtd,
