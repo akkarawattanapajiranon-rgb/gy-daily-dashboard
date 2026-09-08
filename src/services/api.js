@@ -17,7 +17,9 @@ export async function getFirebaseSnapshot(dateStr) {
     const docRef = doc(db, 'daily_snapshots', dateStr);
     const snap = await getDoc(docRef);
     if (snap && snap.exists()) {
-      return snap.data();
+      const data = snap.data();
+      const local = getLocalSnapshot(dateStr);
+      return { ...local, ...data, weeklyOee: data?.weeklyOee || local?.weeklyOee };
     }
   } catch (e) {
     console.warn(`Firebase snapshot query for ${dateStr} failed:`, e.message);
@@ -302,6 +304,8 @@ export async function fetchWeeklyOeeData(dateStr) {
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr);
     if (snap && snap.weeklyOee) return snap.weeklyOee;
+    const local = getLocalSnapshot(dateStr);
+    if (local && local.weeklyOee) return local.weeklyOee;
     return null;
   }
 }

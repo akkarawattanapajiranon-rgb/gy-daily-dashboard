@@ -235,7 +235,7 @@ function App() {
             {/* Top Grid: Machine OEE, Mixing, Output */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-1">
-                <MachineOEE weeklyData={weeklyOeeData} isLoading={isLoading} />
+                <MachineOEE weeklyData={weeklyOeeData} isLoading={isLoading} mixingData={mixingData} />
               </div>
               <div className="lg:col-span-1">
                 <MixingKPIs data={mixingData} />

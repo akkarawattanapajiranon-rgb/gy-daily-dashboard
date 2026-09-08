@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Settings, CheckCircle2, AlertTriangle, Calendar } from 'lucide-react';
 
-export default function MachineOEE({ weeklyData, isLoading }) {
+export default function MachineOEE({ weeklyData, isLoading, mixingData }) {
   const [selectedWeekNum, setSelectedWeekNum] = useState(null);
 
   // Set default selected week to active current week when data loads
@@ -26,7 +26,18 @@ export default function MachineOEE({ weeklyData, isLoading }) {
   const quad = currentWeekObj.quad || { avg: null, target: 62 };
   const tuber = currentWeekObj.tuber || { avg: null, target: 62 };
   const fischer = currentWeekObj.fischer || { avg: null, target: 60 };
-  const mixing = currentWeekObj.mixing || { avg: null, target: 76.6 };
+  let mixing = currentWeekObj.mixing || { avg: null, target: 76.6, count: 0 };
+
+  // Fallback for Mixing OEE2: if mixing.avg is null/0, but daily mixingData exists, use liveMixingVal
+  const liveMixingVal = Number(mixingData?.totalOee2) || Number(mixingData?.mixing2?.oee2) || Number(mixingData?.mixing1?.oee2) || 0;
+  if ((mixing.avg === null || mixing.avg === undefined || mixing.avg === 0) && liveMixingVal > 0) {
+    mixing = {
+      avg: liveMixingVal,
+      target: 76.6,
+      count: mixing.count || 1,
+      isMet: liveMixingVal >= 76.6
+    };
+  }
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 h-full flex flex-col justify-between space-y-4">
@@ -76,10 +87,10 @@ export default function MachineOEE({ weeklyData, isLoading }) {
           <span className="text-[11px] font-medium text-slate-500">
             {(() => {
               const maxCount = Math.max(
-                currentWeekObj.quad?.count || 0,
-                currentWeekObj.mixing?.count || 0,
-                currentWeekObj.tuber?.count || 0,
-                currentWeekObj.fischer?.count || 0
+                quad?.count || 0,
+                mixing?.count || 0,
+                tuber?.count || 0,
+                fischer?.count || 0
               );
               return maxCount > 0 ? `เฉลี่ยจาก ${maxCount} วันที่มีข้อมูล` : 'ไม่มีข้อมูลในสัปดาห์นี้';
             })()}
