@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "generatedAt": "2026-09-08T00:22:57.534Z",
+  "generatedAt": "2026-09-08T01:14:39.781Z",
   "waste": {
     "date": "2026-09-08",
     "millingSummary": 0,
@@ -22,18 +22,18 @@
       "oee2": 0
     },
     "mixing2": {
-      "batch": 10,
-      "ar": 90.4,
-      "pr": 85.4,
+      "batch": 41,
+      "ar": 88.6,
+      "pr": 91.8,
       "qr": 100,
-      "oee2": 77.2
+      "oee2": 81.3
     },
-    "totalAr": 90.4,
-    "totalPr": 85.4,
+    "totalAr": 88.6,
+    "totalPr": 91.8,
     "totalQr": 100,
-    "totalOee2": 77.2
+    "totalOee2": 81.3
   },
-  "target3Roll": 0,
+  "target3Roll": 1,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -78,7 +78,41 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 6,
+      "totalWbr": 6,
+      "totalSapphire": 0,
+      "totalAngleChanges": 0,
+      "totalNormal": 6,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 6,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 6,
+          "sticky": 0,
+          "total": 6
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -87,14 +121,20 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
-    "totalRelease": 0,
+    "totalRolls": 1,
+    "totalRelease": 1,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 32,
+    "totalScheduled": 33,
+    "codeBreakdown": [
+      {
+        "code": "NU27",
+        "count": 1,
+        "percentage": 100
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "quad": {
     "date": "2026-09-08",
@@ -111,13 +151,30 @@
     "output": {
       "hasData": true,
       "day": 8,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 6,
+      "codeBreakdown": [
+        {
+          "code": "QLIX",
+          "count": 6,
+          "percentage": 100
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "TL00032",
+              "code1": "QLIX",
+              "code2": "",
+              "code": "QLIX",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            }
+          ],
+          "totalQty": 6
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -333,15 +390,15 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": null,
+        "avg": 58.14,
         "target": 62,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "tuber": {
-        "avg": null,
+        "avg": 58.27,
         "target": 62,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "fischer": {
@@ -351,10 +408,10 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.5,
+        "avg": 78.55,
         "target": 76.6,
         "count": 2,
-        "isMet": false
+        "isMet": true
       }
     },
     "weeks": [
@@ -396,15 +453,15 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": null,
+          "avg": 58.14,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "tuber": {
-          "avg": null,
+          "avg": 58.27,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "fischer": {
@@ -414,10 +471,10 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.5,
+          "avg": 78.55,
           "target": 76.6,
           "count": 2,
-          "isMet": false
+          "isMet": true
         }
       },
       {
