@@ -1,28 +1,28 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-08T00:02:44.671Z",
+  "generatedAt": "2026-09-08T00:11:06.937Z",
   "waste": {
     "date": "2026-09-07",
-    "millingSummary": 107,
-    "frictionSummary": 331.7,
+    "millingSummary": 124.8,
+    "frictionSummary": 337.2,
     "beadSummary": 35.5,
     "millingTop": [
       {
         "code": "M04",
-        "amount": 70,
+        "amount": 76.8,
         "reason": "PUSH/CLEAN IN/OUT",
+        "isHigh": true
+      },
+      {
+        "code": "M05",
+        "amount": 26,
+        "reason": "TAILING",
         "isHigh": true
       },
       {
         "code": "M01",
         "amount": 22,
         "reason": "LUMPY",
-        "isHigh": true
-      },
-      {
-        "code": "M05",
-        "amount": 15,
-        "reason": "TAILING",
         "isHigh": false
       }
     ],
@@ -52,9 +52,9 @@
         "isHigh": false
       },
       {
-        "code": "F06",
-        "amount": 20.8,
-        "reason": "BROKEN CAL SPLICE",
+        "code": "F46",
+        "amount": 23.499999999999996,
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
