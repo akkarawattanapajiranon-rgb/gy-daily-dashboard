@@ -1,6 +1,6 @@
 {
   "date": "2026-09-06",
-  "generatedAt": "2026-09-07T01:54:39.776Z",
+  "generatedAt": "2026-09-08T01:43:21.320Z",
   "waste": {
     "date": "2026-09-06",
     "millingSummary": 144,
@@ -91,66 +91,10 @@
   },
   "target3Roll": 34,
   "breakdown": {
-    "_file": "Issue log 2026 _ BCA 14AUG2026.xlsx",
+    "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-06",
     "topLoss": [
-      {
-        "machine": "Quad",
-        "totalDurationMin": 200,
-        "details": [
-          {
-            "shift": "กะ1",
-            "zone": "Scale conveyor",
-            "symptom": "เวลาหยดสี เส้นสีแตก",
-            "cause": "ปลายหัวหยดสีไม่เรียบ",
-            "action": "ตัดปลายหัวหยดสีให้เรียบ",
-            "fixType": "ชั่วคราว",
-            "durationMin": 20,
-            "jobType": "NBD",
-            "fixBy": "มด/มิ้น/โฟล์ค"
-          },
-          {
-            "shift": "กะ2",
-            "zone": "Extruder",
-            "symptom": "สลับตำแหน่งพินใหม่",
-            "cause": "",
-            "action": "",
-            "fixType": "ชั่วคราว",
-            "durationMin": 180,
-            "jobType": "NBD",
-            "fixBy": "อ๋อย/แหลม/แอ๊ด"
-          }
-        ]
-      },
-      {
-        "machine": "Mixer 2",
-        "totalDurationMin": 20,
-        "details": [
-          {
-            "shift": "กะ1",
-            "zone": "TSR",
-            "symptom": "Safety can't reset.",
-            "cause": "Safety cable loose.",
-            "action": "Repace safety cable.",
-            "fixType": "ชั่วคราว",
-            "durationMin": 10,
-            "jobType": "BD",
-            "fixBy": ""
-          },
-          {
-            "shift": "กะ2",
-            "zone": "Process Oil",
-            "symptom": "Process Oil Low Flow",
-            "cause": "น้ำมันหมดถัง ปิดวาล์วไว้",
-            "action": "เปิดวาล์ว",
-            "fixType": "ชั่วคราว",
-            "durationMin": 10,
-            "jobType": "NBD",
-            "fixBy": "อ๊อฟ/บาส"
-          }
-        ]
-      },
       {
         "machine": "Fischer",
         "totalDurationMin": 15,
@@ -165,6 +109,23 @@
             "durationMin": 15,
             "jobType": "BD",
             "fixBy": "มด/มิ้น/โฟล์ค/ไพลิน"
+          }
+        ]
+      },
+      {
+        "machine": "Mixer 2",
+        "totalDurationMin": 10,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "TSR",
+            "symptom": "Safety can't reset.",
+            "cause": "Safety cable loose.",
+            "action": "Repace safety cable.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "BD",
+            "fixBy": ""
           }
         ]
       },
@@ -380,57 +341,57 @@
     "output": {
       "hasData": true,
       "day": 6,
-      "grandTotal": 392,
+      "grandTotal": 665,
       "codeBreakdown": [
         {
           "code": "B427",
-          "count": 285,
-          "percentage": 72.7
-        },
-        {
-          "code": "W1LG",
-          "count": 22,
-          "percentage": 5.61
+          "count": 575,
+          "percentage": 86.47
         },
         {
           "code": "WA8X",
           "count": 16,
-          "percentage": 4.08
+          "percentage": 2.41
         },
         {
           "code": "WYAF",
           "count": 16,
-          "percentage": 4.08
-        },
-        {
-          "code": "W1CX",
-          "count": 11,
-          "percentage": 2.81
+          "percentage": 2.41
         },
         {
           "code": "WLGW",
           "count": 10,
-          "percentage": 2.55
+          "percentage": 1.5
+        },
+        {
+          "code": "W1CX",
+          "count": 10,
+          "percentage": 1.5
         },
         {
           "code": "W1CL",
           "count": 10,
-          "percentage": 2.55
+          "percentage": 1.5
         },
         {
-          "code": "QE9A",
+          "code": "W1LG",
           "count": 10,
-          "percentage": 2.55
+          "percentage": 1.5
         },
         {
           "code": "WAIS",
           "count": 8,
-          "percentage": 2.04
+          "percentage": 1.2
+        },
+        {
+          "code": "QE9A",
+          "count": 6,
+          "percentage": 0.9
         },
         {
           "code": "WI3B",
           "count": 4,
-          "percentage": 1.02
+          "percentage": 0.6
         }
       ],
       "shifts": {
@@ -443,9 +404,9 @@
               "code2": "B427",
               "code": "B427",
               "qtyTarget": 400,
-              "qtyProduced": 260,
-              "qtySapphire": 25,
-              "totalQty": 285
+              "qtyProduced": 3,
+              "qtySapphire": 572,
+              "totalQty": 575
             },
             {
               "partId": "TL00038",
@@ -524,8 +485,8 @@
               "code": "W1CX",
               "qtyTarget": 10,
               "qtyProduced": 10,
-              "qtySapphire": 1,
-              "totalQty": 11
+              "qtySapphire": 0,
+              "totalQty": 10
             },
             {
               "partId": "TL00202",
@@ -544,8 +505,8 @@
               "code": "QE9A",
               "qtyTarget": 6,
               "qtyProduced": 6,
-              "qtySapphire": 4,
-              "totalQty": 10
+              "qtySapphire": 0,
+              "totalQty": 6
             },
             {
               "partId": "TL00090",
@@ -554,11 +515,11 @@
               "code": "W1LG",
               "qtyTarget": 10,
               "qtyProduced": 10,
-              "qtySapphire": 12,
-              "totalQty": 22
+              "qtySapphire": 0,
+              "totalQty": 10
             }
           ],
-          "totalQty": 392
+          "totalQty": 665
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -1081,9 +1042,9 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.58,
+        "avg": 73.08,
         "target": 76.6,
-        "count": 4,
+        "count": 6,
         "isMet": false
       }
     },
@@ -1113,9 +1074,9 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.58,
+          "avg": 73.08,
           "target": 76.6,
-          "count": 4,
+          "count": 6,
           "isMet": false
         }
       },
@@ -1126,28 +1087,28 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": null,
+          "avg": 58.14,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "tuber": {
-          "avg": null,
+          "avg": 58.27,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "fischer": {
-          "avg": null,
+          "avg": 56.46,
           "target": 60,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "mixing": {
-          "avg": null,
+          "avg": 79.5,
           "target": 76.6,
-          "count": 0,
-          "isMet": false
+          "count": 2,
+          "isMet": true
         }
       },
       {

@@ -6,7 +6,7 @@ const { parseFischerData } = require('./fischer_parser');
 const { parseQuadData } = require('./quad_parser');
 const { parseTuberData } = require('./tuber_parser');
 const { fetchLiveCmsData } = require('./cms_parser');
-const { getSnapshot } = require('./snapshot_generator');
+const { getSnapshot, generateSnapshot } = require('./snapshot_generator');
 
 const metricsMemoryCache = new Map();
 const CACHE_TTL_MS = 60 * 1000; // 1-minute TTL
@@ -17,6 +17,9 @@ const CACHE_TTL_MS = 60 * 1000; // 1-minute TTL
 async function getMetricsForDate(dateStr, forceRefresh = false) {
   if (forceRefresh) {
     metricsMemoryCache.delete(dateStr);
+    try {
+      await generateSnapshot(dateStr);
+    } catch (e) {}
   } else {
     const cached = metricsMemoryCache.get(dateStr);
     if (cached && (Date.now() - cached.ts < CACHE_TTL_MS)) {
@@ -29,7 +32,9 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
   const todayStr = new Date().toISOString().split('T')[0];
   const isToday = (dateStr === todayStr);
 
-  let cmsData = (!isToday && snap.cms) ? snap.cms : null;
+  const useSnapshot = !isToday && !forceRefresh;
+
+  let cmsData = (useSnapshot && snap.cms) ? snap.cms : null;
   if (!cmsData) {
     try {
       cmsData = await fetchLiveCmsData(dateStr);
@@ -39,11 +44,11 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
   }
   cmsData = cmsData || snap.cms || {};
 
-  const quadData = (!isToday && snap.quad) ? snap.quad : (parseQuadData(dateStr) || snap.quad || {});
-  const tuberData = (!isToday && snap.tuber) ? snap.tuber : (parseTuberData(dateStr) || snap.tuber || {});
-  const fischerData = (!isToday && snap.fischer) ? snap.fischer : (parseFischerData(dateStr) || snap.fischer || {});
-  const bdData = (!isToday && snap.breakdown) ? snap.breakdown : (parseBreakdown(dateStr) || snap.breakdown || {});
-  const wasteData = (!isToday && snap.waste) ? snap.waste : (await parseWasteDataAsync(dateStr) || snap.waste || {});
+  const quadData = (useSnapshot && snap.quad) ? snap.quad : (parseQuadData(dateStr) || snap.quad || {});
+  const tuberData = (useSnapshot && snap.tuber) ? snap.tuber : (parseTuberData(dateStr) || snap.tuber || {});
+  const fischerData = (useSnapshot && snap.fischer) ? snap.fischer : (parseFischerData(dateStr) || snap.fischer || {});
+  const bdData = (useSnapshot && snap.breakdown) ? snap.breakdown : (parseBreakdown(dateStr) || snap.breakdown || {});
+  const wasteData = (useSnapshot && snap.waste) ? snap.waste : (await parseWasteDataAsync(dateStr) || snap.waste || {});
 
   const batch1 = Number(cmsData?.mixing1?.batch) || 0;
   const batch2 = Number(cmsData?.mixing2?.batch) || 0;
