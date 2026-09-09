@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-09T01:14:42.894Z",
+  "generatedAt": "2026-09-09T02:00:25.431Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-09",
     "mixing1": {
-      "batch": 34,
-      "ar": 93.5,
-      "pr": 88.6,
-      "qr": 100,
-      "oee2": 82.9
+      "batch": 50,
+      "ar": 85.9,
+      "pr": 85.4,
+      "qr": 82.5,
+      "oee2": 60.5
     },
     "mixing2": {
-      "batch": 42,
-      "ar": 97.2,
-      "pr": 90.7,
+      "batch": 60,
+      "ar": 91.8,
+      "pr": 91.2,
       "qr": 100,
-      "oee2": 88.1
+      "oee2": 83.7
     },
-    "totalAr": 95.4,
-    "totalPr": 89.6,
-    "totalQr": 100,
-    "totalOee2": 85.5
+    "totalAr": 88.9,
+    "totalPr": 88.4,
+    "totalQr": 91.6,
+    "totalOee2": 72
   },
-  "target3Roll": 0,
+  "target3Roll": 4,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -79,22 +79,22 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 3,
-      "totalWbr": 3,
+      "totalProduce": 14,
+      "totalWbr": 14,
       "totalSapphire": 0,
-      "totalAngleChanges": 1,
-      "totalNormal": 3,
-      "totalSticky": 0,
-      "normalPct": 100,
-      "stickyPct": 0,
+      "totalAngleChanges": 4,
+      "totalNormal": 7,
+      "totalSticky": 7,
+      "normalPct": 50,
+      "stickyPct": 50,
       "shifts": {
         "shift1": {
-          "wbr": 3,
+          "wbr": 14,
           "sapphire": 0,
-          "angleChanges": 1,
-          "normal": 3,
-          "sticky": 0,
-          "total": 3
+          "angleChanges": 4,
+          "normal": 7,
+          "sticky": 7,
+          "total": 14
         },
         "shift2": {
           "wbr": 0,
@@ -121,15 +121,31 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
-    "totalRelease": 0,
+    "totalRolls": 4,
+    "totalRelease": 4,
     "totalHold": 1,
-    "totalPending": 39,
+    "totalPending": 35,
     "totalScheduled": 40,
-    "codeBreakdown": [],
-    "holdBreakdown": [
+    "codeBreakdown": [
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 50
+      },
       {
         "code": "DDSV",
+        "count": 1,
+        "percentage": 25
+      },
+      {
+        "code": "EESV",
+        "count": 1,
+        "percentage": 25
+      }
+    ],
+    "holdBreakdown": [
+      {
+        "code": "EESV",
         "count": 1,
         "percentage": 100
       }
@@ -184,13 +200,55 @@
     "output": {
       "hasData": true,
       "day": 9,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 994,
+      "codeBreakdown": [
+        {
+          "code": "QUIR",
+          "count": 656,
+          "percentage": 66
+        },
+        {
+          "code": "WAIS",
+          "count": 338,
+          "percentage": 34
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "TL00038",
+              "code1": "WAIS",
+              "code2": "",
+              "code": "WAIS",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "",
+              "code1": "WAIS",
+              "code2": "",
+              "code": "WAIS",
+              "qtyTarget": 4,
+              "qtyProduced": 328,
+              "qtySapphire": 0,
+              "totalQty": 328
+            },
+            {
+              "partId": "",
+              "code1": "QUIR",
+              "code2": "",
+              "code": "QUIR",
+              "qtyTarget": 8,
+              "qtyProduced": 656,
+              "qtySapphire": 0,
+              "totalQty": 656
+            }
+          ],
+          "totalQty": 994
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -447,7 +505,7 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 50.42,
+        "avg": 57.08,
         "target": 62,
         "count": 2,
         "isMet": false
@@ -465,10 +523,10 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 80.23,
+        "avg": 75.73,
         "target": 76.6,
         "count": 3,
-        "isMet": true
+        "isMet": false
       }
     },
     "weeks": [
@@ -510,7 +568,7 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 50.42,
+          "avg": 57.08,
           "target": 62,
           "count": 2,
           "isMet": false
@@ -528,10 +586,10 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 80.23,
+          "avg": 75.73,
           "target": 76.6,
           "count": 3,
-          "isMet": true
+          "isMet": false
         }
       },
       {

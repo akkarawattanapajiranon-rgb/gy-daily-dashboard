@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-09T01:53:32.209Z",
+  "generatedAt": "2026-09-09T02:00:25.431Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-09",
     "mixing1": {
-      "batch": 48,
-      "ar": 89,
-      "pr": 85.1,
-      "qr": 85.3,
-      "oee2": 64.6
+      "batch": 50,
+      "ar": 85.9,
+      "pr": 85.4,
+      "qr": 82.5,
+      "oee2": 60.5
     },
     "mixing2": {
-      "batch": 58,
+      "batch": 60,
       "ar": 91.8,
-      "pr": 91.6,
+      "pr": 91.2,
       "qr": 100,
-      "oee2": 84.1
+      "oee2": 83.7
     },
-    "totalAr": 90.4,
-    "totalPr": 88.5,
-    "totalQr": 93,
-    "totalOee2": 74.4
+    "totalAr": 88.9,
+    "totalPr": 88.4,
+    "totalQr": 91.6,
+    "totalOee2": 72
   },
-  "target3Roll": 3,
+  "target3Roll": 4,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -121,26 +121,26 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 3,
-    "totalRelease": 3,
+    "totalRolls": 4,
+    "totalRelease": 4,
     "totalHold": 1,
-    "totalPending": 36,
+    "totalPending": 35,
     "totalScheduled": 40,
     "codeBreakdown": [
       {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 50
+      },
+      {
         "code": "DDSV",
         "count": 1,
-        "percentage": 33.33
+        "percentage": 25
       },
       {
         "code": "EESV",
         "count": 1,
-        "percentage": 33.33
-      },
-      {
-        "code": "NB32",
-        "count": 1,
-        "percentage": 33.33
+        "percentage": 25
       }
     ],
     "holdBreakdown": [
@@ -200,17 +200,17 @@
     "output": {
       "hasData": true,
       "day": 9,
-      "grandTotal": 22,
+      "grandTotal": 994,
       "codeBreakdown": [
         {
-          "code": "WAIS",
-          "count": 14,
-          "percentage": 63.64
+          "code": "QUIR",
+          "count": 656,
+          "percentage": 66
         },
         {
-          "code": "QUIR",
-          "count": 8,
-          "percentage": 36.36
+          "code": "WAIS",
+          "count": 338,
+          "percentage": 34
         }
       ],
       "shifts": {
@@ -233,9 +233,9 @@
               "code2": "",
               "code": "WAIS",
               "qtyTarget": 4,
-              "qtyProduced": 4,
+              "qtyProduced": 328,
               "qtySapphire": 0,
-              "totalQty": 4
+              "totalQty": 328
             },
             {
               "partId": "",
@@ -243,12 +243,12 @@
               "code2": "",
               "code": "QUIR",
               "qtyTarget": 8,
-              "qtyProduced": 8,
+              "qtyProduced": 656,
               "qtySapphire": 0,
-              "totalQty": 8
+              "totalQty": 656
             }
           ],
-          "totalQty": 22
+          "totalQty": 994
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -523,7 +523,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.53,
+        "avg": 75.73,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -586,7 +586,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.53,
+          "avg": 75.73,
           "target": 76.6,
           "count": 3,
           "isMet": false
