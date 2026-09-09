@@ -19,16 +19,19 @@ const path = require('path');
 const { getSnapshot } = require('./snapshot_generator');
 const { runMorningSync } = require('./cron_morning_sync');
 
-// Morning Sync Schedule: Automatically update yesterday & today snapshots at 09:00 AM & 09:10 AM daily (before 09:15 AM)
+// Automatic Cloud Sync Schedule: Updates snapshots & Vercel automatically (08:30, 09:00, 09:10 AM and every 2 hours)
 setInterval(() => {
   const now = new Date();
   const bangkokTime = new Date(now.getTime() + (7 * 3600 * 1000));
   const hours = bangkokTime.getUTCHours();
   const minutes = bangkokTime.getUTCMinutes();
   
-  if (hours === 9 && (minutes === 0 || minutes === 10)) {
-    console.log(`[Server Schedule] Running automatic morning sync before 9:15 AM...`);
-    runMorningSync().catch(err => console.error('[Morning Sync Error]', err.message));
+  const isMorningReview = (hours === 9 && (minutes === 0 || minutes === 10)) || (hours === 8 && minutes === 30);
+  const isPeriodicSync = (minutes === 0 && [11, 13, 15, 17, 19, 21, 23, 7].includes(hours));
+
+  if (isMorningReview || isPeriodicSync) {
+    console.log(`[Server Schedule] Running automatic cloud data sync (${hours}:${String(minutes).padStart(2, '0')})...`);
+    runMorningSync().catch(err => console.error('[Automatic Sync Error]', err.message));
   }
 }, 60 * 1000);
 

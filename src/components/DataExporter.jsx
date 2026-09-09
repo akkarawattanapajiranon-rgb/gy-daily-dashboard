@@ -5,8 +5,24 @@ import { getFirebaseSnapshot, getLocalSnapshot } from '../services/api.js';
 
 export default function DataExporter() {
   const todayStr = new Date().toISOString().split('T')[0];
-  const [startDate, setStartDate] = useState('2026-09-01');
-  const [endDate, setEndDate] = useState('2026-09-07');
+
+  const getInitialDates = () => {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    const yyyy = yesterday.getFullYear();
+    const mm = String(yesterday.getMonth() + 1).padStart(2, '0');
+    const dd = String(yesterday.getDate()).padStart(2, '0');
+
+    const start = `${yyyy}-${mm}-01`;
+    const end = `${yyyy}-${mm}-${dd}`;
+    return { start, end };
+  };
+
+  const initialDates = getInitialDates();
+  const [startDate, setStartDate] = useState(initialDates.start);
+  const [endDate, setEndDate] = useState(initialDates.end);
   const [dataRows, setDataRows] = useState([]);
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
