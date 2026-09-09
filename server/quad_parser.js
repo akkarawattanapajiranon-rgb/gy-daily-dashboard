@@ -114,13 +114,20 @@ function getQuadOutput(dateStr) {
 
   shiftRanges.forEach(sr => {
     const rows = data.slice(sr.start, sr.end);
+    let currentPartId = '';
     rows.forEach(r => {
-      const partId = String(r[0] || '').trim();
-      const upperPart = partId.toUpperCase();
-      if (!partId && !r[1] && !r[2] && !r[3]) return;
+      const rawPartId = String(r[0] || '').trim();
+      const upperPart = rawPartId.toUpperCase();
+      if (!rawPartId && !r[1] && !r[2] && !r[3]) return;
       if (upperPart.startsWith('TOTAL') || upperPart.includes('หมายเหตุ') || upperPart.startsWith('EXTRUDER') || upperPart.includes('BOOKER')) {
         return;
       }
+
+      if (rawPartId) {
+        currentPartId = rawPartId;
+      }
+      const partId = rawPartId;
+      const effectivePartId = rawPartId || currentPartId;
 
       const code1 = String(r[1] || '').trim();
       const code2 = String(r[2] || '').trim();
@@ -128,13 +135,13 @@ function getQuadOutput(dateStr) {
       const code = code1 || code2 || code3;
 
       const checkCode = String(code || '').trim().toUpperCase();
-      const checkPart = String(partId || '').trim().toUpperCase();
+      const checkPart = String(effectivePartId || '').trim().toUpperCase();
       const qtyTarget = Number(r[4]) || 0;
 
       let qtyProduced = 0;
       let qtySapphire = (r[6] !== '' && !isNaN(Number(r[6]))) ? Number(r[6]) : 0;
 
-      if (checkPart.startsWith('SC') || checkPart.startsWith('SW') || checkPart.startsWith('TR') || checkCode.startsWith('B') || qtyTarget > 20) {
+      if (!checkPart.startsWith('TL') && (checkPart.startsWith('SC') || checkPart.startsWith('SW') || checkPart.startsWith('TR') || checkCode.startsWith('B') || qtyTarget > 20)) {
         // SC / SW / Tread / Direct piece items: do NOT divide, use actual raw quantity from Column 5 (r[5]) or Sapphire
         qtyProduced = Number(r[5]) || 0;
         if (!qtyProduced && qtySapphire > 0) {
