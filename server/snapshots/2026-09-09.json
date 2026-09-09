@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-09T02:00:25.431Z",
+  "generatedAt": "2026-09-09T02:11:08.172Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 0,
@@ -15,23 +15,23 @@
   "cms": {
     "date": "2026-09-09",
     "mixing1": {
-      "batch": 50,
-      "ar": 85.9,
-      "pr": 85.4,
-      "qr": 82.5,
+      "batch": 55,
+      "ar": 83.9,
+      "pr": 85.8,
+      "qr": 84,
       "oee2": 60.5
     },
     "mixing2": {
-      "batch": 60,
-      "ar": 91.8,
-      "pr": 91.2,
+      "batch": 63,
+      "ar": 91.7,
+      "pr": 91.3,
       "qr": 100,
       "oee2": 83.7
     },
-    "totalAr": 88.9,
-    "totalPr": 88.4,
-    "totalQr": 91.6,
-    "totalOee2": 72
+    "totalAr": 87.7,
+    "totalPr": 88.6,
+    "totalQr": 92.2,
+    "totalOee2": 71.7
   },
   "target3Roll": 4,
   "breakdown": {
@@ -523,7 +523,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.73,
+        "avg": 75.8,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -586,7 +586,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.73,
+          "avg": 75.8,
           "target": 76.6,
           "count": 3,
           "isMet": false
