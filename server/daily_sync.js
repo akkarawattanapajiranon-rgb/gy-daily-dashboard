@@ -1,5 +1,6 @@
 const { generateSnapshot } = require('./snapshot_generator');
 const { execSync } = require('child_process');
+const path = require('path');
 
 async function runDailySync() {
   console.log('====================================================');
