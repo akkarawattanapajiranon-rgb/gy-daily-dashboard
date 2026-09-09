@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-09T01:52:21.031Z",
+  "generatedAt": "2026-09-09T01:52:36.274Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 0,
@@ -23,15 +23,15 @@
     },
     "mixing2": {
       "batch": 58,
-      "ar": 94.7,
+      "ar": 91.8,
       "pr": 91.6,
       "qr": 100,
-      "oee2": 86.8
+      "oee2": 84.1
     },
-    "totalAr": 91.8,
+    "totalAr": 90.4,
     "totalPr": 88.5,
     "totalQr": 93,
-    "totalOee2": 75.5
+    "totalOee2": 74.4
   },
   "target3Roll": 3,
   "breakdown": {
@@ -523,10 +523,10 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.9,
+        "avg": 76.53,
         "target": 76.6,
         "count": 3,
-        "isMet": true
+        "isMet": false
       }
     },
     "weeks": [
@@ -586,10 +586,10 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.9,
+          "avg": 76.53,
           "target": 76.6,
           "count": 3,
-          "isMet": true
+          "isMet": false
         }
       },
       {
