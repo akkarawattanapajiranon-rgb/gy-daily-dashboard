@@ -1,15 +1,15 @@
 {
   "date": "2026-09-08",
-  "generatedAt": "2026-09-09T00:22:10.585Z",
+  "generatedAt": "2026-09-09T01:14:46.117Z",
   "waste": {
     "date": "2026-09-08",
-    "millingSummary": 171.6,
+    "millingSummary": 183.6,
     "frictionSummary": 236.1,
     "beadSummary": 48.6,
     "millingTop": [
       {
         "code": "M05",
-        "amount": 73,
+        "amount": 85,
         "reason": "TAILING",
         "isHigh": true
       },
@@ -113,44 +113,141 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-08",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Quad",
+        "totalDurationMin": 35,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "TCU",
+            "symptom": "HI TEMP",
+            "cause": "ระดับน้ำในถังต่ำ",
+            "action": "เปิดน้ำเข้าระบบ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 25,
+            "jobType": "BD",
+            "fixBy": "ริน/มด"
+          },
+          {
+            "shift": "",
+            "zone": "Head Extruder",
+            "symptom": "หัวบนไม่ปิด",
+            "cause": "Pin Lock ออกไม่สุด",
+            "action": "กดเข้า-ออกใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "3 Roll",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "MILL",
+            "symptom": "ลิ่มถอย",
+            "cause": "ลิ่มหลวม",
+            "action": "ตอกเข้าไปใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/อ๋อย/ริน/ไพลิน/โฟร์ค"
+          }
+        ]
+      },
+      {
+        "machine": "Mixer 2",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Loading carbon",
+            "symptom": "BIN # 2 ยิงไม่ไป",
+            "cause": "ท่อตัน",
+            "action": "ไล่เคาะท่อแล้วยิงใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/อ๋อย/ริน/ไพลิน/โฟร์ค"
+          }
+        ]
+      },
+      {
+        "machine": "Sds#1",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "",
+            "zone": "",
+            "symptom": "Safety ตัดเอง",
+            "cause": "Safety ประตูหลวม",
+            "action": "ล็อคให้แน่น",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "Sds#3",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ3",
+            "zone": "",
+            "symptom": "Safety Can't Reset",
+            "cause": "กล้อง Drive Fault",
+            "action": "Reset Drive",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/บาส"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.0417,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.2153,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.8333,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.7726,
+      "hasData": true
     }
   },
   "fischer": {
     "date": "2026-09-08",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 83.47,
+      "ar_pct": 57.15,
+      "pr_pct": 99.61,
+      "qr_pct": 99.84,
+      "oee1_pct": 47.45,
+      "oee2_pct": 56.84
     },
     "checksheet": {
       "hasData": true,
@@ -641,14 +738,14 @@
   "quad": {
     "date": "2026-09-08",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
-      "bd_pct": 0
+      "hasData": true,
+      "sr_pct": 71.53,
+      "ar_pct": 64.47,
+      "pr_pct": 72.17,
+      "qr_pct": 91.76,
+      "oee1_pct": 30.54,
+      "oee2_pct": 42.69,
+      "bd_pct": 13.54
     },
     "output": {
       "hasData": true,
@@ -1435,7 +1532,7 @@
       "sum": 66228,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
+      "consume": 11971,
       "newGenerate": 13360,
       "slowMoving": 44844,
       "disposition": 8024,
@@ -1569,7 +1666,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 66228,
-        "consume": 0,
+        "consume": 11971,
         "newGenerate": 13360,
         "newGenerateBTA": 10070,
         "newGenerateWBR": 3290,
@@ -1661,9 +1758,9 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 58.14,
+        "avg": 50.42,
         "target": 62,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "tuber": {
@@ -1673,9 +1770,9 @@
         "isMet": true
       },
       "fischer": {
-        "avg": 56.46,
+        "avg": 56.65,
         "target": 60,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "mixing": {
@@ -1724,9 +1821,9 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 58.14,
+          "avg": 50.42,
           "target": 62,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "tuber": {
@@ -1736,9 +1833,9 @@
           "isMet": true
         },
         "fischer": {
-          "avg": 56.46,
+          "avg": 56.65,
           "target": 60,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "mixing": {

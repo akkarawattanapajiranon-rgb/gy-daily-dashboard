@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-09T00:22:07.338Z",
+  "generatedAt": "2026-09-09T01:14:42.894Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 0,
@@ -15,23 +15,23 @@
   "cms": {
     "date": "2026-09-09",
     "mixing1": {
-      "batch": 9,
-      "ar": 84.2,
-      "pr": 88.8,
+      "batch": 34,
+      "ar": 93.5,
+      "pr": 88.6,
       "qr": 100,
-      "oee2": 74.8
+      "oee2": 82.9
     },
     "mixing2": {
-      "batch": 12,
-      "ar": 100,
-      "pr": 93,
+      "batch": 42,
+      "ar": 97.2,
+      "pr": 90.7,
       "qr": 100,
-      "oee2": 93
+      "oee2": 88.1
     },
-    "totalAr": 92.1,
-    "totalPr": 91.1,
+    "totalAr": 95.4,
+    "totalPr": 89.6,
     "totalQr": 100,
-    "totalOee2": 83.9
+    "totalOee2": 85.5
   },
   "target3Roll": 0,
   "breakdown": {
@@ -78,7 +78,41 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 3,
+      "totalWbr": 3,
+      "totalSapphire": 0,
+      "totalAngleChanges": 1,
+      "totalNormal": 3,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 3,
+          "sapphire": 0,
+          "angleChanges": 1,
+          "normal": 3,
+          "sticky": 0,
+          "total": 3
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -89,12 +123,18 @@
     "target": null,
     "totalRolls": 0,
     "totalRelease": 0,
-    "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
+    "totalHold": 1,
+    "totalPending": 39,
+    "totalScheduled": 40,
     "codeBreakdown": [],
-    "holdBreakdown": [],
-    "hasData": false
+    "holdBreakdown": [
+      {
+        "code": "DDSV",
+        "count": 1,
+        "percentage": 100
+      }
+    ],
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-09",
@@ -180,13 +220,39 @@
     "output": {
       "hasData": true,
       "day": 9,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 8,
+      "codeBreakdown": [
+        {
+          "code": "B427",
+          "count": 5,
+          "percentage": 62.5
+        },
+        {
+          "code": "B462",
+          "count": 3,
+          "percentage": 37.5
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "XP02316",
+              "code": "B427",
+              "qtyTarget": 5,
+              "qtyProduced": 5,
+              "totalQty": 5
+            },
+            {
+              "partId": "XP02315",
+              "code": "B462",
+              "qtyTarget": 3,
+              "qtyProduced": 3,
+              "totalQty": 3
+            }
+          ],
+          "totalQty": 8
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -345,7 +411,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 66228,
-        "consume": 0,
+        "consume": 11971,
         "newGenerate": 13360,
         "newGenerateBTA": 10070,
         "newGenerateWBR": 3290,
@@ -381,9 +447,9 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 58.14,
+        "avg": 50.42,
         "target": 62,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "tuber": {
@@ -393,13 +459,13 @@
         "isMet": true
       },
       "fischer": {
-        "avg": 56.46,
+        "avg": 56.65,
         "target": 60,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "mixing": {
-        "avg": 79.7,
+        "avg": 80.23,
         "target": 76.6,
         "count": 3,
         "isMet": true
@@ -444,9 +510,9 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 58.14,
+          "avg": 50.42,
           "target": 62,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "tuber": {
@@ -456,13 +522,13 @@
           "isMet": true
         },
         "fischer": {
-          "avg": 56.46,
+          "avg": 56.65,
           "target": 60,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "mixing": {
-          "avg": 79.7,
+          "avg": 80.23,
           "target": 76.6,
           "count": 3,
           "isMet": true
