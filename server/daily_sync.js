@@ -24,7 +24,9 @@ async function runDailySync() {
   console.log('====================================================');
   console.log('📦 Building static production assets...');
   try {
-    execSync('node node_modules/vite/bin/vite.js build', { stdio: 'inherit', cwd: process.cwd() });
+    const viteBin = path.join(__dirname, '..', 'node_modules', 'vite', 'bin', 'vite.js');
+    const projectRoot = path.join(__dirname, '..');
+    execSync(`node "${viteBin}" build`, { stdio: 'inherit', cwd: projectRoot });
     console.log('✓ Build successful!');
   } catch (e) {
     console.error('Build error:', e.message);
