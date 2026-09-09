@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-09T01:39:17.605Z",
+  "generatedAt": "2026-09-09T01:42:01.567Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-09",
     "mixing1": {
-      "batch": 42,
-      "ar": 88.5,
-      "pr": 83.5,
-      "qr": 83.1,
-      "oee2": 61.4
+      "batch": 44,
+      "ar": 88.9,
+      "pr": 84.1,
+      "qr": 83.9,
+      "oee2": 62.8
     },
     "mixing2": {
-      "batch": 53,
-      "ar": 94.1,
-      "pr": 90.9,
+      "batch": 54,
+      "ar": 94.3,
+      "pr": 91,
       "qr": 100,
-      "oee2": 85.6
+      "oee2": 85.8
     },
-    "totalAr": 91.3,
-    "totalPr": 87.3,
-    "totalQr": 92.1,
-    "totalOee2": 73.5
+    "totalAr": 91.6,
+    "totalPr": 87.6,
+    "totalQr": 92.4,
+    "totalOee2": 74.1
   },
-  "target3Roll": 1,
+  "target3Roll": 3,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -121,16 +121,26 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 1,
-    "totalRelease": 1,
+    "totalRolls": 3,
+    "totalRelease": 3,
     "totalHold": 1,
-    "totalPending": 38,
+    "totalPending": 36,
     "totalScheduled": 40,
     "codeBreakdown": [
       {
         "code": "DDSV",
         "count": 1,
-        "percentage": 100
+        "percentage": 33.33
+      },
+      {
+        "code": "EESV",
+        "count": 1,
+        "percentage": 33.33
+      },
+      {
+        "code": "NB32",
+        "count": 1,
+        "percentage": 33.33
       }
     ],
     "holdBreakdown": [
@@ -178,13 +188,13 @@
   "quad": {
     "date": "2026-09-09",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 79.86,
+      "ar_pct": 59.13,
+      "pr_pct": 87.31,
+      "qr_pct": 88.45,
+      "oee1_pct": 36.47,
+      "oee2_pct": 45.67,
       "bd_pct": 0
     },
     "output": {
@@ -503,7 +513,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.23,
+        "avg": 76.43,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -566,7 +576,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.23,
+          "avg": 76.43,
           "target": 76.6,
           "count": 3,
           "isMet": false
