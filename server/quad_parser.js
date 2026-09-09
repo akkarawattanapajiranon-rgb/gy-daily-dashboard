@@ -30,44 +30,23 @@ function getQuadOee(dateStr) {
 
   const wb = XLSX.readFile(file);
   
-  const monthAliases = MONTH_ALIASES[monthNum] || [];
-  const candidateSheets = wb.SheetNames.filter(s => {
-    const l = s.toLowerCase();
-    const hasQuad = l.includes('quad');
-    const hasMonth = monthAliases.some(alias => l.includes(alias.replace(/[^a-z0-9]/g, '')));
-    return hasQuad && hasMonth;
-  });
+  // Find official Quad sheet for selected month (matches user's active sheet)
+  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['quad']) ||
+                    wb.SheetNames.find(s => s.toLowerCase().includes('quad') && (s.includes('26') || s.includes('2026'))) ||
+                    wb.SheetNames[0];
+
+  const ws = wb.Sheets[sheetName];
+  if (!ws) return { error: `Sheet ${sheetName} not found` };
+
+  const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
 
   let dayRow = null;
-
-  for (const sName of candidateSheets) {
-    const ws = wb.Sheets[sName];
-    if (!ws) continue;
-    const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
-    const row = data.slice(2).find(r => parseInt(r[0], 10) === dayNum);
-    if (row) {
-      const sr = Number(row[1]) || 0;
-      const ar = Number(row[3]) || 0;
-      const pr = Number(row[4]) || 0;
-      const oee2 = (row[8] !== '' && !isNaN(Number(row[8]))) ? Number(row[8]) : (Number(row[7]) || 0);
-      if (sr > 0 || ar > 0 || pr > 0 || oee2 > 0) {
-        dayRow = row;
-        break;
-      }
-      if (!dayRow) {
-        dayRow = row;
-      }
+  data.slice(2).forEach(r => {
+    const d = parseInt(r[0], 10);
+    if (d === dayNum) {
+      dayRow = r;
     }
-  }
-
-  if (!dayRow) {
-    const fallbackName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['quad']) || wb.SheetNames[0];
-    const ws = wb.Sheets[fallbackName];
-    if (ws) {
-      const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
-      dayRow = data.slice(2).find(r => parseInt(r[0], 10) === dayNum);
-    }
-  }
+  });
 
   if (!dayRow) return { hasData: false };
 
