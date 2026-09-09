@@ -9,8 +9,8 @@ async function runDailySync() {
   const today = new Date();
   const datesToSync = [];
 
-  // Sync today and past 7 days
-  for (let i = 0; i < 7; i++) {
+  // Sync today and yesterday (fast 2-day sync)
+  for (let i = 0; i < 2; i++) {
     const d = new Date(today);
     d.setDate(d.getDate() - i);
     const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -43,6 +43,7 @@ async function runDailySync() {
   } catch (e) {
     console.log('Git sync status:', e.message || 'No new changes to push');
   }
+  process.exit(0);
 }
 
 runDailySync();

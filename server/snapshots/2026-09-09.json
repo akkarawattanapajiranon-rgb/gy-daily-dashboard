@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-09T01:45:47.294Z",
+  "generatedAt": "2026-09-09T01:52:21.031Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 0,
@@ -15,23 +15,23 @@
   "cms": {
     "date": "2026-09-09",
     "mixing1": {
-      "batch": 45,
-      "ar": 88.4,
-      "pr": 84.4,
-      "qr": 84.3,
-      "oee2": 62.9
+      "batch": 48,
+      "ar": 89,
+      "pr": 85.1,
+      "qr": 85.3,
+      "oee2": 64.6
     },
     "mixing2": {
-      "batch": 56,
-      "ar": 94.5,
-      "pr": 91.3,
+      "batch": 58,
+      "ar": 94.7,
+      "pr": 91.6,
       "qr": 100,
-      "oee2": 86.3
+      "oee2": 86.8
     },
-    "totalAr": 91.5,
-    "totalPr": 88,
-    "totalQr": 92.6,
-    "totalOee2": 74.5
+    "totalAr": 91.8,
+    "totalPr": 88.5,
+    "totalQr": 93,
+    "totalOee2": 75.5
   },
   "target3Roll": 3,
   "breakdown": {
@@ -79,22 +79,22 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 11,
-      "totalWbr": 11,
+      "totalProduce": 14,
+      "totalWbr": 14,
       "totalSapphire": 0,
       "totalAngleChanges": 4,
-      "totalNormal": 4,
+      "totalNormal": 7,
       "totalSticky": 7,
-      "normalPct": 36.36,
-      "stickyPct": 63.64,
+      "normalPct": 50,
+      "stickyPct": 50,
       "shifts": {
         "shift1": {
-          "wbr": 11,
+          "wbr": 14,
           "sapphire": 0,
           "angleChanges": 4,
-          "normal": 4,
+          "normal": 7,
           "sticky": 7,
-          "total": 11
+          "total": 14
         },
         "shift2": {
           "wbr": 0,
@@ -200,17 +200,17 @@
     "output": {
       "hasData": true,
       "day": 9,
-      "grandTotal": 18,
+      "grandTotal": 22,
       "codeBreakdown": [
         {
           "code": "WAIS",
-          "count": 10,
-          "percentage": 55.56
+          "count": 14,
+          "percentage": 63.64
         },
         {
           "code": "QUIR",
           "count": 8,
-          "percentage": 44.44
+          "percentage": 36.36
         }
       ],
       "shifts": {
@@ -229,6 +229,16 @@
             },
             {
               "partId": "",
+              "code1": "WAIS",
+              "code2": "",
+              "code": "WAIS",
+              "qtyTarget": 4,
+              "qtyProduced": 4,
+              "qtySapphire": 0,
+              "totalQty": 4
+            },
+            {
+              "partId": "",
               "code1": "QUIR",
               "code2": "",
               "code": "QUIR",
@@ -238,7 +248,7 @@
               "totalQty": 8
             }
           ],
-          "totalQty": 18
+          "totalQty": 22
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -513,10 +523,10 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.57,
+        "avg": 76.9,
         "target": 76.6,
         "count": 3,
-        "isMet": false
+        "isMet": true
       }
     },
     "weeks": [
@@ -576,10 +586,10 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.57,
+          "avg": 76.9,
           "target": 76.6,
           "count": 3,
-          "isMet": false
+          "isMet": true
         }
       },
       {
