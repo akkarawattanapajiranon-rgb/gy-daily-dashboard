@@ -94,7 +94,10 @@ function parseWbrDelay(dateStr) {
         const rawDelay = row[s.delayCol];
         const delayMin = (typeof rawDelay === 'number' && !isNaN(rawDelay)) ? rawDelay : (parseInt(rawDelay, 10) || 0);
         
-        // Collect comments in this shift's 2-hour interval cells
+        // Rule 1: If no delay minutes (delayMin <= 0), do NOT include in dashboard
+        if (delayMin <= 0) return;
+
+        // Rule 2: Inspect comments in same row for "D/L" or "Delay" keywords only ("คำอื่นๆ ไม่เอามา")
         const comments = [];
         s.commentCols.forEach((colIdx, slotIdx) => {
           const colLetter = XLSX.utils.encode_col(colIdx);
@@ -104,34 +107,34 @@ function parseWbrDelay(dateStr) {
             const rawComment = cell.c.map(x => (x.t || '').trim()).filter(Boolean).join(' | ');
             const cleaned = cleanCellCommentText(rawComment);
             if (cleaned) {
-              comments.push(`[${s.timeLabels[slotIdx]}] ${cleaned}`);
+              const lower = cleaned.toLowerCase();
+              if (lower.includes('d/l') || lower.includes('delay')) {
+                comments.push(`[${s.timeLabels[slotIdx]}] ${cleaned}`);
+              }
             }
           }
         });
 
-        // Record item if delayMin > 0 OR comments exist
-        if (delayMin > 0 || comments.length > 0) {
-          const detail = comments.length > 0 ? comments.join(' ; ') : null;
-          
-          let category = 'Comp';
-          if (detail) {
-            const lower = detail.toLowerCase();
-            if (lower.includes('tread') || lower.includes('sidewall') || lower.includes(' sw ') || lower.includes('extrusion')) {
-              category = 'Extrusion';
-            }
+        const detail = comments.length > 0 ? comments.join(' ; ') : null;
+        
+        let category = 'Comp';
+        if (detail) {
+          const lower = detail.toLowerCase();
+          if (lower.includes('tread') || lower.includes('sidewall') || lower.includes(' sw ') || lower.includes('extrusion')) {
+            category = 'Extrusion';
           }
-
-          items.push({
-            id: `r${rowIdx + 1}-${s.name}`,
-            machine: mc,
-            code: String(row[2] || '').trim(),
-            shift: s.name,
-            delayMin: delayMin,
-            delayHours: parseFloat((delayMin / 60).toFixed(1)),
-            detail: detail,
-            category: category
-          });
         }
+
+        items.push({
+          id: `r${rowIdx + 1}-${s.name}`,
+          machine: mc,
+          code: String(row[2] || '').trim(),
+          shift: s.name,
+          delayMin: delayMin,
+          delayHours: parseFloat((delayMin / 60).toFixed(1)),
+          detail: detail,
+          category: category
+        });
       });
     });
 
@@ -165,3 +168,10 @@ function parseWbrDelay(dateStr) {
 }
 
 module.exports = { parseWbrDelay };
+
+if (require.main === module) {
+  console.log('--- 2026-09-02 ---');
+  console.log(JSON.stringify(parseWbrDelay('2026-09-02'), null, 2));
+  console.log('--- 2026-09-03 ---');
+  console.log(JSON.stringify(parseWbrDelay('2026-09-03'), null, 2));
+}
