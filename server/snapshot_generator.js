@@ -10,6 +10,7 @@ const { parseQuadData } = require('./quad_parser');
 const { parseTuberData } = require('./tuber_parser');
 const { parseWorkawayData } = require('./workaway_parser');
 const { parseWeeklyOee } = require('./weekly_oee_parser');
+const { parseAeroDelay } = require('./aero_delay_parser');
 
 const SNAPSHOT_DIR = path.join(__dirname, 'snapshots');
 const CLIENT_SNAPSHOT_DIR = path.join(__dirname, '..', 'src', 'data', 'snapshots');
@@ -46,6 +47,7 @@ async function generateSnapshot(dateStr) {
     const tuber = parseTuberData(dateStr);
     const workaway = parseWorkawayData(dateStr);
     const weeklyOee = parseWeeklyOee(dateStr);
+    const aeroDelay = parseAeroDelay(dateStr);
 
     const target3Roll = roll3?.totalRolls || 0;
 
@@ -62,7 +64,8 @@ async function generateSnapshot(dateStr) {
       quad: quad && !quad.error ? quad : null,
       tuber: tuber && !tuber.error ? tuber : null,
       workaway: workaway && !workaway.error ? workaway : null,
-      weeklyOee: weeklyOee && !weeklyOee.error ? weeklyOee : null
+      weeklyOee: weeklyOee && !weeklyOee.error ? weeklyOee : null,
+      aeroDelay: aeroDelay && !aeroDelay.error ? aeroDelay : null
     };
 
     const fileName = `${dateStr}.json`;

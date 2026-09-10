@@ -13,6 +13,7 @@ import ExtruderTimeline from './components/extruder-timeline/ExtruderTimeline';
 import SafetyLspReport from './components/SafetyLspReport';
 import DataExporter from './components/DataExporter';
 import Roll42Report from './components/Roll42Report';
+import AeroComponentDelay from './components/AeroComponentDelay';
 import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck, Download } from 'lucide-react';
 import { 
   fetchWasteData, 
@@ -271,6 +272,11 @@ function App() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <WasteReport data={wasteData} isLoading={isLoading} />
               <BreakdownStats data={breakdownData} isLoading={isLoading} />
+            </div>
+
+            {/* Component Delay Aero Section */}
+            <div className="grid grid-cols-1 gap-6">
+              <AeroComponentDelay date={selectedDate} />
             </div>
           </div>
         )}

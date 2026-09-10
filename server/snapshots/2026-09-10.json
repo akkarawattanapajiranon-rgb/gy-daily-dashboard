@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T04:20:21.808Z",
+  "generatedAt": "2026-09-10T05:09:06.555Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 9,
@@ -29,25 +29,25 @@
   "cms": {
     "date": "2026-09-10",
     "mixing1": {
-      "batch": 122,
-      "ar": 82.8,
-      "pr": 94.6,
-      "qr": 84.5,
-      "oee2": 66.1
+      "batch": 157,
+      "ar": 85.4,
+      "pr": 93.9,
+      "qr": 87.6,
+      "oee2": 70.3
     },
     "mixing2": {
-      "batch": 148,
-      "ar": 93.5,
-      "pr": 92.5,
+      "batch": 175,
+      "ar": 93.6,
+      "pr": 91.4,
       "qr": 100,
-      "oee2": 86.4
+      "oee2": 85.5
     },
-    "totalAr": 88.1,
-    "totalPr": 93.5,
-    "totalQr": 92.7,
-    "totalOee2": 76.3
+    "totalAr": 89.5,
+    "totalPr": 92.6,
+    "totalQr": 93.9,
+    "totalOee2": 77.8
   },
-  "target3Roll": 11,
+  "target3Roll": 14,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -135,29 +135,35 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 11,
-    "totalRelease": 11,
-    "totalHold": 0,
-    "totalPending": 33,
+    "totalRolls": 14,
+    "totalRelease": 14,
+    "totalHold": 1,
+    "totalPending": 29,
     "totalScheduled": 44,
     "codeBreakdown": [
       {
         "code": "RP08",
-        "count": 5,
-        "percentage": 45.45
+        "count": 8,
+        "percentage": 57.14
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 36.36
+        "percentage": 28.57
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 18.18
+        "percentage": 14.29
       }
     ],
-    "holdBreakdown": [],
+    "holdBreakdown": [
+      {
+        "code": "RU53",
+        "count": 1,
+        "percentage": 100
+      }
+    ],
     "hasData": true
   },
   "roll42": {
@@ -525,7 +531,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.6,
+        "avg": 76.97,
         "target": 76.6,
         "count": 4,
         "isMet": true
@@ -588,7 +594,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.6,
+          "avg": 76.97,
           "target": 76.6,
           "count": 4,
           "isMet": true
@@ -686,6 +692,54 @@
           "count": 0,
           "isMet": false
         }
+      }
+    ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "10",
+    "_date": "2026-09-10",
+    "totalDelayMin": 240,
+    "totalDelayHours": 4,
+    "totalExtrusionMin": 0,
+    "totalExtrusionHours": 0,
+    "totalCompMin": 240,
+    "totalCompHours": 4,
+    "summary": {
+      "extrusionCount": 0,
+      "compCount": 3,
+      "totalItems": 3
+    },
+    "items": [
+      {
+        "id": "5-0",
+        "machine": "UA",
+        "rawText": "d/l bead 9.30-10.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "9.30 - 10.30",
+        "durationMin": 60,
+        "durationHours": 1
+      },
+      {
+        "id": "29-1",
+        "machine": "UI",
+        "rawText": "d/l band 1=7.00-10.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "7.00 - 10.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "59-2",
+        "machine": "US",
+        "rawText": "d/l bead 10.00-",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
       }
     ]
   }

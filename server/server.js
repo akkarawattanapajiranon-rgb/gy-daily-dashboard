@@ -76,6 +76,27 @@ app.get('/api/breakdown', (req, res) => {
   res.json(data);
 });
 
+// Aero Component Delay parser (reads local Excel on N: drive)
+const { parseAeroDelay } = require('./aero_delay_parser');
+
+// Aero Component Delay API endpoint
+app.get('/api/aero-delay', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `aeroDelay:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
+  console.log(`Fetching Aero Delay data for date: ${date}`);
+  const data = parseAeroDelay(date);
+  if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.aeroDelay) return res.json(snap.aeroDelay);
+    return res.status(404).json({ error: data.error });
+  }
+  setCached(cacheKey, data);
+  res.json(data);
+});
+
 // Fischer parser (reads local Excel on T: drive)
 const { parseFischerData } = require('./fischer_parser');
 
