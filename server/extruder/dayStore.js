@@ -10,10 +10,13 @@ const {
 } = require('./buildTimeline');
 const { lineConfigs, loadLineRows } = require('./oracleSource');
 
-const MAX_RETAINED_DAYS = 5;
+const MAX_RETAINED_DAYS = 7; // Store max 7 days rolling window locally on user's machine
 const REFRESH_AFTER_MS = 10000;
-const HISTORICAL_REFRESH_AFTER_MS = 15 * 60000;
-const CACHE_FILE = path.join(__dirname, '..', 'extruder_cache.json');
+const STORE_DIR = path.join(__dirname, '..', 'extruder_store');
+
+if (!fs.existsSync(STORE_DIR)) {
+  fs.mkdirSync(STORE_DIR, { recursive: true });
+}
 
 const days = new Map();
 
@@ -25,61 +28,111 @@ function emptyDay() {
   return { lines, fetchedAtMs: 0, inFlight: null };
 }
 
-function loadDiskCache() {
+function getStoreFilePath(dateStr) {
+  return path.join(STORE_DIR, `${dateStr}.json`);
+}
+
+function loadDayFromDisk(dateStr) {
+  const filePath = getStoreFilePath(dateStr);
+  if (!fs.existsSync(filePath)) return null;
+
   try {
-    if (fs.existsSync(CACHE_FILE)) {
-      const json = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
-      for (const [dateStr, dateObj] of Object.entries(json)) {
-        const day = emptyDay();
-        for (const [line, stateData] of Object.entries(dateObj.lines || {})) {
-          day.lines.set(line, {
-            rows: stateData.rows || [],
-            lastDt: stateData.lastDt || null,
-            truncated: Boolean(stateData.truncated),
-            error: null
-          });
-        }
-        day.fetchedAtMs = dateObj.fetchedAtMs || Date.now();
-        days.set(dateStr, day);
-      }
-      console.log(`[Extruder Cache] Loaded ${days.size} dates from disk cache`);
+    const raw = fs.readFileSync(filePath, 'utf8');
+    const json = JSON.parse(raw);
+    const day = emptyDay();
+    day.fetchedAtMs = json.fetchedAtMs || Date.now();
+
+    for (const [line, stateData] of Object.entries(json.lines || {})) {
+      day.lines.set(line, {
+        rows: stateData.rows || [],
+        lastDt: stateData.lastDt || null,
+        truncated: Boolean(stateData.truncated),
+        error: null
+      });
     }
+    return day;
   } catch (e) {
-    console.warn('[Extruder Cache] Failed to load disk cache:', e.message);
+    console.warn(`[Extruder Store] Failed to read ${dateStr}.json:`, e.message);
+    return null;
   }
 }
 
-function saveDiskCache() {
+function saveDayToDisk(dateStr, day) {
+  const filePath = getStoreFilePath(dateStr);
   try {
-    const obj = {};
-    for (const [dateStr, day] of days.entries()) {
-      const linesObj = {};
-      for (const [line, state] of day.lines.entries()) {
-        linesObj[line] = {
-          rows: state.rows,
-          lastDt: state.lastDt,
-          truncated: state.truncated
-        };
-      }
-      obj[dateStr] = {
-        lines: linesObj,
-        fetchedAtMs: day.fetchedAtMs
+    const linesObj = {};
+    for (const [line, state] of day.lines.entries()) {
+      linesObj[line] = {
+        rows: state.rows,
+        lastDt: state.lastDt,
+        truncated: state.truncated
       };
     }
-    fs.writeFileSync(CACHE_FILE, JSON.stringify(obj, null, 2), 'utf8');
+    const data = {
+      date: dateStr,
+      fetchedAtMs: day.fetchedAtMs,
+      lines: linesObj
+    };
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
   } catch (e) {
-    console.warn('[Extruder Cache] Failed to save disk cache:', e.message);
+    console.warn(`[Extruder Store] Failed to save ${dateStr}.json:`, e.message);
   }
 }
 
-// Initial load on server startup
-loadDiskCache();
+/**
+ * Retain only last 7 days of files in server/extruder_store/
+ */
+function pruneOldFiles(nowDateStr) {
+  try {
+    if (!fs.existsSync(STORE_DIR)) return;
+    const files = fs.readdirSync(STORE_DIR);
+    
+    // Calculate cutoff date (7 days ago)
+    const refDate = new Date(nowDateStr + 'T00:00:00Z');
+    const cutoffDate = new Date(refDate.getTime() - (MAX_RETAINED_DAYS - 1) * 86400000);
+    const cutoffStr = cutoffDate.toISOString().split('T')[0];
 
-function evict() {
-  if (days.size <= MAX_RETAINED_DAYS) return;
-  const ordered = [...days.keys()].sort();
-  for (const date of ordered.slice(0, days.size - MAX_RETAINED_DAYS)) days.delete(date);
+    for (const file of files) {
+      if (!file.endsWith('.json')) continue;
+      const datePart = file.replace('.json', '');
+      if (datePart < cutoffStr) {
+        const fullPath = path.join(STORE_DIR, file);
+        fs.unlinkSync(fullPath);
+        days.delete(datePart);
+        console.log(`[Extruder Store] Pruned historical file older than 7 days: ${file}`);
+      }
+    }
+  } catch (e) {
+    console.warn('[Extruder Store] Error pruning old files:', e.message);
+  }
 }
+
+// Migrate existing extruder_cache.json if present into extruder_store
+function migrateLegacyCache() {
+  const legacyFile = path.join(__dirname, '..', 'extruder_cache.json');
+  if (fs.existsSync(legacyFile)) {
+    try {
+      const json = JSON.parse(fs.readFileSync(legacyFile, 'utf8'));
+      for (const [dateStr, dateObj] of Object.entries(json)) {
+        const filePath = getStoreFilePath(dateStr);
+        if (!fs.existsSync(filePath)) {
+          fs.writeFileSync(filePath, JSON.stringify({
+            date: dateStr,
+            fetchedAtMs: dateObj.fetchedAtMs || Date.now(),
+            lines: dateObj.lines || {}
+          }, null, 2), 'utf8');
+          console.log(`[Extruder Store] Migrated legacy cache for ${dateStr}`);
+        }
+      }
+    } catch (e) {
+      console.warn('[Extruder Store] Migration warning:', e.message);
+    }
+  }
+}
+
+// Run migration & initial cleanup on module load
+migrateLegacyCache();
+pruneOldFiles(bangkokProductionDate());
 
 function mergeRows(state, incoming) {
   if (!incoming || incoming.length === 0) return;
@@ -107,12 +160,10 @@ async function refresh(date, day) {
     })
   );
 
-  let hasUpdates = false;
   for (const [line, result] of results) {
     const state = day.lines.get(line);
     if (!state) continue;
     if (result.error) {
-      // If we have cached rows for this line, preserve them and clear error
       if (state.rows && state.rows.length > 0) {
         state.error = null;
       } else {
@@ -122,14 +173,10 @@ async function refresh(date, day) {
     }
     state.error = null;
     state.truncated = state.truncated || result.truncated;
-    const lenBefore = state.rows.length;
     mergeRows(state, result.rows);
-    if (state.rows.length > lenBefore) {
-      hasUpdates = true;
-    }
   }
   day.fetchedAtMs = Date.now();
-  saveDiskCache();
+  saveDayToDisk(date, day);
 }
 
 async function getExtruderTimeline(date, now = () => new Date()) {
@@ -137,23 +184,25 @@ async function getExtruderTimeline(date, now = () => new Date()) {
     throw new ExtruderTimelineInputError("date must use YYYY-MM-DD");
   }
 
+  const currentDateStr = bangkokProductionDate(now());
+  pruneOldFiles(currentDateStr);
+
   let day = days.get(date);
   if (!day) {
-    day = emptyDay();
+    day = loadDayFromDisk(date) || emptyDay();
     days.set(date, day);
   }
 
-  const isCurrent = date >= bangkokProductionDate(now());
-  const ttl = isCurrent ? REFRESH_AFTER_MS : HISTORICAL_REFRESH_AFTER_MS;
+  const isCurrent = (date === currentDateStr);
+  const ttl = isCurrent ? REFRESH_AFTER_MS : 3600000;
   const ageMs = Date.now() - day.fetchedAtMs;
-  const cached = day.fetchedAtMs > 0 && ageMs < ttl;
+  const cached = (day.fetchedAtMs > 0 && ageMs < ttl) || (!isCurrent && day.lines.get("DUPLEX")?.rows.length > 0);
 
-  if (!cached) {
+  if (!cached && isCurrent) {
     const current = day;
     const pending = current.inFlight
       || (current.inFlight = refresh(date, current).finally(() => { current.inFlight = null; }));
     await pending.catch(() => {});
-    evict();
   }
 
   return buildExtruderTimeline({
@@ -163,7 +212,7 @@ async function getExtruderTimeline(date, now = () => new Date()) {
       line,
       rows: state.rows,
       truncated: state.truncated,
-      error: state.rows && state.rows.length > 0 ? null : state.error,
+      error: state.error,
     })),
   });
 }
