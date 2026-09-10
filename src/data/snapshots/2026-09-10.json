@@ -228,16 +228,37 @@
     "date": "2026-09-10",
     "day": 10,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 10,
-    "totalRolls": 10,
-    "totalMeters": 2500,
+    "totalQty": 24,
+    "totalRolls": 24,
+    "totalMeters": 5610,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 10,
-        "meters": 2500,
+        "qty": 20,
+        "meters": 5000,
         "items": [
+          {
+            "sapCode": "PL07120",
+            "code": "WA8X",
+            "qty": 7,
+            "meters": 1750,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "PL08062",
+            "code": "W1LG",
+            "qty": 3,
+            "meters": 750,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "PL07144",
+            "code": "Q2AH",
+            "qty": 3,
+            "meters": 750,
+            "unit": "คัน"
+          },
           {
             "sapCode": "LD3535",
             "code": "WAIS",
@@ -246,29 +267,15 @@
             "unit": "คัน"
           },
           {
-            "sapCode": "LD03062",
-            "code": "Q2AH",
-            "qty": 2,
-            "meters": 500,
+            "sapCode": "PL08023",
+            "code": "WLGW",
+            "qty": 1,
+            "meters": 250,
             "unit": "คัน"
           },
           {
             "sapCode": "LD03523",
             "code": "QLIX",
-            "qty": 1,
-            "meters": 250,
-            "unit": "คัน"
-          },
-          {
-            "sapCode": "LD03442",
-            "code": "WA8X",
-            "qty": 1,
-            "meters": 250,
-            "unit": "คัน"
-          },
-          {
-            "sapCode": "LD03192",
-            "code": "W1LG",
             "qty": 1,
             "meters": 250,
             "unit": "คัน"
@@ -292,9 +299,24 @@
       "shift2": {
         "shiftNum": 2,
         "name": "กะ 2 (Shift 2)",
-        "qty": 0,
-        "meters": 0,
-        "items": []
+        "qty": 4,
+        "meters": 610,
+        "items": [
+          {
+            "sapCode": "GF00013",
+            "code": "F4111",
+            "qty": 2,
+            "meters": 400,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "GF00152",
+            "code": "B1443",
+            "qty": 2,
+            "meters": 210,
+            "unit": "ม้วน"
+          }
+        ]
       },
       "shift3": {
         "shiftNum": 3,
@@ -305,6 +327,42 @@
       }
     },
     "topCodes": [
+      {
+        "code": "WA8X",
+        "sapCode": "PL07120",
+        "qty": 7,
+        "meters": 1750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 7,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "W1LG",
+        "sapCode": "PL08062",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 3,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "Q2AH",
+        "sapCode": "PL07144",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 3,
+          "2": 0,
+          "3": 0
+        }
+      },
       {
         "code": "WAIS",
         "sapCode": "LD3535",
@@ -318,13 +376,37 @@
         }
       },
       {
-        "code": "Q2AH",
-        "sapCode": "LD03062",
+        "code": "F4111",
+        "sapCode": "GF00013",
         "qty": 2,
-        "meters": 500,
+        "meters": 400,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 0,
+          "2": 2,
+          "3": 0
+        }
+      },
+      {
+        "code": "B1443",
+        "sapCode": "GF00152",
+        "qty": 2,
+        "meters": 210,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 0,
+          "2": 2,
+          "3": 0
+        }
+      },
+      {
+        "code": "WLGW",
+        "sapCode": "PL08023",
+        "qty": 1,
+        "meters": 250,
         "unit": "คัน",
         "shifts": {
-          "1": 2,
+          "1": 1,
           "2": 0,
           "3": 0
         }
@@ -332,30 +414,6 @@
       {
         "code": "QLIX",
         "sapCode": "LD03523",
-        "qty": 1,
-        "meters": 250,
-        "unit": "คัน",
-        "shifts": {
-          "1": 1,
-          "2": 0,
-          "3": 0
-        }
-      },
-      {
-        "code": "WA8X",
-        "sapCode": "LD03442",
-        "qty": 1,
-        "meters": 250,
-        "unit": "คัน",
-        "shifts": {
-          "1": 1,
-          "2": 0,
-          "3": 0
-        }
-      },
-      {
-        "code": "W1LG",
-        "sapCode": "LD03192",
         "qty": 1,
         "meters": 250,
         "unit": "คัน",
