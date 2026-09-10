@@ -1,6 +1,6 @@
 {
   "date": "2026-09-06",
-  "generatedAt": "2026-09-10T06:01:46.364Z",
+  "generatedAt": "2026-09-10T08:00:49.081Z",
   "waste": {
     "date": "2026-09-06",
     "millingSummary": 144,
@@ -243,7 +243,7 @@
   "roll3": {
     "date": "2026-09-06",
     "day": 6,
-    "sheet": "WINDUP",
+    "sheet": "windup",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
     "totalRolls": 34,
@@ -1354,7 +1354,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 77.1,
+          "avg": 77.47,
           "target": 76.6,
           "count": 4,
           "isMet": true

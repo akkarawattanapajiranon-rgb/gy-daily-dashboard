@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-10T06:01:57.515Z",
+  "generatedAt": "2026-09-10T08:00:55.113Z",
   "waste": {
     "date": "2026-09-05",
     "millingSummary": 185.9,
@@ -295,7 +295,7 @@
   "roll3": {
     "date": "2026-09-05",
     "day": 5,
-    "sheet": "WINDUP",
+    "sheet": "windup",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
     "totalRolls": 39,
@@ -1739,7 +1739,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 77.1,
+          "avg": 77.47,
           "target": 76.6,
           "count": 4,
           "isMet": true
@@ -1837,244 +1837,6 @@
           "count": 0,
           "isMet": false
         }
-      }
-    ]
-  },
-  "aeroDelay": {
-    "_file": "09 Aero Build September 2026.xls",
-    "_sheet": "05",
-    "_date": "2026-09-05",
-    "totalDelayMin": 4110,
-    "totalDelayHours": 68.5,
-    "totalExtrusionMin": 180,
-    "totalExtrusionHours": 3,
-    "totalCompMin": 3930,
-    "totalCompHours": 65.5,
-    "summary": {
-      "extrusionCount": 1,
-      "compCount": 14,
-      "totalItems": 15
-    },
-    "items": [
-      {
-        "id": "6-0",
-        "machine": "UC",
-        "rawText": "d/l chafer > 17.00 - 20.00",
-        "category": "Comp",
-        "componentName": "Chafer",
-        "timeRangeStr": "17.00 - 20.00",
-        "durationMin": 180,
-        "durationHours": 3
-      },
-      {
-        "id": "9-1",
-        "machine": "UF",
-        "rawText": "d/l chafer > 17.00 - 20.00",
-        "category": "Comp",
-        "componentName": "Chafer",
-        "timeRangeStr": "17.00 - 20.00",
-        "durationMin": 180,
-        "durationHours": 3
-      },
-      {
-        "id": "26-2",
-        "machine": "UH",
-        "rawText": "d/l tread > 7.00-10.00",
-        "category": "Extrusion",
-        "componentName": "Tread",
-        "timeRangeStr": "7.00 - 10.00",
-        "durationMin": 180,
-        "durationHours": 3
-      },
-      {
-        "id": "29-3",
-        "machine": "UI",
-        "rawText": "vacancy G. d/l band1= 11.30-15.00",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "11.30 - 15.00",
-        "durationMin": 210,
-        "durationHours": 3.5
-      },
-      {
-        "id": "30-4",
-        "machine": "UI",
-        "rawText": "d/l band1= 15.00 - 21.00",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "15.00 - 21.00",
-        "durationMin": 360,
-        "durationHours": 6
-      },
-      {
-        "id": "31-5",
-        "machine": "UI",
-        "rawText": "d/l band > 03.00 - 06.00",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "03.00 - 06.00",
-        "durationMin": 180,
-        "durationHours": 3
-      },
-      {
-        "id": "32-6",
-        "machine": "UJ",
-        "rawText": "d/l band 6 > 7.00-7.00-10.00",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "7.00 - 7.00",
-        "durationMin": 1440,
-        "durationHours": 24
-      },
-      {
-        "id": "37-7",
-        "machine": "UK",
-        "rawText": "d/l bead > 01.00 - 02.00",
-        "category": "Comp",
-        "componentName": "Bead",
-        "timeRangeStr": "01.00 - 02.00",
-        "durationMin": 60,
-        "durationHours": 1
-      },
-      {
-        "id": "38-8",
-        "machine": "UL",
-        "rawText": "d/l band1= 11.30-15.00",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "11.30 - 15.00",
-        "durationMin": 210,
-        "durationHours": 3.5
-      },
-      {
-        "id": "39-9",
-        "machine": "UL",
-        "rawText": "d/l band1= 15.00 - 21.00",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "15.00 - 21.00",
-        "durationMin": 360,
-        "durationHours": 6
-      },
-      {
-        "id": "40-10",
-        "machine": "UL",
-        "rawText": "d/l band > 03.00 - 06.00",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "03.00 - 06.00",
-        "durationMin": 180,
-        "durationHours": 3
-      },
-      {
-        "id": "54-11",
-        "machine": "UQ",
-        "rawText": "vacancy G.,d/l chafer > 16.30 - 17.30,d/l band1 > 20.30 - 21.30",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "16.30 - 17.30",
-        "durationMin": 60,
-        "durationHours": 1
-      },
-      {
-        "id": "55-12",
-        "machine": "UQ",
-        "rawText": "d/l band 2 > 23.00 - 02.00",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "23.00 - 02.00",
-        "durationMin": 180,
-        "durationHours": 3
-      },
-      {
-        "id": "59-13",
-        "machine": "US",
-        "rawText": "d/l bead 10.30-15.00",
-        "category": "Comp",
-        "componentName": "Bead",
-        "timeRangeStr": "10.30 - 15.00",
-        "durationMin": 270,
-        "durationHours": 4.5
-      },
-      {
-        "id": "61-14",
-        "machine": "US",
-        "rawText": "d/l bead > 04.00 - 05.00",
-        "category": "Comp",
-        "componentName": "Bead",
-        "timeRangeStr": "04.00 - 05.00",
-        "durationMin": 60,
-        "durationHours": 1
-      }
-    ]
-  },
-  "wbrDelay": {
-    "_file": "BTB_Radial Sep 2026.xls",
-    "_sheet": "5",
-    "_date": "2026-09-05",
-    "totalDelayMin": 85,
-    "totalDelayHours": 1.4,
-    "shift1Min": 60,
-    "shift1Hours": 1,
-    "shift2Min": 0,
-    "shift2Hours": 0,
-    "shift3Min": 25,
-    "shift3Hours": 0.4,
-    "summary": {
-      "totalItems": 5,
-      "itemsWithDetail": 0,
-      "itemsOnlyMin": 5
-    },
-    "items": [
-      {
-        "id": "r11-กะ 1",
-        "machine": "B3",
-        "code": "Q97X",
-        "shift": "กะ 1",
-        "delayMin": 20,
-        "delayHours": 0.3,
-        "detail": null,
-        "category": "Comp"
-      },
-      {
-        "id": "r16-กะ 1",
-        "machine": "V3",
-        "code": "",
-        "shift": "กะ 1",
-        "delayMin": 11,
-        "delayHours": 0.2,
-        "detail": null,
-        "category": "Comp"
-      },
-      {
-        "id": "r18-กะ 3",
-        "machine": "V5",
-        "code": "",
-        "shift": "กะ 3",
-        "delayMin": 25,
-        "delayHours": 0.4,
-        "detail": null,
-        "category": "Comp"
-      },
-      {
-        "id": "r20-กะ 1",
-        "machine": "V7",
-        "code": "QE9A",
-        "shift": "กะ 1",
-        "delayMin": 19,
-        "delayHours": 0.3,
-        "detail": null,
-        "category": "Comp"
-      },
-      {
-        "id": "r21-กะ 1",
-        "machine": "V8",
-        "code": "",
-        "shift": "กะ 1",
-        "delayMin": 10,
-        "delayHours": 0.2,
-        "detail": null,
-        "category": "Comp"
       }
     ]
   }
