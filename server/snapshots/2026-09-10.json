@@ -1,10 +1,10 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T02:33:09.939Z",
+  "generatedAt": "2026-09-10T04:01:03.836Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 9,
-    "frictionSummary": 0,
+    "frictionSummary": 9,
     "beadSummary": 0,
     "millingTop": [
       {
@@ -14,7 +14,14 @@
         "isHigh": true
       }
     ],
-    "frictionTop": [],
+    "frictionTop": [
+      {
+        "code": "F56",
+        "amount": 9,
+        "reason": "WRINKLES",
+        "isHigh": true
+      }
+    ],
     "beadTop": [],
     "dataDate": "2026-09-10",
     "hasData": true
@@ -22,25 +29,25 @@
   "cms": {
     "date": "2026-09-10",
     "mixing1": {
-      "batch": 71,
-      "ar": 86.4,
-      "pr": 96.7,
-      "qr": 84.3,
-      "oee2": 70.4
+      "batch": 110,
+      "ar": 82.4,
+      "pr": 95.2,
+      "qr": 83,
+      "oee2": 65.1
     },
     "mixing2": {
-      "batch": 85,
-      "ar": 90.4,
-      "pr": 94.3,
+      "batch": 136,
+      "ar": 92.9,
+      "pr": 92.8,
       "qr": 100,
-      "oee2": 85.3
+      "oee2": 86.2
     },
-    "totalAr": 88.4,
-    "totalPr": 95.5,
-    "totalQr": 92.3,
-    "totalOee2": 77.9
+    "totalAr": 87.6,
+    "totalPr": 93.9,
+    "totalQr": 92,
+    "totalOee2": 75.7
   },
-  "target3Roll": 2,
+  "target3Roll": 9,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -128,25 +135,29 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 2,
-    "totalRelease": 2,
-    "totalHold": 1,
-    "totalPending": 41,
+    "totalRolls": 9,
+    "totalRelease": 9,
+    "totalHold": 0,
+    "totalPending": 35,
     "totalScheduled": 44,
     "codeBreakdown": [
       {
+        "code": "NU27",
+        "count": 4,
+        "percentage": 44.44
+      },
+      {
+        "code": "RP08",
+        "count": 3,
+        "percentage": 33.33
+      },
+      {
         "code": "NB32",
         "count": 2,
-        "percentage": 100
+        "percentage": 22.22
       }
     ],
-    "holdBreakdown": [
-      {
-        "code": "NU27",
-        "count": 1,
-        "percentage": 100
-      }
-    ],
+    "holdBreakdown": [],
     "hasData": true
   },
   "roll42": {
@@ -197,18 +208,38 @@
     "output": {
       "hasData": true,
       "day": 10,
-      "grandTotal": 6,
+      "grandTotal": 36,
       "codeBreakdown": [
+        {
+          "code": "6015",
+          "count": 22,
+          "percentage": 61.11
+        },
+        {
+          "code": "WG4B",
+          "count": 8,
+          "percentage": 22.22
+        },
         {
           "code": "Q2AH",
           "count": 6,
-          "percentage": 100
+          "percentage": 16.67
         }
       ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
           "items": [
+            {
+              "partId": "TR10892",
+              "code1": "6015",
+              "code2": "",
+              "code": "6015",
+              "qtyTarget": 280,
+              "qtyProduced": 22,
+              "qtySapphire": 0,
+              "totalQty": 22
+            },
             {
               "partId": "TL00152",
               "code1": "Q2AH",
@@ -218,9 +249,19 @@
               "qtyProduced": 6,
               "qtySapphire": 0,
               "totalQty": 6
+            },
+            {
+              "partId": "TL00084",
+              "code1": "WG4B",
+              "code2": "",
+              "code": "WG4B",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
             }
           ],
-          "totalQty": 6
+          "totalQty": 36
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -484,7 +525,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.95,
+        "avg": 76.6,
         "target": 76.6,
         "count": 4,
         "isMet": true
@@ -547,7 +588,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.95,
+          "avg": 76.6,
           "target": 76.6,
           "count": 4,
           "isMet": true
