@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-10T00:02:11.542Z",
+  "generatedAt": "2026-09-10T00:08:21.592Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 97,
@@ -634,32 +634,32 @@
     "output": {
       "hasData": true,
       "day": 9,
-      "grandTotal": 2312,
+      "grandTotal": 2306,
       "codeBreakdown": [
         {
           "code": "6010",
           "count": 800,
-          "percentage": 34.6
+          "percentage": 34.69
         },
         {
           "code": "6017",
           "count": 800,
-          "percentage": 34.6
+          "percentage": 34.69
         },
         {
           "code": "B362",
           "count": 400,
-          "percentage": 17.3
+          "percentage": 17.35
         },
         {
           "code": "B427",
           "count": 74,
-          "percentage": 3.2
+          "percentage": 3.21
         },
         {
           "code": "B415",
           "count": 66,
-          "percentage": 2.85
+          "percentage": 2.86
         },
         {
           "code": "WAIS",
@@ -687,11 +687,6 @@
           "percentage": 0.69
         },
         {
-          "code": "Q2AH",
-          "count": 14,
-          "percentage": 0.61
-        },
-        {
           "code": "WA8X",
           "count": 10,
           "percentage": 0.43
@@ -708,6 +703,11 @@
         },
         {
           "code": "QLIX",
+          "count": 8,
+          "percentage": 0.35
+        },
+        {
+          "code": "Q2AH",
           "count": 8,
           "percentage": 0.35
         },
@@ -1023,23 +1023,13 @@
               "code1": "Q2AH",
               "code2": "",
               "code": "Q2AH",
-              "qtyTarget": 10,
-              "qtyProduced": 10,
+              "qtyTarget": 8,
+              "qtyProduced": 8,
               "qtySapphire": 0,
-              "totalQty": 10
-            },
-            {
-              "partId": "TL00152",
-              "code1": "Q2AH",
-              "code2": "",
-              "code": "Q2AH",
-              "qtyTarget": 4,
-              "qtyProduced": 4,
-              "qtySapphire": 0,
-              "totalQty": 4
+              "totalQty": 8
             }
           ],
-          "totalQty": 98
+          "totalQty": 92
         }
       }
     }
