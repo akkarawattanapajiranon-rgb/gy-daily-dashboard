@@ -188,9 +188,15 @@ async function getExtruderTimeline(date, now = () => new Date()) {
   pruneOldFiles(currentDateStr);
 
   let day = days.get(date);
-  if (!day) {
-    day = loadDayFromDisk(date) || emptyDay();
-    days.set(date, day);
+  if (!day || [...day.lines.values()].some(l => !l.rows || l.rows.length === 0)) {
+    const diskDay = loadDayFromDisk(date);
+    if (diskDay) {
+      day = diskDay;
+      days.set(date, day);
+    } else if (!day) {
+      day = emptyDay();
+      days.set(date, day);
+    }
   }
 
   const isCurrent = (date === currentDateStr);
