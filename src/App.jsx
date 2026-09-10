@@ -14,7 +14,7 @@ import SafetyLspReport from './components/SafetyLspReport';
 import DataExporter from './components/DataExporter';
 import Roll42Report from './components/Roll42Report';
 import AeroComponentDelay from './components/AeroComponentDelay';
-import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck, Download } from 'lucide-react';
+import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck, Download, Layers } from 'lucide-react';
 import { 
   fetchWasteData, 
   fetchCmsData, 
@@ -154,54 +154,77 @@ function App() {
         
         {/* Navigation Tabs Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-2.5 rounded-2xl border border-slate-200 shadow-sm">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setActiveTab('dor')}
-              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
                 activeTab === 'dor'
                   ? 'bg-brand-blue text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <LayoutDashboard className="w-4 h-4" />
-              <span>หน้า 1: Daily Operations (MU_DOR)</span>
+              <span>หน้า 1: MU_DOR</span>
             </button>
+
+            <button
+              onClick={() => setActiveTab('aero')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
+                activeTab === 'aero'
+                  ? 'bg-indigo-700 text-white shadow-md'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              <Layers className="w-4 h-4 text-indigo-300" />
+              <span>หน้า 2: Component Delay Aero</span>
+            </button>
+
             <button
               onClick={() => setActiveTab('extruder')}
-              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
                 activeTab === 'extruder'
                   ? 'bg-brand-blue text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Clock className="w-4 h-4 text-brand-yellow" />
-              <span>หน้า 2: Extruder Timeline & Component Delay</span>
+              <span>หน้า 3: Extruder (TAW Act vs Spec)</span>
             </button>
+
             <button
               onClick={() => setActiveTab('safety')}
-              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
                 activeTab === 'safety'
                   ? 'bg-emerald-700 text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>หน้า 3: Safety (EHS & LSP)</span>
+              <span>หน้า 4: Safety (EHS & LSP)</span>
             </button>
+
             <button
               onClick={() => setActiveTab('exporter')}
-              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
                 activeTab === 'exporter'
                   ? 'bg-blue-600 text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Download className="w-4 h-4 text-blue-300" />
-              <span>หน้า 4: โหลดข้อมูลตัวเลข (Export)</span>
+              <span>หน้า 5: โหลดข้อมูลตัวเลข (Export)</span>
             </button>
           </div>
           <div className="text-xs font-semibold text-slate-400 px-3">
-            {activeTab === 'dor' ? 'Daily Operations Overview' : activeTab === 'extruder' ? 'Extruder TAW Timeline' : activeTab === 'safety' ? 'EHS Safety & Life Saving Principles' : '11 Core Operational Metrics Exporter'}
+            {activeTab === 'dor' 
+              ? 'Daily Operations Overview' 
+              : activeTab === 'aero'
+              ? 'Aero Component Delay Report'
+              : activeTab === 'extruder' 
+              ? 'Extruder TAW Actual vs Spec Timeline' 
+              : activeTab === 'safety' 
+              ? 'EHS Safety & Life Saving Principles' 
+              : '11 Core Operational Metrics Exporter'}
           </div>
         </div>
 
@@ -276,22 +299,54 @@ function App() {
           </div>
         )}
 
-        {/* PAGE 2: Extruder & Component Delay Dashboard */}
+        {/* PAGE 2: Component Delay Aero */}
+        {activeTab === 'aero' && (
+          <div className="space-y-6">
+            <header className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-6 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
+              <div>
+                <h1 className="text-2xl md:text-3xl font-black tracking-tight flex items-center gap-2.5">
+                  <Layers className="w-7 h-7 text-indigo-400" />
+                  Component Delay Aero Report
+                </h1>
+                <div className="flex flex-wrap items-center gap-2 mt-2">
+                  <Calendar className="w-5 h-5 text-indigo-300" />
+                  <input 
+                    type="date" 
+                    value={selectedDate} 
+                    onChange={handleDateChange}
+                    className="bg-white/10 text-white border border-white/20 rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400/50"
+                  />
+                </div>
+              </div>
+              <button
+                onClick={handleLiveRefresh}
+                disabled={isLoading}
+                className="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 active:scale-95 px-3.5 py-1.5 rounded-lg backdrop-blur-sm transition-all cursor-pointer border border-white/20 shadow-md group"
+              >
+                <div className={`w-2.5 h-2.5 rounded-full ${isLoading ? 'bg-brand-yellow animate-pulse' : 'bg-emerald-400 animate-pulse'}`}></div>
+                <span className="text-xs md:text-sm font-bold tracking-wide">{isLoading ? 'Updating...' : 'Live Data (กดดึงข้อมูลสด F5)'}</span>
+                <RefreshCw className={`w-4 h-4 text-emerald-300 group-hover:rotate-180 transition-transform duration-500 ${isLoading ? 'animate-spin' : ''}`} />
+              </button>
+            </header>
+            <AeroComponentDelay date={selectedDate} />
+          </div>
+        )}
+
+        {/* PAGE 3: Extruder — TAW Actual vs Spec */}
         {activeTab === 'extruder' && (
           <div className="space-y-6">
-            <AeroComponentDelay date={selectedDate} />
             <ExtruderTimeline endpoint="/api/extruder-timeline" pollMs={300000} />
           </div>
         )}
 
-        {/* PAGE 3: Safety EHS & LSP Tracking Dashboard */}
+        {/* PAGE 4: Safety (EHS & LSP) */}
         {activeTab === 'safety' && (
           <div className="space-y-6">
             <SafetyLspReport />
           </div>
         )}
 
-        {/* PAGE 4: Operational Data Exporter */}
+        {/* PAGE 5: โหลดข้อมูลตัวเลข (Export) */}
         {activeTab === 'exporter' && (
           <div className="space-y-6">
             <DataExporter />
