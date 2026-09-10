@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T00:08:17.454Z",
+  "generatedAt": "2026-09-10T01:30:35.470Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 9,
@@ -22,25 +22,25 @@
   "cms": {
     "date": "2026-09-10",
     "mixing1": {
-      "batch": 3,
-      "ar": 70.5,
-      "pr": 98.1,
-      "qr": 79.2,
-      "oee2": 54.8
+      "batch": 38,
+      "ar": 82.5,
+      "pr": 94.4,
+      "qr": 82.5,
+      "oee2": 64.2
     },
     "mixing2": {
-      "batch": 5,
-      "ar": 100,
-      "pr": 98.1,
+      "batch": 49,
+      "ar": 90.4,
+      "pr": 95.8,
       "qr": 100,
-      "oee2": 98.1
+      "oee2": 86.6
     },
-    "totalAr": 85.5,
-    "totalPr": 98.1,
-    "totalQr": 91.6,
-    "totalOee2": 76.8
+    "totalAr": 86.4,
+    "totalPr": 95.1,
+    "totalQr": 91.7,
+    "totalOee2": 75.4
   },
-  "target3Roll": 0,
+  "target3Roll": 44,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -85,41 +85,7 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": true,
-      "totalProduce": 706,
-      "totalWbr": 594,
-      "totalSapphire": 112,
-      "totalAngleChanges": 82,
-      "totalNormal": 557,
-      "totalSticky": 37,
-      "normalPct": 93.77,
-      "stickyPct": 6.23,
-      "shifts": {
-        "shift1": {
-          "wbr": 326,
-          "sapphire": 59,
-          "angleChanges": 58,
-          "normal": 304,
-          "sticky": 22,
-          "total": 385
-        },
-        "shift2": {
-          "wbr": 268,
-          "sapphire": 25,
-          "angleChanges": 24,
-          "normal": 253,
-          "sticky": 15,
-          "total": 293
-        },
-        "shift3": {
-          "wbr": 0,
-          "sapphire": 28,
-          "angleChanges": 0,
-          "normal": 0,
-          "sticky": 0,
-          "total": 28
-        }
-      }
+      "hasData": false
     }
   },
   "roll3": {
@@ -128,14 +94,70 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
+    "totalRolls": 44,
     "totalRelease": 0,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 44,
+    "totalScheduled": 44,
+    "codeBreakdown": [
+      {
+        "code": "N815",
+        "count": 11,
+        "percentage": 25
+      },
+      {
+        "code": "RP08",
+        "count": 8,
+        "percentage": 18.18
+      },
+      {
+        "code": "RU53",
+        "count": 8,
+        "percentage": 18.18
+      },
+      {
+        "code": "NU27",
+        "count": 4,
+        "percentage": 9.09
+      },
+      {
+        "code": "JM45",
+        "count": 3,
+        "percentage": 6.82
+      },
+      {
+        "code": "N814",
+        "count": 3,
+        "percentage": 6.82
+      },
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 4.55
+      },
+      {
+        "code": "N813",
+        "count": 2,
+        "percentage": 4.55
+      },
+      {
+        "code": "JM11",
+        "count": 1,
+        "percentage": 2.27
+      },
+      {
+        "code": "N825",
+        "count": 1,
+        "percentage": 2.27
+      },
+      {
+        "code": "N824",
+        "count": 1,
+        "percentage": 2.27
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-10",
@@ -418,7 +440,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 67758,
-        "consume": 0,
+        "consume": 14428,
         "newGenerate": 9560,
         "newGenerateBTA": 6580,
         "newGenerateWBR": 2980,
@@ -472,10 +494,10 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.72,
+        "avg": 76.42,
         "target": 76.6,
         "count": 4,
-        "isMet": true
+        "isMet": false
       }
     },
     "weeks": [
@@ -535,10 +557,10 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.72,
+          "avg": 76.42,
           "target": 76.6,
           "count": 4,
-          "isMet": true
+          "isMet": false
         }
       },
       {

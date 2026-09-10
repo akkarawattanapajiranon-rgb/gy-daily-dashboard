@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "generatedAt": "2026-09-10T00:06:45.604Z",
+  "generatedAt": "2026-09-10T01:30:45.487Z",
   "waste": {
     "date": "2026-09-08",
     "millingSummary": 183.6,
@@ -223,38 +223,38 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 706,
-      "totalWbr": 594,
-      "totalSapphire": 112,
-      "totalAngleChanges": 82,
-      "totalNormal": 557,
-      "totalSticky": 37,
-      "normalPct": 93.77,
-      "stickyPct": 6.23,
+      "totalProduce": 87,
+      "totalWbr": 75,
+      "totalSapphire": 12,
+      "totalAngleChanges": 23,
+      "totalNormal": 72,
+      "totalSticky": 3,
+      "normalPct": 96,
+      "stickyPct": 4,
       "shifts": {
         "shift1": {
-          "wbr": 326,
-          "sapphire": 59,
-          "angleChanges": 58,
-          "normal": 304,
-          "sticky": 22,
-          "total": 385
+          "wbr": 26,
+          "sapphire": 4,
+          "angleChanges": 7,
+          "normal": 26,
+          "sticky": 0,
+          "total": 30
         },
         "shift2": {
-          "wbr": 268,
-          "sapphire": 25,
-          "angleChanges": 24,
-          "normal": 253,
-          "sticky": 15,
-          "total": 293
+          "wbr": 25,
+          "sapphire": 5,
+          "angleChanges": 11,
+          "normal": 22,
+          "sticky": 3,
+          "total": 30
         },
         "shift3": {
-          "wbr": 0,
-          "sapphire": 28,
-          "angleChanges": 0,
-          "normal": 0,
+          "wbr": 24,
+          "sapphire": 3,
+          "angleChanges": 5,
+          "normal": 24,
           "sticky": 0,
-          "total": 28
+          "total": 27
         }
       }
     }
