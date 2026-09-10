@@ -64,7 +64,19 @@ function buildExtruderLine(line, rows, truncated, error = null) {
     const tMs = parseExtruderDtMs(r.dt);
     if (!Number.isFinite(tMs)) continue;
 
-    samples.push([tMs, toNum(r.tatawAct), toNum(r.tawSpec), toNum(r.efficiency)]);
+    const hp1 = toNum(r.hpress1) ?? 0;
+    const hp2 = toNum(r.hpress2) ?? 0;
+    const hp3 = toNum(r.hpress3) ?? 0;
+    const hp4 = toNum(r.hpress4) ?? 0;
+    const maxHp = Math.max(hp1, hp2, hp3, hp4);
+
+    // If head pressure sensors are present, check if extruder head pressure > 3.0 Bars.
+    // If head pressure is <= 3.0 Bars, the machine is not extruding (stopped / idle / meal break).
+    const hasPressureSensors = hp1 > 0 || hp2 > 0 || hp3 > 0 || hp4 > 0;
+    const isStopped = hasPressureSensors && maxHp <= 3.0;
+    const act = isStopped ? null : toNum(r.tatawAct);
+
+    samples.push([tMs, act, toNum(r.tawSpec), toNum(r.efficiency)]);
 
     const last = runs[runs.length - 1];
     if (last && last.runNum === r.runNum) {

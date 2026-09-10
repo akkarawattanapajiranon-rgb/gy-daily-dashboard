@@ -42,7 +42,10 @@ SELECT * FROM (
     s4.PVREAL60                                  AS "tatawAct",
     p27.PARAMETERREAL                            AS "tawSpec",
     s4.PVREAL60 / NULLIF(p27.PARAMETERREAL, 0)   AS "efficiency",
-    s4.PVREAL27                                  AS "lineSpeed"
+    s4.PVREAL6                                   AS "hpress1",
+    s4.PVREAL15                                  AS "hpress2",
+    s4.PVREAL24                                  AS "hpress3",
+    s4.PVREAL33                                  AS "hpress4"
   FROM SNAP_FB_04 s4
     JOIN RUN_SUMM   rs ON rs.RUN_NUM  = s4.RUN_NUM
     JOIN TBLRECIPES tr ON tr.RECIPEID = rs.RECIPEID
