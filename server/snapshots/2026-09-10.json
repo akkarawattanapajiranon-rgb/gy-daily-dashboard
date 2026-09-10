@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T00:01:05.489Z",
+  "generatedAt": "2026-09-10T00:02:06.699Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 0,
@@ -22,16 +22,16 @@
       "oee2": 0
     },
     "mixing2": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 1,
+      "ar": 100,
+      "pr": 99.4,
+      "qr": 100,
+      "oee2": 99.4
     },
-    "totalAr": 0,
-    "totalPr": 0,
-    "totalQr": 0,
-    "totalOee2": 0
+    "totalAr": 51,
+    "totalPr": 99.4,
+    "totalQr": 100,
+    "totalOee2": 50.7
   },
   "target3Roll": 0,
   "breakdown": {
@@ -78,7 +78,41 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 706,
+      "totalWbr": 594,
+      "totalSapphire": 112,
+      "totalAngleChanges": 82,
+      "totalNormal": 557,
+      "totalSticky": 37,
+      "normalPct": 93.77,
+      "stickyPct": 6.23,
+      "shifts": {
+        "shift1": {
+          "wbr": 326,
+          "sapphire": 59,
+          "angleChanges": 58,
+          "normal": 304,
+          "sticky": 22,
+          "total": 385
+        },
+        "shift2": {
+          "wbr": 268,
+          "sapphire": 25,
+          "angleChanges": 24,
+          "normal": 253,
+          "sticky": 15,
+          "total": 293
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 28,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 28
+        }
+      }
     }
   },
   "roll3": {
@@ -414,10 +448,10 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.7,
+        "avg": 70.2,
         "target": 76.6,
-        "count": 3,
-        "isMet": true
+        "count": 4,
+        "isMet": false
       }
     },
     "weeks": [
@@ -477,10 +511,10 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.7,
+          "avg": 70.2,
           "target": 76.6,
-          "count": 3,
-          "isMet": true
+          "count": 4,
+          "isMet": false
         }
       },
       {
