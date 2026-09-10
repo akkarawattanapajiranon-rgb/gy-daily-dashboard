@@ -194,11 +194,12 @@ async function getExtruderTimeline(date, now = () => new Date()) {
   }
 
   const isCurrent = (date === currentDateStr);
-  const ttl = isCurrent ? REFRESH_AFTER_MS : 3600000;
+  const hasData = [...day.lines.values()].some(l => l.rows && l.rows.length > 0);
+  const ttl = isCurrent ? REFRESH_AFTER_MS : 86400000;
   const ageMs = Date.now() - day.fetchedAtMs;
-  const cached = (day.fetchedAtMs > 0 && ageMs < ttl) || (!isCurrent && day.lines.get("DUPLEX")?.rows.length > 0);
+  const cached = hasData && (ageMs < ttl || !isCurrent);
 
-  if (!cached && isCurrent) {
+  if (!cached) {
     const current = day;
     const pending = current.inFlight
       || (current.inFlight = refresh(date, current).finally(() => { current.inFlight = null; }));
@@ -212,7 +213,7 @@ async function getExtruderTimeline(date, now = () => new Date()) {
       line,
       rows: state.rows,
       truncated: state.truncated,
-      error: state.error,
+      error: state.rows && state.rows.length > 0 ? null : state.error,
     })),
   });
 }

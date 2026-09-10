@@ -198,7 +198,15 @@ function parseBreakdown(dateStr) {
         }
       });
 
-      const sortedMachines = Object.values(machineMap).sort((a, b) => b.totalDurationMin - a.totalDurationMin);
+      const isCalCMachine = (name) => {
+        if (!name) return false;
+        const s = String(name).trim().toLowerCase();
+        return s.includes('sds') || s.includes('buffing') || s.includes('sio') || s.includes('orbit');
+      };
+
+      const sortedMachines = Object.values(machineMap)
+        .filter(m => !isCalCMachine(m.machine))
+        .sort((a, b) => b.totalDurationMin - a.totalDurationMin);
       result.topLoss = sortedMachines.slice(0, 5);
     }
 

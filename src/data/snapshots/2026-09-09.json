@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-10T04:01:12.797Z",
+  "generatedAt": "2026-09-10T04:20:25.706Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 97,
@@ -102,23 +102,6 @@
     "_sheet": "SEP2026",
     "_date": "2026-09-09",
     "topLoss": [
-      {
-        "machine": "Sds#3",
-        "totalDurationMin": 240,
-        "details": [
-          {
-            "shift": "กะ3",
-            "zone": "Operator",
-            "symptom": "กล้อง Error , คอมเปิดไม่ติด",
-            "cause": "Program มีปัญหา",
-            "action": "Copy Backup Program มาใช้",
-            "fixType": "ชั่วคราว",
-            "durationMin": 240,
-            "jobType": "BD",
-            "fixBy": "อ๊อฟ/เอฟ"
-          }
-        ]
-      },
       {
         "machine": "Fischer",
         "totalDurationMin": 180,

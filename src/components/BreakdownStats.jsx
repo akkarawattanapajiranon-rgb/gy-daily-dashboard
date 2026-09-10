@@ -6,7 +6,13 @@ export default function BreakdownStats({ data, isLoading }) {
 
   const total = data ? data['_total'] : null;
   const totalOver = total?.hasData && total.actual_bd_pct > total.target_bd_pct;
-  const topLoss = data?.topLoss || [];
+  const isCalCMachine = (name) => {
+    if (!name) return false;
+    const s = String(name).trim().toLowerCase();
+    return s.includes('sds') || s.includes('buffing') || s.includes('sio') || s.includes('orbit');
+  };
+
+  const topLoss = (data?.topLoss || []).filter(item => !isCalCMachine(item.machine)).slice(0, 5);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 col-span-1 md:col-span-2 lg:col-span-2 space-y-6">
