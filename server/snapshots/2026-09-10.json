@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T02:11:02.256Z",
+  "generatedAt": "2026-09-10T02:33:09.939Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 9,
@@ -22,23 +22,23 @@
   "cms": {
     "date": "2026-09-10",
     "mixing1": {
-      "batch": 61,
-      "ar": 88,
-      "pr": 96.4,
-      "qr": 83.1,
-      "oee2": 70.5
+      "batch": 71,
+      "ar": 86.4,
+      "pr": 96.7,
+      "qr": 84.3,
+      "oee2": 70.4
     },
     "mixing2": {
-      "batch": 72,
-      "ar": 88.9,
-      "pr": 95.1,
+      "batch": 85,
+      "ar": 90.4,
+      "pr": 94.3,
       "qr": 100,
-      "oee2": 84.5
+      "oee2": 85.3
     },
     "totalAr": 88.4,
-    "totalPr": 95.8,
-    "totalQr": 91.7,
-    "totalOee2": 77.6
+    "totalPr": 95.5,
+    "totalQr": 92.3,
+    "totalOee2": 77.9
   },
   "target3Roll": 2,
   "breakdown": {
@@ -87,19 +87,19 @@
     "checksheet": {
       "hasData": true,
       "totalProduce": 14,
-      "totalWbr": 14,
-      "totalSapphire": 0,
-      "totalAngleChanges": 3,
-      "totalNormal": 14,
+      "totalWbr": 10,
+      "totalSapphire": 4,
+      "totalAngleChanges": 4,
+      "totalNormal": 10,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 14,
-          "sapphire": 0,
-          "angleChanges": 3,
-          "normal": 14,
+          "wbr": 10,
+          "sapphire": 4,
+          "angleChanges": 4,
+          "normal": 10,
           "sticky": 0,
           "total": 14
         },
@@ -478,13 +478,13 @@
         "isMet": true
       },
       "fischer": {
-        "avg": 56.65,
+        "avg": 50.74,
         "target": 60,
-        "count": 2,
+        "count": 3,
         "isMet": false
       },
       "mixing": {
-        "avg": 76.92,
+        "avg": 76.95,
         "target": 76.6,
         "count": 4,
         "isMet": true
@@ -541,13 +541,13 @@
           "isMet": true
         },
         "fischer": {
-          "avg": 56.65,
+          "avg": 50.74,
           "target": 60,
-          "count": 2,
+          "count": 3,
           "isMet": false
         },
         "mixing": {
-          "avg": 76.92,
+          "avg": 76.95,
           "target": 76.6,
           "count": 4,
           "isMet": true

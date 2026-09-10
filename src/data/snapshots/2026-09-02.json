@@ -1,6 +1,6 @@
 {
   "date": "2026-09-02",
-  "generatedAt": "2026-09-10T00:06:12.015Z",
+  "generatedAt": "2026-09-10T02:32:06.577Z",
   "waste": {
     "date": "2026-09-02",
     "millingSummary": 198,
@@ -289,36 +289,36 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 706,
-      "totalWbr": 594,
-      "totalSapphire": 112,
-      "totalAngleChanges": 82,
-      "totalNormal": 557,
-      "totalSticky": 37,
-      "normalPct": 93.77,
-      "stickyPct": 6.23,
+      "totalProduce": 81,
+      "totalWbr": 68,
+      "totalSapphire": 13,
+      "totalAngleChanges": 23,
+      "totalNormal": 63,
+      "totalSticky": 5,
+      "normalPct": 92.65,
+      "stickyPct": 7.35,
       "shifts": {
         "shift1": {
-          "wbr": 326,
-          "sapphire": 59,
-          "angleChanges": 58,
-          "normal": 304,
-          "sticky": 22,
-          "total": 385
+          "wbr": 22,
+          "sapphire": 4,
+          "angleChanges": 7,
+          "normal": 17,
+          "sticky": 5,
+          "total": 26
         },
         "shift2": {
-          "wbr": 268,
-          "sapphire": 25,
-          "angleChanges": 24,
-          "normal": 253,
-          "sticky": 15,
-          "total": 293
+          "wbr": 22,
+          "sapphire": 5,
+          "angleChanges": 10,
+          "normal": 22,
+          "sticky": 0,
+          "total": 27
         },
         "shift3": {
-          "wbr": 0,
-          "sapphire": 28,
-          "angleChanges": 0,
-          "normal": 0,
+          "wbr": 24,
+          "sapphire": 4,
+          "angleChanges": 6,
+          "normal": 24,
           "sticky": 0,
           "total": 28
         }
@@ -1736,28 +1736,28 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.08,
+          "avg": 57.36,
           "target": 62,
-          "count": 2,
+          "count": 3,
           "isMet": false
         },
         "tuber": {
-          "avg": 62.44,
+          "avg": 62.13,
           "target": 62,
-          "count": 2,
+          "count": 3,
           "isMet": true
         },
         "fischer": {
-          "avg": 56.65,
+          "avg": 50.74,
           "target": 60,
-          "count": 2,
+          "count": 3,
           "isMet": false
         },
         "mixing": {
-          "avg": 76.08,
+          "avg": 76.97,
           "target": 76.6,
           "count": 4,
-          "isMet": false
+          "isMet": true
         }
       },
       {

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-10T02:11:11.143Z",
+  "generatedAt": "2026-09-10T02:33:17.216Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 97,
@@ -101,44 +101,124 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-09",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Sds#3",
+        "totalDurationMin": 240,
+        "details": [
+          {
+            "shift": "กะ3",
+            "zone": "Operator",
+            "symptom": "กล้อง Error , คอมเปิดไม่ติด",
+            "cause": "Program มีปัญหา",
+            "action": "Copy Backup Program มาใช้",
+            "fixType": "ชั่วคราว",
+            "durationMin": 240,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/เอฟ"
+          }
+        ]
+      },
+      {
+        "machine": "Fischer",
+        "totalDurationMin": 180,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Cutter",
+            "symptom": "Ply ตัดแล้วรอยโค้ง",
+            "cause": "ยังหาสาเหตุไม่เจอ",
+            "action": "เช็ค Gipper / ปรับrollerBar /ถอดกระบอกสูบมาเอาน้ำออก / เช็คroll FeedPly",
+            "fixType": "ชั่วคราว",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "ทีป/โต"
+          },
+          {
+            "shift": "กะ3",
+            "zone": "Letoff",
+            "symptom": "กระบอกสูบตัวล็อกองศาหัก",
+            "cause": "ตัวล็อกขัดตัว",
+            "action": "เชื่อมต่อแกนกระบอกสูบ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 120,
+            "jobType": "BD",
+            "fixBy": ""
+          }
+        ]
+      },
+      {
+        "machine": "Tuber 6\"x8\"",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "Wndup2",
+            "symptom": "ลมรั่ว",
+            "cause": "สายลมแตก",
+            "action": "ได้ทำการเปลี่ยนสายลมให้ใหม่ทั้งเส้น",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "อ่อย-มิ้น -แอ๊ด"
+          }
+        ]
+      },
+      {
+        "machine": "Band#72 /2",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "กะ3",
+            "zone": "Conveyor",
+            "symptom": "สายพานเบียดข้าง",
+            "cause": "ร่องลางโรลเลอร์ปรับสายพานขัดตัว",
+            "action": "ปรับสายพาน ทาจาระบีล่อลื่นลางสไลส์",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": ""
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.625,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.25,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.4688,
+      "hasData": true
     }
   },
   "fischer": {
     "date": "2026-09-09",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 85.76,
+      "ar_pct": 46.91,
+      "pr_pct": 83.59,
+      "qr_pct": 99.23,
+      "oee1_pct": 33.37,
+      "oee2_pct": 38.91
     },
     "checksheet": {
       "hasData": true,
@@ -629,7 +709,7 @@
       "qr_pct": 93.35,
       "oee1_pct": 37.41,
       "oee2_pct": 57.92,
-      "bd_pct": 20.83
+      "bd_pct": 1.39
     },
     "output": {
       "hasData": true,
@@ -1572,9 +1652,9 @@
         "isMet": true
       },
       "fischer": {
-        "avg": 56.65,
+        "avg": 50.74,
         "target": 60,
-        "count": 2,
+        "count": 3,
         "isMet": false
       },
       "mixing": {
@@ -1635,9 +1715,9 @@
           "isMet": true
         },
         "fischer": {
-          "avg": 56.65,
+          "avg": 50.74,
           "target": 60,
-          "count": 2,
+          "count": 3,
           "isMet": false
         },
         "mixing": {
