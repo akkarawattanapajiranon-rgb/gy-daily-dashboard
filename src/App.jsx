@@ -247,6 +247,11 @@ function App() {
               </div>
             </div>
 
+            {/* Position 2: Component Delay Aero Section */}
+            <div className="grid grid-cols-1 gap-6">
+              <AeroComponentDelay date={selectedDate} />
+            </div>
+
             {/* Fischer Shear Section */}
             <div className="grid grid-cols-1 gap-6">
               <FischerReport data={fischerData} isLoading={isLoading} />
@@ -272,11 +277,6 @@ function App() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <WasteReport data={wasteData} isLoading={isLoading} />
               <BreakdownStats data={breakdownData} isLoading={isLoading} />
-            </div>
-
-            {/* Component Delay Aero Section */}
-            <div className="grid grid-cols-1 gap-6">
-              <AeroComponentDelay date={selectedDate} />
             </div>
           </div>
         )}
