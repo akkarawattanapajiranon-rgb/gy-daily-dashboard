@@ -1,6 +1,6 @@
 {
   "date": "2026-09-06",
-  "generatedAt": "2026-09-10T08:01:23.839Z",
+  "generatedAt": "2026-09-10T08:01:48.965Z",
   "waste": {
     "date": "2026-09-06",
     "millingSummary": 144,
@@ -1454,5 +1454,162 @@
         }
       }
     ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "06",
+    "_date": "2026-09-06",
+    "totalDelayMin": 1620,
+    "totalDelayHours": 27,
+    "totalExtrusionMin": 0,
+    "totalExtrusionHours": 0,
+    "totalCompMin": 1620,
+    "totalCompHours": 27,
+    "summary": {
+      "extrusionCount": 0,
+      "compCount": 12,
+      "totalItems": 12
+    },
+    "items": [
+      {
+        "id": "28-0",
+        "machine": "UH",
+        "rawText": "d/l bead > 03.00 - 07.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "03.00 - 07.00",
+        "durationMin": 240,
+        "durationHours": 4
+      },
+      {
+        "id": "31-1",
+        "machine": "UI",
+        "rawText": "d/l band 1 > 23.00 - 04.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "23.00 - 04.30",
+        "durationMin": 330,
+        "durationHours": 5.5
+      },
+      {
+        "id": "32-2",
+        "machine": "UJ",
+        "rawText": "vacancy G.d/l band  14.00-15.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "14.00 - 15.00",
+        "durationMin": 60,
+        "durationHours": 1
+      },
+      {
+        "id": "33-3",
+        "machine": "UJ",
+        "rawText": "d/l band6=15.00-18.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "15.00 - 18.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "40-4",
+        "machine": "UL",
+        "rawText": "d/l band 1 > 24.00 - 04.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "24.00 - 04.30",
+        "durationMin": 270,
+        "durationHours": 4.5
+      },
+      {
+        "id": "48-5",
+        "machine": "UO",
+        "rawText": "d/l bead 16.30-18.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "16.30 - 18.30",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "49-6",
+        "machine": "UO",
+        "rawText": "d/l bead > 02.00 - 03.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "02.00 - 03.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "57-7",
+        "machine": "UR",
+        "rawText": "d/l bead 18.00-18.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "18.00 - 18.30",
+        "durationMin": 30,
+        "durationHours": 0.5
+      },
+      {
+        "id": "58-8",
+        "machine": "UR",
+        "rawText": "d/l bead > 02.00 - 03.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "02.00 - 03.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "60-9",
+        "machine": "US",
+        "rawText": "d/l bead 18.30-",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "62-10",
+        "machine": "TAKU",
+        "rawText": "d/l chafer",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "64-11",
+        "machine": "TAKU",
+        "rawText": "d/l chafer > 04.00 - 07.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "04.00 - 07.00",
+        "durationMin": 180,
+        "durationHours": 3
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(6)",
+    "_date": "2026-09-06",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 0,
+      "itemsWithDetail": 0,
+      "itemsOnlyMin": 0
+    },
+    "items": []
   }
 }

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-10T08:01:35.089Z",
+  "generatedAt": "2026-09-10T08:02:14.176Z",
   "waste": {
     "date": "2026-09-04",
     "millingSummary": 153.5,
@@ -1905,5 +1905,202 @@
         }
       }
     ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "04",
+    "_date": "2026-09-04",
+    "totalDelayMin": 1980,
+    "totalDelayHours": 33,
+    "totalExtrusionMin": 0,
+    "totalExtrusionHours": 0,
+    "totalCompMin": 1980,
+    "totalCompHours": 33,
+    "summary": {
+      "extrusionCount": 1,
+      "compCount": 15,
+      "totalItems": 16
+    },
+    "items": [
+      {
+        "id": "5-0",
+        "machine": "UA",
+        "rawText": "vacancy G. d/l bead 13.30-15.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "13.30 - 15.00",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "6-1",
+        "machine": "UC",
+        "rawText": "d/l bead 15.00-18.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "15.00 - 18.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "8-2",
+        "machine": "UB",
+        "rawText": "d/l bead 13.30-15.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "13.30 - 15.00",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "9-3",
+        "machine": "UF",
+        "rawText": "d/l bead 15.00-18.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "15.00 - 18.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "28-4",
+        "machine": "UH",
+        "rawText": "d/l tread > 23.00 -",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "29-5",
+        "machine": "UI",
+        "rawText": "d/l band=1 07.00-09.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "07.00 - 09.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "31-6",
+        "machine": "UI",
+        "rawText": "d/l band > 04.30 - 06.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "04.30 - 06.00",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "34-7",
+        "machine": "UJ",
+        "rawText": "d/l band 6 > 04.00 - 07.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "04.00 - 07.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "38-8",
+        "machine": "UL",
+        "rawText": "d/l band=1 07.00-09.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "07.00 - 09.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "39-9",
+        "machine": "UL",
+        "rawText": "vacancy g.d/l band1=18.00-19.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "18.00 - 19.00",
+        "durationMin": 60,
+        "durationHours": 1
+      },
+      {
+        "id": "40-10",
+        "machine": "UL",
+        "rawText": "d/l band > 04.30 - 06.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "04.30 - 06.00",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "47-11",
+        "machine": "UO",
+        "rawText": "vacancy G.  d/l band 4 > 7.00-15.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "7.00 - 15.00",
+        "durationMin": 480,
+        "durationHours": 8
+      },
+      {
+        "id": "48-12",
+        "machine": "UO",
+        "rawText": "d/l band4=15.00-16.30d/l bead 19.0-20.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "15.00 - 16.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "53-13",
+        "machine": "UQ",
+        "rawText": "d/l breaker >07.00-08.30 d/l band=1",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "07.00 - 08.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "55-14",
+        "machine": "UQ",
+        "rawText": "d/l bkk. > 23.00 - 24.30",
+        "category": "Comp",
+        "componentName": "Component",
+        "timeRangeStr": "23.00 - 24.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "63-15",
+        "machine": "TAKU",
+        "rawText": "d/l chafer 16.10-16.40",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "16.10 - 16.40",
+        "durationMin": 30,
+        "durationHours": 0.5
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(4)",
+    "_date": "2026-09-04",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 0,
+      "itemsWithDetail": 0,
+      "itemsOnlyMin": 0
+    },
+    "items": []
   }
 }
