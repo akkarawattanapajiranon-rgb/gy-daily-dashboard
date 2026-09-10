@@ -449,7 +449,7 @@ export default function ExtruderTimeline({
                   act {formatValue(lane.summary.meanAct, 0)} / spec {formatValue(lane.summary.meanSpec, 0)}
                   {lane.summary.meanHpress !== null && (
                     <span className="ml-1 font-medium text-zinc-600">
-                      · {lane.line.toUpperCase().includes("DUPLEX") || lane.line.toUpperCase().includes("TUBER") ? "Hpress 2" : "Hpress 3"}: {formatValue(lane.summary.meanHpress, 1)} Bar
+                      · {lane.line.toUpperCase().includes("DUPLEX") || lane.line.toUpperCase().includes("TUBER") ? "Hpress 2" : "Hpress 3"}: {formatValue(lane.summary.meanHpress * 14.5038, 0)} PSI ({formatValue(lane.summary.meanHpress, 1)} Bar)
                     </span>
                   )}
                 </div>
@@ -720,7 +720,7 @@ export default function ExtruderTimeline({
               )}
               {tooltip.sample[4] !== undefined && tooltip.sample[4] !== null && (
                 <div className="tabular-nums text-cyan-400 font-semibold">
-                  {tooltip.line.toUpperCase().includes("DUPLEX") || tooltip.line.toUpperCase().includes("TUBER") ? "Hpress 2" : "Hpress 3"}&nbsp;&nbsp;{formatValue(tooltip.sample[4], 1)} Bar
+                  {tooltip.line.toUpperCase().includes("DUPLEX") || tooltip.line.toUpperCase().includes("TUBER") ? "Hpress 2" : "Hpress 3"}&nbsp;&nbsp;{formatValue(tooltip.sample[4] * 14.5038, 0)} PSI ({formatValue(tooltip.sample[4], 1)} Bar)
                 </div>
               )}
             </>
