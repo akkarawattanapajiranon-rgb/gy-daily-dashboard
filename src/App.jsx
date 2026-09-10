@@ -278,7 +278,7 @@ function App() {
         {/* PAGE 2: Extruder Timeline Dashboard */}
         {activeTab === 'extruder' && (
           <div className="space-y-6">
-            <ExtruderTimeline endpoint="/api/extruder-timeline" pollMs={15000} />
+            <ExtruderTimeline endpoint="/api/extruder-timeline" pollMs={300000} />
           </div>
         )}
 

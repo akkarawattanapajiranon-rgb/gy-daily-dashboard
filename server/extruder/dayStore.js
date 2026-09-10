@@ -11,7 +11,7 @@ const {
 const { lineConfigs, loadLineRows } = require('./oracleSource');
 
 const MAX_RETAINED_DAYS = 7; // Store max 7 days rolling window locally on user's machine
-const REFRESH_AFTER_MS = 10000;
+const REFRESH_AFTER_MS = 5 * 60 * 1000; // 5 minutes (300,000 ms)
 const STORE_DIR = path.join(__dirname, '..', 'extruder_store');
 
 if (!fs.existsSync(STORE_DIR)) {
