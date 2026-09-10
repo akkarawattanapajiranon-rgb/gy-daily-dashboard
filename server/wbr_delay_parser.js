@@ -133,44 +133,44 @@ function parseWbrDelay(dateStr) {
 
       const shiftVal = String(row[2] || '').trim();
 
-      // Check Col BG (58) Material Delay & Col BQ (68) Material Issue
-      const sources = [
-        { detail: String(row[58] || '').trim(), start: row[59], end: row[60] }, // Col BG, BH, BI
-        { detail: String(row[68] || '').trim(), start: row[69], end: row[70] }  // Col BQ, BR, BS
-      ];
+      // Read STRICTLY Col BG (58) Material Delay, Col BH (59) Start, Col BI (60) End
+      const bgDetail = String(row[58] || '').trim();
+      const bhStart = row[59];
+      const biEnd = row[60];
 
-      sources.forEach(src => {
-        if (!src.detail && src.start === '' && src.end === '') return;
+      // Ignore summary / header rows
+      if (bgDetail.includes('shift') || bgDetail.includes('Material Delay')) return;
 
-        const startTimeObj = parseTimeStr(src.start);
-        const endTimeObj = parseTimeStr(src.end);
-        const durationMin = calcDurationMin(startTimeObj, endTimeObj);
-        const shift = determineShift(shiftVal, startTimeObj);
+      if (!bgDetail && bhStart === '' && biEnd === '') return;
 
-        let timeRangeStr = '';
-        if (startTimeObj && endTimeObj) {
-          timeRangeStr = `${startTimeObj.str} - ${endTimeObj.str}`;
-        } else if (startTimeObj) {
-          timeRangeStr = `${startTimeObj.str}`;
-        }
+      const startTimeObj = parseTimeStr(bhStart);
+      const endTimeObj = parseTimeStr(biEnd);
+      const durationMin = calcDurationMin(startTimeObj, endTimeObj);
+      const shift = determineShift(shiftVal, startTimeObj);
 
-        let category = 'Comp';
-        const lower = src.detail.toLowerCase();
-        if (lower.includes('tread') || lower.includes('sidewall') || lower.includes(' sw ') || lower.includes('extrusion')) {
-          category = 'Extrusion';
-        }
+      let timeRangeStr = '';
+      if (startTimeObj && endTimeObj) {
+        timeRangeStr = `${startTimeObj.str} - ${endTimeObj.str}`;
+      } else if (startTimeObj) {
+        timeRangeStr = `${startTimeObj.str}`;
+      }
 
-        items.push({
-          id: `r${rowIdx + 1}-${shift}-${items.length + 1}`,
-          machine: currentMC,
-          shift,
-          code: String(row[4] || '').trim(),
-          delayMin: durationMin,
-          delayHours: parseFloat((durationMin / 60).toFixed(1)),
-          detail: src.detail ? (timeRangeStr ? `[${timeRangeStr}] ${src.detail}` : src.detail) : null,
-          timeRangeStr,
-          category
-        });
+      let category = 'Comp';
+      const lower = bgDetail.toLowerCase();
+      if (lower.includes('tread') || lower.includes('sidewall') || lower.includes(' sw ') || lower.includes('extrusion')) {
+        category = 'Extrusion';
+      }
+
+      items.push({
+        id: `r${rowIdx + 1}-${shift}-${items.length + 1}`,
+        machine: currentMC,
+        shift,
+        code: String(row[4] || '').trim(),
+        delayMin: durationMin,
+        delayHours: parseFloat((durationMin / 60).toFixed(1)),
+        detail: bgDetail ? (timeRangeStr ? `[${timeRangeStr}] ${bgDetail}` : bgDetail) : null,
+        timeRangeStr,
+        category
       });
     });
 
@@ -206,6 +206,8 @@ function parseWbrDelay(dateStr) {
 module.exports = { parseWbrDelay };
 
 if (require.main === module) {
+  console.log('--- 2026-09-02 ---');
   console.log(JSON.stringify(parseWbrDelay('2026-09-02'), null, 2));
+  console.log('--- 2026-09-07 ---');
   console.log(JSON.stringify(parseWbrDelay('2026-09-07'), null, 2));
 }

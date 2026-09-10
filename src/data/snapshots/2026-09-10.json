@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T06:13:55.828Z",
+  "generatedAt": "2026-09-10T06:21:33.543Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 9,
@@ -41,23 +41,23 @@
   "cms": {
     "date": "2026-09-10",
     "mixing1": {
-      "batch": 189,
-      "ar": 86.5,
-      "pr": 93.8,
-      "qr": 89.8,
-      "oee2": 72.8
+      "batch": 192,
+      "ar": 86.7,
+      "pr": 93.7,
+      "qr": 89.9,
+      "oee2": 73.1
     },
     "mixing2": {
-      "batch": 210,
-      "ar": 93.3,
-      "pr": 90.8,
+      "batch": 214,
+      "ar": 93.5,
+      "pr": 90.7,
       "qr": 100,
       "oee2": 84.8
     },
-    "totalAr": 89.9,
-    "totalPr": 92.3,
-    "totalQr": 94.9,
-    "totalOee2": 78.7
+    "totalAr": 90.1,
+    "totalPr": 92.2,
+    "totalQr": 95,
+    "totalOee2": 78.9
   },
   "target3Roll": 19,
   "breakdown": {
@@ -724,7 +724,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 77.2,
+        "avg": 77.25,
         "target": 76.6,
         "count": 4,
         "isMet": true
@@ -787,7 +787,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 77.2,
+          "avg": 77.25,
           "target": 76.6,
           "count": 4,
           "isMet": true
@@ -940,42 +940,19 @@
     "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
     "_sheet": "(10)",
     "_date": "2026-09-10",
-    "totalDelayMin": 23,
-    "totalDelayHours": 0.4,
-    "shift1Min": 23,
-    "shift1Hours": 0.4,
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
     "shift2Min": 0,
     "shift2Hours": 0,
     "shift3Min": 0,
     "shift3Hours": 0,
     "summary": {
-      "totalItems": 2,
-      "itemsWithDetail": 2,
+      "totalItems": 0,
+      "itemsWithDetail": 0,
       "itemsOnlyMin": 0
     },
-    "items": [
-      {
-        "id": "r7-กะ 1-1",
-        "machine": "V1",
-        "shift": "กะ 1",
-        "code": "WA8X",
-        "delayMin": 8,
-        "delayHours": 0.1,
-        "detail": "[07:14 - 07:22] Sidewall  wrinkles in roll",
-        "timeRangeStr": "07:14 - 07:22",
-        "category": "Extrusion"
-      },
-      {
-        "id": "r31-กะ 1-2",
-        "machine": "V3",
-        "shift": "กะ 1",
-        "code": "W1WF",
-        "delayMin": 15,
-        "delayHours": 0.3,
-        "detail": "[08:00 - 08:15] ply  ตัดไม่ขาด",
-        "timeRangeStr": "08:00 - 08:15",
-        "category": "Comp"
-      }
-    ]
+    "items": []
   }
 }

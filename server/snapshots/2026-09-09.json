@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-10T06:14:18.684Z",
+  "generatedAt": "2026-09-10T06:21:50.441Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 97,
@@ -2047,108 +2047,19 @@
     "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
     "_sheet": "(9)",
     "_date": "2026-09-09",
-    "totalDelayMin": 204,
-    "totalDelayHours": 3.4,
-    "shift1Min": 146,
-    "shift1Hours": 2.4,
-    "shift2Min": 30,
-    "shift2Hours": 0.5,
-    "shift3Min": 28,
-    "shift3Hours": 0.5,
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
     "summary": {
-      "totalItems": 8,
-      "itemsWithDetail": 8,
+      "totalItems": 0,
+      "itemsWithDetail": 0,
       "itemsOnlyMin": 0
     },
-    "items": [
-      {
-        "id": "r19-กะ 1-1",
-        "machine": "V2",
-        "shift": "กะ 1",
-        "code": "WLGW",
-        "delayMin": 7,
-        "delayHours": 0.1,
-        "detail": "[09:08 - 09:15] tread  ยัด",
-        "timeRangeStr": "09:08 - 09:15",
-        "category": "Extrusion"
-      },
-      {
-        "id": "r23-กะ 2-2",
-        "machine": "V2",
-        "shift": "กะ 2",
-        "code": "WLAN",
-        "delayMin": 15,
-        "delayHours": 0.3,
-        "detail": "[16:10 - 16:25] ply2 ตัดไม่ขาด",
-        "timeRangeStr": "16:10 - 16:25",
-        "category": "Comp"
-      },
-      {
-        "id": "r24-กะ 2-3",
-        "machine": "V2",
-        "shift": "กะ 2",
-        "code": "",
-        "delayMin": 8,
-        "delayHours": 0.1,
-        "detail": "[17:39 - 17:47] ply2 wrinkle  in roll",
-        "timeRangeStr": "17:39 - 17:47",
-        "category": "Comp"
-      },
-      {
-        "id": "r31-กะ 1-4",
-        "machine": "V3",
-        "shift": "กะ 1",
-        "code": "WYAF",
-        "delayMin": 9,
-        "delayHours": 0.1,
-        "detail": "[07:15 - 07:24] Sidewall  wrinkles in roll",
-        "timeRangeStr": "07:15 - 07:24",
-        "category": "Extrusion"
-      },
-      {
-        "id": "r32-กะ 1-5",
-        "machine": "V3",
-        "shift": "กะ 1",
-        "code": "",
-        "delayMin": 130,
-        "delayHours": 2.2,
-        "detail": "[10:20 - 12:30] Hold   ply  รอยต่อ off",
-        "timeRangeStr": "10:20 - 12:30",
-        "category": "Comp"
-      },
-      {
-        "id": "r75-กะ 3-6",
-        "machine": "V6",
-        "shift": "กะ 3",
-        "code": "",
-        "delayMin": 8,
-        "delayHours": 0.1,
-        "detail": "[04:24 - 04:32] breaker wrinkles",
-        "timeRangeStr": "04:24 - 04:32",
-        "category": "Comp"
-      },
-      {
-        "id": "r95-กะ 2-7",
-        "machine": "V8",
-        "shift": "กะ 2",
-        "code": "W1CX",
-        "delayMin": 7,
-        "delayHours": 0.1,
-        "detail": "[21:10 - 21:17] ply1 ตัดไม่ชาด",
-        "timeRangeStr": "21:10 - 21:17",
-        "category": "Comp"
-      },
-      {
-        "id": "r99-กะ 3-8",
-        "machine": "V8",
-        "shift": "กะ 3",
-        "code": "",
-        "delayMin": 20,
-        "delayHours": 0.3,
-        "detail": "[24:50 - 01:10] เอาplyมาผิด",
-        "timeRangeStr": "24:50 - 01:10",
-        "category": "Comp"
-      }
-    ]
+    "items": []
   }
 }
