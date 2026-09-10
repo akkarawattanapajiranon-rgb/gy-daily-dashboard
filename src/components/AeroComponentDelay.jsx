@@ -50,7 +50,7 @@ export default function AeroComponentDelay({ date }) {
     );
   }
 
-  if (!data || data.error || !data.items || data.items.length === 0) {
+  if (!data || data.error) {
     return (
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-4">
         <div className="flex items-center justify-between">
@@ -64,7 +64,7 @@ export default function AeroComponentDelay({ date }) {
         </div>
         <div className="bg-slate-50 border border-slate-200 rounded-xl p-8 text-center text-slate-400 text-sm">
           <ShieldAlert className="w-8 h-8 mx-auto mb-2 text-slate-300" />
-          {data?.error || 'ไม่มีรายงาน Component Delay ประจำวันที่เลือก'}
+          {data?.error || 'ไม่พบไฟล์รายงาน Component Delay ประจำวันที่เลือก'}
         </div>
       </div>
     );
