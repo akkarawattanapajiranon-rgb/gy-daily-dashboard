@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T05:44:01.638Z",
+  "generatedAt": "2026-09-10T06:01:04.391Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 9,
@@ -41,22 +41,22 @@
   "cms": {
     "date": "2026-09-10",
     "mixing1": {
-      "batch": 173,
-      "ar": 85.2,
-      "pr": 94,
-      "qr": 88.8,
-      "oee2": 71.1
+      "batch": 182,
+      "ar": 86,
+      "pr": 93.9,
+      "qr": 89.3,
+      "oee2": 72.1
     },
     "mixing2": {
-      "batch": 197,
-      "ar": 94.1,
+      "batch": 203,
+      "ar": 93.1,
       "pr": 90.9,
       "qr": 100,
-      "oee2": 85.6
+      "oee2": 84.6
     },
-    "totalAr": 89.7,
-    "totalPr": 92.4,
-    "totalQr": 94.5,
+    "totalAr": 89.5,
+    "totalPr": 92.3,
+    "totalQr": 94.7,
     "totalOee2": 78.3
   },
   "target3Roll": 16,
@@ -144,7 +144,7 @@
   "roll3": {
     "date": "2026-09-10",
     "day": 10,
-    "sheet": "windup",
+    "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
     "totalRolls": 16,
@@ -314,13 +314,118 @@
     "output": {
       "hasData": true,
       "day": 10,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 68,
+      "codeBreakdown": [
+        {
+          "code": "B275",
+          "count": 15,
+          "percentage": 22.06
+        },
+        {
+          "code": "Q9ND",
+          "count": 15,
+          "percentage": 22.06
+        },
+        {
+          "code": "WG4B",
+          "count": 15,
+          "percentage": 22.06
+        },
+        {
+          "code": "B427",
+          "count": 10,
+          "percentage": 14.71
+        },
+        {
+          "code": "W1LG",
+          "count": 4,
+          "percentage": 5.88
+        },
+        {
+          "code": "Q2AH",
+          "count": 4,
+          "percentage": 5.88
+        },
+        {
+          "code": "B627",
+          "count": 3,
+          "percentage": 4.41
+        },
+        {
+          "code": "B441",
+          "count": 2,
+          "percentage": 2.94
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "XP02311",
+              "code": "B275",
+              "qtyTarget": 15,
+              "qtyProduced": 15,
+              "totalQty": 15
+            },
+            {
+              "partId": "XP02316",
+              "code": "B427",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "totalQty": 10
+            },
+            {
+              "partId": "XP02321",
+              "code": "B441",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "totalQty": 2
+            },
+            {
+              "partId": "XP02323",
+              "code": "B627",
+              "qtyTarget": 3,
+              "qtyProduced": 3,
+              "totalQty": 3
+            },
+            {
+              "partId": "XP02462",
+              "code": "Q9ND",
+              "qtyTarget": 15,
+              "qtyProduced": 15,
+              "totalQty": 15
+            },
+            {
+              "partId": "XP02853",
+              "code": "WG4B",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "totalQty": 10
+            },
+            {
+              "partId": "SW09102",
+              "code": "WG4B",
+              "qtyTarget": 5,
+              "qtyProduced": 5,
+              "totalQty": 5
+            },
+            {
+              "partId": "SW08402",
+              "code": "W1LG",
+              "qtyTarget": 4,
+              "qtyProduced": 4,
+              "totalQty": 4
+            },
+            {
+              "partId": "SW08796",
+              "code": "Q2AH",
+              "qtyTarget": 4,
+              "qtyProduced": 4,
+              "totalQty": 4
+            }
+          ],
+          "totalQty": 68
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -782,72 +887,5 @@
         }
       }
     ]
-  },
-  "aeroDelay": {
-    "_file": "09 Aero Build September 2026.xls",
-    "_sheet": "10",
-    "_date": "2026-09-10",
-    "totalDelayMin": 240,
-    "totalDelayHours": 4,
-    "totalExtrusionMin": 0,
-    "totalExtrusionHours": 0,
-    "totalCompMin": 240,
-    "totalCompHours": 4,
-    "summary": {
-      "extrusionCount": 0,
-      "compCount": 3,
-      "totalItems": 3
-    },
-    "items": [
-      {
-        "id": "5-0",
-        "machine": "UA",
-        "rawText": "d/l bead 9.30-10.30",
-        "category": "Comp",
-        "componentName": "Bead",
-        "timeRangeStr": "9.30 - 10.30",
-        "durationMin": 60,
-        "durationHours": 1
-      },
-      {
-        "id": "29-1",
-        "machine": "UI",
-        "rawText": "d/l band 1=7.00-10.00",
-        "category": "Comp",
-        "componentName": "Band",
-        "timeRangeStr": "7.00 - 10.00",
-        "durationMin": 180,
-        "durationHours": 3
-      },
-      {
-        "id": "59-2",
-        "machine": "US",
-        "rawText": "d/l bead 10.00-",
-        "category": "Comp",
-        "componentName": "Bead",
-        "timeRangeStr": "",
-        "durationMin": 0,
-        "durationHours": 0
-      }
-    ]
-  },
-  "wbrDelay": {
-    "_file": "BTB_Radial Sep 2026.xls",
-    "_sheet": "10",
-    "_date": "2026-09-10",
-    "totalDelayMin": 0,
-    "totalDelayHours": 0,
-    "shift1Min": 0,
-    "shift1Hours": 0,
-    "shift2Min": 0,
-    "shift2Hours": 0,
-    "shift3Min": 0,
-    "shift3Hours": 0,
-    "summary": {
-      "totalItems": 0,
-      "itemsWithDetail": 0,
-      "itemsOnlyMin": 0
-    },
-    "items": []
   }
 }
