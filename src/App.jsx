@@ -175,7 +175,7 @@ function App() {
               }`}
             >
               <Clock className="w-4 h-4 text-brand-yellow" />
-              <span>หน้า 2: Extruder Timeline</span>
+              <span>หน้า 2: Extruder Timeline & Component Delay</span>
             </button>
             <button
               onClick={() => setActiveTab('safety')}
@@ -247,11 +247,6 @@ function App() {
               </div>
             </div>
 
-            {/* Position 2: Component Delay Aero Section */}
-            <div className="grid grid-cols-1 gap-6">
-              <AeroComponentDelay date={selectedDate} />
-            </div>
-
             {/* Fischer Shear Section */}
             <div className="grid grid-cols-1 gap-6">
               <FischerReport data={fischerData} isLoading={isLoading} />
@@ -281,9 +276,10 @@ function App() {
           </div>
         )}
 
-        {/* PAGE 2: Extruder Timeline Dashboard */}
+        {/* PAGE 2: Extruder & Component Delay Dashboard */}
         {activeTab === 'extruder' && (
           <div className="space-y-6">
+            <AeroComponentDelay date={selectedDate} />
             <ExtruderTimeline endpoint="/api/extruder-timeline" pollMs={300000} />
           </div>
         )}
