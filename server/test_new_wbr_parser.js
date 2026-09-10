@@ -3,34 +3,29 @@ const path = require('path');
 const XLSX = require('xlsx');
 
 const WBR_DIR = 'N:\\Team-B\\LEADER  TEAM  B 2014\\Building lost report - WBR\\10 Building loss report-2026\\BUILDING LOSS 2026';
-const WBR_FALLBACK_DIR = 'N:\\Team-B\\LEADER  TEAM  B 2014\\Building lost report - WBR';
 
 const MONTH_SHORT = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
 function getWbrFilePath(yearStr, monthNum) {
-  const dirs = [WBR_DIR, WBR_FALLBACK_DIR];
+  if (!fs.existsSync(WBR_DIR)) return null;
+
   const monthShort = MONTH_SHORT[monthNum - 1];
   const monthPad = String(monthNum).padStart(2, '0');
 
-  for (const dir of dirs) {
-    if (!fs.existsSync(dir)) continue;
-
-    let files = [];
-    try {
-      files = fs.readdirSync(dir).filter(f => (f.endsWith('.xls') || f.endsWith('.xlsx')) && !f.startsWith('~$'));
-    } catch (err) {
-      continue;
-    }
-
-    const match = files.find(f => {
-      const l = f.toLowerCase();
-      return (l.startsWith(monthPad) || l.includes(monthShort)) && l.includes('building lost');
-    });
-
-    if (match) return path.join(dir, match);
+  let files = [];
+  try {
+    files = fs.readdirSync(WBR_DIR).filter(f => (f.endsWith('.xls') || f.endsWith('.xlsx')) && !f.startsWith('~$'));
+  } catch (err) {
+    return null;
   }
 
-  return null;
+  // Find file matching e.g. "09 SEP 2026 Building lost daily report..."
+  const match = files.find(f => {
+    const l = f.toLowerCase();
+    return (l.startsWith(monthPad) || l.includes(monthShort)) && l.includes('building lost daily report');
+  });
+
+  return match ? path.join(WBR_DIR, match) : null;
 }
 
 function parseTimeStr(val) {
@@ -99,7 +94,7 @@ function determineShift(shiftVal, startTimeObj) {
   return 'กะ 1';
 }
 
-function parseWbrDelay(dateStr) {
+function parseWbrDelayNew(dateStr) {
   try {
     const [year, month, day] = dateStr.split('-');
     const monthNum = parseInt(month, 10);
@@ -122,6 +117,7 @@ function parseWbrDelay(dateStr) {
 
     const items = [];
     let currentMC = '';
+    let currentShift = 'กะ 1';
 
     data.forEach((row, rowIdx) => {
       if (rowIdx < 5 || rowIdx > 125) return;
@@ -203,9 +199,13 @@ function parseWbrDelay(dateStr) {
   }
 }
 
-module.exports = { parseWbrDelay };
+module.exports = { parseWbrDelayNew };
 
 if (require.main === module) {
-  console.log(JSON.stringify(parseWbrDelay('2026-09-02'), null, 2));
-  console.log(JSON.stringify(parseWbrDelay('2026-09-07'), null, 2));
+  console.log('--- 2026-09-02 ---');
+  console.log(JSON.stringify(parseWbrDelayNew('2026-09-02'), null, 2));
+  console.log('--- 2026-09-03 ---');
+  console.log(JSON.stringify(parseWbrDelayNew('2026-09-03'), null, 2));
+  console.log('--- 2026-09-07 ---');
+  console.log(JSON.stringify(parseWbrDelayNew('2026-09-07'), null, 2));
 }

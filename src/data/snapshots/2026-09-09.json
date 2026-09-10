@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-10T06:01:14.056Z",
+  "generatedAt": "2026-09-10T06:14:18.684Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 97,
@@ -102,23 +102,6 @@
     "_sheet": "SEP2026",
     "_date": "2026-09-09",
     "topLoss": [
-      {
-        "machine": "Sds#3",
-        "totalDurationMin": 240,
-        "details": [
-          {
-            "shift": "กะ3",
-            "zone": "Operator",
-            "symptom": "กล้อง Error , คอมเปิดไม่ติด",
-            "cause": "Program มีปัญหา",
-            "action": "Copy Backup Program มาใช้",
-            "fixType": "ชั่วคราว",
-            "durationMin": 240,
-            "jobType": "BD",
-            "fixBy": "อ๊อฟ/เอฟ"
-          }
-        ]
-      },
       {
         "machine": "Fischer",
         "totalDurationMin": 180,
@@ -261,7 +244,7 @@
   "roll3": {
     "date": "2026-09-09",
     "day": 9,
-    "sheet": "WINDUP",
+    "sheet": "windup",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
     "totalRolls": 39,
@@ -1819,6 +1802,352 @@
           "count": 0,
           "isMet": false
         }
+      }
+    ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "09",
+    "_date": "2026-09-09",
+    "totalDelayMin": 4080,
+    "totalDelayHours": 68,
+    "totalExtrusionMin": 2460,
+    "totalExtrusionHours": 41,
+    "totalCompMin": 1620,
+    "totalCompHours": 27,
+    "summary": {
+      "extrusionCount": 10,
+      "compCount": 12,
+      "totalItems": 22
+    },
+    "items": [
+      {
+        "id": "12-0",
+        "machine": "UI",
+        "rawText": "d/l tread > 19.30 - 23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "19.30 - 23.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "13-1",
+        "machine": "UJ",
+        "rawText": "d/l tread > 23.00 -02.30",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "15-2",
+        "machine": "UL",
+        "rawText": "d/l tread > 19.30 - 23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "19.30 - 23.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "16-3",
+        "machine": "UM",
+        "rawText": "d/l tread > 23.00 -02.30",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "30-4",
+        "machine": "UI",
+        "rawText": "d/l band 4 > 18.30 -20.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "18.30 - 20.30",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "31-5",
+        "machine": "UI",
+        "rawText": "d/l band=1 02.30-07.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "02.30 - 07.00",
+        "durationMin": 270,
+        "durationHours": 4.5
+      },
+      {
+        "id": "32-6",
+        "machine": "UJ",
+        "rawText": "d/l band 6=07.00-9.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "07.00 - 9.30",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "34-7",
+        "machine": "UJ",
+        "rawText": "d/l tread > 33.00 -07.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "33.00 - 07.00",
+        "durationMin": 480,
+        "durationHours": 8
+      },
+      {
+        "id": "39-8",
+        "machine": "UL",
+        "rawText": "d/l band 4 > 18.30 -20.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "18.30 - 20.30",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "40-9",
+        "machine": "UL",
+        "rawText": "d/l band=1 02.30-07.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "02.30 - 07.00",
+        "durationMin": 270,
+        "durationHours": 4.5
+      },
+      {
+        "id": "42-10",
+        "machine": "UM",
+        "rawText": "d/l tread > 19.30 - 23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "19.30 - 23.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "43-11",
+        "machine": "UM",
+        "rawText": "d/l tread > 23.00 -02.30",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "45-12",
+        "machine": "UN",
+        "rawText": "d/l tread > 19.30 - 23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "19.30 - 23.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "46-13",
+        "machine": "UN",
+        "rawText": "d/l tread > 23.00 -02.30",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "48-14",
+        "machine": "UO",
+        "rawText": "d/l band 1 > 17.30 - 20.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "17.30 - 20.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "50-15",
+        "machine": "UP",
+        "rawText": "d/l side wall 10.00-15.00",
+        "category": "Extrusion",
+        "componentName": "Sidewall",
+        "timeRangeStr": "10.00 - 15.00",
+        "durationMin": 300,
+        "durationHours": 5
+      },
+      {
+        "id": "57-16",
+        "machine": "UR",
+        "rawText": "d/l band 1 > 17.30 - 20.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "17.30 - 20.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "58-17",
+        "machine": "UR",
+        "rawText": "d/l bead 24.00-01.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "24.00 - 01.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "60-18",
+        "machine": "US",
+        "rawText": "d/l bead > 17.00 - 18.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "17.00 - 18.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "61-19",
+        "machine": "US",
+        "rawText": "d/l breaker 23.00-24.30",
+        "category": "Comp",
+        "componentName": "Breaker",
+        "timeRangeStr": "23.00 - 24.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "63-20",
+        "machine": "TAKU",
+        "rawText": "d/l ply. > 21.00 - 23.00",
+        "category": "Comp",
+        "componentName": "Ply",
+        "timeRangeStr": "21.00 - 23.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "64-21",
+        "machine": "TAKU",
+        "rawText": "no sch.d/l ply",
+        "category": "Comp",
+        "componentName": "Ply",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(9)",
+    "_date": "2026-09-09",
+    "totalDelayMin": 204,
+    "totalDelayHours": 3.4,
+    "shift1Min": 146,
+    "shift1Hours": 2.4,
+    "shift2Min": 30,
+    "shift2Hours": 0.5,
+    "shift3Min": 28,
+    "shift3Hours": 0.5,
+    "summary": {
+      "totalItems": 8,
+      "itemsWithDetail": 8,
+      "itemsOnlyMin": 0
+    },
+    "items": [
+      {
+        "id": "r19-กะ 1-1",
+        "machine": "V2",
+        "shift": "กะ 1",
+        "code": "WLGW",
+        "delayMin": 7,
+        "delayHours": 0.1,
+        "detail": "[09:08 - 09:15] tread  ยัด",
+        "timeRangeStr": "09:08 - 09:15",
+        "category": "Extrusion"
+      },
+      {
+        "id": "r23-กะ 2-2",
+        "machine": "V2",
+        "shift": "กะ 2",
+        "code": "WLAN",
+        "delayMin": 15,
+        "delayHours": 0.3,
+        "detail": "[16:10 - 16:25] ply2 ตัดไม่ขาด",
+        "timeRangeStr": "16:10 - 16:25",
+        "category": "Comp"
+      },
+      {
+        "id": "r24-กะ 2-3",
+        "machine": "V2",
+        "shift": "กะ 2",
+        "code": "",
+        "delayMin": 8,
+        "delayHours": 0.1,
+        "detail": "[17:39 - 17:47] ply2 wrinkle  in roll",
+        "timeRangeStr": "17:39 - 17:47",
+        "category": "Comp"
+      },
+      {
+        "id": "r31-กะ 1-4",
+        "machine": "V3",
+        "shift": "กะ 1",
+        "code": "WYAF",
+        "delayMin": 9,
+        "delayHours": 0.1,
+        "detail": "[07:15 - 07:24] Sidewall  wrinkles in roll",
+        "timeRangeStr": "07:15 - 07:24",
+        "category": "Extrusion"
+      },
+      {
+        "id": "r32-กะ 1-5",
+        "machine": "V3",
+        "shift": "กะ 1",
+        "code": "",
+        "delayMin": 130,
+        "delayHours": 2.2,
+        "detail": "[10:20 - 12:30] Hold   ply  รอยต่อ off",
+        "timeRangeStr": "10:20 - 12:30",
+        "category": "Comp"
+      },
+      {
+        "id": "r75-กะ 3-6",
+        "machine": "V6",
+        "shift": "กะ 3",
+        "code": "",
+        "delayMin": 8,
+        "delayHours": 0.1,
+        "detail": "[04:24 - 04:32] breaker wrinkles",
+        "timeRangeStr": "04:24 - 04:32",
+        "category": "Comp"
+      },
+      {
+        "id": "r95-กะ 2-7",
+        "machine": "V8",
+        "shift": "กะ 2",
+        "code": "W1CX",
+        "delayMin": 7,
+        "delayHours": 0.1,
+        "detail": "[21:10 - 21:17] ply1 ตัดไม่ชาด",
+        "timeRangeStr": "21:10 - 21:17",
+        "category": "Comp"
+      },
+      {
+        "id": "r99-กะ 3-8",
+        "machine": "V8",
+        "shift": "กะ 3",
+        "code": "",
+        "delayMin": 20,
+        "delayHours": 0.3,
+        "detail": "[24:50 - 01:10] เอาplyมาผิด",
+        "timeRangeStr": "24:50 - 01:10",
+        "category": "Comp"
       }
     ]
   }

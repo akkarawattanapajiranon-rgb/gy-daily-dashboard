@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T06:01:04.391Z",
+  "generatedAt": "2026-09-10T06:13:55.828Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 9,
@@ -41,25 +41,25 @@
   "cms": {
     "date": "2026-09-10",
     "mixing1": {
-      "batch": 182,
-      "ar": 86,
-      "pr": 93.9,
-      "qr": 89.3,
-      "oee2": 72.1
+      "batch": 189,
+      "ar": 86.5,
+      "pr": 93.8,
+      "qr": 89.8,
+      "oee2": 72.8
     },
     "mixing2": {
-      "batch": 203,
-      "ar": 93.1,
-      "pr": 90.9,
+      "batch": 210,
+      "ar": 93.3,
+      "pr": 90.8,
       "qr": 100,
-      "oee2": 84.6
+      "oee2": 84.8
     },
-    "totalAr": 89.5,
+    "totalAr": 89.9,
     "totalPr": 92.3,
-    "totalQr": 94.7,
-    "totalOee2": 78.3
+    "totalQr": 94.9,
+    "totalOee2": 78.7
   },
-  "target3Roll": 16,
+  "target3Roll": 19,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -144,34 +144,34 @@
   "roll3": {
     "date": "2026-09-10",
     "day": 10,
-    "sheet": "WINDUP",
+    "sheet": "windup",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 16,
-    "totalRelease": 16,
+    "totalRolls": 19,
+    "totalRelease": 19,
     "totalHold": 1,
-    "totalPending": 29,
+    "totalPending": 26,
     "totalScheduled": 46,
     "codeBreakdown": [
       {
         "code": "RP08",
         "count": 8,
-        "percentage": 50
+        "percentage": 42.11
+      },
+      {
+        "code": "RU53",
+        "count": 5,
+        "percentage": 26.32
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 25
+        "percentage": 21.05
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 12.5
-      },
-      {
-        "code": "RU53",
-        "count": 2,
-        "percentage": 12.5
+        "percentage": 10.53
       }
     ],
     "holdBreakdown": [
@@ -724,7 +724,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 77.1,
+        "avg": 77.2,
         "target": 76.6,
         "count": 4,
         "isMet": true
@@ -787,7 +787,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 77.1,
+          "avg": 77.2,
           "target": 76.6,
           "count": 4,
           "isMet": true
@@ -885,6 +885,96 @@
           "count": 0,
           "isMet": false
         }
+      }
+    ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "10",
+    "_date": "2026-09-10",
+    "totalDelayMin": 240,
+    "totalDelayHours": 4,
+    "totalExtrusionMin": 0,
+    "totalExtrusionHours": 0,
+    "totalCompMin": 240,
+    "totalCompHours": 4,
+    "summary": {
+      "extrusionCount": 0,
+      "compCount": 3,
+      "totalItems": 3
+    },
+    "items": [
+      {
+        "id": "5-0",
+        "machine": "UA",
+        "rawText": "d/l bead 9.30-10.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "9.30 - 10.30",
+        "durationMin": 60,
+        "durationHours": 1
+      },
+      {
+        "id": "29-1",
+        "machine": "UI",
+        "rawText": "d/l band 1=7.00-10.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "7.00 - 10.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "59-2",
+        "machine": "US",
+        "rawText": "d/l bead 10.00-",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(10)",
+    "_date": "2026-09-10",
+    "totalDelayMin": 23,
+    "totalDelayHours": 0.4,
+    "shift1Min": 23,
+    "shift1Hours": 0.4,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 2,
+      "itemsWithDetail": 2,
+      "itemsOnlyMin": 0
+    },
+    "items": [
+      {
+        "id": "r7-กะ 1-1",
+        "machine": "V1",
+        "shift": "กะ 1",
+        "code": "WA8X",
+        "delayMin": 8,
+        "delayHours": 0.1,
+        "detail": "[07:14 - 07:22] Sidewall  wrinkles in roll",
+        "timeRangeStr": "07:14 - 07:22",
+        "category": "Extrusion"
+      },
+      {
+        "id": "r31-กะ 1-2",
+        "machine": "V3",
+        "shift": "กะ 1",
+        "code": "W1WF",
+        "delayMin": 15,
+        "delayHours": 0.3,
+        "detail": "[08:00 - 08:15] ply  ตัดไม่ขาด",
+        "timeRangeStr": "08:00 - 08:15",
+        "category": "Comp"
       }
     ]
   }
