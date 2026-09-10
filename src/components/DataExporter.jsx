@@ -27,10 +27,11 @@ export default function DataExporter() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const fetchExportData = async (start, end) => {
+  const fetchExportData = async (start, end, force = false) => {
     setLoading(true);
     try {
-      const res = await fetchFast(`/api/export-metrics?startDate=${start}&endDate=${end}&refresh=true&_t=${Date.now()}`, 2500);
+      const url = `/api/export-metrics?startDate=${start}&endDate=${end}${force ? '&refresh=true' : ''}`;
+      const res = await fetchFast(url, 5000);
       const contentType = res.headers.get('content-type');
       if (res.ok && contentType && contentType.includes('application/json')) {
         const json = await res.json();
