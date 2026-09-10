@@ -97,6 +97,27 @@ app.get('/api/aero-delay', (req, res) => {
   res.json(data);
 });
 
+// WBR Component Delay parser (reads local Excel on N: drive)
+const { parseWbrDelay } = require('./wbr_delay_parser');
+
+// WBR Component Delay API endpoint
+app.get('/api/wbr-delay', (req, res) => {
+  const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `wbrDelay:${date}`;
+  const cached = getCached(cacheKey);
+  if (cached) return res.json(cached);
+
+  console.log(`Fetching WBR Delay data for date: ${date}`);
+  const data = parseWbrDelay(date);
+  if (data.error) {
+    const snap = getSnapshot(date);
+    if (snap && snap.wbrDelay) return res.json(snap.wbrDelay);
+    return res.status(404).json({ error: data.error });
+  }
+  setCached(cacheKey, data);
+  res.json(data);
+});
+
 // Fischer parser (reads local Excel on T: drive)
 const { parseFischerData } = require('./fischer_parser');
 

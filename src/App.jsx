@@ -13,7 +13,7 @@ import ExtruderTimeline from './components/extruder-timeline/ExtruderTimeline';
 import SafetyLspReport from './components/SafetyLspReport';
 import DataExporter from './components/DataExporter';
 import Roll42Report from './components/Roll42Report';
-import AeroComponentDelay from './components/AeroComponentDelay';
+import ComponentDelayContainer from './components/ComponentDelayContainer';
 import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck, Download, Layers } from 'lucide-react';
 import { 
   fetchWasteData, 
@@ -176,7 +176,7 @@ function App() {
               }`}
             >
               <Layers className="w-4 h-4 text-indigo-300" />
-              <span>หน้า 2: Component Delay Aero</span>
+              <span>หน้า 2: Component Delay (Aero & WBR)</span>
             </button>
 
             <button
@@ -299,14 +299,14 @@ function App() {
           </div>
         )}
 
-        {/* PAGE 2: Component Delay Aero */}
+        {/* PAGE 2: Component Delay (Aero & WBR) */}
         {activeTab === 'aero' && (
           <div className="space-y-6">
             <header className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-6 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl md:text-3xl font-black tracking-tight flex items-center gap-2.5">
                   <Layers className="w-7 h-7 text-indigo-400" />
-                  Component Delay Aero Report
+                  Component Delay Reports (Aero & WBR)
                 </h1>
                 <div className="flex flex-wrap items-center gap-2 mt-2">
                   <Calendar className="w-5 h-5 text-indigo-300" />
@@ -328,7 +328,7 @@ function App() {
                 <RefreshCw className={`w-4 h-4 text-emerald-300 group-hover:rotate-180 transition-transform duration-500 ${isLoading ? 'animate-spin' : ''}`} />
               </button>
             </header>
-            <AeroComponentDelay date={selectedDate} />
+            <ComponentDelayContainer date={selectedDate} />
           </div>
         )}
 

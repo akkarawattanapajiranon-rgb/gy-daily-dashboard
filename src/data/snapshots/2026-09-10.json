@@ -1,10 +1,10 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T05:09:06.555Z",
+  "generatedAt": "2026-09-10T05:31:55.542Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 9,
-    "frictionSummary": 9,
+    "frictionSummary": 18,
     "beadSummary": 0,
     "millingTop": [
       {
@@ -20,6 +20,18 @@
         "amount": 9,
         "reason": "WRINKLES",
         "isHigh": true
+      },
+      {
+        "code": "F44",
+        "amount": 5,
+        "reason": "ROLL ENDS",
+        "isHigh": true
+      },
+      {
+        "code": "F01",
+        "amount": 4,
+        "reason": "ANGLE CHANGE",
+        "isHigh": false
       }
     ],
     "beadTop": [],
@@ -29,25 +41,25 @@
   "cms": {
     "date": "2026-09-10",
     "mixing1": {
-      "batch": 157,
-      "ar": 85.4,
-      "pr": 93.9,
-      "qr": 87.6,
+      "batch": 167,
+      "ar": 84.7,
+      "pr": 94,
+      "qr": 88.3,
       "oee2": 70.3
     },
     "mixing2": {
-      "batch": 175,
-      "ar": 93.6,
-      "pr": 91.4,
+      "batch": 190,
+      "ar": 93.9,
+      "pr": 91.1,
       "qr": 100,
       "oee2": 85.5
     },
-    "totalAr": 89.5,
-    "totalPr": 92.6,
-    "totalQr": 93.9,
-    "totalOee2": 77.8
+    "totalAr": 89.3,
+    "totalPr": 92.4,
+    "totalQr": 94.3,
+    "totalOee2": 77.9
   },
-  "target3Roll": 14,
+  "target3Roll": 16,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -132,29 +144,34 @@
   "roll3": {
     "date": "2026-09-10",
     "day": 10,
-    "sheet": "WINDUP",
+    "sheet": "windup",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 14,
-    "totalRelease": 14,
+    "totalRolls": 16,
+    "totalRelease": 16,
     "totalHold": 1,
     "totalPending": 29,
-    "totalScheduled": 44,
+    "totalScheduled": 46,
     "codeBreakdown": [
       {
         "code": "RP08",
         "count": 8,
-        "percentage": 57.14
+        "percentage": 50
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 28.57
+        "percentage": 25
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 14.29
+        "percentage": 12.5
+      },
+      {
+        "code": "RU53",
+        "count": 2,
+        "percentage": 12.5
       }
     ],
     "holdBreakdown": [
@@ -322,17 +339,17 @@
     "date": "2026-09-10",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "10/9",
-      "sum": 0,
+      "sum": 65048,
       "target": 35056,
       "minTarget": 20000,
       "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "newGenerate": 11490,
+      "slowMoving": 44624,
+      "disposition": 8934,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -491,17 +508,88 @@
         "dateLabel": "10/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 65048,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 11490,
+        "newGenerateBTA": 8510,
+        "newGenerateWBR": 2980,
+        "slowMoving": 44624,
+        "disposition": 8934,
+        "hasData": true
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1128",
+        "qty": 6239,
+        "qtyMt": 6.24,
+        "percentage": 12
+      },
+      {
+        "rank": 2,
+        "code": "T1400",
+        "qty": 3790,
+        "qtyMt": 3.79,
+        "percentage": 7.3
+      },
+      {
+        "rank": 3,
+        "code": "M36F3",
+        "qty": 3660,
+        "qtyMt": 3.66,
+        "percentage": 7.1
+      },
+      {
+        "rank": 4,
+        "code": "N1717",
+        "qty": 2870,
+        "qtyMt": 2.87,
+        "percentage": 5.5
+      },
+      {
+        "rank": 5,
+        "code": "N11F3",
+        "qty": 2580,
+        "qtyMt": 2.58,
+        "percentage": 5
+      },
+      {
+        "rank": 6,
+        "code": "K11M2",
+        "qty": 2380,
+        "qtyMt": 2.38,
+        "percentage": 4.6
+      },
+      {
+        "rank": 7,
+        "code": "K33M1",
+        "qty": 2200,
+        "qtyMt": 2.2,
+        "percentage": 4.2
+      },
+      {
+        "rank": 8,
+        "code": "K95M6",
+        "qty": 2155,
+        "qtyMt": 2.15,
+        "percentage": 4.2
+      },
+      {
+        "rank": 9,
+        "code": "K27T4",
+        "qty": 2070,
+        "qtyMt": 2.07,
+        "percentage": 4
+      },
+      {
+        "rank": 10,
+        "code": "B1026",
+        "qty": 1670,
+        "qtyMt": 1.67,
+        "percentage": 3.2
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
@@ -531,7 +619,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.97,
+        "avg": 77,
         "target": 76.6,
         "count": 4,
         "isMet": true
@@ -594,7 +682,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.97,
+          "avg": 77,
           "target": 76.6,
           "count": 4,
           "isMet": true
@@ -740,6 +828,86 @@
         "timeRangeStr": "",
         "durationMin": 0,
         "durationHours": 0
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "BTB_Radial Sep 2026.xls",
+    "_sheet": "10",
+    "_date": "2026-09-10",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 6,
+      "itemsWithDetail": 6,
+      "itemsOnlyMin": 0
+    },
+    "items": [
+      {
+        "id": "r11-กะ 1",
+        "machine": "B3",
+        "code": "",
+        "shift": "กะ 1",
+        "delayMin": 0,
+        "delayHours": 0,
+        "detail": "[7.00-9.00] A4 Rep. Cutter Sidewall",
+        "category": "Extrusion"
+      },
+      {
+        "id": "r14-กะ 1",
+        "machine": "V1",
+        "code": "",
+        "shift": "กะ 1",
+        "delayMin": 0,
+        "delayHours": 0,
+        "detail": "[7.00-9.00] Sidewall รันมาโก่ง monitor follown up ) = v",
+        "category": "Extrusion"
+      },
+      {
+        "id": "r15-กะ 1",
+        "machine": "V2",
+        "code": "",
+        "shift": "กะ 1",
+        "delayMin": 0,
+        "delayHours": 0,
+        "detail": "[9.00-11.00] Code Change to WLAN",
+        "category": "Comp"
+      },
+      {
+        "id": "r16-กะ 1",
+        "machine": "V3",
+        "code": "",
+        "shift": "กะ 1",
+        "delayMin": 0,
+        "delayHours": 0,
+        "detail": "[7.00-9.00] ply ตัดไม่ขาด Code Change to WYAF =",
+        "category": "Comp"
+      },
+      {
+        "id": "r20-กะ 1",
+        "machine": "V7",
+        "code": "",
+        "shift": "กะ 1",
+        "delayMin": 0,
+        "delayHours": 0,
+        "detail": "[7.00-9.00] Rep. Cutter Spiral",
+        "category": "Comp"
+      },
+      {
+        "id": "r21-กะ 1",
+        "machine": "V8",
+        "code": "",
+        "shift": "กะ 1",
+        "delayMin": 0,
+        "delayHours": 0,
+        "detail": "[7.00-9.00] PA not auto ; [9.00-11.00] PA not auto Drum change to QE9A",
+        "category": "Comp"
       }
     ]
   }
