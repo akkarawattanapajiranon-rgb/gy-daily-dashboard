@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Download, FileSpreadsheet, Copy, Calendar, RefreshCw, CheckCircle2, Table, Sparkles } from 'lucide-react';
 import * as XLSX from 'xlsx';
-import { getFirebaseSnapshot, getLocalSnapshot } from '../services/api.js';
+import { getFirebaseSnapshot, getLocalSnapshot, fetchFast } from '../services/api.js';
 
 export default function DataExporter() {
   const todayStr = new Date().toISOString().split('T')[0];
@@ -30,7 +30,7 @@ export default function DataExporter() {
   const fetchExportData = async (start, end) => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/export-metrics?startDate=${start}&endDate=${end}&refresh=true&_t=${Date.now()}`);
+      const res = await fetchFast(`/api/export-metrics?startDate=${start}&endDate=${end}&refresh=true&_t=${Date.now()}`, 2500);
       const contentType = res.headers.get('content-type');
       if (res.ok && contentType && contentType.includes('application/json')) {
         const json = await res.json();

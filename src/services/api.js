@@ -15,7 +15,7 @@ export function getLocalSnapshot(dateStr) {
 const snapshotPromiseCache = {};
 
 export async function getFirebaseSnapshot(dateStr, forceRefresh = false) {
-  if (!dateStr) return null;
+  if (!dateStr) return getLocalSnapshot(dateStr);
   if (forceRefresh) {
     delete snapshotPromiseCache[dateStr];
   } else if (snapshotPromiseCache[dateStr]) {
@@ -25,7 +25,10 @@ export async function getFirebaseSnapshot(dateStr, forceRefresh = false) {
   snapshotPromiseCache[dateStr] = (async () => {
     try {
       const docRef = doc(db, 'daily_snapshots', dateStr);
-      const snap = await getDoc(docRef);
+      const snap = await Promise.race([
+        getDoc(docRef),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Firebase timeout')), 1500))
+      ]);
       if (snap && snap.exists()) {
         const data = snap.data();
         const local = getLocalSnapshot(dateStr);
@@ -156,7 +159,7 @@ export async function fetchWasteData(dateStr, forceRefresh = false) {
   };
 }
 
-async function fetchFast(url, timeoutMs = 2500) {
+export async function fetchFast(url, timeoutMs = 2500) {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
   try {
