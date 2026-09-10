@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "generatedAt": "2026-09-10T00:01:20.151Z",
+  "generatedAt": "2026-09-10T00:06:45.604Z",
   "waste": {
     "date": "2026-09-08",
     "millingSummary": 183.6,
@@ -222,7 +222,41 @@
       "oee2_pct": 56.84
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 706,
+      "totalWbr": 594,
+      "totalSapphire": 112,
+      "totalAngleChanges": 82,
+      "totalNormal": 557,
+      "totalSticky": 37,
+      "normalPct": 93.77,
+      "stickyPct": 6.23,
+      "shifts": {
+        "shift1": {
+          "wbr": 326,
+          "sapphire": 59,
+          "angleChanges": 58,
+          "normal": 304,
+          "sticky": 22,
+          "total": 385
+        },
+        "shift2": {
+          "wbr": 268,
+          "sapphire": 25,
+          "angleChanges": 24,
+          "normal": 253,
+          "sticky": 15,
+          "total": 293
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 28,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 28
+        }
+      }
     }
   },
   "roll3": {

@@ -64,7 +64,11 @@ function buildExtruderLine(line, rows, truncated, error = null) {
     const tMs = parseExtruderDtMs(r.dt);
     if (!Number.isFinite(tMs)) continue;
 
-    samples.push([tMs, toNum(r.tatawAct), toNum(r.tawSpec), toNum(r.efficiency)]);
+    const lineSpeed = toNum(r.lineSpeed);
+    const isStopped = lineSpeed !== null && lineSpeed <= 0.5;
+    const act = isStopped ? null : toNum(r.tatawAct);
+
+    samples.push([tMs, act, toNum(r.tawSpec), toNum(r.efficiency)]);
 
     const last = runs[runs.length - 1];
     if (last && last.runNum === r.runNum) {

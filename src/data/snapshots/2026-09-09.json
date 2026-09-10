@@ -1,10 +1,10 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-10T00:01:12.836Z",
+  "generatedAt": "2026-09-10T00:08:21.592Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 97,
-    "frictionSummary": 294.6,
+    "frictionSummary": 297,
     "beadSummary": 37,
     "millingTop": [
       {
@@ -141,7 +141,41 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 706,
+      "totalWbr": 594,
+      "totalSapphire": 112,
+      "totalAngleChanges": 82,
+      "totalNormal": 557,
+      "totalSticky": 37,
+      "normalPct": 93.77,
+      "stickyPct": 6.23,
+      "shifts": {
+        "shift1": {
+          "wbr": 326,
+          "sapphire": 59,
+          "angleChanges": 58,
+          "normal": 304,
+          "sticky": 22,
+          "total": 385
+        },
+        "shift2": {
+          "wbr": 268,
+          "sapphire": 25,
+          "angleChanges": 24,
+          "normal": 253,
+          "sticky": 15,
+          "total": 293
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 28,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 28
+        }
+      }
     }
   },
   "roll3": {
@@ -600,32 +634,32 @@
     "output": {
       "hasData": true,
       "day": 9,
-      "grandTotal": 2312,
+      "grandTotal": 2306,
       "codeBreakdown": [
         {
           "code": "6010",
           "count": 800,
-          "percentage": 34.6
+          "percentage": 34.69
         },
         {
           "code": "6017",
           "count": 800,
-          "percentage": 34.6
+          "percentage": 34.69
         },
         {
           "code": "B362",
           "count": 400,
-          "percentage": 17.3
+          "percentage": 17.35
         },
         {
           "code": "B427",
           "count": 74,
-          "percentage": 3.2
+          "percentage": 3.21
         },
         {
           "code": "B415",
           "count": 66,
-          "percentage": 2.85
+          "percentage": 2.86
         },
         {
           "code": "WAIS",
@@ -653,11 +687,6 @@
           "percentage": 0.69
         },
         {
-          "code": "Q2AH",
-          "count": 14,
-          "percentage": 0.61
-        },
-        {
           "code": "WA8X",
           "count": 10,
           "percentage": 0.43
@@ -674,6 +703,11 @@
         },
         {
           "code": "QLIX",
+          "count": 8,
+          "percentage": 0.35
+        },
+        {
+          "code": "Q2AH",
           "count": 8,
           "percentage": 0.35
         },
@@ -989,23 +1023,13 @@
               "code1": "Q2AH",
               "code2": "",
               "code": "Q2AH",
-              "qtyTarget": 10,
-              "qtyProduced": 10,
+              "qtyTarget": 8,
+              "qtyProduced": 8,
               "qtySapphire": 0,
-              "totalQty": 10
-            },
-            {
-              "partId": "TL00152",
-              "code1": "Q2AH",
-              "code2": "",
-              "code": "Q2AH",
-              "qtyTarget": 4,
-              "qtyProduced": 4,
-              "qtySapphire": 0,
-              "totalQty": 4
+              "totalQty": 8
             }
           ],
-          "totalQty": 98
+          "totalQty": 92
         }
       }
     }

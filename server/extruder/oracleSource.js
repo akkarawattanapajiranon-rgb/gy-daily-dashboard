@@ -41,11 +41,12 @@ SELECT * FROM (
     rs.RECIPEID                                  AS "recipeId",
     s4.PVREAL60                                  AS "tatawAct",
     p27.PARAMETERREAL                            AS "tawSpec",
-    s4.PVREAL60 / NULLIF(p27.PARAMETERREAL, 0)   AS "efficiency"
-  FROM QUADEXTR.SNAP_FB_04 s4
-    JOIN QUADEXTR.RUN_SUMM   rs ON rs.RUN_NUM  = s4.RUN_NUM
-    JOIN QUADEXTR.TBLRECIPES tr ON tr.RECIPEID = rs.RECIPEID
-    LEFT JOIN QUADEXTR.TBLRECIPEPARAMETERS p27
+    s4.PVREAL60 / NULLIF(p27.PARAMETERREAL, 0)   AS "efficiency",
+    s4.PVREAL27                                  AS "lineSpeed"
+  FROM SNAP_FB_04 s4
+    JOIN RUN_SUMM   rs ON rs.RUN_NUM  = s4.RUN_NUM
+    JOIN TBLRECIPES tr ON tr.RECIPEID = rs.RECIPEID
+    LEFT JOIN TBLRECIPEPARAMETERS p27
       ON p27.RECIPEID = tr.RECIPEID AND p27.PARAMETERID = 27
   WHERE s4.DT >  TO_DATE(:startDt, 'YYYY-MM-DD HH24:MI:SS')
     AND s4.DT <= TO_DATE(:endDt,   'YYYY-MM-DD HH24:MI:SS')

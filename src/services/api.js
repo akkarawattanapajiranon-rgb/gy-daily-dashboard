@@ -240,8 +240,12 @@ export async function fetchFischerData(dateStr, forceRefresh = false) {
     return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
-    if (snap && snap.fischer) return snap.fischer;
-    return null;
+    const local = getLocalSnapshot(dateStr);
+    const result = (snap && snap.fischer) ? { ...snap.fischer } : (local?.fischer ? { ...local.fischer } : null);
+    if (result && local?.fischer?.checksheet?.hasData && (!result.checksheet || !result.checksheet.hasData)) {
+      result.checksheet = local.fischer.checksheet;
+    }
+    return result || local?.fischer || null;
   }
 }
 

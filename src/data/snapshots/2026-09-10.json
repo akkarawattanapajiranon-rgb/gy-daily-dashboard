@@ -1,37 +1,44 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T00:01:05.489Z",
+  "generatedAt": "2026-09-10T00:08:17.454Z",
   "waste": {
     "date": "2026-09-10",
-    "millingSummary": 0,
+    "millingSummary": 9,
     "frictionSummary": 0,
     "beadSummary": 0,
-    "millingTop": [],
+    "millingTop": [
+      {
+        "code": "M05",
+        "amount": 9,
+        "reason": "TAILING",
+        "isHigh": true
+      }
+    ],
     "frictionTop": [],
     "beadTop": [],
     "dataDate": "2026-09-10",
-    "hasData": false
+    "hasData": true
   },
   "cms": {
     "date": "2026-09-10",
     "mixing1": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 3,
+      "ar": 70.5,
+      "pr": 98.1,
+      "qr": 79.2,
+      "oee2": 54.8
     },
     "mixing2": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 5,
+      "ar": 100,
+      "pr": 98.1,
+      "qr": 100,
+      "oee2": 98.1
     },
-    "totalAr": 0,
-    "totalPr": 0,
-    "totalQr": 0,
-    "totalOee2": 0
+    "totalAr": 85.5,
+    "totalPr": 98.1,
+    "totalQr": 91.6,
+    "totalOee2": 76.8
   },
   "target3Roll": 0,
   "breakdown": {
@@ -78,7 +85,41 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 706,
+      "totalWbr": 594,
+      "totalSapphire": 112,
+      "totalAngleChanges": 82,
+      "totalNormal": 557,
+      "totalSticky": 37,
+      "normalPct": 93.77,
+      "stickyPct": 6.23,
+      "shifts": {
+        "shift1": {
+          "wbr": 326,
+          "sapphire": 59,
+          "angleChanges": 58,
+          "normal": 304,
+          "sticky": 22,
+          "total": 385
+        },
+        "shift2": {
+          "wbr": 268,
+          "sapphire": 25,
+          "angleChanges": 24,
+          "normal": 253,
+          "sticky": 15,
+          "total": 293
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 28,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 28
+        }
+      }
     }
   },
   "roll3": {
@@ -144,13 +185,30 @@
     "output": {
       "hasData": true,
       "day": 10,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 6,
+      "codeBreakdown": [
+        {
+          "code": "Q2AH",
+          "count": 6,
+          "percentage": 100
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "TL00152",
+              "code1": "Q2AH",
+              "code2": "",
+              "code": "Q2AH",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            }
+          ],
+          "totalQty": 6
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -414,9 +472,9 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 76.7,
+        "avg": 76.72,
         "target": 76.6,
-        "count": 3,
+        "count": 4,
         "isMet": true
       }
     },
@@ -477,9 +535,9 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.7,
+          "avg": 76.72,
           "target": 76.6,
-          "count": 3,
+          "count": 4,
           "isMet": true
         }
       },
