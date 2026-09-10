@@ -194,10 +194,13 @@ async function getExtruderTimeline(date, now = () => new Date()) {
   }
 
   const isCurrent = (date === currentDateStr);
-  const hasData = [...day.lines.values()].some(l => l.rows && l.rows.length > 0);
+  const allLinesHaveData = EXTRUDER_LINES.every(line => {
+    const l = day.lines.get(line);
+    return l && l.rows && l.rows.length > 0;
+  });
   const ttl = isCurrent ? REFRESH_AFTER_MS : 86400000;
   const ageMs = Date.now() - day.fetchedAtMs;
-  const cached = hasData && (ageMs < ttl || !isCurrent);
+  const cached = allLinesHaveData && (ageMs < ttl || !isCurrent);
 
   if (!cached) {
     const current = day;
