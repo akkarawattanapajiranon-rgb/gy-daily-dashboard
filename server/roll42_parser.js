@@ -81,8 +81,11 @@ function parse4Roll2Data(dateStr) {
       const cartNo = String(r[16] || '').trim();
 
       if (sapCode && sapCode.toUpperCase() !== 'SAP CODE' && !sapCode.toLowerCase().includes('shift') && !sapCode.toLowerCase().includes('check sheet')) {
-        // Only include if Cart No in Col Q (r[16]) is filled in
-        if (!cartNo) return;
+        // Dual Liner rows (SAP=LD*) must have a Cart No to count.
+        // PLY rows (SAP=PL*) and Gumstrip rows (SAP=GF*/GX*) do NOT have Cart No — count from Meter columns.
+        const sapUp = sapCode.toUpperCase();
+        const isDualLiner = sapUp.startsWith('LD');
+        if (isDualLiner && !cartNo) return;
 
         const processCol = (compName, rawMeters, defaultUnit, calcRatioFunc) => {
           if (!compName && rawMeters <= 0) return;
