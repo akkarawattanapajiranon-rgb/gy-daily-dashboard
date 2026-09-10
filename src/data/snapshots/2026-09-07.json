@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-10T08:00:43.003Z",
+  "generatedAt": "2026-09-10T08:01:36.644Z",
   "waste": {
     "date": "2026-09-07",
     "millingSummary": 124.8,
@@ -1914,6 +1914,285 @@
           "count": 0,
           "isMet": false
         }
+      }
+    ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "07",
+    "_date": "2026-09-07",
+    "totalDelayMin": 3180,
+    "totalDelayHours": 53,
+    "totalExtrusionMin": 0,
+    "totalExtrusionHours": 0,
+    "totalCompMin": 3180,
+    "totalCompHours": 53,
+    "summary": {
+      "extrusionCount": 0,
+      "compCount": 23,
+      "totalItems": 23
+    },
+    "items": [
+      {
+        "id": "5-0",
+        "machine": "UA",
+        "rawText": "d/l bead 12.00-15.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "12.00 - 15.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "8-1",
+        "machine": "UB",
+        "rawText": "vacancy G. d/l bead 12.00-15.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "12.00 - 15.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "11-2",
+        "machine": "UC",
+        "rawText": "d/l bead 12.00-13.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "12.00 - 13.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "13-3",
+        "machine": "UJ",
+        "rawText": "d/l bead 24.30-03.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "24.30 - 03.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "14-4",
+        "machine": "UD",
+        "rawText": "vacancy G.  d/l bead 12.30-13.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "12.30 - 13.30",
+        "durationMin": 60,
+        "durationHours": 1
+      },
+      {
+        "id": "16-5",
+        "machine": "UM",
+        "rawText": "d/l bead 24.30-03.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "24.30 - 03.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "17-6",
+        "machine": "UE",
+        "rawText": "d/l bead 12.30-13.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "12.30 - 13.30",
+        "durationMin": 60,
+        "durationHours": 1
+      },
+      {
+        "id": "22-7",
+        "machine": "US",
+        "rawText": "d/l bead 24.30-03.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "24.30 - 03.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "26-8",
+        "machine": "UH",
+        "rawText": "vacancy G. d/l bead > 07.00-10.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "07.00 - 10.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "27-9",
+        "machine": "UH",
+        "rawText": "d/l chafer 17.00-18.30",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "17.00 - 18.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "32-10",
+        "machine": "UJ",
+        "rawText": "vacancy G.  d/l band6= 12.00-15.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "12.00 - 15.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "33-11",
+        "machine": "UJ",
+        "rawText": "d/l band=6 15.000-23.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "34-12",
+        "machine": "UJ",
+        "rawText": "d/l band=6 23.00-24.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "23.00 - 24.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "41-13",
+        "machine": "UM",
+        "rawText": "ไฟดับ 11.00-11.30 d/l bead 12.30-13.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "11.00 - 11.30",
+        "durationMin": 30,
+        "durationHours": 0.5
+      },
+      {
+        "id": "43-14",
+        "machine": "UM",
+        "rawText": "d/l bead 24.30-03.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "24.30 - 03.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "44-15",
+        "machine": "UN",
+        "rawText": "vacancy G.  ไฟดับ 11.00-11.30 d/l bead 12.30-13.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "11.00 - 11.30",
+        "durationMin": 30,
+        "durationHours": 0.5
+      },
+      {
+        "id": "46-16",
+        "machine": "UN",
+        "rawText": "d/l bead 24.30-03.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "24.30 - 03.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "53-17",
+        "machine": "UQ",
+        "rawText": "d/l band 13.00-15.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "13.00 - 15.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "54-18",
+        "machine": "UQ",
+        "rawText": "d/l band15.00-16.30 rep. footswitch 17.00-17.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "15.00 - 16.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "59-19",
+        "machine": "US",
+        "rawText": "d/l bead >10.30-15.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "10.30 - 15.00",
+        "durationMin": 270,
+        "durationHours": 4.5
+      },
+      {
+        "id": "60-20",
+        "machine": "US",
+        "rawText": "d/l bead  15.00-18.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "15.00 - 18.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "62-21",
+        "machine": "TAKU",
+        "rawText": "d/l chafer > 07.00 -9.0.00 , d/l ply >12.00-15.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "12.00 - 15.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "63-22",
+        "machine": "TAKU",
+        "rawText": "d/l ply  15.00-21.00",
+        "category": "Comp",
+        "componentName": "Ply",
+        "timeRangeStr": "15.00 - 21.00",
+        "durationMin": 360,
+        "durationHours": 6
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(7)",
+    "_date": "2026-09-07",
+    "totalDelayMin": 90,
+    "totalDelayHours": 1.5,
+    "shift1Min": 90,
+    "shift1Hours": 1.5,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 1,
+      "itemsWithDetail": 1,
+      "itemsOnlyMin": 0
+    },
+    "items": [
+      {
+        "id": "r103-กะ 1-1",
+        "machine": "B3",
+        "shift": "กะ 1",
+        "code": "Q97X",
+        "delayMin": 90,
+        "delayHours": 1.5,
+        "detail": "[11:30 - 13:00] Hold  apex  ไม่เหนี่ยว",
+        "timeRangeStr": "11:30 - 13:00",
+        "category": "Comp"
       }
     ]
   }

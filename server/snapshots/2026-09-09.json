@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-10T08:00:33.550Z",
+  "generatedAt": "2026-09-10T08:01:16.708Z",
   "waste": {
     "date": "2026-09-09",
     "millingSummary": 97,
@@ -102,23 +102,6 @@
     "_sheet": "SEP2026",
     "_date": "2026-09-09",
     "topLoss": [
-      {
-        "machine": "Sds#3",
-        "totalDurationMin": 240,
-        "details": [
-          {
-            "shift": "กะ3",
-            "zone": "Operator",
-            "symptom": "กล้อง Error , คอมเปิดไม่ติด",
-            "cause": "Program มีปัญหา",
-            "action": "Copy Backup Program มาใช้",
-            "fixType": "ชั่วคราว",
-            "durationMin": 240,
-            "jobType": "BD",
-            "fixBy": "อ๊อฟ/เอฟ"
-          }
-        ]
-      },
       {
         "machine": "Fischer",
         "totalDurationMin": 180,
@@ -1821,5 +1804,262 @@
         }
       }
     ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "09",
+    "_date": "2026-09-09",
+    "totalDelayMin": 4080,
+    "totalDelayHours": 68,
+    "totalExtrusionMin": 2460,
+    "totalExtrusionHours": 41,
+    "totalCompMin": 1620,
+    "totalCompHours": 27,
+    "summary": {
+      "extrusionCount": 10,
+      "compCount": 12,
+      "totalItems": 22
+    },
+    "items": [
+      {
+        "id": "12-0",
+        "machine": "UI",
+        "rawText": "d/l tread > 19.30 - 23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "19.30 - 23.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "13-1",
+        "machine": "UJ",
+        "rawText": "d/l tread > 23.00 -02.30",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "15-2",
+        "machine": "UL",
+        "rawText": "d/l tread > 19.30 - 23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "19.30 - 23.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "16-3",
+        "machine": "UM",
+        "rawText": "d/l tread > 23.00 -02.30",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "30-4",
+        "machine": "UI",
+        "rawText": "d/l band 4 > 18.30 -20.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "18.30 - 20.30",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "31-5",
+        "machine": "UI",
+        "rawText": "d/l band=1 02.30-07.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "02.30 - 07.00",
+        "durationMin": 270,
+        "durationHours": 4.5
+      },
+      {
+        "id": "32-6",
+        "machine": "UJ",
+        "rawText": "d/l band 6=07.00-9.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "07.00 - 9.30",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "34-7",
+        "machine": "UJ",
+        "rawText": "d/l tread > 33.00 -07.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "33.00 - 07.00",
+        "durationMin": 480,
+        "durationHours": 8
+      },
+      {
+        "id": "39-8",
+        "machine": "UL",
+        "rawText": "d/l band 4 > 18.30 -20.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "18.30 - 20.30",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "40-9",
+        "machine": "UL",
+        "rawText": "d/l band=1 02.30-07.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "02.30 - 07.00",
+        "durationMin": 270,
+        "durationHours": 4.5
+      },
+      {
+        "id": "42-10",
+        "machine": "UM",
+        "rawText": "d/l tread > 19.30 - 23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "19.30 - 23.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "43-11",
+        "machine": "UM",
+        "rawText": "d/l tread > 23.00 -02.30",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "45-12",
+        "machine": "UN",
+        "rawText": "d/l tread > 19.30 - 23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "19.30 - 23.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "46-13",
+        "machine": "UN",
+        "rawText": "d/l tread > 23.00 -02.30",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "48-14",
+        "machine": "UO",
+        "rawText": "d/l band 1 > 17.30 - 20.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "17.30 - 20.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "50-15",
+        "machine": "UP",
+        "rawText": "d/l side wall 10.00-15.00",
+        "category": "Extrusion",
+        "componentName": "Sidewall",
+        "timeRangeStr": "10.00 - 15.00",
+        "durationMin": 300,
+        "durationHours": 5
+      },
+      {
+        "id": "57-16",
+        "machine": "UR",
+        "rawText": "d/l band 1 > 17.30 - 20.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "17.30 - 20.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "58-17",
+        "machine": "UR",
+        "rawText": "d/l bead 24.00-01.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "24.00 - 01.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "60-18",
+        "machine": "US",
+        "rawText": "d/l bead > 17.00 - 18.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "17.00 - 18.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "61-19",
+        "machine": "US",
+        "rawText": "d/l breaker 23.00-24.30",
+        "category": "Comp",
+        "componentName": "Breaker",
+        "timeRangeStr": "23.00 - 24.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "63-20",
+        "machine": "TAKU",
+        "rawText": "d/l ply. > 21.00 - 23.00",
+        "category": "Comp",
+        "componentName": "Ply",
+        "timeRangeStr": "21.00 - 23.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "64-21",
+        "machine": "TAKU",
+        "rawText": "no sch.d/l ply",
+        "category": "Comp",
+        "componentName": "Ply",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(9)",
+    "_date": "2026-09-09",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 0,
+      "itemsWithDetail": 0,
+      "itemsOnlyMin": 0
+    },
+    "items": []
   }
 }
