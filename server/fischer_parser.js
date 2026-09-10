@@ -107,31 +107,44 @@ function getChecksheetData(dateStr) {
 
   const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr) || wb.SheetNames[1] || wb.SheetNames[0];
   const ws = wb.Sheets[sheetName];
-  if (!ws) return { error: `Sheet ${sheetName} not found` };
-
   const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+  const headerRow = data[2] || [];
+  const isDateMissing = String(headerRow[0] || '').includes('TM Lot');
+
+  const shiftCol = isDateMissing ? 33 : 1;
+  const tmCol = isDateMissing ? 2 : 5;
+  const sapCol = isDateMissing ? 3 : 6;
+  const speedCol = isDateMissing ? 8 : 11;
+  const angleCol = isDateMissing ? 19 : 22;
+
   const dayRows = [];
 
   data.slice(5).forEach(row => {
-    const rawDate = row[0];
-    if (rawDate === '' || rawDate === undefined) return;
-    let dStr = '';
-    if (typeof rawDate === 'number') {
-      const d = XLSX.SSF.parse_date_code(rawDate);
-      dStr = `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`;
-    } else if (typeof rawDate === 'string') {
-      dStr = rawDate.trim();
+    let matchesDate = false;
+    if (isDateMissing) {
+      matchesDate = true;
+    } else {
+      const rawDate = row[0];
+      if (rawDate !== '' && rawDate !== undefined) {
+        let dStr = '';
+        if (typeof rawDate === 'number') {
+          const d = XLSX.SSF.parse_date_code(rawDate);
+          dStr = `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`;
+        } else if (typeof rawDate === 'string') {
+          dStr = rawDate.trim();
+        }
+        if (dStr === dateStr) matchesDate = true;
+      }
     }
 
-    if (dStr === dateStr) {
-      const tmCode = String(row[5] || '').trim();
-      const sapCode = String(row[6] || '').trim();
-      const specCode = String(row[7] || '').trim();
-      const speedMode = String(row[11] || '').trim();
+    if (matchesDate) {
+      const tmCode = String(row[tmCol] || '').trim();
+      const sapCode = String(row[sapCol] || '').trim();
+      const speedMode = String(row[speedCol] || '').trim();
       const carQty = Number(row[27]) || 0;
 
       // Only count rows that have actual production/material data (ignore blank template rows)
-      const hasProductionData = (tmCode !== '' || sapCode !== '' || specCode !== '' || speedMode !== '' || carQty > 0);
+      const hasProductionData = (tmCode !== '' || sapCode !== '' || speedMode !== '' || carQty > 0);
       if (hasProductionData) {
         dayRows.push(row);
       }
@@ -154,11 +167,12 @@ function getChecksheetData(dateStr) {
   let lastAngle = null;
 
   dayRows.forEach(r => {
-    const shift = Number(r[1]) || 1;
-    const tmCode = String(r[5]).trim().toUpperCase();
-    const sapCode = String(r[6]).trim().toUpperCase();
-    const speedMode = String(r[11]).trim().toUpperCase();
-    const angle = r[22];
+    const rawShift = Number(r[shiftCol]);
+    const shift = (rawShift >= 1 && rawShift <= 3) ? rawShift : 1;
+    const tmCode = String(r[tmCol] || '').trim().toUpperCase();
+    const sapCode = String(r[sapCol] || '').trim().toUpperCase();
+    const speedMode = String(r[speedCol] || '').trim().toUpperCase();
+    const angle = r[angleCol];
 
     const isSapphire = sapphireCodes.has(tmCode) || sapphireCodes.has(sapCode);
 

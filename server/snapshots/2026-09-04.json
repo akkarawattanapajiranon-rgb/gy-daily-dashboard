@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-10T00:00:54.625Z",
+  "generatedAt": "2026-09-10T00:01:46.247Z",
   "waste": {
     "date": "2026-09-04",
     "millingSummary": 153.5,
@@ -1771,7 +1771,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 76.73,
+          "avg": 76.7,
           "target": 76.6,
           "count": 3,
           "isMet": true
