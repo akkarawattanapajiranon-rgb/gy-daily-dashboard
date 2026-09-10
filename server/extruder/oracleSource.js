@@ -45,7 +45,12 @@ SELECT * FROM (
     s4.PVREAL6                                   AS "hpress1",
     s4.PVREAL15                                  AS "hpress2",
     s4.PVREAL24                                  AS "hpress3",
-    s4.PVREAL33                                  AS "hpress4"
+    s4.PVREAL33                                  AS "hpress4",
+    s4.PVREAL27                                  AS "lineSpeed",
+    s4.PVREAL21                                  AS "s21",
+    s4.PVREAL22                                  AS "s22",
+    s4.PVREAL23                                  AS "s23",
+    s4.PVREAL24                                  AS "s24"
   FROM SNAP_FB_04 s4
     JOIN RUN_SUMM   rs ON rs.RUN_NUM  = s4.RUN_NUM
     JOIN TBLRECIPES tr ON tr.RECIPEID = rs.RECIPEID

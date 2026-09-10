@@ -70,14 +70,35 @@ function buildExtruderLine(line, rows, truncated, error = null) {
     const hp4 = toNum(r.hpress4) ?? 0;
     const maxHp = Math.max(hp1, hp2, hp3, hp4);
 
-    // If head pressure sensors are present, check if extruder head pressure > 3.0 Bars.
-    // If head pressure is <= 3.0 Bars, the machine is not extruding (stopped / idle / meal break).
-    const hasPressureSensors = hp1 > 0 || hp2 > 0 || hp3 > 0 || hp4 > 0;
-    const isStopped = hasPressureSensors && maxHp <= 3.0;
-    const act = isStopped ? null : toNum(r.tatawAct);
+    const lineSpeed = toNum(r.lineSpeed) ?? 0;
+    const s21 = toNum(r.s21) ?? 0;
+    const s22 = toNum(r.s22) ?? 0;
+    const s23 = toNum(r.s23) ?? 0;
+    const s24 = toNum(r.s24) ?? 0;
+    const maxScrewSpeed = Math.max(s21, s22, s23, s24);
 
-    // Quad uses Head 3 (Hpress 3), Tuber / Duplex uses Head 2 (Hpress 2)
     const isDuplexOrTuber = line.toUpperCase().includes("DUPLEX") || line.toUpperCase().includes("TUBER");
+    const isQuad = line.toUpperCase().includes("QUAD");
+    const hasSpeed = lineSpeed > 0.5 || maxScrewSpeed > 5.0;
+
+    let act = toNum(r.tatawAct);
+
+    if (isQuad) {
+      // User Rules for QUAD:
+      // 1. Hpress 3 ไม่ทำงาน (<= 3.0 Bars) + TAW act ไม่มี speed เลย => ขึ้นดำ (act = null)
+      // 2. Hpress 3 ไม่ทำงาน + TAW act มี speed รันแต่ต่ำกว่า TAW spec => ขึ้นแดง (act retained)
+      // 3. Hpress 3 ไม่ทำงาน + TAW act มี speed รันมากกว่า/เท่ากับ TAW spec => ขึ้นเขียว (act retained)
+      // 4. Hpress 3 ทำงาน (> 3.0 Bars) + TAW act มี speed ปกติ => เทียบตาม standard เดิม (act retained)
+      const isHpress3Active = hp3 > 3.0;
+      if (!isHpress3Active && !hasSpeed) {
+        act = null;
+      }
+    } else {
+      const hasPressureSensors = hp1 > 0 || hp2 > 0 || hp3 > 0 || hp4 > 0;
+      const isStopped = hasPressureSensors && maxHp <= 3.0;
+      if (isStopped) act = null;
+    }
+
     const hpressVal = isDuplexOrTuber ? toNum(r.hpress2) : toNum(r.hpress3);
 
     samples.push([tMs, act, toNum(r.tawSpec), toNum(r.efficiency), hpressVal]);
