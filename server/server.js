@@ -6,11 +6,13 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-// Disable all browser HTTP caching for API endpoints
-app.use('/api', (req, res, next) => {
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
+// Disable all browser HTTP caching for API endpoints and HTML pages
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api') || req.path === '/' || req.path.endsWith('.html')) {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+  }
   next();
 });
 
