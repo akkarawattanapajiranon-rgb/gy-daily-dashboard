@@ -447,6 +447,11 @@ export default function ExtruderTimeline({
                 </div>
                 <div className="text-[10px] text-zinc-500">
                   act {formatValue(lane.summary.meanAct, 0)} / spec {formatValue(lane.summary.meanSpec, 0)}
+                  {lane.summary.meanHpress !== null && (
+                    <span className="ml-1 font-medium text-zinc-600">
+                      · {lane.line.toUpperCase().includes("DUPLEX") || lane.line.toUpperCase().includes("TUBER") ? "Hpress 2" : "Hpress 3"}: {formatValue(lane.summary.meanHpress, 1)} Bar
+                    </span>
+                  )}
                 </div>
                 {/* How much of the selected window the lane paints black.
                     Without this the operator can see time is missing but has no
@@ -711,6 +716,11 @@ export default function ExtruderTimeline({
                 // here, at the only place that presents it.
                 <div className="tabular-nums text-zinc-400">
                   Efficiency {formatValue(tooltip.sample[3] * 100)}%
+                </div>
+              )}
+              {tooltip.sample[4] !== undefined && tooltip.sample[4] !== null && (
+                <div className="tabular-nums text-cyan-400 font-semibold">
+                  {tooltip.line.toUpperCase().includes("DUPLEX") || tooltip.line.toUpperCase().includes("TUBER") ? "Hpress 2" : "Hpress 3"}&nbsp;&nbsp;{formatValue(tooltip.sample[4], 1)} Bar
                 </div>
               )}
             </>

@@ -384,13 +384,11 @@ export interface LineSummary {
   good: number;
   noGood: number;
   noData: number;
-  /** good + noGood — the denominator behind goodPct, surfaced directly so
-   *  the lane header can show "X% at spec (scored/total scored)" instead of
-   *  a bare percentage that hides how many samples were actually judged. */
   scored: number;
   goodPct: number | null;
   meanAct: number | null;
   meanSpec: number | null;
+  meanHpress: number | null;
 }
 
 /** goodPct excludes no-data samples from its denominator: a day the machine
@@ -403,6 +401,8 @@ export function summarizeLine(samples: ExtruderSample[]): LineSummary {
   let actN = 0;
   let specSum = 0;
   let specN = 0;
+  let hpressSum = 0;
+  let hpressN = 0;
 
   for (const sample of samples) {
     const verdict = classifyTaw(sample[1], sample[2]);
@@ -414,6 +414,9 @@ export function summarizeLine(samples: ExtruderSample[]): LineSummary {
     if (act !== null && Number.isFinite(act)) { actSum += act; actN += 1; }
     const spec = sample[2];
     if (spec !== null && Number.isFinite(spec)) { specSum += spec; specN += 1; }
+
+    const hp = sample[4];
+    if (hp !== null && hp !== undefined && Number.isFinite(hp)) { hpressSum += hp; hpressN += 1; }
   }
 
   const scored = good + noGood;
@@ -426,6 +429,7 @@ export function summarizeLine(samples: ExtruderSample[]): LineSummary {
     goodPct: scored > 0 ? (good / scored) * 100 : null,
     meanAct: actN > 0 ? actSum / actN : null,
     meanSpec: specN > 0 ? specSum / specN : null,
+    meanHpress: hpressN > 0 ? hpressSum / hpressN : null,
   };
 }
 

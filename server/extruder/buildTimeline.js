@@ -76,7 +76,11 @@ function buildExtruderLine(line, rows, truncated, error = null) {
     const isStopped = hasPressureSensors && maxHp <= 3.0;
     const act = isStopped ? null : toNum(r.tatawAct);
 
-    samples.push([tMs, act, toNum(r.tawSpec), toNum(r.efficiency)]);
+    // Quad uses Head 3 (Hpress 3), Tuber / Duplex uses Head 2 (Hpress 2)
+    const isDuplexOrTuber = line.toUpperCase().includes("DUPLEX") || line.toUpperCase().includes("TUBER");
+    const hpressVal = isDuplexOrTuber ? toNum(r.hpress2) : toNum(r.hpress3);
+
+    samples.push([tMs, act, toNum(r.tawSpec), toNum(r.efficiency), hpressVal]);
 
     const last = runs[runs.length - 1];
     if (last && last.runNum === r.runNum) {

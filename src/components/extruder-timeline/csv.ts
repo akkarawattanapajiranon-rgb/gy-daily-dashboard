@@ -47,7 +47,7 @@ export function downloadCsv(filename: string, csv: string): void {
 }
 
 const TIMELINE_HEADERS = [
-  "line", "timestamp", "run", "recipe", "taw act", "taw spec", "delta", "efficiency %", "verdict",
+  "line", "timestamp", "run", "recipe", "taw act", "taw spec", "delta", "efficiency %", "hpress bar", "verdict",
 ];
 const IDLE_HEADERS = ["line", "start", "end", "duration s", "duration min"];
 
@@ -61,7 +61,7 @@ export function extruderTimelineCsv(lanes: ExtruderCsvLane[]): CsvTable {
   const rows: CsvCell[][] = [];
   for (const lane of lanes) {
     for (const sample of lane.samples) {
-      const [tMs, act, spec, eff] = sample;
+      const [tMs, act, spec, eff, hpress] = sample;
       // Runs are clamped to the shift window, so a sample can legitimately
       // fall in a hole between them; it still exports, with blank run fields.
       const run = resolveRunAt(lane.runs, tMs);
@@ -76,6 +76,7 @@ export function extruderTimelineCsv(lanes: ExtruderCsvLane[]): CsvTable {
         // Stored as a RATIO (act/spec), not a percentage — scaled here so the
         // column matches its "%" header and the tooltip.
         eff !== null ? eff * 100 : null,
+        hpress ?? null,
         classifyTaw(act, spec),
       ]);
     }

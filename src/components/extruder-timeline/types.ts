@@ -14,6 +14,7 @@ export type ExtruderSample = [
   act: number | null,
   spec: number | null,
   eff: number | null,
+  hpress?: number | null,
 ];
 
 export interface ExtruderRun {
