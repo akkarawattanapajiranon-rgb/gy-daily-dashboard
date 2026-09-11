@@ -517,7 +517,7 @@ export default function SafetyLspReport() {
                 <option value="ALL">ทุก Department ({staffList.length} คน)</option>
                 <option value="QUALITY">QUALITY ({staffList.filter(w => (w.department || '').toUpperCase() === 'QUALITY').length} คน)</option>
                 <option value="PRODUCTION">PRODUCTION ({staffList.filter(w => (w.department || '').toUpperCase() === 'PRODUCTION').length} คน)</option>
-                <option value="ENG">ENG / Cal E ({staffList.filter(w => (w.department || '').toUpperCase() === 'ENG').length} คน)</option>
+                <option value="ENG">ENG ({staffList.filter(w => (w.department || '').toUpperCase() === 'ENG').length} คน)</option>
                 <option value="ESH">ESH ({staffList.filter(w => (w.department || '').toUpperCase() === 'ESH').length} คน)</option>
                 <option value="HR">HR ({staffList.filter(w => (w.department || '').toUpperCase() === 'HR').length} คน)</option>
                 <option value="LT">LT ({staffList.filter(w => (w.department || '').toUpperCase() === 'LT').length} คน)</option>
