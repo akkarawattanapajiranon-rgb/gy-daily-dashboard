@@ -1,7 +1,8 @@
 import React from 'react';
 import { Layers, Activity, Tag, Clock, Package } from 'lucide-react';
+import ExtruderIdleSection from './ExtruderIdleSection';
 
-export default function QuadReport({ data, loading }) {
+export default function QuadReport({ data, loading, date }) {
   if (loading) {
     return (
       <div className="bg-white rounded-xl shadow-xs border border-slate-100 p-6 flex justify-center items-center h-48">
@@ -147,6 +148,9 @@ export default function QuadReport({ data, loading }) {
           })}
         </div>
       )}
+
+      {/* Extruder No-Data Periods (Oracle sensor) */}
+      <ExtruderIdleSection date={date} lineName="QUAD" accentColor="indigo" />
     </div>
   );
 }
