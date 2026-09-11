@@ -45,7 +45,7 @@
       "totalQr": 95.1,
       "totalOee2": 75.6
     },
-    "timestamp": 1789092706283
+    "timestamp": 1789099413664
   },
   "2026-09-03": {
     "data": {
@@ -375,17 +375,17 @@
         "oee2": 57.9
       },
       "mixing2": {
-        "batch": 127,
+        "batch": 128,
         "ar": 91,
         "pr": 95.5,
         "qr": 100,
         "oee2": 86.9
       },
-      "totalAr": 88.8,
-      "totalPr": 89.7,
+      "totalAr": 88.9,
+      "totalPr": 89.8,
       "totalQr": 90.2,
-      "totalOee2": 71.9
+      "totalOee2": 72
     },
-    "timestamp": 1789099357872
+    "timestamp": 1789099413027
   }
 }
