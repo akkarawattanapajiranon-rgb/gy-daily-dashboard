@@ -335,7 +335,7 @@ function App() {
         {/* PAGE 3: Extruder — TAW Actual vs Spec */}
         {activeTab === 'extruder' && (
           <div className="space-y-6">
-            <ExtruderTimeline endpoint="/api/extruder-timeline" pollMs={300000} />
+            <ExtruderTimeline endpoint="/api/extruder-timeline" pollMs={600000} />
           </div>
         )}
 

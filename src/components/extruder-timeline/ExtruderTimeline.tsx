@@ -432,6 +432,13 @@ export default function ExtruderTimeline({
     return () => clearInterval(t);
   }, []);
 
+  const todayStr = useMemo(() => bangkokProductionDate(), []);
+  const minDateStr = useMemo(() => {
+    const d = new Date(todayStr + "T00:00:00Z");
+    const cutoff = new Date(d.getTime() - 14 * 86400000); // 15 days window (today - 14 days)
+    return cutoff.toISOString().split("T")[0];
+  }, [todayStr]);
+
   const bounds = useMemo(() => shiftBounds(date, shift), [date, shift]);
 
   // Everything below is derived from the shift window, so every number on
@@ -486,10 +493,27 @@ export default function ExtruderTimeline({
       <div className="flex flex-wrap items-center gap-3">
         <h3 className="text-lg font-bold text-zinc-900">🌀 Extruder — TAW Actual vs Spec</h3>
         {controlledDate === undefined && (
-          <input
-            type="date" value={date} onChange={(e) => setDate(e.target.value)}
-            className="rounded-md border border-zinc-300 px-2 py-1 text-sm" aria-label="Production date"
-          />
+          <div className="flex items-center gap-1.5">
+            <input
+              type="date"
+              value={date}
+              min={minDateStr}
+              max={todayStr}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (!val) return;
+                if (val < minDateStr) setDate(minDateStr);
+                else if (val > todayStr) setDate(todayStr);
+                else setDate(val);
+              }}
+              className="rounded-md border border-zinc-300 px-2 py-1 text-sm font-semibold text-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label="Production date (Past 15 days only)"
+              title={`เลือกดูย้อนหลังได้สูงสุด 15 วัน (${minDateStr} ถึง ${todayStr})`}
+            />
+            <span className="text-[11px] text-zinc-500 font-medium whitespace-nowrap">
+              (ย้อนหลังได้ 15 วัน: {minDateStr.slice(5)} ~ {todayStr.slice(5)})
+            </span>
+          </div>
         )}
         <select
           value={shift}

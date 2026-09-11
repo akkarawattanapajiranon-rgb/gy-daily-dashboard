@@ -10,8 +10,8 @@ const {
 } = require('./buildTimeline');
 const { lineConfigs, loadLineRows } = require('./oracleSource');
 
-const MAX_RETAINED_DAYS = 7; // Store max 7 days rolling window locally on user's machine
-const REFRESH_AFTER_MS = 5 * 60 * 1000; // 5 minutes (300,000 ms)
+const MAX_RETAINED_DAYS = 15; // Store max 15 days rolling window locally on user's machine
+const REFRESH_AFTER_MS = 10 * 60 * 1000; // 10 minutes (600,000 ms)
 const STORE_DIR = path.join(__dirname, '..', 'extruder_store');
 
 if (!fs.existsSync(STORE_DIR)) {
@@ -80,14 +80,14 @@ function saveDayToDisk(dateStr, day) {
 }
 
 /**
- * Retain only last 7 days of files in server/extruder_store/
+ * Retain only last 15 days of files in server/extruder_store/
  */
 function pruneOldFiles(nowDateStr) {
   try {
     if (!fs.existsSync(STORE_DIR)) return;
     const files = fs.readdirSync(STORE_DIR);
     
-    // Calculate cutoff date (7 days ago)
+    // Calculate cutoff date (15 days ago)
     const refDate = new Date(nowDateStr + 'T00:00:00Z');
     const cutoffDate = new Date(refDate.getTime() - (MAX_RETAINED_DAYS - 1) * 86400000);
     const cutoffStr = cutoffDate.toISOString().split('T')[0];
@@ -99,7 +99,7 @@ function pruneOldFiles(nowDateStr) {
         const fullPath = path.join(STORE_DIR, file);
         fs.unlinkSync(fullPath);
         days.delete(datePart);
-        console.log(`[Extruder Store] Pruned historical file older than 7 days: ${file}`);
+        console.log(`[Extruder Store] Pruned historical file older than 15 days: ${file}`);
       }
     }
   } catch (e) {
@@ -187,6 +187,15 @@ async function getExtruderTimeline(date, now = () => new Date(), forceRefresh = 
   const currentDateStr = bangkokProductionDate(now());
   pruneOldFiles(currentDateStr);
 
+  // Check 15-day window constraint: Day 16+ is not supported and will never query Oracle
+  const refDate = new Date(currentDateStr + 'T00:00:00Z');
+  const cutoffDate = new Date(refDate.getTime() - (MAX_RETAINED_DAYS - 1) * 86400000);
+  const cutoffStr = cutoffDate.toISOString().split('T')[0];
+
+  if (date < cutoffStr) {
+    throw new ExtruderTimelineInputError(`Historical extruder data older than 15 days (${cutoffStr}) is not available.`);
+  }
+
   let day = days.get(date);
   if (!day || [...day.lines.values()].some(l => !l.rows || l.rows.length === 0)) {
     const diskDay = loadDayFromDisk(date);
@@ -271,12 +280,12 @@ async function syncCurrentDayDaemon() {
 
 function startExtruderDaemon() {
   if (daemonTimer) return;
-  console.log('[Extruder Daemon] Starting automatic 5-minute background saver for current day...');
+  console.log('[Extruder Daemon] Starting automatic 10-minute background saver for current day...');
   // Initial sync after 3s delay
   setTimeout(() => {
     syncCurrentDayDaemon().catch(() => {});
   }, 3000);
-  // Recurring every 5 minutes (REFRESH_AFTER_MS)
+  // Recurring every 10 minutes (REFRESH_AFTER_MS)
   daemonTimer = setInterval(() => {
     syncCurrentDayDaemon().catch(() => {});
   }, REFRESH_AFTER_MS);
