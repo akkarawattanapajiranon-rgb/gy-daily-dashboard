@@ -72,7 +72,7 @@ function parseLspData() {
           const monthly = {};
           let totalAct = 0;
           months.forEach((m, mIdx) => {
-            const actIdx = 8 + (mIdx * 2);
+            const actIdx = 9 + (mIdx * 2);
             let val = '';
             if (r[actIdx] !== undefined && r[actIdx] !== '') {
               val = Number(r[actIdx]);

@@ -4,9 +4,9 @@
   "lastModifiedFormatted": "11/09/2026 13:13 น.",
   "year": "2026",
   "totalWorkers": 50,
-  "avgYtd": 94,
-  "onTargetCount": 46,
-  "belowTargetCount": 4,
+  "avgYtd": 48,
+  "onTargetCount": 16,
+  "belowTargetCount": 34,
   "staffWorkers": [
     {
       "id": 1,
@@ -22,20 +22,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 2,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 2,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 25
     },
     {
       "id": 2,
@@ -51,20 +51,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 5,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 5,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 3,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 69
     },
     {
       "id": 3,
@@ -80,20 +80,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
+        "JAN": 0,
+        "FEB": 1,
+        "MAR": 0,
+        "APR": 5,
+        "MAY": 2,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 33
     },
     {
       "id": 4,
@@ -109,18 +109,18 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 13,
+        "FEB": 9,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "APR": 5,
+        "MAY": 13,
+        "JUN": 18,
+        "JUL": 11,
+        "AUG": 11,
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
       "ytdPct": 100
     },
@@ -138,20 +138,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JUN": 1,
+        "JUL": 2,
+        "AUG": 0,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 15
     },
     {
       "id": 6,
@@ -167,20 +167,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 1,
         "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JUL": 0,
+        "AUG": 2,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 23
     },
     {
       "id": 7,
@@ -196,20 +196,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JAN": 0,
+        "FEB": 3,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 3,
+        "JUN": 3,
+        "JUL": 1,
+        "AUG": 3,
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 29
     },
     {
       "id": 8,
@@ -225,20 +225,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 0,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 50
     },
     {
       "id": 9,
@@ -254,7 +254,7 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
@@ -262,12 +262,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 58
     },
     {
       "id": 10,
@@ -283,20 +283,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 1,
         "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
+        "MAR": 1,
+        "APR": 0,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 1,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 44
     },
     {
       "id": 11,
@@ -312,20 +312,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 42
     },
     {
       "id": 12,
@@ -341,20 +341,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
+        "APR": 9,
+        "MAY": 6,
+        "JUN": 6,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 81
     },
     {
       "id": 13,
@@ -371,19 +371,19 @@
       "group": "Staff",
       "monthly": {
         "JAN": 4,
-        "FEB": 4,
+        "FEB": 5,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 5,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 71
     },
     {
       "id": 14,
@@ -399,7 +399,7 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
@@ -407,12 +407,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 58
     },
     {
       "id": 15,
@@ -428,20 +428,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "MAY": 0,
+        "JUN": 6,
+        "JUL": 3,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 54
     },
     {
       "id": 16,
@@ -457,20 +457,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 5,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 63
     },
     {
       "id": 17,
@@ -486,20 +486,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 42
     },
     {
       "id": 18,
@@ -515,20 +515,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 0,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 33
     },
     {
       "id": 19,
@@ -549,15 +549,15 @@
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
+        "JUN": 5,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 69
     },
     {
       "id": 20,
@@ -573,20 +573,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
-        "MAR": 4,
+        "MAR": 0,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JUN": 0,
+        "JUL": 0,
+        "AUG": 0,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 25
     },
     {
       "id": 21,
@@ -602,20 +602,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JUN": 1,
+        "JUL": 5,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 54
     },
     {
       "id": 22,
@@ -631,20 +631,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 2,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JUN": 5,
+        "JUL": 6,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 73
     },
     {
       "id": 23,
@@ -660,20 +660,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "AUG": 5,
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 65
     },
     {
       "id": 24,
@@ -692,17 +692,17 @@
         "JAN": 4,
         "FEB": 4,
         "MAR": 4,
-        "APR": 4,
+        "APR": 5,
         "MAY": 4,
-        "JUN": 4,
+        "JUN": 5,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 75
     },
     {
       "id": 25,
@@ -720,18 +720,18 @@
       "monthly": {
         "JAN": 4,
         "FEB": 4,
-        "MAR": 4,
+        "MAR": 5,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 73
     },
     {
       "id": 26,
@@ -751,16 +751,16 @@
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 58
     },
     {
       "id": 27,
@@ -776,20 +776,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 0,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 50
     },
     {
       "id": 28,
@@ -813,12 +813,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": "",
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 33
+      "ytdPct": 0
     },
     {
       "id": 29,
@@ -834,20 +834,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
-        "MAR": 4,
+        "MAR": 3,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
         "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "AUG": 5,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 50
     },
     {
       "id": 30,
@@ -863,20 +863,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 5,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 65
     },
     {
       "id": 31,
@@ -892,20 +892,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 2,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 54
     },
     {
       "id": 32,
@@ -921,18 +921,18 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JAN": 24,
+        "FEB": 10,
+        "MAR": 18,
+        "APR": 10,
+        "MAY": 9,
+        "JUN": 5,
+        "JUL": 13,
+        "AUG": 8,
+        "SEP": 6,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
       "ytdPct": 100
     },
@@ -950,7 +950,7 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
@@ -958,12 +958,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 58
     },
     {
       "id": 34,
@@ -987,10 +987,10 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 0,
-        "OCT": 0,
-        "NOV": 0,
-        "DEC": 0
+        "SEP": "",
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
       "ytdPct": 0
     },
@@ -1008,20 +1008,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 1,
         "MAR": 4,
-        "APR": 4,
+        "APR": 5,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 46
     },
     {
       "id": 36,
@@ -1037,20 +1037,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 1,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 10
     },
     {
       "id": 37,
@@ -1066,20 +1066,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 3,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
+        "MAY": 0,
+        "JUN": 5,
+        "JUL": 3,
+        "AUG": 6,
         "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 69
     },
     {
       "id": 38,
@@ -1095,20 +1095,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 3,
         "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "MAY": 1,
+        "JUN": 0,
+        "JUL": 5,
+        "AUG": 5,
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 40
     },
     {
       "id": 39,
@@ -1124,20 +1124,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 0,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
+        "APR": 0,
+        "MAY": 1,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 27
     },
     {
       "id": 40,
@@ -1153,20 +1153,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 3,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 19
     },
     {
       "id": 41,
@@ -1182,7 +1182,7 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
@@ -1191,11 +1191,11 @@
         "JUL": 4,
         "AUG": 4,
         "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 67
     },
     {
       "id": 42,
@@ -1211,20 +1211,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 0,
+        "AUG": 0,
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 2
     },
     {
       "id": 43,
@@ -1240,20 +1240,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 5,
+        "FEB": 5,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
+        "APR": 5,
+        "MAY": 5,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 75
     },
     {
       "id": 44,
@@ -1274,15 +1274,15 @@
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JUN": 5,
+        "JUL": 5,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 71
     },
     {
       "id": 45,
@@ -1299,19 +1299,19 @@
       "group": "Staff",
       "monthly": {
         "JAN": 4,
-        "FEB": 4,
+        "FEB": 5,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
+        "JUN": 6,
         "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "AUG": 5,
+        "SEP": 5,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 85
     },
     {
       "id": 46,
@@ -1327,20 +1327,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 3,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 56
     },
     {
       "id": 47,
@@ -1356,20 +1356,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "AUG": 0,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 50
     },
     {
       "id": 48,
@@ -1385,20 +1385,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
         "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 17
     },
     {
       "id": 49,
@@ -1420,14 +1420,14 @@
         "APR": 0,
         "MAY": 0,
         "JUN": 0,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JUL": 3,
+        "AUG": 5,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 50
+      "ytdPct": 17
     },
     {
       "id": 50,
@@ -1451,12 +1451,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 33
+      "ytdPct": 0
     }
   ],
   "leaderWorkers": [
@@ -2802,20 +2802,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 2,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 2,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 25
     },
     {
       "id": 2,
@@ -2831,20 +2831,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 5,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 5,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 3,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 69
     },
     {
       "id": 3,
@@ -2860,20 +2860,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
+        "JAN": 0,
+        "FEB": 1,
+        "MAR": 0,
+        "APR": 5,
+        "MAY": 2,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 33
     },
     {
       "id": 4,
@@ -2889,18 +2889,18 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 13,
+        "FEB": 9,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "APR": 5,
+        "MAY": 13,
+        "JUN": 18,
+        "JUL": 11,
+        "AUG": 11,
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
       "ytdPct": 100
     },
@@ -2918,20 +2918,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JUN": 1,
+        "JUL": 2,
+        "AUG": 0,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 15
     },
     {
       "id": 6,
@@ -2947,20 +2947,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 1,
         "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JUL": 0,
+        "AUG": 2,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 23
     },
     {
       "id": 7,
@@ -2976,20 +2976,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JAN": 0,
+        "FEB": 3,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 3,
+        "JUN": 3,
+        "JUL": 1,
+        "AUG": 3,
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 29
     },
     {
       "id": 8,
@@ -3005,20 +3005,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 0,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 50
     },
     {
       "id": 9,
@@ -3034,7 +3034,7 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
@@ -3042,12 +3042,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 58
     },
     {
       "id": 10,
@@ -3063,20 +3063,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 1,
         "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
+        "MAR": 1,
+        "APR": 0,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 1,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 44
     },
     {
       "id": 11,
@@ -3092,20 +3092,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 42
     },
     {
       "id": 12,
@@ -3121,20 +3121,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
+        "APR": 9,
+        "MAY": 6,
+        "JUN": 6,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 81
     },
     {
       "id": 13,
@@ -3151,19 +3151,19 @@
       "group": "Staff",
       "monthly": {
         "JAN": 4,
-        "FEB": 4,
+        "FEB": 5,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 5,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 71
     },
     {
       "id": 14,
@@ -3179,7 +3179,7 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
@@ -3187,12 +3187,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 58
     },
     {
       "id": 15,
@@ -3208,20 +3208,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "MAY": 0,
+        "JUN": 6,
+        "JUL": 3,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 54
     },
     {
       "id": 16,
@@ -3237,20 +3237,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 5,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 63
     },
     {
       "id": 17,
@@ -3266,20 +3266,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 42
     },
     {
       "id": 18,
@@ -3295,20 +3295,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 0,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 33
     },
     {
       "id": 19,
@@ -3329,15 +3329,15 @@
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
+        "JUN": 5,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 69
     },
     {
       "id": 20,
@@ -3353,20 +3353,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
-        "MAR": 4,
+        "MAR": 0,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JUN": 0,
+        "JUL": 0,
+        "AUG": 0,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 25
     },
     {
       "id": 21,
@@ -3382,20 +3382,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JUN": 1,
+        "JUL": 5,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 54
     },
     {
       "id": 22,
@@ -3411,20 +3411,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 2,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JUN": 5,
+        "JUL": 6,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 73
     },
     {
       "id": 23,
@@ -3440,20 +3440,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "AUG": 5,
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 65
     },
     {
       "id": 24,
@@ -3472,17 +3472,17 @@
         "JAN": 4,
         "FEB": 4,
         "MAR": 4,
-        "APR": 4,
+        "APR": 5,
         "MAY": 4,
-        "JUN": 4,
+        "JUN": 5,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 75
     },
     {
       "id": 25,
@@ -3500,18 +3500,18 @@
       "monthly": {
         "JAN": 4,
         "FEB": 4,
-        "MAR": 4,
+        "MAR": 5,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 73
     },
     {
       "id": 26,
@@ -3531,16 +3531,16 @@
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 58
     },
     {
       "id": 27,
@@ -3556,20 +3556,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 0,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 50
     },
     {
       "id": 28,
@@ -3593,12 +3593,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": "",
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 33
+      "ytdPct": 0
     },
     {
       "id": 29,
@@ -3614,20 +3614,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
-        "MAR": 4,
+        "MAR": 3,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
         "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "AUG": 5,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 50
     },
     {
       "id": 30,
@@ -3643,20 +3643,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 5,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 65
     },
     {
       "id": 31,
@@ -3672,20 +3672,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 2,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
+        "MAY": 0,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 54
     },
     {
       "id": 32,
@@ -3701,18 +3701,18 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JAN": 24,
+        "FEB": 10,
+        "MAR": 18,
+        "APR": 10,
+        "MAY": 9,
+        "JUN": 5,
+        "JUL": 13,
+        "AUG": 8,
+        "SEP": 6,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
       "ytdPct": 100
     },
@@ -3730,7 +3730,7 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
@@ -3738,12 +3738,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 58
     },
     {
       "id": 34,
@@ -3767,10 +3767,10 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 0,
-        "OCT": 0,
-        "NOV": 0,
-        "DEC": 0
+        "SEP": "",
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
       "ytdPct": 0
     },
@@ -3788,20 +3788,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 1,
         "MAR": 4,
-        "APR": 4,
+        "APR": 5,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 46
     },
     {
       "id": 36,
@@ -3817,20 +3817,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 1,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 10
     },
     {
       "id": 37,
@@ -3846,20 +3846,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 3,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
+        "MAY": 0,
+        "JUN": 5,
+        "JUL": 3,
+        "AUG": 6,
         "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 69
     },
     {
       "id": 38,
@@ -3875,20 +3875,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 3,
         "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "MAY": 1,
+        "JUN": 0,
+        "JUL": 5,
+        "AUG": 5,
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 40
     },
     {
       "id": 39,
@@ -3904,20 +3904,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 0,
+        "FEB": 0,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
+        "APR": 0,
+        "MAY": 1,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 27
     },
     {
       "id": 40,
@@ -3933,20 +3933,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 3,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 2,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 19
     },
     {
       "id": 41,
@@ -3962,7 +3962,7 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
@@ -3971,11 +3971,11 @@
         "JUL": 4,
         "AUG": 4,
         "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 67
     },
     {
       "id": 42,
@@ -3991,20 +3991,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 0,
+        "AUG": 0,
+        "SEP": 1,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 2
     },
     {
       "id": 43,
@@ -4020,20 +4020,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
+        "JAN": 5,
+        "FEB": 5,
         "MAR": 4,
-        "APR": 4,
-        "MAY": 4,
+        "APR": 5,
+        "MAY": 5,
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 75
     },
     {
       "id": 44,
@@ -4054,15 +4054,15 @@
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "JUN": 5,
+        "JUL": 5,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 71
     },
     {
       "id": 45,
@@ -4079,19 +4079,19 @@
       "group": "Staff",
       "monthly": {
         "JAN": 4,
-        "FEB": 4,
+        "FEB": 5,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
-        "JUN": 4,
+        "JUN": 6,
         "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "AUG": 5,
+        "SEP": 5,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 85
     },
     {
       "id": 46,
@@ -4107,20 +4107,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
-        "JUL": 4,
+        "JUL": 3,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 56
     },
     {
       "id": 47,
@@ -4136,20 +4136,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
+        "JAN": 0,
         "FEB": 4,
         "MAR": 4,
         "APR": 4,
         "MAY": 4,
         "JUN": 4,
         "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "AUG": 0,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 50
     },
     {
       "id": 48,
@@ -4165,20 +4165,20 @@
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
-        "JAN": 4,
-        "FEB": 4,
-        "MAR": 4,
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
         "APR": 4,
-        "MAY": 4,
-        "JUN": 4,
-        "JUL": 4,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 0,
         "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 100
+      "ytdPct": 17
     },
     {
       "id": 49,
@@ -4200,14 +4200,14 @@
         "APR": 0,
         "MAY": 0,
         "JUN": 0,
-        "JUL": 4,
-        "AUG": 4,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "JUL": 3,
+        "AUG": 5,
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 50
+      "ytdPct": 17
     },
     {
       "id": 50,
@@ -4231,12 +4231,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 4,
-        "OCT": 4,
-        "NOV": 4,
-        "DEC": 4
+        "SEP": 0,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
       },
-      "ytdPct": 33
+      "ytdPct": 0
     }
   ],
   "hasData": true
