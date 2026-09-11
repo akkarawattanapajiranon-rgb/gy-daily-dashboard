@@ -67,6 +67,11 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
   const frictionWaste = Number(wasteData?.frictionSummary) || 0;
   const millingWaste = Number(wasteData?.millingSummary) || 0;
 
+  const bdMixerTarget = Number((Number(bdData?.Banbury?.target_bd_pct) || 0.5827).toFixed(4));
+  const bdExtruderTarget = Number((Number(bdData?.Extruder?.target_bd_pct) || 0.5098).toFixed(4));
+  const bdCalenderTarget = Number((Number(bdData?.Calender?.target_bd_pct) || 0.4662).toFixed(4));
+  const bdCuttingTarget = Number((Number(bdData?.Cutting?.target_bd_pct) || 0.1166).toFixed(4));
+
   const res = {
     date: dateStr,
     mixerBatchmix,
@@ -79,7 +84,20 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
     bdCalender: Number(bdCalender.toFixed(4)),
     bdCutting: Number(bdCutting.toFixed(4)),
     frictionWaste: Number(frictionWaste.toFixed(2)),
-    millingWaste: Number(millingWaste.toFixed(2))
+    millingWaste: Number(millingWaste.toFixed(2)),
+    targets: {
+      mixerBatchmix: 1300,
+      mixerOee2: 76.6,
+      quadOee2: 62.0,
+      tuberOee2: 62.0,
+      fischerOee2: 60.0,
+      bdMixer: bdMixerTarget,
+      bdExtruder: bdExtruderTarget,
+      bdCalender: bdCalenderTarget,
+      bdCutting: bdCuttingTarget,
+      frictionWaste: 285,
+      millingWaste: 265
+    }
   };
 
   metricsMemoryCache.set(dateStr, { data: res, ts: Date.now() });
