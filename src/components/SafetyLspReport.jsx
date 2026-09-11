@@ -127,7 +127,10 @@ export default function SafetyLspReport() {
             const areaCode = String(r[5] || '').trim();
 
             if (!name || !legacy || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
-            if (legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์')) return;
+            if (
+              legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์') ||
+              legacy === '12752' || name.toLowerCase().includes('amphai') || name.includes('อำไพ')
+            ) return;
 
             const monthly = {};
             let totalAct = 0;
@@ -234,7 +237,10 @@ export default function SafetyLspReport() {
     return 0;
   };
 
-  const staffList = data?.staffWorkers || defaultWorkers;
+  const rawStaffList = data?.staffWorkers || defaultWorkers;
+  const staffList = rawStaffList.filter(w =>
+    w.legacy !== '12752' && !(w.name && (w.name.toLowerCase().includes('amphai') || w.name.includes('อำไพ')))
+  );
   const leaderList = data?.leaderWorkers || defaultLeaders;
   const activeWorkers = activeTeam === 'Staff' ? staffList : leaderList;
 

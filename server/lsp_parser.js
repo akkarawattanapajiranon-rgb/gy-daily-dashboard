@@ -63,7 +63,10 @@ function parseLspData() {
           const areaCode = String(r[5] || '').trim();
 
           if (!name || !legacy || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
-          if (legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์')) return;
+          if (
+            legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์') ||
+            legacy === '12752' || name.toLowerCase().includes('amphai') || name.includes('อำไพ')
+          ) return;
 
           const monthly = {};
           let totalAct = 0;
