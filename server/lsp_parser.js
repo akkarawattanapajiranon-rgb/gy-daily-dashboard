@@ -82,14 +82,22 @@ function parseLspData() {
             if (typeof val === 'number') totalAct += val;
           });
 
+          const rawDept = String(r[4] || '').trim().toUpperCase();
+          const bc = String(r[5] || '').trim();
+          const costCenter = String(r[6] || '').trim();
+          const department = rawDept || (bc.startsWith('LT') ? 'LT' : 'PRODUCTION');
+
           parsedStaff.push({
             id: parsedStaff.length + 1,
             legacy,
             name,
             title,
-            dept,
-            areaCode,
-            categoryGroup: getStaffCategoryGroup(dept),
+            dept: bc || department, // backwards compatibility
+            bc,
+            department,
+            costCenter,
+            areaCode: bc,
+            categoryGroup: getStaffCategoryGroup(bc || department),
             isLspTarget: true,
             group: 'Staff',
             monthly,
