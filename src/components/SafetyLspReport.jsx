@@ -1,6 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriangle, Users, ExternalLink, Award, TrendingUp, UserCheck, Clock } from 'lucide-react';
+import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriangle, Users, ExternalLink, TrendingUp, UserCheck, Clock, Layers } from 'lucide-react';
 import * as XLSX from 'xlsx';
+import cachedLspFallback from '../data/lsp_data_cache.json';
+
+// Staff: Group by first 3 characters into 4 categories: BCA, BCB, LT, GBS+FI +Eng
+export const getStaffCategoryGroup = (dept) => {
+  const d = String(dept || '').trim().toUpperCase();
+  if (d.startsWith('BCA')) return 'BCA';
+  if (d.startsWith('BCB')) return 'BCB';
+  if (d.startsWith('LT')) return 'LT';
+  return 'GBS+FI +Eng';
+};
+
+// Leader: Group by Cost Center Code:
+// BCA: 3200, 4110, 4300
+// BCB (WBR): 5110, 5120, 5130
+// BCB (AERO): A5110, A5120, A5130
+// BCB (Sapphire): S5110, S5120, S5130
+// RETREAD: 6320
+// ENG: 1100, 1110
+export const getLeaderCategoryGroup = (costCenter) => {
+  const cc = String(costCenter || '').trim().toUpperCase();
+  if (['3200', '4110', '4300'].includes(cc)) return 'BCA';
+  if (['5110', '5120', '5130'].includes(cc)) return 'BCB (WBR)';
+  if (['A5110', 'A5120', 'A5130'].includes(cc)) return 'BCB (AERO)';
+  if (['S5110', 'S5120', 'S5130'].includes(cc)) return 'BCB (Sapphire)';
+  if (['6320'].includes(cc)) return 'RETREAD';
+  if (['1100', '1110'].includes(cc)) return 'ENG';
+  return 'OTHER';
+};
+
+export const getGroupBadgeColor = (grp) => {
+  switch (grp) {
+    case 'BCA':
+      return 'bg-emerald-50 text-emerald-800 border-emerald-300';
+    case 'BCB':
+    case 'BCB (WBR)':
+      return 'bg-blue-50 text-blue-800 border-blue-300';
+    case 'BCB (AERO)':
+      return 'bg-sky-50 text-sky-800 border-sky-300';
+    case 'BCB (Sapphire)':
+      return 'bg-indigo-50 text-indigo-800 border-indigo-300';
+    case 'RETREAD':
+      return 'bg-amber-50 text-amber-800 border-amber-300';
+    case 'LT':
+      return 'bg-purple-50 text-purple-800 border-purple-300';
+    case 'GBS+FI +Eng':
+      return 'bg-teal-50 text-teal-800 border-teal-300';
+    case 'ENG':
+      return 'bg-slate-100 text-slate-700 border-slate-300';
+    default:
+      return 'bg-slate-100 text-slate-700 border-slate-300';
+  }
+};
 
 export default function SafetyLspReport() {
   const [data, setData] = useState(null);
@@ -12,36 +64,8 @@ export default function SafetyLspReport() {
 
   const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-  const defaultWorkers = [
-    { id: 2, legacy: '12750', name: 'Akkarawat Tanapatjiranon (อัครวัฒน์ ธนภัทรจิรานนท์)', dept: 'BCA', areaCode: '3200', isLspTarget: true, group: 'Staff', monthly: { JAN: 0, FEB: 5, MAR: 4, APR: 4, MAY: 5, JUN: 4, JUL: 4, AUG: 4, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 67 },
-    { id: 12, legacy: '1461', name: 'Kamol Chansue (กมล จันเสือ)', dept: 'BCA', areaCode: '3200', isLspTarget: true, group: 'Staff', monthly: { JAN: 0, FEB: 5, MAR: 4, APR: 9, MAY: 6, JUN: 6, JUL: 4, AUG: 4, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 81 },
-    { id: 13, legacy: '12921', name: 'Kant Limpitaks (กันต์ ลิมปิทักษ์)', dept: 'BCA-Q', areaCode: '1022', isLspTarget: true, group: 'Staff', monthly: { JAN: 4, FEB: 4, MAR: 4, APR: 4, MAY: 4, JUN: 4, JUL: 5, AUG: 4, SEP: 0, OCT: '', NOV: '', DEC: '' }, ytdPct: 71 },
-    { id: 16, legacy: '12106', name: 'Kritsana Iyerakanjankun (กฤษณะ ไอยรากาญจนกุล)', dept: 'BCA-E', areaCode: '1100', isLspTarget: true, group: 'Staff', monthly: { JAN: 0, FEB: 4, MAR: 4, APR: 4, MAY: 4, JUN: 5, JUL: 4, AUG: 4, SEP: 1, OCT: '', NOV: '', DEC: '' }, ytdPct: 63 },
-    { id: 19, legacy: '12769', name: 'Narada Tempombribun (นารดา เต็มพรมบริบูรณ์)', dept: 'BCA-HR', areaCode: '1050', isLspTarget: true, group: 'Staff', monthly: { JAN: 4, FEB: 4, MAR: 4, APR: 4, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 0, OCT: '', NOV: '', DEC: '' }, ytdPct: 69 },
-    { id: 21, legacy: '12364', name: 'Nithit Raktham (นิธิศ รักธรรม)', dept: 'BCA-E', areaCode: '6320', isLspTarget: true, group: 'Staff', monthly: { JAN: 0, FEB: 4, MAR: 4, APR: 4, MAY: 4, JUN: 1, JUL: 5, AUG: 4, SEP: 0, OCT: '', NOV: '', DEC: '' }, ytdPct: 54 },
-    { id: 22, legacy: '12367', name: 'Paisal Phoompong (ไพศาล พูมพงษ์)', dept: 'BCA', areaCode: '3200', isLspTarget: true, group: 'Staff', monthly: { JAN: 2, FEB: 4, MAR: 4, APR: 4, MAY: 4, JUN: 5, JUL: 6, AUG: 4, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 73 },
-    { id: 23, legacy: '10661', name: 'Parintorn Premshue (ปริญทร เปรมชู)', dept: 'BCA', areaCode: '3200', isLspTarget: true, group: 'Staff', monthly: { JAN: 0, FEB: 4, MAR: 4, APR: 4, MAY: 4, JUN: 4, JUL: 4, AUG: 5, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 65 },
-    { id: 24, legacy: '10082', name: 'Phichet Dee-On (พิเชษฐ์ ดีอ่อน)', dept: 'BCA-Q', areaCode: '1022', isLspTarget: true, group: 'Staff', monthly: { JAN: 4, FEB: 4, MAR: 4, APR: 5, MAY: 4, JUN: 5, JUL: 4, AUG: 4, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 75 },
-    { id: 25, legacy: '12445', name: 'Pinthusorn Prasertpolkrang (พินทุสร ประเสริฐพลกรัง)', dept: 'BCA-Q', areaCode: '1022', isLspTarget: true, group: 'Staff', monthly: { JAN: 4, FEB: 4, MAR: 5, APR: 4, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 73 },
-    { id: 35, legacy: '10553', name: 'Sunuttapong Siriluk (สุณัฐพงศ์ ศิริลักษณ์)', dept: 'BCA-E', areaCode: '1100', isLspTarget: true, group: 'Staff', monthly: { JAN: 3, FEB: 4, MAR: 4, APR: 4, MAY: 0, JUN: 5, JUL: 3, AUG: 6, SEP: 1, OCT: '', NOV: '', DEC: '' }, ytdPct: 63 },
-    { id: 41, legacy: '1308', name: 'Vinai Fuangfoo (วินัย ฟักฟู)', dept: 'BCA-HR', areaCode: '1053', isLspTarget: true, group: 'Staff', monthly: { JAN: 5, FEB: 5, MAR: 4, APR: 5, MAY: 5, JUN: 4, JUL: 4, AUG: 4, SEP: 0, OCT: '', NOV: '', DEC: '' }, ytdPct: 75 },
-    { id: 43, legacy: '12001', name: 'Wata Phattanapong (วรา พัฒนพงศ์)', dept: 'BCA-EHS', areaCode: '1056', isLspTarget: true, group: 'Staff', monthly: { JAN: 4, FEB: 5, MAR: 4, APR: 4, MAY: 4, JUN: 6, JUL: 4, AUG: 5, SEP: 3, OCT: '', NOV: '', DEC: '' }, ytdPct: 81 }
-  ];
-
-  const defaultLeaders = [
-    { id: 5, legacy: '3141', name: 'Boonnue Umpimai (บุญเหลือ อุ้มพิมาย)', title: 'Production Team Leader', dept: 'FLM', areaCode: '3200', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 4, APR: 4, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 58 },
-    { id: 7, legacy: '1312', name: 'Chet Srimook (เชษฐ์ ศรีมุก)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4300', group: 'Leader', monthly: { JAN: 0, FEB: 5, MAR: 7, APR: 4, MAY: 8, JUN: 9, JUL: 5, AUG: 6, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 90 },
-    { id: 27, legacy: '1425', name: 'Preecha Chamwechesart (ปรีชา ชาญเวชศาสตร์)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 3, APR: 0, MAY: 5, JUN: 7, JUL: 4, AUG: 7, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 63 },
-    { id: 28, legacy: '1232', name: 'Rawat Puykunthod (เรวัตร์ ปุยขุนทด)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 0, MAY: 5, JUN: 8, JUL: 4, AUG: 7, SEP: 2, OCT: '', NOV: '', DEC: '' }, ytdPct: 54 },
-    { id: 30, legacy: '1339', name: 'Sek Kangsuk (เสก กองสุข)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4300', group: 'Leader', monthly: { JAN: 0, FEB: 4, MAR: 4, APR: 6, MAY: 5, JUN: 5, JUL: 4, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 77 },
-    { id: 33, legacy: '1327', name: 'Sivarin Juntasit (ศิวรินทร์ จันทสิทธิ์)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 5, APR: 0, MAY: 4, JUN: 5, JUL: 4, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 56 },
-    { id: 40, legacy: '9823', name: 'Suphol Sophaboon (สุพล โสภะบุญ)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 4, FEB: 4, MAR: 7, APR: 2, MAY: 4, JUN: 4, JUL: 4, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 71 },
-    { id: 41, legacy: '1333', name: 'Suthin Saenphai (สุทิน แสนภัย)', title: 'Group Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 0, MAY: 4, JUN: 4, JUL: 4, AUG: 4, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 42 },
-    { id: 45, legacy: '1459', name: 'Vichai Jomkamsing (วิชัย จอมคำสิงห์)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4300', group: 'Leader', monthly: { JAN: 12, FEB: 0, MAR: 0, APR: 0, MAY: 4, JUN: 4, JUL: 8, AUG: 7, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 81 },
-    { id: 46, legacy: '3062', name: 'Vinai Klinsrisuk (วินัย กลิ่นศรีสุข)', title: 'Production Team Leader', dept: 'FLM', areaCode: '3200', group: 'Leader', monthly: { JAN: 2, FEB: 1, MAR: 3, APR: 0, MAY: 6, JUN: 4, JUL: 4, AUG: 4, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 58 },
-    { id: 50, legacy: '12249', name: 'Chariphan Phonlaaiad (ชารีพันธุ์ พลละเอียด)', title: 'Production Team Leader', dept: 'FLM', areaCode: '4110', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 1, MAY: 6, JUN: 4, JUL: 5, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 52 },
-    { id: 51, legacy: '12583', name: 'Niran Laedee (นิรันดร์ แลดี)', title: 'Production Team Leader', dept: 'FLM', areaCode: '3200', group: 'Leader', monthly: { JAN: 0, FEB: 0, MAR: 0, APR: 0, MAY: 4, JUN: 4, JUL: 4, AUG: 5, SEP: 4, OCT: '', NOV: '', DEC: '' }, ytdPct: 44 }
-  ];
+  const defaultWorkers = cachedLspFallback?.staff || [];
+  const defaultLeaders = cachedLspFallback?.leaders || [];
 
   const loadLspData = async () => {
     setLoading(true);
@@ -49,7 +73,7 @@ export default function SafetyLspReport() {
       const res = await fetch('/api/lsp');
       if (res.ok) {
         const json = await res.json();
-        if (json) {
+        if (json && json.hasData) {
           setData(json);
           setLoading(false);
           return;
@@ -63,7 +87,7 @@ export default function SafetyLspReport() {
       staffWorkers: defaultWorkers,
       leaderWorkers: defaultLeaders,
       hasData: true,
-      lastModifiedFormatted: '07/09/2026 12:39 น.'
+      lastModifiedFormatted: '11/09/2026 08:50 น.'
     });
     setLoading(false);
   };
@@ -81,111 +105,111 @@ export default function SafetyLspReport() {
       try {
         const bstr = evt.target.result;
         const wb = XLSX.read(bstr, { type: 'binary', cellStubs: true });
-        const sheetName = wb.SheetNames.find(s => s.toUpperCase().includes('LSP') || s.toUpperCase().includes('2026')) || wb.SheetNames[0];
-        const ws = wb.Sheets[sheetName];
-        const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
 
-        if (rows.length > 2) {
-          let headerRowIndex = -1;
-          rows.forEach((r, idx) => {
-            if (r.some(c => String(c).toUpperCase().includes('JAN') || String(c).toUpperCase().includes('WORKER'))) {
-              headerRowIndex = idx;
-            }
+        const sheetA = wb.SheetNames.find(s => s.startsWith('A') || s.toUpperCase().includes('SALARY')) || wb.SheetNames[1] || wb.SheetNames[0];
+        const sheetB = wb.SheetNames.find(s => s.startsWith('B') || s.toUpperCase().includes('HOURLY')) || wb.SheetNames[2];
+
+        const parsedStaff = [];
+        const parsedLeaders = [];
+
+        // Parse Sheet A
+        if (wb.Sheets[sheetA]) {
+          const rowsA = XLSX.utils.sheet_to_json(wb.Sheets[sheetA], { header: 1, defval: '' });
+          rowsA.slice(3).forEach((r) => {
+            const legacy = String(r[1] || '').trim();
+            const name = String(r[2] || '').trim();
+            const title = String(r[3] || '').trim();
+            const dept = String(r[4] || 'BCA').trim();
+            const areaCode = String(r[5] || '').trim();
+
+            if (!name || !legacy || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
+            if (legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์')) return;
+
+            const monthly = {};
+            let totalAct = 0;
+            months.forEach((m, mIdx) => {
+              const actIdx = 8 + (mIdx * 2);
+              let val = '';
+              if (r[actIdx] !== undefined && r[actIdx] !== '') {
+                val = Number(r[actIdx]);
+                if (isNaN(val)) val = '';
+              }
+              monthly[m] = val;
+              if (typeof val === 'number') totalAct += val;
+            });
+
+            parsedStaff.push({
+              id: parsedStaff.length + 1,
+              legacy,
+              name,
+              title,
+              dept,
+              areaCode,
+              categoryGroup: getStaffCategoryGroup(dept),
+              isLspTarget: true,
+              group: 'Staff',
+              monthly,
+              ytdPct: Math.min(100, Math.round((totalAct / 48) * 100))
+            });
           });
-
-          if (headerRowIndex !== -1) {
-            const header = rows[headerRowIndex].map(c => String(c).trim().toUpperCase());
-            const subHeader = rows[headerRowIndex + 1] ? rows[headerRowIndex + 1].map(c => String(c).trim().toUpperCase()) : [];
-            const idCol = header.findIndex(c => c.includes('##') || c.includes('ID') || c.includes('NO'));
-            const legacyCol = header.findIndex(c => c.includes('LEGACY'));
-            const workerCol = header.findIndex(c => c.includes('WORKER') || c.includes('NAME'));
-            const titleCol = header.findIndex(c => c.includes('TITLE') || c.includes('BUSINESS'));
-            const deptCol = header.findIndex(c => c.includes('DEPT') || c.includes('AREA') || c.includes('GROUP'));
-            const ytdCol = header.findIndex(c => c.includes('YTD'));
-
-            const monthCols = {};
-            months.forEach(m => {
-              let idx = header.findIndex(c => c === m);
-              if (idx !== -1) {
-                if (subHeader[idx] === 'AOP' && subHeader[idx + 1] === 'ACT') {
-                  idx = idx + 1;
-                } else if (subHeader[idx + 1] === 'ACT') {
-                  idx = idx + 1;
-                }
-              }
-              monthCols[m] = idx;
-            });
-
-            const parsedStaff = [];
-            const parsedLeaders = [];
-
-            rows.slice(headerRowIndex + (subHeader.length > 0 ? 2 : 1)).forEach(r => {
-              const name = String(r[workerCol !== -1 ? workerCol : 2] || '').trim();
-              const legacy = String(r[legacyCol !== -1 ? legacyCol : 1] || '').trim();
-              const rowId = String(r[idCol !== -1 ? idCol : 0] || '').trim();
-              const dept = String(r[deptCol !== -1 ? deptCol : 4] || 'BCA').trim();
-              const title = String(r[titleCol !== -1 ? titleCol : 3] || '').trim();
-
-              if (!name || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
-              if (rowId === '20' || legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์')) return;
-              if (dept.toUpperCase().includes('BCB')) return;
-
-              const isLeader = title.toLowerCase().includes('leader') || dept.toLowerCase().includes('flm');
-
-              const monthlyData = {};
-              let totalAudits = 0;
-              months.forEach(m => {
-                const idx = monthCols[m];
-                let val = '';
-                if (idx !== -1 && r[idx] !== undefined && r[idx] !== '') {
-                  val = Number(r[idx]);
-                  if (isNaN(val)) val = '';
-                }
-                monthlyData[m] = val;
-                if (typeof val === 'number') totalAudits += val;
-              });
-
-              let ytdRaw = ytdCol !== -1 ? String(r[ytdCol] || '') : '';
-              let ytdPct = parseFloat(ytdRaw.replace('%', '')) || 0;
-              if (!ytdPct && totalAudits > 0) {
-                ytdPct = Math.min(100, Math.round((totalAudits / 48) * 100));
-              }
-
-              const item = {
-                id: r[idCol !== -1 ? idCol : 0] || (isLeader ? parsedLeaders.length + 1 : parsedStaff.length + 1),
-                legacy: legacy,
-                name,
-                title,
-                dept: isLeader ? 'FLM' : dept,
-                areaCode: String(r[deptCol !== -1 ? deptCol + 1 : 5] || '').trim(),
-                isLspTarget: true,
-                group: isLeader ? 'Leader' : 'Staff',
-                monthly: monthlyData,
-                ytdPct
-              };
-
-              if (isLeader) parsedLeaders.push(item);
-              else parsedStaff.push(item);
-            });
-
-            const fileDate = file.lastModified ? new Date(file.lastModified) : new Date();
-            const dd = String(fileDate.getDate()).padStart(2, '0');
-            const mm = String(fileDate.getMonth() + 1).padStart(2, '0');
-            const yyyy = fileDate.getFullYear();
-            const hh = String(fileDate.getHours()).padStart(2, '0');
-            const mi = String(fileDate.getMinutes()).padStart(2, '0');
-
-            setData({
-              file: file.name,
-              lastModifiedFormatted: `${dd}/${mm}/${yyyy} ${hh}:${mi} น.`,
-              year: '2026',
-              staffWorkers: parsedStaff.length > 0 ? parsedStaff : defaultWorkers,
-              leaderWorkers: parsedLeaders.length > 0 ? parsedLeaders : defaultLeaders,
-              hasData: true
-            });
-            setCustomFileLoaded(true);
-          }
         }
+
+        // Parse Sheet B
+        if (sheetB && wb.Sheets[sheetB]) {
+          const rowsB = XLSX.utils.sheet_to_json(wb.Sheets[sheetB], { header: 1, defval: '' });
+          rowsB.slice(3).forEach((r) => {
+            const legacy = String(r[1] || '').trim();
+            const name = String(r[2] || '').trim();
+            const title = String(r[3] || '').trim();
+            const areaCode = String(r[4] || '').trim();
+
+            if (!name || !legacy || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
+
+            const monthly = {};
+            let totalAct = 0;
+            months.forEach((m, mIdx) => {
+              const actIdx = 7 + (mIdx * 2);
+              let val = '';
+              if (r[actIdx] !== undefined && r[actIdx] !== '') {
+                val = Number(r[actIdx]);
+                if (isNaN(val)) val = '';
+              }
+              monthly[m] = val;
+              if (typeof val === 'number') totalAct += val;
+            });
+
+            parsedLeaders.push({
+              id: parsedLeaders.length + 1,
+              legacy,
+              name,
+              title,
+              dept: 'FLM',
+              areaCode,
+              categoryGroup: getLeaderCategoryGroup(areaCode),
+              isLspTarget: true,
+              group: 'Leader',
+              monthly,
+              ytdPct: Math.min(100, Math.round((totalAct / 48) * 100))
+            });
+          });
+        }
+
+        const fileDate = file.lastModified ? new Date(file.lastModified) : new Date();
+        const dd = String(fileDate.getDate()).padStart(2, '0');
+        const mm = String(fileDate.getMonth() + 1).padStart(2, '0');
+        const yyyy = fileDate.getFullYear();
+        const hh = String(fileDate.getHours()).padStart(2, '0');
+        const mi = String(fileDate.getMinutes()).padStart(2, '0');
+
+        setData({
+          file: file.name,
+          lastModifiedFormatted: `${dd}/${mm}/${yyyy} ${hh}:${mi} น.`,
+          year: '2026',
+          staffWorkers: parsedStaff.length > 0 ? parsedStaff : defaultWorkers,
+          leaderWorkers: parsedLeaders.length > 0 ? parsedLeaders : defaultLeaders,
+          hasData: true
+        });
+        setCustomFileLoaded(true);
       } catch (err) {
         alert('Failed to parse Excel file: ' + err.message);
       }
@@ -195,7 +219,7 @@ export default function SafetyLspReport() {
 
   const CURRENT_MONTH_KEY = 'SEP'; // September (Month 9)
   const CURRENT_MONTH_INDEX = 9;
-  const displayLastUpdate = data?.lastModifiedFormatted || '07/09/2026 12:39 น.';
+  const displayLastUpdate = data?.lastModifiedFormatted || '11/09/2026 08:50 น.';
 
   const getWorkerSepCount = (w) => {
     const val = w.monthly && w.monthly[CURRENT_MONTH_KEY];
@@ -210,20 +234,40 @@ export default function SafetyLspReport() {
   const leaderList = data?.leaderWorkers || defaultLeaders;
   const activeWorkers = activeTeam === 'Staff' ? staffList : leaderList;
 
-  const totalWorkers = activeWorkers.length;
-  const sepAuditsSum = activeWorkers.reduce((acc, w) => acc + getWorkerSepCount(w), 0);
-  const avgSepAudits = (sepAuditsSum / (totalWorkers || 1)).toFixed(1);
-  const onTargetCount = activeWorkers.filter(w => getWorkerSepCount(w) >= 4).length;
-  const inProgressCount = activeWorkers.filter(w => { const c = getWorkerSepCount(w); return c >= 1 && c < 4; }).length;
-  const belowTargetCount = totalWorkers - onTargetCount;
+  // Filter Categories
+  const staffCategories = ['ALL', 'BCA', 'BCB', 'LT', 'GBS+FI +Eng'];
+  const leaderCategories = ['ALL', 'BCA', 'BCB (WBR)', 'BCB (AERO)', 'BCB (Sapphire)', 'RETREAD', 'ENG'];
+  const categories = activeTeam === 'Staff' ? staffCategories : leaderCategories;
 
-  const departments = ['ALL', ...new Set(activeWorkers.map(w => w.dept).filter(Boolean))];
+  const getWorkerCategory = (w) => {
+    if (w.categoryGroup) return w.categoryGroup;
+    return activeTeam === 'Staff' ? getStaffCategoryGroup(w.dept) : getLeaderCategoryGroup(w.areaCode);
+  };
+
+  const getCategoryCount = (cat) => {
+    if (cat === 'ALL') return activeWorkers.length;
+    return activeWorkers.filter(w => getWorkerCategory(w) === cat).length;
+  };
 
   const filteredWorkers = activeWorkers.filter(w => {
-    const matchesDept = selectedDept === 'ALL' || w.dept === selectedDept;
-    const matchesSearch = !searchTerm || w.name.toLowerCase().includes(searchTerm.toLowerCase()) || w.legacy.includes(searchTerm);
+    const cat = getWorkerCategory(w);
+    const matchesDept = selectedDept === 'ALL' || cat === selectedDept;
+    const matchesSearch = !searchTerm ||
+      (w.name && w.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (w.legacy && String(w.legacy).includes(searchTerm)) ||
+      (w.title && w.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (w.areaCode && String(w.areaCode).includes(searchTerm)) ||
+      (w.dept && w.dept.toLowerCase().includes(searchTerm.toLowerCase()));
     return matchesDept && matchesSearch;
   });
+
+  const displayWorkers = selectedDept === 'ALL' ? activeWorkers : filteredWorkers;
+  const totalWorkers = displayWorkers.length;
+  const sepAuditsSum = displayWorkers.reduce((acc, w) => acc + getWorkerSepCount(w), 0);
+  const avgSepAudits = (sepAuditsSum / (totalWorkers || 1)).toFixed(1);
+  const onTargetCount = displayWorkers.filter(w => getWorkerSepCount(w) >= 4).length;
+  const inProgressCount = displayWorkers.filter(w => { const c = getWorkerSepCount(w); return c >= 1 && c < 4; }).length;
+  const belowTargetCount = totalWorkers - onTargetCount;
 
   const getBadgeStyle = (val, monthIndex) => {
     const num = Number(val);
@@ -308,7 +352,7 @@ export default function SafetyLspReport() {
         </div>
       </div>
 
-      {/* Team View Switcher Bar (Separating Staff vs Leader Shopfloor) */}
+      {/* Team View Switcher Bar (Staff vs Leader Shopfloor) */}
       <div className="bg-white rounded-2xl p-2 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center gap-2">
         <button
           onClick={() => { setActiveTeam('Staff'); setSelectedDept('ALL'); }}
@@ -319,7 +363,7 @@ export default function SafetyLspReport() {
           }`}
         >
           <Users className="w-4 h-4 text-emerald-400" />
-          <span>👔 ทีม Staff ({staffList.length} คน)</span>
+          <span>👔 ทีม Staff ({staffList.length} คน) • [BCA, BCB, LT, GBS+FI +Eng]</span>
         </button>
 
         <button
@@ -331,20 +375,23 @@ export default function SafetyLspReport() {
           }`}
         >
           <UserCheck className="w-4 h-4 text-blue-200" />
-          <span>👷 ทีม Leader Shopfloor / FLM ({leaderList.length} คน)</span>
+          <span>👷 ทีม Leader Shopfloor / FLM ({leaderList.length} คน) • [BCA, BCB WBR/AERO/Sapphire, Retread, Eng]</span>
         </button>
       </div>
 
-      {/* KPI Cards (4 Top Stat Cards - Dynamic per Active Team) */}
+      {/* KPI Cards (4 Top Stat Cards - Dynamic per Active Team / Selected Category) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Total Personnel */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
           <div>
             <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-              {activeTeam === 'Staff' ? 'Total Staff Workers' : 'Total Shopfloor Leaders'}
+              {activeTeam === 'Staff' ? 'Staff Members' : 'Shopfloor Leaders'}
+              {selectedDept !== 'ALL' && <span className="ml-1 text-slate-700">({selectedDept})</span>}
             </div>
             <div className="text-2xl font-black text-slate-800 mt-1">{totalWorkers} คน</div>
-            <div className="text-[11px] font-semibold text-emerald-600 mt-1">100% Tracked Active</div>
+            <div className="text-[11px] font-semibold text-emerald-600 mt-1">
+              {selectedDept === 'ALL' ? '100% Tracked Active' : `กลุ่ม ${selectedDept}`}
+            </div>
           </div>
           <div className={`p-3 rounded-xl ${activeTeam === 'Staff' ? 'bg-blue-50 text-blue-600' : 'bg-indigo-50 text-indigo-600'}`}>
             {activeTeam === 'Staff' ? <Users className="w-6 h-6" /> : <UserCheck className="w-6 h-6" />}
@@ -392,22 +439,33 @@ export default function SafetyLspReport() {
 
       {/* Filter and Search Bar */}
       <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
-        {/* Dept Filter Tabs */}
+        {/* Category Group Filter Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0">
-          <span className="text-xs font-bold text-slate-400 uppercase mr-2">Filter:</span>
-          {departments.map(dept => (
-            <button
-              key={dept}
-              onClick={() => setSelectedDept(dept)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                selectedDept === dept
-                  ? 'bg-slate-900 text-white shadow-sm'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              {dept}
-            </button>
-          ))}
+          <span className="text-xs font-bold text-slate-400 uppercase mr-1 flex items-center gap-1">
+            <Layers className="w-3.5 h-3.5" />
+            FILTER:
+          </span>
+          {categories.map(cat => {
+            const count = getCategoryCount(cat);
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedDept(cat)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${
+                  selectedDept === cat
+                    ? 'bg-slate-900 text-white shadow-sm ring-2 ring-slate-900/20'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                <span>{cat}</span>
+                <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-black ${
+                  selectedDept === cat ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
+                }`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Search Box */}
@@ -415,7 +473,7 @@ export default function SafetyLspReport() {
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search worker name / ID..."
+            placeholder="Search name / ID / cost center..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-9 pr-4 py-1.5 text-xs font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
@@ -460,6 +518,8 @@ export default function SafetyLspReport() {
             <FileSpreadsheet className="w-5 h-5 text-emerald-600" />
             <h2 className="font-extrabold text-slate-800 text-sm">
               2026 {activeTeam === 'Staff' ? 'Staff' : 'Leader Shopfloor (FLM)'} LSP Audit Conformance Matrix
+              {selectedDept !== 'ALL' && <span className="text-emerald-600 ml-1.5">[{selectedDept}]</span>}
+              <span className="ml-2 text-xs font-normal text-slate-500">({filteredWorkers.length} คน)</span>
             </h2>
           </div>
           <div className="text-xs font-semibold text-slate-400">
@@ -476,7 +536,7 @@ export default function SafetyLspReport() {
                 <th className="p-3 min-w-[220px]">
                   {activeTeam === 'Staff' ? 'Staff Name' : 'Leader Name & Business Title'}
                 </th>
-                <th className="p-3 w-24">Dept</th>
+                <th className="p-3 w-32">กลุ่ม / แผนก</th>
                 {months.map(m => (
                   <th key={m} className="p-2 text-center min-w-[42px]">
                     <div className="text-[9px] text-emerald-400 font-normal">AOP 4</div>
@@ -488,80 +548,86 @@ export default function SafetyLspReport() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 font-medium">
-              {filteredWorkers.map((w, idx) => (
-                <tr key={w.id || idx} className="hover:bg-slate-50/80 transition-colors">
-                  <td className="p-3 pl-4 text-center font-bold text-slate-400">{w.id}</td>
-                  <td className="p-3 font-mono text-slate-500 text-[11px]">{w.legacy}</td>
-                  <td className="p-3">
-                    <div className="font-bold text-slate-800">{w.name}</div>
-                    {w.title && (
-                      <div className="text-[10px] text-blue-600 font-semibold mt-0.5">{w.title}</div>
-                    )}
-                  </td>
-                  <td className="p-3 font-semibold text-slate-500">
-                    <span className={`px-2 py-0.5 rounded-md text-[11px] font-bold ${
-                      w.dept === 'FLM' ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-700'
-                    }`}>
-                      {w.dept}
-                    </span>
-                  </td>
-                  {months.map((m, mIdx) => {
-                    const monthNum = mIdx + 1;
-                    const val = w.monthly && w.monthly[m] !== undefined ? w.monthly[m] : '';
-                    const isFutureBlank = (val === '' || val === undefined || val === null) && monthNum > CURRENT_MONTH_INDEX;
-                    return (
-                      <td key={m} className="p-1 text-center">
-                        <span className={`inline-flex items-center justify-center w-7 h-7 rounded-lg text-[11px] transition-transform hover:scale-110 ${getBadgeStyle(val, monthNum)}`}>
-                          {isFutureBlank ? '-' : (val !== undefined && val !== '' ? val : 0)}
+              {filteredWorkers.map((w, idx) => {
+                const grp = getWorkerCategory(w);
+                return (
+                  <tr key={w.id || idx} className="hover:bg-slate-50/80 transition-colors">
+                    <td className="p-3 pl-4 text-center font-bold text-slate-400">{w.id || idx + 1}</td>
+                    <td className="p-3 font-mono text-slate-500 text-[11px]">{w.legacy}</td>
+                    <td className="p-3">
+                      <div className="font-bold text-slate-800">{w.name}</div>
+                      {w.title && (
+                        <div className="text-[10px] text-blue-600 font-semibold mt-0.5">{w.title}</div>
+                      )}
+                    </td>
+                    <td className="p-3 font-semibold text-slate-500">
+                      <div className="flex flex-col gap-1 items-start">
+                        <span className={`px-2 py-0.5 rounded-md text-[10px] font-extrabold border ${getGroupBadgeColor(grp)}`}>
+                          {grp}
                         </span>
-                      </td>
-                    );
-                  })}
-                  <td className="p-3 text-center font-bold">
-                    {(() => {
-                      const sepVal = getWorkerSepCount(w);
+                        <span className="text-[10px] text-slate-400 font-mono">
+                          {activeTeam === 'Staff' ? (w.dept || '') : (w.areaCode ? `CC: ${w.areaCode}` : '')}
+                        </span>
+                      </div>
+                    </td>
+                    {months.map((m, mIdx) => {
+                      const monthNum = mIdx + 1;
+                      const val = w.monthly && w.monthly[m] !== undefined ? w.monthly[m] : '';
+                      const isFutureBlank = (val === '' || val === undefined || val === null) && monthNum > CURRENT_MONTH_INDEX;
                       return (
-                        <div className="flex items-center justify-center">
-                          <span className={`px-2.5 py-1 rounded-lg font-black text-xs min-w-[70px] text-center shadow-sm ${
-                            sepVal >= 4 ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' :
-                            sepVal >= 1 ? 'bg-amber-100 text-amber-900 border border-amber-300' :
-                            'bg-rose-100 text-rose-800 border border-rose-300'
-                          }`}>
-                            {sepVal} / 4 ครั้ง
+                        <td key={m} className="p-1 text-center">
+                          <span className={`inline-flex items-center justify-center w-7 h-7 rounded-lg text-[11px] transition-transform hover:scale-110 ${getBadgeStyle(val, monthNum)}`}>
+                            {isFutureBlank ? '-' : (val !== undefined && val !== '' ? val : 0)}
                           </span>
-                        </div>
+                        </td>
                       );
-                    })()}
-                  </td>
-                  <td className="p-3 text-center pr-4">
-                    {(() => {
-                      const sepVal = getWorkerSepCount(w);
-                      if (sepVal >= 4) {
+                    })}
+                    <td className="p-3 text-center font-bold">
+                      {(() => {
+                        const sepVal = getWorkerSepCount(w);
                         return (
-                          <span className="px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1 shadow-sm">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                            Pass
-                          </span>
+                          <div className="flex items-center justify-center">
+                            <span className={`px-2.5 py-1 rounded-lg font-black text-xs min-w-[70px] text-center shadow-sm ${
+                              sepVal >= 4 ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' :
+                              sepVal >= 1 ? 'bg-amber-100 text-amber-900 border border-amber-300' :
+                              'bg-rose-100 text-rose-800 border border-rose-300'
+                            }`}>
+                              {sepVal} / 4 ครั้ง
+                            </span>
+                          </div>
                         );
-                      } else if (sepVal >= 1) {
-                        return (
-                          <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1 shadow-sm">
-                            <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
-                            Alert ({sepVal}/4)
-                          </span>
-                        );
-                      } else {
-                        return (
-                          <span className="px-2.5 py-1 bg-rose-50 text-rose-700 border border-rose-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1 shadow-sm">
-                            <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
-                            Alert (0/4)
-                          </span>
-                        );
-                      }
-                    })()}
-                  </td>
-                </tr>
-              ))}
+                      })()}
+                    </td>
+                    <td className="p-3 text-center pr-4">
+                      {(() => {
+                        const sepVal = getWorkerSepCount(w);
+                        if (sepVal >= 4) {
+                          return (
+                            <span className="px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1 shadow-sm">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                              Pass
+                            </span>
+                          );
+                        } else if (sepVal >= 1) {
+                          return (
+                            <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1 shadow-sm">
+                              <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+                              Alert ({sepVal}/4)
+                            </span>
+                          );
+                        } else {
+                          return (
+                            <span className="px-2.5 py-1 bg-rose-50 text-rose-700 border border-rose-200 rounded-full font-extrabold text-[10px] inline-flex items-center gap-1 shadow-sm">
+                              <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
+                              Alert (0/4)
+                            </span>
+                          );
+                        }
+                      })()}
+                    </td>
+                  </tr>
+                );
+              })}
               {filteredWorkers.length === 0 && (
                 <tr>
                   <td colSpan={17} className="p-8 text-center text-slate-400 font-semibold">

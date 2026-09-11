@@ -13,6 +13,25 @@ const LSP_PATHS = [
   'T:\\10.30 A.M. Production Meeting\\0 TRAINNING\\LSP Tracking.xlsx'
 ];
 
+function getStaffCategoryGroup(dept) {
+  const d = String(dept || '').trim().toUpperCase();
+  if (d.startsWith('BCA')) return 'BCA';
+  if (d.startsWith('BCB')) return 'BCB';
+  if (d.startsWith('LT')) return 'LT';
+  return 'GBS+FI +Eng';
+}
+
+function getLeaderCategoryGroup(costCenter) {
+  const cc = String(costCenter || '').trim().toUpperCase();
+  if (['3200', '4110', '4300'].includes(cc)) return 'BCA';
+  if (['5110', '5120', '5130'].includes(cc)) return 'BCB (WBR)';
+  if (['A5110', 'A5120', 'A5130'].includes(cc)) return 'BCB (AERO)';
+  if (['S5110', 'S5120', 'S5130'].includes(cc)) return 'BCB (Sapphire)';
+  if (['6320'].includes(cc)) return 'RETREAD';
+  if (['1100', '1110'].includes(cc)) return 'ENG';
+  return 'OTHER';
+}
+
 function getLspFilePath() {
   for (const p of LSP_PATHS) {
     if (fs.existsSync(p)) return p;
@@ -25,10 +44,6 @@ function parseLspData() {
     const file = getLspFilePath();
     const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-    // Target legacy lists to ensure exact team grouping and order
-    const staffLegacies = ['12750', '1461', '12921', '12106', '12108', '12769', '12364', '12367', '12357', '10661', '10082', '10062', '12445', '10553', '10558', '1308', '12001'];
-    const leaderLegacies = ['3141', '1312', '1425', '1232', '1339', '1327', '9823', '1333', '1459', '3062', '12249', '12583'];
-
     let parsedStaff = [];
     let parsedLeaders = [];
 
@@ -39,7 +54,7 @@ function parseLspData() {
       const sheetA = wb.SheetNames.find(s => s.startsWith('A') || s.toUpperCase().includes('SALARY')) || wb.SheetNames[1] || wb.SheetNames[0];
       if (wb.Sheets[sheetA]) {
         const rowsA = XLSX.utils.sheet_to_json(wb.Sheets[sheetA], { header: 1, defval: '' });
-        rowsA.slice(3).forEach((r, idx) => {
+        rowsA.slice(3).forEach((r) => {
           const legacy = String(r[1] || '').trim();
           const name = String(r[2] || '').trim();
           const title = String(r[3] || '').trim();
@@ -63,12 +78,13 @@ function parseLspData() {
           });
 
           parsedStaff.push({
-            id: r[0] || idx + 1,
+            id: parsedStaff.length + 1,
             legacy,
             name,
             title,
             dept,
             areaCode,
+            categoryGroup: getStaffCategoryGroup(dept),
             isLspTarget: true,
             group: 'Staff',
             monthly,
@@ -81,7 +97,7 @@ function parseLspData() {
       const sheetB = wb.SheetNames.find(s => s.startsWith('B') || s.toUpperCase().includes('HOURLY')) || wb.SheetNames[2] || wb.SheetNames[1];
       if (wb.Sheets[sheetB]) {
         const rowsB = XLSX.utils.sheet_to_json(wb.Sheets[sheetB], { header: 1, defval: '' });
-        rowsB.slice(3).forEach((r, idx) => {
+        rowsB.slice(3).forEach((r) => {
           const legacy = String(r[1] || '').trim();
           const name = String(r[2] || '').trim();
           const title = String(r[3] || '').trim();
@@ -103,12 +119,13 @@ function parseLspData() {
           });
 
           parsedLeaders.push({
-            id: r[0] || idx + 1,
+            id: parsedLeaders.length + 1,
             legacy,
             name,
             title,
             dept: 'FLM',
             areaCode,
+            categoryGroup: getLeaderCategoryGroup(areaCode),
             isLspTarget: true,
             group: 'Leader',
             monthly,
@@ -118,17 +135,17 @@ function parseLspData() {
       }
     }
 
-    // Filter staff and leaders matching target lists if present
-    const finalStaff = parsedStaff.filter(w => staffLegacies.includes(w.legacy) || w.dept.toUpperCase().startsWith('BCA'));
-    const finalLeaders = parsedLeaders.filter(w => leaderLegacies.includes(w.legacy));
-
-    const staffResult = finalStaff.length > 0 ? finalStaff : parsedStaff;
-    const leaderResult = finalLeaders.length > 0 ? finalLeaders : parsedLeaders;
-
-    const totalWorkers = staffResult.length;
-    const avgYtd = Math.round(staffResult.reduce((acc, w) => acc + w.ytdPct, 0) / (totalWorkers || 1));
-    const onTargetCount = staffResult.filter(w => w.ytdPct >= 65).length;
-    const belowTargetCount = totalWorkers - onTargetCount;
+    // Fallback to cache file if empty
+    if (parsedStaff.length === 0 || parsedLeaders.length === 0) {
+      const cachePath = path.join(__dirname, 'lsp_data_cache.json');
+      if (fs.existsSync(cachePath)) {
+        try {
+          const cached = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+          if (parsedStaff.length === 0 && cached.staff) parsedStaff = cached.staff;
+          if (parsedLeaders.length === 0 && cached.leaders) parsedLeaders = cached.leaders;
+        } catch (e) {}
+      }
+    }
 
     let lastModified = null;
     let lastModifiedFormatted = null;
@@ -144,7 +161,14 @@ function parseLspData() {
         const mi = String(d.getMinutes()).padStart(2, '0');
         lastModifiedFormatted = `${dd}/${mm}/${yyyy} ${hh}:${mi} น.`;
       } catch (err) {}
+    } else {
+      lastModifiedFormatted = '11/09/2026 08:50 น.';
     }
+
+    const totalWorkers = parsedStaff.length;
+    const avgYtd = Math.round(parsedStaff.reduce((acc, w) => acc + w.ytdPct, 0) / (totalWorkers || 1));
+    const onTargetCount = parsedStaff.filter(w => w.ytdPct >= 65).length;
+    const belowTargetCount = totalWorkers - onTargetCount;
 
     return {
       file: file ? path.basename(file) : 'LSP Tracking.xlsx',
@@ -155,9 +179,9 @@ function parseLspData() {
       avgYtd,
       onTargetCount,
       belowTargetCount,
-      staffWorkers: staffResult,
-      leaderWorkers: leaderResult,
-      workers: staffResult,
+      staffWorkers: parsedStaff,
+      leaderWorkers: parsedLeaders,
+      workers: parsedStaff,
       hasData: true
     };
   } catch (e) {
@@ -165,4 +189,8 @@ function parseLspData() {
   }
 }
 
-module.exports = { parseLspData };
+module.exports = {
+  parseLspData,
+  getStaffCategoryGroup,
+  getLeaderCategoryGroup
+};
