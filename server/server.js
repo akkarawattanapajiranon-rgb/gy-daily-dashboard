@@ -348,9 +348,10 @@ const { bangkokProductionDate, ExtruderTimelineInputError } = require('./extrude
 
 app.get('/api/extruder-timeline', async (req, res) => {
   const date = req.query.date || bangkokProductionDate();
-  console.log(`Fetching Extruder Timeline for date: ${date}`);
+  const forceRefresh = req.query.refresh === 'true';
+  console.log(`Fetching Extruder Timeline for date: ${date}${forceRefresh ? ' (forceRefresh)' : ''}`);
   try {
-    const data = await getExtruderTimeline(date);
+    const data = await getExtruderTimeline(date, undefined, forceRefresh);
     res.setHeader('Cache-Control', 'no-store, max-age=0');
     res.json(data);
   } catch (err) {

@@ -179,7 +179,7 @@ async function refresh(date, day) {
   saveDayToDisk(date, day);
 }
 
-async function getExtruderTimeline(date, now = () => new Date()) {
+async function getExtruderTimeline(date, now = () => new Date(), forceRefresh = false) {
   if (!isValidExtruderDate(date)) {
     throw new ExtruderTimelineInputError("date must use YYYY-MM-DD");
   }
@@ -204,20 +204,32 @@ async function getExtruderTimeline(date, now = () => new Date()) {
     const l = day.lines.get(line);
     return l && l.rows && l.rows.length > 0;
   });
+  const hasAnyData = EXTRUDER_LINES.some(line => {
+    const l = day.lines.get(line);
+    return l && l.rows && l.rows.length > 0;
+  });
+
   const ttl = isCurrent ? REFRESH_AFTER_MS : 86400000;
   const ageMs = Date.now() - day.fetchedAtMs;
-  const cached = allLinesHaveData && (ageMs < ttl || !isCurrent);
+  const cached = allLinesHaveData && (ageMs < ttl || !isCurrent) && !forceRefresh;
 
   if (!cached) {
     const current = day;
     const pending = current.inFlight
       || (current.inFlight = refresh(date, current).finally(() => { current.inFlight = null; }));
-    await pending.catch(() => {});
+
+    // Non-blocking serving: if we already have data from disk/memory and not a manual forced refresh,
+    // serve immediately without making the user wait, and let refresh finish in the background.
+    if (hasAnyData && !forceRefresh) {
+      pending.catch((err) => console.warn(`[Extruder Store] Background refresh error for ${date}:`, err.message));
+    } else {
+      await pending.catch(() => {});
+    }
   }
 
   return buildExtruderTimeline({
     date,
-    cached,
+    cached: Boolean(cached || hasAnyData),
     lines: [...day.lines.entries()].map(([line, state]) => ({
       line,
       rows: state.rows,
@@ -227,6 +239,52 @@ async function getExtruderTimeline(date, now = () => new Date()) {
   });
 }
 
+let daemonTimer = null;
+
+async function syncCurrentDayDaemon() {
+  const today = bangkokProductionDate();
+  try {
+    let day = days.get(today);
+    if (!day || [...day.lines.values()].some(l => !l.rows || l.rows.length === 0)) {
+      const diskDay = loadDayFromDisk(today);
+      if (diskDay) {
+        day = diskDay;
+        days.set(today, day);
+      } else if (!day) {
+        day = emptyDay();
+        days.set(today, day);
+      }
+    }
+
+    if (!day.inFlight) {
+      day.inFlight = refresh(today, day).finally(() => {
+        day.inFlight = null;
+      });
+      await day.inFlight;
+      const counts = [...day.lines.entries()].map(([k, v]) => `${k}: ${v.rows.length}`).join(', ');
+      console.log(`[Extruder Daemon] Synced and saved ${today} to disk (${counts}) at ${new Date().toLocaleTimeString('en-GB')}`);
+    }
+  } catch (e) {
+    console.warn(`[Extruder Daemon] Sync error for ${today}:`, e.message);
+  }
+}
+
+function startExtruderDaemon() {
+  if (daemonTimer) return;
+  console.log('[Extruder Daemon] Starting automatic 5-minute background saver for current day...');
+  // Initial sync after 3s delay
+  setTimeout(() => {
+    syncCurrentDayDaemon().catch(() => {});
+  }, 3000);
+  // Recurring every 5 minutes (REFRESH_AFTER_MS)
+  daemonTimer = setInterval(() => {
+    syncCurrentDayDaemon().catch(() => {});
+  }, REFRESH_AFTER_MS);
+}
+
+// Auto-start daemon when dayStore module is loaded
+startExtruderDaemon();
+
 function __resetStore() {
   days.clear();
 }
@@ -234,5 +292,7 @@ function __resetStore() {
 module.exports = {
   mergeRows,
   getExtruderTimeline,
+  startExtruderDaemon,
+  syncCurrentDayDaemon,
   __resetStore
 };
