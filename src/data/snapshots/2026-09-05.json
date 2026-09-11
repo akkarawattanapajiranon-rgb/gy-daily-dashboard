@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-11T00:02:07.777Z",
+  "generatedAt": "2026-09-11T01:31:46.461Z",
   "waste": {
     "date": "2026-09-05",
     "millingSummary": 185.9,
@@ -295,7 +295,7 @@
   "roll3": {
     "date": "2026-09-05",
     "day": 5,
-    "sheet": "windup",
+    "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
     "totalRolls": 39,
@@ -1754,28 +1754,28 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.36,
+          "avg": 57.16,
           "target": 62,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "tuber": {
-          "avg": 62.13,
+          "avg": 61.05,
           "target": 62,
-          "count": 3,
-          "isMet": true
+          "count": 4,
+          "isMet": false
         },
         "fischer": {
-          "avg": 50.74,
+          "avg": 51.36,
           "target": 60,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "mixing": {
-          "avg": 78.78,
+          "avg": 73.94,
           "target": 76.6,
           "count": 5,
-          "isMet": true
+          "isMet": false
         }
       },
       {

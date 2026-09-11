@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-11T00:01:43.267Z",
+  "generatedAt": "2026-09-11T01:31:44.041Z",
   "waste": {
     "date": "2026-09-07",
     "millingSummary": 124.8,
@@ -256,7 +256,7 @@
   "roll3": {
     "date": "2026-09-07",
     "day": 7,
-    "sheet": "windup",
+    "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
     "totalRolls": 42,
