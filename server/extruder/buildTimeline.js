@@ -94,9 +94,8 @@ function buildExtruderLine(line, rows, truncated, error = null) {
         act = null;
       }
     } else if (isDuplexOrTuber) {
-      // Tuber/DUPLEX: ใช้ Hpress2 เป็นตัวชี้วัด — ถ้า < 3.0 bar = เครื่องไม่ทำงาน
-      const isHpress2Active = hp2 > 3.0;
-      if (!isHpress2Active && !hasSpeed) {
+      // Tuber/DUPLEX: ถ้า Hpress 2 ต่ำกว่า 4 bar (< 4.0 bar) ให้ถือว่าไม่ได้รันงาน ให้โชว์สถานะเป็นสีดำ (act = null)
+      if (hp2 < 4.0) {
         act = null;
       }
     } else {

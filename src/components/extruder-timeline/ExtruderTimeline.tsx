@@ -439,12 +439,22 @@ export default function ExtruderTimeline({
   const lanes = useMemo(() => {
     if (!response) return [];
     return response.lines.map((line) => {
-      const samples = filterSamplesToWindow(line.samples, bounds.startMs, bounds.endMs);
+      const isDuplex = line.line.toUpperCase().includes("DUPLEX") || line.line.toUpperCase().includes("TUBER");
+      const lineSamples = isDuplex
+        ? line.samples.map(s => {
+            const hp = s[4];
+            if (hp !== undefined && hp !== null && hp < 4.0) {
+              return [s[0], null, s[2], s[3], s[4]] as ExtruderSample;
+            }
+            return s;
+          })
+        : line.samples;
+      const samples = filterSamplesToWindow(lineSamples, bounds.startMs, bounds.endMs);
       const runs = clampRunsToWindow(line.runs, bounds.startMs, bounds.endMs);
       // Segments are built from the FULL sample list, not the filtered one: the
       // first in-window sample must measure its gap against the real previous
       // reading, which may sit just before the window.
-      const segments = buildExtruderSegments(line.samples, bounds.startMs, bounds.endMs);
+      const segments = buildExtruderSegments(lineSamples, bounds.startMs, bounds.endMs);
       // Clamped to now, so a live shift's not-yet-elapsed remainder is never
       // counted as missing time.
       const gaps = buildExtruderGaps(segments, bounds.startMs, bounds.endMs, Date.now());
