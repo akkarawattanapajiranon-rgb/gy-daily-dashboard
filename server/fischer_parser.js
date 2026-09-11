@@ -8,6 +8,62 @@ const FISCHER_OEE_FILE = path.join(FISCHER_DIR, 'OEE - 2026 TRACKING - SHEAR FIS
 const FISCHER_CHECK_DIR = path.join(FISCHER_DIR, '2026');
 
 /**
+ * Helper to match date in Excel (handles serial dates, US/Thai DD/MM swaps, and string variations)
+ */
+function isDateMatch(rawDate, targetDateStr, targetYear, targetMonth, targetDay) {
+  if (rawDate === '' || rawDate === undefined || rawDate === null) return false;
+
+  if (typeof rawDate === 'number') {
+    const d = XLSX.SSF.parse_date_code(rawDate);
+    if (!d) return false;
+    if (d.y === targetYear && d.m === targetMonth && d.d === targetDay) return true;
+    // Excel locale swap: operator types DD/MM/YY (e.g. 11/9/26) into US Excel (stored as Nov 9, 2026: m=11, d=9)
+    if (d.y === targetYear && d.m === targetDay && d.d === targetMonth) return true;
+    return false;
+  }
+
+  if (typeof rawDate === 'string') {
+    const s = rawDate.trim();
+    if (!s) return false;
+    if (s === targetDateStr) return true;
+
+    const isoMatch = s.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})$/);
+    if (isoMatch) {
+      const y = parseInt(isoMatch[1], 10);
+      const m = parseInt(isoMatch[2], 10);
+      const d = parseInt(isoMatch[3], 10);
+      if (y === targetYear && m === targetMonth && d === targetDay) return true;
+      if (y === targetYear && m === targetDay && d === targetMonth) return true;
+    }
+
+    const slashMatch = s.match(/^(\d{1,2})[\/\-](\d{1,2})(?:[\/\-](\d{2,4}))?$/);
+    if (slashMatch) {
+      const p1 = parseInt(slashMatch[1], 10);
+      const p2 = parseInt(slashMatch[2], 10);
+      let p3 = slashMatch[3] ? parseInt(slashMatch[3], 10) : targetYear;
+      if (p3 < 100) p3 += 2000;
+      if (p3 === targetYear) {
+        if ((p1 === targetDay && p2 === targetMonth) || (p1 === targetMonth && p2 === targetDay)) {
+          return true;
+        }
+      }
+    }
+
+    const monthNames = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    const targetMonthName = monthNames[targetMonth - 1];
+    const lower = s.toLowerCase();
+    if (lower.includes(targetMonthName)) {
+      const dayMatch = lower.match(/\b(\d{1,2})\b/);
+      if (dayMatch && parseInt(dayMatch[1], 10) === targetDay) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+/**
  * 1. Parse OEE Data from OEE - 2026 TRACKING - SHEAR FISCHER.xlsx
  */
 function getOeeData(dateStr) {
@@ -17,6 +73,8 @@ function getOeeData(dateStr) {
 
   const [yearStr, monthStr, dayStr] = dateStr.split('-');
   const monthNum = parseInt(monthStr, 10);
+  const dayNum = parseInt(dayStr, 10);
+  const yearNum = parseInt(yearStr, 10);
 
   const wb = XLSX.readFile(FISCHER_OEE_FILE);
 
@@ -33,17 +91,7 @@ function getOeeData(dateStr) {
   data.forEach((row, i) => {
     if (i === 0) return;
     const rawDate = row[0];
-    if (rawDate === '' || rawDate === undefined) return;
-
-    let dStr = '';
-    if (typeof rawDate === 'number') {
-      const d = XLSX.SSF.parse_date_code(rawDate);
-      dStr = `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`;
-    } else if (typeof rawDate === 'string') {
-      dStr = rawDate.trim();
-    }
-
-    if (dStr === dateStr) {
+    if (isDateMatch(rawDate, dateStr, yearNum, monthNum, dayNum)) {
       matchedRow = row;
     }
   });
@@ -84,6 +132,8 @@ function getChecksheetData(dateStr) {
 
   const [yearStr, monthStr, dayStr] = dateStr.split('-');
   const monthNum = parseInt(monthStr, 10);
+  const dayNum = parseInt(dayStr, 10);
+  const yearNum = parseInt(yearStr, 10);
 
   const files = fs.readdirSync(FISCHER_CHECK_DIR);
   const checkFile = findMonthlyFile(files, monthNum, yearStr, ['fischer', 'check']);
@@ -124,17 +174,7 @@ function getChecksheetData(dateStr) {
     if (isDateMissing) {
       matchesDate = true;
     } else {
-      const rawDate = row[0];
-      if (rawDate !== '' && rawDate !== undefined) {
-        let dStr = '';
-        if (typeof rawDate === 'number') {
-          const d = XLSX.SSF.parse_date_code(rawDate);
-          dStr = `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`;
-        } else if (typeof rawDate === 'string') {
-          dStr = rawDate.trim();
-        }
-        if (dStr === dateStr) matchesDate = true;
-      }
+      matchesDate = isDateMatch(row[0], dateStr, yearNum, monthNum, dayNum);
     }
 
     if (matchesDate) {

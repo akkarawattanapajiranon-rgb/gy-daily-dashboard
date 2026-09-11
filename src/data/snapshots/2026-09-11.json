@@ -147,7 +147,41 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 30,
+      "totalWbr": 27,
+      "totalSapphire": 3,
+      "totalAngleChanges": 9,
+      "totalNormal": 24,
+      "totalSticky": 3,
+      "normalPct": 88.89,
+      "stickyPct": 11.11,
+      "shifts": {
+        "shift1": {
+          "wbr": 27,
+          "sapphire": 3,
+          "angleChanges": 9,
+          "normal": 24,
+          "sticky": 3,
+          "total": 30
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
