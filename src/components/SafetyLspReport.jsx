@@ -3,10 +3,11 @@ import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriang
 import * as XLSX from 'xlsx';
 import cachedLspFallback from '../data/lsp_data_cache.json';
 
-// Staff: Group by first 3 characters into 4 categories: BCA, BCB, LT, GBS+FI +Eng
+// Staff: Group by first 3 characters, with BCB-A separated: BCA, BCB, BCB-A, LT, GBS+FI +Eng
 export const getStaffCategoryGroup = (dept) => {
   const d = String(dept || '').trim().toUpperCase();
   if (d.startsWith('BCA')) return 'BCA';
+  if (d === 'BCB-A' || d.startsWith('BCB-A')) return 'BCB-A';
   if (d.startsWith('BCB')) return 'BCB';
   if (d.startsWith('LT')) return 'LT';
   return 'GBS+FI +Eng';
@@ -34,6 +35,8 @@ export const getGroupBadgeColor = (grp) => {
   switch (grp) {
     case 'BCA':
       return 'bg-emerald-50 text-emerald-800 border-emerald-300';
+    case 'BCB-A':
+      return 'bg-sky-50 text-sky-800 border-sky-300';
     case 'BCB':
     case 'BCB (WBR)':
       return 'bg-blue-50 text-blue-800 border-blue-300';
@@ -235,7 +238,7 @@ export default function SafetyLspReport() {
   const activeWorkers = activeTeam === 'Staff' ? staffList : leaderList;
 
   // Filter Categories
-  const staffCategories = ['ALL', 'BCA', 'BCB', 'LT', 'GBS+FI +Eng'];
+  const staffCategories = ['ALL', 'BCA', 'BCB', 'BCB-A', 'LT', 'GBS+FI +Eng'];
   const leaderCategories = ['ALL', 'BCA', 'BCB (WBR)', 'BCB (AERO)', 'BCB (Sapphire)', 'RETREAD', 'ENG'];
   const categories = activeTeam === 'Staff' ? staffCategories : leaderCategories;
 
@@ -363,7 +366,7 @@ export default function SafetyLspReport() {
           }`}
         >
           <Users className="w-4 h-4 text-emerald-400" />
-          <span>👔 ทีม Staff ({staffList.length} คน) • [BCA, BCB, LT, GBS+FI +Eng]</span>
+          <span>👔 ทีม Staff ({staffList.length} คน) • [BCA, BCB, BCB-A, LT, GBS+FI +Eng]</span>
         </button>
 
         <button
