@@ -619,21 +619,9 @@ export default function SafetyLspReport() {
                       )}
                     </td>
                     <td className="p-3 font-semibold text-slate-500">
-                      <div className="flex flex-col gap-1 items-start">
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className={`px-2 py-0.5 rounded-md text-[10px] font-extrabold border ${getGroupBadgeColor(grp)}`}>
-                            {grp}
-                          </span>
-                          {activeTeam === 'Staff' && w.department && (
-                            <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-bold text-[9px] border border-slate-200">
-                              {w.department}
-                            </span>
-                          )}
-                        </div>
-                        <span className="text-[10px] text-slate-400 font-mono">
-                          {activeTeam === 'Staff' ? (w.bc ? `BC: ${w.bc}${w.costCenter ? ` • CC: ${w.costCenter}` : ''}` : w.dept || '') : (w.areaCode ? `CC: ${w.areaCode}` : '')}
-                        </span>
-                      </div>
+                      <span className={`px-2 py-0.5 rounded-md text-[10px] font-extrabold border ${getGroupBadgeColor(grp)}`}>
+                        {grp}
+                      </span>
                     </td>
                     {months.map((m, mIdx) => {
                       const monthNum = mIdx + 1;
