@@ -277,8 +277,8 @@ function App() {
 
             {/* Quad & Tuber Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <QuadReport data={quadData} loading={isLoading} date={selectedDate} />
-              <TuberReport data={tuberData} loading={isLoading} date={selectedDate} />
+              <QuadReport data={quadData} loading={isLoading} />
+              <TuberReport data={tuberData} loading={isLoading} />
             </div>
 
             {/* 4 Roll #2 Section */}

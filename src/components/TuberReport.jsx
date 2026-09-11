@@ -1,8 +1,7 @@
 import React from 'react';
 import { Cpu, Tag, Clock, Package } from 'lucide-react';
-import ExtruderIdleSection from './ExtruderIdleSection';
 
-export default function TuberReport({ data, loading, date }) {
+export default function TuberReport({ data, loading }) {
   if (loading) {
     return (
       <div className="bg-white rounded-xl shadow-xs border border-slate-100 p-6 flex justify-center items-center h-48">
@@ -148,9 +147,6 @@ export default function TuberReport({ data, loading, date }) {
           })}
         </div>
       )}
-
-      {/* Extruder No-Data Periods (Oracle sensor — DUPLEX line) */}
-      <ExtruderIdleSection date={date} lineName="DUPLEX" accentColor="emerald" />
     </div>
   );
 }
