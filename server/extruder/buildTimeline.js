@@ -93,6 +93,12 @@ function buildExtruderLine(line, rows, truncated, error = null) {
       if (!isHpress3Active && !hasSpeed) {
         act = null;
       }
+    } else if (isDuplexOrTuber) {
+      // Tuber/DUPLEX: ใช้ Hpress2 เป็นตัวชี้วัด — ถ้า < 3.0 bar = เครื่องไม่ทำงาน
+      const isHpress2Active = hp2 > 3.0;
+      if (!isHpress2Active && !hasSpeed) {
+        act = null;
+      }
     } else {
       const hasPressureSensors = hp1 > 0 || hp2 > 0 || hp3 > 0 || hp4 > 0;
       const isStopped = hasPressureSensors && maxHp <= 3.0;

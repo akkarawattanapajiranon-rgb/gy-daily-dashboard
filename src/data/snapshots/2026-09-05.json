@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-10T08:02:01.570Z",
+  "generatedAt": "2026-09-11T00:01:46.375Z",
   "waste": {
     "date": "2026-09-05",
     "millingSummary": 185.9,
@@ -362,15 +362,15 @@
     "date": "2026-09-05",
     "day": 5,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 105,
-    "totalRolls": 105,
-    "totalMeters": 12290,
+    "totalQty": 112,
+    "totalRolls": 112,
+    "totalMeters": 13540,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 75,
-        "meters": 4990,
+        "qty": 80,
+        "meters": 6240,
         "items": [
           {
             "sapCode": "PL08365",
@@ -392,6 +392,13 @@
             "qty": 12,
             "meters": 420,
             "unit": "ม้วน"
+          },
+          {
+            "sapCode": "PL07120",
+            "code": "WA8X",
+            "qty": 5,
+            "meters": 1250,
+            "unit": "คัน"
           },
           {
             "sapCode": "LD03602",
@@ -433,7 +440,7 @@
       "shift2": {
         "shiftNum": 2,
         "name": "กะ 2 (Shift 2)",
-        "qty": 13,
+        "qty": 15,
         "meters": 3250,
         "items": [
           {
@@ -463,6 +470,20 @@
             "qty": 2,
             "meters": 500,
             "unit": "คัน"
+          },
+          {
+            "sapCode": "GF00152",
+            "code": "B1443",
+            "qty": 1,
+            "meters": 0,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "GF00013",
+            "code": "F4111",
+            "qty": 1,
+            "meters": 0,
+            "unit": "ม้วน"
           },
           {
             "sapCode": "LD03062",
@@ -595,6 +616,18 @@
         }
       },
       {
+        "code": "WA8X",
+        "sapCode": "PL07120",
+        "qty": 8,
+        "meters": 2000,
+        "unit": "คัน",
+        "shifts": {
+          "1": 5,
+          "2": 1,
+          "3": 2
+        }
+      },
+      {
         "code": "WYAF",
         "sapCode": "LD03602",
         "qty": 7,
@@ -633,12 +666,12 @@
       {
         "code": "F4111",
         "sapCode": "GF00013",
-        "qty": 4,
+        "qty": 5,
         "meters": 800,
         "unit": "ม้วน",
         "shifts": {
           "1": 0,
-          "2": 0,
+          "2": 1,
           "3": 4
         }
       },
@@ -655,15 +688,15 @@
         }
       },
       {
-        "code": "WA8X",
-        "sapCode": "LD03442",
-        "qty": 3,
-        "meters": 750,
-        "unit": "คัน",
+        "code": "B1443",
+        "sapCode": "GF00152",
+        "qty": 1,
+        "meters": 0,
+        "unit": "ม้วน",
         "shifts": {
           "1": 0,
           "2": 1,
-          "3": 2
+          "3": 0
         }
       },
       {
@@ -1739,7 +1772,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 77.47,
+          "avg": 76.97,
           "target": 76.6,
           "count": 4,
           "isMet": true
