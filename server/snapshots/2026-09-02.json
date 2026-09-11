@@ -1,6 +1,6 @@
 {
   "date": "2026-09-02",
-  "generatedAt": "2026-09-10T02:37:05.645Z",
+  "generatedAt": "2026-09-11T03:27:37.076Z",
   "waste": {
     "date": "2026-09-02",
     "millingSummary": 198,
@@ -390,15 +390,15 @@
     "date": "2026-09-02",
     "day": 2,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 112,
-    "totalRolls": 112,
-    "totalMeters": 13550,
+    "totalQty": 118,
+    "totalRolls": 118,
+    "totalMeters": 15050,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 74,
-        "meters": 4740,
+        "qty": 80,
+        "meters": 6240,
         "items": [
           {
             "sapCode": "PL08365",
@@ -415,10 +415,10 @@
             "unit": "ม้วน"
           },
           {
-            "sapCode": "LD03442",
+            "sapCode": "PL07120",
             "code": "WA8X",
-            "qty": 4,
-            "meters": 1000,
+            "qty": 10,
+            "meters": 2500,
             "unit": "คัน"
           },
           {
@@ -615,6 +615,18 @@
         }
       },
       {
+        "code": "WA8X",
+        "sapCode": "PL07120",
+        "qty": 15,
+        "meters": 3750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 10,
+          "2": 2,
+          "3": 3
+        }
+      },
+      {
         "code": "WI3B",
         "sapCode": "PL07225",
         "qty": 12,
@@ -635,18 +647,6 @@
         "shifts": {
           "1": 4,
           "2": 4,
-          "3": 3
-        }
-      },
-      {
-        "code": "WA8X",
-        "sapCode": "LD03442",
-        "qty": 9,
-        "meters": 2250,
-        "unit": "คัน",
-        "shifts": {
-          "1": 4,
-          "2": 2,
           "3": 3
         }
       },
@@ -1736,28 +1736,28 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.36,
+          "avg": 57.16,
           "target": 62,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "tuber": {
-          "avg": 62.13,
+          "avg": 61.05,
           "target": 62,
-          "count": 3,
-          "isMet": true
+          "count": 4,
+          "isMet": false
         },
         "fischer": {
-          "avg": 50.74,
+          "avg": 51.36,
           "target": 60,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "mixing": {
-          "avg": 77.1,
+          "avg": 75.7,
           "target": 76.6,
-          "count": 4,
-          "isMet": true
+          "count": 5,
+          "isMet": false
         }
       },
       {
@@ -1852,6 +1852,125 @@
           "count": 0,
           "isMet": false
         }
+      }
+    ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "02",
+    "_date": "2026-09-02",
+    "totalDelayMin": 570,
+    "totalDelayHours": 9.5,
+    "totalExtrusionMin": 210,
+    "totalExtrusionHours": 3.5,
+    "totalCompMin": 360,
+    "totalCompHours": 6,
+    "summary": {
+      "extrusionCount": 1,
+      "compCount": 6,
+      "totalItems": 7
+    },
+    "items": [
+      {
+        "id": "25-0",
+        "machine": "UG",
+        "rawText": "d/l tread > 03.30 - 07.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "03.30 - 07.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "29-1",
+        "machine": "UI",
+        "rawText": "d/l chafer",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "31-2",
+        "machine": "UI",
+        "rawText": "d/l band 2 > 04.00 - 06.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "04.00 - 06.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "33-3",
+        "machine": "UJ",
+        "rawText": "d/l band6=19..00-20.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "38-4",
+        "machine": "UL",
+        "rawText": "d/l chafer",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "40-5",
+        "machine": "UL",
+        "rawText": "d/l band 2 > 04.00 - 06.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "04.00 - 06.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "48-6",
+        "machine": "UO",
+        "rawText": "d/l bead 18.00-20.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "18.00 - 20.00",
+        "durationMin": 120,
+        "durationHours": 2
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(2)",
+    "_date": "2026-09-02",
+    "totalDelayMin": 7,
+    "totalDelayHours": 0.1,
+    "shift1Min": 7,
+    "shift1Hours": 0.1,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 1,
+      "itemsWithDetail": 1,
+      "itemsOnlyMin": 0
+    },
+    "items": [
+      {
+        "id": "r79-กะ 1-1",
+        "machine": "V7",
+        "shift": "กะ 1",
+        "code": "QVMB/ QEVS",
+        "delayMin": 7,
+        "delayHours": 0.1,
+        "detail": "[08:23 - 08:30] ply.1",
+        "timeRangeStr": "08:23 - 08:30",
+        "category": "Comp"
       }
     ]
   }

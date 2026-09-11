@@ -1,6 +1,6 @@
 {
   "date": "2026-09-01",
-  "generatedAt": "2026-09-10T02:37:01.153Z",
+  "generatedAt": "2026-09-11T03:28:00.280Z",
   "waste": {
     "date": "2026-09-01",
     "millingSummary": 250.8,
@@ -149,23 +149,6 @@
         ]
       },
       {
-        "machine": "Sio#24",
-        "totalDurationMin": 40,
-        "details": [
-          {
-            "shift": "กะ3",
-            "zone": "Mold",
-            "symptom": "Mold Low Temp",
-            "cause": "Steam Valve เสีย",
-            "action": "เปลี่ยน Valve",
-            "fixType": "ถาวร",
-            "durationMin": 40,
-            "jobType": "BD",
-            "fixBy": "อ๊อฟ/ไพลิน"
-          }
-        ]
-      },
-      {
         "machine": "Bead In",
         "totalDurationMin": 30,
         "details": [
@@ -224,6 +207,23 @@
             "durationMin": 15,
             "jobType": "BD",
             "fixBy": ""
+          }
+        ]
+      },
+      {
+        "machine": "Band 72 #4",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "Roller up",
+            "symptom": "ลมรั่วกระบอกสูบ",
+            "cause": "เสื่อมสภาพ",
+            "action": "เปลี่ยนซิลกระบอกสูบ",
+            "fixType": "ถาวร",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "พี่อ๋อย/ริน"
           }
         ]
       }
@@ -389,15 +389,15 @@
     "date": "2026-09-01",
     "day": 1,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 89,
-    "totalRolls": 89,
-    "totalMeters": 11505,
+    "totalQty": 96,
+    "totalRolls": 96,
+    "totalMeters": 12505,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 58,
-        "meters": 4180,
+        "qty": 62,
+        "meters": 5180,
         "items": [
           {
             "sapCode": "PL07225",
@@ -419,6 +419,13 @@
             "qty": 16,
             "meters": 560,
             "unit": "ม้วน"
+          },
+          {
+            "sapCode": "PL07120",
+            "code": "WA8X",
+            "qty": 5,
+            "meters": 1250,
+            "unit": "คัน"
           },
           {
             "sapCode": "LD03602",
@@ -461,20 +468,13 @@
             "qty": 1,
             "meters": 250,
             "unit": "คัน"
-          },
-          {
-            "sapCode": "LD03442",
-            "code": "WA8X",
-            "qty": 1,
-            "meters": 250,
-            "unit": "คัน"
           }
         ]
       },
       "shift2": {
         "shiftNum": 2,
         "name": "กะ 2 (Shift 2)",
-        "qty": 14,
+        "qty": 17,
         "meters": 3370,
         "items": [
           {
@@ -492,6 +492,13 @@
             "unit": "คัน"
           },
           {
+            "sapCode": "GF00013",
+            "code": "F4111",
+            "qty": 2,
+            "meters": 0,
+            "unit": "ม้วน"
+          },
+          {
             "sapCode": "LD03602",
             "code": "WYAF",
             "qty": 2,
@@ -504,6 +511,13 @@
             "qty": 2,
             "meters": 500,
             "unit": "คัน"
+          },
+          {
+            "sapCode": "GF00152",
+            "code": "B1443",
+            "qty": 1,
+            "meters": 0,
+            "unit": "ม้วน"
           },
           {
             "sapCode": "LD034704",
@@ -638,6 +652,18 @@
         }
       },
       {
+        "code": "WA8X",
+        "sapCode": "PL07120",
+        "qty": 10,
+        "meters": 2500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 5,
+          "2": 3,
+          "3": 2
+        }
+      },
+      {
         "code": "W1CL",
         "sapCode": "LD03552",
         "qty": 8,
@@ -650,15 +676,15 @@
         }
       },
       {
-        "code": "WA8X",
-        "sapCode": "LD03442",
+        "code": "F4111",
+        "sapCode": "GF00013",
         "qty": 6,
-        "meters": 1500,
-        "unit": "คัน",
+        "meters": 705,
+        "unit": "ม้วน",
         "shifts": {
-          "1": 1,
-          "2": 3,
-          "3": 2
+          "1": 0,
+          "2": 2,
+          "3": 4
         }
       },
       {
@@ -710,18 +736,6 @@
         }
       },
       {
-        "code": "F4111",
-        "sapCode": "GF00013",
-        "qty": 4,
-        "meters": 705,
-        "unit": "ม้วน",
-        "shifts": {
-          "1": 0,
-          "2": 0,
-          "3": 4
-        }
-      },
-      {
         "code": "QLIX",
         "sapCode": "LD03523",
         "qty": 2,
@@ -754,6 +768,18 @@
         "shifts": {
           "1": 1,
           "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "B1443",
+        "sapCode": "GF00152",
+        "qty": 1,
+        "meters": 0,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 0,
+          "2": 1,
           "3": 0
         }
       },
@@ -1738,28 +1764,28 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.36,
+          "avg": 57.16,
           "target": 62,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "tuber": {
-          "avg": 62.13,
+          "avg": 61.05,
           "target": 62,
-          "count": 3,
-          "isMet": true
+          "count": 4,
+          "isMet": false
         },
         "fischer": {
-          "avg": 50.74,
+          "avg": 51.36,
           "target": 60,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "mixing": {
-          "avg": 77.1,
+          "avg": 75.7,
           "target": 76.6,
-          "count": 4,
-          "isMet": true
+          "count": 5,
+          "isMet": false
         }
       },
       {
@@ -1856,5 +1882,292 @@
         }
       }
     ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "01",
+    "_date": "2026-09-01",
+    "totalDelayMin": 3360,
+    "totalDelayHours": 56,
+    "totalExtrusionMin": 480,
+    "totalExtrusionHours": 8,
+    "totalCompMin": 2880,
+    "totalCompHours": 48,
+    "summary": {
+      "extrusionCount": 3,
+      "compCount": 22,
+      "totalItems": 25
+    },
+    "items": [
+      {
+        "id": "11-0",
+        "machine": "UC",
+        "rawText": "d/l bead 10.00-13.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "10.00 - 13.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "12-1",
+        "machine": "UI",
+        "rawText": "d/l bead 19.00-21.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "19.00 - 21.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "14-2",
+        "machine": "UD",
+        "rawText": "d/l bead 10.00-13.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "10.00 - 13.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "15-3",
+        "machine": "UL",
+        "rawText": "d/l bead 19.00-921.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "17-4",
+        "machine": "UE",
+        "rawText": "code change B429 d/l bead",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "21-5",
+        "machine": "UR",
+        "rawText": "d/l bead 19.00-21.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "19.00 - 21.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "26-6",
+        "machine": "UH",
+        "rawText": "d/l chafer 07.00-09.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "07.00 - 09.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "28-7",
+        "machine": "UH",
+        "rawText": "d/l tread",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "29-8",
+        "machine": "UI",
+        "rawText": "d/l chafer 12.00-15.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "12.00 - 15.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "30-9",
+        "machine": "UI",
+        "rawText": "d/l chafer 15.00-16.30",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "15.00 - 16.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "31-10",
+        "machine": "UI",
+        "rawText": "d/l chafer > 01.00 - 03.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "01.00 - 03.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "32-11",
+        "machine": "UJ",
+        "rawText": "d/l band=6 07.00-10.00 d/l band=4 12.30-15.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "07.00 - 10.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "36-12",
+        "machine": "UK",
+        "rawText": "d/l bead 20.00-23.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "20.00 - 23.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "38-13",
+        "machine": "UL",
+        "rawText": "d/l chafer 12.00-15.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "12.00 - 15.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "40-14",
+        "machine": "UL",
+        "rawText": "d/l chafer > 01.00 - 03.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "01.00 - 03.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "41-15",
+        "machine": "UM",
+        "rawText": "d/l bead 10.00-13.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "10.00 - 13.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "42-16",
+        "machine": "UM",
+        "rawText": "d/l bead 19.00-21.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "19.00 - 21.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "44-17",
+        "machine": "UN",
+        "rawText": "d/l bead 10.00-13.30",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "10.00 - 13.30",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "45-18",
+        "machine": "UN",
+        "rawText": "d/l bead 19.00-21.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "19.00 - 21.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "47-19",
+        "machine": "UO",
+        "rawText": "d/l chafer 12.00-15.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "12.00 - 15.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "49-20",
+        "machine": "UO",
+        "rawText": "d/l chafer > 01.00 - 03.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "01.00 - 03.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "54-21",
+        "machine": "UQ",
+        "rawText": "c/c B309 , d/l chafer",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "59-22",
+        "machine": "US",
+        "rawText": "d/l side wall 07.00-15.00",
+        "category": "Extrusion",
+        "componentName": "Sidewall",
+        "timeRangeStr": "07.00 - 15.00",
+        "durationMin": 480,
+        "durationHours": 8
+      },
+      {
+        "id": "60-23",
+        "machine": "US",
+        "rawText": "first tire ,d/l side wall",
+        "category": "Extrusion",
+        "componentName": "Sidewall",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "64-24",
+        "machine": "TAKU",
+        "rawText": "d/l ply.2,3 ให้สลับใช้รอรันของใหม่ > 01.30 -03.00",
+        "category": "Comp",
+        "componentName": "Ply",
+        "timeRangeStr": "01.30 - 03.00",
+        "durationMin": 90,
+        "durationHours": 1.5
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(1)",
+    "_date": "2026-09-01",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 0,
+      "itemsWithDetail": 0,
+      "itemsOnlyMin": 0
+    },
+    "items": []
   }
 }

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-03",
-  "generatedAt": "2026-09-10T02:37:08.950Z",
+  "generatedAt": "2026-09-11T03:24:02.594Z",
   "waste": {
     "date": "2026-09-03",
     "millingSummary": 135,
@@ -1753,28 +1753,28 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.36,
+          "avg": 57.16,
           "target": 62,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "tuber": {
-          "avg": 62.13,
+          "avg": 61.05,
           "target": 62,
-          "count": 3,
-          "isMet": true
+          "count": 4,
+          "isMet": false
         },
         "fischer": {
-          "avg": 50.74,
+          "avg": 51.36,
           "target": 60,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "mixing": {
-          "avg": 77.1,
+          "avg": 75.64,
           "target": 76.6,
-          "count": 4,
-          "isMet": true
+          "count": 5,
+          "isMet": false
         }
       },
       {
@@ -1871,5 +1871,122 @@
         }
       }
     ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "03",
+    "_date": "2026-09-03",
+    "totalDelayMin": 1330,
+    "totalDelayHours": 22.2,
+    "totalExtrusionMin": 220,
+    "totalExtrusionHours": 3.7,
+    "totalCompMin": 1110,
+    "totalCompHours": 18.5,
+    "summary": {
+      "extrusionCount": 1,
+      "compCount": 7,
+      "totalItems": 8
+    },
+    "items": [
+      {
+        "id": "5-0",
+        "machine": "UA",
+        "rawText": "vacancy G.  d/l chafer",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "23-1",
+        "machine": "UG",
+        "rawText": "vacancy G.    d/l tread 07.00-10.40",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "07.00 - 10.40",
+        "durationMin": 220,
+        "durationHours": 3.7
+      },
+      {
+        "id": "34-2",
+        "machine": "UJ",
+        "rawText": "d/l band 6,7 > 23.00 - 07.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "23.00 - 07.00",
+        "durationMin": 480,
+        "durationHours": 8
+      },
+      {
+        "id": "47-3",
+        "machine": "UO",
+        "rawText": "vacancy G   d/l bead 09.30-10.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "09.30 - 10.00",
+        "durationMin": 30,
+        "durationHours": 0.5
+      },
+      {
+        "id": "48-4",
+        "machine": "UO",
+        "rawText": "d/l bead 18.00-20.00",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "18.00 - 20.00",
+        "durationMin": 120,
+        "durationHours": 2
+      },
+      {
+        "id": "54-5",
+        "machine": "UQ",
+        "rawText": "d/l band16.00-16.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "16.00 - 16.30",
+        "durationMin": 30,
+        "durationHours": 0.5
+      },
+      {
+        "id": "55-6",
+        "machine": "UQ",
+        "rawText": "d/l breaker > 03.30 - 07.00",
+        "category": "Comp",
+        "componentName": "Breaker",
+        "timeRangeStr": "03.30 - 07.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "59-7",
+        "machine": "US",
+        "rawText": "d/l chafer 11.00-15.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "11.00 - 15.00",
+        "durationMin": 240,
+        "durationHours": 4
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(3)",
+    "_date": "2026-09-03",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 0,
+      "itemsWithDetail": 0,
+      "itemsOnlyMin": 0
+    },
+    "items": []
   }
 }
