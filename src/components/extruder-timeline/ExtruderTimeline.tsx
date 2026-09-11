@@ -23,6 +23,7 @@ import {
   type ExtruderChangeover,
   type ExtruderGap,
   type ExtruderSegment,
+  type TawVerdict,
 } from "./extruderTimelineModel";
 import {
   bangkokProductionDate,
@@ -60,12 +61,76 @@ const IDLE_STOPS_SHOWN = 6;
  *  missed polls, not one: a single slow response is not an outage. */
 const STALE_AFTER_MS = 90_000;
 
-/** A hover lands on either a painted sample or a black stretch. The union keeps
- *  them distinct — a gap has no sample to report, and showing a neighbouring
- *  sample's readings over downtime would misattribute them. */
-type TooltipState =
-  | { kind: "sample"; line: string; sample: ExtruderSample; run: ExtruderRun | null; x: number; y: number }
-  | { kind: "gap"; line: string; gap: ExtruderGap; x: number; y: number };
+/** Unified tooltip state so that both QUAD and TUBER (DUPLEX) display consistent
+ *  information on hover, including time period, total idle time, recipe/run, and TAW readings. */
+type TooltipState = {
+  line: string;
+  timeMs: number;
+  run: ExtruderRun | null;
+  gap: ExtruderGap | null;
+  act: number | null;
+  spec: number | null;
+  delta: number | null;
+  verdict: TawVerdict;
+  efficiency: number | null;
+  hpress: number | null;
+  x: number;
+  y: number;
+};
+
+function findSpecForRun(
+  run: ExtruderRun | null,
+  samples: ExtruderSample[],
+  hoverMs: number
+): number | null {
+  if (run) {
+    const runSample = samples.find(
+      (s) => s[0] >= run.startMs && s[0] <= run.endMs && s[2] !== null && Number.isFinite(s[2]) && s[2] > 0
+    );
+    if (runSample) return runSample[2];
+  }
+  let closest: ExtruderSample | null = null;
+  let minDiff = Infinity;
+  for (const s of samples) {
+    if (s[2] !== null && Number.isFinite(s[2]) && s[2] > 0) {
+      const diff = Math.abs(s[0] - hoverMs);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closest = s;
+      }
+    }
+  }
+  if (closest && minDiff <= 3 * 3600 * 1000) {
+    return closest[2];
+  }
+  return null;
+}
+
+function findRunAtOrNear(
+  runs: ExtruderRun[],
+  hoverMs: number,
+  gap: ExtruderGap | null
+): ExtruderRun | null {
+  let run = resolveRunAt(runs, hoverMs);
+  if (!run && gap) {
+    run = resolveRunAt(runs, gap.startMs) || resolveRunAt(runs, gap.endMs);
+  }
+  if (!run && runs.length > 0) {
+    let closest: ExtruderRun | null = null;
+    let minDiff = Infinity;
+    for (const r of runs) {
+      const d = Math.min(Math.abs(r.startMs - hoverMs), Math.abs(r.endMs - hoverMs));
+      if (d < minDiff) {
+        minDiff = d;
+        closest = r;
+      }
+    }
+    if (closest && minDiff <= 3 * 3600 * 1000) {
+      run = closest;
+    }
+  }
+  return run;
+}
 
 function formatValue(value: number | null, digits = 1): string {
   return value === null || !Number.isFinite(value)
@@ -122,13 +187,14 @@ function CsvButton({
  *  rather than SVG or divs — a day is ~8,640 samples per line, and 8,640 DOM
  *  nodes per lane would make the hover unusable. */
 function ExtruderLaneCanvas({
-  line, segments, changeovers, runs, gaps, startMs, endMs, setTooltip,
+  line, segments, changeovers, runs, gaps, samples, startMs, endMs, setTooltip,
 }: {
   line: string;
   segments: ExtruderSegment[];
   changeovers: ExtruderChangeover[];
   runs: ExtruderRun[];
   gaps: ExtruderGap[];
+  samples: ExtruderSample[];
   startMs: number;
   endMs: number;
   setTooltip: (v: TooltipState | null) => void;
@@ -201,24 +267,47 @@ function ExtruderLaneCanvas({
     return () => observer.disconnect();
   }, [draw]);
 
-  const hitTest = useCallback((clientX: number): ExtruderSegment | ExtruderGap | null => {
+  const hitTest = useCallback((clientX: number): {
+    sample: ExtruderSample | null;
+    gap: ExtruderGap | null;
+    hoverMs: number;
+  } | null => {
     const canvas = canvasRef.current;
     if (!canvas) return null;
     const rect = canvas.getBoundingClientRect();
     const hoverMs = startMs + ((clientX - rect.left) / rect.width) * (endMs - startMs);
     const tol = ((endMs - startMs) / Math.max(rect.width, 1)) * 4;
+
+    // 1. Check if hovering over a painted running segment (good or noGood)
+    for (let i = segments.length - 1; i >= 0; i -= 1) {
+      const seg = segments[i]!;
+      if (seg.verdict !== "noData") {
+        if ((hoverMs >= seg.startMs && hoverMs <= seg.endMs) || Math.abs(hoverMs - seg.endMs) <= tol) {
+          return { sample: seg.sample, gap: null, hoverMs };
+        }
+      }
+    }
+
+    // 2. Black area: check if hovering within a gap
+    let matchingGap = gaps.find((g) => hoverMs >= g.startMs && hoverMs <= g.endMs) || null;
+    if (!matchingGap) {
+      matchingGap = gaps.find((g) => Math.abs(hoverMs - g.startMs) <= tol || Math.abs(hoverMs - g.endMs) <= tol) || null;
+    }
+
+    // Check if there is a sample under cursor (like on QUAD during stopped periods)
+    let sampleUnderCursor: ExtruderSample | null = null;
     for (let i = segments.length - 1; i >= 0; i -= 1) {
       const seg = segments[i]!;
       if ((hoverMs >= seg.startMs && hoverMs <= seg.endMs) || Math.abs(hoverMs - seg.endMs) <= tol) {
-        return seg;
+        sampleUnderCursor = seg.sample;
+        break;
       }
     }
-    // Only once no segment claims the pointer: a gap is what is left, and gaps
-    // are checked without the `tol` slack so hovering just inside a painted run
-    // cannot report downtime.
-    for (const gap of gaps) {
-      if (hoverMs >= gap.startMs && hoverMs <= gap.endMs) return gap;
+
+    if (matchingGap || sampleUnderCursor) {
+      return { sample: sampleUnderCursor, gap: matchingGap, hoverMs };
     }
+
     return null;
   }, [segments, gaps, startMs, endMs]);
 
@@ -232,9 +321,53 @@ function ExtruderLaneCanvas({
           onMouseMove={(e) => {
             const hit = hitTest(e.clientX);
             if (!hit) { setTooltip(null); return; }
-            setTooltip("sample" in hit
-              ? { kind: "sample", line, sample: hit.sample, run: resolveRunAt(runs, hit.sample[0]), x: e.clientX, y: e.clientY }
-              : { kind: "gap", line, gap: hit, x: e.clientX, y: e.clientY });
+            const { sample, gap, hoverMs } = hit;
+
+            if (sample && !gap && classifyTaw(sample[1], sample[2]) !== "noData") {
+              const run = resolveRunAt(runs, sample[0]);
+              const act = sample[1];
+              const spec = sample[2];
+              const verdict = classifyTaw(act, spec);
+              const delta = act !== null && spec !== null ? act - spec : null;
+              setTooltip({
+                line,
+                timeMs: sample[0],
+                run,
+                gap: null,
+                act,
+                spec,
+                delta,
+                verdict,
+                efficiency: sample[3] ?? null,
+                hpress: sample[4] ?? null,
+                x: e.clientX,
+                y: e.clientY,
+              });
+            } else {
+              const timeMs = sample ? sample[0] : hoverMs;
+              const run = findRunAtOrNear(runs, timeMs, gap);
+              const act = sample ? sample[1] : null;
+              const spec = (sample && sample[2] !== null) ? sample[2] : findSpecForRun(run, samples, timeMs);
+              const verdict: TawVerdict = "noData";
+              const delta = null;
+              const efficiency = sample ? sample[3] : null;
+              const hpress = (sample && sample[4] !== undefined && sample[4] !== null) ? sample[4] : 0;
+
+              setTooltip({
+                line,
+                timeMs,
+                run,
+                gap,
+                act,
+                spec,
+                delta,
+                verdict,
+                efficiency,
+                hpress,
+                x: e.clientX,
+                y: e.clientY,
+              });
+            }
           }}
           onMouseLeave={() => setTooltip(null)}
         />
@@ -334,14 +467,6 @@ export default function ExtruderTimeline({
       };
     });
   }, [response, bounds]);
-
-  const hoveredSample = tooltip?.kind === "sample" ? tooltip : null;
-  const tooltipVerdict = hoveredSample
-    ? classifyTaw(hoveredSample.sample[1], hoveredSample.sample[2])
-    : null;
-  const tooltipDelta = hoveredSample && hoveredSample.sample[1] !== null && hoveredSample.sample[2] !== null
-    ? hoveredSample.sample[1] - hoveredSample.sample[2]
-    : null;
 
   const ageMs = lastOkMs === null ? null : Date.now() - lastOkMs;
   const stale = ageMs !== null && ageMs > STALE_AFTER_MS;
@@ -486,6 +611,7 @@ export default function ExtruderTimeline({
                   changeovers={lane.changeovers}
                   runs={lane.runs}
                   gaps={lane.gaps}
+                  samples={lane.samples}
                   startMs={bounds.startMs}
                   endMs={bounds.endMs}
                   setTooltip={setTooltip}
@@ -678,52 +804,46 @@ export default function ExtruderTimeline({
           className="pointer-events-none fixed z-50 rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs text-zinc-100 shadow-lg"
           style={{ left: tooltip.x + 12, top: tooltip.y + 12 }}
         >
-          {tooltip.kind === "gap" ? (
-            // No readings to show: the machine reported nothing here. State the
-            // span and its length, which is the only honest content.
+          <div>{formatBangkokTimeSeconds(tooltip.timeMs)}</div>
+          <div className="text-zinc-300">
+            {tooltip.line}
+            {tooltip.run?.recipeName ? ` · ${tooltip.run.recipeName}` : ""}
+            {tooltip.run ? ` · run ${tooltip.run.runNum}` : ""}
+          </div>
+
+          {tooltip.gap && (
             <>
-              <div className="text-zinc-300">{tooltip.line}</div>
               <div className="mt-1 font-bold text-zinc-100">
                 ⏸ {formatDurationLong(tooltip.gap.durationMs)} with no data
               </div>
               <div className="tabular-nums text-zinc-400">
                 {formatBangkokTimeSeconds(tooltip.gap.startMs)} → {formatBangkokTimeSeconds(tooltip.gap.endMs)}
               </div>
-              <div className="mt-1 text-[10px] text-zinc-500">
-                Machine stopped, or act/spec not reported
-              </div>
             </>
-          ) : (
-            <>
-              <div>{formatBangkokTimeSeconds(tooltip.sample[0])}</div>
-              <div className="text-zinc-300">
-                {tooltip.line}
-                {tooltip.run?.recipeName ? ` · ${tooltip.run.recipeName}` : ""}
-                {tooltip.run ? ` · run ${tooltip.run.runNum}` : ""}
-              </div>
-              <div className="mt-1 tabular-nums">TAW act&nbsp;&nbsp;{formatValue(tooltip.sample[1])}</div>
-              <div className="tabular-nums">TAW spec&nbsp;{formatValue(tooltip.sample[2])}</div>
-              <div className="tabular-nums">
-                Δ&nbsp;&nbsp;{tooltipDelta === null ? "—" : `${tooltipDelta >= 0 ? "+" : ""}${formatValue(tooltipDelta)}`}
-                {tooltipVerdict === "good" && <span className="ml-2 font-bold text-green-400">GOOD</span>}
-                {tooltipVerdict === "noGood" && <span className="ml-2 font-bold text-red-400">NO GOOD</span>}
-                {tooltipVerdict === "noData" && <span className="ml-2 font-bold text-zinc-400">NO DATA</span>}
-              </div>
-              {tooltip.sample[3] !== null && (
-                // Efficiency is a RATIO (act/spec), not a percentage — prod
-                // values run 0 to 2.22 with a mean near 1. Rendered with a bare
-                // "%" it made a perfectly on-target sample read "1.0%". Scaled
-                // here, at the only place that presents it.
-                <div className="tabular-nums text-zinc-400">
-                  Efficiency {formatValue(tooltip.sample[3] * 100)}%
-                </div>
-              )}
-              {tooltip.sample[4] !== undefined && tooltip.sample[4] !== null && (
-                <div className="tabular-nums text-cyan-400 font-semibold">
-                  {tooltip.line.toUpperCase().includes("DUPLEX") || tooltip.line.toUpperCase().includes("TUBER") ? "Hpress 2" : "Hpress 3"}&nbsp;&nbsp;{formatValue(tooltip.sample[4] * 14.5038, 0)} PSI ({formatValue(tooltip.sample[4], 1)} Bar)
-                </div>
-              )}
-            </>
+          )}
+
+          <div className="mt-1 tabular-nums">TAW act&nbsp;&nbsp;{formatValue(tooltip.act)}</div>
+          <div className="tabular-nums">TAW spec&nbsp;{formatValue(tooltip.spec)}</div>
+          <div className="tabular-nums">
+            Δ&nbsp;&nbsp;{tooltip.delta === null ? "—" : `${tooltip.delta >= 0 ? "+" : ""}${formatValue(tooltip.delta)}`}
+            {tooltip.verdict === "good" && <span className="ml-2 font-bold text-green-400">GOOD</span>}
+            {tooltip.verdict === "noGood" && <span className="ml-2 font-bold text-red-400">NO GOOD</span>}
+            {tooltip.verdict === "noData" && <span className="ml-2 font-bold text-zinc-400">NO DATA</span>}
+          </div>
+          {tooltip.efficiency !== null && (
+            <div className="tabular-nums text-zinc-400">
+              Efficiency {formatValue(tooltip.efficiency * 100)}%
+            </div>
+          )}
+          {tooltip.hpress !== null && (
+            <div className="tabular-nums text-cyan-400 font-semibold">
+              {tooltip.line.toUpperCase().includes("DUPLEX") || tooltip.line.toUpperCase().includes("TUBER") ? "Hpress 2" : "Hpress 3"}&nbsp;&nbsp;{formatValue(tooltip.hpress * 14.5038, 0)} PSI ({formatValue(tooltip.hpress, 1)} Bar)
+            </div>
+          )}
+          {tooltip.gap && (
+            <div className="mt-1 text-[10px] text-zinc-500">
+              Machine stopped, or act/spec not reported
+            </div>
           )}
         </div>
       )}
