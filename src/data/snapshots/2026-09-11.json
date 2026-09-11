@@ -1,6 +1,6 @@
 {
   "date": "2026-09-11",
-  "generatedAt": "2026-09-11T01:31:06.261Z",
+  "generatedAt": "2026-09-11T02:01:08.272Z",
   "waste": {
     "date": "2026-09-11",
     "millingSummary": 5,
@@ -22,25 +22,25 @@
   "cms": {
     "date": "2026-09-11",
     "mixing1": {
-      "batch": 41,
+      "batch": 56,
       "ar": 86,
-      "pr": 82.5,
-      "qr": 61.3,
-      "oee2": 43.5
+      "pr": 83.7,
+      "qr": 66.8,
+      "oee2": 48.1
     },
     "mixing2": {
-      "batch": 46,
-      "ar": 89.4,
-      "pr": 91.9,
+      "batch": 62,
+      "ar": 89.8,
+      "pr": 92.7,
       "qr": 100,
-      "oee2": 82.2
+      "oee2": 83.2
     },
-    "totalAr": 87.7,
-    "totalPr": 87.3,
-    "totalQr": 80.7,
-    "totalOee2": 61.8
+    "totalAr": 87.9,
+    "totalPr": 88.3,
+    "totalQr": 83.3,
+    "totalOee2": 64.7
   },
-  "target3Roll": 3,
+  "target3Roll": 5,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -94,21 +94,21 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 3,
-    "totalRelease": 3,
+    "totalRolls": 5,
+    "totalRelease": 5,
     "totalHold": 0,
-    "totalPending": 22,
-    "totalScheduled": 25,
+    "totalPending": 35,
+    "totalScheduled": 40,
     "codeBreakdown": [
+      {
+        "code": "NU27",
+        "count": 3,
+        "percentage": 60
+      },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 66.67
-      },
-      {
-        "code": "NU27",
-        "count": 1,
-        "percentage": 33.33
+        "percentage": 40
       }
     ],
     "holdBreakdown": [],
@@ -676,7 +676,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.94,
+        "avg": 74.52,
         "target": 76.6,
         "count": 5,
         "isMet": false
@@ -739,7 +739,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.94,
+          "avg": 74.52,
           "target": 76.6,
           "count": 5,
           "isMet": false

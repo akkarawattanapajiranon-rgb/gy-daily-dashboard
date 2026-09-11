@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-11T01:31:16.193Z",
+  "generatedAt": "2026-09-11T02:01:18.126Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 197,
@@ -107,31 +107,128 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-10",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Tuber",
+        "totalDurationMin": 170,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "Skiver",
+            "symptom": "Sefety can't reset.",
+            "cause": "I/O Safety fault.",
+            "action": "Restart module.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "เท่ห์/ไพลิน"
+          },
+          {
+            "shift": "กะ3",
+            "zone": "Skiver",
+            "symptom": "สายพานไม่ทำงาน",
+            "cause": "Servo Motor Module Alarm E7",
+            "action": "Still Breakdwon",
+            "fixType": "",
+            "durationMin": 150,
+            "jobType": "BD",
+            "fixBy": "เอฟ/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "3 Roll",
+        "totalDurationMin": 60,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "CAL #2 Sensor ES",
+            "symptom": "ES #2 ไม่ทำงาน",
+            "cause": "Sensor อ่านค่า Slide position ไม่ตรงกับของจริง",
+            "action": "เปลี่ยนหัว Sensor ที่ซ่อมมาใส่แทน",
+            "fixType": "ชั่วคราว",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "ทีป/ริน/เท่ห์"
+          }
+        ]
+      },
+      {
+        "machine": "Quad",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "Dr. noll",
+            "symptom": "Dr. noll error.",
+            "cause": "Computer error.",
+            "action": "Restart computer.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "บาส /ไพลิน"
+          }
+        ]
+      },
+      {
+        "machine": "Mixer 2",
+        "totalDurationMin": 15,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "Laydown",
+            "symptom": "Rack หัก",
+            "cause": "ยางยัด",
+            "action": "เปลี่ยนRack ใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 15,
+            "jobType": "BD",
+            "fixBy": "มด/แอ็ด/โฟล์ค"
+          }
+        ]
+      },
+      {
+        "machine": "Mixer 1",
+        "totalDurationMin": 15,
+        "details": [
+          {
+            "shift": "กะ3",
+            "zone": "OIL",
+            "symptom": "น้ำมันไม่ชั่ง",
+            "cause": "sensor เช็คไม่ทำงาน Code S63R1  S-Oil",
+            "action": "Reset Alarm",
+            "fixType": "ชั่วคราว",
+            "durationMin": 15,
+            "jobType": "BD",
+            "fixBy": "เอฟ/บาส"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.6875,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 5.5556,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.6667,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.9774,
+      "hasData": true
     }
   },
   "fischer": {
