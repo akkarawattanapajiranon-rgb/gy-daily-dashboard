@@ -16,7 +16,7 @@ const LSP_PATHS = [
 function getStaffCategoryGroup(dept) {
   const d = String(dept || '').trim().toUpperCase();
   if (d.startsWith('BCA')) return 'BCA';
-  if (d === 'BCB-A' || d.startsWith('BCB-A')) return 'BCB-A';
+  if (d === 'BCB-A' || d.startsWith('BCB-A') || d === 'BCB-R' || d.startsWith('BCB-R')) return 'BCB-Aero+Retread';
   if (d.startsWith('BCB')) return 'BCB';
   if (d.startsWith('LT')) return 'LT';
   return 'GBS+FI +Eng';

@@ -137,7 +137,7 @@
       "title": "Product Leader - Retread",
       "dept": "BCB-R",
       "areaCode": "6320",
-      "categoryGroup": "BCB",
+      "categoryGroup": "BCB-Aero+Retread",
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
@@ -215,7 +215,7 @@
       "title": "HPT Leader",
       "dept": "BCB-A",
       "areaCode": "S5110",
-      "categoryGroup": "BCB-A",
+      "categoryGroup": "BCB-Aero+Retread",
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
@@ -397,7 +397,7 @@
       "title": "Acting Business Center Manager-Aviation",
       "dept": "BCB-A",
       "areaCode": "6320",
-      "categoryGroup": "BCB-A",
+      "categoryGroup": "BCB-Aero+Retread",
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
@@ -475,7 +475,7 @@
       "title": "HPT Leader",
       "dept": "BCB-A",
       "areaCode": "A5110",
-      "categoryGroup": "BCB-A",
+      "categoryGroup": "BCB-Aero+Retread",
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
@@ -761,7 +761,7 @@
       "title": "",
       "dept": "BCB-R",
       "areaCode": "6320",
-      "categoryGroup": "BCB",
+      "categoryGroup": "BCB-Aero+Retread",
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
@@ -1073,7 +1073,7 @@
       "title": "Retread Plant Operations Leader",
       "dept": "BCB-R",
       "areaCode": "6320",
-      "categoryGroup": "BCB",
+      "categoryGroup": "BCB-Aero+Retread",
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
@@ -1125,7 +1125,7 @@
       "title": "",
       "dept": "BCB-R",
       "areaCode": "6320",
-      "categoryGroup": "BCB",
+      "categoryGroup": "BCB-Aero+Retread",
       "isLspTarget": true,
       "group": "Staff",
       "monthly": {
