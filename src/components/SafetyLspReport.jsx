@@ -129,7 +129,8 @@ export default function SafetyLspReport() {
             if (!name || !legacy || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
             if (
               legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์') ||
-              legacy === '12752' || name.toLowerCase().includes('amphai') || name.includes('อำไพ')
+              legacy === '12752' || name.toLowerCase().includes('amphai') || name.includes('อำไพ') ||
+              legacy === '5645' || name.toLowerCase().includes('itsawat') || name.includes('อิษวัต')
             ) return;
 
             const monthly = {};
@@ -237,9 +238,13 @@ export default function SafetyLspReport() {
     return 0;
   };
 
-  const rawStaffList = data?.staffWorkers || defaultWorkers;
+  const rawStaffList = data?.staffWorkers || data?.staff || defaultWorkers;
   const staffList = rawStaffList.filter(w =>
-    w.legacy !== '12752' && !(w.name && (w.name.toLowerCase().includes('amphai') || w.name.includes('อำไพ')))
+    w.legacy !== '12752' && w.legacy !== '5645' &&
+    !(w.name && (
+      w.name.toLowerCase().includes('amphai') || w.name.includes('อำไพ') ||
+      w.name.toLowerCase().includes('itsawat') || w.name.includes('อิษวัต')
+    ))
   );
   const leaderList = data?.leaderWorkers || defaultLeaders;
   const activeWorkers = activeTeam === 'Staff' ? staffList : leaderList;

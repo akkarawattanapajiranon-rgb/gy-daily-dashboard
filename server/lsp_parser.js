@@ -65,7 +65,8 @@ function parseLspData() {
           if (!name || !legacy || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
           if (
             legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์') ||
-            legacy === '12752' || name.toLowerCase().includes('amphai') || name.includes('อำไพ')
+            legacy === '12752' || name.toLowerCase().includes('amphai') || name.includes('อำไพ') ||
+            legacy === '5645' || name.toLowerCase().includes('itsawat') || name.includes('อิษวัต')
           ) return;
 
           const monthly = {};
