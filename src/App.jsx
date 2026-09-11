@@ -62,7 +62,7 @@ function App() {
 
   const [selectedDate, setSelectedDate] = useState(() => {
     const d = new Date();
-    d.setDate(d.getDate() - 1);
+    // Default = วันนี้
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   });
 
@@ -144,8 +144,8 @@ function App() {
   };
 
   const handleLiveRefresh = () => {
-    setIsLoading(true);
-    window.location.reload();
+    // Force re-fetch ข้อมูลสดจาก API — ไม่ reload ทั้งหน้า
+    loadData(selectedDate, true);
   };
 
   return (

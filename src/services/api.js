@@ -177,7 +177,7 @@ export async function fetchCmsData(dateStr, forceRefresh = false) {
     let url = '/api/cms';
     if (dateStr) url += `?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) {
       throw new Error('Static HTML response from host');
@@ -195,7 +195,7 @@ export async function fetchTarget3Roll(dateStr, forceRefresh = false) {
   try {
     let url = "https://roll-planning-default-rtdb.firebaseio.com/saved_plans.json";
     if (forceRefresh) url += `?_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     if (!res.ok) throw new Error('Failed to fetch target 3 roll data');
     
     const plansData = await res.json();
@@ -219,7 +219,7 @@ export async function fetchBreakdownData(dateStr, forceRefresh = false) {
   try {
     let url = `/api/breakdown?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed breakdown fetch');
     return await res.json();
@@ -234,7 +234,7 @@ export async function fetchFischerData(dateStr, forceRefresh = false) {
   try {
     let url = `/api/fischer?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed fischer fetch');
     return await res.json();
@@ -253,7 +253,7 @@ export async function fetch3RollDetail(dateStr, forceRefresh = false) {
   try {
     let url = `/api/3roll?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed 3roll fetch');
     return await res.json();
@@ -268,7 +268,7 @@ export async function fetch4Roll2Detail(dateStr, forceRefresh = false) {
   try {
     let url = `/api/4roll2?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed 4roll2 fetch');
     return await res.json();
@@ -283,7 +283,7 @@ export async function fetchQuadDetail(dateStr, forceRefresh = false) {
   try {
     let url = `/api/quad?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed quad fetch');
     return await res.json();
@@ -298,7 +298,7 @@ export async function fetchTuberDetail(dateStr, forceRefresh = false) {
   try {
     let url = `/api/tuber?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed tuber fetch');
     return await res.json();
@@ -313,7 +313,7 @@ export async function fetchWorkawayData(dateStr, forceRefresh = false) {
   try {
     let url = `/api/workaway?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed workaway fetch');
     return await res.json();
@@ -328,7 +328,7 @@ export async function fetchWeeklyOeeData(dateStr, forceRefresh = false) {
   try {
     let url = `/api/oee-weekly?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
-    const res = await fetchFast(url, 2500);
+    const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed weekly oee fetch');
     return await res.json();

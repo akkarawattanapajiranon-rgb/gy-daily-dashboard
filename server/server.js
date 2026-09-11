@@ -37,11 +37,13 @@ setInterval(() => {
   }
 }, 60 * 1000);
 
-// In-memory API cache disabled (0ms TTL) so local intranet http://10.124.148.210:3001/ always returns real-time live data directly from Excel files on T: drive
+// In-memory API cache: 5 minute TTL — ป้องกัน Excel parse ซ้ำๆ จาก T: drive ทุก request
+// (กด F5/Live Data จะ bypass cache ด้วย forceRefresh=true → _t= query param)
 const apiMemoryCache = new Map();
-const CACHE_TTL_MS = 0;
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 
-function getCached(key) {
+function getCached(key, forceRefresh = false) {
+  if (forceRefresh) return null; // bypass cache
   const item = apiMemoryCache.get(key);
   if (item && (Date.now() - item.ts < CACHE_TTL_MS)) {
     return item.data;
@@ -62,7 +64,8 @@ const { parseBreakdown } = require('./breakdown_parser');
 app.get('/api/breakdown', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `breakdown:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching Breakdown data for date: ${date}`);
@@ -83,7 +86,8 @@ const { parseAeroDelay } = require('./aero_delay_parser');
 app.get('/api/aero-delay', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `aeroDelay:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching Aero Delay data for date: ${date}`);
@@ -104,7 +108,8 @@ const { parseWbrDelay } = require('./wbr_delay_parser');
 app.get('/api/wbr-delay', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `wbrDelay:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching WBR Delay data for date: ${date}`);
@@ -125,7 +130,8 @@ const { parseFischerData } = require('./fischer_parser');
 app.get('/api/fischer', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `fischer:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching Fischer data for date: ${date}`);
@@ -146,7 +152,8 @@ const { parse3RollData } = require('./roll3_parser');
 app.get('/api/3roll', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `3roll:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching 3 Roll WINDUP data for date: ${date}`);
@@ -166,7 +173,8 @@ const { parse4Roll2Data } = require('./roll42_parser');
 app.get('/api/4roll2', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `4roll2:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching 4 Roll 2 Productivity data for date: ${date}`);
@@ -187,7 +195,8 @@ const { parseWeeklyOee } = require('./weekly_oee_parser');
 app.get('/api/oee-weekly', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `oee-weekly:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching Weekly OEE WTD data for date: ${date}`);
@@ -208,7 +217,8 @@ const { parseWorkawayData } = require('./workaway_parser');
 app.get('/api/workaway', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `workaway:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching Workaway Inventory data for date: ${date}`);
@@ -227,7 +237,8 @@ const { parseQuadData } = require('./quad_parser');
 app.get('/api/quad', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `quad:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching Quad data for date: ${date}`);
@@ -246,7 +257,8 @@ const { parseTuberData } = require('./tuber_parser');
 app.get('/api/tuber', (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
   const cacheKey = `tuber:${date}`;
-  const cached = getCached(cacheKey);
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   console.log(`Fetching Tuber data for date: ${date}`);
