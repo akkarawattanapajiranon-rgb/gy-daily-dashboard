@@ -420,6 +420,8 @@ export default function ExtruderTimeline({
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   /** Per-line "show every idle stop, not just the longest few". */
   const [idleExpanded, setIdleExpanded] = useState<Record<string, boolean>>({});
+  /** Sort order for idle stops list: by time (chronological) or by duration */
+  const [idleSortOrder, setIdleSortOrder] = useState<'time' | 'duration'>('time');
 
   const { data: response, loading, error, lastOkMs, refresh } =
     useExtruderTimeline(date, { endpoint, pollMs });
@@ -677,19 +679,48 @@ export default function ExtruderTimeline({
           is the form the question is actually asked in. */}
       {lanes.length > 0 && (
         <div className="space-y-2 rounded-xl border border-zinc-200 bg-white p-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm font-semibold text-zinc-900">
-              Idle time — {PRODUCTION_SHIFTS.find((s) => s.value === shift)?.label ?? shift}
-            </span>
-            <span className="text-[11px] text-zinc-500">
-              a stop is &gt;{Math.round(MAX_GAP_MS / 1000)}s with no reading; measured over
-              elapsed time only, never the part of a shift still to come
-            </span>
-            <CsvButton
-              filename={() => csvFilename(["extruder-idle", date, shift === "ALL" ? null : shift])}
-              build={() => extruderIdleCsv(lanes.map((l) => ({ line: l.line, gaps: l.gaps })))}
-              rowCount={lanes.reduce((n, l) => n + l.gaps.length, 0)}
-            />
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm font-semibold text-zinc-900">
+                Idle time — {PRODUCTION_SHIFTS.find((s) => s.value === shift)?.label ?? shift}
+              </span>
+              <span className="text-[11px] text-zinc-500">
+                a stop is &gt;{Math.round(MAX_GAP_MS / 1000)}s with no reading; measured over
+                elapsed time only, never the part of a shift still to come
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 text-xs bg-zinc-100 p-0.5 rounded-lg border border-zinc-200/60">
+                <span className="text-zinc-500 text-[10px] font-bold px-1.5 uppercase">Sort:</span>
+                <button
+                  type="button"
+                  onClick={() => setIdleSortOrder('time')}
+                  className={`px-2 py-0.5 rounded text-[11px] font-bold transition-all ${
+                    idleSortOrder === 'time'
+                      ? 'bg-white text-blue-700 shadow-xs'
+                      : 'text-zinc-600 hover:text-zinc-900'
+                  }`}
+                >
+                  ตามช่วงเวลา (Time)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIdleSortOrder('duration')}
+                  className={`px-2 py-0.5 rounded text-[11px] font-bold transition-all ${
+                    idleSortOrder === 'duration'
+                      ? 'bg-white text-blue-700 shadow-xs'
+                      : 'text-zinc-600 hover:text-zinc-900'
+                  }`}
+                >
+                  นานที่สุด (Duration)
+                </button>
+              </div>
+              <CsvButton
+                filename={() => csvFilename(["extruder-idle", date, shift === "ALL" ? null : shift])}
+                build={() => extruderIdleCsv(lanes.map((l) => ({ line: l.line, gaps: l.gaps })))}
+                rowCount={lanes.reduce((n, l) => n + l.gaps.length, 0)}
+              />
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[36rem] text-left text-xs">
@@ -731,16 +762,15 @@ export default function ExtruderTimeline({
             </table>
           </div>
 
-          {/* The stops themselves, longest first — "when" is the next question
-              after "how much". Capped, but the cap is stated rather than
-              silently truncating, and the CSV above carries every row. */}
+          {/* The stops themselves, sorted by time or duration */}
           {lanes.map((lane) => {
-            const longest = [...lane.gaps].sort((a, b) => b.durationMs - a.durationMs);
-            // Per-lane rather than one shared flag: opening one line's tail is
-            // not a request to also unfold the other's.
+            const byDuration = [...lane.gaps].sort((a, b) => b.durationMs - a.durationMs);
             const expanded = idleExpanded[lane.line] ?? false;
-            const shown = expanded ? longest : longest.slice(0, IDLE_STOPS_SHOWN);
-            const hidden = longest.length - shown.length;
+            const subset = expanded ? byDuration : byDuration.slice(0, IDLE_STOPS_SHOWN);
+            const shown = idleSortOrder === 'time'
+              ? [...subset].sort((a, b) => a.startMs - b.startMs)
+              : subset;
+            const hidden = byDuration.length - subset.length;
             if (shown.length === 0) return null;
             return (
               <div key={lane.line} className="flex flex-wrap items-center gap-2 border-t border-zinc-100 pt-2">
