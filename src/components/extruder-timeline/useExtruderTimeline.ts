@@ -58,16 +58,45 @@ export function useExtruderTimeline(
     const s = ++seq.current;
     setLoading(true);
     try {
-      const res = await fetch(`${endpoint}?date=${encodeURIComponent(target)}`, {
-        // The endpoint is public and its body changes every ~10s. Without this
-        // a CDN or the browser's own heuristic cache will happily serve the
-        // first response for the rest of the shift, and the panel will look
-        // frozen with no error to explain it.
-        cache: "no-store",
-        headers: { accept: "application/json" },
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = (await res.json()) as ExtruderTimelineResponse;
+      let json: ExtruderTimelineResponse | null = null;
+      let fetchError: Error | null = null;
+
+      // 1. Try local Express API first (works on localhost / company network)
+      try {
+        const res = await fetch(`${endpoint}?date=${encodeURIComponent(target)}`, {
+          cache: "no-store",
+          headers: { accept: "application/json" },
+        });
+        const contentType = res.headers.get("content-type");
+        if (res.ok && contentType && contentType.includes("application/json")) {
+          json = (await res.json()) as ExtruderTimelineResponse;
+        } else {
+          fetchError = new Error(`HTTP ${res.status}`);
+        }
+      } catch (e) {
+        fetchError = e instanceof Error ? e : new Error("API network error");
+      }
+
+      // 2. Cloud Fallback (Vercel): load pre-built JSON from public/data/extruder/
+      if (!json) {
+        try {
+          const staticRes = await fetch(`/data/extruder/${encodeURIComponent(target)}.json`, {
+            cache: "no-store",
+            headers: { accept: "application/json" },
+          });
+          const contentType = staticRes.headers.get("content-type");
+          if (staticRes.ok && (!contentType || contentType.includes("application/json"))) {
+            json = (await staticRes.json()) as ExtruderTimelineResponse;
+          }
+        } catch (staticErr) {
+          console.warn("[Extruder] Static fallback fetch failed:", staticErr);
+        }
+      }
+
+      if (!json) {
+        throw fetchError || new Error(`Extruder data unavailable for ${target}`);
+      }
+
       if (s !== seq.current) return;          // a newer request already won
       setData(json);
       setError(null);
