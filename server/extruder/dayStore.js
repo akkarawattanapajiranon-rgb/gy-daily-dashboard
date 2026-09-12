@@ -6,7 +6,8 @@ const {
   EXTRUDER_LINES,
   ExtruderTimelineInputError,
   isValidExtruderDate,
-  MAX_SAMPLES_PER_LINE
+  MAX_SAMPLES_PER_LINE,
+  nextDate
 } = require('./buildTimeline');
 const { lineConfigs, loadLineRows } = require('./oracleSource');
 
@@ -218,9 +219,14 @@ async function getExtruderTimeline(date, now = () => new Date(), forceRefresh = 
     return l && l.rows && l.rows.length > 0;
   });
 
+  const next = nextDate(date);
+  const dayEndMs = Date.parse(`${next}T07:00:00+07:00`);
+  // A past production day is fully complete only if fetchedAtMs was after the 24-hr day ended at 07:00 AM
+  const isPastDayFullySynced = (!isCurrent && day.fetchedAtMs >= dayEndMs);
+
   const ttl = isCurrent ? REFRESH_AFTER_MS : 86400000;
   const ageMs = Date.now() - day.fetchedAtMs;
-  const cached = allLinesHaveData && (ageMs < ttl || !isCurrent) && !forceRefresh;
+  const cached = allLinesHaveData && (isCurrent ? (ageMs < ttl) : isPastDayFullySynced) && !forceRefresh;
 
   if (!cached) {
     const current = day;
