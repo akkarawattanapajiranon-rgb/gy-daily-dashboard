@@ -69,8 +69,8 @@ export default function SafetyLspReport() {
 
   const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-  const defaultWorkers = cachedLspFallback?.staff || [];
-  const defaultLeaders = cachedLspFallback?.leaders || [];
+  const defaultWorkers = cachedLspFallback?.staffWorkers || cachedLspFallback?.staff || [];
+  const defaultLeaders = cachedLspFallback?.leaderWorkers || cachedLspFallback?.leaders || [];
 
   const loadLspData = async () => {
     setLoading(true);
@@ -87,12 +87,13 @@ export default function SafetyLspReport() {
     } catch (e) {}
 
     setData({
-      file: 'LSP Tracking.xlsx (System Data)',
+      ...cachedLspFallback,
+      file: cachedLspFallback?.file || 'LSP Tracking.xlsx (System Data)',
       year: '2026',
       staffWorkers: defaultWorkers,
       leaderWorkers: defaultLeaders,
       hasData: true,
-      lastModifiedFormatted: '11/09/2026 08:50 น.'
+      lastModifiedFormatted: cachedLspFallback?.lastModifiedFormatted || '11/09/2026 08:50 น.'
     });
     setLoading(false);
   };
