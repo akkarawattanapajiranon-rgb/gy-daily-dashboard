@@ -1,0 +1,681 @@
+{
+  "date": "2026-09-12",
+  "generatedAt": "2026-09-12T01:30:21.940Z",
+  "waste": {
+    "date": "2026-09-12",
+    "millingSummary": 0,
+    "frictionSummary": 0,
+    "beadSummary": 0,
+    "millingTop": [],
+    "frictionTop": [],
+    "beadTop": [],
+    "dataDate": "2026-09-12",
+    "hasData": false
+  },
+  "cms": {
+    "date": "2026-09-12",
+    "mixing1": {
+      "batch": 42,
+      "ar": 84.3,
+      "pr": 97.9,
+      "qr": 81.6,
+      "oee2": 67.3
+    },
+    "mixing2": {
+      "batch": 45,
+      "ar": 90.9,
+      "pr": 88.7,
+      "qr": 100,
+      "oee2": 80.6
+    },
+    "totalAr": 87.6,
+    "totalPr": 93.2,
+    "totalQr": 90.5,
+    "totalOee2": 73.8
+  },
+  "target3Roll": 0,
+  "breakdown": {
+    "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
+    "_sheet": "SEP2026",
+    "_date": "2026-09-12",
+    "topLoss": [],
+    "Banbury": {
+      "target_bd_pct": 0.5827,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Extruder": {
+      "target_bd_pct": 0.5098,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Calender": {
+      "target_bd_pct": 0.4662,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Cutting": {
+      "target_bd_pct": 0.1166,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "_total": {
+      "target_bd_pct": 0.6475,
+      "actual_bd_pct": null,
+      "hasData": false
+    }
+  },
+  "fischer": {
+    "date": "2026-09-12",
+    "oee": {
+      "hasData": false,
+      "target_pct": 60,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0
+    },
+    "checksheet": {
+      "hasData": true,
+      "totalProduce": 9,
+      "totalWbr": 9,
+      "totalSapphire": 0,
+      "totalAngleChanges": 3,
+      "totalNormal": 9,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 9,
+          "sapphire": 0,
+          "angleChanges": 3,
+          "normal": 9,
+          "sticky": 0,
+          "total": 9
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
+    }
+  },
+  "roll3": {
+    "date": "2026-09-12",
+    "day": 12,
+    "sheet": "WINDUP",
+    "file": "9 -Treatment Release SEP 2026.xls",
+    "target": null,
+    "totalRolls": 0,
+    "totalRelease": 0,
+    "totalHold": 0,
+    "totalPending": 0,
+    "totalScheduled": 0,
+    "codeBreakdown": [],
+    "holdBreakdown": [],
+    "hasData": false
+  },
+  "roll42": {
+    "date": "2026-09-12",
+    "day": 12,
+    "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
+    "totalQty": 0,
+    "totalRolls": 0,
+    "totalMeters": 0,
+    "shifts": {
+      "shift1": {
+        "shiftNum": 1,
+        "name": "กะ 1 (Shift 1)",
+        "qty": 0,
+        "meters": 0,
+        "items": []
+      },
+      "shift2": {
+        "shiftNum": 2,
+        "name": "กะ 2 (Shift 2)",
+        "qty": 0,
+        "meters": 0,
+        "items": []
+      },
+      "shift3": {
+        "shiftNum": 3,
+        "name": "กะ 3 (Shift 3)",
+        "qty": 0,
+        "meters": 0,
+        "items": []
+      }
+    },
+    "topCodes": [],
+    "hasData": false
+  },
+  "quad": {
+    "date": "2026-09-12",
+    "oee": {
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
+    },
+    "output": {
+      "hasData": true,
+      "day": 12,
+      "grandTotal": 0,
+      "codeBreakdown": [],
+      "shifts": {
+        "1": {
+          "name": "Shift 1 (กะ 1)",
+          "items": [],
+          "totalQty": 0
+        },
+        "2": {
+          "name": "Shift 2 (กะ 2)",
+          "items": [],
+          "totalQty": 0
+        },
+        "3": {
+          "name": "Shift 3 (กะ 3)",
+          "items": [],
+          "totalQty": 0
+        }
+      }
+    }
+  },
+  "tuber": {
+    "date": "2026-09-12",
+    "oee": {
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
+    },
+    "output": {
+      "hasData": true,
+      "day": 12,
+      "grandTotal": 0,
+      "codeBreakdown": [],
+      "shifts": {
+        "1": {
+          "name": "Shift 1 (กะ 1)",
+          "items": [],
+          "totalQty": 0
+        },
+        "2": {
+          "name": "Shift 2 (กะ 2)",
+          "items": [],
+          "totalQty": 0
+        },
+        "3": {
+          "name": "Shift 3 (กะ 3)",
+          "items": [],
+          "totalQty": 0
+        }
+      }
+    }
+  },
+  "workaway": {
+    "date": "2026-09-12",
+    "sheet": "SEPTEMBER 2026",
+    "file": "Slow Moving Work away 2026.xlsx",
+    "hasData": false,
+    "summary": {
+      "activeDate": "12/9",
+      "sum": 0,
+      "target": 35056,
+      "minTarget": 20000,
+      "consume": 0,
+      "newGenerate": 0,
+      "slowMoving": 0,
+      "disposition": 0,
+      "hasData": false
+    },
+    "dailyTrend": [
+      {
+        "day": 31,
+        "month": 8,
+        "dateLabel": "31/8",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 55029,
+        "consume": 0,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 45903,
+        "disposition": 9126,
+        "hasData": true
+      },
+      {
+        "day": 1,
+        "month": 9,
+        "dateLabel": "1/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 48889,
+        "consume": 11278,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 41205,
+        "disposition": 7684,
+        "hasData": true
+      },
+      {
+        "day": 2,
+        "month": 9,
+        "dateLabel": "2/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 67794,
+        "consume": 15158,
+        "newGenerate": 19890,
+        "newGenerateBTA": 16740,
+        "newGenerateWBR": 3150,
+        "slowMoving": 38844,
+        "disposition": 9060,
+        "hasData": true
+      },
+      {
+        "day": 3,
+        "month": 9,
+        "dateLabel": "3/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 67739,
+        "consume": 14635,
+        "newGenerate": 13010,
+        "newGenerateBTA": 10250,
+        "newGenerateWBR": 2760,
+        "slowMoving": 46119,
+        "disposition": 8610,
+        "hasData": true
+      },
+      {
+        "day": 4,
+        "month": 9,
+        "dateLabel": "4/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 64964,
+        "consume": 13704,
+        "newGenerate": 12550,
+        "newGenerateBTA": 9460,
+        "newGenerateWBR": 3090,
+        "slowMoving": 43764,
+        "disposition": 8650,
+        "hasData": true
+      },
+      {
+        "day": 5,
+        "month": 9,
+        "dateLabel": "5/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 66584,
+        "consume": 13156,
+        "newGenerate": 12460,
+        "newGenerateBTA": 9650,
+        "newGenerateWBR": 2810,
+        "slowMoving": 45974,
+        "disposition": 8150,
+        "hasData": true
+      },
+      {
+        "day": 6,
+        "month": 9,
+        "dateLabel": "6/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 66584,
+        "consume": 17599,
+        "newGenerate": 12460,
+        "newGenerateBTA": 9649,
+        "newGenerateWBR": 2811,
+        "slowMoving": 45974,
+        "disposition": 8150,
+        "hasData": true
+      },
+      {
+        "day": 7,
+        "month": 9,
+        "dateLabel": "7/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 61628,
+        "consume": 16464,
+        "newGenerate": 12860,
+        "newGenerateBTA": 11320,
+        "newGenerateWBR": 1540,
+        "slowMoving": 40894,
+        "disposition": 7874,
+        "hasData": true
+      },
+      {
+        "day": 8,
+        "month": 9,
+        "dateLabel": "8/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 66228,
+        "consume": 11971,
+        "newGenerate": 13360,
+        "newGenerateBTA": 10070,
+        "newGenerateWBR": 3290,
+        "slowMoving": 44844,
+        "disposition": 8024,
+        "hasData": true
+      },
+      {
+        "day": 9,
+        "month": 9,
+        "dateLabel": "9/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 67758,
+        "consume": 14428,
+        "newGenerate": 9560,
+        "newGenerateBTA": 6580,
+        "newGenerateWBR": 2980,
+        "slowMoving": 48764,
+        "disposition": 9434,
+        "hasData": true
+      },
+      {
+        "day": 10,
+        "month": 9,
+        "dateLabel": "10/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 65048,
+        "consume": 13438,
+        "newGenerate": 11490,
+        "newGenerateBTA": 8510,
+        "newGenerateWBR": 2980,
+        "slowMoving": 44624,
+        "disposition": 8934,
+        "hasData": true
+      },
+      {
+        "day": 11,
+        "month": 9,
+        "dateLabel": "11/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 63510,
+        "consume": 16968,
+        "newGenerate": 8920,
+        "newGenerateBTA": 6520,
+        "newGenerateWBR": 2400,
+        "slowMoving": 46114,
+        "disposition": 8476,
+        "hasData": true
+      },
+      {
+        "day": 12,
+        "month": 9,
+        "dateLabel": "12/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 0,
+        "consume": 0,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 0,
+        "disposition": 0,
+        "hasData": false
+      }
+    ],
+    "top10": [],
+    "top10File": "Work awayTop 5 อันดับ September.xlsx"
+  },
+  "weeklyOee": {
+    "date": "2026-09-12",
+    "activeWeek": {
+      "weekNum": 2,
+      "startDay": 7,
+      "endDay": 13,
+      "label": "W2 (7/9 - 13/9)",
+      "isCurrentWeek": true,
+      "quad": {
+        "avg": 57.16,
+        "target": 62,
+        "count": 4,
+        "isMet": false
+      },
+      "tuber": {
+        "avg": 61.05,
+        "target": 62,
+        "count": 4,
+        "isMet": false
+      },
+      "fischer": {
+        "avg": 51.36,
+        "target": 60,
+        "count": 4,
+        "isMet": false
+      },
+      "mixing": {
+        "avg": 76.45,
+        "target": 76.6,
+        "count": 6,
+        "isMet": false
+      }
+    },
+    "weeks": [
+      {
+        "weekNum": 1,
+        "startDay": 1,
+        "endDay": 6,
+        "label": "W1 (1/9 - 6/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": 57.1,
+          "target": 62,
+          "count": 6,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": 61.93,
+          "target": 62,
+          "count": 6,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": 52.85,
+          "target": 60,
+          "count": 6,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": 73.08,
+          "target": 76.6,
+          "count": 6,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 2,
+        "startDay": 7,
+        "endDay": 13,
+        "label": "W2 (7/9 - 13/9)",
+        "isCurrentWeek": true,
+        "quad": {
+          "avg": 57.16,
+          "target": 62,
+          "count": 4,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": 61.05,
+          "target": 62,
+          "count": 4,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": 51.36,
+          "target": 60,
+          "count": 4,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": 76.45,
+          "target": 76.6,
+          "count": 6,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 3,
+        "startDay": 14,
+        "endDay": 20,
+        "label": "W3 (14/9 - 20/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 4,
+        "startDay": 21,
+        "endDay": 27,
+        "label": "W4 (21/9 - 27/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 5,
+        "startDay": 28,
+        "endDay": 30,
+        "label": "W5 (28/9 - 30/9)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      }
+    ]
+  },
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "12",
+    "_date": "2026-09-12",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "totalExtrusionMin": 0,
+    "totalExtrusionHours": 0,
+    "totalCompMin": 0,
+    "totalCompHours": 0,
+    "summary": {
+      "extrusionCount": 0,
+      "compCount": 0,
+      "totalItems": 0
+    },
+    "items": []
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(12)",
+    "_date": "2026-09-12",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 0,
+      "itemsWithDetail": 0,
+      "itemsOnlyMin": 0
+    },
+    "items": []
+  }
+}
