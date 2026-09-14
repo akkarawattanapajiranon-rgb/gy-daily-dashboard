@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-14T01:31:36.765Z",
+  "generatedAt": "2026-09-14T02:01:14.110Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 257,
@@ -735,97 +735,97 @@
     "oee": {
       "hasData": true,
       "sr_pct": 57.29,
-      "ar_pct": 70.91,
-      "pr_pct": 84.27,
-      "qr_pct": 94.66,
-      "oee1_pct": 32.41,
-      "oee2_pct": 56.57,
+      "ar_pct": 74.18,
+      "pr_pct": 83.84,
+      "qr_pct": 93.68,
+      "oee1_pct": 33.38,
+      "oee2_pct": 58.27,
       "bd_pct": 2.08
     },
     "output": {
       "hasData": true,
       "day": 10,
-      "grandTotal": 1226,
+      "grandTotal": 3130.8,
       "codeBreakdown": [
         {
-          "code": "6017",
-          "count": 400,
-          "percentage": 32.63
+          "code": "B275",
+          "count": 1280,
+          "percentage": 40.88
         },
         {
-          "code": "B275",
-          "count": 400,
-          "percentage": 32.63
+          "code": "6017",
+          "count": 800,
+          "percentage": 25.55
         },
         {
           "code": "B200",
-          "count": 200,
-          "percentage": 16.31
+          "count": 640,
+          "percentage": 20.44
         },
         {
           "code": "B627",
-          "count": 62,
-          "percentage": 5.06
+          "count": 198.4,
+          "percentage": 6.34
         },
         {
           "code": "6015",
-          "count": 22,
-          "percentage": 1.79
+          "count": 70.4,
+          "percentage": 2.25
         },
         {
           "code": "WYAF",
           "count": 18,
-          "percentage": 1.47
+          "percentage": 0.57
         },
         {
           "code": "WAIS",
           "count": 18,
-          "percentage": 1.47
+          "percentage": 0.57
         },
         {
           "code": "W1CL",
           "count": 16,
-          "percentage": 1.31
+          "percentage": 0.51
         },
         {
           "code": "WLAN",
           "count": 16,
-          "percentage": 1.31
+          "percentage": 0.51
         },
         {
           "code": "W1LG",
           "count": 16,
-          "percentage": 1.31
+          "percentage": 0.51
         },
         {
           "code": "WG4B",
           "count": 14,
-          "percentage": 1.14
+          "percentage": 0.45
         },
         {
           "code": "WA8X",
           "count": 14,
-          "percentage": 1.14
+          "percentage": 0.45
         },
         {
           "code": "W1WF",
           "count": 8,
-          "percentage": 0.65
+          "percentage": 0.26
         },
         {
           "code": "WLGW",
           "count": 8,
-          "percentage": 0.65
+          "percentage": 0.26
         },
         {
           "code": "WYAL",
           "count": 8,
-          "percentage": 0.65
+          "percentage": 0.26
         },
         {
           "code": "Q2AH",
           "count": 6,
-          "percentage": 0.49
+          "percentage": 0.19
         }
       ],
       "shifts": {
@@ -839,8 +839,8 @@
               "code": "6015",
               "qtyTarget": 280,
               "qtyProduced": 22,
-              "qtySapphire": 0,
-              "totalQty": 22
+              "qtySapphire": 48.400000000000006,
+              "totalQty": 70.4
             },
             {
               "partId": "TL00152",
@@ -863,7 +863,7 @@
               "totalQty": 8
             }
           ],
-          "totalQty": 36
+          "totalQty": 84.4
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -1011,8 +1011,8 @@
               "code": "B275",
               "qtyTarget": 400,
               "qtyProduced": 400,
-              "qtySapphire": 0,
-              "totalQty": 400
+              "qtySapphire": 880.0000000000001,
+              "totalQty": 1280
             },
             {
               "partId": "SC00702",
@@ -1021,8 +1021,8 @@
               "code": "B200",
               "qtyTarget": 200,
               "qtyProduced": 200,
-              "qtySapphire": 0,
-              "totalQty": 200
+              "qtySapphire": 440.00000000000006,
+              "totalQty": 640
             },
             {
               "partId": "SC01032",
@@ -1031,8 +1031,8 @@
               "code": "B627",
               "qtyTarget": 100,
               "qtyProduced": 62,
-              "qtySapphire": 0,
-              "totalQty": 62
+              "qtySapphire": 136.4,
+              "totalQty": 198.4
             },
             {
               "partId": "SW06332",
@@ -1041,8 +1041,8 @@
               "code": "6017",
               "qtyTarget": 4,
               "qtyProduced": 400,
-              "qtySapphire": 0,
-              "totalQty": 400
+              "qtySapphire": 400,
+              "totalQty": 800
             },
             {
               "partId": "TL00090",
@@ -1085,7 +1085,7 @@
               "totalQty": 2
             }
           ],
-          "totalQty": 1088
+          "totalQty": 2944.4
         }
       }
     }
@@ -1667,7 +1667,7 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 57.16,
+        "avg": 57.59,
         "target": 62,
         "count": 4,
         "isMet": false
@@ -1730,7 +1730,7 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 57.16,
+          "avg": 57.59,
           "target": 62,
           "count": 4,
           "isMet": false
@@ -1779,7 +1779,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 69.3,
+          "avg": 60.5,
           "target": 76.6,
           "count": 1,
           "isMet": false

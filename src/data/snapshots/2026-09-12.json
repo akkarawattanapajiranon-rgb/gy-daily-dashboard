@@ -1,6 +1,6 @@
 {
   "date": "2026-09-12",
-  "generatedAt": "2026-09-14T01:31:14.935Z",
+  "generatedAt": "2026-09-14T02:01:41.380Z",
   "waste": {
     "date": "2026-09-12",
     "millingSummary": 134.8,
@@ -1077,14 +1077,14 @@
   "tuber": {
     "date": "2026-09-12",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
-      "bd_pct": 0
+      "hasData": true,
+      "sr_pct": 82.29,
+      "ar_pct": 72.15,
+      "pr_pct": 86.83,
+      "qr_pct": 97.04,
+      "oee1_pct": 50.03,
+      "oee2_pct": 60.79,
+      "bd_pct": 12.5
     },
     "output": {
       "hasData": true,
@@ -1666,15 +1666,15 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 57.16,
+        "avg": 57.59,
         "target": 62,
         "count": 4,
         "isMet": false
       },
       "tuber": {
-        "avg": 61.05,
+        "avg": 59.2,
         "target": 62,
-        "count": 4,
+        "count": 6,
         "isMet": false
       },
       "fischer": {
@@ -1729,15 +1729,15 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 57.16,
+          "avg": 57.59,
           "target": 62,
           "count": 4,
           "isMet": false
         },
         "tuber": {
-          "avg": 61.05,
+          "avg": 59.2,
           "target": 62,
-          "count": 4,
+          "count": 6,
           "isMet": false
         },
         "fischer": {
@@ -1778,7 +1778,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 70.4,
+          "avg": 59.9,
           "target": 76.6,
           "count": 1,
           "isMet": false
