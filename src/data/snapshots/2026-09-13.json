@@ -1,9 +1,9 @@
 {
   "date": "2026-09-13",
-  "generatedAt": "2026-09-14T00:01:06.549Z",
+  "generatedAt": "2026-09-14T01:31:02.675Z",
   "waste": {
     "date": "2026-09-13",
-    "millingSummary": 148.8,
+    "millingSummary": 152.8,
     "frictionSummary": 205.6,
     "beadSummary": 0,
     "millingTop": [
@@ -21,7 +21,7 @@
       },
       {
         "code": "M05",
-        "amount": 43,
+        "amount": 47,
         "reason": "TAILING",
         "isHigh": false
       }
@@ -118,14 +118,14 @@
   "fischer": {
     "date": "2026-09-13",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 71.74,
+      "ar_pct": 58.55,
+      "pr_pct": 95.62,
+      "qr_pct": 99.54,
+      "oee1_pct": 39.98,
+      "oee2_pct": 55.73
     },
     "checksheet": {
       "hasData": true,
@@ -1014,17 +1014,17 @@
     "date": "2026-09-13",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "13/9",
-      "sum": 0,
+      "sum": 67424,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "consume": 16371,
+      "newGenerate": 14070,
+      "slowMoving": 44144,
+      "disposition": 9210,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -1214,7 +1214,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 67424,
-        "consume": 0,
+        "consume": 11784,
         "newGenerate": 14070,
         "newGenerateBTA": 12650,
         "newGenerateWBR": 1420,
@@ -1228,17 +1228,88 @@
         "dateLabel": "13/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
-        "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "sum": 67424,
+        "consume": 16371,
+        "newGenerate": 14070,
+        "newGenerateBTA": 12649,
+        "newGenerateWBR": 1421,
+        "slowMoving": 44144,
+        "disposition": 9210,
+        "hasData": true
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1128",
+        "qty": 6329,
+        "qtyMt": 6.33,
+        "percentage": 11.8
+      },
+      {
+        "rank": 2,
+        "code": "K33M1",
+        "qty": 3740,
+        "qtyMt": 3.74,
+        "percentage": 7
+      },
+      {
+        "rank": 3,
+        "code": "M36F3",
+        "qty": 3600,
+        "qtyMt": 3.6,
+        "percentage": 6.7
+      },
+      {
+        "rank": 4,
+        "code": "K11M2",
+        "qty": 3240,
+        "qtyMt": 3.24,
+        "percentage": 6
+      },
+      {
+        "rank": 5,
+        "code": "N1692",
+        "qty": 3140,
+        "qtyMt": 3.14,
+        "percentage": 5.8
+      },
+      {
+        "rank": 6,
+        "code": "T1400",
+        "qty": 2910,
+        "qtyMt": 2.91,
+        "percentage": 5.4
+      },
+      {
+        "rank": 7,
+        "code": "K27T4",
+        "qty": 2700,
+        "qtyMt": 2.7,
+        "percentage": 5
+      },
+      {
+        "rank": 8,
+        "code": "K95M6",
+        "qty": 2545,
+        "qtyMt": 2.54,
+        "percentage": 4.7
+      },
+      {
+        "rank": 9,
+        "code": "N1717",
+        "qty": 2290,
+        "qtyMt": 2.29,
+        "percentage": 4.3
+      },
+      {
+        "rank": 10,
+        "code": "F1145",
+        "qty": 1820,
+        "qtyMt": 1.82,
+        "percentage": 3.4
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
@@ -1262,9 +1333,9 @@
         "isMet": false
       },
       "fischer": {
-        "avg": 51.36,
+        "avg": 53.02,
         "target": 60,
-        "count": 4,
+        "count": 7,
         "isMet": false
       },
       "mixing": {
@@ -1325,9 +1396,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 51.36,
+          "avg": 53.02,
           "target": 60,
-          "count": 4,
+          "count": 7,
           "isMet": false
         },
         "mixing": {
@@ -1362,9 +1433,9 @@
           "isMet": false
         },
         "mixing": {
-          "avg": null,
+          "avg": 70.4,
           "target": 76.6,
-          "count": 0,
+          "count": 1,
           "isMet": false
         }
       },

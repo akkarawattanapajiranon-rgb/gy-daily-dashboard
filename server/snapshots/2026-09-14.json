@@ -1,6 +1,6 @@
 {
   "date": "2026-09-14",
-  "generatedAt": "2026-09-14T00:00:50.683Z",
+  "generatedAt": "2026-09-14T01:30:51.496Z",
   "waste": {
     "date": "2026-09-14",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-14",
     "mixing1": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 41,
+      "ar": 91.2,
+      "pr": 86.8,
+      "qr": 93.7,
+      "oee2": 74.2
     },
     "mixing2": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 40,
+      "ar": 73.4,
+      "pr": 90.7,
+      "qr": 100,
+      "oee2": 66.6
     },
-    "totalAr": 0,
-    "totalPr": 0,
-    "totalQr": 0,
-    "totalOee2": 0
+    "totalAr": 82.2,
+    "totalPr": 88.6,
+    "totalQr": 96.8,
+    "totalOee2": 70.4
   },
-  "target3Roll": 0,
+  "target3Roll": 19,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -78,7 +78,41 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 4,
+      "totalWbr": 4,
+      "totalSapphire": 0,
+      "totalAngleChanges": 2,
+      "totalNormal": 4,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 4,
+          "sapphire": 0,
+          "angleChanges": 2,
+          "normal": 4,
+          "sticky": 0,
+          "total": 4
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -87,29 +121,77 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
+    "totalRolls": 19,
     "totalRelease": 0,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 19,
+    "totalScheduled": 19,
+    "codeBreakdown": [
+      {
+        "code": "RP08",
+        "count": 6,
+        "percentage": 31.58
+      },
+      {
+        "code": "RU53",
+        "count": 6,
+        "percentage": 31.58
+      },
+      {
+        "code": "NU27",
+        "count": 4,
+        "percentage": 21.05
+      },
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 10.53
+      },
+      {
+        "code": "EESV",
+        "count": 1,
+        "percentage": 5.26
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-14",
     "day": 14,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 0,
-    "totalRolls": 0,
-    "totalMeters": 0,
+    "totalQty": 80,
+    "totalRolls": 80,
+    "totalMeters": 3660,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 0,
-        "meters": 0,
-        "items": []
+        "qty": 80,
+        "meters": 3660,
+        "items": [
+          {
+            "sapCode": "PL08365",
+            "code": "QUIR",
+            "qty": 64,
+            "meters": 2240,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "PL07195",
+            "code": "WG4B",
+            "qty": 12,
+            "meters": 420,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "PL07427",
+            "code": "WGMS",
+            "qty": 4,
+            "meters": 1000,
+            "unit": "คัน"
+          }
+        ]
       },
       "shift2": {
         "shiftNum": 2,
@@ -126,8 +208,45 @@
         "items": []
       }
     },
-    "topCodes": [],
-    "hasData": false
+    "topCodes": [
+      {
+        "code": "QUIR",
+        "sapCode": "PL08365",
+        "qty": 64,
+        "meters": 2240,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 64,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WG4B",
+        "sapCode": "PL07195",
+        "qty": 12,
+        "meters": 420,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 12,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WGMS",
+        "sapCode": "PL07427",
+        "qty": 4,
+        "meters": 1000,
+        "unit": "คัน",
+        "shifts": {
+          "1": 4,
+          "2": 0,
+          "3": 0
+        }
+      }
+    ],
+    "hasData": true
   },
   "quad": {
     "date": "2026-09-14",
@@ -144,13 +263,70 @@
     "output": {
       "hasData": true,
       "day": 14,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 24,
+      "codeBreakdown": [
+        {
+          "code": "W1CL",
+          "count": 12,
+          "percentage": 50
+        },
+        {
+          "code": "W13F",
+          "count": 6,
+          "percentage": 25
+        },
+        {
+          "code": "W13L",
+          "count": 6,
+          "percentage": 25
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "TL00202",
+              "code1": "W1CL",
+              "code2": "",
+              "code": "W1CL",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00202",
+              "code1": "W1CL",
+              "code2": "",
+              "code": "W1CL",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "TL00442",
+              "code1": "W13F",
+              "code2": "",
+              "code": "W13F",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            },
+            {
+              "partId": "TL00443",
+              "code1": "W13L",
+              "code2": "",
+              "code": "W13L",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            }
+          ],
+          "totalQty": 24
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -180,13 +356,34 @@
     "output": {
       "hasData": true,
       "day": 14,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 12,
+      "codeBreakdown": [
+        {
+          "code": "B275",
+          "count": 12,
+          "percentage": 100
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "XP02311",
+              "code": "B275",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "totalQty": 10
+            },
+            {
+              "partId": "xp02321",
+              "code": "B275",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "totalQty": 2
+            }
+          ],
+          "totalQty": 12
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -405,7 +602,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 67424,
-        "consume": 0,
+        "consume": 11784,
         "newGenerate": 14070,
         "newGenerateBTA": 12650,
         "newGenerateWBR": 1420,
@@ -419,14 +616,14 @@
         "dateLabel": "13/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
-        "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "sum": 67424,
+        "consume": 16371,
+        "newGenerate": 14070,
+        "newGenerateBTA": 12649,
+        "newGenerateWBR": 1421,
+        "slowMoving": 44144,
+        "disposition": 9210,
+        "hasData": true
       },
       {
         "day": 14,
@@ -474,9 +671,9 @@
         "isMet": false
       },
       "mixing": {
-        "avg": null,
+        "avg": 70.4,
         "target": 76.6,
-        "count": 0,
+        "count": 1,
         "isMet": false
       }
     },
@@ -531,9 +728,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 51.36,
+          "avg": 53.02,
           "target": 60,
-          "count": 4,
+          "count": 7,
           "isMet": false
         },
         "mixing": {
@@ -568,9 +765,9 @@
           "isMet": false
         },
         "mixing": {
-          "avg": null,
+          "avg": 70.4,
           "target": 76.6,
-          "count": 0,
+          "count": 1,
           "isMet": false
         }
       },

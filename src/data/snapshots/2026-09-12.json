@@ -1,6 +1,6 @@
 {
   "date": "2026-09-12",
-  "generatedAt": "2026-09-14T00:01:21.767Z",
+  "generatedAt": "2026-09-14T01:31:14.935Z",
   "waste": {
     "date": "2026-09-12",
     "millingSummary": 134.8,
@@ -125,14 +125,14 @@
   "fischer": {
     "date": "2026-09-12",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 83.19,
+      "ar_pct": 68.03,
+      "pr_pct": 82.5,
+      "qr_pct": 99.51,
+      "oee1_pct": 46.46,
+      "oee2_pct": 55.85
     },
     "checksheet": {
       "hasData": true,
@@ -1380,7 +1380,7 @@
       "sum": 67424,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
+      "consume": 11784,
       "newGenerate": 14070,
       "slowMoving": 44144,
       "disposition": 9210,
@@ -1574,7 +1574,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 67424,
-        "consume": 0,
+        "consume": 11784,
         "newGenerate": 14070,
         "newGenerateBTA": 12650,
         "newGenerateWBR": 1420,
@@ -1678,9 +1678,9 @@
         "isMet": false
       },
       "fischer": {
-        "avg": 51.36,
+        "avg": 52.57,
         "target": 60,
-        "count": 4,
+        "count": 6,
         "isMet": false
       },
       "mixing": {
@@ -1741,9 +1741,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 51.36,
+          "avg": 52.57,
           "target": 60,
-          "count": 4,
+          "count": 6,
           "isMet": false
         },
         "mixing": {
@@ -1778,9 +1778,9 @@
           "isMet": false
         },
         "mixing": {
-          "avg": null,
+          "avg": 70.4,
           "target": 76.6,
-          "count": 0,
+          "count": 1,
           "isMet": false
         }
       },
