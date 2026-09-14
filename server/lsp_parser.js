@@ -183,7 +183,7 @@ function parseLspData() {
     const onTargetCount = parsedStaff.filter(w => w.ytdPct >= 65).length;
     const belowTargetCount = totalWorkers - onTargetCount;
 
-    return {
+    const result = {
       file: file ? path.basename(file) : 'LSP Tracking.xlsx',
       lastModified,
       lastModifiedFormatted,
@@ -197,6 +197,22 @@ function parseLspData() {
       workers: parsedStaff,
       hasData: true
     };
+
+    // Auto-update cache files if live Excel file was parsed
+    if (file && parsedStaff.length > 0 && parsedLeaders.length > 0) {
+      try {
+        const serverCachePath = path.join(__dirname, 'lsp_data_cache.json');
+        const srcCachePath = path.join(__dirname, '..', 'src', 'data', 'lsp_data_cache.json');
+        fs.writeFileSync(serverCachePath, JSON.stringify(result, null, 2), 'utf8');
+        if (fs.existsSync(path.dirname(srcCachePath))) {
+          fs.writeFileSync(srcCachePath, JSON.stringify(result, null, 2), 'utf8');
+        }
+      } catch (saveErr) {
+        console.error('[lsp_parser] Cache save error:', saveErr.message);
+      }
+    }
+
+    return result;
   } catch (e) {
     return { error: e.message, hasData: false };
   }

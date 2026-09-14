@@ -1,12 +1,12 @@
 {
   "file": "LSP Tracking.xlsx",
-  "lastModified": "2026-09-11T06:13:32.354Z",
-  "lastModifiedFormatted": "11/09/2026 13:13 น.",
+  "lastModified": "2026-09-14T06:07:05.298Z",
+  "lastModifiedFormatted": "14/09/2026 13:07 น.",
   "year": "2026",
   "totalWorkers": 50,
-  "avgYtd": 48,
-  "onTargetCount": 16,
-  "belowTargetCount": 34,
+  "avgYtd": 50,
+  "onTargetCount": 19,
+  "belowTargetCount": 31,
   "staffWorkers": [
     {
       "id": 1,
@@ -15,7 +15,7 @@
       "title": "Quality Manager",
       "dept": "LT",
       "bc": "LT",
-      "department": "QUALITY",
+      "department": "LT",
       "costCenter": "1021",
       "areaCode": "LT",
       "categoryGroup": "LT",
@@ -88,12 +88,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 33
+      "ytdPct": 42
     },
     {
       "id": 4,
@@ -204,12 +204,12 @@
         "JUN": 3,
         "JUL": 1,
         "AUG": 3,
-        "SEP": 1,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 29
+      "ytdPct": 31
     },
     {
       "id": 8,
@@ -233,12 +233,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 1,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 50
+      "ytdPct": 52
     },
     {
       "id": 9,
@@ -407,12 +407,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 58
+      "ytdPct": 63
     },
     {
       "id": 15,
@@ -436,12 +436,12 @@
         "JUN": 6,
         "JUL": 3,
         "AUG": 4,
-        "SEP": 1,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 54
+      "ytdPct": 65
     },
     {
       "id": 16,
@@ -552,12 +552,12 @@
         "JUN": 5,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 69
+      "ytdPct": 79
     },
     {
       "id": 20,
@@ -610,12 +610,12 @@
         "JUN": 1,
         "JUL": 5,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 54
+      "ytdPct": 65
     },
     {
       "id": 22,
@@ -668,12 +668,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 5,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 65
+      "ytdPct": 69
     },
     {
       "id": 24,
@@ -813,7 +813,7 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": "",
+        "SEP": 0,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -871,12 +871,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 65
+      "ytdPct": 67
     },
     {
       "id": 31,
@@ -929,7 +929,7 @@
         "JUN": 5,
         "JUL": 13,
         "AUG": 8,
-        "SEP": 6,
+        "SEP": 7,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -958,12 +958,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 58
+      "ytdPct": 67
     },
     {
       "id": 34,
@@ -987,7 +987,7 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": "",
+        "SEP": 0,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -1045,12 +1045,12 @@
         "JUN": 0,
         "JUL": 1,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 1,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 10
+      "ytdPct": 13
     },
     {
       "id": 37,
@@ -1074,12 +1074,12 @@
         "JUN": 5,
         "JUL": 3,
         "AUG": 6,
-        "SEP": 4,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 69
+      "ytdPct": 71
     },
     {
       "id": 38,
@@ -1103,12 +1103,12 @@
         "JUN": 0,
         "JUL": 5,
         "AUG": 5,
-        "SEP": 1,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 40
+      "ytdPct": 44
     },
     {
       "id": 39,
@@ -1175,7 +1175,7 @@
       "title": "Production Manager",
       "dept": "LT",
       "bc": "LT",
-      "department": "PRODUCTION",
+      "department": "LT",
       "costCenter": "1010",
       "areaCode": "LT",
       "categoryGroup": "LT",
@@ -1190,12 +1190,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 67
+      "ytdPct": 69
     },
     {
       "id": 42,
@@ -1219,12 +1219,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 1,
+        "SEP": 0,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 2
+      "ytdPct": 0
     },
     {
       "id": 43,
@@ -1248,12 +1248,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 75
+      "ytdPct": 79
     },
     {
       "id": 44,
@@ -1393,12 +1393,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 17
+      "ytdPct": 21
     },
     {
       "id": 49,
@@ -1436,7 +1436,7 @@
       "title": "HR Manager - MFG",
       "dept": "LT",
       "bc": "LT",
-      "department": "HR",
+      "department": "LT",
       "costCenter": "1050",
       "areaCode": "LT",
       "categoryGroup": "LT",
@@ -2795,7 +2795,7 @@
       "title": "Quality Manager",
       "dept": "LT",
       "bc": "LT",
-      "department": "QUALITY",
+      "department": "LT",
       "costCenter": "1021",
       "areaCode": "LT",
       "categoryGroup": "LT",
@@ -2868,12 +2868,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 33
+      "ytdPct": 42
     },
     {
       "id": 4,
@@ -2984,12 +2984,12 @@
         "JUN": 3,
         "JUL": 1,
         "AUG": 3,
-        "SEP": 1,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 29
+      "ytdPct": 31
     },
     {
       "id": 8,
@@ -3013,12 +3013,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 1,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 50
+      "ytdPct": 52
     },
     {
       "id": 9,
@@ -3187,12 +3187,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 58
+      "ytdPct": 63
     },
     {
       "id": 15,
@@ -3216,12 +3216,12 @@
         "JUN": 6,
         "JUL": 3,
         "AUG": 4,
-        "SEP": 1,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 54
+      "ytdPct": 65
     },
     {
       "id": 16,
@@ -3332,12 +3332,12 @@
         "JUN": 5,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 69
+      "ytdPct": 79
     },
     {
       "id": 20,
@@ -3390,12 +3390,12 @@
         "JUN": 1,
         "JUL": 5,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 54
+      "ytdPct": 65
     },
     {
       "id": 22,
@@ -3448,12 +3448,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 5,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 65
+      "ytdPct": 69
     },
     {
       "id": 24,
@@ -3593,7 +3593,7 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": "",
+        "SEP": 0,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -3651,12 +3651,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 65
+      "ytdPct": 67
     },
     {
       "id": 31,
@@ -3709,7 +3709,7 @@
         "JUN": 5,
         "JUL": 13,
         "AUG": 8,
-        "SEP": 6,
+        "SEP": 7,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -3738,12 +3738,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 58
+      "ytdPct": 67
     },
     {
       "id": 34,
@@ -3767,7 +3767,7 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": "",
+        "SEP": 0,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -3825,12 +3825,12 @@
         "JUN": 0,
         "JUL": 1,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 1,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 10
+      "ytdPct": 13
     },
     {
       "id": 37,
@@ -3854,12 +3854,12 @@
         "JUN": 5,
         "JUL": 3,
         "AUG": 6,
-        "SEP": 4,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 69
+      "ytdPct": 71
     },
     {
       "id": 38,
@@ -3883,12 +3883,12 @@
         "JUN": 0,
         "JUL": 5,
         "AUG": 5,
-        "SEP": 1,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 40
+      "ytdPct": 44
     },
     {
       "id": 39,
@@ -3955,7 +3955,7 @@
       "title": "Production Manager",
       "dept": "LT",
       "bc": "LT",
-      "department": "PRODUCTION",
+      "department": "LT",
       "costCenter": "1010",
       "areaCode": "LT",
       "categoryGroup": "LT",
@@ -3970,12 +3970,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 4,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 67
+      "ytdPct": 69
     },
     {
       "id": 42,
@@ -3999,12 +3999,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 1,
+        "SEP": 0,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 2
+      "ytdPct": 0
     },
     {
       "id": 43,
@@ -4028,12 +4028,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 75
+      "ytdPct": 79
     },
     {
       "id": 44,
@@ -4173,12 +4173,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 17
+      "ytdPct": 21
     },
     {
       "id": 49,
@@ -4216,7 +4216,7 @@
       "title": "HR Manager - MFG",
       "dept": "LT",
       "bc": "LT",
-      "department": "HR",
+      "department": "LT",
       "costCenter": "1050",
       "areaCode": "LT",
       "categoryGroup": "LT",
