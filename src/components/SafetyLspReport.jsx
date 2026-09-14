@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriangle, Users, ExternalLink, TrendingUp, UserCheck, Clock, Layers, Filter, Building2, Presentation, Download } from 'lucide-react';
 import * as XLSX from 'xlsx';
-import pptxgen from 'pptxgenjs';
 import cachedLspFallback from '../data/lsp_data_cache.json';
 
 // Staff: Group by first 3 characters, with BCB-Aero+Retread separated: BCA, BCB, BCB-Aero+Retread, LT, GBS+FI +Eng
@@ -310,7 +309,9 @@ export default function SafetyLspReport() {
   const exportToPpt = async () => {
     setExportingPpt(true);
     try {
-      const pres = new pptxgen();
+      const pptxModule = await import('pptxgenjs');
+      const PptxGen = pptxModule.default || pptxModule;
+      const pres = new PptxGen();
       pres.layout = 'LAYOUT_16x9';
 
       const latestMonth = CURRENT_MONTH_KEY;
