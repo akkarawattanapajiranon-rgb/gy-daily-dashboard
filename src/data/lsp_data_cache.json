@@ -1,7 +1,7 @@
 {
   "file": "LSP Tracking.xlsx",
-  "lastModified": "2026-09-14T06:07:05.298Z",
-  "lastModifiedFormatted": "14/09/2026 13:07 น.",
+  "lastModified": "2026-09-14T07:08:26.223Z",
+  "lastModifiedFormatted": "14/09/2026 14:08 น.",
   "year": "2026",
   "totalWorkers": 50,
   "avgYtd": 50,
@@ -59,12 +59,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 3,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 69
+      "ytdPct": 71
     },
     {
       "id": 3,
@@ -102,7 +102,7 @@
       "title": "EHS Manager",
       "dept": "LT",
       "bc": "LT",
-      "department": "ESH",
+      "department": "EHS",
       "costCenter": "1056",
       "areaCode": "LT",
       "categoryGroup": "LT",
@@ -117,7 +117,7 @@
         "JUN": 18,
         "JUL": 11,
         "AUG": 11,
-        "SEP": 2,
+        "SEP": 7,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -349,12 +349,12 @@
         "JUN": 6,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 81
+      "ytdPct": 85
     },
     {
       "id": 13,
@@ -494,12 +494,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 1,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 42
+      "ytdPct": 44
     },
     {
       "id": 18,
@@ -914,7 +914,7 @@
       "title": "Safety Officer",
       "dept": "BCB-EHS",
       "bc": "BCB-EHS",
-      "department": "ESH",
+      "department": "EHS",
       "costCenter": "1056",
       "areaCode": "BCB-EHS",
       "categoryGroup": "BCB",
@@ -1016,12 +1016,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 46
+      "ytdPct": 52
     },
     {
       "id": 36,
@@ -1291,7 +1291,7 @@
       "title": "Environmental Engineer",
       "dept": "BCA-EHS",
       "bc": "BCA-EHS",
-      "department": "ESH",
+      "department": "EHS",
       "costCenter": "1056",
       "areaCode": "BCA-EHS",
       "categoryGroup": "BCA",
@@ -1364,12 +1364,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 0,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 50
+      "ytdPct": 54
     },
     {
       "id": 48,
@@ -2839,12 +2839,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 3,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 69
+      "ytdPct": 71
     },
     {
       "id": 3,
@@ -2882,7 +2882,7 @@
       "title": "EHS Manager",
       "dept": "LT",
       "bc": "LT",
-      "department": "ESH",
+      "department": "EHS",
       "costCenter": "1056",
       "areaCode": "LT",
       "categoryGroup": "LT",
@@ -2897,7 +2897,7 @@
         "JUN": 18,
         "JUL": 11,
         "AUG": 11,
-        "SEP": 2,
+        "SEP": 7,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -3129,12 +3129,12 @@
         "JUN": 6,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 81
+      "ytdPct": 85
     },
     {
       "id": 13,
@@ -3274,12 +3274,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 1,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 42
+      "ytdPct": 44
     },
     {
       "id": 18,
@@ -3694,7 +3694,7 @@
       "title": "Safety Officer",
       "dept": "BCB-EHS",
       "bc": "BCB-EHS",
-      "department": "ESH",
+      "department": "EHS",
       "costCenter": "1056",
       "areaCode": "BCB-EHS",
       "categoryGroup": "BCB",
@@ -3796,12 +3796,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 46
+      "ytdPct": 52
     },
     {
       "id": 36,
@@ -4071,7 +4071,7 @@
       "title": "Environmental Engineer",
       "dept": "BCA-EHS",
       "bc": "BCA-EHS",
-      "department": "ESH",
+      "department": "EHS",
       "costCenter": "1056",
       "areaCode": "BCA-EHS",
       "categoryGroup": "BCA",
@@ -4144,12 +4144,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 0,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 50
+      "ytdPct": 54
     },
     {
       "id": 48,

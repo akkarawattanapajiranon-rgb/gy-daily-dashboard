@@ -617,6 +617,16 @@ export default function SafetyLspReport() {
             </button>
 
             <a
+              href="/download/LSP_Tracker.exe"
+              download="LSP_Tracker.exe"
+              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs font-black transition-all shadow-md cursor-pointer ring-1 ring-white/20"
+              title="ดาวน์โหลดโปรแกรม Desktop (.exe) เพื่อเปิดใช้งานเป็นโปรแกรมบนเครื่องตนเองโดยตรง"
+            >
+              <Download className="w-3.5 h-3.5 text-blue-200" />
+              <span>ดาวน์โหลด App (.exe)</span>
+            </a>
+
+            <a
               href="https://goodyearcorp.sharepoint.com/:x:/r/sites/ThailandEHS/Shared%20Documents/LSP%20Tracking/2026%20LSP%20tracking/LSP%20Tracking.xlsx?web=1"
               target="_blank"
               rel="noopener noreferrer"

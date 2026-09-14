@@ -68,7 +68,40 @@ class TabErrorBoundary extends React.Component {
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState('dor'); // 'dor' | 'extruder'
+  const getInitialTab = () => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const t = params.get('tab');
+      if (t && ['dor', 'aero', 'extruder', 'safety', 'exporter'].includes(t.toLowerCase())) {
+        return t.toLowerCase();
+      }
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (hash && ['dor', 'aero', 'extruder', 'safety', 'exporter'].includes(hash)) {
+        return hash;
+      }
+    } catch (e) {}
+    return 'dor';
+  };
+
+  const isAppMode = () => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('mode') === 'app' || params.get('standalone') === 'true';
+    } catch (e) {}
+    return false;
+  };
+
+  const [activeTab, setActiveTabState] = useState(getInitialTab);
+  const [appMode] = useState(isAppMode);
+
+  const setActiveTab = (tab) => {
+    setActiveTabState(tab);
+    try {
+      const url = new URL(window.location);
+      url.searchParams.set('tab', tab);
+      window.history.replaceState(null, '', url);
+    } catch (e) {}
+  };
   const [wasteData, setWasteData] = useState({
     millingSummary: 0,
     frictionSummary: 0,
@@ -253,16 +286,24 @@ function App() {
               <span>หน้า 5: โหลดข้อมูลตัวเลข (Export)</span>
             </button>
           </div>
-          <div className="text-xs font-semibold text-slate-400 px-3">
-            {activeTab === 'dor' 
-              ? 'Daily Operations Overview' 
-              : activeTab === 'aero'
-              ? 'Aero Component Delay Report'
-              : activeTab === 'extruder' 
-              ? 'Extruder TAW Actual vs Spec Timeline' 
-              : activeTab === 'safety' 
-              ? 'EHS Safety & Life Saving Principles' 
-              : '11 Core Operational Metrics Exporter'}
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 px-3">
+            {appMode && (
+              <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-full font-bold text-[10px] flex items-center gap-1 border border-emerald-300 shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                Desktop App Mode
+              </span>
+            )}
+            <span>
+              {activeTab === 'dor' 
+                ? 'Daily Operations Overview' 
+                : activeTab === 'aero'
+                ? 'Aero Component Delay Report'
+                : activeTab === 'extruder' 
+                ? 'Extruder TAW Actual vs Spec Timeline' 
+                : activeTab === 'safety' 
+                ? 'EHS Safety & Life Saving Principles' 
+                : '11 Core Operational Metrics Exporter'}
+            </span>
           </div>
         </div>
 

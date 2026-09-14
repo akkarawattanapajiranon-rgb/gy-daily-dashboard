@@ -17,6 +17,7 @@ app.use((req, res, next) => {
 });
 
 const path = require('path');
+const fs = require('fs');
 
 const { getSnapshot } = require('./snapshot_generator');
 const { runMorningSync } = require('./cron_morning_sync');
@@ -403,6 +404,15 @@ app.get('/api/export-metrics', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+
+// Standalone Desktop App (.exe) download endpoint
+app.get('/download/LSP_Tracker.exe', (req, res) => {
+  const exePath = path.join(__dirname, '..', 'public', 'download', 'LSP_Tracker.exe');
+  if (fs.existsSync(exePath)) {
+    return res.download(exePath, 'LSP_Tracker.exe');
+  }
+  res.status(404).send('LSP_Tracker.exe not found');
 });
 
 // Serve built Vite assets AFTER API routes
