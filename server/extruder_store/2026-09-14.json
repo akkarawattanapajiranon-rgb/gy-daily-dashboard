@@ -1,10 +1,29 @@
 {
   "date": "2026-09-14",
-  "fetchedAtMs": 1789344063831,
+  "fetchedAtMs": 1789344137539,
   "lines": {
     "QUAD": {
-      "rows": [],
-      "lastDt": null,
+      "rows": [
+        {
+          "dt": "2026-09-14 07:02:11",
+          "runNum": 171995,
+          "recipeName": "WLAN-TOOS",
+          "recipeId": 2792,
+          "tatawAct": 0,
+          "tawSpec": 16.5,
+          "efficiency": 0,
+          "hpress1": 0.1983333,
+          "hpress2": 0.1866667,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0.1283333,
+          "s24": 0
+        }
+      ],
+      "lastDt": "2026-09-14 07:02:11",
       "truncated": false
     },
     "DUPLEX": {
@@ -44,9 +63,45 @@
           "s22": 0,
           "s23": 0,
           "s24": 0
+        },
+        {
+          "dt": "2026-09-14 07:01:54",
+          "runNum": 160733,
+          "recipeName": "AA02",
+          "recipeId": 932,
+          "tatawAct": 11.58207,
+          "tawSpec": 13,
+          "efficiency": 0.8909284615384615,
+          "hpress1": 0,
+          "hpress2": 1116.175,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0,
+          "s24": 0
+        },
+        {
+          "dt": "2026-09-14 07:01:24",
+          "runNum": 160733,
+          "recipeName": "AA02",
+          "recipeId": 932,
+          "tatawAct": 11.64771,
+          "tawSpec": 13,
+          "efficiency": 0.8959776923076923,
+          "hpress1": 0,
+          "hpress2": 1117.107,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0,
+          "s24": 0
         }
       ],
-      "lastDt": "2026-09-14 07:00:54",
+      "lastDt": "2026-09-14 07:01:54",
       "truncated": false
     }
   }
