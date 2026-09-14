@@ -974,6 +974,85 @@ export default function SafetyLspReport() {
                 </tr>
               )}
             </tbody>
+            {filteredWorkers.length > 0 && (
+              <tfoot className="bg-slate-900 text-white font-bold text-xs border-t-2 border-slate-700 shadow-inner">
+                {/* Row 1: Total Sum Audits */}
+                <tr className="hover:bg-slate-850">
+                  <td colSpan={4} className="p-3 pl-4 text-right tracking-wider uppercase font-black text-slate-300">
+                    <div className="flex items-center justify-end gap-2">
+                      <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      <span>Total Audits (รวมผลการทำ):</span>
+                    </div>
+                  </td>
+                  {months.map((m, mIdx) => {
+                    const monthNum = mIdx + 1;
+                    const isFuture = monthNum > CURRENT_MONTH_INDEX;
+                    const sum = filteredWorkers.reduce((acc, w) => {
+                      const val = w.monthly && w.monthly[m] !== undefined && w.monthly[m] !== '' ? Number(w.monthly[m]) : 0;
+                      return acc + (isNaN(val) ? 0 : val);
+                    }, 0);
+
+                    return (
+                      <td key={m} className="p-2 text-center">
+                        {isFuture && sum === 0 ? (
+                          <span className="text-slate-500 font-normal">-</span>
+                        ) : (
+                          <div className="flex flex-col items-center justify-center">
+                            <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-black text-xs border border-emerald-500/30">
+                              {sum}
+                            </span>
+                          </div>
+                        )}
+                      </td>
+                    );
+                  })}
+                  <td className="p-3 text-center">
+                    <span className="px-2.5 py-1 rounded-lg bg-emerald-400 text-slate-950 font-black text-xs shadow-md">
+                      {sepAuditsSum} ครั้ง
+                    </span>
+                  </td>
+                  <td className="p-3 text-center pr-4">
+                    <span className="text-xs text-emerald-300 font-black">
+                      {totalAuditPct}%
+                    </span>
+                  </td>
+                </tr>
+                {/* Row 2: Target & Achievement Rate */}
+                <tr className="bg-slate-950/80 text-[10px] text-slate-400 border-t border-slate-800">
+                  <td colSpan={4} className="py-2 px-4 text-right font-medium text-slate-400">
+                    Target {filteredWorkers.length * 4} ครั้ง / เดือน (% Achieved):
+                  </td>
+                  {months.map((m, mIdx) => {
+                    const monthNum = mIdx + 1;
+                    const isFuture = monthNum > CURRENT_MONTH_INDEX;
+                    const sum = filteredWorkers.reduce((acc, w) => {
+                      const val = w.monthly && w.monthly[m] !== undefined && w.monthly[m] !== '' ? Number(w.monthly[m]) : 0;
+                      return acc + (isNaN(val) ? 0 : val);
+                    }, 0);
+                    const target = filteredWorkers.length * 4;
+                    const pct = target > 0 ? Math.round((sum / target) * 100) : 0;
+
+                    return (
+                      <td key={m} className="py-1.5 text-center font-bold">
+                        {isFuture && sum === 0 ? (
+                          <span className="text-slate-600">-</span>
+                        ) : (
+                          <span className={`${pct >= 100 ? 'text-emerald-400' : pct >= 50 ? 'text-amber-300' : 'text-rose-400'}`}>
+                            {pct}%
+                          </span>
+                        )}
+                      </td>
+                    );
+                  })}
+                  <td className="py-1.5 text-center font-extrabold text-amber-300">
+                    เป้า {totalTargetAudits} ครั้ง
+                  </td>
+                  <td className="py-1.5 text-center pr-4 text-slate-400 font-semibold">
+                    {onTargetCount}/{totalWorkers} ผ่าน
+                  </td>
+                </tr>
+              </tfoot>
+            )}
           </table>
         </div>
       </div>
