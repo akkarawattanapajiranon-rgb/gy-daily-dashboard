@@ -4,7 +4,7 @@ const { parseLspData } = require('./lsp_parser');
 async function generateLspPpt(team = 'Staff', month = 'SEP') {
   const data = parseLspData();
   const pres = new pptxgen();
-  pres.layout = 'LAYOUT_16x9';
+  pres.layout = 'LAYOUT_WIDE';
 
   const isStaff = team.toLowerCase() === 'staff';
   const rawList = isStaff ? (data.staffWorkers || []) : (data.leaderWorkers || []);
@@ -92,7 +92,7 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
       x: 0,
       y: 0,
       w: 13.333,
-      h: 1.05,
+      h: 1.15,
       fill: { color: '0F172A' },
       line: { color: '0F172A' }
     });
@@ -100,8 +100,8 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
     // 2. Title & Subtitle
     slide.addText(pageInfo ? `${title} ${pageInfo}` : title, {
       x: 0.6,
-      y: 0.15,
-      w: 9.5,
+      y: 0.18,
+      w: 9.2,
       h: 0.45,
       fontSize: 16,
       bold: true,
@@ -110,18 +110,18 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
 
     slide.addText(subtitle, {
       x: 0.6,
-      y: 0.6,
-      w: 9.5,
+      y: 0.65,
+      w: 9.2,
       h: 0.35,
-      fontSize: 9.5,
+      fontSize: 10,
       color: '94A3B8'
     });
 
     // 3. Status Badge Pill
     slide.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-      x: 10.1,
-      y: 0.25,
-      w: 2.6,
+      x: 10.2,
+      y: 0.3,
+      w: 2.5,
       h: 0.52,
       fill: { color: badgeColor },
       line: { color: badgeColor },
@@ -129,9 +129,9 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
     });
 
     slide.addText(badgeText, {
-      x: 10.1,
-      y: 0.25,
-      w: 2.6,
+      x: 10.2,
+      y: 0.3,
+      w: 2.5,
       h: 0.52,
       fontSize: 11,
       bold: true,
@@ -151,27 +151,27 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
 
       slide.addTable(leftRows, {
         x: 0.6,
-        y: 1.25,
-        w: 5.8,
-        colW: [0.8, 3.5, 1.5],
+        y: 1.35,
+        w: 5.7,
+        colW: [0.7, 3.5, 1.5],
         rowH: 0.23
       });
 
       slide.addTable(rightRows, {
-        x: 6.933,
-        y: 1.25,
-        w: 5.8,
-        colW: [0.8, 3.5, 1.5],
+        x: 7.033,
+        y: 1.35,
+        w: 5.7,
+        colW: [0.7, 3.5, 1.5],
         rowH: 0.23
       });
     } else {
       // Single centered table
       const rows = makeTableRows(chunkItems, statusColorHex);
       slide.addTable(rows, {
-        x: 3.2,
-        y: 1.25,
-        w: 6.933,
-        colW: [1.0, 4.333, 1.6],
+        x: 3.266,
+        y: 1.35,
+        w: 6.8,
+        colW: [0.9, 4.2, 1.7],
         rowH: 0.26
       });
     }
