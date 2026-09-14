@@ -1,6 +1,6 @@
 {
   "date": "2026-09-13",
-  "fetchedAtMs": 1789343948391,
+  "fetchedAtMs": 1789344070102,
   "lines": {
     "QUAD": {
       "rows": [
@@ -94619,6 +94619,42 @@
           "s24": 0
         },
         {
+          "dt": "2026-09-14 06:59:54",
+          "runNum": 160733,
+          "recipeName": "AA02",
+          "recipeId": 932,
+          "tatawAct": 11.369,
+          "tawSpec": 13,
+          "efficiency": 0.8745384615384615,
+          "hpress1": 0,
+          "hpress2": 1128.337,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0,
+          "s24": 0
+        },
+        {
+          "dt": "2026-09-14 06:59:24",
+          "runNum": 160733,
+          "recipeName": "AA02",
+          "recipeId": 932,
+          "tatawAct": 11.31331,
+          "tawSpec": 13,
+          "efficiency": 0.8702546153846153,
+          "hpress1": 0,
+          "hpress2": 1112.358,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0,
+          "s24": 0
+        },
+        {
           "dt": "2026-09-14 06:58:54",
           "runNum": 160733,
           "recipeName": "AA02",
@@ -94943,7 +94979,7 @@
           "s24": 0
         }
       ],
-      "lastDt": "2026-09-14 06:58:54",
+      "lastDt": "2026-09-14 06:59:54",
       "truncated": false
     }
   }
