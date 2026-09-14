@@ -9,7 +9,7 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
   const isStaff = team.toLowerCase() === 'staff';
   const rawList = isStaff ? (data.staffWorkers || []) : (data.leaderWorkers || []);
   
-  // Exclude non-active if staff
+  // Exclude inactive personnel
   const workers = isStaff ? rawList.filter(w =>
     w.legacy !== '12752' && w.legacy !== '5645' &&
     !(w.name && (
@@ -30,9 +30,8 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
 
   const passList = workers.filter(w => getCount(w) >= 4).map((w, i) => ({
     orderNum: i + 1,
-    ...w,
-    count: getCount(w),
-    statusText: 'Pass (ครบเป้าหมาย)'
+    name: w.name || '-',
+    count: getCount(w)
   }));
 
   const inProgressList = workers.filter(w => {
@@ -40,24 +39,52 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
     return c >= 1 && c < 4;
   }).map((w, i) => ({
     orderNum: i + 1,
-    ...w,
-    count: getCount(w),
-    statusText: `In Progress (${getCount(w)}/4)`
+    name: w.name || '-',
+    count: getCount(w)
   }));
 
   const noAuditList = workers.filter(w => getCount(w) === 0).map((w, i) => ({
     orderNum: i + 1,
-    ...w,
-    count: 0,
-    statusText: 'ยังไม่ทำ (0/4)'
+    name: w.name || '-',
+    count: 0
   }));
 
   const teamLabel = isStaff ? 'Staff' : 'Leader Shopfloor (FLM)';
   const fileInfo = data.file || 'LSP Tracking.xlsx';
   const lastUpdate = data.lastModifiedFormatted || 'N/A';
-  const commonSubtitle = `เดือน: ${targetMonth} 2026 | ทีม: ${teamLabel} | ไฟล์: ${fileInfo} (อัปเดต: ${lastUpdate})`;
+  const commonSubtitle = `เดือน: ${targetMonth} 2026 | ทีม: ${teamLabel} | ข้อมูลอัปเดต: ${lastUpdate}`;
 
-  const renderCategorySlide = (title, subtitle, workerChunk, badgeColor, badgeText, statusColorHex, pageInfo = '') => {
+  const makeTableRows = (items, statusColorHex) => {
+    const headers = [
+      { text: 'ลำดับ', options: { fill: { color: '1E293B' }, color: 'FFFFFF', bold: true, align: 'center', fontSize: 9 } },
+      { text: 'ชื่อ - สกุล', options: { fill: { color: '1E293B' }, color: 'FFFFFF', bold: true, align: 'left', fontSize: 9 } },
+      { text: 'จำนวนครั้งที่ทำ', options: { fill: { color: '1E293B' }, color: 'FFFFFF', bold: true, align: 'center', fontSize: 9 } }
+    ];
+
+    const rows = [headers];
+
+    if (!items || items.length === 0) {
+      rows.push([
+        { text: '-', options: { align: 'center', fontSize: 8.5 } },
+        { text: 'ไม่มีรายชื่อในหมวดหมู่นี้', options: { fontSize: 8.5, italic: true } },
+        { text: '-', options: { align: 'center', fontSize: 8.5 } }
+      ]);
+    } else {
+      items.forEach((w, idx) => {
+        const isAlt = idx % 2 === 1;
+        const rowFill = isAlt ? 'F8FAFC' : 'FFFFFF';
+        rows.push([
+          { text: String(w.orderNum), options: { align: 'center', fontSize: 8.5, fill: { color: rowFill } } },
+          { text: String(w.name), options: { align: 'left', fontSize: 8.5, fill: { color: rowFill } } },
+          { text: `${w.count} ครั้ง`, options: { align: 'center', bold: true, color: statusColorHex, fontSize: 8.5, fill: { color: rowFill } } }
+        ]);
+      });
+    }
+
+    return rows;
+  };
+
+  const renderCategorySlide = (title, subtitle, chunkItems, badgeColor, badgeText, statusColorHex, pageInfo = '') => {
     const slide = pres.addSlide();
 
     // 1. Header Dark Bar
@@ -65,7 +92,7 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
       x: 0,
       y: 0,
       w: 13.333,
-      h: 1.15,
+      h: 1.05,
       fill: { color: '0F172A' },
       line: { color: '0F172A' }
     });
@@ -83,18 +110,18 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
 
     slide.addText(subtitle, {
       x: 0.6,
-      y: 0.62,
+      y: 0.6,
       w: 9.5,
-      h: 0.4,
+      h: 0.35,
       fontSize: 9.5,
       color: '94A3B8'
     });
 
     // 3. Status Badge Pill
     slide.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-      x: 10.3,
-      y: 0.3,
-      w: 2.4,
+      x: 10.1,
+      y: 0.25,
+      w: 2.6,
       h: 0.52,
       fill: { color: badgeColor },
       line: { color: badgeColor },
@@ -102,9 +129,9 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
     });
 
     slide.addText(badgeText, {
-      x: 10.3,
-      y: 0.3,
-      w: 2.4,
+      x: 10.1,
+      y: 0.25,
+      w: 2.6,
       h: 0.52,
       fontSize: 11,
       bold: true,
@@ -113,79 +140,68 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
       valign: 'middle'
     });
 
-    // 4. Conformance Table
-    const headers = [
-      { text: 'ลำดับ', options: { fill: { color: '1E293B' }, color: 'FFFFFF', bold: true, align: 'center', fontSize: 8 } },
-      { text: 'Legacy', options: { fill: { color: '1E293B' }, color: 'FFFFFF', bold: true, align: 'center', fontSize: 8 } },
-      { text: 'ชื่อ - สกุล / ตำแหน่งงาน', options: { fill: { color: '1E293B' }, color: 'FFFFFF', bold: true, fontSize: 8 } },
-      { text: 'กลุ่ม / แผนก', options: { fill: { color: '1E293B' }, color: 'FFFFFF', bold: true, align: 'center', fontSize: 8 } },
-      { text: 'จำนวนตรวจ (ครั้ง)', options: { fill: { color: '1E293B' }, color: 'FFFFFF', bold: true, align: 'center', fontSize: 8 } },
-      { text: 'สถานะ Conformance', options: { fill: { color: '1E293B' }, color: 'FFFFFF', bold: true, align: 'center', fontSize: 8 } }
-    ];
+    // 4. Tables: 2-column side-by-side if > 10 items, else centered single table
+    if (chunkItems.length > 10) {
+      const mid = Math.ceil(chunkItems.length / 2);
+      const leftChunk = chunkItems.slice(0, mid);
+      const rightChunk = chunkItems.slice(mid);
 
-    const tableRows = [headers];
+      const leftRows = makeTableRows(leftChunk, statusColorHex);
+      const rightRows = makeTableRows(rightChunk, statusColorHex);
 
-    if (workerChunk.length === 0) {
-      tableRows.push([
-        { text: '-', options: { align: 'center', fontSize: 8 } },
-        { text: '-', options: { align: 'center', fontSize: 8 } },
-        { text: 'ไม่มีรายชื่อในหมวดหมู่นี้', options: { fontSize: 8, italic: true } },
-        { text: '-', options: { align: 'center', fontSize: 8 } },
-        { text: '-', options: { align: 'center', fontSize: 8 } },
-        { text: '-', options: { align: 'center', fontSize: 8 } }
-      ]);
+      slide.addTable(leftRows, {
+        x: 0.6,
+        y: 1.25,
+        w: 5.8,
+        colW: [0.8, 3.5, 1.5],
+        rowH: 0.23
+      });
+
+      slide.addTable(rightRows, {
+        x: 6.933,
+        y: 1.25,
+        w: 5.8,
+        colW: [0.8, 3.5, 1.5],
+        rowH: 0.23
+      });
     } else {
-      workerChunk.forEach((w, idx) => {
-        const isAlt = idx % 2 === 1;
-        const rowFill = isAlt ? 'F8FAFC' : 'FFFFFF';
-        const grp = w.categoryGroup || w.dept || '-';
-        const nameWithTitle = (w.name || '-') + (w.title ? `\n${w.title}` : '');
-
-        tableRows.push([
-          { text: String(w.orderNum || idx + 1), options: { align: 'center', fontSize: 7.5, fill: { color: rowFill } } },
-          { text: String(w.legacy || '-'), options: { align: 'center', fontSize: 7.5, fill: { color: rowFill } } },
-          { text: nameWithTitle, options: { fontSize: 7.5, fill: { color: rowFill } } },
-          { text: String(grp), options: { align: 'center', fontSize: 7.5, fill: { color: rowFill } } },
-          { text: `${w.count} / 4 ครั้ง`, options: { align: 'center', bold: true, color: statusColorHex, fontSize: 7.5, fill: { color: rowFill } } },
-          { text: w.statusText, options: { align: 'center', bold: true, color: statusColorHex, fontSize: 7.5, fill: { color: rowFill } } }
-        ]);
+      // Single centered table
+      const rows = makeTableRows(chunkItems, statusColorHex);
+      slide.addTable(rows, {
+        x: 3.2,
+        y: 1.25,
+        w: 6.933,
+        colW: [1.0, 4.333, 1.6],
+        rowH: 0.26
       });
     }
-
-    slide.addTable(tableRows, {
-      x: 0.6,
-      y: 1.25,
-      w: 12.133,
-      colW: [0.7, 1.1, 5.733, 1.6, 1.5, 1.5],
-      rowH: 0.2
-    });
   };
 
-  const renderPaginatedSection = (title, items, badgeColor, badgeLabel, statusColorHex) => {
-    const pageSize = 24;
-    if (items.length <= pageSize) {
+  const renderSection = (title, items, badgeColor, badgeLabel, statusColorHex) => {
+    const maxPerSlide = 36; // 18 on left + 18 on right
+    if (items.length <= maxPerSlide) {
       renderCategorySlide(title, commonSubtitle, items, badgeColor, badgeLabel, statusColorHex);
     } else {
-      const totalPages = Math.ceil(items.length / pageSize);
+      const totalPages = Math.ceil(items.length / maxPerSlide);
       for (let p = 0; p < totalPages; p++) {
-        const chunk = items.slice(p * pageSize, (p + 1) * pageSize);
+        const chunk = items.slice(p * maxPerSlide, (p + 1) * maxPerSlide);
         const pageText = `(ส่วนที่ ${p + 1}/${totalPages})`;
         renderCategorySlide(title, commonSubtitle, chunk, badgeColor, badgeLabel, statusColorHex, pageText);
       }
     }
   };
 
-  // 1. หน้าแรก: สำหรับ รายชื่อ ที่ ทำครบ 4 ครั้ง ขึ้นไป
-  renderPaginatedSection(
-    'หน้า 1: รายชื่อที่ทำครบเป้าหมาย 4 ครั้งขึ้นไป (Pass)',
+  // Slide 1: ทำครบ 4 ครั้งขึ้นไป
+  renderSection(
+    'หน้า 1: รายชื่อที่ทำครบ 4 ครั้งขึ้นไป (Pass)',
     passList,
     '059669',
-    `ทำครบ ${passList.length} คน`,
+    `ทำครบ: ${passList.length} คน`,
     '059669'
   );
 
-  // 2. หน้า 2: สำหรับ รายชื่อ ที่ ทำตั้งแต่ 1-3 ครั้ง
-  renderPaginatedSection(
+  // Slide 2: ทำตั้งแต่ 1-3 ครั้ง
+  renderSection(
     'หน้า 2: รายชื่อที่ทำตั้งแต่ 1 - 3 ครั้ง (In Progress)',
     inProgressList,
     'D97706',
@@ -193,8 +209,8 @@ async function generateLspPpt(team = 'Staff', month = 'SEP') {
     'D97706'
   );
 
-  // 3. หน้า 3: สำหรับ คนที่ ยังไม่ทำเลย
-  renderPaginatedSection(
+  // Slide 3: ยังไม่ทำเลย
+  renderSection(
     'หน้า 3: รายชื่อคนที่ยังไม่ทำเลย (0 ครั้ง / Alert)',
     noAuditList,
     'E11D48',
