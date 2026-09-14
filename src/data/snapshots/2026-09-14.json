@@ -1,6 +1,6 @@
 {
   "date": "2026-09-14",
-  "generatedAt": "2026-09-14T02:00:56.890Z",
+  "generatedAt": "2026-09-14T02:11:22.639Z",
   "waste": {
     "date": "2026-09-14",
     "millingSummary": 0,
@@ -15,23 +15,23 @@
   "cms": {
     "date": "2026-09-14",
     "mixing1": {
-      "batch": 50,
-      "ar": 83.3,
-      "pr": 81.8,
-      "qr": 77.2,
-      "oee2": 52.6
+      "batch": 54,
+      "ar": 84.3,
+      "pr": 81,
+      "qr": 71.4,
+      "oee2": 48.7
     },
     "mixing2": {
-      "batch": 54,
+      "batch": 58,
       "ar": 75.3,
-      "pr": 90.2,
+      "pr": 89.9,
       "qr": 100,
-      "oee2": 67.9
+      "oee2": 67.7
     },
-    "totalAr": 79.3,
-    "totalPr": 85.8,
-    "totalQr": 88.9,
-    "totalOee2": 60.5
+    "totalAr": 79.7,
+    "totalPr": 85.3,
+    "totalQr": 86,
+    "totalOee2": 58.5
   },
   "target3Roll": 2,
   "breakdown": {
@@ -249,22 +249,27 @@
     "output": {
       "hasData": true,
       "day": 14,
-      "grandTotal": 24,
+      "grandTotal": 30,
       "codeBreakdown": [
         {
           "code": "W1CL",
           "count": 12,
-          "percentage": 50
+          "percentage": 40
         },
         {
           "code": "W13F",
           "count": 6,
-          "percentage": 25
+          "percentage": 20
         },
         {
           "code": "W13L",
           "count": 6,
-          "percentage": 25
+          "percentage": 20
+        },
+        {
+          "code": "WYAF",
+          "count": 6,
+          "percentage": 20
         }
       ],
       "shifts": {
@@ -310,9 +315,19 @@
               "qtyProduced": 6,
               "qtySapphire": 0,
               "totalQty": 6
+            },
+            {
+              "partId": "TL00232",
+              "code1": "WYAF",
+              "code2": "",
+              "code": "WYAF",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
             }
           ],
-          "totalQty": 24
+          "totalQty": 30
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -657,7 +672,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 60.5,
+        "avg": 58.3,
         "target": 76.6,
         "count": 1,
         "isMet": false
@@ -751,7 +766,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 60.5,
+          "avg": 58.3,
           "target": 76.6,
           "count": 1,
           "isMet": false
