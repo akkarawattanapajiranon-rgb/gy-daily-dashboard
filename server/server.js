@@ -372,6 +372,23 @@ app.get('/api/lsp', (req, res) => {
   res.json(data);
 });
 
+// EHS Safety LSP PPT Exporter
+const { generateLspPpt } = require('./lsp_ppt_generator');
+app.get('/api/export-lsp-ppt', async (req, res) => {
+  const team = req.query.team || 'Staff';
+  const month = req.query.month || 'SEP';
+  console.log(`Exporting LSP PPT for team: ${team}, month: ${month}`);
+  try {
+    const buffer = await generateLspPpt(team, month);
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.presentationml.presentation');
+    res.setHeader('Content-Disposition', `attachment; filename="LSP_Audit_Report_${month}_2026_${team}.pptx"`);
+    res.send(buffer);
+  } catch (err) {
+    console.error('Error generating LSP PPT:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Data Exporter endpoint for range or single date
 const { getExportMetricsRange } = require('./export_aggregator');
 

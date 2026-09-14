@@ -14,7 +14,7 @@ import SafetyLspReport from './components/SafetyLspReport';
 import DataExporter from './components/DataExporter';
 import Roll42Report from './components/Roll42Report';
 import ComponentDelayContainer from './components/ComponentDelayContainer';
-import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck, Download, Layers } from 'lucide-react';
+import { Calendar, RefreshCw, LayoutDashboard, Clock, ShieldCheck, Download, Layers, AlertTriangle } from 'lucide-react';
 import { 
   fetchWasteData, 
   fetchCmsData, 
@@ -28,6 +28,44 @@ import {
   fetchWorkawayData,
   fetchWeeklyOeeData
 } from './services/api';
+
+class TabErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Tab render error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="bg-white rounded-2xl p-8 border border-rose-200 shadow-sm text-center my-6">
+          <div className="inline-flex p-3 bg-rose-50 text-rose-600 rounded-2xl mb-3">
+            <AlertTriangle className="w-8 h-8" />
+          </div>
+          <h3 className="text-lg font-bold text-slate-800">เกิดข้อผิดพลาดในการแสดงผลหน้านี้</h3>
+          <p className="text-xs text-rose-600 mt-1 font-mono max-w-lg mx-auto bg-rose-50 p-2 rounded-lg">
+            {this.state.error?.message || 'Unknown render error'}
+          </p>
+          <button
+            onClick={() => this.setState({ hasError: false, error: null })}
+            className="mt-4 px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-all cursor-pointer"
+          >
+            ลองใหม่อีกครั้ง (Reload Tab)
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 function App() {
   const [activeTab, setActiveTab] = useState('dor'); // 'dor' | 'extruder'
@@ -342,14 +380,18 @@ function App() {
         {/* PAGE 4: Safety (EHS & LSP) */}
         {activeTab === 'safety' && (
           <div className="space-y-6">
-            <SafetyLspReport />
+            <TabErrorBoundary>
+              <SafetyLspReport />
+            </TabErrorBoundary>
           </div>
         )}
 
         {/* PAGE 5: โหลดข้อมูลตัวเลข (Export) */}
         {activeTab === 'exporter' && (
           <div className="space-y-6">
-            <DataExporter />
+            <TabErrorBoundary>
+              <DataExporter />
+            </TabErrorBoundary>
           </div>
         )}
 

@@ -305,10 +305,52 @@ export default function SafetyLspReport() {
   const inProgressCount = displayWorkers.filter(w => { const c = getWorkerSepCount(w); return c >= 1 && c < 4; }).length;
   const belowTargetCount = totalWorkers - onTargetCount;
 
+  const getBadgeStyle = (val, monthIndex) => {
+    if (val !== undefined && val !== '' && val !== null) {
+      const num = Number(val);
+      if (num >= 4) return 'bg-emerald-500 text-white font-black shadow-sm';
+      if (num >= 1) return 'bg-amber-400 text-amber-950 font-black shadow-sm';
+      if (num === 0) {
+        if (monthIndex <= CURRENT_MONTH_INDEX) {
+          return 'bg-rose-500 text-white font-black shadow-sm';
+        }
+        return 'bg-slate-100 text-slate-400 border border-slate-200 font-medium';
+      }
+    }
+
+    if (monthIndex <= CURRENT_MONTH_INDEX) {
+      return 'bg-rose-500 text-white font-black shadow-sm';
+    }
+    return 'bg-slate-100 text-slate-400 border border-slate-200 font-medium';
+  };
+
   // Export LSP to PPT (PowerPoint presentation)
   const exportToPpt = async () => {
     setExportingPpt(true);
     try {
+      // 1. Try fast backend server endpoint first (ideal for local network / server)
+      if (!customFileLoaded) {
+        try {
+          const res = await fetch(`/api/export-lsp-ppt?team=${encodeURIComponent(activeTeam)}&month=${encodeURIComponent(CURRENT_MONTH_KEY)}`);
+          if (res.ok) {
+            const blob = await res.blob();
+            const downloadUrl = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = `LSP_Audit_Report_${CURRENT_MONTH_KEY}_2026_${activeTeam}.pptx`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(downloadUrl);
+            setExportingPpt(false);
+            return;
+          }
+        } catch (e) {
+          console.warn('Backend PPT export unavailable, using client generator:', e);
+        }
+      }
+
+      // 2. Client-side generator (for custom uploaded files or Vercel)
       const pptxModule = await import('pptxgenjs');
       const PptxGen = pptxModule.default || pptxModule;
       const pres = new PptxGen();
