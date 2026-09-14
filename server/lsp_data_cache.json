@@ -1,7 +1,7 @@
 {
   "file": "LSP Tracking.xlsx",
-  "lastModified": "2026-09-14T07:08:26.223Z",
-  "lastModifiedFormatted": "14/09/2026 14:08 น.",
+  "lastModified": "2026-09-14T07:51:41.991Z",
+  "lastModifiedFormatted": "14/09/2026 14:51 น.",
   "year": "2026",
   "totalWorkers": 50,
   "avgYtd": 50,
@@ -1306,12 +1306,12 @@
         "JUN": 6,
         "JUL": 4,
         "AUG": 5,
-        "SEP": 5,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 85
+      "ytdPct": 88
     },
     {
       "id": 46,
@@ -4086,12 +4086,12 @@
         "JUN": 6,
         "JUL": 4,
         "AUG": 5,
-        "SEP": 5,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 85
+      "ytdPct": 88
     },
     {
       "id": 46,

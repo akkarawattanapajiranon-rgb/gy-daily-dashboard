@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriangle, Users, ExternalLink, TrendingUp, UserCheck, Clock, Layers, Filter, Building2, Presentation, Download } from 'lucide-react';
+import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriangle, Users, ExternalLink, TrendingUp, UserCheck, Clock, Layers, Filter, Building2, Presentation, Download, Target } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import cachedLspFallback from '../data/lsp_data_cache.json';
 
@@ -300,6 +300,8 @@ export default function SafetyLspReport() {
   const displayWorkers = filteredWorkers;
   const totalWorkers = displayWorkers.length;
   const sepAuditsSum = displayWorkers.reduce((acc, w) => acc + getWorkerSepCount(w), 0);
+  const totalTargetAudits = totalWorkers * 4;
+  const totalAuditPct = totalTargetAudits > 0 ? Math.round((sepAuditsSum / totalTargetAudits) * 100) : 0;
   const avgSepAudits = (sepAuditsSum / (totalWorkers || 1)).toFixed(1);
   const onTargetCount = displayWorkers.filter(w => getWorkerSepCount(w) >= 4).length;
   const inProgressCount = displayWorkers.filter(w => { const c = getWorkerSepCount(w); return c >= 1 && c < 4; }).length;
@@ -672,8 +674,8 @@ export default function SafetyLspReport() {
         </button>
       </div>
 
-      {/* KPI Cards (4 Top Stat Cards - Dynamic per Active Team / Selected Category) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* KPI Cards (5 Top Stat Cards - Dynamic per Active Team / Selected Category) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {/* Card 1: Total Personnel */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
           <div>
@@ -691,12 +693,36 @@ export default function SafetyLspReport() {
           </div>
         </div>
 
-        {/* Card 2: Average Current Month Audits */}
+        {/* Card 2: Total Audits Completed (จำนวนทั้งหมดที่ได้ทำ) */}
+        <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
+          <div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+              {CURRENT_MONTH_KEY} Total Audits
+            </div>
+            <div className="text-2xl font-black text-indigo-600 mt-1">
+              {sepAuditsSum} <span className="text-xs text-slate-500 font-normal">/ {totalTargetAudits} ครั้ง</span>
+            </div>
+            <div className="flex items-center gap-1.5 mt-2">
+              <div className="w-20 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                <div 
+                  className="bg-indigo-600 h-1.5 rounded-full transition-all duration-500" 
+                  style={{ width: `${Math.min(100, totalAuditPct)}%` }}
+                ></div>
+              </div>
+              <span className="text-[11px] font-black text-indigo-600">({totalAuditPct}%)</span>
+            </div>
+          </div>
+          <div className="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+            <Target className="w-6 h-6" />
+          </div>
+        </div>
+
+        {/* Card 3: Average Current Month Audits */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
           <div>
             <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">SEP Average Audits</div>
             <div className="text-2xl font-black text-slate-800 mt-1">{avgSepAudits} <span className="text-xs text-slate-500 font-normal">/ 4 ครั้ง</span></div>
-            <div className="w-24 bg-slate-100 rounded-full h-1.5 mt-2">
+            <div className="w-20 bg-slate-100 rounded-full h-1.5 mt-2">
               <div className="bg-emerald-500 h-1.5 rounded-full" style={{ width: `${Math.min(100, (Number(avgSepAudits) / 4) * 100)}%` }}></div>
             </div>
           </div>
