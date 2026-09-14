@@ -452,7 +452,7 @@ export default function ExtruderTimeline({
       const lineSamples = isDuplex
         ? line.samples.map(s => {
             const hp = s[4];
-            if (hp !== undefined && hp !== null && hp < 4.0) {
+            if (hp !== undefined && hp !== null && hp < 100) {
               return [s[0], null, s[2], s[3], s[4]] as ExtruderSample;
             }
             return s;

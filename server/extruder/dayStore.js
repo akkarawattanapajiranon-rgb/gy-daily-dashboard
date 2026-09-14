@@ -75,32 +75,57 @@ function saveDayToDisk(dateStr, day) {
       lines: linesObj
     };
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
+
+    // Also update public/data/extruder/ for static Vercel cloud deployment
+    try {
+      const publicExtruderDir = path.join(__dirname, '..', '..', 'public', 'data', 'extruder');
+      if (!fs.existsSync(publicExtruderDir)) fs.mkdirSync(publicExtruderDir, { recursive: true });
+      const timelineData = buildExtruderTimeline({
+        date: dateStr,
+        cached: true,
+        lines: [...day.lines.entries()].map(([line, state]) => ({
+          line,
+          rows: state.rows,
+          truncated: state.truncated,
+          error: state.rows && state.rows.length > 0 ? null : state.error,
+        })),
+      });
+      fs.writeFileSync(path.join(publicExtruderDir, `${dateStr}.json`), JSON.stringify(timelineData), 'utf8');
+    } catch (pubErr) {
+      // Non-critical
+    }
   } catch (e) {
     console.warn(`[Extruder Store] Failed to save ${dateStr}.json:`, e.message);
   }
 }
 
 /**
- * Retain only last 15 days of files in server/extruder_store/
+ * Retain only last 15 days of files in server/extruder_store/ and public/data/extruder/
  */
 function pruneOldFiles(nowDateStr) {
   try {
-    if (!fs.existsSync(STORE_DIR)) return;
-    const files = fs.readdirSync(STORE_DIR);
+    const dirs = [
+      STORE_DIR,
+      path.join(__dirname, '..', '..', 'public', 'data', 'extruder')
+    ];
     
     // Calculate cutoff date (15 days ago)
     const refDate = new Date(nowDateStr + 'T00:00:00Z');
     const cutoffDate = new Date(refDate.getTime() - (MAX_RETAINED_DAYS - 1) * 86400000);
     const cutoffStr = cutoffDate.toISOString().split('T')[0];
 
-    for (const file of files) {
-      if (!file.endsWith('.json')) continue;
-      const datePart = file.replace('.json', '');
-      if (datePart < cutoffStr) {
-        const fullPath = path.join(STORE_DIR, file);
-        fs.unlinkSync(fullPath);
-        days.delete(datePart);
-        console.log(`[Extruder Store] Pruned historical file older than 15 days: ${file}`);
+    for (const d of dirs) {
+      if (!fs.existsSync(d)) continue;
+      const files = fs.readdirSync(d);
+      for (const file of files) {
+        if (!file.endsWith('.json')) continue;
+        const datePart = file.replace('.json', '');
+        if (datePart < cutoffStr) {
+          const fullPath = path.join(d, file);
+          fs.unlinkSync(fullPath);
+          days.delete(datePart);
+          console.log(`[Extruder Store] Pruned historical file older than 15 days: ${file}`);
+        }
       }
     }
   } catch (e) {
