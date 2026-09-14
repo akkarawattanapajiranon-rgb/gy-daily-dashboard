@@ -1,6 +1,6 @@
 {
   "date": "2026-09-11",
-  "generatedAt": "2026-09-14T02:12:33.943Z",
+  "generatedAt": "2026-09-14T02:52:01.499Z",
   "waste": {
     "date": "2026-09-11",
     "millingSummary": 212.5,
@@ -113,31 +113,150 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-11",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Tuber",
+        "totalDurationMin": 240,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Skiver",
+            "symptom": "สายพานไม่ทำงาน",
+            "cause": "Servo Motor Module Alarm E71",
+            "action": "เปลี่ยน Drive (ยืมDrive Bead In มาใส่ก่อน)",
+            "fixType": "ชั่วคราว",
+            "durationMin": 210,
+            "jobType": "BD",
+            "fixBy": "ริน/เท่ห์"
+          },
+          {
+            "shift": "กะ1",
+            "zone": "EXT 8'",
+            "symptom": "Feed Box Hi Pressure",
+            "cause": "rubber stuck on sensor",
+            "action": "เปลี่ยน โค๊ตยางรันใหม่ / ทำความสะอาด",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ริน/เท่ห์"
+          }
+        ]
+      },
+      {
+        "machine": "Quad",
+        "totalDurationMin": 70,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "TCU",
+            "symptom": "TEMP LOW",
+            "cause": "ระดับน้ำในถังต่ำ",
+            "action": "เปิดน้ำเข้าระบบ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "บาส/แอด"
+          },
+          {
+            "shift": "กะ3",
+            "zone": "Head Extruder",
+            "symptom": "หัวบนปิดไม่สุด",
+            "cause": "Pin Lock ออกไม่สุด",
+            "action": "Manual เข้า-ออก",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/เอฟ"
+          }
+        ]
+      },
+      {
+        "machine": "Auto Pigment",
+        "totalDurationMin": 60,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Conveyor",
+            "symptom": "Machine can not auto.",
+            "cause": "Sensor ไม่ตรง",
+            "action": "ตั้งSensor",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ริน/เท่ห์"
+          },
+          {
+            "shift": "กะ1",
+            "zone": "Silo12",
+            "symptom": "น้ำหนักเกิน",
+            "cause": "ตราชั่งอ่านค่าไม่ตรง",
+            "action": "Calตราชั่งใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "เท่ห์"
+          }
+        ]
+      },
+      {
+        "machine": "Hot Apexer#1",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ3",
+            "zone": "Switch",
+            "symptom": "Switch คันโยกหลุด",
+            "cause": "กล่องใส่ Switch แตก",
+            "action": "ยึดกล่องให้แน่น",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/เอฟ"
+          }
+        ]
+      },
+      {
+        "machine": "Fischer",
+        "totalDurationMin": 15,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "Butsplice",
+            "symptom": "ตัวประคองพายหลุด",
+            "cause": "น๊อตยึดหลุด",
+            "action": "ใส่น๊อตยึดแน่นใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 15,
+            "jobType": "BD",
+            "fixBy": "มด/โฟล์ค"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 10.7639,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.1042,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 2.717,
+      "hasData": true
     }
   },
   "fischer": {
@@ -662,13 +781,13 @@
     "date": "2026-09-11",
     "oee": {
       "hasData": true,
-      "sr_pct": 68.4,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
-      "bd_pct": 12.5
+      "sr_pct": 66.67,
+      "ar_pct": 78.54,
+      "pr_pct": 79.58,
+      "qr_pct": 91.11,
+      "oee1_pct": 37.96,
+      "oee2_pct": 56.94,
+      "bd_pct": 4.51
     },
     "output": {
       "hasData": true,
@@ -1670,9 +1789,9 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 57.59,
+        "avg": 57.46,
         "target": 62,
-        "count": 4,
+        "count": 5,
         "isMet": false
       },
       "tuber": {
@@ -1733,9 +1852,9 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 57.59,
+          "avg": 57.46,
           "target": 62,
-          "count": 4,
+          "count": 5,
           "isMet": false
         },
         "tuber": {
@@ -1782,7 +1901,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 58.5,
+          "avg": 55.6,
           "target": 76.6,
           "count": 1,
           "isMet": false

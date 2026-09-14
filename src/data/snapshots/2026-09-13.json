@@ -1,6 +1,6 @@
 {
   "date": "2026-09-13",
-  "generatedAt": "2026-09-14T02:11:47.264Z",
+  "generatedAt": "2026-09-14T02:51:47.061Z",
   "waste": {
     "date": "2026-09-13",
     "millingSummary": 152.8,
@@ -88,31 +88,111 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-13",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Tuber",
+        "totalDurationMin": 85,
+        "details": [
+          {
+            "shift": "กะ2",
+            "zone": "Extuder 6 inch",
+            "symptom": "มอเตอร์หยุดเองบ่อย",
+            "cause": "Drive fault (Encoder Error)",
+            "action": "Clear fault",
+            "fixType": "ชั่วคราว",
+            "durationMin": 25,
+            "jobType": "BD",
+            "fixBy": "เอฟ/บาส"
+          },
+          {
+            "shift": "กะ3",
+            "zone": "Extuder 6 inch",
+            "symptom": "6\"Extruder Start ไม่ได้",
+            "cause": "หน้า Contract Safety Relay เสีย",
+            "action": "ย้ายหน้าใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/เอฟ"
+          }
+        ]
+      },
+      {
+        "machine": "3 Roll",
+        "totalDurationMin": 60,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Calender1",
+            "symptom": "Cabinet high temp.",
+            "cause": "Air conditionner off",
+            "action": "On air conditionner",
+            "fixType": "ชั่วคราว",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "เท่ห์/ไพรินทร์"
+          }
+        ]
+      },
+      {
+        "machine": "BB#2",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "TCU",
+            "symptom": "High temp.",
+            "cause": "Cooling diety.",
+            "action": "Drain water.",
+            "fixType": "ช่วคราว",
+            "durationMin": 20,
+            "jobType": "NBD",
+            "fixBy": "เท่ห์/ไพรินทร์"
+          }
+        ]
+      },
+      {
+        "machine": "Auto Pigment",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Un bagging",
+            "symptom": "ซีลถุงติดบ้าง ไม่ติดบ้าง",
+            "cause": "ตัวกดสกปรก",
+            "action": "เช็ดทำความสะอาดตัวกด",
+            "fixType": "ช่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "เท่ห์/ไพรินทร์"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 2.3958,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.6667,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.0156,
+      "hasData": true
     }
   },
   "fischer": {
@@ -555,64 +635,69 @@
   "quad": {
     "date": "2026-09-13",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 30.21,
+      "ar_pct": 75.86,
+      "pr_pct": 75.19,
+      "qr_pct": 93.84,
+      "oee1_pct": 16.17,
+      "oee2_pct": 53.53,
       "bd_pct": 0
     },
     "output": {
       "hasData": true,
       "day": 13,
-      "grandTotal": 462,
+      "grandTotal": 1759.6,
       "codeBreakdown": [
         {
-          "code": "T1400",
-          "count": 308,
-          "percentage": 66.67
+          "code": "B200",
+          "count": 665.6,
+          "percentage": 37.83
+        },
+        {
+          "code": "6010",
+          "count": 404,
+          "percentage": 22.96
+        },
+        {
+          "code": "B404",
+          "count": 320,
+          "percentage": 18.19
         },
         {
           "code": "B427",
-          "count": 100,
-          "percentage": 21.65
+          "count": 320,
+          "percentage": 18.19
         },
         {
           "code": "WA8X",
           "count": 14,
-          "percentage": 3.03
+          "percentage": 0.8
         },
         {
           "code": "W1CL",
           "count": 10,
-          "percentage": 2.16
+          "percentage": 0.57
         },
         {
           "code": "Q2AH",
           "count": 8,
-          "percentage": 1.73
+          "percentage": 0.45
         },
         {
           "code": "WAIS",
           "count": 8,
-          "percentage": 1.73
+          "percentage": 0.45
         },
         {
           "code": "WYAF",
           "count": 5,
-          "percentage": 1.08
+          "percentage": 0.28
         },
         {
           "code": "WYAL",
           "count": 5,
-          "percentage": 1.08
-        },
-        {
-          "code": "6010",
-          "count": 4,
-          "percentage": 0.87
+          "percentage": 0.28
         }
       ],
       "shifts": {
@@ -622,22 +707,22 @@
             {
               "partId": "SC00702",
               "code1": "",
-              "code2": "T1400",
-              "code": "T1400",
+              "code2": "B200",
+              "code": "B200",
               "qtyTarget": 200,
               "qtyProduced": 208,
-              "qtySapphire": 0,
-              "totalQty": 208
+              "qtySapphire": 457.6,
+              "totalQty": 665.6
             },
             {
               "partId": "sc00551",
               "code1": "",
-              "code2": "T1400",
-              "code": "T1400",
+              "code2": "B404",
+              "code": "B404",
               "qtyTarget": 100,
               "qtyProduced": 100,
-              "qtySapphire": 0,
-              "totalQty": 100
+              "qtySapphire": 220.00000000000003,
+              "totalQty": 320
             },
             {
               "partId": "",
@@ -646,8 +731,8 @@
               "code": "B427",
               "qtyTarget": 300,
               "qtyProduced": 100,
-              "qtySapphire": 0,
-              "totalQty": 100
+              "qtySapphire": 220.00000000000003,
+              "totalQty": 320
             },
             {
               "partId": "TL00182",
@@ -725,12 +810,12 @@
               "code2": "6010",
               "code": "6010",
               "qtyTarget": 4,
-              "qtyProduced": 4,
-              "qtySapphire": 0,
-              "totalQty": 4
+              "qtyProduced": 400,
+              "qtySapphire": 4,
+              "totalQty": 404
             }
           ],
-          "totalQty": 462
+          "totalQty": 1759.6
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -755,7 +840,7 @@
       "qr_pct": 94.57,
       "oee1_pct": 42.27,
       "oee2_pct": 52.93,
-      "bd_pct": 0
+      "bd_pct": 4.17
     },
     "output": {
       "hasData": true,
@@ -1321,9 +1406,9 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 57.59,
+        "avg": 56.17,
         "target": 62,
-        "count": 4,
+        "count": 7,
         "isMet": false
       },
       "tuber": {
@@ -1384,9 +1469,9 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 57.59,
+          "avg": 56.17,
           "target": 62,
-          "count": 4,
+          "count": 7,
           "isMet": false
         },
         "tuber": {
@@ -1433,7 +1518,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 58.5,
+          "avg": 55.6,
           "target": 76.6,
           "count": 1,
           "isMet": false
