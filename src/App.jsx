@@ -86,7 +86,8 @@ function App() {
   const isAppMode = () => {
     try {
       const params = new URLSearchParams(window.location.search);
-      return params.get('mode') === 'app' || params.get('standalone') === 'true';
+      const isLspPath = window.location.pathname.startsWith('/lsp');
+      return isLspPath || params.get('mode') === 'app' || params.get('standalone') === 'true' || params.get('app') === 'true';
     } catch (e) {}
     return false;
   };
@@ -207,8 +208,10 @@ function App() {
   };
 
   useEffect(() => {
-    loadData();
-  }, [selectedDate]);
+    if (!appMode) {
+      loadData();
+    }
+  }, [selectedDate, appMode]);
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
@@ -218,6 +221,19 @@ function App() {
     // Force re-fetch ข้อมูลสดจาก API — ไม่ reload ทั้งหน้า
     loadData(selectedDate, true);
   };
+
+  // LSP Dedicated Standalone Desktop Mode: Show ONLY LSP (No other tabs)
+  if (appMode) {
+    return (
+      <div className="min-h-screen bg-slate-100 p-3 md:p-6 font-sans">
+        <div className="max-w-7xl mx-auto space-y-6">
+          <TabErrorBoundary>
+            <SafetyLspReport />
+          </TabErrorBoundary>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-100 p-4 md:p-8 font-sans">

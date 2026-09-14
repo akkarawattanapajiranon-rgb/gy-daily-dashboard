@@ -11,9 +11,9 @@ namespace GoodyearLspApp
         [STAThread]
         static void Main()
         {
-            string localServerUrl = "http://10.124.148.210:3001/?tab=safety&mode=app";
+            string localServerUrl = "http://10.124.148.210:3001/?mode=app";
             string testPingUrl = "http://10.124.148.210:3001/api/lsp";
-            string cloudUrl = "https://gy-daily-dashboard.vercel.app/?tab=safety&mode=app";
+            string cloudUrl = "https://gy-daily-dashboard.vercel.app/?mode=app";
 
             string targetUrl = localServerUrl;
 
