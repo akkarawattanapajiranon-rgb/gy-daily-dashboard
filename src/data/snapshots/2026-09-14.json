@@ -1,27 +1,27 @@
 {
   "date": "2026-09-14",
-  "generatedAt": "2026-09-15T04:00:43.995Z",
+  "generatedAt": "2026-09-15T06:01:13.942Z",
   "waste": {
     "date": "2026-09-14",
-    "millingSummary": 531,
+    "millingSummary": 549,
     "frictionSummary": 340.8,
     "beadSummary": 44.5,
     "millingTop": [
       {
         "code": "M01",
-        "amount": 442,
+        "amount": 450,
         "reason": "LUMPY",
         "isHigh": true
       },
       {
         "code": "M04",
-        "amount": 74,
+        "amount": 81,
         "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
       {
         "code": "M05",
-        "amount": 15,
+        "amount": 18,
         "reason": "TAILING",
         "isHigh": false
       }

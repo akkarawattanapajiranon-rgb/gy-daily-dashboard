@@ -338,7 +338,7 @@
       "totalQr": 93.7,
       "totalOee2": 74.4
     },
-    "timestamp": 1789444876043
+    "timestamp": 1789438343383
   },
   "2026-09-10": {
     "data": {
@@ -362,7 +362,7 @@
       "totalQr": 95,
       "totalOee2": 77.8
     },
-    "timestamp": 1789444864811
+    "timestamp": 1789438321249
   },
   "2026-09-11": {
     "data": {
@@ -386,7 +386,7 @@
       "totalQr": 94.3,
       "totalOee2": 77
     },
-    "timestamp": 1789444853770
+    "timestamp": 1789438299128
   },
   "2026-09-12": {
     "data": {
@@ -410,7 +410,7 @@
       "totalQr": 95.6,
       "totalOee2": 75.5
     },
-    "timestamp": 1789444897239
+    "timestamp": 1789452118611
   },
   "2026-09-13": {
     "data": {
@@ -434,7 +434,7 @@
       "totalQr": 94,
       "totalOee2": 76.3
     },
-    "timestamp": 1789444895819
+    "timestamp": 1789452117146
   },
   "2026-09-14": {
     "data": {
@@ -458,7 +458,7 @@
       "totalQr": 93.4,
       "totalOee2": 73.7
     },
-    "timestamp": 1789444821268
+    "timestamp": 1789452115740
   },
   "2026-09-15": {
     "data": {
@@ -471,42 +471,17 @@
         "oee2": 20.6
       },
       "mixing2": {
-        "batch": 119,
-        "ar": 95,
-        "pr": 84.5,
+        "batch": 187,
+        "ar": 93,
+        "pr": 82.9,
         "qr": 100,
-        "oee2": 80.3
+        "oee2": 77.1
       },
-      "totalAr": 89.5,
-      "totalPr": 83.1,
-      "totalQr": 95.5,
-      "totalOee2": 71
+      "totalAr": 89.4,
+      "totalPr": 82,
+      "totalQr": 97.1,
+      "totalOee2": 71.2
     },
-    "timestamp": 1789444875350
-  },
-  "2026-09-21": {
-    "data": {
-      "date": "2026-09-21",
-      "mixing1": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
-      },
-      "mixing2": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
-      },
-      "totalAr": 0,
-      "totalPr": 0,
-      "totalQr": 0,
-      "totalOee2": 0,
-      "hasData": false
-    },
-    "timestamp": 1789439626620
+    "timestamp": 1789452174409
   }
 }
