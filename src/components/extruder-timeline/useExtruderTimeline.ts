@@ -54,7 +54,7 @@ export function useExtruderTimeline(
   const [lastOkMs, setLastOkMs] = useState<number | null>(null);
   const seq = useRef(0);
 
-  const load = useCallback(async (target: string) => {
+  const load = useCallback(async (target: string, forceRefresh = false) => {
     const s = ++seq.current;
     setLoading(true);
     try {
@@ -63,7 +63,9 @@ export function useExtruderTimeline(
 
       // 1. Try local Express API first (works on localhost / company network)
       try {
-        const res = await fetch(`${endpoint}?date=${encodeURIComponent(target)}`, {
+        const queryParams = new URLSearchParams({ date: target });
+        if (forceRefresh) queryParams.set("refresh", "true");
+        const res = await fetch(`${endpoint}?${queryParams.toString()}`, {
           cache: "no-store",
           headers: { accept: "application/json" },
         });
@@ -80,7 +82,8 @@ export function useExtruderTimeline(
       // 2. Cloud Fallback (Vercel): load pre-built JSON from public/data/extruder/
       if (!json) {
         try {
-          const staticRes = await fetch(`/data/extruder/${encodeURIComponent(target)}.json`, {
+          const cacheBuster = forceRefresh ? `?_t=${Date.now()}` : "";
+          const staticRes = await fetch(`/data/extruder/${encodeURIComponent(target)}.json${cacheBuster}`, {
             cache: "no-store",
             headers: { accept: "application/json" },
           });
@@ -142,5 +145,5 @@ export function useExtruderTimeline(
     };
   }, [date, pollMs, enabled, load]);
 
-  return { data, loading, error, lastOkMs, refresh: useCallback(() => void load(date), [date, load]) };
+  return { data, loading, error, lastOkMs, refresh: useCallback(() => void load(date, true), [date, load]) };
 }

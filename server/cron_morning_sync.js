@@ -1,4 +1,5 @@
 const { generateSnapshot } = require('./snapshot_generator');
+const { getExtruderTimeline } = require('./extruder/dayStore');
 const { execSync } = require('child_process');
 const path = require('path');
 
@@ -21,6 +22,12 @@ async function runMorningSync() {
   try {
     for (const dateStr of datesToSync) {
       await generateSnapshot(dateStr);
+      // Pre-generate static Extruder Timeline files for Vercel/Cloud deployment
+      try {
+        await getExtruderTimeline(dateStr, undefined, true);
+      } catch (extErr) {
+        console.warn(`[Morning Sync Cron] Extruder sync notice for ${dateStr}:`, extErr.message);
+      }
     }
     
     console.log('[Morning Sync Cron] 📦 Building static production assets...');
