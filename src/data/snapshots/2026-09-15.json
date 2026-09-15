@@ -1,6 +1,6 @@
 {
   "date": "2026-09-15",
-  "generatedAt": "2026-09-15T01:31:03.739Z",
+  "generatedAt": "2026-09-15T02:01:10.359Z",
   "waste": {
     "date": "2026-09-15",
     "millingSummary": 0,
@@ -22,18 +22,18 @@
       "oee2": 20.6
     },
     "mixing2": {
-      "batch": 41,
-      "ar": 91.8,
-      "pr": 84.1,
+      "batch": 56,
+      "ar": 93.6,
+      "pr": 84.4,
       "qr": 100,
-      "oee2": 77.2
+      "oee2": 79
     },
-    "totalAr": 81,
-    "totalPr": 80.9,
-    "totalQr": 88.4,
-    "totalOee2": 58
+    "totalAr": 84.3,
+    "totalPr": 81.8,
+    "totalQr": 91.1,
+    "totalOee2": 62.8
   },
-  "target3Roll": 1,
+  "target3Roll": 3,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -82,7 +82,7 @@
       "totalProduce": 30,
       "totalWbr": 30,
       "totalSapphire": 0,
-      "totalAngleChanges": 1,
+      "totalAngleChanges": 3,
       "totalNormal": 30,
       "totalSticky": 0,
       "normalPct": 100,
@@ -91,7 +91,7 @@
         "shift1": {
           "wbr": 30,
           "sapphire": 0,
-          "angleChanges": 1,
+          "angleChanges": 3,
           "normal": 30,
           "sticky": 0,
           "total": 30
@@ -121,16 +121,21 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 1,
-    "totalRelease": 1,
+    "totalRolls": 3,
+    "totalRelease": 3,
     "totalHold": 0,
-    "totalPending": 19,
+    "totalPending": 17,
     "totalScheduled": 20,
     "codeBreakdown": [
       {
         "code": "NB32",
+        "count": 2,
+        "percentage": 66.67
+      },
+      {
+        "code": "NU27",
         "count": 1,
-        "percentage": 100
+        "percentage": 33.33
       }
     ],
     "holdBreakdown": [],
@@ -620,7 +625,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 65.65,
+        "avg": 68.25,
         "target": 76.6,
         "count": 2,
         "isMet": false
@@ -714,7 +719,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 65.65,
+          "avg": 68.25,
           "target": 76.6,
           "count": 2,
           "isMet": false
