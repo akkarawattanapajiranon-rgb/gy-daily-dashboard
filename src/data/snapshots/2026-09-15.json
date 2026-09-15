@@ -1,6 +1,6 @@
 {
   "date": "2026-09-15",
-  "generatedAt": "2026-09-15T02:01:10.359Z",
+  "generatedAt": "2026-09-15T02:10:52.503Z",
   "waste": {
     "date": "2026-09-15",
     "millingSummary": 0,
@@ -22,18 +22,18 @@
       "oee2": 20.6
     },
     "mixing2": {
-      "batch": 56,
-      "ar": 93.6,
-      "pr": 84.4,
+      "batch": 61,
+      "ar": 94.1,
+      "pr": 84.6,
       "qr": 100,
-      "oee2": 79
+      "oee2": 79.5
     },
-    "totalAr": 84.3,
-    "totalPr": 81.8,
-    "totalQr": 91.1,
-    "totalOee2": 62.8
+    "totalAr": 85.2,
+    "totalPr": 82.1,
+    "totalQr": 91.7,
+    "totalOee2": 64.2
   },
-  "target3Roll": 3,
+  "target3Roll": 5,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -121,21 +121,21 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 3,
-    "totalRelease": 3,
+    "totalRolls": 5,
+    "totalRelease": 5,
     "totalHold": 0,
-    "totalPending": 17,
+    "totalPending": 15,
     "totalScheduled": 20,
     "codeBreakdown": [
       {
-        "code": "NB32",
-        "count": 2,
-        "percentage": 66.67
+        "code": "NU27",
+        "count": 3,
+        "percentage": 60
       },
       {
-        "code": "NU27",
-        "count": 1,
-        "percentage": 33.33
+        "code": "NB32",
+        "count": 2,
+        "percentage": 40
       }
     ],
     "holdBreakdown": [],
@@ -607,10 +607,10 @@
       "label": "W3 (14/9 - 20/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": null,
+        "avg": 62.51,
         "target": 62,
-        "count": 0,
-        "isMet": false
+        "count": 1,
+        "isMet": true
       },
       "tuber": {
         "avg": 62.11,
@@ -625,7 +625,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 68.25,
+        "avg": 68.95,
         "target": 76.6,
         "count": 2,
         "isMet": false
@@ -701,10 +701,10 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": null,
+          "avg": 62.51,
           "target": 62,
-          "count": 0,
-          "isMet": false
+          "count": 1,
+          "isMet": true
         },
         "tuber": {
           "avg": 62.11,
@@ -719,7 +719,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 68.25,
+          "avg": 68.95,
           "target": 76.6,
           "count": 2,
           "isMet": false

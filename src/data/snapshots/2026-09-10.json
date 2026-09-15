@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-15T02:02:06.441Z",
+  "generatedAt": "2026-09-15T02:12:44.646Z",
   "waste": {
     "date": "2026-09-10",
     "millingSummary": 257,
@@ -1761,10 +1761,10 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": null,
+          "avg": 62.51,
           "target": 62,
-          "count": 0,
-          "isMet": false
+          "count": 1,
+          "isMet": true
         },
         "tuber": {
           "avg": 62.11,
@@ -1779,7 +1779,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 68.25,
+          "avg": 69.05,
           "target": 76.6,
           "count": 2,
           "isMet": false
