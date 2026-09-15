@@ -1,10 +1,10 @@
 {
   "file": "LSP Tracking.xlsx",
-  "lastModified": "2026-09-14T07:51:41.991Z",
-  "lastModifiedFormatted": "14/09/2026 14:51 น.",
+  "lastModified": "2026-09-15T02:17:22.900Z",
+  "lastModifiedFormatted": "15/09/2026 09:17 น.",
   "year": "2026",
   "totalWorkers": 50,
-  "avgYtd": 50,
+  "avgYtd": 51,
   "onTargetCount": 19,
   "belowTargetCount": 31,
   "staffWorkers": [
@@ -117,7 +117,7 @@
         "JUN": 18,
         "JUL": 11,
         "AUG": 11,
-        "SEP": 7,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -378,12 +378,12 @@
         "JUN": 4,
         "JUL": 5,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 71
+      "ytdPct": 79
     },
     {
       "id": 14,
@@ -639,12 +639,12 @@
         "JUN": 5,
         "JUL": 6,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 73
+      "ytdPct": 75
     },
     {
       "id": 23,
@@ -726,12 +726,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 73
+      "ytdPct": 77
     },
     {
       "id": 26,
@@ -871,12 +871,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 3,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 67
+      "ytdPct": 69
     },
     {
       "id": 31,
@@ -929,7 +929,7 @@
         "JUN": 5,
         "JUL": 13,
         "AUG": 8,
-        "SEP": 7,
+        "SEP": 8,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -1045,12 +1045,12 @@
         "JUN": 0,
         "JUL": 1,
         "AUG": 4,
-        "SEP": 1,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 13
+      "ytdPct": 15
     },
     {
       "id": 37,
@@ -1074,12 +1074,12 @@
         "JUN": 5,
         "JUL": 3,
         "AUG": 6,
-        "SEP": 5,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 71
+      "ytdPct": 73
     },
     {
       "id": 38,
@@ -1190,12 +1190,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 5,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 69
+      "ytdPct": 71
     },
     {
       "id": 42,
@@ -1791,12 +1791,12 @@
         "JUN": 3,
         "JUL": 7,
         "AUG": 6,
-        "SEP": 4,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 42
+      "ytdPct": 46
     },
     {
       "id": 14,
@@ -2233,12 +2233,12 @@
         "JUN": 5,
         "JUL": 5,
         "AUG": 5,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 75
+      "ytdPct": 79
     },
     {
       "id": 31,
@@ -2519,12 +2519,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 1,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 35
+      "ytdPct": 38
     },
     {
       "id": 42,
@@ -2623,12 +2623,12 @@
         "JUN": 4,
         "JUL": 6,
         "AUG": 7,
-        "SEP": 3,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 96
+      "ytdPct": 100
     },
     {
       "id": 46,
@@ -2649,12 +2649,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 54
+      "ytdPct": 56
     },
     {
       "id": 47,
@@ -2727,12 +2727,12 @@
         "JUN": 6,
         "JUL": 5,
         "AUG": 4,
-        "SEP": 1,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 33
+      "ytdPct": 35
     },
     {
       "id": 50,
@@ -2753,12 +2753,12 @@
         "JUN": 5,
         "JUL": 5,
         "AUG": 5,
-        "SEP": 1,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 48
+      "ytdPct": 52
     },
     {
       "id": 51,
@@ -2779,12 +2779,12 @@
         "JUN": 4,
         "JUL": 5,
         "AUG": 5,
-        "SEP": 1,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 40
+      "ytdPct": 42
     }
   ],
   "workers": [
@@ -2897,7 +2897,7 @@
         "JUN": 18,
         "JUL": 11,
         "AUG": 11,
-        "SEP": 7,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -3158,12 +3158,12 @@
         "JUN": 4,
         "JUL": 5,
         "AUG": 4,
-        "SEP": 0,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 71
+      "ytdPct": 79
     },
     {
       "id": 14,
@@ -3419,12 +3419,12 @@
         "JUN": 5,
         "JUL": 6,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 73
+      "ytdPct": 75
     },
     {
       "id": 23,
@@ -3506,12 +3506,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 73
+      "ytdPct": 77
     },
     {
       "id": 26,
@@ -3651,12 +3651,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 3,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 67
+      "ytdPct": 69
     },
     {
       "id": 31,
@@ -3709,7 +3709,7 @@
         "JUN": 5,
         "JUL": 13,
         "AUG": 8,
-        "SEP": 7,
+        "SEP": 8,
         "OCT": "",
         "NOV": "",
         "DEC": ""
@@ -3825,12 +3825,12 @@
         "JUN": 0,
         "JUL": 1,
         "AUG": 4,
-        "SEP": 1,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 13
+      "ytdPct": 15
     },
     {
       "id": 37,
@@ -3854,12 +3854,12 @@
         "JUN": 5,
         "JUL": 3,
         "AUG": 6,
-        "SEP": 5,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 71
+      "ytdPct": 73
     },
     {
       "id": 38,
@@ -3970,12 +3970,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 5,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 69
+      "ytdPct": 71
     },
     {
       "id": 42,

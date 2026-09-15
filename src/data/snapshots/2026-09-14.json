@@ -1,12 +1,18 @@
 {
   "date": "2026-09-14",
-  "generatedAt": "2026-09-15T02:11:13.995Z",
+  "generatedAt": "2026-09-15T04:00:43.995Z",
   "waste": {
     "date": "2026-09-14",
-    "millingSummary": 99,
+    "millingSummary": 531,
     "frictionSummary": 340.8,
     "beadSummary": 44.5,
     "millingTop": [
+      {
+        "code": "M01",
+        "amount": 442,
+        "reason": "LUMPY",
+        "isHigh": true
+      },
       {
         "code": "M04",
         "amount": 74,
@@ -17,12 +23,6 @@
         "code": "M05",
         "amount": 15,
         "reason": "TAILING",
-        "isHigh": true
-      },
-      {
-        "code": "M01",
-        "amount": 10,
-        "reason": "LUMPY",
         "isHigh": false
       }
     ],
@@ -107,31 +107,139 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-14",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "3 Roll",
+        "totalDurationMin": 80,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "All LIne",
+            "symptom": "Reset Safety ไม่ได้",
+            "cause": "Safety Rope Drying Drums",
+            "action": "Reset Safety Operator Drying Drums",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ริน/ไพลิน"
+          },
+          {
+            "shift": "กะ1",
+            "zone": "โรเรอบสนาน่าโรล",
+            "symptom": "โรลบานาน่าโรลแตก",
+            "cause": "ยางของบานาน่าโรลเสื่อมสภาพ",
+            "action": "ตัดยางใส่แล้วเอาเทปกาวพัน",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟล์ค/รินทร์"
+          },
+          {
+            "shift": "กะ1",
+            "zone": "โรเรอบสนาน่าโรล",
+            "symptom": "โรลบานาน่าโรลแตกเพิ่มอีก 1 ลูก",
+            "cause": "ยางของบานาน่าโรลเสื่อมสภาพ",
+            "action": "ตัดยางใส่แล้วเอาเทปกาวพัน",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟล์ค/รินทร์"
+          }
+        ]
+      },
+      {
+        "machine": "JAWA # 3",
+        "totalDurationMin": 60,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "MOP",
+            "symptom": "จอดับ",
+            "cause": "น่าจะมาจากคืนที่ไฟตก(วันต่อมาเครื่องไม่ได้รัน)",
+            "action": "Clear fault  HMI",
+            "fixType": "ชั่วคราว",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "ริน/ไพลิน"
+          }
+        ]
+      },
+      {
+        "machine": "Quad",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "ชุดใบมีดอุลตร้าโซนิค",
+            "symptom": "ใบมีดอุลตร้าโซนิคตัดไม่ขาด",
+            "cause": "ใบมีดไม่คม",
+            "action": "ลับใบมีดอุลตร้าโซนิค",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟล์ค"
+          }
+        ]
+      },
+      {
+        "machine": "Bead In",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "MOP",
+            "symptom": "จอดับ",
+            "cause": "น่าจะมาจากคืนที่ไฟตก(วันต่อมาเครื่องไม่ได้รัน)",
+            "action": "Clear fault  HMI",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ริน/ไพลิน"
+          }
+        ]
+      },
+      {
+        "machine": "Band 72/1",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Conveyor",
+            "symptom": "Conveyorเส้นล่างหย่อน",
+            "cause": "สายพานเริ่มมีอาการยืดตัว",
+            "action": "ปรับตึงสายพาน",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟล์ค"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.0417,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 2.4,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.1375,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.8948,
+      "hasData": true
     }
   },
   "fischer": {

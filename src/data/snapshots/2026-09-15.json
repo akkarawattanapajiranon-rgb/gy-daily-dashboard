@@ -1,6 +1,6 @@
 {
   "date": "2026-09-15",
-  "generatedAt": "2026-09-15T02:10:52.503Z",
+  "generatedAt": "2026-09-15T04:00:33.545Z",
   "waste": {
     "date": "2026-09-15",
     "millingSummary": 0,
@@ -22,23 +22,75 @@
       "oee2": 20.6
     },
     "mixing2": {
-      "batch": 61,
-      "ar": 94.1,
-      "pr": 84.6,
+      "batch": 119,
+      "ar": 95,
+      "pr": 84.5,
       "qr": 100,
-      "oee2": 79.5
+      "oee2": 80.3
     },
-    "totalAr": 85.2,
-    "totalPr": 82.1,
-    "totalQr": 91.7,
-    "totalOee2": 64.2
+    "totalAr": 89.5,
+    "totalPr": 83.1,
+    "totalQr": 95.5,
+    "totalOee2": 71
   },
-  "target3Roll": 5,
+  "target3Roll": 10,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-15",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Mixer 2",
+        "totalDurationMin": 45,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Loading Carbon(SYS 500)",
+            "symptom": "Hoist ไม่ทำงาน",
+            "cause": "รีโมทถ่านหมด",
+            "action": "เปลี่ยนถ่าน",
+            "fixType": "ชั่วคราว",
+            "durationMin": 45,
+            "jobType": "BD",
+            "fixBy": "ไพลิน"
+          }
+        ]
+      },
+      {
+        "machine": "Fisher",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Let off",
+            "symptom": "ply หย่อน",
+            "cause": "ลวดสลิงดึงโรเรอบาขาด",
+            "action": "เปลี่ยนลวดสลิงดึงโรเรอบาใหม่ ใช้ลวดสลิงเซฟตี้ใส่แทน",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟล์ค"
+          }
+        ]
+      },
+      {
+        "machine": "Band 72\"#1",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Belt conveyor bottom",
+            "symptom": "สายพานไหลเบียดด้านข้าง",
+            "cause": "กระบอกสูบตัวตึงสายพานหลุด",
+            "action": "ประกอบกระบอกสูบที่หลุดกลับที่เดิม แล้วล็อคให้แน่น",
+            "fixType": "ถาวร",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟล์ค"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
       "actual_bd_pct": null,
@@ -80,19 +132,19 @@
     "checksheet": {
       "hasData": true,
       "totalProduce": 30,
-      "totalWbr": 30,
-      "totalSapphire": 0,
-      "totalAngleChanges": 3,
-      "totalNormal": 30,
+      "totalWbr": 27,
+      "totalSapphire": 3,
+      "totalAngleChanges": 4,
+      "totalNormal": 27,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 30,
-          "sapphire": 0,
-          "angleChanges": 3,
-          "normal": 30,
+          "wbr": 27,
+          "sapphire": 3,
+          "angleChanges": 4,
+          "normal": 27,
           "sticky": 0,
           "total": 30
         },
@@ -121,21 +173,26 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 5,
-    "totalRelease": 5,
+    "totalRolls": 10,
+    "totalRelease": 10,
     "totalHold": 0,
-    "totalPending": 15,
-    "totalScheduled": 20,
+    "totalPending": 27,
+    "totalScheduled": 37,
     "codeBreakdown": [
       {
         "code": "NU27",
-        "count": 3,
-        "percentage": 60
+        "count": 4,
+        "percentage": 40
+      },
+      {
+        "code": "RP08",
+        "count": 4,
+        "percentage": 40
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 40
+        "percentage": 20
       }
     ],
     "holdBreakdown": [],
@@ -278,22 +335,32 @@
     "output": {
       "hasData": true,
       "day": 15,
-      "grandTotal": 22,
+      "grandTotal": 44,
       "codeBreakdown": [
+        {
+          "code": "WYAF",
+          "count": 13,
+          "percentage": 29.55
+        },
+        {
+          "code": "WAIS",
+          "count": 9,
+          "percentage": 20.45
+        },
         {
           "code": "W1CL",
           "count": 8,
-          "percentage": 36.36
+          "percentage": 18.18
         },
         {
           "code": "WA8X",
           "count": 8,
-          "percentage": 36.36
+          "percentage": 18.18
         },
         {
           "code": "WLAN",
           "count": 6,
-          "percentage": 27.27
+          "percentage": 13.64
         }
       ],
       "shifts": {
@@ -320,9 +387,23 @@
               "qtyTarget": 8,
               "qtyProduced": 8,
               "totalQty": 8
+            },
+            {
+              "partId": "SW08753",
+              "code": "WAIS",
+              "qtyTarget": 9,
+              "qtyProduced": 9,
+              "totalQty": 9
+            },
+            {
+              "partId": "SW08842",
+              "code": "WYAF",
+              "qtyTarget": 13,
+              "qtyProduced": 13,
+              "totalQty": 13
             }
           ],
-          "totalQty": 22
+          "totalQty": 44
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -341,17 +422,17 @@
     "date": "2026-09-15",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "15/9",
-      "sum": 0,
+      "sum": 65009,
       "target": 35056,
       "minTarget": 20000,
       "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "newGenerate": 11030,
+      "slowMoving": 44769,
+      "disposition": 9210,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -585,17 +666,88 @@
         "dateLabel": "15/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 65009,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 11030,
+        "newGenerateBTA": 8350,
+        "newGenerateWBR": 2680,
+        "slowMoving": 44769,
+        "disposition": 9210,
+        "hasData": true
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1692",
+        "qty": 4350,
+        "qtyMt": 4.35,
+        "percentage": 8.5
+      },
+      {
+        "rank": 2,
+        "code": "N1128",
+        "qty": 4179,
+        "qtyMt": 4.18,
+        "percentage": 8.2
+      },
+      {
+        "rank": 3,
+        "code": "K27T4",
+        "qty": 3820,
+        "qtyMt": 3.82,
+        "percentage": 7.5
+      },
+      {
+        "rank": 4,
+        "code": "M36F3",
+        "qty": 3750,
+        "qtyMt": 3.75,
+        "percentage": 7.3
+      },
+      {
+        "rank": 5,
+        "code": "K11M2",
+        "qty": 3010,
+        "qtyMt": 3.01,
+        "percentage": 5.9
+      },
+      {
+        "rank": 6,
+        "code": "N1717",
+        "qty": 2640,
+        "qtyMt": 2.64,
+        "percentage": 5.2
+      },
+      {
+        "rank": 7,
+        "code": "N11F3",
+        "qty": 2460,
+        "qtyMt": 2.46,
+        "percentage": 4.8
+      },
+      {
+        "rank": 8,
+        "code": "K12J5",
+        "qty": 2350,
+        "qtyMt": 2.35,
+        "percentage": 4.6
+      },
+      {
+        "rank": 9,
+        "code": "F7894",
+        "qty": 2250,
+        "qtyMt": 2.25,
+        "percentage": 4.4
+      },
+      {
+        "rank": 10,
+        "code": "B2201",
+        "qty": 2010,
+        "qtyMt": 2.01,
+        "percentage": 3.9
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
@@ -625,7 +777,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 68.95,
+        "avg": 72.35,
         "target": 76.6,
         "count": 2,
         "isMet": false
@@ -719,7 +871,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 68.95,
+          "avg": 72.35,
           "target": 76.6,
           "count": 2,
           "isMet": false
