@@ -338,7 +338,7 @@
       "totalQr": 93.7,
       "totalOee2": 74.4
     },
-    "timestamp": 1789452148397
+    "timestamp": 1789459387500
   },
   "2026-09-10": {
     "data": {
@@ -362,7 +362,7 @@
       "totalQr": 95,
       "totalOee2": 77.8
     },
-    "timestamp": 1789452126529
+    "timestamp": 1789459363644
   },
   "2026-09-11": {
     "data": {
@@ -386,7 +386,7 @@
       "totalQr": 94.3,
       "totalOee2": 77
     },
-    "timestamp": 1789452105095
+    "timestamp": 1789459340152
   },
   "2026-09-12": {
     "data": {
@@ -410,7 +410,7 @@
       "totalQr": 95.6,
       "totalOee2": 75.5
     },
-    "timestamp": 1789452186040
+    "timestamp": 1789459362983
   },
   "2026-09-13": {
     "data": {
@@ -434,7 +434,7 @@
       "totalQr": 94,
       "totalOee2": 76.3
     },
-    "timestamp": 1789452184650
+    "timestamp": 1789459293911
   },
   "2026-09-14": {
     "data": {
@@ -458,55 +458,30 @@
       "totalQr": 93.4,
       "totalOee2": 73.7
     },
-    "timestamp": 1789452104670
+    "timestamp": 1789459339927
   },
   "2026-09-15": {
     "data": {
       "date": "2026-09-15",
       "mixing1": {
-        "batch": 11,
-        "ar": 57.2,
-        "pr": 69.2,
-        "qr": 52,
-        "oee2": 20.6
+        "batch": 38,
+        "ar": 82,
+        "pr": 85.1,
+        "qr": 68.2,
+        "oee2": 47.6
       },
       "mixing2": {
-        "batch": 187,
-        "ar": 93,
-        "pr": 82.9,
+        "batch": 252,
+        "ar": 92,
+        "pr": 83.7,
         "qr": 100,
-        "oee2": 77.1
+        "oee2": 77
       },
-      "totalAr": 89.4,
-      "totalPr": 82,
-      "totalQr": 97.1,
-      "totalOee2": 71.2
+      "totalAr": 90.3,
+      "totalPr": 83.9,
+      "totalQr": 95.5,
+      "totalOee2": 72.3
     },
-    "timestamp": 1789452147589
-  },
-  "2026-09-21": {
-    "data": {
-      "date": "2026-09-21",
-      "mixing1": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
-      },
-      "mixing2": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
-      },
-      "totalAr": 0,
-      "totalPr": 0,
-      "totalQr": 0,
-      "totalOee2": 0,
-      "hasData": false
-    },
-    "timestamp": 1789439626620
+    "timestamp": 1789459386979
   }
 }
