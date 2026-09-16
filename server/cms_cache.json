@@ -338,7 +338,7 @@
       "totalQr": 93.7,
       "totalOee2": 74.4
     },
-    "timestamp": 1789459363653
+    "timestamp": 1789459387500
   },
   "2026-09-10": {
     "data": {
@@ -362,7 +362,7 @@
       "totalQr": 95,
       "totalOee2": 77.8
     },
-    "timestamp": 1789459341510
+    "timestamp": 1789459363644
   },
   "2026-09-11": {
     "data": {
@@ -386,7 +386,7 @@
       "totalQr": 94.3,
       "totalOee2": 77
     },
-    "timestamp": 1789459319050
+    "timestamp": 1789516918998
   },
   "2026-09-12": {
     "data": {
@@ -410,7 +410,7 @@
       "totalQr": 95.6,
       "totalOee2": 75.5
     },
-    "timestamp": 1789459407578
+    "timestamp": 1789516902527
   },
   "2026-09-13": {
     "data": {
@@ -434,7 +434,7 @@
       "totalQr": 94,
       "totalOee2": 76.3
     },
-    "timestamp": 1789459406152
+    "timestamp": 1789516870281
   },
   "2026-09-14": {
     "data": {
@@ -458,80 +458,54 @@
       "totalQr": 93.4,
       "totalOee2": 73.7
     },
-    "timestamp": 1789459318519
+    "timestamp": 1789516917578
   },
   "2026-09-15": {
     "data": {
       "date": "2026-09-15",
       "mixing1": {
-        "batch": 37,
-        "ar": 81.6,
-        "pr": 85,
-        "qr": 68,
-        "oee2": 47.2
+        "batch": 508,
+        "ar": 89.3,
+        "pr": 89.3,
+        "qr": 81.6,
+        "oee2": 65.1
       },
       "mixing2": {
-        "batch": 252,
-        "ar": 92,
-        "pr": 83.7,
+        "batch": 685,
+        "ar": 87.7,
+        "pr": 86.3,
         "qr": 100,
-        "oee2": 77
+        "oee2": 75.7
       },
-      "totalAr": 90.3,
-      "totalPr": 83.9,
-      "totalQr": 95.6,
-      "totalOee2": 72.4
+      "totalAr": 88.3,
+      "totalPr": 87.6,
+      "totalQr": 91.9,
+      "totalOee2": 71.1
     },
-    "timestamp": 1789459362966
+    "timestamp": 1789516857557
   },
-  "2026-09-21": {
+  "2026-09-16": {
     "data": {
-      "date": "2026-09-21",
+      "date": "2026-09-16",
       "mixing1": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
+        "batch": 1,
+        "ar": 84.8,
+        "pr": 89.7,
+        "qr": 100,
+        "oee2": 76
       },
       "mixing2": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
+        "batch": 1,
+        "ar": 100,
+        "pr": 84.5,
+        "qr": 100,
+        "oee2": 84.5
       },
-      "totalAr": 0,
-      "totalPr": 0,
-      "totalQr": 0,
-      "totalOee2": 0,
-      "hasData": false
+      "totalAr": 91.1,
+      "totalPr": 87.3,
+      "totalQr": 100,
+      "totalOee2": 79.6
     },
-    "timestamp": 1789439626620
-  },
-  "2026-09-22": {
-    "data": {
-      "date": "2026-09-22",
-      "mixing1": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
-      },
-      "mixing2": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
-      },
-      "totalAr": 0,
-      "totalPr": 0,
-      "totalQr": 0,
-      "totalOee2": 0,
-      "hasData": false
-    },
-    "timestamp": 1789452214689
+    "timestamp": 1789516902454
   }
 }
