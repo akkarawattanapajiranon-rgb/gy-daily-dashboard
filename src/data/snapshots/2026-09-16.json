@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "generatedAt": "2026-09-16T00:00:57.472Z",
+  "generatedAt": "2026-09-16T01:30:58.674Z",
   "waste": {
     "date": "2026-09-16",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-16",
     "mixing1": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 38,
+      "ar": 77.5,
+      "pr": 90.6,
+      "qr": 95.4,
+      "oee2": 67
     },
     "mixing2": {
-      "batch": 1,
-      "ar": 100,
-      "pr": 84.5,
+      "batch": 21,
+      "ar": 68.9,
+      "pr": 92.3,
       "qr": 100,
-      "oee2": 84.5
+      "oee2": 63.6
     },
-    "totalAr": 100,
-    "totalPr": 84.5,
-    "totalQr": 100,
-    "totalOee2": 84.5
+    "totalAr": 74.3,
+    "totalPr": 91.2,
+    "totalQr": 96.9,
+    "totalOee2": 65.7
   },
-  "target3Roll": 0,
+  "target3Roll": 2,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -78,7 +78,41 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 30,
+      "totalWbr": 30,
+      "totalSapphire": 0,
+      "totalAngleChanges": 2,
+      "totalNormal": 30,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 30,
+          "sapphire": 0,
+          "angleChanges": 2,
+          "normal": 30,
+          "sticky": 0,
+          "total": 30
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -87,14 +121,26 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
-    "totalRelease": 0,
-    "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
-    "holdBreakdown": [],
-    "hasData": false
+    "totalRolls": 2,
+    "totalRelease": 2,
+    "totalHold": 1,
+    "totalPending": 19,
+    "totalScheduled": 22,
+    "codeBreakdown": [
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 100
+      }
+    ],
+    "holdBreakdown": [
+      {
+        "code": "NU27",
+        "count": 1,
+        "percentage": 100
+      }
+    ],
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-16",
@@ -144,13 +190,60 @@
     "output": {
       "hasData": true,
       "day": 16,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 24,
+      "codeBreakdown": [
+        {
+          "code": "W1CL",
+          "count": 10,
+          "percentage": 41.67
+        },
+        {
+          "code": "WYAF",
+          "count": 8,
+          "percentage": 33.33
+        },
+        {
+          "code": "WLAN",
+          "count": 6,
+          "percentage": 25
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "TL00182",
+              "code1": "WLAN",
+              "code2": "",
+              "code": "WLAN",
+              "qtyTarget": 10,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            },
+            {
+              "partId": "TL00182",
+              "code1": "WYAF",
+              "code2": "",
+              "code": "WYAF",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00202",
+              "code1": "W1CL",
+              "code2": "",
+              "code": "W1CL",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            }
+          ],
+          "totalQty": 24
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -450,7 +543,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 65009,
-        "consume": 0,
+        "consume": 16689,
         "newGenerate": 11030,
         "newGenerateBTA": 8350,
         "newGenerateWBR": 2680,
@@ -486,25 +579,25 @@
       "label": "W3 (14/9 - 20/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 62.51,
+        "avg": 59.59,
         "target": 62,
-        "count": 1,
-        "isMet": true
+        "count": 2,
+        "isMet": false
       },
       "tuber": {
-        "avg": 62.11,
+        "avg": 60.22,
         "target": 62,
-        "count": 1,
-        "isMet": true
+        "count": 2,
+        "isMet": false
       },
       "fischer": {
-        "avg": 52.04,
+        "avg": 52.9,
         "target": 60,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "mixing": {
-        "avg": 76.43,
+        "avg": 70.17,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -580,25 +673,25 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 62.51,
+          "avg": 59.59,
           "target": 62,
-          "count": 1,
-          "isMet": true
+          "count": 2,
+          "isMet": false
         },
         "tuber": {
-          "avg": 62.11,
+          "avg": 60.22,
           "target": 62,
-          "count": 1,
-          "isMet": true
+          "count": 2,
+          "isMet": false
         },
         "fischer": {
-          "avg": 52.04,
+          "avg": 52.9,
           "target": 60,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "mixing": {
-          "avg": 76.43,
+          "avg": 70.17,
           "target": 76.6,
           "count": 3,
           "isMet": false
