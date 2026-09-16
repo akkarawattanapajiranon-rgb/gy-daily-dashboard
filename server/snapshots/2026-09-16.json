@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "generatedAt": "2026-09-16T02:01:08.080Z",
+  "generatedAt": "2026-09-16T02:11:24.581Z",
   "waste": {
     "date": "2026-09-16",
     "millingSummary": 0,
@@ -15,11 +15,11 @@
   "cms": {
     "date": "2026-09-16",
     "mixing1": {
-      "batch": 49,
-      "ar": 74.5,
-      "pr": 90,
-      "qr": 96.5,
-      "oee2": 64.7
+      "batch": 55,
+      "ar": 76.5,
+      "pr": 89.9,
+      "qr": 96.9,
+      "oee2": 66.6
     },
     "mixing2": {
       "batch": 21,
@@ -28,10 +28,10 @@
       "qr": 100,
       "oee2": 63.6
     },
-    "totalAr": 72.8,
-    "totalPr": 90.7,
-    "totalQr": 97.4,
-    "totalOee2": 64.3
+    "totalAr": 74.3,
+    "totalPr": 90.6,
+    "totalQr": 97.6,
+    "totalOee2": 65.7
   },
   "target3Roll": 4,
   "breakdown": {
@@ -124,8 +124,8 @@
     "totalRolls": 4,
     "totalRelease": 4,
     "totalHold": 1,
-    "totalPending": 17,
-    "totalScheduled": 22,
+    "totalPending": 33,
+    "totalScheduled": 38,
     "codeBreakdown": [
       {
         "code": "NB32",
@@ -195,22 +195,32 @@
     "output": {
       "hasData": true,
       "day": 16,
-      "grandTotal": 24,
+      "grandTotal": 40,
       "codeBreakdown": [
         {
           "code": "W1CL",
           "count": 10,
-          "percentage": 41.67
+          "percentage": 25
         },
         {
           "code": "WYAF",
           "count": 8,
-          "percentage": 33.33
+          "percentage": 20
+        },
+        {
+          "code": "W13L",
+          "count": 8,
+          "percentage": 20
+        },
+        {
+          "code": "W13F",
+          "count": 8,
+          "percentage": 20
         },
         {
           "code": "WLAN",
           "count": 6,
-          "percentage": 25
+          "percentage": 15
         }
       ],
       "shifts": {
@@ -246,9 +256,29 @@
               "qtyProduced": 10,
               "qtySapphire": 0,
               "totalQty": 10
+            },
+            {
+              "partId": "TL00443",
+              "code1": "W13L",
+              "code2": "",
+              "code": "W13L",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00442",
+              "code1": "W13F",
+              "code2": "",
+              "code": "W13F",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
             }
           ],
-          "totalQty": 24
+          "totalQty": 40
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -602,7 +632,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 69.7,
+        "avg": 70.17,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -696,7 +726,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 69.7,
+          "avg": 70.17,
           "target": 76.6,
           "count": 3,
           "isMet": false

@@ -1,10 +1,10 @@
 {
   "date": "2026-09-15",
-  "generatedAt": "2026-09-16T02:01:18.809Z",
+  "generatedAt": "2026-09-16T02:11:48.064Z",
   "waste": {
     "date": "2026-09-15",
     "millingSummary": 105.2,
-    "frictionSummary": 377,
+    "frictionSummary": 387,
     "beadSummary": 64.8,
     "millingTop": [
       {
@@ -29,7 +29,7 @@
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 81.2,
+        "amount": 89.2,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -109,8 +109,25 @@
     "_date": "2026-09-15",
     "topLoss": [
       {
+        "machine": "Tuber",
+        "totalDurationMin": 120,
+        "details": [
+          {
+            "shift": "กะ3",
+            "zone": "Cooling Conveyor",
+            "symptom": "สายพาน Cooling Conveyor ขาด",
+            "cause": "",
+            "action": "ต่อและเปลี่ยนสายพานที่แตก",
+            "fixType": "ชั่วคราว",
+            "durationMin": 120,
+            "jobType": "BD",
+            "fixBy": "มินท์/แอ๊ด/อ๊อฟ/เทห์"
+          }
+        ]
+      },
+      {
         "machine": "Mixer 2",
-        "totalDurationMin": 45,
+        "totalDurationMin": 85,
         "details": [
           {
             "shift": "กะ1",
@@ -122,68 +139,96 @@
             "durationMin": 45,
             "jobType": "BD",
             "fixBy": "ไพลิน"
-          }
-        ]
-      },
-      {
-        "machine": "Fisher",
-        "totalDurationMin": 30,
-        "details": [
+          },
           {
-            "shift": "กะ1",
-            "zone": "Let off",
-            "symptom": "ply หย่อน",
-            "cause": "ลวดสลิงดึงโรเรอบาขาด",
-            "action": "เปลี่ยนลวดสลิงดึงโรเรอบาใหม่ ใช้ลวดสลิงเซฟตี้ใส่แทน",
+            "shift": "กะ2",
+            "zone": "Gate",
+            "symptom": "ประตูปิดไม่ได้",
+            "cause": "ยางติดประตู",
+            "action": "เอายางออก",
             "fixType": "ชั่วคราว",
-            "durationMin": 30,
+            "durationMin": 40,
             "jobType": "BD",
-            "fixBy": "ทีป/มด/โฟล์ค"
+            "fixBy": "บาส"
           }
         ]
       },
       {
-        "machine": "Band 72\"#1",
-        "totalDurationMin": 20,
+        "machine": "Tuberุ6'x8'",
+        "totalDurationMin": 75,
         "details": [
           {
             "shift": "กะ1",
-            "zone": "Belt conveyor bottom",
-            "symptom": "สายพานไหลเบียดด้านข้าง",
-            "cause": "กระบอกสูบตัวตึงสายพานหลุด",
-            "action": "ประกอบกระบอกสูบที่หลุดกลับที่เดิม แล้วล็อคให้แน่น",
-            "fixType": "ถาวร",
-            "durationMin": 20,
+            "zone": "Cooling tank#2",
+            "symptom": "สายพานแตกหลายจุด",
+            "cause": "แกนล็อคหัวสายพานหลุด",
+            "action": "ช่วงที่แตก เปลี่ยนสายพานใหม่ ช่วงที่หัวล็อคหาย ใส่หัวล็อคกลับคืน",
+            "fixType": "ชั่วคราว",
+            "durationMin": 75,
             "jobType": "BD",
-            "fixBy": "ทีป/มด/โฟล์ค"
+            "fixBy": "ทีป/มด/โฟล์ค/รินทร์/ไพรินทร์/อ๋อย/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "Quad",
+        "totalDurationMin": 50,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "TCU",
+            "symptom": "Temp low",
+            "cause": "น้ำในระบบต่ำ",
+            "action": "เปิดน้ำเติมในระบบ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 50,
+            "jobType": "BD",
+            "fixBy": "ริน/ไพลิน"
+          }
+        ]
+      },
+      {
+        "machine": "Pig Ment",
+        "totalDurationMin": 50,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Vacuum",
+            "symptom": "Motor vacuum overload",
+            "cause": "สารเคมีเข้าไปในใบพัดของvacuum และไส้กรองของvacuum",
+            "action": "เปลี่ยนชุดมอเตอร์เวกกัม และไส้กรองอากาศ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 50,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟล์ค/รินทร์/ไพรินทร์"
           }
         ]
       }
     ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 4.1667,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.2083,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.0938,
+      "hasData": true
     }
   },
   "fischer": {
