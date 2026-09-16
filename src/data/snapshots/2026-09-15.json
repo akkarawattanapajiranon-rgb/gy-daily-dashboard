@@ -1,27 +1,27 @@
 {
   "date": "2026-09-15",
-  "generatedAt": "2026-09-16T02:11:48.064Z",
+  "generatedAt": "2026-09-16T04:00:54.913Z",
   "waste": {
     "date": "2026-09-15",
-    "millingSummary": 105.2,
+    "millingSummary": 178.8,
     "frictionSummary": 387,
     "beadSummary": 64.8,
     "millingTop": [
       {
         "code": "M01",
-        "amount": 46.2,
+        "amount": 107.60000000000001,
         "reason": "LUMPY",
         "isHigh": true
       },
       {
         "code": "M04",
-        "amount": 35,
+        "amount": 43.2,
         "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
       {
         "code": "M05",
-        "amount": 24,
+        "amount": 28,
         "reason": "TAILING",
         "isHigh": false
       }
@@ -110,7 +110,7 @@
     "topLoss": [
       {
         "machine": "Tuber",
-        "totalDurationMin": 120,
+        "totalDurationMin": 140,
         "details": [
           {
             "shift": "กะ3",
@@ -119,54 +119,9 @@
             "cause": "",
             "action": "ต่อและเปลี่ยนสายพานที่แตก",
             "fixType": "ชั่วคราว",
-            "durationMin": 120,
+            "durationMin": 140,
             "jobType": "BD",
             "fixBy": "มินท์/แอ๊ด/อ๊อฟ/เทห์"
-          }
-        ]
-      },
-      {
-        "machine": "Mixer 2",
-        "totalDurationMin": 85,
-        "details": [
-          {
-            "shift": "กะ1",
-            "zone": "Loading Carbon(SYS 500)",
-            "symptom": "Hoist ไม่ทำงาน",
-            "cause": "รีโมทถ่านหมด",
-            "action": "เปลี่ยนถ่าน",
-            "fixType": "ชั่วคราว",
-            "durationMin": 45,
-            "jobType": "BD",
-            "fixBy": "ไพลิน"
-          },
-          {
-            "shift": "กะ2",
-            "zone": "Gate",
-            "symptom": "ประตูปิดไม่ได้",
-            "cause": "ยางติดประตู",
-            "action": "เอายางออก",
-            "fixType": "ชั่วคราว",
-            "durationMin": 40,
-            "jobType": "BD",
-            "fixBy": "บาส"
-          }
-        ]
-      },
-      {
-        "machine": "Tuberุ6'x8'",
-        "totalDurationMin": 75,
-        "details": [
-          {
-            "shift": "กะ1",
-            "zone": "Cooling tank#2",
-            "symptom": "สายพานแตกหลายจุด",
-            "cause": "แกนล็อคหัวสายพานหลุด",
-            "action": "ช่วงที่แตก เปลี่ยนสายพานใหม่ ช่วงที่หัวล็อคหาย ใส่หัวล็อคกลับคืน",
-            "fixType": "ชั่วคราว",
-            "durationMin": 75,
-            "jobType": "BD",
-            "fixBy": "ทีป/มด/โฟล์ค/รินทร์/ไพรินทร์/อ๋อย/บาส"
           }
         ]
       },
@@ -201,6 +156,40 @@
             "durationMin": 50,
             "jobType": "BD",
             "fixBy": "ทีป/มด/โฟล์ค/รินทร์/ไพรินทร์"
+          }
+        ]
+      },
+      {
+        "machine": "Fisher",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Let off",
+            "symptom": "ply หย่อน",
+            "cause": "ลวดสลิงดึงโรเรอบาขาด",
+            "action": "เปลี่ยนลวดสลิงดึงโรเรอบาใหม่ ใช้ลวดสลิงเซฟตี้ใส่แทน",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟล์ค"
+          }
+        ]
+      },
+      {
+        "machine": "Band 72\"#1",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "กะ1",
+            "zone": "Belt conveyor bottom",
+            "symptom": "สายพานไหลเบียดด้านข้าง",
+            "cause": "กระบอกสูบตัวตึงสายพานหลุด",
+            "action": "ประกอบกระบอกสูบที่หลุดกลับที่เดิม แล้วล็อคให้แน่น",
+            "fixType": "ถาวร",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟล์ค"
           }
         ]
       }
@@ -772,7 +761,7 @@
       "qr_pct": 95.47,
       "oee1_pct": 44.87,
       "oee2_pct": 56.68,
-      "bd_pct": 2.78
+      "bd_pct": 5.56
     },
     "output": {
       "hasData": true,
@@ -1127,12 +1116,12 @@
     "oee": {
       "hasData": true,
       "sr_pct": 87.5,
-      "ar_pct": 65.08,
-      "pr_pct": 91.72,
+      "ar_pct": 70.63,
+      "pr_pct": 84.51,
       "qr_pct": 97.71,
       "oee1_pct": 51.03,
       "oee2_pct": 58.33,
-      "bd_pct": 14.58
+      "bd_pct": 9.72
     },
     "output": {
       "hasData": true,
