@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "generatedAt": "2026-09-16T01:30:58.674Z",
+  "generatedAt": "2026-09-16T02:01:08.080Z",
   "waste": {
     "date": "2026-09-16",
     "millingSummary": 0,
@@ -15,11 +15,11 @@
   "cms": {
     "date": "2026-09-16",
     "mixing1": {
-      "batch": 38,
-      "ar": 77.5,
-      "pr": 90.6,
-      "qr": 95.4,
-      "oee2": 67
+      "batch": 49,
+      "ar": 74.5,
+      "pr": 90,
+      "qr": 96.5,
+      "oee2": 64.7
     },
     "mixing2": {
       "batch": 21,
@@ -28,12 +28,12 @@
       "qr": 100,
       "oee2": 63.6
     },
-    "totalAr": 74.3,
-    "totalPr": 91.2,
-    "totalQr": 96.9,
-    "totalOee2": 65.7
+    "totalAr": 72.8,
+    "totalPr": 90.7,
+    "totalQr": 97.4,
+    "totalOee2": 64.3
   },
-  "target3Roll": 2,
+  "target3Roll": 4,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -121,16 +121,21 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 2,
-    "totalRelease": 2,
+    "totalRolls": 4,
+    "totalRelease": 4,
     "totalHold": 1,
-    "totalPending": 19,
+    "totalPending": 17,
     "totalScheduled": 22,
     "codeBreakdown": [
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 100
+        "percentage": 50
+      },
+      {
+        "code": "NU27",
+        "count": 2,
+        "percentage": 50
       }
     ],
     "holdBreakdown": [
@@ -597,7 +602,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 70.17,
+        "avg": 69.7,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -691,7 +696,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 70.17,
+          "avg": 69.7,
           "target": 76.6,
           "count": 3,
           "isMet": false

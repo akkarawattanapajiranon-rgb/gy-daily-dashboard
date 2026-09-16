@@ -1,10 +1,10 @@
 {
   "date": "2026-09-15",
-  "generatedAt": "2026-09-16T01:31:16.150Z",
+  "generatedAt": "2026-09-16T02:01:18.809Z",
   "waste": {
     "date": "2026-09-15",
     "millingSummary": 105.2,
-    "frictionSummary": 362.2,
+    "frictionSummary": 377,
     "beadSummary": 64.8,
     "millingTop": [
       {
@@ -29,7 +29,7 @@
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 72.4,
+        "amount": 81.2,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -53,7 +53,7 @@
       },
       {
         "code": "F01",
-        "amount": 20.7,
+        "amount": 26.7,
         "reason": "ANGLE CHANGE",
         "isHigh": false
       }
