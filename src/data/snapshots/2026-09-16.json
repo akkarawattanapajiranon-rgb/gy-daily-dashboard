@@ -1,10 +1,10 @@
 {
   "date": "2026-09-16",
-  "generatedAt": "2026-09-17T01:31:10.102Z",
+  "generatedAt": "2026-09-17T02:01:08.810Z",
   "waste": {
     "date": "2026-09-16",
-    "millingSummary": 203,
-    "frictionSummary": 343.9,
+    "millingSummary": 237,
+    "frictionSummary": 355.7,
     "beadSummary": 38,
     "millingTop": [
       {
@@ -15,7 +15,7 @@
       },
       {
         "code": "M05",
-        "amount": 51,
+        "amount": 85,
         "reason": "TAILING",
         "isHigh": true
       },
@@ -35,7 +35,7 @@
       },
       {
         "code": "F44",
-        "amount": 64.5,
+        "amount": 67.9,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -137,14 +137,14 @@
   "fischer": {
     "date": "2026-09-16",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 83.89,
+      "ar_pct": 45.98,
+      "pr_pct": 95.96,
+      "qr_pct": 99.75,
+      "oee1_pct": 36.92,
+      "oee2_pct": 44.01
     },
     "checksheet": {
       "hasData": true,
@@ -1867,9 +1867,9 @@
         "isMet": false
       },
       "fischer": {
-        "avg": 52.9,
+        "avg": 49.94,
         "target": 60,
-        "count": 2,
+        "count": 3,
         "isMet": false
       },
       "mixing": {
@@ -1961,9 +1961,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 52.9,
+          "avg": 49.94,
           "target": 60,
-          "count": 2,
+          "count": 3,
           "isMet": false
         },
         "mixing": {
