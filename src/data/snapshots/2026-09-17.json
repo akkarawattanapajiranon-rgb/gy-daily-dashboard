@@ -1,6 +1,6 @@
 {
   "date": "2026-09-17",
-  "generatedAt": "2026-09-18T01:30:37.544Z",
+  "generatedAt": "2026-09-18T01:45:51.183Z",
   "waste": {
     "date": "2026-09-17",
     "millingSummary": 109.8,
@@ -85,10 +85,10 @@
     "date": "2026-09-17",
     "mixing1": {
       "batch": 673,
-      "ar": 88,
+      "ar": 89.1,
       "pr": 89.4,
       "qr": 88.6,
-      "oee2": 69.8
+      "oee2": 70.6
     },
     "mixing2": {
       "batch": 709,
@@ -97,10 +97,10 @@
       "qr": 100,
       "oee2": 81
     },
-    "totalAr": 88.8,
+    "totalAr": 89.4,
     "totalPr": 89.9,
     "totalQr": 94.2,
-    "totalOee2": 75.3
+    "totalOee2": 75.7
   },
   "target3Roll": 38,
   "breakdown": {
@@ -285,15 +285,15 @@
     "date": "2026-09-17",
     "day": 17,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 5,
-    "totalRolls": 5,
-    "totalMeters": 1250,
+    "totalQty": 13,
+    "totalRolls": 13,
+    "totalMeters": 3250,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 5,
-        "meters": 1250,
+        "qty": 13,
+        "meters": 3250,
         "items": [
           {
             "sapCode": "LD03552",
@@ -303,10 +303,45 @@
             "unit": "คัน"
           },
           {
+            "sapCode": "LD03602",
+            "code": "WYAF",
+            "qty": 3,
+            "meters": 750,
+            "unit": "คัน"
+          },
+          {
             "sapCode": "LD03525",
             "code": "WLAN",
             "qty": 2,
             "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03442",
+            "code": "WA8X",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03717",
+            "code": "WILA",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03523",
+            "code": "QLIX",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03535",
+            "code": "WAIS",
+            "qty": 1,
+            "meters": 250,
             "unit": "คัน"
           }
         ]
@@ -340,6 +375,18 @@
         }
       },
       {
+        "code": "WYAF",
+        "sapCode": "LD03602",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 3,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
         "code": "WLAN",
         "sapCode": "LD03525",
         "qty": 2,
@@ -347,6 +394,54 @@
         "unit": "คัน",
         "shifts": {
           "1": 2,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WA8X",
+        "sapCode": "LD03442",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WILA",
+        "sapCode": "LD03717",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "QLIX",
+        "sapCode": "LD03523",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WAIS",
+        "sapCode": "LD03535",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
           "2": 0,
           "3": 0
         }
@@ -1486,7 +1581,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.28,
+        "avg": 73.38,
         "target": 76.6,
         "count": 4,
         "isMet": false
@@ -1580,7 +1675,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.28,
+          "avg": 73.38,
           "target": 76.6,
           "count": 4,
           "isMet": false

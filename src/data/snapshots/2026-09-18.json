@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-18T01:30:25.047Z",
+  "generatedAt": "2026-09-18T01:45:57.495Z",
   "waste": {
     "date": "2026-09-18",
     "millingSummary": 3,
@@ -22,23 +22,23 @@
   "cms": {
     "date": "2026-09-18",
     "mixing1": {
-      "batch": 31,
-      "ar": 69.1,
-      "pr": 93.7,
-      "qr": 80.3,
-      "oee2": 52
+      "batch": 38,
+      "ar": 71.6,
+      "pr": 94.8,
+      "qr": 81.2,
+      "oee2": 55.1
     },
     "mixing2": {
-      "batch": 44,
-      "ar": 81.6,
+      "batch": 52,
+      "ar": 84.2,
       "pr": 83.8,
       "qr": 100,
-      "oee2": 68.4
+      "oee2": 70.6
     },
-    "totalAr": 75.4,
-    "totalPr": 88.3,
-    "totalQr": 90.9,
-    "totalOee2": 60.5
+    "totalAr": 77.8,
+    "totalPr": 88.9,
+    "totalQr": 91.2,
+    "totalOee2": 63.1
   },
   "target3Roll": 2,
   "breakdown": {
@@ -87,19 +87,19 @@
     "checksheet": {
       "hasData": true,
       "totalProduce": 30,
-      "totalWbr": 30,
-      "totalSapphire": 0,
+      "totalWbr": 25,
+      "totalSapphire": 5,
       "totalAngleChanges": 3,
-      "totalNormal": 30,
+      "totalNormal": 25,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 30,
-          "sapphire": 0,
+          "wbr": 25,
+          "sapphire": 5,
           "angleChanges": 3,
-          "normal": 30,
+          "normal": 25,
           "sticky": 0,
           "total": 30
         },
@@ -668,7 +668,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 70.72,
+        "avg": 71.32,
         "target": 76.6,
         "count": 5,
         "isMet": false
@@ -762,7 +762,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 70.72,
+          "avg": 71.32,
           "target": 76.6,
           "count": 5,
           "isMet": false
