@@ -1,6 +1,6 @@
 {
   "date": "2026-09-17",
-  "generatedAt": "2026-09-18T00:00:34.198Z",
+  "generatedAt": "2026-09-18T01:30:37.544Z",
   "waste": {
     "date": "2026-09-17",
     "millingSummary": 109.8,
@@ -137,14 +137,14 @@
   "fischer": {
     "date": "2026-09-17",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 84.38,
+      "ar_pct": 62.72,
+      "pr_pct": 91.56,
+      "qr_pct": 99.88,
+      "oee1_pct": 48.39,
+      "oee2_pct": 57.35
     },
     "checksheet": {
       "hasData": true,
@@ -369,17 +369,17 @@
     "output": {
       "hasData": true,
       "day": 17,
-      "grandTotal": 1288,
+      "grandTotal": 1284,
       "codeBreakdown": [
         {
           "code": "6017",
           "count": 800,
-          "percentage": 62.11
+          "percentage": 62.31
         },
         {
           "code": "B427",
           "count": 268,
-          "percentage": 20.81
+          "percentage": 20.87
         },
         {
           "code": "WA8X",
@@ -389,32 +389,32 @@
         {
           "code": "WAIS",
           "count": 30,
-          "percentage": 2.33
+          "percentage": 2.34
         },
         {
           "code": "WYAL",
-          "count": 26,
-          "percentage": 2.02
-        },
-        {
-          "code": "WYAF",
-          "count": 16,
-          "percentage": 1.24
+          "count": 24,
+          "percentage": 1.87
         },
         {
           "code": "WLGW",
           "count": 16,
-          "percentage": 1.24
+          "percentage": 1.25
         },
         {
           "code": "Q2AH",
           "count": 16,
-          "percentage": 1.24
+          "percentage": 1.25
         },
         {
           "code": "W1CL",
           "count": 16,
-          "percentage": 1.24
+          "percentage": 1.25
+        },
+        {
+          "code": "WYAF",
+          "count": 14,
+          "percentage": 1.09
         },
         {
           "code": "WAIK",
@@ -769,16 +769,6 @@
               "totalQty": 10
             },
             {
-              "partId": "TL00182",
-              "code1": "WYAF",
-              "code2": "",
-              "code": "WYAF",
-              "qtyTarget": 2,
-              "qtyProduced": 2,
-              "qtySapphire": 0,
-              "totalQty": 2
-            },
-            {
               "partId": "TL00183",
               "code1": "WYAL",
               "code2": "",
@@ -787,19 +777,9 @@
               "qtyProduced": 10,
               "qtySapphire": 0,
               "totalQty": 10
-            },
-            {
-              "partId": "TL00183",
-              "code1": "WYAL",
-              "code2": "",
-              "code": "WYAL",
-              "qtyTarget": 2,
-              "qtyProduced": 2,
-              "qtySapphire": 0,
-              "totalQty": 2
             }
           ],
-          "totalQty": 86
+          "totalQty": 82
         }
       }
     }
@@ -1124,13 +1104,13 @@
     "hasData": true,
     "summary": {
       "activeDate": "17/9",
-      "sum": 67496,
+      "sum": 62699,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
+      "consume": 14731,
       "newGenerate": 13050,
       "slowMoving": 44409,
-      "disposition": 10037,
+      "disposition": 5240,
       "hasData": true
     },
     "dailyTrend": [
@@ -1395,13 +1375,13 @@
         "dateLabel": "17/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 67496,
-        "consume": 0,
+        "sum": 62699,
+        "consume": 14731,
         "newGenerate": 13050,
         "newGenerateBTA": 8290,
         "newGenerateWBR": 4760,
         "slowMoving": 44409,
-        "disposition": 10037,
+        "disposition": 5240,
         "hasData": true
       }
     ],
@@ -1500,9 +1480,9 @@
         "isMet": false
       },
       "fischer": {
-        "avg": 49.94,
+        "avg": 51.79,
         "target": 60,
-        "count": 3,
+        "count": 4,
         "isMet": false
       },
       "mixing": {
@@ -1594,9 +1574,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 49.94,
+          "avg": 51.79,
           "target": 60,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "mixing": {

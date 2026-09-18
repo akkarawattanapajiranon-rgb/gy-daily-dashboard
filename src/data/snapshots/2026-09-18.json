@@ -1,39 +1,46 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-18T00:00:22.064Z",
+  "generatedAt": "2026-09-18T01:30:25.047Z",
   "waste": {
     "date": "2026-09-18",
-    "millingSummary": 0,
+    "millingSummary": 3,
     "frictionSummary": 0,
     "beadSummary": 0,
-    "millingTop": [],
+    "millingTop": [
+      {
+        "code": "M05",
+        "amount": 3,
+        "reason": "TAILING",
+        "isHigh": true
+      }
+    ],
     "frictionTop": [],
     "beadTop": [],
     "dataDate": "2026-09-18",
-    "hasData": false
+    "hasData": true
   },
   "cms": {
     "date": "2026-09-18",
     "mixing1": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 31,
+      "ar": 69.1,
+      "pr": 93.7,
+      "qr": 80.3,
+      "oee2": 52
     },
     "mixing2": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 44,
+      "ar": 81.6,
+      "pr": 83.8,
+      "qr": 100,
+      "oee2": 68.4
     },
-    "totalAr": 0,
-    "totalPr": 0,
-    "totalQr": 0,
-    "totalOee2": 0
+    "totalAr": 75.4,
+    "totalPr": 88.3,
+    "totalQr": 90.9,
+    "totalOee2": 60.5
   },
-  "target3Roll": 0,
+  "target3Roll": 2,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -78,7 +85,41 @@
       "oee2_pct": 0
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 30,
+      "totalWbr": 30,
+      "totalSapphire": 0,
+      "totalAngleChanges": 3,
+      "totalNormal": 30,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 30,
+          "sapphire": 0,
+          "angleChanges": 3,
+          "normal": 30,
+          "sticky": 0,
+          "total": 30
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -87,14 +128,20 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
-    "totalRelease": 0,
+    "totalRolls": 2,
+    "totalRelease": 2,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 22,
+    "totalScheduled": 24,
+    "codeBreakdown": [
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 100
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-18",
@@ -144,13 +191,100 @@
     "output": {
       "hasData": true,
       "day": 18,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 32,
+      "codeBreakdown": [
+        {
+          "code": "W1CL",
+          "count": 12,
+          "percentage": 37.5
+        },
+        {
+          "code": "W1WF",
+          "count": 10,
+          "percentage": 31.25
+        },
+        {
+          "code": "W13F",
+          "count": 6,
+          "percentage": 18.75
+        },
+        {
+          "code": "WYAF",
+          "count": 2,
+          "percentage": 6.25
+        },
+        {
+          "code": "WYAL",
+          "count": 2,
+          "percentage": 6.25
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "TL00182",
+              "code1": "WYAF",
+              "code2": "",
+              "code": "WYAF",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "TL00183",
+              "code1": "WYAL",
+              "code2": "",
+              "code": "WYAL",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "TL00202",
+              "code1": "W1CL",
+              "code2": "",
+              "code": "W1CL",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00202",
+              "code1": "W1CL",
+              "code2": "",
+              "code": "W1CL",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "TL00232",
+              "code1": "W1WF",
+              "code2": "",
+              "code": "W1WF",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00442",
+              "code1": "W13F",
+              "code2": "",
+              "code": "W13F",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            }
+          ],
+          "totalQty": 32
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -479,13 +613,13 @@
         "dateLabel": "17/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 67496,
-        "consume": 0,
+        "sum": 62699,
+        "consume": 14731,
         "newGenerate": 13050,
         "newGenerateBTA": 8290,
         "newGenerateWBR": 4760,
         "slowMoving": 44409,
-        "disposition": 10037,
+        "disposition": 5240,
         "hasData": true
       },
       {
@@ -528,15 +662,15 @@
         "isMet": false
       },
       "fischer": {
-        "avg": 49.94,
+        "avg": 51.79,
         "target": 60,
-        "count": 3,
+        "count": 4,
         "isMet": false
       },
       "mixing": {
-        "avg": 73.28,
+        "avg": 70.72,
         "target": 76.6,
-        "count": 4,
+        "count": 5,
         "isMet": false
       }
     },
@@ -622,15 +756,15 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 49.94,
+          "avg": 51.79,
           "target": 60,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "mixing": {
-          "avg": 73.28,
+          "avg": 70.72,
           "target": 76.6,
-          "count": 4,
+          "count": 5,
           "isMet": false
         }
       },
@@ -709,11 +843,22 @@
     "totalCompMin": 0,
     "totalCompHours": 0,
     "summary": {
-      "extrusionCount": 0,
+      "extrusionCount": 1,
       "compCount": 0,
-      "totalItems": 0
+      "totalItems": 1
     },
-    "items": []
+    "items": [
+      {
+        "id": "26-0",
+        "machine": "UH",
+        "rawText": "d/l tread",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      }
+    ]
   },
   "wbrDelay": {
     "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
