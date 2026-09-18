@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-18T01:45:57.495Z",
+  "generatedAt": "2026-09-18T02:00:28.385Z",
   "waste": {
     "date": "2026-09-18",
     "millingSummary": 3,
@@ -22,23 +22,23 @@
   "cms": {
     "date": "2026-09-18",
     "mixing1": {
-      "batch": 38,
-      "ar": 71.6,
-      "pr": 94.8,
-      "qr": 81.2,
-      "oee2": 55.1
+      "batch": 43,
+      "ar": 72.5,
+      "pr": 95.4,
+      "qr": 81.7,
+      "oee2": 56.4
     },
     "mixing2": {
-      "batch": 52,
-      "ar": 84.2,
+      "batch": 60,
+      "ar": 86.1,
       "pr": 83.8,
       "qr": 100,
-      "oee2": 70.6
+      "oee2": 72.2
     },
-    "totalAr": 77.8,
-    "totalPr": 88.9,
-    "totalQr": 91.2,
-    "totalOee2": 63.1
+    "totalAr": 79.3,
+    "totalPr": 89.1,
+    "totalQr": 91.5,
+    "totalOee2": 64.7
   },
   "target3Roll": 2,
   "breakdown": {
@@ -89,7 +89,7 @@
       "totalProduce": 30,
       "totalWbr": 25,
       "totalSapphire": 5,
-      "totalAngleChanges": 3,
+      "totalAngleChanges": 4,
       "totalNormal": 25,
       "totalSticky": 0,
       "normalPct": 100,
@@ -98,7 +98,7 @@
         "shift1": {
           "wbr": 25,
           "sapphire": 5,
-          "angleChanges": 3,
+          "angleChanges": 4,
           "normal": 25,
           "sticky": 0,
           "total": 30
@@ -656,10 +656,10 @@
         "isMet": false
       },
       "tuber": {
-        "avg": 60.95,
+        "avg": 62.84,
         "target": 62,
-        "count": 3,
-        "isMet": false
+        "count": 4,
+        "isMet": true
       },
       "fischer": {
         "avg": 51.79,
@@ -668,7 +668,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 71.32,
+        "avg": 71.64,
         "target": 76.6,
         "count": 5,
         "isMet": false
@@ -750,10 +750,10 @@
           "isMet": false
         },
         "tuber": {
-          "avg": 60.95,
+          "avg": 62.84,
           "target": 62,
-          "count": 3,
-          "isMet": false
+          "count": 4,
+          "isMet": true
         },
         "fischer": {
           "avg": 51.79,
@@ -762,7 +762,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.32,
+          "avg": 71.64,
           "target": 76.6,
           "count": 5,
           "isMet": false
