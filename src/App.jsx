@@ -227,14 +227,7 @@ function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   const handleDateChange = (e) => {
-    const val = e.target.value;
-    if (val < minDateStr) {
-      setSelectedDate(minDateStr);
-    } else if (val > todayStr) {
-      setSelectedDate(todayStr);
-    } else {
-      setSelectedDate(val);
-    }
+    setSelectedDate(e.target.value);
   };
 
   const handleLiveRefresh = async () => {
@@ -360,10 +353,7 @@ function App() {
                   <input 
                     type="date" 
                     value={selectedDate} 
-                    min={minDateStr}
-                    max={todayStr}
                     onChange={handleDateChange}
-                    title={`เลือกดูย้อนหลังได้สูงสุด 15 วัน (${minDateStr} ถึง ${todayStr})`}
                     className="bg-white/10 text-white border border-white/20 rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-yellow/50"
                   />
                 </div>
@@ -448,10 +438,7 @@ function App() {
                   <input 
                     type="date" 
                     value={selectedDate} 
-                    min={minDateStr}
-                    max={todayStr}
                     onChange={handleDateChange}
-                    title={`เลือกดูย้อนหลังได้สูงสุด 15 วัน (${minDateStr} ถึง ${todayStr})`}
                     className="bg-white/10 text-white border border-white/20 rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400/50"
                   />
                 </div>

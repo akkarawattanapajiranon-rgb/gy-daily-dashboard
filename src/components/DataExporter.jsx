@@ -49,15 +49,20 @@ export function getStatusColor(metricKey, value, customTarget = null) {
 }
 
 export default function DataExporter({ refreshTrigger }) {
-  const today = new Date();
-  const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-  const cutoff = new Date(today.getTime() - 14 * 86400000); // 15 days window (today - 14 days)
-  const minDateStr = `${cutoff.getFullYear()}-${String(cutoff.getMonth() + 1).padStart(2, '0')}-${String(cutoff.getDate()).padStart(2, '0')}`;
+  const todayStr = new Date().toISOString().split('T')[0];
 
   const getInitialDates = () => {
-    const past7 = new Date(today.getTime() - 6 * 86400000);
-    const start = `${past7.getFullYear()}-${String(past7.getMonth() + 1).padStart(2, '0')}-${String(past7.getDate()).padStart(2, '0')}`;
-    return { start: start < minDateStr ? minDateStr : start, end: todayStr };
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    const yyyy = yesterday.getFullYear();
+    const mm = String(yesterday.getMonth() + 1).padStart(2, '0');
+    const dd = String(yesterday.getDate()).padStart(2, '0');
+
+    const start = `${yyyy}-${mm}-01`;
+    const end = `${yyyy}-${mm}-${dd}`;
+    return { start, end };
   };
 
   const initialDates = getInitialDates();
@@ -149,14 +154,26 @@ export default function DataExporter({ refreshTrigger }) {
   }, [startDate, endDate, refreshTrigger]);
 
   const handlePresetSelect = (presetKey) => {
-    if (presetKey === '7days') {
-      const past = new Date(today.getTime() - 6 * 86400000);
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+
+    if (presetKey === '1-3') {
+      setStartDate(`${yyyy}-${mm}-01`);
+      setEndDate(`${yyyy}-${mm}-03`);
+    } else if (presetKey === '4-7') {
+      setStartDate(`${yyyy}-${mm}-04`);
+      setEndDate(`${yyyy}-${mm}-07`);
+    } else if (presetKey === '7days') {
+      const past = new Date(today);
+      past.setDate(past.getDate() - 6);
       const pastStr = `${past.getFullYear()}-${String(past.getMonth() + 1).padStart(2, '0')}-${String(past.getDate()).padStart(2, '0')}`;
-      setStartDate(pastStr < minDateStr ? minDateStr : pastStr);
+      setStartDate(pastStr);
       setEndDate(todayStr);
-    } else if (presetKey === '15days') {
-      setStartDate(minDateStr);
-      setEndDate(todayStr);
+    } else if (presetKey === 'month') {
+      setStartDate(`${yyyy}-${mm}-01`);
+      const lastDay = new Date(yyyy, today.getMonth() + 1, 0).getDate();
+      setEndDate(`${yyyy}-${mm}-${String(lastDay).padStart(2, '0')}`);
     } else if (presetKey === 'today') {
       setStartDate(todayStr);
       setEndDate(todayStr);
@@ -313,16 +330,28 @@ export default function DataExporter({ refreshTrigger }) {
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-bold text-slate-500 mr-1">เลือกด่วน (Quick Presets):</span>
           <button
+            onClick={() => handlePresetSelect('1-3')}
+            className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+          >
+            วันที่ 1 - 3
+          </button>
+          <button
+            onClick={() => handlePresetSelect('4-7')}
+            className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+          >
+            วันที่ 4 - 7
+          </button>
+          <button
             onClick={() => handlePresetSelect('7days')}
             className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
           >
             ย้อนหลัง 7 วัน
           </button>
           <button
-            onClick={() => handlePresetSelect('15days')}
+            onClick={() => handlePresetSelect('month')}
             className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
           >
-            ย้อนหลัง 15 วัน
+            ทั้งเดือนนี้ (MTD)
           </button>
           <button
             onClick={() => handlePresetSelect('today')}
@@ -338,12 +367,7 @@ export default function DataExporter({ refreshTrigger }) {
             <input
               type="date"
               value={startDate}
-              min={minDateStr}
-              max={todayStr}
-              onChange={(e) => {
-                const v = e.target.value;
-                setStartDate(v < minDateStr ? minDateStr : (v > todayStr ? todayStr : v));
-              }}
+              onChange={(e) => setStartDate(e.target.value)}
               className="bg-slate-50 border border-slate-300 text-slate-800 rounded-xl px-3.5 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/30"
             />
           </div>
@@ -352,12 +376,7 @@ export default function DataExporter({ refreshTrigger }) {
             <input
               type="date"
               value={endDate}
-              min={minDateStr}
-              max={todayStr}
-              onChange={(e) => {
-                const v = e.target.value;
-                setEndDate(v < minDateStr ? minDateStr : (v > todayStr ? todayStr : v));
-              }}
+              onChange={(e) => setEndDate(e.target.value)}
               className="bg-slate-50 border border-slate-300 text-slate-800 rounded-xl px-3.5 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/30"
             />
           </div>
