@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriangle, Users, ExternalLink, TrendingUp, UserCheck, Clock, Layers, Filter, Building2, Presentation, Download, Target } from 'lucide-react';
+import { ShieldCheck, Upload, FileSpreadsheet, Search, CheckCircle2, AlertTriangle, Users, ExternalLink, TrendingUp, UserCheck, Clock, Layers, Filter, Building2, Presentation, Download, Target, RefreshCw } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import cachedLspFallback from '../data/lsp_data_cache.json';
 
@@ -67,21 +67,25 @@ export default function SafetyLspReport() {
   const [activeTeam, setActiveTeam] = useState('Staff'); // 'Staff' or 'Leader'
   const [customFileLoaded, setCustomFileLoaded] = useState(false);
   const [exportingPpt, setExportingPpt] = useState(false);
+  const [syncing, setSyncing] = useState(false);
 
   const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
   const defaultWorkers = cachedLspFallback?.staffWorkers || cachedLspFallback?.staff || [];
   const defaultLeaders = cachedLspFallback?.leaderWorkers || cachedLspFallback?.leaders || [];
 
-  const loadLspData = async () => {
-    setLoading(true);
+  const loadLspData = async (force = false) => {
+    if (force) setSyncing(true);
+    else setLoading(true);
+
     try {
-      const res = await fetch('/api/lsp');
+      const res = await fetch(`/api/lsp?_t=${Date.now()}`);
       if (res.ok) {
         const json = await res.json();
         if (json && json.hasData) {
           setData(json);
           setLoading(false);
+          setSyncing(false);
           return;
         }
       }
@@ -94,9 +98,10 @@ export default function SafetyLspReport() {
       staffWorkers: defaultWorkers,
       leaderWorkers: defaultLeaders,
       hasData: true,
-      lastModifiedFormatted: cachedLspFallback?.lastModifiedFormatted || '11/09/2026 08:50 น.'
+      lastModifiedFormatted: cachedLspFallback?.lastModifiedFormatted || '16/09/2026 12:50 น.'
     });
     setLoading(false);
+    setSyncing(false);
   };
 
   useEffect(() => {
@@ -608,6 +613,16 @@ export default function SafetyLspReport() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
+            <button
+              onClick={() => loadLspData(true)}
+              disabled={syncing}
+              className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white rounded-xl text-xs font-black transition-all shadow-md cursor-pointer ring-1 ring-white/20"
+              title="ดึงข้อมูลสดจากไฟล์ Excel ต้นทาง (T: Drive / Server)"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${syncing ? 'animate-spin' : ''}`} />
+              <span>{syncing ? 'กำลังซิงค์...' : 'ดึงข้อมูลสด (Live Sync)'}</span>
+            </button>
+
             <button
               onClick={exportToPpt}
               disabled={exportingPpt}
