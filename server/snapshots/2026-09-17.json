@@ -1,10 +1,10 @@
 {
   "date": "2026-09-17",
-  "generatedAt": "2026-09-18T02:11:05.630Z",
+  "generatedAt": "2026-09-18T02:39:29.321Z",
   "waste": {
     "date": "2026-09-17",
     "millingSummary": 160.8,
-    "frictionSummary": 289.5,
+    "frictionSummary": 315.5,
     "beadSummary": 52.7,
     "millingTop": [
       {
@@ -34,15 +34,15 @@
     ],
     "frictionTop": [
       {
-        "code": "F39",
-        "amount": 68,
-        "reason": "O'LAY TRIM",
+        "code": "F44",
+        "amount": 69.5,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F44",
-        "amount": 47.5,
-        "reason": "ROLL ENDS",
+        "code": "F39",
+        "amount": 68,
+        "reason": "O'LAY TRIM",
         "isHigh": true
       },
       {
@@ -52,15 +52,15 @@
         "isHigh": false
       },
       {
-        "code": "F46",
-        "amount": 28.200000000000003,
-        "reason": "SHORT PIECES",
+        "code": "F01",
+        "amount": 29.999999999999996,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       },
       {
-        "code": "F01",
-        "amount": 27.999999999999996,
-        "reason": "ANGLE CHANGE",
+        "code": "F46",
+        "amount": 28.200000000000003,
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
@@ -113,31 +113,117 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-17",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Mixer 2",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "S-Oil",
+            "symptom": "น้ำมันยิงไม่หมด S63R1",
+            "cause": "ชุดControl น้ำมันเสีย",
+            "action": "กด Manual Run",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": ""
+          }
+        ]
+      },
+      {
+        "machine": "Quad",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "HEAD EXT",
+            "symptom": "มีน้ำมันหยดลงมา",
+            "cause": "ยังไม่พบเจอถึงสาเหตุ",
+            "action": "ตรวจเช็คและขันอัดท่อ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/แหลม/โฟร์ค/ริน/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "Fischer",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Windup",
+            "symptom": "Sensor ไม่ทำงาน",
+            "cause": "Sensor โดนกระแทก",
+            "action": "ปรับตั้งใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ริน/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "BAND MINI",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "แกนใส่ม้วนผ้า",
+            "symptom": "แกนใส่ม้วนผ้าหลุด",
+            "cause": "น๊อตคลายตัว",
+            "action": "ใสแกนแล้วทำการอัดแน่นใหม่",
+            "fixType": "ถาวร",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ทีป/แหลม/โฟร์ค/ริน/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "4 Roll 1",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "3",
+            "zone": "Calender",
+            "symptom": "Safety Can't Reset.",
+            "cause": "Safety  Fault.",
+            "action": "Re Power.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": ""
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.0417,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.6667,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.25,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.4896,
+      "hasData": true
     }
   },
   "fischer": {
@@ -291,15 +377,15 @@
     "date": "2026-09-17",
     "day": 17,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 5,
-    "totalRolls": 5,
-    "totalMeters": 1250,
+    "totalQty": 13,
+    "totalRolls": 13,
+    "totalMeters": 3250,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 5,
-        "meters": 1250,
+        "qty": 13,
+        "meters": 3250,
         "items": [
           {
             "sapCode": "LD03552",
@@ -309,10 +395,45 @@
             "unit": "คัน"
           },
           {
+            "sapCode": "LD03602",
+            "code": "WYAF",
+            "qty": 3,
+            "meters": 750,
+            "unit": "คัน"
+          },
+          {
             "sapCode": "LD03525",
             "code": "WLAN",
             "qty": 2,
             "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03442",
+            "code": "WA8X",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03717",
+            "code": "WILA",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03523",
+            "code": "QLIX",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03535",
+            "code": "WAIS",
+            "qty": 1,
+            "meters": 250,
             "unit": "คัน"
           }
         ]
@@ -346,6 +467,18 @@
         }
       },
       {
+        "code": "WYAF",
+        "sapCode": "LD03602",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 3,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
         "code": "WLAN",
         "sapCode": "LD03525",
         "qty": 2,
@@ -356,6 +489,54 @@
           "2": 0,
           "3": 0
         }
+      },
+      {
+        "code": "WA8X",
+        "sapCode": "LD03442",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WILA",
+        "sapCode": "LD03717",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "QLIX",
+        "sapCode": "LD03523",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WAIS",
+        "sapCode": "LD03535",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
       }
     ],
     "hasData": true
@@ -363,14 +544,14 @@
   "quad": {
     "date": "2026-09-17",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
-      "bd_pct": 0
+      "hasData": true,
+      "sr_pct": 73.61,
+      "ar_pct": 77.92,
+      "pr_pct": 80.95,
+      "qr_pct": 95.56,
+      "oee1_pct": 44.37,
+      "oee2_pct": 60.28,
+      "bd_pct": 4.17
     },
     "output": {
       "hasData": true,
@@ -1474,9 +1655,9 @@
       "label": "W3 (14/9 - 20/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 60.41,
+        "avg": 60.38,
         "target": 62,
-        "count": 3,
+        "count": 4,
         "isMet": false
       },
       "tuber": {
@@ -1568,9 +1749,9 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 60.41,
+          "avg": 60.38,
           "target": 62,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "tuber": {

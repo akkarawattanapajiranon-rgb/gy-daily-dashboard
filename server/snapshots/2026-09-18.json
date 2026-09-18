@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-18T02:10:41.698Z",
+  "generatedAt": "2026-09-18T02:39:11.520Z",
   "waste": {
     "date": "2026-09-18",
     "millingSummary": 3,
@@ -22,25 +22,25 @@
   "cms": {
     "date": "2026-09-18",
     "mixing1": {
-      "batch": 45,
-      "ar": 70.1,
-      "pr": 94.3,
-      "qr": 80.2,
-      "oee2": 53
+      "batch": 59,
+      "ar": 73,
+      "pr": 88.2,
+      "qr": 74.2,
+      "oee2": 47.8
     },
     "mixing2": {
-      "batch": 66,
-      "ar": 87.2,
-      "pr": 84.3,
+      "batch": 83,
+      "ar": 87.8,
+      "pr": 83.7,
       "qr": 100,
       "oee2": 73.5
     },
-    "totalAr": 78.7,
-    "totalPr": 88.7,
-    "totalQr": 91.1,
-    "totalOee2": 63.6
+    "totalAr": 80.4,
+    "totalPr": 85.7,
+    "totalQr": 88.4,
+    "totalOee2": 61
   },
-  "target3Roll": 5,
+  "target3Roll": 7,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -128,26 +128,31 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 5,
-    "totalRelease": 5,
+    "totalRolls": 7,
+    "totalRelease": 7,
     "totalHold": 1,
-    "totalPending": 18,
+    "totalPending": 16,
     "totalScheduled": 24,
     "codeBreakdown": [
       {
         "code": "NU27",
-        "count": 3,
-        "percentage": 60
+        "count": 4,
+        "percentage": 57.14
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 40
+        "percentage": 28.57
+      },
+      {
+        "code": "RU13",
+        "count": 1,
+        "percentage": 14.29
       }
     ],
     "holdBreakdown": [
       {
-        "code": "NU27",
+        "code": "RU11",
         "count": 1,
         "percentage": 100
       }
@@ -736,9 +741,9 @@
       "label": "W3 (14/9 - 20/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 60.41,
+        "avg": 60.38,
         "target": 62,
-        "count": 3,
+        "count": 4,
         "isMet": false
       },
       "tuber": {
@@ -754,7 +759,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 71.42,
+        "avg": 70.9,
         "target": 76.6,
         "count": 5,
         "isMet": false
@@ -830,9 +835,9 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 60.41,
+          "avg": 60.38,
           "target": 62,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "tuber": {
@@ -848,7 +853,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.42,
+          "avg": 70.9,
           "target": 76.6,
           "count": 5,
           "isMet": false
