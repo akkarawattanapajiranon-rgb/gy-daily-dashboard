@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-18T07:57:05.889Z",
+  "generatedAt": "2026-09-18T08:02:59.486Z",
   "waste": {
     "date": "2026-09-07",
     "millingSummary": 124.8,
@@ -214,20 +214,6 @@
       "qr_pct": 99.46,
       "oee1_pct": 38.82,
       "oee2_pct": 56.46
-    },
-    "loss": {
-      "hasData": true,
-      "noSchedule": 160,
-      "noCart": 0,
-      "noGum": 0,
-      "noTreatment": 0,
-      "breakdown": 290,
-      "angleChange": 15,
-      "produce": 75,
-      "target": 90,
-      "breakdownComment": "PM machine (Holder repair, Conveyer belt adjust, Gripper alignment)",
-      "commentAuthor": "Paisal Phoompong",
-      "otherComments": []
     },
     "checksheet": {
       "hasData": true,
@@ -1861,7 +1847,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.7,
+          "avg": 72.68,
           "target": 76.6,
           "count": 5,
           "isMet": false

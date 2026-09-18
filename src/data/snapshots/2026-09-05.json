@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-18T07:56:50.614Z",
+  "generatedAt": "2026-09-18T08:03:16.031Z",
   "waste": {
     "date": "2026-09-05",
     "millingSummary": 185.9,
@@ -253,20 +253,6 @@
       "qr_pct": 99.62,
       "oee1_pct": 47.18,
       "oee2_pct": 53.5
-    },
-    "loss": {
-      "hasData": true,
-      "noSchedule": 170,
-      "noCart": 0,
-      "noGum": 0,
-      "noTreatment": 0,
-      "breakdown": 50,
-      "angleChange": 21,
-      "produce": 89,
-      "target": 90,
-      "breakdownComment": "Reset splice bar. Cutter on-off",
-      "commentAuthor": "Paisal Phoompong",
-      "otherComments": []
     },
     "checksheet": {
       "hasData": true,
@@ -1817,7 +1803,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.7,
+          "avg": 72.68,
           "target": 76.6,
           "count": 5,
           "isMet": false
