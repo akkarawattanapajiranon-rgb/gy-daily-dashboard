@@ -12,8 +12,8 @@ async function runMorningSync() {
   const today = new Date(now.getTime() + (7 * 3600 * 1000));
   const datesToSync = [];
   
-  // Sync today and past 7 days for full completeness before 9:15 AM
-  for (let i = 0; i < 7; i++) {
+  // Sync today and past 14 days (15 days rolling window)
+  for (let i = 0; i < 15; i++) {
     const d = new Date(today);
     d.setDate(d.getDate() - i);
     const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;

@@ -38,6 +38,19 @@ setInterval(() => {
   }
 }, 60 * 1000);
 
+// Auto-Refresh Current Day Data & Snapshot every 5 minutes (300,000 ms)
+setInterval(async () => {
+  const now = new Date();
+  const bangkokTime = new Date(now.getTime() + (7 * 3600 * 1000));
+  const todayStr = `${bangkokTime.getUTCFullYear()}-${String(bangkokTime.getUTCMonth() + 1).padStart(2, '0')}-${String(bangkokTime.getUTCDate()).padStart(2, '0')}`;
+  try {
+    console.log(`[5-Minute Auto Poller] Refreshing today's data & snapshot (${todayStr})...`);
+    await generateSnapshot(todayStr);
+  } catch (err) {
+    console.warn(`[5-Minute Auto Poller] Notice for ${todayStr}:`, err.message);
+  }
+}, 5 * 60 * 1000);
+
 // In-memory API cache: 5 minute TTL — ป้องกัน Excel parse ซ้ำๆ จาก T: drive ทุก request
 // (กด F5/Live Data จะ bypass cache ด้วย forceRefresh=true → _t= query param)
 const apiMemoryCache = new Map();

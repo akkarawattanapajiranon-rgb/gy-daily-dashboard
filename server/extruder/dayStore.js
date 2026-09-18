@@ -12,7 +12,7 @@ const {
 const { lineConfigs, loadLineRows } = require('./oracleSource');
 
 const MAX_RETAINED_DAYS = 15; // Store max 15 days rolling window locally on user's machine
-const REFRESH_AFTER_MS = 10 * 60 * 1000; // 10 minutes (600,000 ms)
+const REFRESH_AFTER_MS = 5 * 60 * 1000; // 5 minutes (300,000 ms)
 const STORE_DIR = path.join(__dirname, '..', 'extruder_store');
 
 if (!fs.existsSync(STORE_DIR)) {
@@ -311,7 +311,7 @@ async function syncCurrentDayDaemon() {
 
 function startExtruderDaemon() {
   if (daemonTimer) return;
-  console.log('[Extruder Daemon] Starting automatic 10-minute background saver for current day...');
+  console.log('[Extruder Daemon] Starting automatic 5-minute background saver for current day...');
   // Initial sync after 3s delay
   setTimeout(() => {
     syncCurrentDayDaemon().catch(() => {});

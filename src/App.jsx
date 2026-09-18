@@ -133,9 +133,19 @@ function App() {
   const [weeklyOeeData, setWeeklyOeeData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const todayStr = React.useMemo(() => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  }, []);
+
+  const minDateStr = React.useMemo(() => {
+    const d = new Date();
+    const cutoff = new Date(d.getTime() - 14 * 86400000); // Past 15 days window (today - 14 days)
+    return `${cutoff.getFullYear()}-${String(cutoff.getMonth() + 1).padStart(2, '0')}-${String(cutoff.getDate()).padStart(2, '0')}`;
+  }, []);
+
   const [selectedDate, setSelectedDate] = useState(() => {
     const d = new Date();
-    // Default = วันนี้
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   });
 
@@ -217,7 +227,14 @@ function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   const handleDateChange = (e) => {
-    setSelectedDate(e.target.value);
+    const val = e.target.value;
+    if (val < minDateStr) {
+      setSelectedDate(minDateStr);
+    } else if (val > todayStr) {
+      setSelectedDate(todayStr);
+    } else {
+      setSelectedDate(val);
+    }
   };
 
   const handleLiveRefresh = async () => {
@@ -343,7 +360,10 @@ function App() {
                   <input 
                     type="date" 
                     value={selectedDate} 
+                    min={minDateStr}
+                    max={todayStr}
                     onChange={handleDateChange}
+                    title={`เลือกดูย้อนหลังได้สูงสุด 15 วัน (${minDateStr} ถึง ${todayStr})`}
                     className="bg-white/10 text-white border border-white/20 rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-yellow/50"
                   />
                 </div>
@@ -428,7 +448,10 @@ function App() {
                   <input 
                     type="date" 
                     value={selectedDate} 
+                    min={minDateStr}
+                    max={todayStr}
                     onChange={handleDateChange}
+                    title={`เลือกดูย้อนหลังได้สูงสุด 15 วัน (${minDateStr} ถึง ${todayStr})`}
                     className="bg-white/10 text-white border border-white/20 rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400/50"
                   />
                 </div>

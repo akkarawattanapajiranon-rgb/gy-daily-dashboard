@@ -19,6 +19,33 @@ const CLIENT_SNAPSHOT_DIR = path.join(__dirname, '..', 'src', 'data', 'snapshots
 if (!fs.existsSync(SNAPSHOT_DIR)) fs.mkdirSync(SNAPSHOT_DIR, { recursive: true });
 if (!fs.existsSync(CLIENT_SNAPSHOT_DIR)) fs.mkdirSync(CLIENT_SNAPSHOT_DIR, { recursive: true });
 
+function pruneOldSnapshots() {
+  try {
+    const today = new Date();
+    const cutoff = new Date(today.getTime() - 14 * 86400000);
+    const cutoffStr = `${cutoff.getFullYear()}-${String(cutoff.getMonth() + 1).padStart(2, '0')}-${String(cutoff.getDate()).padStart(2, '0')}`;
+    const dirs = [SNAPSHOT_DIR, CLIENT_SNAPSHOT_DIR];
+    for (const d of dirs) {
+      if (!fs.existsSync(d)) continue;
+      const files = fs.readdirSync(d);
+      for (const file of files) {
+        if (!file.endsWith('.json')) continue;
+        const datePart = file.replace('.json', '');
+        if (datePart < cutoffStr) {
+          try {
+            fs.unlinkSync(path.join(d, file));
+            console.log(`[Snapshot Generator] Pruned snapshot older than 15 days: ${file}`);
+          } catch (e) {}
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('[Snapshot Generator] Pruning warning:', err.message);
+  }
+}
+
+pruneOldSnapshots();
+
 const { initializeApp } = require('firebase/app');
 const { getFirestore, doc, setDoc } = require('firebase/firestore');
 
@@ -37,6 +64,7 @@ const db = getFirestore(app);
 
 async function generateSnapshot(dateStr) {
   console.log(`[Snapshot Generator] Building daily snapshot for ${dateStr}...`);
+  pruneOldSnapshots();
   try {
     const waste = await parseWasteDataAsync(dateStr);
     const cms = await fetchLiveCmsData(dateStr);
