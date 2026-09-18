@@ -415,6 +415,14 @@ app.get('/download/LSP_Tracker.exe', (req, res) => {
   res.status(404).send('LSP_Tracker.exe not found');
 });
 
+app.get('/download/DOR_Dashboard.exe', (req, res) => {
+  const exePath = path.join(__dirname, '..', 'public', 'download', 'DOR_Dashboard.exe');
+  if (fs.existsSync(exePath)) {
+    return res.download(exePath, 'DOR_Dashboard.exe');
+  }
+  res.status(404).send('DOR_Dashboard.exe not found');
+});
+
 // Serve built Vite assets AFTER API routes
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 

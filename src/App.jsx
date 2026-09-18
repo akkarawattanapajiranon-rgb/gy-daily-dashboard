@@ -348,16 +348,28 @@ function App() {
                   />
                 </div>
               </div>
-              <button
-                onClick={handleLiveRefresh}
-                disabled={isLoading}
-                className="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 active:scale-95 px-3.5 py-1.5 rounded-lg backdrop-blur-sm transition-all cursor-pointer border border-white/20 shadow-md group"
-                title="กดเพื่อ รีเฟรชหน้าเว็บ (F5) อ่านและ Parsing ข้อมูลจากไฟล์ Excel บนไดรฟ์ T: และ CMS สดๆ ทันที 100%"
-              >
-                <div className={`w-2.5 h-2.5 rounded-full ${isLoading ? 'bg-brand-yellow animate-pulse' : 'bg-emerald-400 animate-pulse'}`}></div>
-                <span className="text-xs md:text-sm font-bold tracking-wide">{isLoading ? 'Updating...' : 'Live Data (กดดึงข้อมูลสด F5)'}</span>
-                <RefreshCw className={`w-4 h-4 text-emerald-300 group-hover:rotate-180 transition-transform duration-500 ${isLoading ? 'animate-spin' : ''}`} />
-              </button>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <a
+                  href="/download/DOR_Dashboard.exe"
+                  download="DOR_Dashboard.exe"
+                  className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-bold shadow-md transition-all cursor-pointer ring-1 ring-white/20 active:scale-95"
+                  title="ดาวน์โหลดโปรแกรม Desktop (.exe) เพื่อเปิดใช้งาน DOR Dashboard เป็นโปรแกรมบนหน้าจอ Desktop ทันที"
+                >
+                  <Download className="w-4 h-4 text-white" />
+                  <span>โหลด Desktop App (.exe)</span>
+                </a>
+
+                <button
+                  onClick={handleLiveRefresh}
+                  disabled={isLoading}
+                  className="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 active:scale-95 px-3.5 py-1.5 rounded-lg backdrop-blur-sm transition-all cursor-pointer border border-white/20 shadow-md group"
+                  title="กดเพื่อ รีเฟรชหน้าเว็บ (F5) อ่านและ Parsing ข้อมูลจากไฟล์ Excel บนไดรฟ์ T: และ CMS สดๆ ทันที 100%"
+                >
+                  <div className={`w-2.5 h-2.5 rounded-full ${isLoading ? 'bg-brand-yellow animate-pulse' : 'bg-emerald-400 animate-pulse'}`}></div>
+                  <span className="text-xs md:text-sm font-bold tracking-wide">{isLoading ? 'Updating...' : 'Live Data (กดดึงข้อมูลสด F5)'}</span>
+                  <RefreshCw className={`w-4 h-4 text-emerald-300 group-hover:rotate-180 transition-transform duration-500 ${isLoading ? 'animate-spin' : ''}`} />
+                </button>
+              </div>
             </header>
 
             {/* Top Grid: Machine OEE, Mixing, Output */}
