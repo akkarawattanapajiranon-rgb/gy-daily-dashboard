@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 const path = require('path');
 const fs = require('fs');
 
-const { getSnapshot } = require('./snapshot_generator');
+const { getSnapshot, generateSnapshot } = require('./snapshot_generator');
 const { runMorningSync } = require('./cron_morning_sync');
 
 // Automatic Cloud Sync Schedule: Updates snapshots & Vercel automatically (08:30, 09:00, 09:10 AM and every 2 hours)
