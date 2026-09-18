@@ -258,11 +258,11 @@ function App() {
       <div className="max-w-7xl mx-auto space-y-6">
         
         {/* Navigation Tabs Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-2.5 rounded-2xl border border-slate-200 shadow-sm">
-          <div className="flex flex-wrap items-center gap-2">
+        <div className="flex items-center justify-between gap-3 bg-white p-2 rounded-2xl border border-slate-200 shadow-sm overflow-x-auto">
+          <div className="flex items-center gap-1.5 md:gap-2 shrink-0">
             <button
               onClick={() => setActiveTab('dor')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl font-extrabold text-xs md:text-sm whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'dor'
                   ? 'bg-brand-blue text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -274,53 +274,53 @@ function App() {
 
             <button
               onClick={() => setActiveTab('aero')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl font-extrabold text-xs md:text-sm whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'aero'
                   ? 'bg-indigo-700 text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Layers className="w-4 h-4 text-indigo-300" />
-              <span>หน้า 2: Component Delay (Aero & WBR)</span>
+              <span>หน้า 2: Delay (Aero & WBR)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('extruder')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl font-extrabold text-xs md:text-sm whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'extruder'
                   ? 'bg-brand-blue text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Clock className="w-4 h-4 text-brand-yellow" />
-              <span>หน้า 3: Extruder (TAW Act vs Spec)</span>
+              <span>หน้า 3: Extruder (TAW)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('safety')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl font-extrabold text-xs md:text-sm whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'safety'
                   ? 'bg-emerald-700 text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>หน้า 4: Safety (EHS & LSP)</span>
+              <span>หน้า 4: Safety (LSP)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('exporter')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs md:text-sm transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl font-extrabold text-xs md:text-sm whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'exporter'
                   ? 'bg-blue-600 text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Download className="w-4 h-4 text-blue-300" />
-              <span>หน้า 5: โหลดข้อมูลตัวเลข (Export)</span>
+              <span>หน้า 5: Export Data</span>
             </button>
           </div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 px-3">
+          <div className="hidden xl:flex items-center gap-2 text-xs font-semibold text-slate-400 px-3 whitespace-nowrap">
             {appMode && (
               <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-full font-bold text-[10px] flex items-center gap-1 border border-emerald-300 shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -358,17 +358,7 @@ function App() {
                   />
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-2.5">
-                <a
-                  href="/download/DOR_Dashboard.exe"
-                  download="DOR_Dashboard.exe"
-                  className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-bold shadow-md transition-all cursor-pointer ring-1 ring-white/20 active:scale-95"
-                  title="ดาวน์โหลดโปรแกรม Desktop (.exe) เพื่อเปิดใช้งาน DOR Dashboard เป็นโปรแกรมบนหน้าจอ Desktop ทันที"
-                >
-                  <Download className="w-4 h-4 text-white" />
-                  <span>โหลด Desktop App (.exe)</span>
-                </a>
-
+              <div className="flex items-center gap-2.5">
                 <button
                   onClick={handleLiveRefresh}
                   disabled={isLoading}
