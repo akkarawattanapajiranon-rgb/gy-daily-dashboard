@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
-  res.setHeader('Cache-Control', 'no-store, max-age=0');
+  res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -19,6 +19,7 @@ export default async function handler(req, res) {
   const possiblePaths = [
     path.join(process.cwd(), 'public', 'data', 'extruder', date + '.json'),
     path.join(process.cwd(), 'dist', 'data', 'extruder', date + '.json'),
+    path.join(process.cwd(), 'server', 'extruder_store', date + '.json'),
   ];
 
   for (const p of possiblePaths) {

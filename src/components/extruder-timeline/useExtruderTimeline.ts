@@ -61,14 +61,18 @@ export function useExtruderTimeline(
       let json: ExtruderTimelineResponse | null = null;
       let fetchError: Error | null = null;
 
-      // 1. Try local Express API first (works on localhost / company network)
+      // 1. Try local Express API first (with 1500ms timeout)
       try {
         const queryParams = new URLSearchParams({ date: target });
         if (forceRefresh) queryParams.set("refresh", "true");
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 1500);
         const res = await fetch(`${endpoint}?${queryParams.toString()}`, {
           cache: "no-store",
           headers: { accept: "application/json" },
+          signal: controller.signal
         });
+        clearTimeout(timeoutId);
         const contentType = res.headers.get("content-type");
         if (res.ok && contentType && contentType.includes("application/json")) {
           json = (await res.json()) as ExtruderTimelineResponse;
@@ -83,10 +87,14 @@ export function useExtruderTimeline(
       if (!json) {
         try {
           const cacheBuster = forceRefresh ? `?_t=${Date.now()}` : "";
+          const staticController = new AbortController();
+          const staticTimeoutId = setTimeout(() => staticController.abort(), 2000);
           const staticRes = await fetch(`/data/extruder/${encodeURIComponent(target)}.json${cacheBuster}`, {
             cache: "no-store",
             headers: { accept: "application/json" },
+            signal: staticController.signal
           });
+          clearTimeout(staticTimeoutId);
           const contentType = staticRes.headers.get("content-type");
           if (staticRes.ok && (!contentType || contentType.includes("application/json"))) {
             json = (await staticRes.json()) as ExtruderTimelineResponse;
