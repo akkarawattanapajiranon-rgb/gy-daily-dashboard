@@ -1,5 +1,6 @@
 const { generateSnapshot } = require('./snapshot_generator');
 const { getExtruderTimeline } = require('./extruder/dayStore');
+const { parseLspData } = require('./lsp_parser');
 const { execSync } = require('child_process');
 const path = require('path');
 
@@ -30,6 +31,13 @@ async function runMorningSync() {
       }
     }
     
+    console.log('[Morning Sync Cron] 🛡️ Parsing latest EHS Safety LSP Tracking data...');
+    try {
+      parseLspData();
+    } catch (lspErr) {
+      console.warn('[Morning Sync Cron] LSP parse notice:', lspErr.message);
+    }
+
     console.log('[Morning Sync Cron] 📦 Building static production assets...');
     const projectRoot = path.join(__dirname, '..');
     execSync('node node_modules/vite/bin/vite.js build', { stdio: 'inherit', cwd: projectRoot });

@@ -434,7 +434,7 @@
       "totalQr": 94,
       "totalOee2": 76.3
     },
-    "timestamp": 1789696878592
+    "timestamp": 1789697539288
   },
   "2026-09-14": {
     "data": {
@@ -458,7 +458,7 @@
       "totalQr": 93.4,
       "totalOee2": 73.7
     },
-    "timestamp": 1789696865801
+    "timestamp": 1789697514159
   },
   "2026-09-15": {
     "data": {
@@ -482,7 +482,7 @@
       "totalQr": 91.9,
       "totalOee2": 71.1
     },
-    "timestamp": 1789696852883
+    "timestamp": 1789697489795
   },
   "2026-09-16": {
     "data": {
@@ -506,7 +506,7 @@
       "totalQr": 96.1,
       "totalOee2": 73
     },
-    "timestamp": 1789696889908
+    "timestamp": 1789697513023
   },
   "2026-09-17": {
     "data": {
@@ -530,30 +530,30 @@
       "totalQr": 94.2,
       "totalOee2": 75.7
     },
-    "timestamp": 1789696829083
+    "timestamp": 1789697443986
   },
   "2026-09-18": {
     "data": {
       "date": "2026-09-18",
       "mixing1": {
-        "batch": 44,
-        "ar": 72.9,
-        "pr": 95.4,
-        "qr": 81.7,
-        "oee2": 56.9
+        "batch": 46,
+        "ar": 70.6,
+        "pr": 93.2,
+        "qr": 78.7,
+        "oee2": 51.9
       },
       "mixing2": {
-        "batch": 61,
-        "ar": 86.3,
-        "pr": 83.9,
+        "batch": 67,
+        "ar": 87.4,
+        "pr": 84.3,
         "qr": 100,
-        "oee2": 72.4
+        "oee2": 73.7
       },
-      "totalAr": 79.6,
-      "totalPr": 89.2,
-      "totalQr": 91.5,
-      "totalOee2": 65
+      "totalAr": 79,
+      "totalPr": 88.3,
+      "totalQr": 90.4,
+      "totalOee2": 63.1
     },
-    "timestamp": 1789696877265
+    "timestamp": 1789697489785
   }
 }

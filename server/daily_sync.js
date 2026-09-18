@@ -1,4 +1,5 @@
 const { generateSnapshot } = require('./snapshot_generator');
+const { parseLspData } = require('./lsp_parser');
 const { execSync } = require('child_process');
 const path = require('path');
 
@@ -20,6 +21,13 @@ async function runDailySync() {
 
   for (const dateStr of datesToSync) {
     await generateSnapshot(dateStr);
+  }
+
+  console.log('🛡️ Parsing latest EHS Safety LSP Tracking data...');
+  try {
+    parseLspData();
+  } catch (lspErr) {
+    console.warn('LSP parse notice:', lspErr.message);
   }
 
   console.log('====================================================');
