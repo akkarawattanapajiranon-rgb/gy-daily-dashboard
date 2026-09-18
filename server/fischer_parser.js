@@ -63,12 +63,17 @@ function isDateMatch(rawDate, targetDateStr, targetYear, targetMonth, targetDay)
   return false;
 }
 
+function cleanCommentText(raw) {
+  if (!raw) return '';
+  return raw.replace(/^[^\n:]+:\s*/, '').trim();
+}
+
 /**
- * 1. Parse OEE Data from OEE - 2026 TRACKING - SHEAR FISCHER.xlsx
+ * 1. Parse OEE & LOSS Tab Data from OEE - 2026 TRACKING - SHEAR FISCHER.xlsx
  */
-function getOeeData(dateStr) {
+function getOeeAndLossData(dateStr) {
   if (!fs.existsSync(FISCHER_OEE_FILE)) {
-    return { error: 'OEE File not found' };
+    return { oee: { error: 'OEE File not found' }, loss: { hasData: false } };
   }
 
   const [yearStr, monthStr, dayStr] = dateStr.split('-');
@@ -78,48 +83,126 @@ function getOeeData(dateStr) {
 
   const wb = XLSX.readFile(FISCHER_OEE_FILE);
 
+  // 1. OEE Sheet
   const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['oee']) ||
                     wb.SheetNames.find(s => s.toLowerCase().includes('oee')) ||
                     wb.SheetNames[0];
 
-  const ws = wb.Sheets[sheetName];
-  if (!ws) return { error: `Sheet ${sheetName} not found` };
+  const wsOee = wb.Sheets[sheetName];
+  let oee = { hasData: false };
 
-  const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
-  let matchedRow = null;
+  if (wsOee) {
+    const data = XLSX.utils.sheet_to_json(wsOee, { header: 1, defval: '' });
+    let matchedRow = null;
 
-  data.forEach((row, i) => {
-    if (i === 0) return;
-    const rawDate = row[0];
-    if (isDateMatch(rawDate, dateStr, yearNum, monthNum, dayNum)) {
-      matchedRow = row;
+    data.forEach((row, i) => {
+      if (i === 0) return;
+      const rawDate = row[0];
+      if (isDateMatch(rawDate, dateStr, yearNum, monthNum, dayNum)) {
+        matchedRow = row;
+      }
+    });
+
+    if (matchedRow) {
+      const target = Number(matchedRow[1]) || 0;
+      const sr = Number(matchedRow[2]) || 0;
+      const ar = Number(matchedRow[4]) || 0;
+      const pr = Number(matchedRow[5]) || 0;
+      const qr = Number(matchedRow[6]) || 0;
+      const oee1 = Number(matchedRow[7]) || 0;
+      const oee2 = Number(matchedRow[8]) || 0;
+
+      const hasData = (sr > 0 || ar > 0 || pr > 0 || oee2 > 0);
+
+      oee = {
+        hasData,
+        target_pct: parseFloat((target * 100).toFixed(2)),
+        sr_pct: parseFloat((sr * 100).toFixed(2)),
+        ar_pct: parseFloat((ar * 100).toFixed(2)),
+        pr_pct: parseFloat((pr * 100).toFixed(2)),
+        qr_pct: parseFloat((qr * 100).toFixed(2)),
+        oee1_pct: parseFloat((oee1 * 100).toFixed(2)),
+        oee2_pct: parseFloat((oee2 * 100).toFixed(2)),
+      };
     }
-  });
-
-  if (!matchedRow) {
-    return { hasData: false };
   }
 
-  const target = Number(matchedRow[1]) || 0;
-  const sr = Number(matchedRow[2]) || 0;
-  const ar = Number(matchedRow[4]) || 0;
-  const pr = Number(matchedRow[5]) || 0;
-  const qr = Number(matchedRow[6]) || 0;
-  const oee1 = Number(matchedRow[7]) || 0;
-  const oee2 = Number(matchedRow[8]) || 0;
+  // 2. LOSS Sheet
+  const wsLoss = wb.Sheets['LOSS'] || wb.Sheets['Loss'] || wb.Sheets['loss'];
+  let loss = { hasData: false };
 
-  const hasData = (sr > 0 || ar > 0 || pr > 0 || oee2 > 0);
+  if (wsLoss) {
+    const range = XLSX.utils.decode_range(wsLoss['!ref'] || 'A1:I360');
+    for (let r = range.s.r + 1; r <= range.e.r; r++) {
+      const rowNum = r + 1;
+      const cellA = wsLoss['A' + rowNum];
+      if (!cellA) continue;
+      const rawDate = cellA.w || cellA.v;
+      if (isDateMatch(rawDate, dateStr, yearNum, monthNum, dayNum)) {
+        const noSchedule = Number(wsLoss['B' + rowNum]?.v) || 0;
+        const noCart = Number(wsLoss['C' + rowNum]?.v) || 0;
+        const noGum = Number(wsLoss['D' + rowNum]?.v) || 0;
+        const noTreatment = Number(wsLoss['E' + rowNum]?.v) || 0;
+        const breakdown = Number(wsLoss['F' + rowNum]?.v) || 0;
+        const angleChange = Number(wsLoss['G' + rowNum]?.v) || 0;
+        const produce = Number(wsLoss['H' + rowNum]?.v) || 0;
+        const target = Number(wsLoss['I' + rowNum]?.v) || 0;
 
-  return {
-    hasData,
-    target_pct: parseFloat((target * 100).toFixed(2)),
-    sr_pct: parseFloat((sr * 100).toFixed(2)),
-    ar_pct: parseFloat((ar * 100).toFixed(2)),
-    pr_pct: parseFloat((pr * 100).toFixed(2)),
-    qr_pct: parseFloat((qr * 100).toFixed(2)),
-    oee1_pct: parseFloat((oee1 * 100).toFixed(2)),
-    oee2_pct: parseFloat((oee2 * 100).toFixed(2)),
-  };
+        // Breakdown comment on Column F
+        const cellF = wsLoss['F' + rowNum];
+        let breakdownComment = '';
+        let commentAuthor = '';
+        if (cellF && cellF.c && cellF.c.length > 0) {
+          breakdownComment = cleanCommentText(cellF.c[0].t || '');
+          commentAuthor = cellF.c[0].a || '';
+        }
+
+        // Other comments
+        const otherComments = [];
+        const colNames = {
+          B: 'No Schedule',
+          C: 'No Cart',
+          D: 'No Gum',
+          E: 'No Treatment',
+          G: 'Angle Change',
+          H: 'Produce'
+        };
+        ['B', 'C', 'D', 'E', 'G', 'H'].forEach(col => {
+          const c = wsLoss[col + rowNum];
+          if (c && c.c && c.c.length > 0) {
+            c.c.forEach(cm => {
+              const txt = cleanCommentText(cm.t || '');
+              if (txt) {
+                otherComments.push({
+                  category: colNames[col] || col,
+                  author: cm.a || '',
+                  text: txt
+                });
+              }
+            });
+          }
+        });
+
+        loss = {
+          hasData: true,
+          noSchedule,
+          noCart,
+          noGum,
+          noTreatment,
+          breakdown,
+          angleChange,
+          produce,
+          target,
+          breakdownComment,
+          commentAuthor,
+          otherComments
+        };
+        break;
+      }
+    }
+  }
+
+  return { oee, loss };
 }
 
 /**
@@ -271,12 +354,13 @@ function getChecksheetData(dateStr) {
 }
 
 function parseFischerData(dateStr) {
-  const oee = getOeeData(dateStr);
+  const { oee, loss } = getOeeAndLossData(dateStr);
   const checksheet = getChecksheetData(dateStr);
 
   return {
     date: dateStr,
     oee,
+    loss,
     checksheet
   };
 }

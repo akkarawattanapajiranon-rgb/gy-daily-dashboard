@@ -19,22 +19,6 @@ const CLIENT_SNAPSHOT_DIR = path.join(__dirname, '..', 'src', 'data', 'snapshots
 if (!fs.existsSync(SNAPSHOT_DIR)) fs.mkdirSync(SNAPSHOT_DIR, { recursive: true });
 if (!fs.existsSync(CLIENT_SNAPSHOT_DIR)) fs.mkdirSync(CLIENT_SNAPSHOT_DIR, { recursive: true });
 
-const { initializeApp } = require('firebase/app');
-const { getFirestore, doc, setDoc } = require('firebase/firestore');
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA02pl-oxUbCBB7LG3qpldUEJEYj6dQLYw",
-  authDomain: "gy-daily-dashboard.firebaseapp.com",
-  projectId: "gy-daily-dashboard",
-  storageBucket: "gy-daily-dashboard.firebasestorage.app",
-  messagingSenderId: "533489548506",
-  appId: "1:533489548506:web:92a4a3a0aa6ba96fb6b9e3",
-  measurementId: "G-E34Y8X5JKH"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 async function generateSnapshot(dateStr) {
   console.log(`[Snapshot Generator] Building daily snapshot for ${dateStr}...`);
   try {
@@ -76,16 +60,6 @@ async function generateSnapshot(dateStr) {
     fs.writeFileSync(path.join(CLIENT_SNAPSHOT_DIR, fileName), JSON.stringify(snapshot, null, 2), 'utf8');
 
     console.log(`[Snapshot Generator] Successfully saved ${fileName} (${(JSON.stringify(snapshot).length / 1024).toFixed(1)} KB)`);
-
-    // Save to Firebase Firestore (non-blocking with timeout)
-    Promise.race([
-      setDoc(doc(db, 'daily_snapshots', dateStr), snapshot),
-      new Promise((_, reject) => setTimeout(() => reject(new Error('Firebase upload timeout')), 3000))
-    ]).then(() => {
-      console.log(`[Snapshot Generator] Uploaded ${dateStr} snapshot to Firebase Firestore!`);
-    }).catch(fbErr => {
-      console.warn(`[Snapshot Generator] Firebase upload warning for ${dateStr}:`, fbErr.message);
-    });
 
     return snapshot;
   } catch (err) {

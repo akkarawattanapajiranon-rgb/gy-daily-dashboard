@@ -1,6 +1,6 @@
 {
   "date": "2026-09-03",
-  "generatedAt": "2026-09-18T07:12:28.989Z",
+  "generatedAt": "2026-09-18T07:56:33.742Z",
   "waste": {
     "date": "2026-09-03",
     "millingSummary": 135,
@@ -275,6 +275,20 @@
       "qr_pct": 99.7,
       "oee1_pct": 47.79,
       "oee2_pct": 57.59
+    },
+    "loss": {
+      "hasData": true,
+      "noSchedule": 245,
+      "noCart": 0,
+      "noGum": 0,
+      "noTreatment": 0,
+      "breakdown": 0,
+      "angleChange": 16,
+      "produce": 88,
+      "target": 90,
+      "breakdownComment": "",
+      "commentAuthor": "",
+      "otherComments": []
     },
     "checksheet": {
       "hasData": true,
@@ -1802,7 +1816,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.56,
+          "avg": 72.7,
           "target": 76.6,
           "count": 5,
           "isMet": false
