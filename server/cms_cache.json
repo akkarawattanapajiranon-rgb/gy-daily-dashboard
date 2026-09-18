@@ -410,7 +410,7 @@
       "totalQr": 95.6,
       "totalOee2": 75.5
     },
-    "timestamp": 1789632105036
+    "timestamp": 1789689686270
   },
   "2026-09-13": {
     "data": {
@@ -434,7 +434,7 @@
       "totalQr": 94,
       "totalOee2": 76.3
     },
-    "timestamp": 1789632091515
+    "timestamp": 1789689674048
   },
   "2026-09-14": {
     "data": {
@@ -458,7 +458,7 @@
       "totalQr": 93.4,
       "totalOee2": 73.7
     },
-    "timestamp": 1789632118007
+    "timestamp": 1789689660749
   },
   "2026-09-15": {
     "data": {
@@ -482,7 +482,7 @@
       "totalQr": 91.9,
       "totalOee2": 71.1
     },
-    "timestamp": 1789632116613
+    "timestamp": 1789689684826
   },
   "2026-09-16": {
     "data": {
@@ -506,30 +506,54 @@
       "totalQr": 96.1,
       "totalOee2": 73
     },
-    "timestamp": 1789632058513
+    "timestamp": 1789689622492
   },
   "2026-09-17": {
     "data": {
       "date": "2026-09-17",
       "mixing1": {
-        "batch": 230,
-        "ar": 88.5,
-        "pr": 91.5,
-        "qr": 81.7,
-        "oee2": 66.2
+        "batch": 673,
+        "ar": 88,
+        "pr": 89.4,
+        "qr": 88.6,
+        "oee2": 69.8
       },
       "mixing2": {
-        "batch": 225,
-        "ar": 83.7,
-        "pr": 90.7,
+        "batch": 709,
+        "ar": 89.6,
+        "pr": 90.4,
         "qr": 100,
-        "oee2": 75.9
+        "oee2": 81
       },
-      "totalAr": 86.1,
-      "totalPr": 91.1,
-      "totalQr": 90.3,
-      "totalOee2": 70.8
+      "totalAr": 88.8,
+      "totalPr": 89.9,
+      "totalQr": 94.2,
+      "totalOee2": 75.3
     },
-    "timestamp": 1789632103930
+    "timestamp": 1789689674041
+  },
+  "2026-09-18": {
+    "data": {
+      "date": "2026-09-18",
+      "mixing1": {
+        "batch": 0,
+        "ar": 0,
+        "pr": 0,
+        "qr": 0,
+        "oee2": 0
+      },
+      "mixing2": {
+        "batch": 0,
+        "ar": 0,
+        "pr": 0,
+        "qr": 0,
+        "oee2": 0
+      },
+      "totalAr": 0,
+      "totalPr": 0,
+      "totalQr": 0,
+      "totalOee2": 0
+    },
+    "timestamp": 1789689672433
   }
 }
