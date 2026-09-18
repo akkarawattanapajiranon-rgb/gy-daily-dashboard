@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-18T04:01:24.255Z",
+  "generatedAt": "2026-09-18T06:00:32.999Z",
   "waste": {
     "date": "2026-09-18",
     "millingSummary": 6,
@@ -35,25 +35,25 @@
   "cms": {
     "date": "2026-09-18",
     "mixing1": {
-      "batch": 104,
-      "ar": 77.6,
-      "pr": 90.6,
-      "qr": 81.1,
-      "oee2": 57
+      "batch": 119,
+      "ar": 79.4,
+      "pr": 91.5,
+      "qr": 81,
+      "oee2": 58.8
     },
     "mixing2": {
-      "batch": 117,
-      "ar": 86.5,
-      "pr": 84,
+      "batch": 160,
+      "ar": 88.6,
+      "pr": 85.7,
       "qr": 100,
-      "oee2": 72.7
+      "oee2": 75.9
     },
-    "totalAr": 82,
-    "totalPr": 87.1,
-    "totalQr": 90.6,
-    "totalOee2": 64.7
+    "totalAr": 84.6,
+    "totalPr": 88.1,
+    "totalQr": 91.4,
+    "totalOee2": 68
   },
-  "target3Roll": 14,
+  "target3Roll": 21,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -102,7 +102,7 @@
       "totalProduce": 30,
       "totalWbr": 25,
       "totalSapphire": 5,
-      "totalAngleChanges": 6,
+      "totalAngleChanges": 7,
       "totalNormal": 25,
       "totalSticky": 0,
       "normalPct": 100,
@@ -111,7 +111,7 @@
         "shift1": {
           "wbr": 25,
           "sapphire": 5,
-          "angleChanges": 6,
+          "angleChanges": 7,
           "normal": 25,
           "sticky": 0,
           "total": 30
@@ -141,54 +141,65 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 14,
-    "totalRelease": 14,
-    "totalHold": 0,
-    "totalPending": 28,
+    "totalRolls": 21,
+    "totalRelease": 21,
+    "totalHold": 1,
+    "totalPending": 20,
     "totalScheduled": 42,
     "codeBreakdown": [
       {
+        "code": "RP08",
+        "count": 7,
+        "percentage": 33.33
+      },
+      {
         "code": "RU53",
         "count": 6,
-        "percentage": 42.86
+        "percentage": 28.57
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 28.57
+        "percentage": 19.05
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 14.29
+        "percentage": 9.52
       },
       {
         "code": "RU13",
         "count": 1,
-        "percentage": 7.14
+        "percentage": 4.76
       },
       {
         "code": "RU11",
         "count": 1,
-        "percentage": 7.14
+        "percentage": 4.76
       }
     ],
-    "holdBreakdown": [],
+    "holdBreakdown": [
+      {
+        "code": "RP08",
+        "count": 1,
+        "percentage": 100
+      }
+    ],
     "hasData": true
   },
   "roll42": {
     "date": "2026-09-18",
     "day": 18,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 100,
-    "totalRolls": 100,
-    "totalMeters": 5220,
+    "totalQty": 101,
+    "totalRolls": 101,
+    "totalMeters": 5470,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 100,
-        "meters": 5220,
+        "qty": 101,
+        "meters": 5470,
         "items": [
           {
             "sapCode": "PL08365",
@@ -216,6 +227,13 @@
             "code": "WGMS",
             "qty": 3,
             "meters": 750,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03192",
+            "code": "W1LG",
+            "qty": 1,
+            "meters": 250,
             "unit": "คัน"
           },
           {
@@ -292,6 +310,18 @@
         }
       },
       {
+        "code": "W1LG",
+        "sapCode": "LD03192",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
         "code": "W1CL",
         "sapCode": "LD03552",
         "qty": 1,
@@ -321,20 +351,20 @@
     "output": {
       "hasData": true,
       "day": 18,
-      "grandTotal": 1212,
+      "grandTotal": 1214,
       "codeBreakdown": [
         {
           "code": "QU9W",
           "count": 1148,
-          "percentage": 94.72
-        },
-        {
-          "code": "WLAN",
-          "count": 16,
-          "percentage": 1.32
+          "percentage": 94.56
         },
         {
           "code": "WA8X",
+          "count": 18,
+          "percentage": 1.48
+        },
+        {
+          "code": "WLAN",
           "count": 16,
           "percentage": 1.32
         },
@@ -346,22 +376,22 @@
         {
           "code": "W1WF",
           "count": 10,
-          "percentage": 0.83
+          "percentage": 0.82
         },
         {
           "code": "W13F",
           "count": 6,
-          "percentage": 0.5
+          "percentage": 0.49
         },
         {
           "code": "WYAF",
           "count": 2,
-          "percentage": 0.17
+          "percentage": 0.16
         },
         {
           "code": "WYAL",
           "count": 2,
-          "percentage": 0.17
+          "percentage": 0.16
         }
       ],
       "shifts": {
@@ -483,13 +513,13 @@
               "code1": "WA8X",
               "code2": "",
               "code": "WA8X",
-              "qtyTarget": 6,
-              "qtyProduced": 6,
+              "qtyTarget": 8,
+              "qtyProduced": 8,
               "qtySapphire": 0,
-              "totalQty": 6
+              "totalQty": 8
             }
           ],
-          "totalQty": 1212
+          "totalQty": 1214
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -544,17 +574,17 @@
     "date": "2026-09-18",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "18/9",
-      "sum": 0,
+      "sum": 61187,
       "target": 35056,
       "minTarget": 20000,
       "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "newGenerate": 12725,
+      "slowMoving": 42649,
+      "disposition": 5813,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -833,17 +863,88 @@
         "dateLabel": "18/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 61187,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 12725,
+        "newGenerateBTA": 9245,
+        "newGenerateWBR": 3480,
+        "slowMoving": 42649,
+        "disposition": 5813,
+        "hasData": true
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1692",
+        "qty": 6240,
+        "qtyMt": 6.24,
+        "percentage": 12
+      },
+      {
+        "rank": 2,
+        "code": "K33M1",
+        "qty": 4200,
+        "qtyMt": 4.2,
+        "percentage": 8.1
+      },
+      {
+        "rank": 3,
+        "code": "N1128",
+        "qty": 4199,
+        "qtyMt": 4.2,
+        "percentage": 8.1
+      },
+      {
+        "rank": 4,
+        "code": "K11M2",
+        "qty": 3550,
+        "qtyMt": 3.55,
+        "percentage": 6.8
+      },
+      {
+        "rank": 5,
+        "code": "N11F3",
+        "qty": 2940,
+        "qtyMt": 2.94,
+        "percentage": 5.7
+      },
+      {
+        "rank": 6,
+        "code": "N1717",
+        "qty": 2870,
+        "qtyMt": 2.87,
+        "percentage": 5.5
+      },
+      {
+        "rank": 7,
+        "code": "K27T4",
+        "qty": 2605,
+        "qtyMt": 2.6,
+        "percentage": 5
+      },
+      {
+        "rank": 8,
+        "code": "T1400",
+        "qty": 2180,
+        "qtyMt": 2.18,
+        "percentage": 4.2
+      },
+      {
+        "rank": 9,
+        "code": "K12J5",
+        "qty": 2090,
+        "qtyMt": 2.09,
+        "percentage": 4
+      },
+      {
+        "rank": 10,
+        "code": "K16V5",
+        "qty": 1970,
+        "qtyMt": 1.97,
+        "percentage": 3.8
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
@@ -873,7 +974,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 71.64,
+        "avg": 72.3,
         "target": 76.6,
         "count": 5,
         "isMet": false
@@ -967,7 +1068,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.64,
+          "avg": 72.3,
           "target": 76.6,
           "count": 5,
           "isMet": false
@@ -1088,10 +1189,22 @@
     "shift3Min": 0,
     "shift3Hours": 0,
     "summary": {
-      "totalItems": 0,
-      "itemsWithDetail": 0,
+      "totalItems": 1,
+      "itemsWithDetail": 1,
       "itemsOnlyMin": 0
     },
-    "items": []
+    "items": [
+      {
+        "id": "r103-กะ 1-1",
+        "machine": "B3",
+        "shift": "กะ 1",
+        "code": "WG4B",
+        "delayMin": 0,
+        "delayHours": 0,
+        "detail": "[12:00] apex",
+        "timeRangeStr": "12:00",
+        "category": "Comp"
+      }
+    ]
   }
 }
