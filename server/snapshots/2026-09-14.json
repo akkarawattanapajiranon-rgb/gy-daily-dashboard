@@ -1,6 +1,6 @@
 {
   "date": "2026-09-14",
-  "generatedAt": "2026-09-18T08:01:39.187Z",
+  "generatedAt": "2026-09-18T08:39:44.971Z",
   "waste": {
     "date": "2026-09-14",
     "millingSummary": 549,
@@ -253,6 +253,20 @@
       "qr_pct": 99.82,
       "oee1_pct": 41.85,
       "oee2_pct": 52.04
+    },
+    "loss": {
+      "hasData": true,
+      "noSchedule": 222,
+      "noCart": 80,
+      "noGum": 0,
+      "noTreatment": 0,
+      "breakdown": 60,
+      "angleChange": 20,
+      "produce": 73,
+      "target": 90,
+      "breakdownComment": "Spacial PM 60 min (Water drain, Replete bearing)",
+      "commentAuthor": "Paisal Phoompong",
+      "otherComments": []
     },
     "checksheet": {
       "hasData": true,

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "generatedAt": "2026-09-18T08:01:18.717Z",
+  "generatedAt": "2026-09-18T08:39:29.556Z",
   "waste": {
     "date": "2026-09-16",
     "millingSummary": 237,
@@ -231,6 +231,20 @@
       "qr_pct": 99.75,
       "oee1_pct": 36.92,
       "oee2_pct": 44.01
+    },
+    "loss": {
+      "hasData": true,
+      "noSchedule": 232,
+      "noCart": 0,
+      "noGum": 0,
+      "noTreatment": 0,
+      "breakdown": 120,
+      "angleChange": 15,
+      "produce": 79,
+      "target": 90,
+      "breakdownComment": "Feed Belt conveyor broken",
+      "commentAuthor": "Paisal Phoompong",
+      "otherComments": []
     },
     "checksheet": {
       "hasData": true,

@@ -38,6 +38,12 @@ setInterval(() => {
   }
 }, 60 * 1000);
 
+// Immediate Catch-Up Sync on Startup (Triggers 5s after PC boots up / Server starts)
+setTimeout(() => {
+  console.log('[Server Startup] Running immediate catch-up sync for past days & weekend data...');
+  runMorningSync().catch(err => console.error('[Startup Sync Error]', err.message));
+}, 5000);
+
 // Auto-Refresh Current Day Data & Snapshot every 5 minutes (300,000 ms)
 setInterval(async () => {
   const now = new Date();

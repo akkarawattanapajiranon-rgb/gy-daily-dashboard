@@ -42,13 +42,18 @@ async function runMorningSync() {
     const projectRoot = path.join(__dirname, '..');
     execSync('node node_modules/vite/bin/vite.js build', { stdio: 'inherit', cwd: projectRoot });
 
-    console.log('[Morning Sync Cron] ☁️ Pushing snapshots to Vercel/GitHub...');
+    console.log('[Morning Sync Cron] ☁️ Checking for changes to push to Vercel/GitHub...');
     execSync('git add .', { stdio: 'inherit', cwd: projectRoot });
-    const msg = `Scheduled Morning Vercel Update: ${datesToSync[0]} (before 9:15 AM)`;
-    execSync(`git commit -m "${msg}"`, { stdio: 'inherit', cwd: projectRoot });
-    execSync('git push origin master', { stdio: 'inherit', cwd: projectRoot });
-
-    console.log(`[Morning Sync Cron] ✅ Completed Vercel morning update before 9:15 AM!`);
+    const status = execSync('git status --porcelain', { cwd: projectRoot }).toString().trim();
+    
+    if (status) {
+      const msg = `Auto Sync Update: ${datesToSync[0]} (Startup / Scheduled Sync)`;
+      execSync(`git commit -m "${msg}"`, { stdio: 'inherit', cwd: projectRoot });
+      execSync('git push origin master', { stdio: 'inherit', cwd: projectRoot });
+      console.log(`[Morning Sync Cron] ✅ Successfully pushed updated data to Vercel/GitHub!`);
+    } else {
+      console.log(`[Morning Sync Cron] ✨ All data is already up-to-date. No new changes to push.`);
+    }
   } catch (err) {
     console.warn(`[Morning Sync Cron] Sync status:`, err.message);
   }

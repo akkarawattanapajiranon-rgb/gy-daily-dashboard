@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-18T08:03:32.142Z",
+  "generatedAt": "2026-09-18T08:41:18.549Z",
   "waste": {
     "date": "2026-09-04",
     "millingSummary": 153.5,
@@ -225,6 +225,20 @@
       "qr_pct": 99.64,
       "oee1_pct": 42.61,
       "oee2_pct": 50.01
+    },
+    "loss": {
+      "hasData": true,
+      "noSchedule": 213,
+      "noCart": 0,
+      "noGum": 0,
+      "noTreatment": 0,
+      "breakdown": 60,
+      "angleChange": 22,
+      "produce": 85,
+      "target": 90,
+      "breakdownComment": "Re-call Home page.",
+      "commentAuthor": "Paisal Phoompong",
+      "otherComments": []
     },
     "checksheet": {
       "hasData": true,
@@ -1862,7 +1876,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.68,
+          "avg": 72.98,
           "target": 76.6,
           "count": 5,
           "isMet": false

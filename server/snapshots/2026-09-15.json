@@ -1,6 +1,6 @@
 {
   "date": "2026-09-15",
-  "generatedAt": "2026-09-18T08:01:30.707Z",
+  "generatedAt": "2026-09-18T08:39:36.712Z",
   "waste": {
     "date": "2026-09-15",
     "millingSummary": 178.8,
@@ -231,6 +231,20 @@
       "qr_pct": 99.76,
       "oee1_pct": 45.45,
       "oee2_pct": 53.77
+    },
+    "loss": {
+      "hasData": true,
+      "noSchedule": 223,
+      "noCart": 0,
+      "noGum": 0,
+      "noTreatment": 0,
+      "breakdown": 31,
+      "angleChange": 19,
+      "produce": 80,
+      "target": 90,
+      "breakdownComment": "Sling broken",
+      "commentAuthor": "Paisal Phoompong",
+      "otherComments": []
     },
     "checksheet": {
       "hasData": true,
