@@ -1,10 +1,10 @@
 {
   "date": "2026-09-17",
-  "generatedAt": "2026-09-18T02:39:29.321Z",
+  "generatedAt": "2026-09-18T04:01:47.499Z",
   "waste": {
     "date": "2026-09-17",
     "millingSummary": 160.8,
-    "frictionSummary": 315.5,
+    "frictionSummary": 330.1,
     "beadSummary": 52.7,
     "millingTop": [
       {
@@ -35,7 +35,7 @@
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 69.5,
+        "amount": 72.69999999999999,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -59,7 +59,7 @@
       },
       {
         "code": "F46",
-        "amount": 28.200000000000003,
+        "amount": 28.6,
         "reason": "SHORT PIECES",
         "isHigh": false
       }
@@ -377,9 +377,9 @@
     "date": "2026-09-17",
     "day": 17,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 13,
-    "totalRolls": 13,
-    "totalMeters": 3250,
+    "totalQty": 49,
+    "totalRolls": 49,
+    "totalMeters": 11560,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
@@ -441,64 +441,247 @@
       "shift2": {
         "shiftNum": 2,
         "name": "กะ 2 (Shift 2)",
-        "qty": 0,
-        "meters": 0,
-        "items": []
+        "qty": 19,
+        "meters": 4310,
+        "items": [
+          {
+            "sapCode": "GF00013",
+            "code": "F4111",
+            "qty": 3,
+            "meters": 600,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "LD03602",
+            "code": "WYAF",
+            "qty": 3,
+            "meters": 750,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "GF00152",
+            "code": "B1443",
+            "qty": 2,
+            "meters": 210,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "LD03552",
+            "code": "W1CL",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03525",
+            "code": "WLAN",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03442",
+            "code": "WA8X",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03642",
+            "code": "W1WF",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03192",
+            "code": "W1LG",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03572",
+            "code": "W13F",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03512",
+            "code": "WGMS",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03535",
+            "code": "WAIS",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          }
+        ]
       },
       "shift3": {
         "shiftNum": 3,
         "name": "กะ 3 (Shift 3)",
-        "qty": 0,
-        "meters": 0,
-        "items": []
+        "qty": 17,
+        "meters": 4000,
+        "items": [
+          {
+            "sapCode": "GX00452",
+            "code": "F4111",
+            "qty": 5,
+            "meters": 1000,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "LD03602",
+            "code": "WYAF",
+            "qty": 3,
+            "meters": 750,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03525",
+            "code": "WLAN",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03572",
+            "code": "W13F",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03442",
+            "code": "WA8X",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03552",
+            "code": "W1CL",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03062",
+            "code": "Q2AH",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03535",
+            "code": "WAIS",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          }
+        ]
       }
     },
     "topCodes": [
       {
-        "code": "W1CL",
-        "sapCode": "LD03552",
-        "qty": 3,
-        "meters": 750,
+        "code": "WYAF",
+        "sapCode": "LD03602",
+        "qty": 9,
+        "meters": 2250,
         "unit": "คัน",
         "shifts": {
           "1": 3,
-          "2": 0,
-          "3": 0
+          "2": 3,
+          "3": 3
         }
       },
       {
-        "code": "WYAF",
-        "sapCode": "LD03602",
-        "qty": 3,
-        "meters": 750,
+        "code": "F4111",
+        "sapCode": "GF00013",
+        "qty": 8,
+        "meters": 1600,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 0,
+          "2": 3,
+          "3": 5
+        }
+      },
+      {
+        "code": "W1CL",
+        "sapCode": "LD03552",
+        "qty": 6,
+        "meters": 1500,
         "unit": "คัน",
         "shifts": {
           "1": 3,
-          "2": 0,
-          "3": 0
+          "2": 2,
+          "3": 1
         }
       },
       {
         "code": "WLAN",
         "sapCode": "LD03525",
-        "qty": 2,
-        "meters": 500,
+        "qty": 6,
+        "meters": 1500,
         "unit": "คัน",
         "shifts": {
           "1": 2,
-          "2": 0,
-          "3": 0
+          "2": 2,
+          "3": 2
         }
       },
       {
         "code": "WA8X",
         "sapCode": "LD03442",
-        "qty": 2,
-        "meters": 500,
+        "qty": 6,
+        "meters": 1500,
         "unit": "คัน",
         "shifts": {
           "1": 2,
-          "2": 0,
+          "2": 2,
+          "3": 2
+        }
+      },
+      {
+        "code": "WAIS",
+        "sapCode": "LD03535",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 1,
+          "3": 1
+        }
+      },
+      {
+        "code": "W13F",
+        "sapCode": "LD03572",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 1,
+          "3": 2
+        }
+      },
+      {
+        "code": "B1443",
+        "sapCode": "GF00152",
+        "qty": 2,
+        "meters": 210,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 0,
+          "2": 2,
           "3": 0
         }
       },
@@ -527,15 +710,51 @@
         }
       },
       {
-        "code": "WAIS",
-        "sapCode": "LD03535",
+        "code": "W1WF",
+        "sapCode": "LD03642",
         "qty": 1,
         "meters": 250,
         "unit": "คัน",
         "shifts": {
-          "1": 1,
-          "2": 0,
+          "1": 0,
+          "2": 1,
           "3": 0
+        }
+      },
+      {
+        "code": "W1LG",
+        "sapCode": "LD03192",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 1,
+          "3": 0
+        }
+      },
+      {
+        "code": "WGMS",
+        "sapCode": "LD03512",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 1,
+          "3": 0
+        }
+      },
+      {
+        "code": "Q2AH",
+        "sapCode": "LD03062",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 0,
+          "3": 1
         }
       }
     ],

@@ -1,10 +1,10 @@
 {
   "file": "LSP Tracking.xlsx",
-  "lastModified": "2026-09-18T02:20:00.338Z",
-  "lastModifiedFormatted": "18/09/2026 09:20 น.",
+  "lastModified": "2026-09-18T03:59:57.616Z",
+  "lastModifiedFormatted": "18/09/2026 10:59 น.",
   "year": "2026",
   "totalWorkers": 50,
-  "avgYtd": 52,
+  "avgYtd": 53,
   "onTargetCount": 21,
   "belowTargetCount": 29,
   "staffWorkers": [
@@ -291,12 +291,12 @@
         "JUN": 4,
         "JUL": 1,
         "AUG": 4,
-        "SEP": 5,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 50
+      "ytdPct": 52
     },
     {
       "id": 11,
@@ -784,12 +784,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 54
+      "ytdPct": 58
     },
     {
       "id": 28,
@@ -813,12 +813,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 0,
+        "SEP": 1,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 0
+      "ytdPct": 2
     },
     {
       "id": 29,
@@ -1277,12 +1277,12 @@
         "JUN": 5,
         "JUL": 5,
         "AUG": 4,
-        "SEP": 1,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 73
+      "ytdPct": 79
     },
     {
       "id": 45,
@@ -1635,12 +1635,12 @@
         "JUN": 9,
         "JUL": 6,
         "AUG": 6,
-        "SEP": 1,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 98
+      "ytdPct": 100
     },
     {
       "id": 8,
@@ -1765,12 +1765,12 @@
         "JUN": 4,
         "JUL": 3,
         "AUG": 2,
-        "SEP": 1,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 21
+      "ytdPct": 23
     },
     {
       "id": 13,
@@ -1895,12 +1895,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 6,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 17
+      "ytdPct": 21
     },
     {
       "id": 18,
@@ -2155,12 +2155,12 @@
         "JUN": 7,
         "JUL": 6,
         "AUG": 7,
-        "SEP": 6,
+        "SEP": 7,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 71
+      "ytdPct": 73
     },
     {
       "id": 28,
@@ -2311,12 +2311,12 @@
         "JUN": 5,
         "JUL": 6,
         "AUG": 5,
-        "SEP": 3,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 60
+      "ytdPct": 63
     },
     {
       "id": 34,
@@ -2493,12 +2493,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 5,
-        "SEP": 3,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 77
+      "ytdPct": 81
     },
     {
       "id": 41,
@@ -2519,12 +2519,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 38
+      "ytdPct": 40
     },
     {
       "id": 42,
@@ -2779,12 +2779,12 @@
         "JUN": 4,
         "JUL": 5,
         "AUG": 5,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 42
+      "ytdPct": 46
     }
   ],
   "workers": [
@@ -3071,12 +3071,12 @@
         "JUN": 4,
         "JUL": 1,
         "AUG": 4,
-        "SEP": 5,
+        "SEP": 6,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 50
+      "ytdPct": 52
     },
     {
       "id": 11,
@@ -3564,12 +3564,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 2,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 54
+      "ytdPct": 58
     },
     {
       "id": 28,
@@ -3593,12 +3593,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 0,
+        "SEP": 1,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 0
+      "ytdPct": 2
     },
     {
       "id": 29,
@@ -4057,12 +4057,12 @@
         "JUN": 5,
         "JUL": 5,
         "AUG": 4,
-        "SEP": 1,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 73
+      "ytdPct": 79
     },
     {
       "id": 45,

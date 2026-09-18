@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-10T08:02:14.176Z",
+  "generatedAt": "2026-09-18T03:02:41.892Z",
   "waste": {
     "date": "2026-09-04",
     "millingSummary": 153.5,
@@ -267,7 +267,7 @@
   "roll3": {
     "date": "2026-09-04",
     "day": 4,
-    "sheet": "windup",
+    "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
     "totalRolls": 39,
@@ -345,15 +345,15 @@
     "date": "2026-09-04",
     "day": 4,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 80,
-    "totalRolls": 80,
-    "totalMeters": 11150,
+    "totalQty": 88,
+    "totalRolls": 88,
+    "totalMeters": 12650,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 49,
-        "meters": 3650,
+        "qty": 55,
+        "meters": 5150,
         "items": [
           {
             "sapCode": "PL07225",
@@ -377,6 +377,13 @@
             "unit": "ม้วน"
           },
           {
+            "sapCode": "PL07120",
+            "code": "WA8X",
+            "qty": 7,
+            "meters": 1750,
+            "unit": "คัน"
+          },
+          {
             "sapCode": "LD03523",
             "code": "QLIX",
             "qty": 2,
@@ -393,13 +400,6 @@
           {
             "sapCode": "LD03192",
             "code": "W1LG",
-            "qty": 1,
-            "meters": 250,
-            "unit": "คัน"
-          },
-          {
-            "sapCode": "LD03442",
-            "code": "WA8X",
             "qty": 1,
             "meters": 250,
             "unit": "คัน"
@@ -437,7 +437,7 @@
       "shift2": {
         "shiftNum": 2,
         "name": "กะ 2 (Shift 2)",
-        "qty": 13,
+        "qty": 15,
         "meters": 3250,
         "items": [
           {
@@ -467,6 +467,20 @@
             "qty": 2,
             "meters": 500,
             "unit": "คัน"
+          },
+          {
+            "sapCode": "GF00152",
+            "code": "B1443",
+            "qty": 1,
+            "meters": 0,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "GF00013",
+            "code": "F4111",
+            "qty": 1,
+            "meters": 0,
+            "unit": "ม้วน"
           },
           {
             "sapCode": "LD03572",
@@ -610,6 +624,18 @@
         }
       },
       {
+        "code": "WA8X",
+        "sapCode": "PL07120",
+        "qty": 11,
+        "meters": 2750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 7,
+          "2": 2,
+          "3": 2
+        }
+      },
+      {
         "code": "Q97X",
         "sapCode": "PA07421",
         "qty": 8,
@@ -634,6 +660,18 @@
         }
       },
       {
+        "code": "F4111",
+        "sapCode": "GF00013",
+        "qty": 6,
+        "meters": 1000,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 0,
+          "2": 1,
+          "3": 5
+        }
+      },
+      {
         "code": "WAIS",
         "sapCode": "LD03535",
         "qty": 5,
@@ -643,30 +681,6 @@
           "1": 1,
           "2": 2,
           "3": 2
-        }
-      },
-      {
-        "code": "WA8X",
-        "sapCode": "LD03442",
-        "qty": 5,
-        "meters": 1250,
-        "unit": "คัน",
-        "shifts": {
-          "1": 1,
-          "2": 2,
-          "3": 2
-        }
-      },
-      {
-        "code": "F4111",
-        "sapCode": "GF00013",
-        "qty": 5,
-        "meters": 1000,
-        "unit": "ม้วน",
-        "shifts": {
-          "1": 0,
-          "2": 0,
-          "3": 5
         }
       },
       {
@@ -751,6 +765,18 @@
           "1": 0,
           "2": 1,
           "3": 1
+        }
+      },
+      {
+        "code": "B1443",
+        "sapCode": "GF00152",
+        "qty": 1,
+        "meters": 0,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 0,
+          "2": 1,
+          "3": 0
         }
       }
     ],
@@ -1787,27 +1813,27 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.36,
+          "avg": 56.17,
           "target": 62,
-          "count": 3,
+          "count": 7,
           "isMet": false
         },
         "tuber": {
-          "avg": 62.13,
+          "avg": 58.3,
           "target": 62,
-          "count": 3,
-          "isMet": true
+          "count": 7,
+          "isMet": false
         },
         "fischer": {
-          "avg": 50.74,
+          "avg": 53.02,
           "target": 60,
-          "count": 3,
+          "count": 7,
           "isMet": false
         },
         "mixing": {
-          "avg": 77.47,
+          "avg": 76.67,
           "target": 76.6,
-          "count": 4,
+          "count": 7,
           "isMet": true
         }
       },
@@ -1818,27 +1844,27 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": null,
+          "avg": 60.38,
           "target": 62,
-          "count": 0,
+          "count": 4,
           "isMet": false
         },
         "tuber": {
-          "avg": null,
+          "avg": 62.84,
           "target": 62,
-          "count": 0,
-          "isMet": false
+          "count": 4,
+          "isMet": true
         },
         "fischer": {
-          "avg": null,
+          "avg": 51.79,
           "target": 60,
-          "count": 0,
+          "count": 4,
           "isMet": false
         },
         "mixing": {
-          "avg": null,
+          "avg": 71.32,
           "target": 76.6,
-          "count": 0,
+          "count": 5,
           "isMet": false
         }
       },
