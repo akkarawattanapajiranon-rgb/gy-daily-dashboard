@@ -2,8 +2,18 @@ const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
 
+const LSP_SEARCH_DIRS = [
+  'T:\\10.30 A.M. Production Meeting\\1 Safety\\LSP update 2026',
+  'T:\\10.30 A.M. Production Meeting\\1 Safety',
+  'T:\\10.30 A.M. Production Meeting\\5 BTA',
+  'C:\\Users\\aa11909\\OneDrive - Goodyear',
+  'C:\\Users\\aa11909\\Downloads',
+  'C:\\Users\\aa11909\\Documents'
+];
+
 const LSP_PATHS = [
   'T:\\10.30 A.M. Production Meeting\\1 Safety\\LSP update 2026\\LSP Tracking.xlsx',
+  'T:\\10.30 A.M. Production Meeting\\1 Safety\\LSP update 2026\\Copy of LSP Tracking.xlsx',
   'C:\\Users\\aa11909\\OneDrive - Goodyear\\LSP Tracking.xlsx',
   'C:\\Users\\aa11909\\OneDrive - Goodyear\\Documents\\LSP Tracking.xlsx',
   'C:\\Users\\aa11909\\OneDrive - Goodyear\\ENGINEERING BREAKDOWN\\LSP Tracking.xlsx',
@@ -34,6 +44,29 @@ function getLeaderCategoryGroup(costCenter) {
 }
 
 function getLspFilePath() {
+  const candidates = [];
+  for (const dir of LSP_SEARCH_DIRS) {
+    if (fs.existsSync(dir)) {
+      try {
+        const files = fs.readdirSync(dir);
+        for (const f of files) {
+          if (!f.startsWith('~$') && f.toLowerCase().includes('lsp') && (f.endsWith('.xlsx') || f.endsWith('.xlsm'))) {
+            const fullPath = path.join(dir, f);
+            try {
+              const stat = fs.statSync(fullPath);
+              candidates.push({ fullPath, mtime: stat.mtime.getTime(), size: stat.size });
+            } catch (e) {}
+          }
+        }
+      } catch (e) {}
+    }
+  }
+
+  if (candidates.length > 0) {
+    candidates.sort((a, b) => b.mtime - a.mtime);
+    return candidates[0].fullPath;
+  }
+
   for (const p of LSP_PATHS) {
     if (fs.existsSync(p)) return p;
   }
