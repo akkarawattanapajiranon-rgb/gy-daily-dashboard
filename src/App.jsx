@@ -26,7 +26,8 @@ import {
   fetchQuadDetail,
   fetchTuberDetail,
   fetchWorkawayData,
-  fetchWeeklyOeeData
+  fetchWeeklyOeeData,
+  fetchFast
 } from './services/api';
 
 class TabErrorBoundary extends React.Component {
@@ -213,13 +214,20 @@ function App() {
     }
   }, [selectedDate, appMode]);
 
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
   };
 
-  const handleLiveRefresh = () => {
-    // Force re-fetch ข้อมูลสดจาก API — ไม่ reload ทั้งหน้า
-    loadData(selectedDate, true);
+  const handleLiveRefresh = async () => {
+    // Force re-fetch ข้อมูลสดจาก API ทั้งหน้า 1 (DOR) และ หน้า 5 (Data Exporter)
+    setRefreshTrigger(prev => prev + 1);
+    await loadData(selectedDate, true);
+    try {
+      const yyyyMm = selectedDate.substring(0, 7);
+      fetchFast(`/api/export-metrics?startDate=${yyyyMm}-01&endDate=${selectedDate}&refresh=true`, 25000).catch(() => {});
+    } catch (e) {}
   };
 
   // LSP Dedicated Standalone Desktop Mode: Show ONLY LSP (No other tabs)
@@ -447,7 +455,7 @@ function App() {
         {activeTab === 'exporter' && (
           <div className="space-y-6">
             <TabErrorBoundary>
-              <DataExporter />
+              <DataExporter refreshTrigger={refreshTrigger} />
             </TabErrorBoundary>
           </div>
         )}

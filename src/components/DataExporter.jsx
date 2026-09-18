@@ -48,7 +48,7 @@ export function getStatusColor(metricKey, value, customTarget = null) {
   }
 }
 
-export default function DataExporter() {
+export default function DataExporter({ refreshTrigger }) {
   const todayStr = new Date().toISOString().split('T')[0];
 
   const getInitialDates = () => {
@@ -76,7 +76,7 @@ export default function DataExporter() {
     setLoading(true);
     try {
       const url = `/api/export-metrics?startDate=${start}&endDate=${end}${force ? '&refresh=true' : ''}`;
-      const res = await fetchFast(url, 5000);
+      const res = await fetchFast(url, force ? 25000 : 8000);
       const contentType = res.headers.get('content-type');
       if (res.ok && contentType && contentType.includes('application/json')) {
         const json = await res.json();
@@ -150,8 +150,8 @@ export default function DataExporter() {
   };
 
   useEffect(() => {
-    fetchExportData(startDate, endDate);
-  }, [startDate, endDate]);
+    fetchExportData(startDate, endDate, !!refreshTrigger);
+  }, [startDate, endDate, refreshTrigger]);
 
   const handlePresetSelect = (presetKey) => {
     const today = new Date();
