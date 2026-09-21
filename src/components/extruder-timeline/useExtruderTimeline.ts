@@ -61,12 +61,16 @@ export function useExtruderTimeline(
       let json: ExtruderTimelineResponse | null = null;
       let fetchError: Error | null = null;
 
-      // 1. Try local Express API first (with 1500ms timeout)
+      const isLocalhost = typeof window !== "undefined" && 
+        (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+
+      // 1. Try local Express API (if on localhost or endpoint is accessible)
       try {
         const queryParams = new URLSearchParams({ date: target });
         if (forceRefresh) queryParams.set("refresh", "true");
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 1500);
+        const timeoutMs = isLocalhost ? 6000 : 3000;
+        const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
         const res = await fetch(`${endpoint}?${queryParams.toString()}`, {
           cache: "no-store",
           headers: { accept: "application/json" },
@@ -80,15 +84,16 @@ export function useExtruderTimeline(
           fetchError = new Error(`HTTP ${res.status}`);
         }
       } catch (e) {
+        // Suppress abort noise from first attempt
         fetchError = e instanceof Error ? e : new Error("API network error");
       }
 
-      // 2. Cloud Fallback (Vercel): load pre-built JSON from public/data/extruder/
+      // 2. Cloud Fallback (Vercel / Static): load pre-built JSON from public/data/extruder/
       if (!json) {
         try {
           const cacheBuster = forceRefresh ? `?_t=${Date.now()}` : "";
           const staticController = new AbortController();
-          const staticTimeoutId = setTimeout(() => staticController.abort(), 2000);
+          const staticTimeoutId = setTimeout(() => staticController.abort(), 10000);
           const staticRes = await fetch(`/data/extruder/${encodeURIComponent(target)}.json${cacheBuster}`, {
             cache: "no-store",
             headers: { accept: "application/json" },
@@ -105,7 +110,7 @@ export function useExtruderTimeline(
       }
 
       if (!json) {
-        throw fetchError || new Error(`Extruder data unavailable for ${target}`);
+        throw new Error(`ไม่พบข้อมูล Extruder Timeline สำหรับวันที่ ${target} (หรือกำลังประมวลผล)`);
       }
 
       if (s !== seq.current) return;          // a newer request already won
@@ -114,7 +119,14 @@ export function useExtruderTimeline(
       setLastOkMs(Date.now());
     } catch (err) {
       // Deliberately NOT setData(null) — see the header.
-      if (s === seq.current) setError(err instanceof Error ? err.message : "request failed");
+      const errMsg = err instanceof Error ? err.message : "request failed";
+      if (s === seq.current) {
+        // Clean up internal abort text for display
+        const cleanMsg = errMsg.includes("aborted") 
+          ? `กำลังโหลดหรือเชื่อมต่อฐานข้อมูลสำหรับวันที่ ${target}` 
+          : errMsg;
+        setError(cleanMsg);
+      }
     } finally {
       if (s === seq.current) setLoading(false);
     }
