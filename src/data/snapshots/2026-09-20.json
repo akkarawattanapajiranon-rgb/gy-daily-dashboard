@@ -1,6 +1,6 @@
 {
   "date": "2026-09-20",
-  "generatedAt": "2026-09-21T04:10:04.421Z",
+  "generatedAt": "2026-09-21T04:18:46.227Z",
   "waste": {
     "date": "2026-09-20",
     "millingSummary": 94,
@@ -667,6 +667,7 @@
     "hasData": true
   },
   "quad": {
+    "date": "2026-09-20",
     "oee": {
       "hasData": true,
       "sr_pct": 33.33,
@@ -1806,7 +1807,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.5,
+          "avg": 73.7,
           "target": 76.6,
           "count": 1,
           "isMet": false
