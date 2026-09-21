@@ -53,17 +53,22 @@ function parseWeeklyOee(dateStr) {
       const fullPath = path.join(QUAD_DIR, quadOeeFile);
       const wb = XLSX.readFile(fullPath);
 
-      // Quad sheets (scan all candidate sheets for month in priority order)
+      // Quad sheets (scan all candidate sheets for month in priority order, prioritizing current year)
+      const yy = yearStr.slice(-2);
       const candidateQuadSheets = wb.SheetNames.filter(s => matchesMonth(s, monthNum) && (s.toLowerCase().includes('quad') || s.toLowerCase().includes('sep') || s.toLowerCase().includes('aug') || s.toLowerCase().includes('oct') || s.toLowerCase().includes('nov') || s.toLowerCase().includes('dec') || s.toLowerCase().includes('jan') || s.toLowerCase().includes('feb') || s.toLowerCase().includes('mar') || s.toLowerCase().includes('apr') || s.toLowerCase().includes('may') || s.toLowerCase().includes('jun') || s.toLowerCase().includes('jul')));
       candidateQuadSheets.sort((a, b) => {
         const aLower = a.toLowerCase();
         const bLower = b.toLowerCase();
-        const aScore = (aLower.includes('all oee') && aLower.includes('quad') ? 10 : 0) +
-                       (aLower.includes('update') || aLower.includes('up date') ? 5 : 0) +
-                       (aLower.includes('quad') ? 3 : 0);
-        const bScore = (bLower.includes('all oee') && bLower.includes('quad') ? 10 : 0) +
-                       (bLower.includes('update') || bLower.includes('up date') ? 5 : 0) +
-                       (bLower.includes('quad') ? 3 : 0);
+        const aHasYear = (aLower.includes(yearStr) || aLower.includes(yy) || aLower.includes(` ${yy}`) || aLower.includes(`,${yy}`) || aLower.includes(`, ${yy}`)) ? 50 : 0;
+        const bHasYear = (bLower.includes(yearStr) || bLower.includes(yy) || bLower.includes(` ${yy}`) || bLower.includes(`,${yy}`) || bLower.includes(`, ${yy}`)) ? 50 : 0;
+        const aScore = aHasYear +
+                       (aLower.includes('all oee') && aLower.includes('quad') ? 20 : 0) +
+                       (aLower.includes('quad') ? 10 : 0) +
+                       (aLower.includes('update') || aLower.includes('up date') ? 5 : 0);
+        const bScore = bHasYear +
+                       (bLower.includes('all oee') && bLower.includes('quad') ? 20 : 0) +
+                       (bLower.includes('quad') ? 10 : 0) +
+                       (bLower.includes('update') || bLower.includes('up date') ? 5 : 0);
         return bScore - aScore;
       });
 

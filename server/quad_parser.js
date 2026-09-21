@@ -30,17 +30,22 @@ function getQuadOee(dateStr) {
 
   const wb = XLSX.readFile(file);
   
-  // Find official Quad sheet for selected month (prioritize sheets with actual filled data)
+  // Find official Quad sheet for selected month (prioritize current year and sheets with actual filled data)
+  const yy = yearStr.slice(-2);
   const candidateSheets = wb.SheetNames.filter(s => matchesMonth(s, monthNum));
   candidateSheets.sort((a, b) => {
     const aLower = a.toLowerCase();
     const bLower = b.toLowerCase();
-    const aScore = (aLower.includes('all oee') && aLower.includes('quad') ? 10 : 0) +
-                   (aLower.includes('update') || aLower.includes('up date') ? 5 : 0) +
-                   (aLower.includes('quad') ? 3 : 0);
-    const bScore = (bLower.includes('all oee') && bLower.includes('quad') ? 10 : 0) +
-                   (bLower.includes('update') || bLower.includes('up date') ? 5 : 0) +
-                   (bLower.includes('quad') ? 3 : 0);
+    const aHasYear = (aLower.includes(yearStr) || aLower.includes(yy) || aLower.includes(` ${yy}`) || aLower.includes(`,${yy}`) || aLower.includes(`, ${yy}`)) ? 50 : 0;
+    const bHasYear = (bLower.includes(yearStr) || bLower.includes(yy) || bLower.includes(` ${yy}`) || bLower.includes(`,${yy}`) || bLower.includes(`, ${yy}`)) ? 50 : 0;
+    const aScore = aHasYear +
+                   (aLower.includes('all oee') && aLower.includes('quad') ? 20 : 0) +
+                   (aLower.includes('quad') ? 10 : 0) +
+                   (aLower.includes('update') || aLower.includes('up date') ? 5 : 0);
+    const bScore = bHasYear +
+                   (bLower.includes('all oee') && bLower.includes('quad') ? 20 : 0) +
+                   (bLower.includes('quad') ? 10 : 0) +
+                   (bLower.includes('update') || bLower.includes('up date') ? 5 : 0);
     return bScore - aScore;
   });
 
