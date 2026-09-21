@@ -1,31 +1,49 @@
 {
   "date": "2026-09-21",
-  "generatedAt": "2026-09-21T06:48:20.917Z",
+  "generatedAt": "2026-09-21T08:00:34.572Z",
   "waste": {
     "date": "2026-09-21",
-    "millingSummary": 234,
-    "frictionSummary": 54.6,
-    "beadSummary": 0,
+    "millingSummary": 261,
+    "frictionSummary": 105.5,
+    "beadSummary": 27,
     "millingTop": [
       {
         "code": "M01",
         "amount": 234,
         "reason": "LUMPY",
         "isHigh": true
+      },
+      {
+        "code": "M05",
+        "amount": 16,
+        "reason": "TAILING",
+        "isHigh": true
+      },
+      {
+        "code": "M04",
+        "amount": 11,
+        "reason": "PUSH/CLEAN IN/OUT",
+        "isHigh": false
       }
     ],
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 22,
+        "amount": 33.5,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F01",
-        "amount": 11,
-        "reason": "ANGLE CHANGE",
+        "code": "F39",
+        "amount": 25,
+        "reason": "O'LAY TRIM",
         "isHigh": true
+      },
+      {
+        "code": "F01",
+        "amount": 13,
+        "reason": "ANGLE CHANGE",
+        "isHigh": false
       },
       {
         "code": "F24",
@@ -34,19 +52,26 @@
         "isHigh": false
       },
       {
-        "code": "F53",
-        "amount": 5,
-        "reason": "TIGHT EDGES",
-        "isHigh": false
-      },
-      {
-        "code": "F10",
-        "amount": 3,
-        "reason": "CALENDER STOP",
+        "code": "F46",
+        "amount": 9,
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
-    "beadTop": [],
+    "beadTop": [
+      {
+        "code": "F11",
+        "amount": 20,
+        "reason": "COAT OFF",
+        "isHigh": true
+      },
+      {
+        "code": "F51",
+        "amount": 7,
+        "reason": "STRAND CHANGE",
+        "isHigh": true
+      }
+    ],
     "dataDate": "2026-09-21",
     "hasData": true
   },
@@ -54,24 +79,24 @@
     "date": "2026-09-21",
     "mixing1": {
       "batch": 1,
-      "ar": 43,
+      "ar": 26.5,
       "pr": 71.6,
       "qr": 95,
-      "oee2": 29.2
+      "oee2": 18
     },
     "mixing2": {
-      "batch": 169,
-      "ar": 88.4,
-      "pr": 85,
+      "batch": 206,
+      "ar": 89.2,
+      "pr": 85.1,
       "qr": 100,
-      "oee2": 75.2
+      "oee2": 75.9
     },
-    "totalAr": 87.8,
-    "totalPr": 84.9,
+    "totalAr": 88,
+    "totalPr": 85,
     "totalQr": 100,
-    "totalOee2": 74.5
+    "totalOee2": 74.7
   },
-  "target3Roll": 25,
+  "target3Roll": 28,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -131,22 +156,22 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 14,
-      "totalWbr": 14,
+      "totalProduce": 11,
+      "totalWbr": 11,
       "totalSapphire": 0,
-      "totalAngleChanges": 3,
-      "totalNormal": 14,
+      "totalAngleChanges": 2,
+      "totalNormal": 11,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 14,
+          "wbr": 11,
           "sapphire": 0,
-          "angleChanges": 3,
-          "normal": 14,
+          "angleChanges": 2,
+          "normal": 11,
           "sticky": 0,
-          "total": 14
+          "total": 11
         },
         "shift2": {
           "wbr": 0,
@@ -173,51 +198,56 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 25,
-    "totalRelease": 25,
+    "totalRolls": 28,
+    "totalRelease": 28,
     "totalHold": 0,
-    "totalPending": 9,
+    "totalPending": 6,
     "totalScheduled": 34,
     "codeBreakdown": [
       {
         "code": "RP08",
         "count": 6,
-        "percentage": 24
+        "percentage": 21.43
       },
       {
         "code": "RU53",
         "count": 6,
-        "percentage": 24
+        "percentage": 21.43
+      },
+      {
+        "code": "N815",
+        "count": 6,
+        "percentage": 21.43
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 16
-      },
-      {
-        "code": "N815",
-        "count": 4,
-        "percentage": 16
+        "percentage": 14.29
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 8
+        "percentage": 7.14
       },
       {
         "code": "RT27",
         "count": 1,
-        "percentage": 4
+        "percentage": 3.57
       },
       {
         "code": "NE45",
         "count": 1,
-        "percentage": 4
+        "percentage": 3.57
       },
       {
         "code": "JM06",
         "count": 1,
-        "percentage": 4
+        "percentage": 3.57
+      },
+      {
+        "code": "N825",
+        "count": 1,
+        "percentage": 3.57
       }
     ],
     "holdBreakdown": [],
@@ -650,7 +680,13 @@
               "qtyProduced": 8,
               "qtySapphire": 0,
               "totalQty": 8
-            },
+            }
+          ],
+          "totalQty": 58
+        },
+        "2": {
+          "name": "Shift 2 (กะ 2)",
+          "items": [
             {
               "partId": "TL00184",
               "code1": "WA8X",
@@ -692,12 +728,7 @@
               "totalQty": 6
             }
           ],
-          "totalQty": 90
-        },
-        "2": {
-          "name": "Shift 2 (กะ 2)",
-          "items": [],
-          "totalQty": 0
+          "totalQty": 32
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
@@ -722,32 +753,37 @@
     "output": {
       "hasData": true,
       "day": 21,
-      "grandTotal": 652,
+      "grandTotal": 656,
       "codeBreakdown": [
         {
           "code": "B427",
           "count": 300,
-          "percentage": 46.01
+          "percentage": 45.73
         },
         {
           "code": "6017",
           "count": 135,
-          "percentage": 20.71
+          "percentage": 20.58
         },
         {
           "code": "B491",
           "count": 100,
-          "percentage": 15.34
+          "percentage": 15.24
         },
         {
           "code": "B635",
           "count": 100,
-          "percentage": 15.34
+          "percentage": 15.24
         },
         {
           "code": "W13F",
           "count": 7,
           "percentage": 1.07
+        },
+        {
+          "code": "WA8X",
+          "count": 4,
+          "percentage": 0.61
         },
         {
           "code": "6010",
@@ -836,9 +872,16 @@
               "qtyTarget": 7,
               "qtyProduced": 7,
               "totalQty": 7
+            },
+            {
+              "partId": "SW08662",
+              "code": "WA8X",
+              "qtyTarget": 4,
+              "qtyProduced": 4,
+              "totalQty": 4
             }
           ],
-          "totalQty": 652
+          "totalQty": 656
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -1302,7 +1345,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 74.5,
+        "avg": 74.7,
         "target": 76.6,
         "count": 1,
         "isMet": false
@@ -1427,7 +1470,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 74.5,
+          "avg": 74.7,
           "target": 76.6,
           "count": 1,
           "isMet": false
@@ -1470,18 +1513,89 @@
     "_file": "09 Aero Build September 2026.xls",
     "_sheet": "21",
     "_date": "2026-09-21",
-    "totalDelayMin": 0,
-    "totalDelayHours": 0,
+    "totalDelayMin": 480,
+    "totalDelayHours": 8,
     "totalExtrusionMin": 0,
     "totalExtrusionHours": 0,
-    "totalCompMin": 0,
-    "totalCompHours": 0,
+    "totalCompMin": 480,
+    "totalCompHours": 8,
     "summary": {
       "extrusionCount": 0,
-      "compCount": 0,
-      "totalItems": 0
+      "compCount": 7,
+      "totalItems": 7
     },
-    "items": []
+    "items": [
+      {
+        "id": "5-0",
+        "machine": "UA",
+        "rawText": "d/l chafer > 09.00 - 10.30",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "09.00 - 10.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "8-1",
+        "machine": "UB",
+        "rawText": "d/l chafer > 09.00 - 10.30",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "09.00 - 10.30",
+        "durationMin": 90,
+        "durationHours": 1.5
+      },
+      {
+        "id": "35-2",
+        "machine": "UK",
+        "rawText": "d/l band 2  > 12.00 - 15.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "12.00 - 15.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "36-3",
+        "machine": "UK",
+        "rawText": "d/l band 2 > 15.00 -",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "47-4",
+        "machine": "UO",
+        "rawText": "d/l chafer > 08.00 - 09.00,d/l band 2 > 12.00 - 14.00",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "08.00 - 09.00",
+        "durationMin": 60,
+        "durationHours": 1
+      },
+      {
+        "id": "62-5",
+        "machine": "TAKU",
+        "rawText": "rep.plc. > 10.00 - 11.00,d/l chafer > 13.00 - 15.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "10.00 - 11.00",
+        "durationMin": 60,
+        "durationHours": 1
+      },
+      {
+        "id": "63-6",
+        "machine": "TAKU",
+        "rawText": "d/l chafer > 15.00 -",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      }
+    ]
   },
   "wbrDelay": {
     "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
