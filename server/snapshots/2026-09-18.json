@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-21T02:33:16.742Z",
+  "generatedAt": "2026-09-21T02:39:33.983Z",
   "waste": {
     "date": "2026-09-18",
     "millingSummary": 419.9,
@@ -752,13 +752,13 @@
     "date": "2026-09-18",
     "oee": {
       "hasData": true,
-      "sr_pct": 70.83,
-      "ar_pct": 72.84,
-      "pr_pct": 82.96,
-      "qr_pct": 94,
-      "oee1_pct": 40.23,
-      "oee2_pct": 56.8,
-      "bd_pct": 5.9
+      "sr_pct": 72.92,
+      "ar_pct": 62.29,
+      "pr_pct": 85.85,
+      "qr_pct": 83.22,
+      "oee1_pct": 32.44,
+      "oee2_pct": 44.5,
+      "bd_pct": 0
     },
     "output": {
       "hasData": true,
@@ -2006,7 +2006,7 @@
       "label": "W3 (14/9 - 20/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 59.66,
+        "avg": 49.13,
         "target": 62,
         "count": 5,
         "isMet": false
@@ -2038,7 +2038,7 @@
         "label": "W1 (1/9 - 6/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.1,
+          "avg": 45.69,
           "target": 62,
           "count": 6,
           "isMet": false
@@ -2069,7 +2069,7 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 56.17,
+          "avg": 46.68,
           "target": 62,
           "count": 7,
           "isMet": false
@@ -2100,7 +2100,7 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 59.66,
+          "avg": 49.13,
           "target": 62,
           "count": 5,
           "isMet": false
@@ -2131,9 +2131,9 @@
         "label": "W4 (21/9 - 27/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": null,
+          "avg": 56.55,
           "target": 62,
-          "count": 0,
+          "count": 6,
           "isMet": false
         },
         "tuber": {
@@ -2149,7 +2149,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.6,
+          "avg": 72.7,
           "target": 76.6,
           "count": 1,
           "isMet": false

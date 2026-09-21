@@ -3,10 +3,10 @@
   "lastModified": "2026-09-21T01:57:13.975Z",
   "lastModifiedFormatted": "21/09/2026 08:57 น.",
   "year": "2026",
-  "totalWorkers": 50,
-  "avgYtd": 54,
+  "totalWorkers": 51,
+  "avgYtd": 53,
   "onTargetCount": 23,
-  "belowTargetCount": 27,
+  "belowTargetCount": 28,
   "staffWorkers": [
     {
       "id": 1,
@@ -561,6 +561,35 @@
     },
     {
       "id": 20,
+      "legacy": "-",
+      "name": "Narong Phookodhin",
+      "title": "",
+      "dept": "BCB-E",
+      "bc": "BCB-E",
+      "department": "ENG",
+      "costCenter": "1100",
+      "areaCode": "BCB-E",
+      "categoryGroup": "BCB",
+      "isLspTarget": true,
+      "group": "Staff",
+      "monthly": {
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 0,
+        "AUG": 0,
+        "SEP": 4,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
+      },
+      "ytdPct": 8
+    },
+    {
+      "id": 21,
       "legacy": "12848",
       "name": "Nichakamon Kaewkeadmee (ณิชากมล แก้วเกิดมี)",
       "title": "HR Business Partner",
@@ -589,7 +618,7 @@
       "ytdPct": 33
     },
     {
-      "id": 21,
+      "id": 22,
       "legacy": "12364",
       "name": "Nithit Raktham (นิธิศ รักธรรม)",
       "title": "Reliability Leader - Retread",
@@ -618,7 +647,7 @@
       "ytdPct": 65
     },
     {
-      "id": 22,
+      "id": 23,
       "legacy": "12367",
       "name": "Paisal Phoompong (ไพศาล พุ่มพงษ์)",
       "title": "HPT Leader",
@@ -647,7 +676,7 @@
       "ytdPct": 79
     },
     {
-      "id": 23,
+      "id": 24,
       "legacy": "10661",
       "name": "Parintorn Premshue (ปรินทร เปรมชู)",
       "title": "HPT Leader",
@@ -676,7 +705,7 @@
       "ytdPct": 69
     },
     {
-      "id": 24,
+      "id": 25,
       "legacy": "10082",
       "name": "Phichet Dee-On (พิเชษฐ ดีอ้น)",
       "title": "Product Leader - Extrusion",
@@ -705,7 +734,7 @@
       "ytdPct": 79
     },
     {
-      "id": 25,
+      "id": 26,
       "legacy": "12445",
       "name": "Pinthusorn Prasertpolkrang (พินทุสร ประเสริฐพลกรัง)",
       "title": "Product Leader - Calendars & Cutters",
@@ -734,7 +763,7 @@
       "ytdPct": 77
     },
     {
-      "id": 26,
+      "id": 27,
       "legacy": "12635",
       "name": "Piyaboon Thaijareon (ปิยบูรณ์ ไทยเจริญ)",
       "title": "Product Leader - Tire Assembly",
@@ -763,7 +792,7 @@
       "ytdPct": 63
     },
     {
-      "id": 27,
+      "id": 28,
       "legacy": "12876",
       "name": "Prasit Tajit (ประสิทธิ์ ธะจิต)",
       "title": "GPS Specialist",
@@ -792,7 +821,7 @@
       "ytdPct": 58
     },
     {
-      "id": 28,
+      "id": 29,
       "legacy": "12934",
       "name": "Saravut Jansin  (ศราวุทธ จันสินธุ์)",
       "title": "Reliability Engineer",
@@ -821,7 +850,7 @@
       "ytdPct": 2
     },
     {
-      "id": 29,
+      "id": 30,
       "legacy": "10120",
       "name": "Sakchai Chanthasri (ศักดิ์ชัย จันทะศรี)",
       "title": "Reliability Leader",
@@ -850,7 +879,7 @@
       "ytdPct": 58
     },
     {
-      "id": 30,
+      "id": 31,
       "legacy": "11255",
       "name": "Sangpian Thongvibul (แสงเพียร ทองวิบูลย์)",
       "title": "Quality Engineer - Associate - QA Auditor",
@@ -879,7 +908,7 @@
       "ytdPct": 71
     },
     {
-      "id": 31,
+      "id": 32,
       "legacy": "12408",
       "name": "Saowaluck Maneenil (เสาวลักษณ์ มณีนิล)",
       "title": "Product Leader - Curing",
@@ -908,7 +937,7 @@
       "ytdPct": 58
     },
     {
-      "id": 32,
+      "id": 33,
       "legacy": "10824",
       "name": "Somchai Tama (สมชาย ตามา)",
       "title": "Safety Officer",
@@ -937,7 +966,7 @@
       "ytdPct": 100
     },
     {
-      "id": 33,
+      "id": 34,
       "legacy": "10772",
       "name": "Somrudee Sopa (สมฤดี โสภา)",
       "title": "Quality Engineer - Associate - Specification Control",
@@ -966,7 +995,7 @@
       "ytdPct": 67
     },
     {
-      "id": 34,
+      "id": 35,
       "legacy": "1467",
       "name": "Soontorn Mingma (สุนทร มิ่งมา)",
       "title": "People Lead-Consumer Curing&Final Finish",
@@ -995,7 +1024,7 @@
       "ytdPct": 0
     },
     {
-      "id": 35,
+      "id": 36,
       "legacy": "12095",
       "name": "Sudarak Thongtrirattanagul (สุดารักษ์",
       "title": "QA Manager",
@@ -1024,7 +1053,7 @@
       "ytdPct": 54
     },
     {
-      "id": 36,
+      "id": 37,
       "legacy": "12452",
       "name": "Sujitra Wiriyakul (สุจิตรา วิริยากุล)",
       "title": "Technical Team Leader- Business Center (Consumer)",
@@ -1053,7 +1082,7 @@
       "ytdPct": 19
     },
     {
-      "id": 37,
+      "id": 38,
       "legacy": "10553",
       "name": "Sunuttapong Siriluk (สุณัฐพงศ์ ศิริลักษณ์)",
       "title": "Engineering Manager",
@@ -1082,7 +1111,7 @@
       "ytdPct": 75
     },
     {
-      "id": 38,
+      "id": 39,
       "legacy": "12447",
       "name": "Suparerk Jandang (ศุภฤกษ์ จันทร์แดง)",
       "title": "FI / IE Manager",
@@ -1111,7 +1140,7 @@
       "ytdPct": 50
     },
     {
-      "id": 39,
+      "id": 40,
       "legacy": "12636",
       "name": "Tanu Itthirattanakomon (ธนู อิทธิรัตนะโกมล)",
       "title": "Maintenance Manager",
@@ -1140,7 +1169,7 @@
       "ytdPct": 31
     },
     {
-      "id": 40,
+      "id": 41,
       "legacy": "11254",
       "name": "Tithipat Srinoun (ฐิติภัทร สีนวล)",
       "title": "Retread Plant Operations Leader",
@@ -1169,7 +1198,7 @@
       "ytdPct": 21
     },
     {
-      "id": 41,
+      "id": 42,
       "legacy": "11395",
       "name": "Tosapol Praserttechato (ทศพล ประเสริฐเตชาโต)",
       "title": "Production Manager",
@@ -1198,7 +1227,7 @@
       "ytdPct": 75
     },
     {
-      "id": 42,
+      "id": 43,
       "legacy": "12606",
       "name": "Vattana Waewmanee (วรรธนะ แววมณี)",
       "title": "Technical Team Leader- Business Center (Aero)",
@@ -1227,7 +1256,7 @@
       "ytdPct": 8
     },
     {
-      "id": 43,
+      "id": 44,
       "legacy": "1308",
       "name": "Vinai Fuangfoo (วินัย เฟื่องฟู)",
       "title": "Manufacturing Training Manager",
@@ -1256,7 +1285,7 @@
       "ytdPct": 85
     },
     {
-      "id": 44,
+      "id": 45,
       "legacy": "12508",
       "name": "Wanrop Ardkamphan (วัณรพ อาจคำพันธ์)",
       "title": "FI Specialist and Certified Black Belt",
@@ -1285,7 +1314,7 @@
       "ytdPct": 79
     },
     {
-      "id": 45,
+      "id": 46,
       "legacy": "12001",
       "name": "Wata Phattanapong (วฐา พัฒนพงศ์)",
       "title": "Environmental Engineer",
@@ -1314,7 +1343,7 @@
       "ytdPct": 88
     },
     {
-      "id": 46,
+      "id": 47,
       "legacy": "10113",
       "name": "Weerapong Wattanakool (วีระพงศ์ วัฒนกูล)",
       "title": "Maintenance Manager",
@@ -1343,7 +1372,7 @@
       "ytdPct": 65
     },
     {
-      "id": 47,
+      "id": 48,
       "legacy": "12880",
       "name": "Worraluk Kaisornsak (วรลักษณ์ ไข่ษรศักดิ์)",
       "title": "Operation Analyst",
@@ -1372,7 +1401,7 @@
       "ytdPct": 54
     },
     {
-      "id": 48,
+      "id": 49,
       "legacy": "12910",
       "name": "Yanisa Payakaveth (ญาณิศา พยัฆเวช)",
       "title": "Product Leader - Final Finish",
@@ -1401,7 +1430,7 @@
       "ytdPct": 21
     },
     {
-      "id": 49,
+      "id": 50,
       "legacy": "12937",
       "name": "Khorapin Iamsuwan",
       "title": "Quality Engineer - Associate - QA Auditor",
@@ -1430,7 +1459,7 @@
       "ytdPct": 25
     },
     {
-      "id": 50,
+      "id": 51,
       "legacy": "12960",
       "name": "Kamkarn Wongtanachai",
       "title": "HR Manager - MFG",
@@ -3341,6 +3370,35 @@
     },
     {
       "id": 20,
+      "legacy": "-",
+      "name": "Narong Phookodhin",
+      "title": "",
+      "dept": "BCB-E",
+      "bc": "BCB-E",
+      "department": "ENG",
+      "costCenter": "1100",
+      "areaCode": "BCB-E",
+      "categoryGroup": "BCB",
+      "isLspTarget": true,
+      "group": "Staff",
+      "monthly": {
+        "JAN": 0,
+        "FEB": 0,
+        "MAR": 0,
+        "APR": 0,
+        "MAY": 0,
+        "JUN": 0,
+        "JUL": 0,
+        "AUG": 0,
+        "SEP": 4,
+        "OCT": "",
+        "NOV": "",
+        "DEC": ""
+      },
+      "ytdPct": 8
+    },
+    {
+      "id": 21,
       "legacy": "12848",
       "name": "Nichakamon Kaewkeadmee (ณิชากมล แก้วเกิดมี)",
       "title": "HR Business Partner",
@@ -3369,7 +3427,7 @@
       "ytdPct": 33
     },
     {
-      "id": 21,
+      "id": 22,
       "legacy": "12364",
       "name": "Nithit Raktham (นิธิศ รักธรรม)",
       "title": "Reliability Leader - Retread",
@@ -3398,7 +3456,7 @@
       "ytdPct": 65
     },
     {
-      "id": 22,
+      "id": 23,
       "legacy": "12367",
       "name": "Paisal Phoompong (ไพศาล พุ่มพงษ์)",
       "title": "HPT Leader",
@@ -3427,7 +3485,7 @@
       "ytdPct": 79
     },
     {
-      "id": 23,
+      "id": 24,
       "legacy": "10661",
       "name": "Parintorn Premshue (ปรินทร เปรมชู)",
       "title": "HPT Leader",
@@ -3456,7 +3514,7 @@
       "ytdPct": 69
     },
     {
-      "id": 24,
+      "id": 25,
       "legacy": "10082",
       "name": "Phichet Dee-On (พิเชษฐ ดีอ้น)",
       "title": "Product Leader - Extrusion",
@@ -3485,7 +3543,7 @@
       "ytdPct": 79
     },
     {
-      "id": 25,
+      "id": 26,
       "legacy": "12445",
       "name": "Pinthusorn Prasertpolkrang (พินทุสร ประเสริฐพลกรัง)",
       "title": "Product Leader - Calendars & Cutters",
@@ -3514,7 +3572,7 @@
       "ytdPct": 77
     },
     {
-      "id": 26,
+      "id": 27,
       "legacy": "12635",
       "name": "Piyaboon Thaijareon (ปิยบูรณ์ ไทยเจริญ)",
       "title": "Product Leader - Tire Assembly",
@@ -3543,7 +3601,7 @@
       "ytdPct": 63
     },
     {
-      "id": 27,
+      "id": 28,
       "legacy": "12876",
       "name": "Prasit Tajit (ประสิทธิ์ ธะจิต)",
       "title": "GPS Specialist",
@@ -3572,7 +3630,7 @@
       "ytdPct": 58
     },
     {
-      "id": 28,
+      "id": 29,
       "legacy": "12934",
       "name": "Saravut Jansin  (ศราวุทธ จันสินธุ์)",
       "title": "Reliability Engineer",
@@ -3601,7 +3659,7 @@
       "ytdPct": 2
     },
     {
-      "id": 29,
+      "id": 30,
       "legacy": "10120",
       "name": "Sakchai Chanthasri (ศักดิ์ชัย จันทะศรี)",
       "title": "Reliability Leader",
@@ -3630,7 +3688,7 @@
       "ytdPct": 58
     },
     {
-      "id": 30,
+      "id": 31,
       "legacy": "11255",
       "name": "Sangpian Thongvibul (แสงเพียร ทองวิบูลย์)",
       "title": "Quality Engineer - Associate - QA Auditor",
@@ -3659,7 +3717,7 @@
       "ytdPct": 71
     },
     {
-      "id": 31,
+      "id": 32,
       "legacy": "12408",
       "name": "Saowaluck Maneenil (เสาวลักษณ์ มณีนิล)",
       "title": "Product Leader - Curing",
@@ -3688,7 +3746,7 @@
       "ytdPct": 58
     },
     {
-      "id": 32,
+      "id": 33,
       "legacy": "10824",
       "name": "Somchai Tama (สมชาย ตามา)",
       "title": "Safety Officer",
@@ -3717,7 +3775,7 @@
       "ytdPct": 100
     },
     {
-      "id": 33,
+      "id": 34,
       "legacy": "10772",
       "name": "Somrudee Sopa (สมฤดี โสภา)",
       "title": "Quality Engineer - Associate - Specification Control",
@@ -3746,7 +3804,7 @@
       "ytdPct": 67
     },
     {
-      "id": 34,
+      "id": 35,
       "legacy": "1467",
       "name": "Soontorn Mingma (สุนทร มิ่งมา)",
       "title": "People Lead-Consumer Curing&Final Finish",
@@ -3775,7 +3833,7 @@
       "ytdPct": 0
     },
     {
-      "id": 35,
+      "id": 36,
       "legacy": "12095",
       "name": "Sudarak Thongtrirattanagul (สุดารักษ์",
       "title": "QA Manager",
@@ -3804,7 +3862,7 @@
       "ytdPct": 54
     },
     {
-      "id": 36,
+      "id": 37,
       "legacy": "12452",
       "name": "Sujitra Wiriyakul (สุจิตรา วิริยากุล)",
       "title": "Technical Team Leader- Business Center (Consumer)",
@@ -3833,7 +3891,7 @@
       "ytdPct": 19
     },
     {
-      "id": 37,
+      "id": 38,
       "legacy": "10553",
       "name": "Sunuttapong Siriluk (สุณัฐพงศ์ ศิริลักษณ์)",
       "title": "Engineering Manager",
@@ -3862,7 +3920,7 @@
       "ytdPct": 75
     },
     {
-      "id": 38,
+      "id": 39,
       "legacy": "12447",
       "name": "Suparerk Jandang (ศุภฤกษ์ จันทร์แดง)",
       "title": "FI / IE Manager",
@@ -3891,7 +3949,7 @@
       "ytdPct": 50
     },
     {
-      "id": 39,
+      "id": 40,
       "legacy": "12636",
       "name": "Tanu Itthirattanakomon (ธนู อิทธิรัตนะโกมล)",
       "title": "Maintenance Manager",
@@ -3920,7 +3978,7 @@
       "ytdPct": 31
     },
     {
-      "id": 40,
+      "id": 41,
       "legacy": "11254",
       "name": "Tithipat Srinoun (ฐิติภัทร สีนวล)",
       "title": "Retread Plant Operations Leader",
@@ -3949,7 +4007,7 @@
       "ytdPct": 21
     },
     {
-      "id": 41,
+      "id": 42,
       "legacy": "11395",
       "name": "Tosapol Praserttechato (ทศพล ประเสริฐเตชาโต)",
       "title": "Production Manager",
@@ -3978,7 +4036,7 @@
       "ytdPct": 75
     },
     {
-      "id": 42,
+      "id": 43,
       "legacy": "12606",
       "name": "Vattana Waewmanee (วรรธนะ แววมณี)",
       "title": "Technical Team Leader- Business Center (Aero)",
@@ -4007,7 +4065,7 @@
       "ytdPct": 8
     },
     {
-      "id": 43,
+      "id": 44,
       "legacy": "1308",
       "name": "Vinai Fuangfoo (วินัย เฟื่องฟู)",
       "title": "Manufacturing Training Manager",
@@ -4036,7 +4094,7 @@
       "ytdPct": 85
     },
     {
-      "id": 44,
+      "id": 45,
       "legacy": "12508",
       "name": "Wanrop Ardkamphan (วัณรพ อาจคำพันธ์)",
       "title": "FI Specialist and Certified Black Belt",
@@ -4065,7 +4123,7 @@
       "ytdPct": 79
     },
     {
-      "id": 45,
+      "id": 46,
       "legacy": "12001",
       "name": "Wata Phattanapong (วฐา พัฒนพงศ์)",
       "title": "Environmental Engineer",
@@ -4094,7 +4152,7 @@
       "ytdPct": 88
     },
     {
-      "id": 46,
+      "id": 47,
       "legacy": "10113",
       "name": "Weerapong Wattanakool (วีระพงศ์ วัฒนกูล)",
       "title": "Maintenance Manager",
@@ -4123,7 +4181,7 @@
       "ytdPct": 65
     },
     {
-      "id": 47,
+      "id": 48,
       "legacy": "12880",
       "name": "Worraluk Kaisornsak (วรลักษณ์ ไข่ษรศักดิ์)",
       "title": "Operation Analyst",
@@ -4152,7 +4210,7 @@
       "ytdPct": 54
     },
     {
-      "id": 48,
+      "id": 49,
       "legacy": "12910",
       "name": "Yanisa Payakaveth (ญาณิศา พยัฆเวช)",
       "title": "Product Leader - Final Finish",
@@ -4181,7 +4239,7 @@
       "ytdPct": 21
     },
     {
-      "id": 49,
+      "id": 50,
       "legacy": "12937",
       "name": "Khorapin Iamsuwan",
       "title": "Quality Engineer - Associate - QA Auditor",
@@ -4210,7 +4268,7 @@
       "ytdPct": 25
     },
     {
-      "id": 50,
+      "id": 51,
       "legacy": "12960",
       "name": "Kamkarn Wongtanachai",
       "title": "HR Manager - MFG",

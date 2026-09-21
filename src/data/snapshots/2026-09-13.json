@@ -1,6 +1,6 @@
 {
   "date": "2026-09-13",
-  "generatedAt": "2026-09-21T02:23:10.570Z",
+  "generatedAt": "2026-09-21T02:40:55.578Z",
   "waste": {
     "date": "2026-09-13",
     "millingSummary": 152.8,
@@ -650,12 +650,12 @@
     "date": "2026-09-13",
     "oee": {
       "hasData": true,
-      "sr_pct": 30.21,
-      "ar_pct": 75.86,
-      "pr_pct": 75.19,
-      "qr_pct": 93.84,
-      "oee1_pct": 16.17,
-      "oee2_pct": 53.53,
+      "sr_pct": 75,
+      "ar_pct": 55.46,
+      "pr_pct": 93.92,
+      "qr_pct": 81.73,
+      "oee1_pct": 31.93,
+      "oee2_pct": 42.57,
       "bd_pct": 0
     },
     "output": {
@@ -1420,7 +1420,7 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 56.17,
+        "avg": 46.68,
         "target": 62,
         "count": 7,
         "isMet": false
@@ -1452,7 +1452,7 @@
         "label": "W1 (1/9 - 6/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.1,
+          "avg": 45.69,
           "target": 62,
           "count": 6,
           "isMet": false
@@ -1483,7 +1483,7 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 56.17,
+          "avg": 46.68,
           "target": 62,
           "count": 7,
           "isMet": false
@@ -1514,9 +1514,9 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.86,
+          "avg": 47.64,
           "target": 62,
-          "count": 6,
+          "count": 7,
           "isMet": false
         },
         "tuber": {
@@ -1545,9 +1545,9 @@
         "label": "W4 (21/9 - 27/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": null,
+          "avg": 56.55,
           "target": 62,
-          "count": 0,
+          "count": 6,
           "isMet": false
         },
         "tuber": {
@@ -1563,7 +1563,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.3,
+          "avg": 72.7,
           "target": 76.6,
           "count": 1,
           "isMet": false

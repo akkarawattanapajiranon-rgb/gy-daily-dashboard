@@ -89,13 +89,13 @@ function parseLspData() {
       if (wb.Sheets[sheetA]) {
         const rowsA = XLSX.utils.sheet_to_json(wb.Sheets[sheetA], { header: 1, defval: '' });
         rowsA.slice(3).forEach((r) => {
-          const legacy = String(r[1] || '').trim();
+          const legacy = String(r[1] || '').trim() || '-';
           const name = String(r[2] || '').trim();
           const title = String(r[3] || '').trim();
           const dept = String(r[4] || 'BCA').trim();
           const areaCode = String(r[5] || '').trim();
 
-          if (!name || !legacy || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
+          if (!name || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
           if (
             legacy === '12925' || name.toLowerCase().includes('krittanan') || name.includes('กฤตนันท์') ||
             legacy === '12752' || name.toLowerCase().includes('amphai') || name.includes('อำไพ') ||
@@ -144,12 +144,12 @@ function parseLspData() {
       if (wb.Sheets[sheetB]) {
         const rowsB = XLSX.utils.sheet_to_json(wb.Sheets[sheetB], { header: 1, defval: '' });
         rowsB.slice(3).forEach((r) => {
-          const legacy = String(r[1] || '').trim();
+          const legacy = String(r[1] || '').trim() || '-';
           const name = String(r[2] || '').trim();
           const title = String(r[3] || '').trim();
           const areaCode = String(r[4] || '').trim();
 
-          if (!name || !legacy || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
+          if (!name || name.toLowerCase().includes('total') || name.toLowerCase().includes('average')) return;
 
           const monthly = {};
           let totalAct = 0;

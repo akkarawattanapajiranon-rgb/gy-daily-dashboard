@@ -1,6 +1,6 @@
 {
   "date": "2026-09-02",
-  "generatedAt": "2026-09-21T02:24:03.832Z",
+  "generatedAt": "2026-09-21T02:41:37.815Z",
   "waste": {
     "date": "2026-09-02",
     "millingSummary": 198,
@@ -779,13 +779,13 @@
     "date": "2026-09-02",
     "oee": {
       "hasData": true,
-      "sr_pct": 77.08,
-      "ar_pct": 74.32,
-      "pr_pct": 85.44,
-      "qr_pct": 93.02,
-      "oee1_pct": 45.53,
-      "oee2_pct": 59.07,
-      "bd_pct": 6.94
+      "sr_pct": 62.5,
+      "ar_pct": 61.78,
+      "pr_pct": 77.39,
+      "qr_pct": 84.99,
+      "oee1_pct": 25.4,
+      "oee2_pct": 40.64,
+      "bd_pct": 0
     },
     "output": {
       "hasData": true,
@@ -1687,7 +1687,7 @@
       "label": "W1 (1/9 - 6/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 59.52,
+        "avg": 45.38,
         "target": 62,
         "count": 2,
         "isMet": false
@@ -1719,7 +1719,7 @@
         "label": "W1 (1/9 - 6/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 59.52,
+          "avg": 45.38,
           "target": 62,
           "count": 2,
           "isMet": false
@@ -1750,7 +1750,7 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 56.17,
+          "avg": 46.68,
           "target": 62,
           "count": 7,
           "isMet": false
@@ -1781,9 +1781,9 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.86,
+          "avg": 47.64,
           "target": 62,
-          "count": 6,
+          "count": 7,
           "isMet": false
         },
         "tuber": {
@@ -1812,9 +1812,9 @@
         "label": "W4 (21/9 - 27/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": null,
+          "avg": 56.55,
           "target": 62,
-          "count": 0,
+          "count": 6,
           "isMet": false
         },
         "tuber": {
@@ -1830,7 +1830,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.3,
+          "avg": 72.7,
           "target": 76.6,
           "count": 1,
           "isMet": false
