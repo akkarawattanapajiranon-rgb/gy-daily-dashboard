@@ -1,10 +1,10 @@
 {
   "date": "2026-09-20",
-  "generatedAt": "2026-09-21T02:46:26.739Z",
+  "generatedAt": "2026-09-21T03:45:15.744Z",
   "waste": {
     "date": "2026-09-20",
     "millingSummary": 94,
-    "frictionSummary": 239.5,
+    "frictionSummary": 268.3,
     "beadSummary": 0,
     "millingTop": [
       {
@@ -29,7 +29,7 @@
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 80.3,
+        "amount": 92.1,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -40,15 +40,15 @@
         "isHigh": true
       },
       {
-        "code": "F01",
-        "amount": 22.799999999999997,
-        "reason": "ANGLE CHANGE",
+        "code": "F06",
+        "amount": 30,
+        "reason": "BROKEN CAL SPLICE",
         "isHigh": false
       },
       {
-        "code": "F06",
-        "amount": 15,
-        "reason": "BROKEN CAL SPLICE",
+        "code": "F01",
+        "amount": 22.799999999999997,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       },
       {
@@ -88,7 +88,81 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-20",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "4 Roll 1",
+        "totalDurationMin": 600,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Braek down mill",
+            "symptom": "มอเตอร์มีเสียงดังมากและสั่น",
+            "cause": "",
+            "action": "ขันอัดลูกยางคัฟปิ้งให้แน่น ก็ยังสั่นและดัง ถอดลูกยางคัฟปิ้งออก ลันตัวมอเตอร์เปล่า ก็ยังสั่นและดัง วัดอุณภูมิตรงลูกปืน ด้านท้ายร้อนมาก เปิดตูดมอเตอร์ดูพบว่า เพลาของโรเตอร์ตก",
+            "fixType": "",
+            "durationMin": 480,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟร์ค/เอ็ฟ/เทห์"
+          },
+          {
+            "shift": "1",
+            "zone": "Braek down mill",
+            "symptom": "มอเตอร์มีเสียงดังมากและสั่น",
+            "cause": "",
+            "action": "เปิดฝาเกียร์บล็อคเช็คฟันเฟือง",
+            "fixType": "",
+            "durationMin": 120,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟร์ค/เอ็ฟ/เทห์"
+          }
+        ]
+      },
+      {
+        "machine": "Calemard",
+        "totalDurationMin": 60,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Contorl cabinet",
+            "symptom": "มอเตอร์ม้วนพาย#5 ไม่หมุน",
+            "cause": "Drive faul",
+            "action": "Change drive new",
+            "fixType": "ชั่วคราว",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "เอ็ฟ/เทห์"
+          }
+        ]
+      },
+      {
+        "machine": "Mixer 1",
+        "totalDurationMin": 40,
+        "details": [
+          {
+            "shift": "3",
+            "zone": "Slab",
+            "symptom": "Slab Loading ไม่หมุน",
+            "cause": "Motor Overload",
+            "action": "Reset Overload",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ไพริน"
+          },
+          {
+            "shift": "3",
+            "zone": "Gate",
+            "symptom": "Reset ไม่ได้",
+            "cause": "สายกราวน์ขาด",
+            "action": "ใส่สายกราวน์",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "Off/ Add"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
       "actual_bd_pct": 1.375,
@@ -1733,7 +1807,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.7,
+          "avg": 72.4,
           "target": 76.6,
           "count": 1,
           "isMet": false

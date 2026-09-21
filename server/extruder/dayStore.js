@@ -223,22 +223,18 @@ async function getExtruderTimeline(date, now = () => new Date(), forceRefresh = 
   }
 
   let day = days.get(date);
-  if (!day || [...day.lines.values()].some(l => !l.rows || l.rows.length === 0)) {
+  if (!day) {
     const diskDay = loadDayFromDisk(date);
     if (diskDay) {
       day = diskDay;
       days.set(date, day);
-    } else if (!day) {
+    } else {
       day = emptyDay();
       days.set(date, day);
     }
   }
 
   const isCurrent = (date === currentDateStr);
-  const allLinesHaveData = EXTRUDER_LINES.every(line => {
-    const l = day.lines.get(line);
-    return l && l.rows && l.rows.length > 0;
-  });
   const hasAnyData = EXTRUDER_LINES.some(line => {
     const l = day.lines.get(line);
     return l && l.rows && l.rows.length > 0;
@@ -246,12 +242,12 @@ async function getExtruderTimeline(date, now = () => new Date(), forceRefresh = 
 
   const next = nextDate(date);
   const dayEndMs = Date.parse(`${next}T07:00:00+07:00`);
-  // A past production day is fully complete only if fetchedAtMs was after the 24-hr day ended at 07:00 AM
+  // A past production day is fully complete if fetchedAtMs was after the 24-hr day ended at 07:00 AM
   const isPastDayFullySynced = (!isCurrent && day.fetchedAtMs >= dayEndMs);
 
   const ttl = isCurrent ? REFRESH_AFTER_MS : 86400000;
   const ageMs = Date.now() - day.fetchedAtMs;
-  const cached = allLinesHaveData && (isCurrent ? (ageMs < ttl) : isPastDayFullySynced) && !forceRefresh;
+  const cached = hasAnyData && (isCurrent ? (ageMs < ttl) : (isPastDayFullySynced || ageMs < ttl)) && !forceRefresh;
 
   if (!cached) {
     const current = day;

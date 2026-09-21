@@ -64,12 +64,12 @@ export function useExtruderTimeline(
       const isLocalhost = typeof window !== "undefined" && 
         (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
 
-      // 1. Try local Express API (if on localhost or endpoint is accessible)
+      // 1. Try local Express API / Vercel API
       try {
         const queryParams = new URLSearchParams({ date: target });
         if (forceRefresh) queryParams.set("refresh", "true");
         const controller = new AbortController();
-        const timeoutMs = isLocalhost ? 6000 : 3000;
+        const timeoutMs = isLocalhost ? 10000 : 6000;
         const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
         const res = await fetch(`${endpoint}?${queryParams.toString()}`, {
           cache: "no-store",
@@ -79,16 +79,18 @@ export function useExtruderTimeline(
         clearTimeout(timeoutId);
         const contentType = res.headers.get("content-type");
         if (res.ok && contentType && contentType.includes("application/json")) {
-          json = (await res.json()) as ExtruderTimelineResponse;
+          const resData = await res.json();
+          if (resData && (resData.success !== false || resData.timelines)) {
+            json = resData as ExtruderTimelineResponse;
+          }
         } else {
           fetchError = new Error(`HTTP ${res.status}`);
         }
       } catch (e) {
-        // Suppress abort noise from first attempt
         fetchError = e instanceof Error ? e : new Error("API network error");
       }
 
-      // 2. Cloud Fallback (Vercel / Static): load pre-built JSON from public/data/extruder/
+      // 2. Cloud Fallback (Vercel / Static): load pre-built JSON from /data/extruder/
       if (!json) {
         try {
           const cacheBuster = forceRefresh ? `?_t=${Date.now()}` : "";
@@ -102,7 +104,10 @@ export function useExtruderTimeline(
           clearTimeout(staticTimeoutId);
           const contentType = staticRes.headers.get("content-type");
           if (staticRes.ok && (!contentType || contentType.includes("application/json"))) {
-            json = (await staticRes.json()) as ExtruderTimelineResponse;
+            const staticData = await staticRes.json();
+            if (staticData && (staticData.success !== false || staticData.timelines)) {
+              json = staticData as ExtruderTimelineResponse;
+            }
           }
         } catch (staticErr) {
           console.warn("[Extruder] Static fallback fetch failed:", staticErr);
