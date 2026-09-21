@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-21T04:13:48.297Z",
+  "generatedAt": "2026-09-21T04:35:53.047Z",
   "waste": {
     "date": "2026-09-05",
     "millingSummary": 185.9,
@@ -741,6 +741,7 @@
     "hasData": true
   },
   "quad": {
+    "date": "2026-09-05",
     "oee": {
       "hasData": true,
       "sr_pct": 81.25,
@@ -749,7 +750,7 @@
       "qr_pct": 94.52,
       "oee1_pct": 44.01,
       "oee2_pct": 54.16,
-      "bd_pct": 0
+      "bd_pct": 12.5
     },
     "output": {
       "hasData": true,
@@ -1847,7 +1848,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.5,
+          "avg": 74.2,
           "target": 76.6,
           "count": 1,
           "isMet": false
