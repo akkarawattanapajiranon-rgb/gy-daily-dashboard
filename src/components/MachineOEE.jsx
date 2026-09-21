@@ -4,9 +4,27 @@ import { Settings, CheckCircle2, AlertTriangle, Calendar } from 'lucide-react';
 export default function MachineOEE({ weeklyData, isLoading, mixingData }) {
   const [selectedWeekNum, setSelectedWeekNum] = useState(null);
 
-  // Set default selected week to active current week when data loads
+  // Set default selected week to active current week when data loads, or latest week with data
   useEffect(() => {
-    if (weeklyData?.activeWeek?.weekNum) {
+    if (weeklyData?.weeks && weeklyData.weeks.length > 0) {
+      const active = weeklyData.activeWeek;
+      const activeCount = Math.max(
+        active?.quad?.count || 0,
+        active?.mixing?.count || 0,
+        active?.tuber?.count || 0,
+        active?.fischer?.count || 0
+      );
+      if (activeCount > 0) {
+        setSelectedWeekNum(active.weekNum);
+      } else {
+        // Active week has 0 entries (e.g. Monday morning before any data entered) -> select previous week with data
+        const latestWithData = [...weeklyData.weeks].reverse().find(w => {
+          const cnt = Math.max(w?.quad?.count || 0, w?.mixing?.count || 0, w?.tuber?.count || 0, w?.fischer?.count || 0);
+          return cnt > 0;
+        });
+        setSelectedWeekNum(latestWithData ? latestWithData.weekNum : active?.weekNum || 1);
+      }
+    } else if (weeklyData?.activeWeek?.weekNum) {
       setSelectedWeekNum(weeklyData.activeWeek.weekNum);
     }
   }, [weeklyData]);

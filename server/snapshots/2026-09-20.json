@@ -1,6 +1,6 @@
 {
   "date": "2026-09-20",
-  "generatedAt": "2026-09-21T02:11:21.157Z",
+  "generatedAt": "2026-09-21T02:35:31.534Z",
   "waste": {
     "date": "2026-09-20",
     "millingSummary": 94,
@@ -91,28 +91,28 @@
     "topLoss": [],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.375,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.6667,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.7604,
+      "hasData": true
     }
   },
   "fischer": {
@@ -607,52 +607,52 @@
     "output": {
       "hasData": true,
       "day": 20,
-      "grandTotal": 560,
+      "grandTotal": 2060,
       "codeBreakdown": [
         {
           "code": "B427",
-          "count": 300,
-          "percentage": 53.57
+          "count": 960,
+          "percentage": 46.6
         },
         {
           "code": "B228",
-          "count": 200,
-          "percentage": 35.71
+          "count": 640,
+          "percentage": 31.07
+        },
+        {
+          "code": "T1400",
+          "count": 404,
+          "percentage": 19.61
         },
         {
           "code": "WA8X",
           "count": 14,
-          "percentage": 2.5
+          "percentage": 0.68
         },
         {
           "code": "WAIK",
           "count": 14,
-          "percentage": 2.5
+          "percentage": 0.68
         },
         {
           "code": "W1WF",
           "count": 8,
-          "percentage": 1.43
+          "percentage": 0.39
         },
         {
           "code": "W1CX",
           "count": 8,
-          "percentage": 1.43
+          "percentage": 0.39
         },
         {
           "code": "W13L",
           "count": 6,
-          "percentage": 1.07
+          "percentage": 0.29
         },
         {
           "code": "WYAL",
           "count": 6,
-          "percentage": 1.07
-        },
-        {
-          "code": "T1400",
-          "count": 4,
-          "percentage": 0.71
+          "percentage": 0.29
         }
       ],
       "shifts": {
@@ -666,8 +666,8 @@
               "code": "B228",
               "qtyTarget": 200,
               "qtyProduced": 200,
-              "qtySapphire": 0,
-              "totalQty": 200
+              "qtySapphire": 440.00000000000006,
+              "totalQty": 640
             },
             {
               "partId": "SC00526",
@@ -676,8 +676,8 @@
               "code": "B427",
               "qtyTarget": 300,
               "qtyProduced": 300,
-              "qtySapphire": 0,
-              "totalQty": 300
+              "qtySapphire": 660,
+              "totalQty": 960
             },
             {
               "partId": "",
@@ -685,9 +685,9 @@
               "code2": "T1400",
               "code": "T1400",
               "qtyTarget": 4,
-              "qtyProduced": 4,
-              "qtySapphire": 0,
-              "totalQty": 4
+              "qtyProduced": 400,
+              "qtySapphire": 4,
+              "totalQty": 404
             },
             {
               "partId": "TL00443",
@@ -770,7 +770,7 @@
               "totalQty": 4
             }
           ],
-          "totalQty": 560
+          "totalQty": 2060
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -1733,7 +1733,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.1,
+          "avg": 72.7,
           "target": 76.6,
           "count": 1,
           "isMet": false

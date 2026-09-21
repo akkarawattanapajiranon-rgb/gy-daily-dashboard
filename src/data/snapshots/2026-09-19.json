@@ -1,10 +1,10 @@
 {
   "date": "2026-09-19",
-  "generatedAt": "2026-09-21T02:13:41.365Z",
+  "generatedAt": "2026-09-21T02:35:43.018Z",
   "waste": {
     "date": "2026-09-19",
     "millingSummary": 139.9,
-    "frictionSummary": 303.8,
+    "frictionSummary": 312.4,
     "beadSummary": 21.7,
     "millingTop": [
       {
@@ -41,7 +41,7 @@
       },
       {
         "code": "F44",
-        "amount": 56.8,
+        "amount": 60.8,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -53,13 +53,13 @@
       },
       {
         "code": "F46",
-        "amount": 23.5,
+        "amount": 27.1,
         "reason": "SHORT PIECES",
         "isHigh": false
       },
       {
         "code": "F01",
-        "amount": 20.8,
+        "amount": 21,
         "reason": "ANGLE CHANGE",
         "isHigh": false
       }
@@ -110,28 +110,28 @@
     "topLoss": [],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 4.1667,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 4.1667,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 2.0833,
+      "hasData": true
     }
   },
   "fischer": {
@@ -668,13 +668,13 @@
   "quad": {
     "date": "2026-09-19",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 83.33,
+      "ar_pct": 75.08,
+      "pr_pct": 66.44,
+      "qr_pct": 88.25,
+      "oee1_pct": 36.69,
+      "oee2_pct": 44.03,
       "bd_pct": 0
     },
     "output": {
@@ -1836,9 +1836,9 @@
       "label": "W3 (14/9 - 20/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 59.66,
+        "avg": 48.28,
         "target": 62,
-        "count": 5,
+        "count": 6,
         "isMet": false
       },
       "tuber": {
@@ -1868,7 +1868,7 @@
         "label": "W1 (1/9 - 6/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.1,
+          "avg": 45.69,
           "target": 62,
           "count": 6,
           "isMet": false
@@ -1899,7 +1899,7 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 56.17,
+          "avg": 46.68,
           "target": 62,
           "count": 7,
           "isMet": false
@@ -1930,9 +1930,9 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 59.66,
+          "avg": 48.28,
           "target": 62,
-          "count": 5,
+          "count": 6,
           "isMet": false
         },
         "tuber": {
@@ -1961,9 +1961,9 @@
         "label": "W4 (21/9 - 27/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": null,
+          "avg": 56.55,
           "target": 62,
-          "count": 0,
+          "count": 6,
           "isMet": false
         },
         "tuber": {
@@ -1979,7 +1979,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.1,
+          "avg": 72.7,
           "target": 76.6,
           "count": 1,
           "isMet": false

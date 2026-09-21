@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-21T02:13:21.466Z",
+  "generatedAt": "2026-09-21T02:33:16.742Z",
   "waste": {
     "date": "2026-09-18",
     "millingSummary": 419.9,
@@ -104,28 +104,28 @@
     "topLoss": [],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 4.1667,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.8333,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.25,
+      "hasData": true
     }
   },
   "fischer": {
@@ -2149,7 +2149,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.1,
+          "avg": 72.6,
           "target": 76.6,
           "count": 1,
           "isMet": false
