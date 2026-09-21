@@ -1,7 +1,7 @@
 const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
-const { findMonthlyFile, findMonthlySheet, MONTH_ALIASES } = require('./month_utils');
+const { findMonthlyFile, findMonthlySheet, matchesMonth, MONTH_ALIASES } = require('./month_utils');
 
 const QUAD_DIR = "T:\\10.30 A.M. Production Meeting\\5 BTA\\Quad";
 const QUAD_BOOKING_DIR = path.join(QUAD_DIR, "Booker Sheet", "2026");
@@ -30,23 +30,37 @@ function getQuadOee(dateStr) {
 
   const wb = XLSX.readFile(file);
   
-  // Find official Quad sheet for selected month (matches user's active sheet)
-  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['quad']) ||
-                    wb.SheetNames.find(s => s.toLowerCase().includes('quad') && (s.includes('26') || s.includes('2026'))) ||
-                    wb.SheetNames[0];
-
-  const ws = wb.Sheets[sheetName];
-  if (!ws) return { error: `Sheet ${sheetName} not found` };
-
-  const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+  // Find official Quad sheet for selected month (prioritize sheets with actual filled data)
+  const candidateSheets = wb.SheetNames.filter(s => matchesMonth(s, monthNum));
+  candidateSheets.sort((a, b) => {
+    const aLower = a.toLowerCase();
+    const bLower = b.toLowerCase();
+    const aScore = (aLower.includes('all oee') && aLower.includes('quad') ? 10 : 0) +
+                   (aLower.includes('update') || aLower.includes('up date') ? 5 : 0) +
+                   (aLower.includes('quad') ? 3 : 0);
+    const bScore = (bLower.includes('all oee') && bLower.includes('quad') ? 10 : 0) +
+                   (bLower.includes('update') || bLower.includes('up date') ? 5 : 0) +
+                   (bLower.includes('quad') ? 3 : 0);
+    return bScore - aScore;
+  });
 
   let dayRow = null;
-  data.slice(2).forEach(r => {
-    const d = parseInt(r[0], 10);
-    if (d === dayNum) {
-      dayRow = r;
+  for (const s of candidateSheets) {
+    const ws = wb.Sheets[s];
+    if (!ws) continue;
+    const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+    const row = data.slice(2).find(r => parseInt(r[0], 10) === dayNum);
+    if (row) {
+      const sr = Number(row[1]) || 0;
+      const ar = Number(row[3]) || 0;
+      const pr = Number(row[4]) || 0;
+      const oee2 = Number(row[8]) || Number(row[7]) || 0;
+      if (sr > 0 || ar > 0 || pr > 0 || oee2 > 0) {
+        dayRow = row;
+        break;
+      }
     }
-  });
+  }
 
   if (!dayRow) return { hasData: false };
 

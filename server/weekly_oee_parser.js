@@ -1,7 +1,7 @@
 const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
-const { findMonthlyFile, findMonthlySheet } = require('./month_utils');
+const { findMonthlyFile, findMonthlySheet, matchesMonth } = require('./month_utils');
 
 const QUAD_DIR = "T:\\10.30 A.M. Production Meeting\\5 BTA\\Quad";
 const FISCHER_DIR = "T:\\10.30 A.M. Production Meeting\\5 BTA\\6 Fischer";
@@ -53,32 +53,46 @@ function parseWeeklyOee(dateStr) {
       const fullPath = path.join(QUAD_DIR, quadOeeFile);
       const wb = XLSX.readFile(fullPath);
 
-      // Quad sheet
-      const quadSheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['quad']) ||
-                            wb.SheetNames.find(s => s.toLowerCase().includes('quad') && (s.includes('26') || s.includes('2026')));
-      if (quadSheetName && wb.Sheets[quadSheetName]) {
-        const data = XLSX.utils.sheet_to_json(wb.Sheets[quadSheetName], { header: 1, defval: '' });
-        data.slice(2).forEach(r => {
-          const d = parseInt(r[0], 10);
-          if (!isNaN(d) && d > 0 && d <= 31) {
-            const oee2 = Number(r[8]) || Number(r[7]) || 0;
-            if (oee2 > 0) quadDaily[d] = oee2 * 100;
-          }
-        });
+      // Quad sheets (scan all candidate sheets for month in priority order)
+      const candidateQuadSheets = wb.SheetNames.filter(s => matchesMonth(s, monthNum) && (s.toLowerCase().includes('quad') || s.toLowerCase().includes('sep') || s.toLowerCase().includes('aug') || s.toLowerCase().includes('oct') || s.toLowerCase().includes('nov') || s.toLowerCase().includes('dec') || s.toLowerCase().includes('jan') || s.toLowerCase().includes('feb') || s.toLowerCase().includes('mar') || s.toLowerCase().includes('apr') || s.toLowerCase().includes('may') || s.toLowerCase().includes('jun') || s.toLowerCase().includes('jul')));
+      candidateQuadSheets.sort((a, b) => {
+        const aLower = a.toLowerCase();
+        const bLower = b.toLowerCase();
+        const aScore = (aLower.includes('all oee') && aLower.includes('quad') ? 10 : 0) +
+                       (aLower.includes('update') || aLower.includes('up date') ? 5 : 0) +
+                       (aLower.includes('quad') ? 3 : 0);
+        const bScore = (bLower.includes('all oee') && bLower.includes('quad') ? 10 : 0) +
+                       (bLower.includes('update') || bLower.includes('up date') ? 5 : 0) +
+                       (bLower.includes('quad') ? 3 : 0);
+        return bScore - aScore;
+      });
+
+      for (const quadSheetName of candidateQuadSheets) {
+        if (wb.Sheets[quadSheetName]) {
+          const data = XLSX.utils.sheet_to_json(wb.Sheets[quadSheetName], { header: 1, defval: '' });
+          data.slice(2).forEach(r => {
+            const d = parseInt(r[0], 10);
+            if (!isNaN(d) && d > 0 && d <= 31 && !quadDaily[d]) {
+              const oee2 = Number(r[8]) || Number(r[7]) || 0;
+              if (oee2 > 0) quadDaily[d] = oee2 * 100;
+            }
+          });
+        }
       }
 
-      // Tuber 6x8 sheet
-      const tuberSheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['6x8']) ||
-                             findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['ext']);
-      if (tuberSheetName && wb.Sheets[tuberSheetName]) {
-        const data = XLSX.utils.sheet_to_json(wb.Sheets[tuberSheetName], { header: 1, defval: '' });
-        data.slice(2).forEach(r => {
-          const d = parseInt(r[0], 10);
-          if (!isNaN(d) && d > 0 && d <= 31) {
-            const oee2 = Number(r[7]) || Number(r[6]) || 0;
-            if (oee2 > 0) tuberDaily[d] = oee2 * 100;
-          }
-        });
+      // Tuber 6x8 sheets
+      const candidateTuberSheets = wb.SheetNames.filter(s => matchesMonth(s, monthNum) && (s.toLowerCase().includes('6x8') || s.toLowerCase().includes('ext')));
+      for (const tuberSheetName of candidateTuberSheets) {
+        if (wb.Sheets[tuberSheetName]) {
+          const data = XLSX.utils.sheet_to_json(wb.Sheets[tuberSheetName], { header: 1, defval: '' });
+          data.slice(2).forEach(r => {
+            const d = parseInt(r[0], 10);
+            if (!isNaN(d) && d > 0 && d <= 31 && !tuberDaily[d]) {
+              const oee2 = Number(r[7]) || Number(r[6]) || 0;
+              if (oee2 > 0) tuberDaily[d] = oee2 * 100;
+            }
+          });
+        }
       }
     }
 
