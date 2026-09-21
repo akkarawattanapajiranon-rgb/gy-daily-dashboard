@@ -1,7 +1,7 @@
 {
   "file": "LSP Tracking.xlsx",
-  "lastModified": "2026-09-21T01:57:13.975Z",
-  "lastModifiedFormatted": "21/09/2026 08:57 น.",
+  "lastModified": "2026-09-21T02:55:01.797Z",
+  "lastModifiedFormatted": "21/09/2026 09:55 น.",
   "year": "2026",
   "totalWorkers": 51,
   "avgYtd": 53,
@@ -561,7 +561,7 @@
     },
     {
       "id": 20,
-      "legacy": "-",
+      "legacy": "12954",
       "name": "Narong Phookodhin",
       "title": "",
       "dept": "BCB-E",
@@ -3370,7 +3370,7 @@
     },
     {
       "id": 20,
-      "legacy": "-",
+      "legacy": "12954",
       "name": "Narong Phookodhin",
       "title": "",
       "dept": "BCB-E",

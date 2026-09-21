@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-21T02:39:33.983Z",
+  "generatedAt": "2026-09-21T02:53:58.670Z",
   "waste": {
     "date": "2026-09-18",
     "millingSummary": 419.9,
@@ -101,7 +101,137 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-18",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Mixer 1",
+        "totalDurationMin": 120,
+        "details": [
+          {
+            "shift": "3",
+            "zone": "Gate",
+            "symptom": "ท่อน้ำรั่วที่ประตูล่าง",
+            "cause": "ท่อรั่ว",
+            "action": "ซ่อมรั่วและเปลี่ยนท่อใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 120,
+            "jobType": "BD",
+            "fixBy": "มิ้น- แอ๊ด"
+          }
+        ]
+      },
+      {
+        "machine": "Auto Pigment",
+        "totalDurationMin": 100,
+        "details": [
+          {
+            "shift": "2",
+            "zone": "Tank 12",
+            "symptom": "Test Weight ไม่ผ่าน",
+            "cause": "ตราชั่งไม่สะอาด",
+            "action": "ทำความสะอาด และ CAL ใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ริน/เท่ห์"
+          },
+          {
+            "shift": "2",
+            "zone": "Tank 12",
+            "symptom": "Test Weight ไม่ผ่าน",
+            "cause": "Load cell is broken.",
+            "action": "Replace load cell.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": ""
+          },
+          {
+            "shift": "3",
+            "zone": "Unbagging",
+            "symptom": "Machine Can't Auto",
+            "cause": "Reed Switch ไม่ต่อ",
+            "action": "ปรับ Reed Switch",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/ไพลิน"
+          },
+          {
+            "shift": "3",
+            "zone": "Unbagging",
+            "symptom": "Machine Can't Auto",
+            "cause": "Reed Switch ไม่ต่อ",
+            "action": "ปรับ Reed Switch",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/ไพลิน"
+          }
+        ]
+      },
+      {
+        "machine": "Kaoyek",
+        "totalDurationMin": 45,
+        "details": [
+          {
+            "shift": "2",
+            "zone": "Control Cabinet",
+            "symptom": "Safety Can't Reset.",
+            "cause": "Relay Safety ไม่ทำงาน",
+            "action": "เปลี่ยน Relay Safety",
+            "fixType": "ถาวร",
+            "durationMin": 45,
+            "jobType": "BD",
+            "fixBy": ""
+          }
+        ]
+      },
+      {
+        "machine": "BAND 72/2",
+        "totalDurationMin": 40,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Conveyor",
+            "symptom": "Roller หลุด",
+            "cause": "น๊อตขาด",
+            "action": "เปลี่ยนน๊อตใหม่",
+            "fixType": "ถาวร",
+            "durationMin": 40,
+            "jobType": "BD",
+            "fixBy": "อ๋อย/แหลม/โฟร์ค"
+          }
+        ]
+      },
+      {
+        "machine": "4 Roll 1",
+        "totalDurationMin": 35,
+        "details": [
+          {
+            "shift": "3",
+            "zone": "Letoff",
+            "symptom": "Safety ตัดเอง",
+            "cause": "Safety Scanner สกปรก",
+            "action": "ทำความสะอาด",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/ไพลิน"
+          },
+          {
+            "shift": "3",
+            "zone": "Bias",
+            "symptom": "ปรับมุมไม่ได้",
+            "cause": "Drive Fault สายมอเตอร์หลวม",
+            "action": "ใส่สายให้แน่น Reset Drive",
+            "fixType": "ชั่วคราว",
+            "durationMin": 25,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/ไพลิน"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
       "actual_bd_pct": 4.1667,
@@ -2149,7 +2279,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.7,
+          "avg": 74.2,
           "target": 76.6,
           "count": 1,
           "isMet": false

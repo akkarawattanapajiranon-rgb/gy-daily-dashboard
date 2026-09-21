@@ -1,10 +1,10 @@
 {
   "date": "2026-09-19",
-  "generatedAt": "2026-09-21T02:40:42.520Z",
+  "generatedAt": "2026-09-21T02:53:13.284Z",
   "waste": {
     "date": "2026-09-19",
     "millingSummary": 139.9,
-    "frictionSummary": 312.4,
+    "frictionSummary": 327.4,
     "beadSummary": 21.7,
     "millingTop": [
       {
@@ -41,7 +41,7 @@
       },
       {
         "code": "F44",
-        "amount": 60.8,
+        "amount": 64.8,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -52,15 +52,15 @@
         "isHigh": false
       },
       {
-        "code": "F46",
-        "amount": 27.1,
-        "reason": "SHORT PIECES",
+        "code": "F01",
+        "amount": 30,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       },
       {
-        "code": "F01",
-        "amount": 21,
-        "reason": "ANGLE CHANGE",
+        "code": "F46",
+        "amount": 27.1,
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
@@ -107,7 +107,115 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-19",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Mixer 1",
+        "totalDurationMin": 110,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "MILL BD",
+            "symptom": "กระบอกสูบใบมีดผ่ายางหัก",
+            "cause": "ยางเกี่ยวหัก",
+            "action": "เชื่อมแกนกระบอกสูบ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 90,
+            "jobType": "BD",
+            "fixBy": "ทีป/อ๋อย/โฟร์ค"
+          },
+          {
+            "shift": "1",
+            "zone": "MILL BD",
+            "symptom": "กระบอกสูบใบมีดผ่ายางขัดตัว",
+            "cause": "แกนที่เชื่อมไปขด",
+            "action": "ถอดและดัดใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ทีป/อ๋อย/ริน/เอฟ/โฟร์ค"
+          }
+        ]
+      },
+      {
+        "machine": "3 Roll",
+        "totalDurationMin": 90,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Letoff",
+            "symptom": "น๊อตล็อคแกนเชลลฮับหัก",
+            "cause": "เกลียวน๊อตเสีย",
+            "action": "เอาน๊อตที่หักออกและทำเกลียวใหม่",
+            "fixType": "ถาวร",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "ทีป/อ๋อย/ริน/เอฟ"
+          },
+          {
+            "shift": "1",
+            "zone": "Windup 2",
+            "symptom": "แกนเชลลฮับหัก",
+            "cause": "น่าจะยกม้วนงัดกับแกน",
+            "action": "เปลี่ยนแกนเชลลฮับใหม่",
+            "fixType": "ถาวร",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/อ๋อย/ริน/เอฟ"
+          }
+        ]
+      },
+      {
+        "machine": "Auto Pigment",
+        "totalDurationMin": 60,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Tank 12",
+            "symptom": "Test Weight ไม่ผ่าน",
+            "cause": "ถังเอียงทำให้ถังถูกฝากด",
+            "action": "ปรับฐานถังใหม่",
+            "fixType": "ถาวร",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": "ทีป/อ๋อย/ริน/เอฟ"
+          }
+        ]
+      },
+      {
+        "machine": "Pigment",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "3",
+            "zone": "Silo#12",
+            "symptom": "Silo#12ไม่ชั่ง",
+            "cause": "Load Cell หลวม",
+            "action": "ขัน Load Cell และ Calibrate ใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/ไพลิน"
+          }
+        ]
+      },
+      {
+        "machine": "4 Roll 1",
+        "totalDurationMin": 8,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "BD MILL",
+            "symptom": "BD MILL สั่นและมีเสียงดังมาก",
+            "cause": "ตัวชิมฐานMill หลุด",
+            "action": "ใส่ตัวชิมฐานMill",
+            "fixType": "ถาวร",
+            "durationMin": 8,
+            "jobType": "BD",
+            "fixBy": "ทีป/อ๋อย/ริน/เอฟ"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
       "actual_bd_pct": 4.1667,
@@ -1979,7 +2087,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.7,
+          "avg": 74.2,
           "target": 76.6,
           "count": 1,
           "isMet": false
