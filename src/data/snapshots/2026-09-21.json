@@ -1,6 +1,6 @@
 {
   "date": "2026-09-21",
-  "generatedAt": "2026-09-21T04:09:43.638Z",
+  "generatedAt": "2026-09-21T04:18:25.904Z",
   "waste": {
     "date": "2026-09-21",
     "millingSummary": 0,
@@ -22,16 +22,16 @@
       "oee2": 29.2
     },
     "mixing2": {
-      "batch": 102,
-      "ar": 86.9,
+      "batch": 107,
+      "ar": 87.4,
       "pr": 85.5,
       "qr": 100,
-      "oee2": 74.3
+      "oee2": 74.7
     },
-    "totalAr": 85.8,
+    "totalAr": 86.4,
     "totalPr": 85.3,
-    "totalQr": 99.9,
-    "totalOee2": 73.2
+    "totalQr": 100,
+    "totalOee2": 73.7
   },
   "target3Roll": 14,
   "breakdown": {
@@ -358,17 +358,17 @@
     "date": "2026-09-21",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "21/9",
-      "sum": 0,
+      "sum": 62037,
       "target": 35056,
       "minTarget": 20000,
       "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "newGenerate": 14360,
+      "slowMoving": 40924,
+      "disposition": 6753,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -692,14 +692,14 @@
         "dateLabel": "21/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 62037,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 14360,
+        "newGenerateBTA": 11870,
+        "newGenerateWBR": 2490,
+        "slowMoving": 40924,
+        "disposition": 6753,
+        "hasData": true
       }
     ],
     "top10": [
@@ -803,7 +803,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.2,
+        "avg": 73.7,
         "target": 76.6,
         "count": 1,
         "isMet": false
@@ -928,7 +928,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.2,
+          "avg": 73.7,
           "target": 76.6,
           "count": 1,
           "isMet": false

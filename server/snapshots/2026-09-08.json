@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "generatedAt": "2026-09-21T03:50:55.717Z",
+  "generatedAt": "2026-09-21T04:14:34.705Z",
   "waste": {
     "date": "2026-09-08",
     "millingSummary": 183.6,
@@ -688,15 +688,14 @@
     "hasData": true
   },
   "quad": {
-    "date": "2026-09-08",
     "oee": {
       "hasData": true,
-      "sr_pct": 79.17,
-      "ar_pct": 73.51,
-      "pr_pct": 70.88,
-      "qr_pct": 84.42,
-      "oee1_pct": 34.82,
-      "oee2_pct": 43.98,
+      "sr_pct": 54.51,
+      "ar_pct": 68.03,
+      "pr_pct": 89.74,
+      "qr_pct": 91.76,
+      "oee1_pct": 30.54,
+      "oee2_pct": 56.02,
       "bd_pct": 0
     },
     "output": {
@@ -1710,7 +1709,7 @@
       "label": "W2 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 51.06,
+        "avg": 57.08,
         "target": 62,
         "count": 2,
         "isMet": false
@@ -1742,7 +1741,7 @@
         "label": "W1 (1/9 - 6/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 45.69,
+          "avg": 57.1,
           "target": 62,
           "count": 6,
           "isMet": false
@@ -1773,7 +1772,7 @@
         "label": "W2 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 51.06,
+          "avg": 57.08,
           "target": 62,
           "count": 2,
           "isMet": false
@@ -1804,7 +1803,7 @@
         "label": "W3 (14/9 - 20/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 47.64,
+          "avg": 57.1,
           "target": 62,
           "count": 7,
           "isMet": false
@@ -1853,7 +1852,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.6,
+          "avg": 73.5,
           "target": 76.6,
           "count": 1,
           "isMet": false
