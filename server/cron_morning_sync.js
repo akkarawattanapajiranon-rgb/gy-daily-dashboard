@@ -1,10 +1,19 @@
 const { generateSnapshot } = require('./snapshot_generator');
 const { getExtruderTimeline } = require('./extruder/dayStore');
 const { parseLspData } = require('./lsp_parser');
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
+const util = require('util');
+const execPromise = util.promisify(exec);
 const path = require('path');
 
+let isSyncRunning = false;
+
 async function runMorningSync() {
+  if (isSyncRunning) {
+    console.log('[Morning Sync Cron] Sync already in progress, skipping duplicate invocation.');
+    return;
+  }
+  isSyncRunning = true;
   const now = new Date();
   console.log(`[Morning Sync Cron] Running scheduled Vercel morning sync at ${now.toLocaleString()}...`);
 
@@ -40,22 +49,25 @@ async function runMorningSync() {
 
     console.log('[Morning Sync Cron] 📦 Building static production assets...');
     const projectRoot = path.join(__dirname, '..');
-    execSync('node node_modules/vite/bin/vite.js build', { stdio: 'inherit', cwd: projectRoot });
+    await execPromise('node node_modules/vite/bin/vite.js build', { cwd: projectRoot });
 
     console.log('[Morning Sync Cron] ☁️ Checking for changes to push to Vercel/GitHub...');
-    execSync('git add .', { stdio: 'inherit', cwd: projectRoot });
-    const status = execSync('git status --porcelain', { cwd: projectRoot }).toString().trim();
+    await execPromise('git add .', { cwd: projectRoot });
+    const { stdout: statusOut } = await execPromise('git status --porcelain', { cwd: projectRoot });
+    const status = statusOut ? statusOut.trim() : '';
     
     if (status) {
       const msg = `Auto Sync Update: ${datesToSync[0]} (Startup / Scheduled Sync)`;
-      execSync(`git commit -m "${msg}"`, { stdio: 'inherit', cwd: projectRoot });
-      execSync('git push origin master', { stdio: 'inherit', cwd: projectRoot });
+      await execPromise(`git commit -m "${msg}"`, { cwd: projectRoot });
+      await execPromise('git push origin master', { cwd: projectRoot });
       console.log(`[Morning Sync Cron] ✅ Successfully pushed updated data to Vercel/GitHub!`);
     } else {
       console.log(`[Morning Sync Cron] ✨ All data is already up-to-date. No new changes to push.`);
     }
   } catch (err) {
     console.warn(`[Morning Sync Cron] Sync status:`, err.message);
+  } finally {
+    isSyncRunning = false;
   }
 }
 
