@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ExtruderTimelineResponse } from "./types";
+import { bangkokProductionDate } from "./bangkok";
 
 /**
  * Fetch + poll the extruder timeline endpoint.
