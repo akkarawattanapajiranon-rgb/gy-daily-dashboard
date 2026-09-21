@@ -1,6 +1,6 @@
 {
   "date": "2026-09-20",
-  "generatedAt": "2026-09-21T00:13:54.777Z",
+  "generatedAt": "2026-09-21T01:31:25.138Z",
   "waste": {
     "date": "2026-09-20",
     "millingSummary": 94,
@@ -66,22 +66,22 @@
     "date": "2026-09-20",
     "mixing1": {
       "batch": 657,
-      "ar": 80.9,
+      "ar": 81.4,
       "pr": 90,
       "qr": 93.7,
-      "oee2": 68.3
+      "oee2": 68.7
     },
     "mixing2": {
       "batch": 772,
-      "ar": 94,
+      "ar": 94.3,
       "pr": 91.2,
       "qr": 100,
-      "oee2": 85.7
+      "oee2": 86
     },
-    "totalAr": 87.5,
+    "totalAr": 87.8,
     "totalPr": 90.7,
     "totalQr": 97,
-    "totalOee2": 76.9
+    "totalOee2": 77.3
   },
   "target3Roll": 38,
   "breakdown": {
@@ -1178,17 +1178,17 @@
     "date": "2026-09-20",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "20/9",
-      "sum": 0,
+      "sum": 67762,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "consume": 8231,
+      "newGenerate": 17045,
+      "slowMoving": 44854,
+      "disposition": 5863,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -1483,7 +1483,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 67762,
-        "consume": 0,
+        "consume": 17349,
         "newGenerate": 17045,
         "newGenerateBTA": 13105,
         "newGenerateWBR": 3940,
@@ -1497,17 +1497,88 @@
         "dateLabel": "20/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
-        "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "sum": 67762,
+        "consume": 8231,
+        "newGenerate": 17045,
+        "newGenerateBTA": 13105,
+        "newGenerateWBR": 3940,
+        "slowMoving": 44854,
+        "disposition": 5863,
+        "hasData": true
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1692",
+        "qty": 7010,
+        "qtyMt": 7.01,
+        "percentage": 11.9
+      },
+      {
+        "rank": 2,
+        "code": "K11M2",
+        "qty": 4480,
+        "qtyMt": 4.48,
+        "percentage": 7.6
+      },
+      {
+        "rank": 3,
+        "code": "N11F3",
+        "qty": 4480,
+        "qtyMt": 4.48,
+        "percentage": 7.6
+      },
+      {
+        "rank": 4,
+        "code": "N1128",
+        "qty": 4099,
+        "qtyMt": 4.1,
+        "percentage": 7
+      },
+      {
+        "rank": 5,
+        "code": "T1400",
+        "qty": 3775,
+        "qtyMt": 3.77,
+        "percentage": 6.4
+      },
+      {
+        "rank": 6,
+        "code": "K12J5",
+        "qty": 3230,
+        "qtyMt": 3.23,
+        "percentage": 5.5
+      },
+      {
+        "rank": 7,
+        "code": "N1717",
+        "qty": 2990,
+        "qtyMt": 2.99,
+        "percentage": 5.1
+      },
+      {
+        "rank": 8,
+        "code": "K27T4",
+        "qty": 2955,
+        "qtyMt": 2.96,
+        "percentage": 5
+      },
+      {
+        "rank": 9,
+        "code": "K33M1",
+        "qty": 2450,
+        "qtyMt": 2.45,
+        "percentage": 4.2
+      },
+      {
+        "rank": 10,
+        "code": "F7894",
+        "qty": 2410,
+        "qtyMt": 2.41,
+        "percentage": 4.1
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
@@ -1537,7 +1608,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.11,
+        "avg": 73.21,
         "target": 76.6,
         "count": 7,
         "isMet": false
@@ -1631,7 +1702,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.11,
+          "avg": 73.21,
           "target": 76.6,
           "count": 7,
           "isMet": false
@@ -1662,7 +1733,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 49.3,
+          "avg": 69.5,
           "target": 76.6,
           "count": 1,
           "isMet": false
