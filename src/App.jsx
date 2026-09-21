@@ -258,87 +258,68 @@ function App() {
       <div className="max-w-7xl mx-auto space-y-6">
         
         {/* Navigation Tabs Bar */}
-        <div className="flex items-center justify-between gap-3 bg-white p-2.5 md:p-3 rounded-2xl border border-slate-200 shadow-sm overflow-x-auto">
-          <div className="flex items-center gap-2 md:gap-3 shrink-0">
+        <div className="bg-white p-2 md:p-2.5 rounded-2xl border border-slate-200 shadow-sm">
+          <nav className="flex items-center justify-between gap-1.5 md:gap-2.5 w-full">
             <button
               onClick={() => setActiveTab('dor')}
-              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl font-extrabold text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'dor'
                   ? 'bg-brand-blue text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
-              <LayoutDashboard className="w-5 h-5" />
+              <LayoutDashboard className="w-4 h-4 md:w-5 md:h-5 shrink-0" />
               <span>หน้า 1: MU_DOR</span>
             </button>
 
             <button
               onClick={() => setActiveTab('aero')}
-              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl font-extrabold text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'aero'
                   ? 'bg-indigo-700 text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
-              <Layers className="w-5 h-5 text-indigo-300" />
+              <Layers className="w-4 h-4 md:w-5 md:h-5 text-indigo-300 shrink-0" />
               <span>หน้า 2: Delay (Aero & WBR)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('extruder')}
-              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl font-extrabold text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'extruder'
                   ? 'bg-brand-blue text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
-              <Clock className="w-5 h-5 text-brand-yellow" />
+              <Clock className="w-4 h-4 md:w-5 md:h-5 text-brand-yellow shrink-0" />
               <span>หน้า 3: Extruder (TAW)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('safety')}
-              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl font-extrabold text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'safety'
                   ? 'bg-emerald-700 text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
+              <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-emerald-400 shrink-0" />
               <span>หน้า 4: Safety (LSP)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('exporter')}
-              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl font-extrabold text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm md:text-base whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'exporter'
                   ? 'bg-blue-600 text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
-              <Download className="w-5 h-5 text-blue-300" />
+              <Download className="w-4 h-4 md:w-5 md:h-5 text-blue-300 shrink-0" />
               <span>หน้า 5: Export Data</span>
             </button>
-          </div>
-          <div className="hidden 2xl:flex items-center gap-2 text-xs md:text-sm font-bold text-slate-400 px-3 whitespace-nowrap">
-            {appMode && (
-              <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-full font-bold text-[10px] flex items-center gap-1 border border-emerald-300 shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                Desktop App Mode
-              </span>
-            )}
-            <span>
-              {activeTab === 'dor' 
-                ? 'Daily Operations Overview' 
-                : activeTab === 'aero'
-                ? 'Aero Component Delay Report'
-                : activeTab === 'extruder' 
-                ? 'Extruder TAW Actual vs Spec Timeline' 
-                : activeTab === 'safety' 
-                ? 'EHS Safety & Life Saving Principles' 
-                : '11 Core Operational Metrics Exporter'}
-            </span>
-          </div>
+          </nav>
         </div>
 
         {/* PAGE 1: Daily Operations Report (MU_DOR) */}
