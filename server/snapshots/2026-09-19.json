@@ -1,6 +1,6 @@
 {
   "date": "2026-09-19",
-  "generatedAt": "2026-09-20T23:48:02.452Z",
+  "generatedAt": "2026-09-21T00:01:31.174Z",
   "waste": {
     "date": "2026-09-19",
     "millingSummary": 121.5,
@@ -147,8 +147,8 @@
       "noGum": 0,
       "noTreatment": 0,
       "breakdown": 0,
-      "angleChange": 0,
-      "produce": 0,
+      "angleChange": 24,
+      "produce": 88,
       "target": 90,
       "breakdownComment": "",
       "commentAuthor": "",

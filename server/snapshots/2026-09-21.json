@@ -1,6 +1,6 @@
 {
   "date": "2026-09-21",
-  "generatedAt": "2026-09-20T23:47:36.614Z",
+  "generatedAt": "2026-09-21T00:02:43.665Z",
   "waste": {
     "date": "2026-09-21",
     "millingSummary": 0,
@@ -31,8 +31,7 @@
     "totalAr": 0,
     "totalPr": 0,
     "totalQr": 0,
-    "totalOee2": 0,
-    "hasData": false
+    "totalOee2": 0
   },
   "target3Roll": 0,
   "breakdown": {
@@ -688,7 +687,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.16,
+          "avg": 73.11,
           "target": 76.6,
           "count": 7,
           "isMet": false

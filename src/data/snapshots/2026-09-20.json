@@ -1,6 +1,6 @@
 {
   "date": "2026-09-20",
-  "generatedAt": "2026-09-20T23:47:48.909Z",
+  "generatedAt": "2026-09-21T00:01:14.413Z",
   "waste": {
     "date": "2026-09-20",
     "millingSummary": 94,
@@ -65,23 +65,23 @@
   "cms": {
     "date": "2026-09-20",
     "mixing1": {
-      "batch": 656,
-      "ar": 81.2,
-      "pr": 90.5,
+      "batch": 657,
+      "ar": 80.9,
+      "pr": 90,
       "qr": 93.7,
-      "oee2": 68.8
+      "oee2": 68.3
     },
     "mixing2": {
-      "batch": 765,
-      "ar": 93.9,
-      "pr": 91.3,
+      "batch": 772,
+      "ar": 94,
+      "pr": 91.2,
       "qr": 100,
       "oee2": 85.7
     },
-    "totalAr": 87.6,
-    "totalPr": 90.9,
+    "totalAr": 87.5,
+    "totalPr": 90.7,
     "totalQr": 97,
-    "totalOee2": 77.2
+    "totalOee2": 76.9
   },
   "target3Roll": 38,
   "breakdown": {
@@ -134,8 +134,8 @@
       "noGum": 0,
       "noTreatment": 0,
       "breakdown": 0,
-      "angleChange": 0,
-      "produce": 0,
+      "angleChange": 22,
+      "produce": 79,
       "target": 90,
       "breakdownComment": "",
       "commentAuthor": "",
@@ -1537,7 +1537,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.16,
+        "avg": 73.11,
         "target": 76.6,
         "count": 7,
         "isMet": false
@@ -1631,7 +1631,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.16,
+          "avg": 73.11,
           "target": 76.6,
           "count": 7,
           "isMet": false
@@ -1705,20 +1705,40 @@
     "_file": "09 Aero Build September 2026.xls",
     "_sheet": "20",
     "_date": "2026-09-20",
-    "totalDelayMin": 480,
-    "totalDelayHours": 8,
+    "totalDelayMin": 630,
+    "totalDelayHours": 10.5,
     "totalExtrusionMin": 0,
     "totalExtrusionHours": 0,
-    "totalCompMin": 480,
-    "totalCompHours": 8,
+    "totalCompMin": 630,
+    "totalCompHours": 10.5,
     "summary": {
-      "extrusionCount": 0,
-      "compCount": 5,
-      "totalItems": 5
+      "extrusionCount": 1,
+      "compCount": 6,
+      "totalItems": 7
     },
     "items": [
       {
-        "id": "50-0",
+        "id": "40-0",
+        "machine": "UL",
+        "rawText": "d/l tread 02.0-04.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "49-1",
+        "machine": "UO",
+        "rawText": "d/l chafer 04.30-07.00",
+        "category": "Comp",
+        "componentName": "Chafer",
+        "timeRangeStr": "04.30 - 07.00",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "50-2",
         "machine": "UP",
         "rawText": "d/l band > 11.30 - 14.00",
         "category": "Comp",
@@ -1728,7 +1748,7 @@
         "durationHours": 2.5
       },
       {
-        "id": "51-1",
+        "id": "51-3",
         "machine": "UP",
         "rawText": "d/l chafer 16.00-17.00 d/l band 21.00-23.00",
         "category": "Comp",
@@ -1738,7 +1758,7 @@
         "durationHours": 1
       },
       {
-        "id": "59-2",
+        "id": "59-4",
         "machine": "US",
         "rawText": "d/l band > 11.30 - 14.00",
         "category": "Comp",
@@ -1748,7 +1768,7 @@
         "durationHours": 2.5
       },
       {
-        "id": "60-3",
+        "id": "60-5",
         "machine": "US",
         "rawText": "d/l bead 19.00-20.00 d/l band 21.00-23.00",
         "category": "Comp",
@@ -1758,7 +1778,7 @@
         "durationHours": 1
       },
       {
-        "id": "62-4",
+        "id": "62-6",
         "machine": "TAKU",
         "rawText": "d/l ply.3 > 11.30 - 12.30",
         "category": "Comp",
