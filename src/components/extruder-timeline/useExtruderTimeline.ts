@@ -64,48 +64,68 @@ export function useExtruderTimeline(
       const isLocalhost = typeof window !== "undefined" && 
         (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
 
-      // 1. Try local Express API / Vercel API
-      try {
-        const queryParams = new URLSearchParams({ date: target });
-        if (forceRefresh) queryParams.set("refresh", "true");
-        const controller = new AbortController();
-        const timeoutMs = isLocalhost ? 10000 : 6000;
-        const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-        const res = await fetch(`${endpoint}?${queryParams.toString()}`, {
-          cache: "no-store",
-          headers: { accept: "application/json" },
-          signal: controller.signal
-        });
-        clearTimeout(timeoutId);
-        const contentType = res.headers.get("content-type");
-        if (res.ok && contentType && contentType.includes("application/json")) {
-          const resData = await res.json();
-          if (resData && (resData.success !== false || resData.timelines)) {
-            json = resData as ExtruderTimelineResponse;
-          }
-        } else {
-          fetchError = new Error(`HTTP ${res.status}`);
-        }
-      } catch (e) {
-        fetchError = e instanceof Error ? e : new Error("API network error");
-      }
+      const todayStr = bangkokProductionDate();
+      const isPastDate = target < todayStr;
 
-      // 2. Cloud Fallback (Vercel / Static): load pre-built JSON from /data/extruder/
-      if (!json) {
+      // 1. For past dates: load pre-built JSON immediately (0 latency, 5ms instant load)
+      if (isPastDate && !forceRefresh) {
         try {
-          const cacheBuster = forceRefresh ? `?_t=${Date.now()}` : "";
-          const staticController = new AbortController();
-          const staticTimeoutId = setTimeout(() => staticController.abort(), 10000);
-          const staticRes = await fetch(`/data/extruder/${encodeURIComponent(target)}.json${cacheBuster}`, {
+          const staticRes = await fetch(`/data/extruder/${encodeURIComponent(target)}.json`, {
             cache: "no-store",
-            headers: { accept: "application/json" },
-            signal: staticController.signal
+            headers: { accept: "application/json" }
           });
-          clearTimeout(staticTimeoutId);
           const contentType = staticRes.headers.get("content-type");
           if (staticRes.ok && (!contentType || contentType.includes("application/json"))) {
             const staticData = await staticRes.json();
-            if (staticData && (staticData.success !== false || staticData.timelines)) {
+            if (staticData && (staticData.success !== false || staticData.lines)) {
+              json = staticData as ExtruderTimelineResponse;
+            }
+          }
+        } catch (e) {
+          // Fall through to API
+        }
+      }
+
+      // 2. Query live Express API / Vercel API if needed (for today or if static not found)
+      if (!json) {
+        try {
+          const queryParams = new URLSearchParams({ date: target });
+          if (forceRefresh) queryParams.set("refresh", "true");
+          const controller = new AbortController();
+          const timeoutMs = isLocalhost ? 10000 : 6000;
+          const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+          const res = await fetch(`${endpoint}?${queryParams.toString()}`, {
+            cache: "no-store",
+            headers: { accept: "application/json" },
+            signal: controller.signal
+          });
+          clearTimeout(timeoutId);
+          const contentType = res.headers.get("content-type");
+          if (res.ok && contentType && contentType.includes("application/json")) {
+            const resData = await res.json();
+            if (resData && (resData.success !== false || resData.lines)) {
+              json = resData as ExtruderTimelineResponse;
+            }
+          } else {
+            fetchError = new Error(`HTTP ${res.status}`);
+          }
+        } catch (e) {
+          fetchError = e instanceof Error ? e : new Error("API network error");
+        }
+      }
+
+      // 3. Last fallback: try static JSON with cache buster if API failed
+      if (!json) {
+        try {
+          const cacheBuster = forceRefresh ? `?_t=${Date.now()}` : "";
+          const staticRes = await fetch(`/data/extruder/${encodeURIComponent(target)}.json${cacheBuster}`, {
+            cache: "no-store",
+            headers: { accept: "application/json" }
+          });
+          const contentType = staticRes.headers.get("content-type");
+          if (staticRes.ok && (!contentType || contentType.includes("application/json"))) {
+            const staticData = await staticRes.json();
+            if (staticData && (staticData.success !== false || staticData.lines)) {
               json = staticData as ExtruderTimelineResponse;
             }
           }

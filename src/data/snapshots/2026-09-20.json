@@ -1,10 +1,10 @@
 {
   "date": "2026-09-20",
-  "generatedAt": "2026-09-21T03:45:15.744Z",
+  "generatedAt": "2026-09-21T03:54:15.206Z",
   "waste": {
     "date": "2026-09-20",
     "millingSummary": 94,
-    "frictionSummary": 268.3,
+    "frictionSummary": 274.3,
     "beadSummary": 0,
     "millingTop": [
       {
@@ -52,9 +52,9 @@
         "isHigh": false
       },
       {
-        "code": "F53",
-        "amount": 14.1,
-        "reason": "TIGHT EDGES",
+        "code": "F46",
+        "amount": 18.5,
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
@@ -1807,7 +1807,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.4,
+          "avg": 72.7,
           "target": 76.6,
           "count": 1,
           "isMet": false

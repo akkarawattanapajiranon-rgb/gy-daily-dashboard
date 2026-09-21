@@ -21,8 +21,8 @@ async function runMorningSync() {
   const today = new Date(now.getTime() + (7 * 3600 * 1000));
   const datesToSync = [];
   
-  // Sync today and past 14 days (15 days rolling window)
-  for (let i = 0; i < 15; i++) {
+  // Sync today, yesterday, and 2 days ago (recent days with potential updates)
+  for (let i = 0; i < 3; i++) {
     const d = new Date(today);
     d.setDate(d.getDate() - i);
     const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -34,7 +34,8 @@ async function runMorningSync() {
       await generateSnapshot(dateStr);
       // Pre-generate static Extruder Timeline files for Vercel/Cloud deployment
       try {
-        await getExtruderTimeline(dateStr, undefined, true);
+        const isToday = (dateStr === datesToSync[0]);
+        await getExtruderTimeline(dateStr, undefined, isToday);
       } catch (extErr) {
         console.warn(`[Morning Sync Cron] Extruder sync notice for ${dateStr}:`, extErr.message);
       }
