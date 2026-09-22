@@ -1015,15 +1015,18 @@
   "weeklyOee": {
     "date": "2026-08-30",
     "activeWeek": {
-      "weekNum": 5,
+      "weekNum": 35,
+      "monthWeekNum": 4,
+      "code": "Wk35",
+      "shortLabel": "Wk35",
       "startDay": 24,
-      "endDay": 30,
-      "label": "W5 (24/8 - 30/8)",
+      "endDay": 31,
+      "label": "Wk35 (24/8 - 31/8)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 57.03,
+        "avg": 58.06,
         "target": 62,
-        "count": 6,
+        "count": 7,
         "isMet": false
       },
       "tuber": {
@@ -1047,72 +1050,47 @@
     },
     "weeks": [
       {
-        "weekNum": 1,
+        "weekNum": 32,
+        "monthWeekNum": 1,
+        "code": "Wk32",
+        "shortLabel": "Wk32",
         "startDay": 1,
-        "endDay": 2,
-        "label": "W1 (1/8 - 2/8)",
-        "isCurrentWeek": false,
-        "quad": {
-          "avg": 57.98,
-          "target": 62,
-          "count": 2,
-          "isMet": false
-        },
-        "tuber": {
-          "avg": 62.17,
-          "target": 62,
-          "count": 2,
-          "isMet": true
-        },
-        "fischer": {
-          "avg": 55.03,
-          "target": 60,
-          "count": 2,
-          "isMet": false
-        },
-        "mixing": {
-          "avg": 70.05,
-          "target": 76.6,
-          "count": 2,
-          "isMet": false
-        }
-      },
-      {
-        "weekNum": 2,
-        "startDay": 3,
         "endDay": 9,
-        "label": "W2 (3/8 - 9/8)",
+        "label": "Wk32 (1/8 - 9/8)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 57.03,
+          "avg": 57.27,
           "target": 62,
-          "count": 6,
+          "count": 8,
           "isMet": false
         },
         "tuber": {
-          "avg": 60.67,
+          "avg": 61.04,
           "target": 62,
-          "count": 6,
+          "count": 8,
           "isMet": false
         },
         "fischer": {
-          "avg": 50.11,
+          "avg": 51.34,
           "target": 60,
-          "count": 6,
+          "count": 8,
           "isMet": false
         },
         "mixing": {
-          "avg": 77.1,
+          "avg": 73.58,
           "target": 76.6,
-          "count": 2,
-          "isMet": true
+          "count": 4,
+          "isMet": false
         }
       },
       {
-        "weekNum": 3,
+        "weekNum": 33,
+        "monthWeekNum": 2,
+        "code": "Wk33",
+        "shortLabel": "Wk33",
         "startDay": 10,
         "endDay": 16,
-        "label": "W3 (10/8 - 16/8)",
+        "label": "Wk33 (10/8 - 16/8)",
         "isCurrentWeek": false,
         "quad": {
           "avg": 57.78,
@@ -1140,10 +1118,13 @@
         }
       },
       {
-        "weekNum": 4,
+        "weekNum": 34,
+        "monthWeekNum": 3,
+        "code": "Wk34",
+        "shortLabel": "Wk34",
         "startDay": 17,
         "endDay": 23,
-        "label": "W4 (17/8 - 23/8)",
+        "label": "Wk34 (17/8 - 23/8)",
         "isCurrentWeek": false,
         "quad": {
           "avg": 56.87,
@@ -1171,15 +1152,18 @@
         }
       },
       {
-        "weekNum": 5,
+        "weekNum": 35,
+        "monthWeekNum": 4,
+        "code": "Wk35",
+        "shortLabel": "Wk35",
         "startDay": 24,
-        "endDay": 30,
-        "label": "W5 (24/8 - 30/8)",
+        "endDay": 31,
+        "label": "Wk35 (24/8 - 31/8)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 57.03,
+          "avg": 58.06,
           "target": 62,
-          "count": 6,
+          "count": 7,
           "isMet": false
         },
         "tuber": {
@@ -1192,37 +1176,6 @@
           "avg": 51.12,
           "target": 60,
           "count": 7,
-          "isMet": false
-        },
-        "mixing": {
-          "avg": null,
-          "target": 76.6,
-          "count": 0,
-          "isMet": false
-        }
-      },
-      {
-        "weekNum": 6,
-        "startDay": 31,
-        "endDay": 31,
-        "label": "W6 (31/8 - 31/8)",
-        "isCurrentWeek": false,
-        "quad": {
-          "avg": null,
-          "target": 62,
-          "count": 0,
-          "isMet": false
-        },
-        "tuber": {
-          "avg": null,
-          "target": 62,
-          "count": 0,
-          "isMet": false
-        },
-        "fischer": {
-          "avg": null,
-          "target": 60,
-          "count": 0,
           "isMet": false
         },
         "mixing": {

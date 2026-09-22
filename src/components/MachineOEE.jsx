@@ -22,7 +22,7 @@ export default function MachineOEE({ weeklyData, isLoading, mixingData }) {
           const cnt = Math.max(w?.quad?.count || 0, w?.mixing?.count || 0, w?.tuber?.count || 0, w?.fischer?.count || 0);
           return cnt > 0;
         });
-        setSelectedWeekNum(latestWithData ? latestWithData.weekNum : active?.weekNum || 1);
+        setSelectedWeekNum(latestWithData ? latestWithData.weekNum : (active?.weekNum || weeklyData.weeks[0]?.weekNum || 1));
       }
     } else if (weeklyData?.activeWeek?.weekNum) {
       setSelectedWeekNum(weeklyData.activeWeek.weekNum);
@@ -87,7 +87,7 @@ export default function MachineOEE({ weeklyData, isLoading, mixingData }) {
                   }`}
                   title={w.label}
                 >
-                  W{w.weekNum}
+                  {w.shortLabel || w.code || `W${w.weekNum}`}
                 </button>
               );
             })}

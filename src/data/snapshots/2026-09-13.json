@@ -1,6 +1,6 @@
 {
   "date": "2026-09-13",
-  "generatedAt": "2026-09-22T01:47:53.029Z",
+  "generatedAt": "2026-09-22T03:10:42.947Z",
   "waste": {
     "date": "2026-09-13",
     "millingSummary": 152.8,
@@ -1414,10 +1414,13 @@
   "weeklyOee": {
     "date": "2026-09-13",
     "activeWeek": {
-      "weekNum": 2,
+      "weekNum": 37,
+      "monthWeekNum": 2,
+      "code": "Wk37",
+      "shortLabel": "Wk37",
       "startDay": 7,
       "endDay": 13,
-      "label": "W2 (7/9 - 13/9)",
+      "label": "Wk37 (7/9 - 13/9)",
       "isCurrentWeek": true,
       "quad": {
         "avg": 56.17,
@@ -1446,10 +1449,13 @@
     },
     "weeks": [
       {
-        "weekNum": 1,
+        "weekNum": 36,
+        "monthWeekNum": 1,
+        "code": "Wk36",
+        "shortLabel": "Wk36",
         "startDay": 1,
         "endDay": 6,
-        "label": "W1 (1/9 - 6/9)",
+        "label": "Wk36 (1/9 - 6/9)",
         "isCurrentWeek": false,
         "quad": {
           "avg": 57.1,
@@ -1477,10 +1483,13 @@
         }
       },
       {
-        "weekNum": 2,
+        "weekNum": 37,
+        "monthWeekNum": 2,
+        "code": "Wk37",
+        "shortLabel": "Wk37",
         "startDay": 7,
         "endDay": 13,
-        "label": "W2 (7/9 - 13/9)",
+        "label": "Wk37 (7/9 - 13/9)",
         "isCurrentWeek": true,
         "quad": {
           "avg": 56.17,
@@ -1508,10 +1517,13 @@
         }
       },
       {
-        "weekNum": 3,
+        "weekNum": 38,
+        "monthWeekNum": 3,
+        "code": "Wk38",
+        "shortLabel": "Wk38",
         "startDay": 14,
         "endDay": 20,
-        "label": "W3 (14/9 - 20/9)",
+        "label": "Wk38 (14/9 - 20/9)",
         "isCurrentWeek": false,
         "quad": {
           "avg": 57.1,
@@ -1539,21 +1551,24 @@
         }
       },
       {
-        "weekNum": 4,
+        "weekNum": 39,
+        "monthWeekNum": 4,
+        "code": "Wk39",
+        "shortLabel": "Wk39",
         "startDay": 21,
-        "endDay": 27,
-        "label": "W4 (21/9 - 27/9)",
+        "endDay": 30,
+        "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 56.55,
+          "avg": 55.75,
           "target": 62,
-          "count": 6,
+          "count": 7,
           "isMet": false
         },
         "tuber": {
-          "avg": null,
+          "avg": 56.62,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "fischer": {
@@ -1563,40 +1578,9 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 70.85,
+          "avg": 72.8,
           "target": 76.6,
           "count": 2,
-          "isMet": false
-        }
-      },
-      {
-        "weekNum": 5,
-        "startDay": 28,
-        "endDay": 30,
-        "label": "W5 (28/9 - 30/9)",
-        "isCurrentWeek": false,
-        "quad": {
-          "avg": null,
-          "target": 62,
-          "count": 0,
-          "isMet": false
-        },
-        "tuber": {
-          "avg": null,
-          "target": 62,
-          "count": 0,
-          "isMet": false
-        },
-        "fischer": {
-          "avg": null,
-          "target": 60,
-          "count": 0,
-          "isMet": false
-        },
-        "mixing": {
-          "avg": null,
-          "target": 76.6,
-          "count": 0,
           "isMet": false
         }
       }

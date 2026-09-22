@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-22T02:10:53.012Z",
+  "generatedAt": "2026-09-22T03:15:24.441Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 0,
@@ -22,18 +22,18 @@
       "oee2": 74.7
     },
     "mixing2": {
-      "batch": 49,
-      "ar": 68.7,
-      "pr": 91.3,
+      "batch": 91,
+      "ar": 77.1,
+      "pr": 90.4,
       "qr": 100,
-      "oee2": 62.8
+      "oee2": 69.7
     },
-    "totalAr": 77.2,
-    "totalPr": 90.2,
-    "totalQr": 98.4,
-    "totalOee2": 68.6
+    "totalAr": 80.6,
+    "totalPr": 89.9,
+    "totalQr": 98.8,
+    "totalOee2": 71.7
   },
-  "target3Roll": 4,
+  "target3Roll": 9,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -101,26 +101,46 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 4,
-    "totalRelease": 4,
+    "totalRolls": 9,
+    "totalRelease": 9,
     "totalHold": 0,
-    "totalPending": 27,
+    "totalPending": 22,
     "totalScheduled": 31,
     "codeBreakdown": [
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 50
+        "percentage": 22.22
+      },
+      {
+        "code": "NU27",
+        "count": 2,
+        "percentage": 22.22
       },
       {
         "code": "DDSV",
         "count": 1,
-        "percentage": 25
+        "percentage": 11.11
       },
       {
         "code": "EESV",
         "count": 1,
-        "percentage": 25
+        "percentage": 11.11
+      },
+      {
+        "code": "RU13",
+        "count": 1,
+        "percentage": 11.11
+      },
+      {
+        "code": "RU11",
+        "count": 1,
+        "percentage": 11.11
+      },
+      {
+        "code": "RU53",
+        "count": 1,
+        "percentage": 11.11
       }
     ],
     "holdBreakdown": [],
@@ -174,17 +194,37 @@
     "output": {
       "hasData": true,
       "day": 22,
-      "grandTotal": 16,
+      "grandTotal": 44,
       "codeBreakdown": [
         {
           "code": "W1LG",
           "count": 8,
-          "percentage": 50
+          "percentage": 18.18
         },
         {
           "code": "WGMS",
           "count": 8,
-          "percentage": 50
+          "percentage": 18.18
+        },
+        {
+          "code": "WYAF",
+          "count": 8,
+          "percentage": 18.18
+        },
+        {
+          "code": "WYAL",
+          "count": 8,
+          "percentage": 18.18
+        },
+        {
+          "code": "W13L",
+          "count": 6,
+          "percentage": 13.64
+        },
+        {
+          "code": "W13F",
+          "count": 6,
+          "percentage": 13.64
         }
       ],
       "shifts": {
@@ -202,7 +242,7 @@
               "totalQty": 8
             },
             {
-              "partId": "TL0074",
+              "partId": "TL00074",
               "code1": "WGMS",
               "code2": "",
               "code": "WGMS",
@@ -210,9 +250,49 @@
               "qtyProduced": 8,
               "qtySapphire": 0,
               "totalQty": 8
+            },
+            {
+              "partId": "TL00443",
+              "code1": "W13L",
+              "code2": "",
+              "code": "W13L",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            },
+            {
+              "partId": "TL00442",
+              "code1": "W13F",
+              "code2": "",
+              "code": "W13F",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            },
+            {
+              "partId": "TL00182",
+              "code1": "WYAF",
+              "code2": "",
+              "code": "WYAF",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00183",
+              "code1": "WYAL",
+              "code2": "",
+              "code": "WYAL",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
             }
           ],
-          "totalQty": 16
+          "totalQty": 44
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -664,7 +744,7 @@
       "label": "W4 (21/9 - 27/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 57.01,
+        "avg": 54.15,
         "target": 62,
         "count": 2,
         "isMet": false
@@ -682,7 +762,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 71.3,
+        "avg": 72.85,
         "target": 76.6,
         "count": 2,
         "isMet": false
@@ -789,7 +869,7 @@
         "label": "W4 (21/9 - 27/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 57.01,
+          "avg": 54.15,
           "target": 62,
           "count": 2,
           "isMet": false
@@ -807,7 +887,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.3,
+          "avg": 72.85,
           "target": 76.6,
           "count": 2,
           "isMet": false
