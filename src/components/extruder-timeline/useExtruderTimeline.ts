@@ -75,11 +75,13 @@ export function useExtruderTimeline(
             cache: "no-store",
             headers: { accept: "application/json" }
           });
-          const contentType = staticRes.headers.get("content-type");
-          if (staticRes.ok && (!contentType || contentType.includes("application/json"))) {
-            const staticData = await staticRes.json();
-            if (staticData && (staticData.success !== false || staticData.lines)) {
-              json = staticData as ExtruderTimelineResponse;
+          if (staticRes.ok) {
+            const text = await staticRes.text();
+            if (text && !text.trim().startsWith("<")) {
+              const staticData = JSON.parse(text);
+              if (staticData && (staticData.success !== false || staticData.lines)) {
+                json = staticData as ExtruderTimelineResponse;
+              }
             }
           }
         } catch (e) {
@@ -93,7 +95,7 @@ export function useExtruderTimeline(
           const queryParams = new URLSearchParams({ date: target });
           if (forceRefresh) queryParams.set("refresh", "true");
           const controller = new AbortController();
-          const timeoutMs = isLocalhost ? 10000 : 6000;
+          const timeoutMs = isLocalhost ? 15000 : 12000;
           const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
           const res = await fetch(`${endpoint}?${queryParams.toString()}`, {
             cache: "no-store",
@@ -101,11 +103,13 @@ export function useExtruderTimeline(
             signal: controller.signal
           });
           clearTimeout(timeoutId);
-          const contentType = res.headers.get("content-type");
-          if (res.ok && contentType && contentType.includes("application/json")) {
-            const resData = await res.json();
-            if (resData && (resData.success !== false || resData.lines)) {
-              json = resData as ExtruderTimelineResponse;
+          if (res.ok) {
+            const text = await res.text();
+            if (text && !text.trim().startsWith("<")) {
+              const resData = JSON.parse(text);
+              if (resData && (resData.success !== false || resData.lines)) {
+                json = resData as ExtruderTimelineResponse;
+              }
             }
           } else {
             fetchError = new Error(`HTTP ${res.status}`);
@@ -123,11 +127,13 @@ export function useExtruderTimeline(
             cache: "no-store",
             headers: { accept: "application/json" }
           });
-          const contentType = staticRes.headers.get("content-type");
-          if (staticRes.ok && (!contentType || contentType.includes("application/json"))) {
-            const staticData = await staticRes.json();
-            if (staticData && (staticData.success !== false || staticData.lines)) {
-              json = staticData as ExtruderTimelineResponse;
+          if (staticRes.ok) {
+            const text = await staticRes.text();
+            if (text && !text.trim().startsWith("<")) {
+              const staticData = JSON.parse(text);
+              if (staticData && (staticData.success !== false || staticData.lines)) {
+                json = staticData as ExtruderTimelineResponse;
+              }
             }
           }
         } catch (staticErr) {

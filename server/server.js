@@ -370,6 +370,43 @@ app.get('/api/extruder-timeline', async (req, res) => {
   const date = req.query.date || bangkokProductionDate();
   const forceRefresh = req.query.refresh === 'true';
   console.log(`Fetching Extruder Timeline for date: ${date}${forceRefresh ? ' (forceRefresh)' : ''}`);
+
+  // Instant fast-path: for past dates with pre-computed file, serve directly in 1ms
+  const isPast = date < bangkokProductionDate();
+  if (isPast && !forceRefresh) {
+    const publicFile = path.join(__dirname, '..', 'public', 'data', 'extruder', `${date}.json`);
+    const storeFile = path.join(__dirname, 'extruder_store', `${date}.json`);
+    if (fs.existsSync(publicFile)) {
+      try {
+        const fileContent = fs.readFileSync(publicFile, 'utf8');
+        res.setHeader('Cache-Control', 'public, max-age=86400');
+        return res.type('json').send(fileContent);
+      } catch (e) {}
+    }
+    if (fs.existsSync(storeFile)) {
+      try {
+        const fileContent = fs.readFileSync(storeFile, 'utf8');
+        const json = JSON.parse(fileContent);
+        if (json.lines) {
+          res.setHeader('Cache-Control', 'public, max-age=86400');
+          return res.json({
+            success: true,
+            cached: true,
+            date,
+            asOfMs: json.fetchedAtMs,
+            lines: Object.entries(json.lines).map(([line, s]) => ({
+              line,
+              samples: [],
+              runs: s.rows || [],
+              truncated: s.truncated || false,
+              error: null
+            }))
+          });
+        }
+      } catch (e) {}
+    }
+  }
+
   try {
     const data = await getExtruderTimeline(date, undefined, forceRefresh);
     res.setHeader('Cache-Control', 'no-store, max-age=0');
@@ -442,8 +479,14 @@ app.get('/download/DOR_Dashboard.exe', (req, res) => {
   res.status(404).send('DOR_Dashboard.exe not found');
 });
 
+// Serve static extruder timeline JSON files directly from public and store with priority
+app.use('/data/extruder', express.static(path.join(__dirname, '..', 'public', 'data', 'extruder')));
+app.use('/data/extruder', express.static(path.join(__dirname, 'extruder_store')));
+app.use('/data', express.static(path.join(__dirname, '..', 'public', 'data')));
+
 // Serve built Vite assets AFTER API routes
 app.use(express.static(path.join(__dirname, '..', 'dist')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // SPA fallback – serve index.html for any non‑API route
 app.use((req, res) => {
