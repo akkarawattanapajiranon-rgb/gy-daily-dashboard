@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-22T00:00:28.439Z",
+  "generatedAt": "2026-09-22T01:30:28.279Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-22",
     "mixing1": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 43,
+      "ar": 85.3,
+      "pr": 91,
+      "qr": 100,
+      "oee2": 77.6
     },
     "mixing2": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 28,
+      "ar": 58.4,
+      "pr": 92.5,
+      "qr": 100,
+      "oee2": 54
     },
-    "totalAr": 0,
-    "totalPr": 0,
-    "totalQr": 0,
-    "totalOee2": 0
+    "totalAr": 72,
+    "totalPr": 91.6,
+    "totalQr": 100,
+    "totalOee2": 65.9
   },
-  "target3Roll": 0,
+  "target3Roll": 2,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -101,14 +101,25 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
-    "totalRelease": 0,
+    "totalRolls": 2,
+    "totalRelease": 2,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 23,
+    "totalScheduled": 25,
+    "codeBreakdown": [
+      {
+        "code": "DDSV",
+        "count": 1,
+        "percentage": 50
+      },
+      {
+        "code": "EESV",
+        "count": 1,
+        "percentage": 50
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-22",
@@ -226,13 +237,39 @@
     "output": {
       "hasData": true,
       "day": 22,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 6,
+      "codeBreakdown": [
+        {
+          "code": "WG4B",
+          "count": 3,
+          "percentage": 50
+        },
+        {
+          "code": "QLIX",
+          "count": 3,
+          "percentage": 50
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "SW09102",
+              "code": "WG4B",
+              "qtyTarget": 3,
+              "qtyProduced": 3,
+              "totalQty": 3
+            },
+            {
+              "partId": "SW08822",
+              "code": "QLIX",
+              "qtyTarget": 3,
+              "qtyProduced": 3,
+              "totalQty": 3
+            }
+          ],
+          "totalQty": 6
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -586,7 +623,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 62037,
-        "consume": 0,
+        "consume": 11649,
         "newGenerate": 14360,
         "newGenerateBTA": 11870,
         "newGenerateWBR": 2490,
@@ -634,15 +671,15 @@
         "isMet": false
       },
       "fischer": {
-        "avg": null,
+        "avg": 56.71,
         "target": 60,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "mixing": {
-        "avg": 73.4,
+        "avg": 69.95,
         "target": 76.6,
-        "count": 1,
+        "count": 2,
         "isMet": false
       }
     },
@@ -759,15 +796,15 @@
           "isMet": false
         },
         "fischer": {
-          "avg": null,
+          "avg": 56.71,
           "target": 60,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "mixing": {
-          "avg": 73.4,
+          "avg": 69.95,
           "target": 76.6,
-          "count": 1,
+          "count": 2,
           "isMet": false
         }
       },

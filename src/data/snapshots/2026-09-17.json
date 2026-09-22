@@ -1,6 +1,6 @@
 {
   "date": "2026-09-17",
-  "generatedAt": "2026-09-21T04:17:04.664Z",
+  "generatedAt": "2026-09-22T01:29:09.904Z",
   "waste": {
     "date": "2026-09-17",
     "millingSummary": 160.8,
@@ -253,41 +253,7 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": true,
-      "totalProduce": 89,
-      "totalWbr": 76,
-      "totalSapphire": 13,
-      "totalAngleChanges": 21,
-      "totalNormal": 76,
-      "totalSticky": 0,
-      "normalPct": 100,
-      "stickyPct": 0,
-      "shifts": {
-        "shift1": {
-          "wbr": 25,
-          "sapphire": 5,
-          "angleChanges": 6,
-          "normal": 25,
-          "sticky": 0,
-          "total": 30
-        },
-        "shift2": {
-          "wbr": 27,
-          "sapphire": 3,
-          "angleChanges": 9,
-          "normal": 27,
-          "sticky": 0,
-          "total": 30
-        },
-        "shift3": {
-          "wbr": 24,
-          "sapphire": 5,
-          "angleChanges": 6,
-          "normal": 24,
-          "sticky": 0,
-          "total": 29
-        }
-      }
+      "hasData": false
     }
   },
   "roll3": {
@@ -2025,15 +1991,15 @@
           "isMet": false
         },
         "fischer": {
-          "avg": null,
+          "avg": 56.71,
           "target": 60,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "mixing": {
-          "avg": 73.5,
+          "avg": 69.65,
           "target": 76.6,
-          "count": 1,
+          "count": 2,
           "isMet": false
         }
       },

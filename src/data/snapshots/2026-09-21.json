@@ -1,6 +1,6 @@
 {
   "date": "2026-09-21",
-  "generatedAt": "2026-09-22T00:00:39.666Z",
+  "generatedAt": "2026-09-22T01:30:42.729Z",
   "waste": {
     "date": "2026-09-21",
     "millingSummary": 390.5,
@@ -79,10 +79,10 @@
     "date": "2026-09-21",
     "mixing1": {
       "batch": 399,
-      "ar": 81.4,
+      "ar": 83.3,
       "pr": 87.3,
       "qr": 86.2,
-      "oee2": 61.3
+      "oee2": 62.7
     },
     "mixing2": {
       "batch": 729,
@@ -91,95 +91,158 @@
       "qr": 100,
       "oee2": 81.6
     },
-    "totalAr": 88.6,
+    "totalAr": 89.4,
     "totalPr": 87.3,
     "totalQr": 94.8,
-    "totalOee2": 73.4
+    "totalOee2": 74
   },
   "target3Roll": 34,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-21",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Quad",
+        "totalDurationMin": 180,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Conveyor",
+            "symptom": "เดินLine ไม่ได้",
+            "cause": "Drive เสีย",
+            "action": "เปลี่ยนDrive 1 ตัวและ 20com e 1อัน",
+            "fixType": "ถาวร",
+            "durationMin": 120,
+            "jobType": "BD",
+            "fixBy": "ทีป/ริน/เอฟ"
+          },
+          {
+            "shift": "2",
+            "zone": "TCU",
+            "symptom": "Low temp.",
+            "cause": "Low water.",
+            "action": "Refill water.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": ""
+          }
+        ]
+      },
+      {
+        "machine": "BB#1",
+        "totalDurationMin": 30,
+        "details": [
+          {
+            "shift": "2",
+            "zone": "ประตูบน",
+            "symptom": "คานstopper ประตูบนหลุด",
+            "cause": "น็อตยึดคานคลายตัวหลุด",
+            "action": "ใส่น็อตยึดคานเข้าที่เดิม",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "อ๋อย,โฟล์ค,โต"
+          }
+        ]
+      },
+      {
+        "machine": "Low Angle#2",
+        "totalDurationMin": 20,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Cutter cut ply",
+            "symptom": "พายตัดแล้วเป็นขุย",
+            "cause": "ใบมีดหมดความคม",
+            "action": "เปลี่ยนใบมีดตัดพายใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/โฟร์ค"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.0417,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 6.25,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.8229,
+      "hasData": true
     }
   },
   "fischer": {
     "date": "2026-09-21",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 73.61,
+      "ar_pct": 57.87,
+      "pr_pct": 98.2,
+      "qr_pct": 99.79,
+      "oee1_pct": 41.75,
+      "oee2_pct": 56.71
     },
     "loss": {
       "hasData": true,
-      "noSchedule": 0,
-      "noCart": 0,
+      "noSchedule": 140,
+      "noCart": 60,
       "noGum": 0,
       "noTreatment": 0,
-      "breakdown": 0,
-      "angleChange": 0,
-      "produce": 0,
+      "breakdown": 240,
+      "angleChange": 15,
+      "produce": 62,
       "target": 90,
-      "breakdownComment": "",
-      "commentAuthor": "",
+      "breakdownComment": "Spacial PM",
+      "commentAuthor": "Paisal Phoompong",
       "otherComments": []
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 66,
-      "totalWbr": 57,
-      "totalSapphire": 9,
-      "totalAngleChanges": 16,
-      "totalNormal": 57,
+      "totalProduce": 27,
+      "totalWbr": 23,
+      "totalSapphire": 4,
+      "totalAngleChanges": 7,
+      "totalNormal": 23,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 11,
+          "wbr": 0,
           "sapphire": 0,
-          "angleChanges": 2,
-          "normal": 11,
+          "angleChanges": 0,
+          "normal": 0,
           "sticky": 0,
-          "total": 11
+          "total": 0
         },
         "shift2": {
-          "wbr": 23,
-          "sapphire": 5,
-          "angleChanges": 7,
-          "normal": 23,
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
           "sticky": 0,
-          "total": 28
+          "total": 0
         },
         "shift3": {
           "wbr": 23,
@@ -1555,7 +1618,7 @@
       "sum": 62037,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
+      "consume": 11649,
       "newGenerate": 14360,
       "slowMoving": 40924,
       "disposition": 6753,
@@ -1884,7 +1947,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 62037,
-        "consume": 0,
+        "consume": 11649,
         "newGenerate": 14360,
         "newGenerateBTA": 11870,
         "newGenerateWBR": 2490,
@@ -1988,13 +2051,13 @@
         "isMet": false
       },
       "fischer": {
-        "avg": null,
+        "avg": 56.71,
         "target": 60,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "mixing": {
-        "avg": 73.4,
+        "avg": 74,
         "target": 76.6,
         "count": 1,
         "isMet": false
@@ -2113,13 +2176,13 @@
           "isMet": false
         },
         "fischer": {
-          "avg": null,
+          "avg": 56.71,
           "target": 60,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "mixing": {
-          "avg": 73.4,
+          "avg": 74,
           "target": 76.6,
           "count": 1,
           "isMet": false

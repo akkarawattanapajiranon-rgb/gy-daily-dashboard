@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "generatedAt": "2026-09-21T04:16:45.329Z",
+  "generatedAt": "2026-09-22T01:29:00.597Z",
   "waste": {
     "date": "2026-09-16",
     "millingSummary": 237,
@@ -247,41 +247,7 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": true,
-      "totalProduce": 79,
-      "totalWbr": 65,
-      "totalSapphire": 14,
-      "totalAngleChanges": 15,
-      "totalNormal": 65,
-      "totalSticky": 0,
-      "normalPct": 100,
-      "stickyPct": 0,
-      "shifts": {
-        "shift1": {
-          "wbr": 25,
-          "sapphire": 5,
-          "angleChanges": 5,
-          "normal": 25,
-          "sticky": 0,
-          "total": 30
-        },
-        "shift2": {
-          "wbr": 15,
-          "sapphire": 5,
-          "angleChanges": 4,
-          "normal": 15,
-          "sticky": 0,
-          "total": 20
-        },
-        "shift3": {
-          "wbr": 25,
-          "sapphire": 4,
-          "angleChanges": 6,
-          "normal": 25,
-          "sticky": 0,
-          "total": 29
-        }
-      }
+      "hasData": false
     }
   },
   "roll3": {
@@ -817,6 +783,7 @@
     "hasData": true
   },
   "quad": {
+    "date": "2026-09-16",
     "oee": {
       "hasData": true,
       "sr_pct": 72.92,
@@ -825,7 +792,7 @@
       "qr_pct": 95.89,
       "oee1_pct": 45.25,
       "oee2_pct": 62.05,
-      "bd_pct": 0
+      "bd_pct": 4.17
     },
     "output": {
       "hasData": true,
@@ -2091,15 +2058,15 @@
           "isMet": false
         },
         "fischer": {
-          "avg": null,
+          "avg": 56.71,
           "target": 60,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "mixing": {
-          "avg": 73.5,
+          "avg": 69.5,
           "target": 76.6,
-          "count": 1,
+          "count": 2,
           "isMet": false
         }
       },
