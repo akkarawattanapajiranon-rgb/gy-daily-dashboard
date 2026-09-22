@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-22T03:18:30.421Z",
+  "generatedAt": "2026-09-22T03:23:13.581Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 0,
@@ -22,18 +22,18 @@
       "oee2": 74.7
     },
     "mixing2": {
-      "batch": 93,
-      "ar": 77.4,
-      "pr": 90.3,
+      "batch": 96,
+      "ar": 77.9,
+      "pr": 90.2,
       "qr": 100,
-      "oee2": 69.9
+      "oee2": 70.3
     },
-    "totalAr": 80.8,
-    "totalPr": 89.9,
-    "totalQr": 98.8,
-    "totalOee2": 71.8
+    "totalAr": 81.1,
+    "totalPr": 89.8,
+    "totalQr": 98.9,
+    "totalOee2": 72
   },
-  "target3Roll": 9,
+  "target3Roll": 10,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -101,49 +101,55 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 9,
-    "totalRelease": 9,
-    "totalHold": 0,
-    "totalPending": 22,
+    "totalRolls": 10,
+    "totalRelease": 10,
+    "totalHold": 1,
+    "totalPending": 20,
     "totalScheduled": 31,
     "codeBreakdown": [
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 22.22
+        "percentage": 20
       },
       {
         "code": "NU27",
         "count": 2,
-        "percentage": 22.22
+        "percentage": 20
+      },
+      {
+        "code": "RU53",
+        "count": 2,
+        "percentage": 20
       },
       {
         "code": "DDSV",
         "count": 1,
-        "percentage": 11.11
+        "percentage": 10
       },
       {
         "code": "EESV",
         "count": 1,
-        "percentage": 11.11
+        "percentage": 10
       },
       {
         "code": "RU13",
         "count": 1,
-        "percentage": 11.11
+        "percentage": 10
       },
       {
         "code": "RU11",
         "count": 1,
-        "percentage": 11.11
-      },
+        "percentage": 10
+      }
+    ],
+    "holdBreakdown": [
       {
         "code": "RU53",
         "count": 1,
-        "percentage": 11.11
+        "percentage": 100
       }
     ],
-    "holdBreakdown": [],
     "hasData": true
   },
   "roll42": {
@@ -765,7 +771,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 72.9,
+        "avg": 73,
         "target": 76.6,
         "count": 2,
         "isMet": false
@@ -902,7 +908,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.9,
+          "avg": 73,
           "target": 76.6,
           "count": 2,
           "isMet": false
