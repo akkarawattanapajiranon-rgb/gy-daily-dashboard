@@ -1,10 +1,10 @@
 {
   "date": "2026-09-21",
-  "generatedAt": "2026-09-22T02:00:46.522Z",
+  "generatedAt": "2026-09-22T02:11:15.398Z",
   "waste": {
     "date": "2026-09-21",
     "millingSummary": 420,
-    "frictionSummary": 295.3,
+    "frictionSummary": 295.7,
     "beadSummary": 32,
     "millingTop": [
       {
@@ -841,102 +841,109 @@
   "quad": {
     "date": "2026-09-21",
     "oee": {
-      "hasData": false
+      "hasData": true,
+      "sr_pct": 79.86,
+      "ar_pct": 88.09,
+      "pr_pct": 65.92,
+      "qr_pct": 97.51,
+      "oee1_pct": 45.22,
+      "oee2_pct": 56.62,
+      "bd_pct": 0
     },
     "output": {
       "hasData": true,
       "day": 21,
-      "grandTotal": 589,
+      "grandTotal": 1462.4,
       "codeBreakdown": [
         {
           "code": "6013",
-          "count": 397,
-          "percentage": 67.4
+          "count": 1270.4,
+          "percentage": 86.87
         },
         {
           "code": "W1CX",
           "count": 24,
-          "percentage": 4.07
+          "percentage": 1.64
         },
         {
           "code": "WAIK",
           "count": 24,
-          "percentage": 4.07
+          "percentage": 1.64
         },
         {
           "code": "WLAN",
           "count": 22,
-          "percentage": 3.74
+          "percentage": 1.5
         },
         {
           "code": "WA8X",
           "count": 20,
-          "percentage": 3.4
+          "percentage": 1.37
         },
         {
           "code": "QUIR",
           "count": 12,
-          "percentage": 2.04
+          "percentage": 0.82
         },
         {
           "code": "QLIX",
           "count": 10,
-          "percentage": 1.7
+          "percentage": 0.68
         },
         {
           "code": "WYAF",
           "count": 10,
-          "percentage": 1.7
+          "percentage": 0.68
         },
         {
           "code": "WYAL",
           "count": 10,
-          "percentage": 1.7
+          "percentage": 0.68
         },
         {
           "code": "W1WF",
           "count": 10,
-          "percentage": 1.7
+          "percentage": 0.68
         },
         {
           "code": "W13F",
           "count": 8,
-          "percentage": 1.36
+          "percentage": 0.55
         },
         {
           "code": "WLGW",
           "count": 8,
-          "percentage": 1.36
+          "percentage": 0.55
         },
         {
           "code": "Q2AH",
           "count": 8,
-          "percentage": 1.36
+          "percentage": 0.55
         },
         {
           "code": "W1LG",
           "count": 6,
-          "percentage": 1.02
+          "percentage": 0.41
         },
         {
           "code": "WF8X",
           "count": 6,
-          "percentage": 1.02
+          "percentage": 0.41
         },
         {
           "code": "WGMS",
           "count": 6,
-          "percentage": 1.02
+          "percentage": 0.41
         },
         {
           "code": "WG4B",
           "count": 6,
-          "percentage": 1.02
+          "percentage": 0.41
         },
         {
           "code": "WILA",
           "count": 2,
-          "percentage": 0.34
+          "percentage": 0.14
         }
       ],
       "shifts": {
@@ -1046,8 +1053,8 @@
               "code": "6013",
               "qtyTarget": 280,
               "qtyProduced": 119,
-              "qtySapphire": 0,
-              "totalQty": 119
+              "qtySapphire": 261.8,
+              "totalQty": 380.8
             },
             {
               "partId": "TR10842",
@@ -1056,8 +1063,8 @@
               "code": "6013",
               "qtyTarget": 280,
               "qtyProduced": 278,
-              "qtySapphire": 0,
-              "totalQty": 278
+              "qtySapphire": 611.6,
+              "totalQty": 889.6
             },
             {
               "partId": "TL00184",
@@ -1100,7 +1107,7 @@
               "totalQty": 6
             }
           ],
-          "totalQty": 429
+          "totalQty": 1302.4
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
@@ -1244,13 +1251,13 @@
   "tuber": {
     "date": "2026-09-21",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 79.86,
+      "ar_pct": 88.09,
+      "pr_pct": 65.92,
+      "qr_pct": 97.51,
+      "oee1_pct": 45.22,
+      "oee2_pct": 56.62,
       "bd_pct": 0
     },
     "output": {
@@ -2045,15 +2052,15 @@
       "label": "W4 (21/9 - 27/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": null,
+        "avg": 56.62,
         "target": 62,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "tuber": {
-        "avg": null,
+        "avg": 56.62,
         "target": 62,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "fischer": {
@@ -2170,15 +2177,15 @@
         "label": "W4 (21/9 - 27/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": null,
+          "avg": 56.62,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "tuber": {
-          "avg": null,
+          "avg": 56.62,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "fischer": {

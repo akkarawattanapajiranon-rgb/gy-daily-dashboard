@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-22T02:00:35.334Z",
+  "generatedAt": "2026-09-22T02:10:53.012Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 0,
@@ -15,23 +15,23 @@
   "cms": {
     "date": "2026-09-22",
     "mixing1": {
-      "batch": 57,
-      "ar": 86,
-      "pr": 89.1,
-      "qr": 100,
-      "oee2": 76.6
+      "batch": 59,
+      "ar": 86.2,
+      "pr": 89.3,
+      "qr": 97.1,
+      "oee2": 74.7
     },
     "mixing2": {
-      "batch": 43,
-      "ar": 65.9,
-      "pr": 92.4,
+      "batch": 49,
+      "ar": 68.7,
+      "pr": 91.3,
       "qr": 100,
-      "oee2": 60.9
+      "oee2": 62.8
     },
-    "totalAr": 76,
-    "totalPr": 90.5,
-    "totalQr": 100,
-    "totalOee2": 68.8
+    "totalAr": 77.2,
+    "totalPr": 90.2,
+    "totalQr": 98.4,
+    "totalOee2": 68.6
   },
   "target3Roll": 4,
   "breakdown": {
@@ -664,15 +664,15 @@
       "label": "W4 (21/9 - 27/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 57.41,
+        "avg": 57.01,
         "target": 62,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "tuber": {
-        "avg": null,
+        "avg": 56.62,
         "target": 62,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "fischer": {
@@ -682,7 +682,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 71.65,
+        "avg": 71.3,
         "target": 76.6,
         "count": 2,
         "isMet": false
@@ -789,15 +789,15 @@
         "label": "W4 (21/9 - 27/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 57.41,
+          "avg": 57.01,
           "target": 62,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "tuber": {
-          "avg": null,
+          "avg": 56.62,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "fischer": {
@@ -807,7 +807,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.65,
+          "avg": 71.3,
           "target": 76.6,
           "count": 2,
           "isMet": false
