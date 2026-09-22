@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-22T01:30:28.279Z",
+  "generatedAt": "2026-09-22T02:00:35.334Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-22",
     "mixing1": {
-      "batch": 43,
-      "ar": 85.3,
-      "pr": 91,
+      "batch": 57,
+      "ar": 86,
+      "pr": 89.1,
       "qr": 100,
-      "oee2": 77.6
+      "oee2": 76.6
     },
     "mixing2": {
-      "batch": 28,
-      "ar": 58.4,
-      "pr": 92.5,
+      "batch": 43,
+      "ar": 65.9,
+      "pr": 92.4,
       "qr": 100,
-      "oee2": 54
+      "oee2": 60.9
     },
-    "totalAr": 72,
-    "totalPr": 91.6,
+    "totalAr": 76,
+    "totalPr": 90.5,
     "totalQr": 100,
-    "totalOee2": 65.9
+    "totalOee2": 68.8
   },
-  "target3Roll": 2,
+  "target3Roll": 4,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -101,21 +101,26 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 2,
-    "totalRelease": 2,
+    "totalRolls": 4,
+    "totalRelease": 4,
     "totalHold": 0,
-    "totalPending": 23,
-    "totalScheduled": 25,
+    "totalPending": 27,
+    "totalScheduled": 31,
     "codeBreakdown": [
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 50
+      },
       {
         "code": "DDSV",
         "count": 1,
-        "percentage": 50
+        "percentage": 25
       },
       {
         "code": "EESV",
         "count": 1,
-        "percentage": 50
+        "percentage": 25
       }
     ],
     "holdBreakdown": [],
@@ -677,7 +682,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 69.95,
+        "avg": 71.65,
         "target": 76.6,
         "count": 2,
         "isMet": false
@@ -802,7 +807,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 69.95,
+          "avg": 71.65,
           "target": 76.6,
           "count": 2,
           "isMet": false
