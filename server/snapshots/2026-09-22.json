@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-22T04:00:51.002Z",
+  "generatedAt": "2026-09-22T06:00:57.366Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 0,
@@ -22,18 +22,18 @@
       "oee2": 74.7
     },
     "mixing2": {
-      "batch": 118,
-      "ar": 79.7,
-      "pr": 87.7,
+      "batch": 166,
+      "ar": 76,
+      "pr": 85.8,
       "qr": 100,
-      "oee2": 69.9
+      "oee2": 65.2
     },
-    "totalAr": 81.9,
-    "totalPr": 88.3,
-    "totalQr": 99,
-    "totalOee2": 71.6
+    "totalAr": 78.6,
+    "totalPr": 86.8,
+    "totalQr": 99.2,
+    "totalOee2": 67.7
   },
-  "target3Roll": 10,
+  "target3Roll": 21,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -101,55 +101,54 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 10,
-    "totalRelease": 10,
-    "totalHold": 1,
+    "totalRolls": 21,
+    "totalRelease": 21,
+    "totalHold": 0,
     "totalPending": 20,
-    "totalScheduled": 31,
+    "totalScheduled": 41,
     "codeBreakdown": [
+      {
+        "code": "RP08",
+        "count": 7,
+        "percentage": 33.33
+      },
+      {
+        "code": "RU53",
+        "count": 6,
+        "percentage": 28.57
+      },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 20
+        "percentage": 9.52
       },
       {
         "code": "NU27",
         "count": 2,
-        "percentage": 20
-      },
-      {
-        "code": "RU53",
-        "count": 2,
-        "percentage": 20
+        "percentage": 9.52
       },
       {
         "code": "DDSV",
         "count": 1,
-        "percentage": 10
+        "percentage": 4.76
       },
       {
         "code": "EESV",
         "count": 1,
-        "percentage": 10
+        "percentage": 4.76
       },
       {
         "code": "RU13",
         "count": 1,
-        "percentage": 10
+        "percentage": 4.76
       },
       {
         "code": "RU11",
         "count": 1,
-        "percentage": 10
+        "percentage": 4.76
       }
     ],
-    "holdBreakdown": [
-      {
-        "code": "RU53",
-        "count": 1,
-        "percentage": 100
-      }
-    ],
+    "holdBreakdown": [],
     "hasData": true
   },
   "roll42": {
@@ -328,17 +327,62 @@
     "output": {
       "hasData": true,
       "day": 22,
-      "grandTotal": 6,
+      "grandTotal": 2132,
       "codeBreakdown": [
+        {
+          "code": "W1CX",
+          "count": 960,
+          "percentage": 45.03
+        },
+        {
+          "code": "WAIK",
+          "count": 720,
+          "percentage": 33.77
+        },
+        {
+          "code": "A801",
+          "count": 200,
+          "percentage": 9.38
+        },
+        {
+          "code": "B427",
+          "count": 70,
+          "percentage": 3.28
+        },
+        {
+          "code": "B351",
+          "count": 60,
+          "percentage": 2.81
+        },
+        {
+          "code": "B491",
+          "count": 47,
+          "percentage": 2.2
+        },
+        {
+          "code": "A156",
+          "count": 42,
+          "percentage": 1.97
+        },
+        {
+          "code": "WAK2",
+          "count": 20,
+          "percentage": 0.94
+        },
+        {
+          "code": "WA8X",
+          "count": 7,
+          "percentage": 0.33
+        },
         {
           "code": "WG4B",
           "count": 3,
-          "percentage": 50
+          "percentage": 0.14
         },
         {
           "code": "QLIX",
           "count": 3,
-          "percentage": 50
+          "percentage": 0.14
         }
       ],
       "shifts": {
@@ -358,9 +402,72 @@
               "qtyTarget": 3,
               "qtyProduced": 3,
               "totalQty": 3
+            },
+            {
+              "partId": "TA00905",
+              "code": "B491",
+              "qtyTarget": 50,
+              "qtyProduced": 47,
+              "totalQty": 47
+            },
+            {
+              "partId": "TA00633",
+              "code": "B427",
+              "qtyTarget": 80,
+              "qtyProduced": 70,
+              "totalQty": 70
+            },
+            {
+              "partId": "TA01172",
+              "code": "B351",
+              "qtyTarget": 120,
+              "qtyProduced": 60,
+              "totalQty": 60
+            },
+            {
+              "partId": "TA01422",
+              "code": "A156",
+              "qtyTarget": 40,
+              "qtyProduced": 42,
+              "totalQty": 42
+            },
+            {
+              "partId": "TA01432",
+              "code": "A801",
+              "qtyTarget": 200,
+              "qtyProduced": 200,
+              "totalQty": 200
+            },
+            {
+              "partId": "SW08662",
+              "code": "WA8X",
+              "qtyTarget": 7,
+              "qtyProduced": 7,
+              "totalQty": 7
+            },
+            {
+              "partId": "",
+              "code": "WAK2",
+              "qtyTarget": 1,
+              "qtyProduced": 20,
+              "totalQty": 20
+            },
+            {
+              "partId": "",
+              "code": "W1CX",
+              "qtyTarget": 8,
+              "qtyProduced": 960,
+              "totalQty": 960
+            },
+            {
+              "partId": "",
+              "code": "WAIK",
+              "qtyTarget": 6,
+              "qtyProduced": 720,
+              "totalQty": 720
             }
           ],
-          "totalQty": 6
+          "totalQty": 2132
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -379,17 +486,17 @@
     "date": "2026-09-22",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "22/9",
-      "sum": 0,
+      "sum": 71747,
       "target": 35056,
       "minTarget": 20000,
       "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "newGenerate": 16740,
+      "slowMoving": 47164,
+      "disposition": 7843,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -728,26 +835,100 @@
         "dateLabel": "22/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 71747,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 16740,
+        "newGenerateBTA": 14880,
+        "newGenerateWBR": 1860,
+        "slowMoving": 47164,
+        "disposition": 7843,
+        "hasData": true
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1692",
+        "qty": 7815,
+        "qtyMt": 7.82,
+        "percentage": 12.8
+      },
+      {
+        "rank": 2,
+        "code": "N1717",
+        "qty": 4870,
+        "qtyMt": 4.87,
+        "percentage": 8
+      },
+      {
+        "rank": 3,
+        "code": "N1128",
+        "qty": 4569,
+        "qtyMt": 4.57,
+        "percentage": 7.5
+      },
+      {
+        "rank": 4,
+        "code": "K11M2",
+        "qty": 3445,
+        "qtyMt": 3.44,
+        "percentage": 5.6
+      },
+      {
+        "rank": 5,
+        "code": "F7894",
+        "qty": 3120,
+        "qtyMt": 3.12,
+        "percentage": 5.1
+      },
+      {
+        "rank": 6,
+        "code": "N11F3",
+        "qty": 3060,
+        "qtyMt": 3.06,
+        "percentage": 5
+      },
+      {
+        "rank": 7,
+        "code": "K27T4",
+        "qty": 2970,
+        "qtyMt": 2.97,
+        "percentage": 4.9
+      },
+      {
+        "rank": 8,
+        "code": "T1400",
+        "qty": 2860,
+        "qtyMt": 2.86,
+        "percentage": 4.7
+      },
+      {
+        "rank": 9,
+        "code": "F1145",
+        "qty": 2275,
+        "qtyMt": 2.27,
+        "percentage": 3.7
+      },
+      {
+        "rank": 10,
+        "code": "K33M1",
+        "qty": 2150,
+        "qtyMt": 2.15,
+        "percentage": 3.5
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
     "date": "2026-09-22",
     "activeWeek": {
-      "weekNum": 4,
+      "weekNum": 39,
+      "monthWeekNum": 4,
+      "code": "Wk39",
+      "shortLabel": "Wk39",
       "startDay": 21,
-      "endDay": 27,
-      "label": "W4 (21/9 - 27/9)",
+      "endDay": 30,
+      "label": "Wk39 (21/9 - 30/9)",
       "isCurrentWeek": true,
       "quad": {
         "avg": 54.15,
@@ -768,7 +949,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 72.8,
+        "avg": 70.85,
         "target": 76.6,
         "count": 2,
         "isMet": false
@@ -776,10 +957,13 @@
     },
     "weeks": [
       {
-        "weekNum": 1,
+        "weekNum": 36,
+        "monthWeekNum": 1,
+        "code": "Wk36",
+        "shortLabel": "Wk36",
         "startDay": 1,
         "endDay": 6,
-        "label": "W1 (1/9 - 6/9)",
+        "label": "Wk36 (1/9 - 6/9)",
         "isCurrentWeek": false,
         "quad": {
           "avg": 57.1,
@@ -807,10 +991,13 @@
         }
       },
       {
-        "weekNum": 2,
+        "weekNum": 37,
+        "monthWeekNum": 2,
+        "code": "Wk37",
+        "shortLabel": "Wk37",
         "startDay": 7,
         "endDay": 13,
-        "label": "W2 (7/9 - 13/9)",
+        "label": "Wk37 (7/9 - 13/9)",
         "isCurrentWeek": false,
         "quad": {
           "avg": 56.17,
@@ -838,10 +1025,13 @@
         }
       },
       {
-        "weekNum": 3,
+        "weekNum": 38,
+        "monthWeekNum": 3,
+        "code": "Wk38",
+        "shortLabel": "Wk38",
         "startDay": 14,
         "endDay": 20,
-        "label": "W3 (14/9 - 20/9)",
+        "label": "Wk38 (14/9 - 20/9)",
         "isCurrentWeek": false,
         "quad": {
           "avg": 57.1,
@@ -869,10 +1059,13 @@
         }
       },
       {
-        "weekNum": 4,
+        "weekNum": 39,
+        "monthWeekNum": 4,
+        "code": "Wk39",
+        "shortLabel": "Wk39",
         "startDay": 21,
-        "endDay": 27,
-        "label": "W4 (21/9 - 27/9)",
+        "endDay": 30,
+        "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": true,
         "quad": {
           "avg": 54.15,
@@ -893,40 +1086,9 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.8,
+          "avg": 70.85,
           "target": 76.6,
           "count": 2,
-          "isMet": false
-        }
-      },
-      {
-        "weekNum": 5,
-        "startDay": 28,
-        "endDay": 30,
-        "label": "W5 (28/9 - 30/9)",
-        "isCurrentWeek": false,
-        "quad": {
-          "avg": null,
-          "target": 62,
-          "count": 0,
-          "isMet": false
-        },
-        "tuber": {
-          "avg": null,
-          "target": 62,
-          "count": 0,
-          "isMet": false
-        },
-        "fischer": {
-          "avg": null,
-          "target": 60,
-          "count": 0,
-          "isMet": false
-        },
-        "mixing": {
-          "avg": null,
-          "target": 76.6,
-          "count": 0,
           "isMet": false
         }
       }
