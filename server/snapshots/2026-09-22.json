@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-21T23:50:24.138Z",
+  "generatedAt": "2026-09-22T00:00:28.439Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 0,
@@ -31,8 +31,7 @@
     "totalAr": 0,
     "totalPr": 0,
     "totalQr": 0,
-    "totalOee2": 0,
-    "hasData": false
+    "totalOee2": 0
   },
   "target3Roll": 0,
   "breakdown": {
@@ -641,7 +640,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 72.5,
+        "avg": 73.4,
         "target": 76.6,
         "count": 1,
         "isMet": false
@@ -766,7 +765,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 72.5,
+          "avg": 73.4,
           "target": 76.6,
           "count": 1,
           "isMet": false
