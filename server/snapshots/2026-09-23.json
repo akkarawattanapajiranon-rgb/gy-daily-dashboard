@@ -1,6 +1,6 @@
 {
   "date": "2026-09-23",
-  "generatedAt": "2026-09-23T02:11:11.436Z",
+  "generatedAt": "2026-09-23T02:11:59.462Z",
   "waste": {
     "date": "2026-09-23",
     "millingSummary": 0,
@@ -22,18 +22,18 @@
       "oee2": 59.8
     },
     "mixing2": {
-      "batch": 57,
-      "ar": 91.9,
-      "pr": 92.8,
+      "batch": 58,
+      "ar": 92,
+      "pr": 92.9,
       "qr": 100,
-      "oee2": 85.2
+      "oee2": 85.4
     },
-    "totalAr": 89.1,
-    "totalPr": 92.6,
+    "totalAr": 89.2,
+    "totalPr": 92.7,
     "totalQr": 87.2,
-    "totalOee2": 71.9
+    "totalOee2": 72.1
   },
-  "target3Roll": 5,
+  "target3Roll": 6,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -92,7 +92,41 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 7,
+      "totalWbr": 7,
+      "totalSapphire": 0,
+      "totalAngleChanges": 1,
+      "totalNormal": 7,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 7,
+          "sapphire": 0,
+          "angleChanges": 1,
+          "normal": 7,
+          "sticky": 0,
+          "total": 7
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -101,21 +135,21 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 5,
-    "totalRelease": 5,
+    "totalRolls": 6,
+    "totalRelease": 6,
     "totalHold": 0,
-    "totalPending": 31,
+    "totalPending": 30,
     "totalScheduled": 36,
     "codeBreakdown": [
       {
         "code": "NU27",
-        "count": 3,
-        "percentage": 60
+        "count": 4,
+        "percentage": 66.67
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 40
+        "percentage": 33.33
       }
     ],
     "holdBreakdown": [],
@@ -720,7 +754,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 74.3,
+        "avg": 74.37,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -857,7 +891,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 74.3,
+          "avg": 74.37,
           "target": 76.6,
           "count": 3,
           "isMet": false
