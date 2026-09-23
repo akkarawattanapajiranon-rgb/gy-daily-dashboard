@@ -32,10 +32,11 @@ async function runMorningSync() {
   try {
     for (const dateStr of datesToSync) {
       await generateSnapshot(dateStr);
-      // Pre-generate static Extruder Timeline files for Vercel/Cloud deployment
       try {
         const isToday = (dateStr === datesToSync[0]);
-        await getExtruderTimeline(dateStr, undefined, isToday);
+        const isYesterday = (dateStr === datesToSync[1]);
+        // Force refresh today and yesterday to capture full overnight shifts from Oracle
+        await getExtruderTimeline(dateStr, undefined, isToday || isYesterday);
       } catch (extErr) {
         console.warn(`[Morning Sync Cron] Extruder sync notice for ${dateStr}:`, extErr.message);
       }

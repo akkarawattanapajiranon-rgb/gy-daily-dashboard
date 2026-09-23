@@ -364,44 +364,26 @@ app.get('/api/cms', async (req, res) => {
 
 // Extruder Timeline parser
 const { getExtruderTimeline } = require('./extruder/dayStore');
-const { bangkokProductionDate, ExtruderTimelineInputError } = require('./extruder/buildTimeline');
+const { bangkokProductionDate, ExtruderTimelineInputError, nextDate } = require('./extruder/buildTimeline');
 
 app.get('/api/extruder-timeline', async (req, res) => {
   const date = req.query.date || bangkokProductionDate();
   const forceRefresh = req.query.refresh === 'true';
   console.log(`Fetching Extruder Timeline for date: ${date}${forceRefresh ? ' (forceRefresh)' : ''}`);
 
-  // Instant fast-path: for past dates with pre-computed file, serve directly in 1ms
+  // Instant fast-path: for past dates that are confirmed fully synced after 07:00 AM
   const isPast = date < bangkokProductionDate();
   if (isPast && !forceRefresh) {
+    const next = nextDate(date);
+    const dayEndMs = Date.parse(`${next}T07:00:00+07:00`);
     const publicFile = path.join(__dirname, '..', 'public', 'data', 'extruder', `${date}.json`);
-    const storeFile = path.join(__dirname, 'extruder_store', `${date}.json`);
     if (fs.existsSync(publicFile)) {
       try {
         const fileContent = fs.readFileSync(publicFile, 'utf8');
-        res.setHeader('Cache-Control', 'public, max-age=86400');
-        return res.type('json').send(fileContent);
-      } catch (e) {}
-    }
-    if (fs.existsSync(storeFile)) {
-      try {
-        const fileContent = fs.readFileSync(storeFile, 'utf8');
         const json = JSON.parse(fileContent);
-        if (json.lines) {
+        if (json.asOfMs && json.asOfMs >= dayEndMs) {
           res.setHeader('Cache-Control', 'public, max-age=86400');
-          return res.json({
-            success: true,
-            cached: true,
-            date,
-            asOfMs: json.fetchedAtMs,
-            lines: Object.entries(json.lines).map(([line, s]) => ({
-              line,
-              samples: [],
-              runs: s.rows || [],
-              truncated: s.truncated || false,
-              error: null
-            }))
-          });
+          return res.type('json').send(fileContent);
         }
       } catch (e) {}
     }

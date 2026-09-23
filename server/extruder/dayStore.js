@@ -247,16 +247,17 @@ async function getExtruderTimeline(date, now = () => new Date(), forceRefresh = 
 
   const ttl = isCurrent ? REFRESH_AFTER_MS : 86400000;
   const ageMs = Date.now() - day.fetchedAtMs;
-  const cached = hasAnyData && (isCurrent ? (ageMs < ttl) : (isPastDayFullySynced || ageMs < ttl)) && !forceRefresh;
+  const cached = hasAnyData && (isCurrent ? (ageMs < ttl) : isPastDayFullySynced) && !forceRefresh;
 
   if (!cached) {
     const current = day;
     const pending = current.inFlight
       || (current.inFlight = refresh(date, current).finally(() => { current.inFlight = null; }));
 
-    // Non-blocking serving: if we already have data from disk/memory and not a manual forced refresh,
+    // Non-blocking serving: ONLY for current day if we already have data from disk/memory and not a manual forced refresh,
     // serve immediately without making the user wait, and let refresh finish in the background.
-    if (hasAnyData && !forceRefresh) {
+    // For past days that were never fully closed, wait for pending so the user gets complete 24h data.
+    if (hasAnyData && isCurrent && !forceRefresh) {
       pending.catch((err) => console.warn(`[Extruder Store] Background refresh error for ${date}:`, err.message));
     } else {
       await pending.catch(() => {});
