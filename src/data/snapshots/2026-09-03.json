@@ -1,6 +1,6 @@
 {
   "date": "2026-09-03",
-  "generatedAt": "2026-09-23T00:12:47.689Z",
+  "generatedAt": "2026-09-23T01:30:31.528Z",
   "waste": {
     "date": "2026-09-03",
     "millingSummary": 135,
@@ -1844,28 +1844,28 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 55.75,
+          "avg": 55.94,
           "target": 62,
           "count": 7,
           "isMet": false
         },
         "tuber": {
-          "avg": 56.62,
+          "avg": 55.51,
           "target": 62,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "fischer": {
-          "avg": 56.71,
+          "avg": 53.74,
           "target": 60,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "mixing": {
-          "avg": 76.97,
+          "avg": 73.57,
           "target": 76.6,
           "count": 3,
-          "isMet": true
+          "isMet": false
         }
       }
     ]

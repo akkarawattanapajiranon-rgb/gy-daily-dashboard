@@ -1,6 +1,6 @@
 {
   "date": "2026-09-21",
-  "generatedAt": "2026-09-23T00:27:13.271Z",
+  "generatedAt": "2026-09-23T01:31:11.459Z",
   "waste": {
     "date": "2026-09-21",
     "millingSummary": 420,
@@ -219,44 +219,44 @@
       "angleChange": 15,
       "produce": 62,
       "target": 90,
-      "breakdownComment": "Spacial PM",
+      "breakdownComment": "PM 4 Hrs. (240 min)",
       "commentAuthor": "Paisal Phoompong",
       "otherComments": []
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 68,
-      "totalWbr": 59,
-      "totalSapphire": 9,
-      "totalAngleChanges": 17,
-      "totalNormal": 59,
+      "totalProduce": 27,
+      "totalWbr": 23,
+      "totalSapphire": 4,
+      "totalAngleChanges": 7,
+      "totalNormal": 23,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 11,
+          "wbr": 0,
           "sapphire": 0,
-          "angleChanges": 2,
-          "normal": 11,
+          "angleChanges": 0,
+          "normal": 0,
           "sticky": 0,
-          "total": 11
+          "total": 0
         },
         "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
           "wbr": 23,
-          "sapphire": 5,
+          "sapphire": 4,
           "angleChanges": 7,
           "normal": 23,
           "sticky": 0,
-          "total": 28
-        },
-        "shift3": {
-          "wbr": 25,
-          "sapphire": 4,
-          "angleChanges": 8,
-          "normal": 25,
-          "sticky": 0,
-          "total": 29
+          "total": 27
         }
       }
     }

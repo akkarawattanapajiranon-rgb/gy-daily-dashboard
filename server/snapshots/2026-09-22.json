@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-23T00:27:03.413Z",
+  "generatedAt": "2026-09-23T01:31:00.190Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 137,
@@ -137,19 +137,19 @@
   "fischer": {
     "date": "2026-09-22",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 87.99,
+      "ar_pct": 54.87,
+      "pr_pct": 92.67,
+      "qr_pct": 99.86,
+      "oee1_pct": 44.68,
+      "oee2_pct": 50.78
     },
     "loss": {
       "hasData": true,
-      "noSchedule": 0,
-      "noCart": 0,
+      "noSchedule": 173,
+      "noCart": 80,
       "noGum": 0,
       "noTreatment": 0,
       "breakdown": 0,
@@ -161,41 +161,7 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": true,
-      "totalProduce": 82,
-      "totalWbr": 67,
-      "totalSapphire": 15,
-      "totalAngleChanges": 17,
-      "totalNormal": 67,
-      "totalSticky": 0,
-      "normalPct": 100,
-      "stickyPct": 0,
-      "shifts": {
-        "shift1": {
-          "wbr": 20,
-          "sapphire": 2,
-          "angleChanges": 4,
-          "normal": 20,
-          "sticky": 0,
-          "total": 22
-        },
-        "shift2": {
-          "wbr": 22,
-          "sapphire": 8,
-          "angleChanges": 7,
-          "normal": 22,
-          "sticky": 0,
-          "total": 30
-        },
-        "shift3": {
-          "wbr": 25,
-          "sapphire": 5,
-          "angleChanges": 6,
-          "normal": 25,
-          "sticky": 0,
-          "total": 30
-        }
-      }
+      "hasData": false
     }
   },
   "roll3": {
@@ -713,128 +679,128 @@
     "date": "2026-09-22",
     "oee": {
       "hasData": true,
-      "sr_pct": 62.85,
-      "ar_pct": 68.18,
-      "pr_pct": 96.59,
-      "qr_pct": 87.18,
-      "oee1_pct": 36.08,
-      "oee2_pct": 57.41,
-      "bd_pct": 0
+      "sr_pct": 71.53,
+      "ar_pct": 78.16,
+      "pr_pct": 80.12,
+      "qr_pct": 93.88,
+      "oee1_pct": 42.05,
+      "oee2_pct": 58.79,
+      "bd_pct": 2.08
     },
     "output": {
       "hasData": true,
       "day": 22,
-      "grandTotal": 662,
+      "grandTotal": 2452,
       "codeBreakdown": [
         {
           "code": "B244",
-          "count": 208,
-          "percentage": 31.42
+          "count": 665.6,
+          "percentage": 27.15
         },
         {
           "code": "B324",
-          "count": 128,
-          "percentage": 19.34
+          "count": 409.6,
+          "percentage": 16.7
+        },
+        {
+          "code": "6010",
+          "count": 404,
+          "percentage": 16.48
+        },
+        {
+          "code": "6017",
+          "count": 404,
+          "percentage": 16.48
         },
         {
           "code": "B404",
-          "count": 114,
-          "percentage": 17.22
+          "count": 364.8,
+          "percentage": 14.88
         },
         {
           "code": "WAIK",
           "count": 30,
-          "percentage": 4.53
+          "percentage": 1.22
         },
         {
           "code": "WA8X",
           "count": 24,
-          "percentage": 3.63
+          "percentage": 0.98
         },
         {
           "code": "W1CX",
           "count": 22,
-          "percentage": 3.32
+          "percentage": 0.9
         },
         {
           "code": "QUIR",
           "count": 16,
-          "percentage": 2.42
+          "percentage": 0.65
         },
         {
           "code": "WYAF",
           "count": 15,
-          "percentage": 2.27
+          "percentage": 0.61
         },
         {
           "code": "WYAL",
           "count": 15,
-          "percentage": 2.27
+          "percentage": 0.61
         },
         {
           "code": "WLAN",
           "count": 10,
-          "percentage": 1.51
+          "percentage": 0.41
         },
         {
           "code": "W1LG",
           "count": 8,
-          "percentage": 1.21
+          "percentage": 0.33
         },
         {
           "code": "WGMS",
           "count": 8,
-          "percentage": 1.21
+          "percentage": 0.33
         },
         {
           "code": "WLGW",
           "count": 8,
-          "percentage": 1.21
+          "percentage": 0.33
         },
         {
           "code": "WG4B",
           "count": 8,
-          "percentage": 1.21
+          "percentage": 0.33
         },
         {
           "code": "WF8X",
           "count": 8,
-          "percentage": 1.21
+          "percentage": 0.33
         },
         {
           "code": "QLIX",
           "count": 8,
-          "percentage": 1.21
+          "percentage": 0.33
         },
         {
           "code": "W13L",
           "count": 6,
-          "percentage": 0.91
+          "percentage": 0.24
         },
         {
           "code": "W13F",
           "count": 6,
-          "percentage": 0.91
+          "percentage": 0.24
         },
         {
           "code": "W1WF",
           "count": 6,
-          "percentage": 0.91
+          "percentage": 0.24
         },
         {
           "code": "Q2AH",
           "count": 6,
-          "percentage": 0.91
-        },
-        {
-          "code": "6010",
-          "count": 4,
-          "percentage": 0.6
-        },
-        {
-          "code": "6017",
-          "count": 4,
-          "percentage": 0.6
+          "percentage": 0.24
         }
       ],
       "shifts": {
@@ -954,8 +920,8 @@
               "code": "B244",
               "qtyTarget": 200,
               "qtyProduced": 208,
-              "qtySapphire": 0,
-              "totalQty": 208
+              "qtySapphire": 457.6,
+              "totalQty": 665.6
             },
             {
               "partId": "SC00551",
@@ -964,8 +930,8 @@
               "code": "B404",
               "qtyTarget": 100,
               "qtyProduced": 114,
-              "qtySapphire": 0,
-              "totalQty": 114
+              "qtySapphire": 250.8,
+              "totalQty": 364.8
             },
             {
               "partId": "SC00529",
@@ -974,8 +940,8 @@
               "code": "B324",
               "qtyTarget": 200,
               "qtyProduced": 128,
-              "qtySapphire": 0,
-              "totalQty": 128
+              "qtySapphire": 281.6,
+              "totalQty": 409.6
             },
             {
               "partId": "SW08965",
@@ -983,9 +949,9 @@
               "code2": "6010",
               "code": "6010",
               "qtyTarget": 4,
-              "qtyProduced": 4,
-              "qtySapphire": 0,
-              "totalQty": 4
+              "qtyProduced": 400,
+              "qtySapphire": 4,
+              "totalQty": 404
             },
             {
               "partId": "SW06332",
@@ -993,9 +959,9 @@
               "code2": "6017",
               "code": "6017",
               "qtyTarget": 4,
-              "qtyProduced": 4,
-              "qtySapphire": 0,
-              "totalQty": 4
+              "qtyProduced": 400,
+              "qtySapphire": 4,
+              "totalQty": 404
             },
             {
               "partId": "TL00084",
@@ -1048,7 +1014,7 @@
               "totalQty": 6
             }
           ],
-          "totalQty": 492
+          "totalQty": 2282
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
@@ -1202,13 +1168,13 @@
   "tuber": {
     "date": "2026-09-22",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 79.86,
+      "ar_pct": 80.87,
+      "pr_pct": 68.58,
+      "qr_pct": 98.08,
+      "oee1_pct": 43.44,
+      "oee2_pct": 54.4,
       "bd_pct": 0
     },
     "output": {
@@ -1579,7 +1545,7 @@
       "sum": 71747,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
+      "consume": 8756,
       "newGenerate": 16740,
       "slowMoving": 47164,
       "disposition": 7843,
@@ -1923,7 +1889,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 71747,
-        "consume": 0,
+        "consume": 8756,
         "newGenerate": 16740,
         "newGenerateBTA": 14880,
         "newGenerateWBR": 1860,
@@ -2018,21 +1984,21 @@
       "label": "Wk39 (21/9 - 30/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 54.15,
+        "avg": 54.85,
         "target": 62,
         "count": 2,
         "isMet": false
       },
       "tuber": {
-        "avg": 56.62,
+        "avg": 55.51,
         "target": 62,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "fischer": {
-        "avg": 56.71,
+        "avg": 53.74,
         "target": 60,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "mixing": {
@@ -2155,21 +2121,21 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 54.15,
+          "avg": 54.85,
           "target": 62,
           "count": 2,
           "isMet": false
         },
         "tuber": {
-          "avg": 56.62,
+          "avg": 55.51,
           "target": 62,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "fischer": {
-          "avg": 56.71,
+          "avg": 53.74,
           "target": 60,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "mixing": {

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-23",
-  "generatedAt": "2026-09-23T00:26:52.789Z",
+  "generatedAt": "2026-09-23T01:30:47.080Z",
   "waste": {
     "date": "2026-09-23",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-23",
     "mixing1": {
-      "batch": 13,
-      "ar": 100,
-      "pr": 92.7,
+      "batch": 37,
+      "ar": 84.3,
+      "pr": 92.8,
       "qr": 75,
-      "oee2": 69.6
+      "oee2": 58.7
     },
     "mixing2": {
-      "batch": 14,
-      "ar": 97.4,
-      "pr": 86,
+      "batch": 39,
+      "ar": 90.8,
+      "pr": 91.1,
       "qr": 100,
-      "oee2": 83.7
+      "oee2": 82.8
     },
-    "totalAr": 98.6,
-    "totalPr": 89.3,
-    "totalQr": 87.5,
-    "totalOee2": 77.1
+    "totalAr": 87.6,
+    "totalPr": 91.9,
+    "totalQr": 87.3,
+    "totalOee2": 70.3
   },
-  "target3Roll": 0,
+  "target3Roll": 2,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -101,14 +101,20 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
-    "totalRelease": 0,
+    "totalRolls": 2,
+    "totalRelease": 2,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 34,
+    "totalScheduled": 36,
+    "codeBreakdown": [
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 100
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-23",
@@ -158,12 +164,22 @@
     "output": {
       "hasData": true,
       "day": 23,
-      "grandTotal": 12,
+      "grandTotal": 22,
       "codeBreakdown": [
         {
           "code": "QUIR",
           "count": 12,
-          "percentage": 100
+          "percentage": 54.55
+        },
+        {
+          "code": "WGMS",
+          "count": 8,
+          "percentage": 36.36
+        },
+        {
+          "code": "W1LG",
+          "count": 2,
+          "percentage": 9.09
         }
       ],
       "shifts": {
@@ -189,9 +205,29 @@
               "qtyProduced": 2,
               "qtySapphire": 0,
               "totalQty": 2
+            },
+            {
+              "partId": "TL00090",
+              "code1": "W1LG",
+              "code2": "",
+              "code": "W1LG",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "TL00074",
+              "code1": "WGMS",
+              "code2": "",
+              "code": "WGMS",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
             }
           ],
-          "totalQty": 12
+          "totalQty": 22
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -610,7 +646,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 71747,
-        "consume": 0,
+        "consume": 8756,
         "newGenerate": 16740,
         "newGenerateBTA": 14880,
         "newGenerateWBR": 1860,
@@ -649,25 +685,25 @@
       "label": "Wk39 (21/9 - 30/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 52.72,
+        "avg": 53.18,
         "target": 62,
         "count": 3,
         "isMet": false
       },
       "tuber": {
-        "avg": 56.62,
+        "avg": 55.51,
         "target": 62,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "fischer": {
-        "avg": 56.71,
+        "avg": 53.74,
         "target": 60,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "mixing": {
-        "avg": 76.03,
+        "avg": 73.57,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -786,25 +822,25 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 52.72,
+          "avg": 53.18,
           "target": 62,
           "count": 3,
           "isMet": false
         },
         "tuber": {
-          "avg": 56.62,
+          "avg": 55.51,
           "target": 62,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "fischer": {
-          "avg": 56.71,
+          "avg": 53.74,
           "target": 60,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "mixing": {
-          "avg": 76.03,
+          "avg": 73.57,
           "target": 76.6,
           "count": 3,
           "isMet": false
@@ -824,10 +860,41 @@
     "totalCompHours": 0,
     "summary": {
       "extrusionCount": 0,
-      "compCount": 0,
-      "totalItems": 0
+      "compCount": 3,
+      "totalItems": 3
     },
-    "items": []
+    "items": [
+      {
+        "id": "47-0",
+        "machine": "UO",
+        "rawText": "d/l band",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "50-1",
+        "machine": "UP",
+        "rawText": "d/l band=1",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "59-2",
+        "machine": "US",
+        "rawText": "d/l band=1 12147 b.",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      }
+    ]
   },
   "wbrDelay": {
     "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",

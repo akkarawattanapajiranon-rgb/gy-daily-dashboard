@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-23T00:15:14.131Z",
+  "generatedAt": "2026-09-23T01:28:50.020Z",
   "waste": {
     "date": "2026-09-18",
     "millingSummary": 419.9,
@@ -285,7 +285,41 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 88,
+      "totalWbr": 73,
+      "totalSapphire": 15,
+      "totalAngleChanges": 19,
+      "totalNormal": 73,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 25,
+          "sapphire": 5,
+          "angleChanges": 6,
+          "normal": 25,
+          "sticky": 0,
+          "total": 30
+        },
+        "shift2": {
+          "wbr": 23,
+          "sapphire": 5,
+          "angleChanges": 8,
+          "normal": 23,
+          "sticky": 0,
+          "total": 28
+        },
+        "shift3": {
+          "wbr": 25,
+          "sapphire": 5,
+          "angleChanges": 5,
+          "normal": 25,
+          "sticky": 0,
+          "total": 30
+        }
+      }
     }
   },
   "roll3": {
@@ -2242,28 +2276,28 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 55.75,
+          "avg": 55.94,
           "target": 62,
           "count": 7,
           "isMet": false
         },
         "tuber": {
-          "avg": 56.62,
+          "avg": 55.51,
           "target": 62,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "fischer": {
-          "avg": 56.71,
+          "avg": 53.74,
           "target": 60,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "mixing": {
-          "avg": 76.93,
+          "avg": 73.7,
           "target": 76.6,
           "count": 3,
-          "isMet": true
+          "isMet": false
         }
       }
     ]
