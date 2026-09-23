@@ -1,0 +1,105 @@
+{
+  "date": "2026-09-24",
+  "generatedAt": "2026-09-23T11:56:36.774Z",
+  "waste": {
+    "date": "2026-09-24",
+    "millingSummary": 0,
+    "frictionSummary": 0,
+    "beadSummary": 0,
+    "millingTop": [],
+    "frictionTop": [],
+    "beadTop": [],
+    "dataDate": "2026-09-24",
+    "hasData": false
+  },
+  "cms": {
+    "date": "2026-09-24",
+    "mixing1": {
+      "batch": 0,
+      "ar": 0,
+      "pr": 0,
+      "qr": 0,
+      "oee2": 0
+    },
+    "mixing2": {
+      "batch": 0,
+      "ar": 0,
+      "pr": 0,
+      "qr": 0,
+      "oee2": 0
+    },
+    "totalAr": 0,
+    "totalPr": 0,
+    "totalQr": 0,
+    "totalOee2": 0,
+    "hasData": false
+  },
+  "target3Roll": 0,
+  "breakdown": {
+    "_file": "Issue log 2026 _ BCA 14AUG2026.xlsx",
+    "_sheet": "SEP2026",
+    "_date": "2026-09-24",
+    "topLoss": [],
+    "Banbury": {
+      "target_bd_pct": 0.5827,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Extruder": {
+      "target_bd_pct": 0.5098,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Calender": {
+      "target_bd_pct": 0.4662,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Cutting": {
+      "target_bd_pct": 0.1166,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "_total": {
+      "target_bd_pct": 0.6475,
+      "actual_bd_pct": null,
+      "hasData": false
+    }
+  },
+  "fischer": {
+    "date": "2026-09-24",
+    "oee": {
+      "error": "OEE File not found"
+    },
+    "loss": {
+      "hasData": false
+    },
+    "checksheet": {
+      "error": "Check Sheet Directory not found"
+    }
+  },
+  "roll3": null,
+  "roll42": null,
+  "quad": {
+    "date": "2026-09-24",
+    "oee": {
+      "error": "Quad OEE file for month 09 not found"
+    },
+    "output": {
+      "error": "Quad Booking file for month 09 not found"
+    }
+  },
+  "tuber": {
+    "date": "2026-09-24",
+    "oee": {
+      "error": "Tuber OEE file for month 09 not found"
+    },
+    "output": {
+      "error": "Tuber Booking file for month 09 not found"
+    }
+  },
+  "workaway": null,
+  "weeklyOee": null,
+  "aeroDelay": null,
+  "wbrDelay": null
+}
