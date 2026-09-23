@@ -1,10 +1,10 @@
 {
   "file": "LSP Tracking.xlsx",
-  "lastModified": "2026-09-23T01:30:00.574Z",
-  "lastModifiedFormatted": "23/09/2026 08:30 น.",
+  "lastModified": "2026-09-23T02:07:38.335Z",
+  "lastModifiedFormatted": "23/09/2026 09:07 น.",
   "year": "2026",
   "totalWorkers": 51,
-  "avgYtd": 53,
+  "avgYtd": 54,
   "onTargetCount": 23,
   "belowTargetCount": 28,
   "staffWorkers": [
@@ -204,12 +204,12 @@
         "JUN": 3,
         "JUL": 1,
         "AUG": 3,
-        "SEP": 3,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 33
+      "ytdPct": 35
     },
     {
       "id": 8,
@@ -1219,12 +1219,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 8,
+        "SEP": 10,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 75
+      "ytdPct": 79
     },
     {
       "id": 43,
@@ -3013,12 +3013,12 @@
         "JUN": 3,
         "JUL": 1,
         "AUG": 3,
-        "SEP": 3,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 33
+      "ytdPct": 35
     },
     {
       "id": 8,
@@ -4028,12 +4028,12 @@
         "JUN": 4,
         "JUL": 4,
         "AUG": 4,
-        "SEP": 8,
+        "SEP": 10,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 75
+      "ytdPct": 79
     },
     {
       "id": 43,
