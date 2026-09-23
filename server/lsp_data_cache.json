@@ -1,7 +1,7 @@
 {
   "file": "LSP Tracking.xlsx",
-  "lastModified": "2026-09-23T02:07:38.335Z",
-  "lastModifiedFormatted": "23/09/2026 09:07 น.",
+  "lastModified": "2026-09-23T09:48:54.001Z",
+  "lastModifiedFormatted": "23/09/2026 16:48 น.",
   "year": "2026",
   "totalWorkers": 51,
   "avgYtd": 54,
@@ -175,12 +175,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 2,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 23
+      "ytdPct": 27
     },
     {
       "id": 7,
@@ -494,12 +494,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 3,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 48
+      "ytdPct": 50
     },
     {
       "id": 18,
@@ -1451,12 +1451,12 @@
         "JUN": 0,
         "JUL": 3,
         "AUG": 5,
-        "SEP": 4,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 25
+      "ytdPct": 27
     },
     {
       "id": 51,
@@ -1480,12 +1480,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 2,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 4
+      "ytdPct": 6
     }
   ],
   "leaderWorkers": [
@@ -2984,12 +2984,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 2,
-        "SEP": 0,
+        "SEP": 2,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 23
+      "ytdPct": 27
     },
     {
       "id": 7,
@@ -3303,12 +3303,12 @@
         "JUN": 4,
         "JUL": 0,
         "AUG": 4,
-        "SEP": 3,
+        "SEP": 4,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 48
+      "ytdPct": 50
     },
     {
       "id": 18,
@@ -4260,12 +4260,12 @@
         "JUN": 0,
         "JUL": 3,
         "AUG": 5,
-        "SEP": 4,
+        "SEP": 5,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 25
+      "ytdPct": 27
     },
     {
       "id": 51,
@@ -4289,12 +4289,12 @@
         "JUN": 0,
         "JUL": 0,
         "AUG": 0,
-        "SEP": 2,
+        "SEP": 3,
         "OCT": "",
         "NOV": "",
         "DEC": ""
       },
-      "ytdPct": 4
+      "ytdPct": 6
     }
   ],
   "hasData": true
