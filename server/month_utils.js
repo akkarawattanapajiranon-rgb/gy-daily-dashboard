@@ -31,11 +31,19 @@ function matchesMonth(nameStr, monthNum) {
  * Find file in folder matching monthNum and keywords
  */
 function findMonthlyFile(files, monthNum, yearStr, keywords = []) {
+  const matched = findMonthlyFiles(files, monthNum, yearStr, keywords);
+  return matched.length > 0 ? matched[0] : undefined;
+}
+
+/**
+ * Find all files in folder matching monthNum and keywords
+ */
+function findMonthlyFiles(files, monthNum, yearStr, keywords = []) {
   const mStr = String(monthNum);
   const mPad = mStr.padStart(2, '0');
   const yearShort = yearStr ? yearStr.slice(2) : '26';
 
-  return files.find(f => {
+  return files.filter(f => {
     if (f.startsWith('~$')) return false; // Ignore temp excel files
     const l = f.toLowerCase();
 
@@ -87,5 +95,6 @@ module.exports = {
   MONTH_ALIASES,
   matchesMonth,
   findMonthlyFile,
+  findMonthlyFiles,
   findMonthlySheet
 };

@@ -1,7 +1,7 @@
 const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
-const { findMonthlyFile, findMonthlySheet } = require('./month_utils');
+const { findMonthlyFile, findMonthlyFiles, findMonthlySheet } = require('./month_utils');
 
 const FISCHER_DIR = 'T:\\10.30 A.M. Production Meeting\\5 BTA\\6 Fischer';
 const FISCHER_OEE_FILE = path.join(FISCHER_DIR, 'OEE - 2026 TRACKING - SHEAR FISCHER.xlsx');
@@ -208,26 +208,7 @@ function getOeeAndLossData(dateStr) {
 /**
  * 2. Parse Check Sheet Data & Compute Angle Change, WBR, Sapphire, WBR Normal %, WBR Sticky %
  */
-function getChecksheetData(dateStr) {
-  if (!fs.existsSync(FISCHER_CHECK_DIR)) {
-    return { error: 'Check Sheet Directory not found' };
-  }
-
-  const [yearStr, monthStr, dayStr] = dateStr.split('-');
-  const monthNum = parseInt(monthStr, 10);
-  const dayNum = parseInt(dayStr, 10);
-  const yearNum = parseInt(yearStr, 10);
-
-  const files = fs.readdirSync(FISCHER_CHECK_DIR);
-  const checkFile = findMonthlyFile(files, monthNum, yearStr, ['fischer', 'check']);
-
-  if (!checkFile) {
-    return { error: `Check sheet file for month ${monthStr} not found` };
-  }
-
-  const fullPath = path.join(FISCHER_CHECK_DIR, checkFile);
-  const wb = XLSX.readFile(fullPath);
-
+function parseChecksheetWorkbook(wb, dateStr, yearNum, monthNum, dayNum) {
   const sapphireCodes = new Set();
   const wsSapphire = wb.Sheets['SPEC GAUGE TREATMENT SAPPHIRE'];
   if (wsSapphire) {
@@ -238,8 +219,10 @@ function getChecksheetData(dateStr) {
     });
   }
 
-  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr) || wb.SheetNames[1] || wb.SheetNames[0];
+  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, String(yearNum)) || wb.SheetNames[1] || wb.SheetNames[0];
   const ws = wb.Sheets[sheetName];
+  if (!ws) return { hasData: false };
+
   const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
   const headerRow = data[2] || [];
   const isDateMissing = String(headerRow[0] || '').includes('TM Lot');
@@ -351,6 +334,53 @@ function getChecksheetData(dateStr) {
       shift3: { ...shifts[3], total: shifts[3].wbr + shifts[3].sapphire },
     }
   };
+}
+
+function getChecksheetData(dateStr) {
+  if (!fs.existsSync(FISCHER_CHECK_DIR)) {
+    return { error: 'Check Sheet Directory not found' };
+  }
+
+  const [yearStr, monthStr, dayStr] = dateStr.split('-');
+  const monthNum = parseInt(monthStr, 10);
+  const dayNum = parseInt(dayStr, 10);
+  const yearNum = parseInt(yearStr, 10);
+
+  const files = fs.readdirSync(FISCHER_CHECK_DIR);
+  const candidateFiles = findMonthlyFiles(files, monthNum, yearStr, ['fischer', 'check']);
+
+  if (!candidateFiles || candidateFiles.length === 0) {
+    return { error: `Check sheet file for month ${monthStr} not found` };
+  }
+
+  // Sort candidate files by mtimeMs descending (most recently modified first)
+  candidateFiles.sort((a, b) => {
+    try {
+      const statA = fs.statSync(path.join(FISCHER_CHECK_DIR, a)).mtimeMs;
+      const statB = fs.statSync(path.join(FISCHER_CHECK_DIR, b)).mtimeMs;
+      return statB - statA;
+    } catch (e) {
+      return 0;
+    }
+  });
+
+  // Try candidate files in order of recency, returning the first one that has data for the requested date
+  let lastResult = { hasData: false };
+  for (const checkFile of candidateFiles) {
+    try {
+      const fullPath = path.join(FISCHER_CHECK_DIR, checkFile);
+      const wb = XLSX.readFile(fullPath);
+      const res = parseChecksheetWorkbook(wb, dateStr, yearNum, monthNum, dayNum);
+      if (res && res.hasData) {
+        return res;
+      }
+      lastResult = res;
+    } catch (err) {
+      console.warn(`[Fischer] Error parsing candidate check file ${checkFile}:`, err.message);
+    }
+  }
+
+  return lastResult;
 }
 
 function parseFischerData(dateStr) {

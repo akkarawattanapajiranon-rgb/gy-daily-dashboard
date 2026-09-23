@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-23T00:00:13.511Z",
+  "generatedAt": "2026-09-23T00:17:45.029Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 137,
@@ -84,23 +84,23 @@
   "cms": {
     "date": "2026-09-22",
     "mixing1": {
-      "batch": 79,
-      "ar": 85.7,
-      "pr": 88.6,
-      "qr": 91.3,
-      "oee2": 69.3
+      "batch": 543,
+      "ar": 88.5,
+      "pr": 89.2,
+      "qr": 90.7,
+      "oee2": 71.6
     },
     "mixing2": {
-      "batch": 251,
-      "ar": 87.8,
-      "pr": 88.4,
+      "batch": 715,
+      "ar": 91.8,
+      "pr": 88.6,
       "qr": 100,
-      "oee2": 77.7
+      "oee2": 81.3
     },
-    "totalAr": 87.3,
-    "totalPr": 88.5,
-    "totalQr": 97.9,
-    "totalOee2": 75.6
+    "totalAr": 90.3,
+    "totalPr": 88.9,
+    "totalQr": 95.9,
+    "totalOee2": 77
   },
   "target3Roll": 41,
   "breakdown": {
@@ -161,7 +161,41 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 82,
+      "totalWbr": 67,
+      "totalSapphire": 15,
+      "totalAngleChanges": 17,
+      "totalNormal": 67,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 20,
+          "sapphire": 2,
+          "angleChanges": 4,
+          "normal": 20,
+          "sticky": 0,
+          "total": 22
+        },
+        "shift2": {
+          "wbr": 22,
+          "sapphire": 8,
+          "angleChanges": 7,
+          "normal": 22,
+          "sticky": 0,
+          "total": 30
+        },
+        "shift3": {
+          "wbr": 25,
+          "sapphire": 5,
+          "angleChanges": 6,
+          "normal": 25,
+          "sticky": 0,
+          "total": 30
+        }
+      }
     }
   },
   "roll3": {
@@ -690,117 +724,117 @@
     "output": {
       "hasData": true,
       "day": 22,
-      "grandTotal": 674,
+      "grandTotal": 662,
       "codeBreakdown": [
         {
           "code": "B244",
           "count": 208,
-          "percentage": 30.86
+          "percentage": 31.42
         },
         {
           "code": "B324",
           "count": 128,
-          "percentage": 18.99
+          "percentage": 19.34
         },
         {
           "code": "B404",
           "count": 114,
-          "percentage": 16.91
+          "percentage": 17.22
         },
         {
           "code": "WAIK",
           "count": 30,
-          "percentage": 4.45
-        },
-        {
-          "code": "QUIR",
-          "count": 28,
-          "percentage": 4.15
+          "percentage": 4.53
         },
         {
           "code": "WA8X",
           "count": 24,
-          "percentage": 3.56
+          "percentage": 3.63
         },
         {
           "code": "W1CX",
           "count": 22,
-          "percentage": 3.26
+          "percentage": 3.32
+        },
+        {
+          "code": "QUIR",
+          "count": 16,
+          "percentage": 2.42
         },
         {
           "code": "WYAF",
           "count": 15,
-          "percentage": 2.23
+          "percentage": 2.27
         },
         {
           "code": "WYAL",
           "count": 15,
-          "percentage": 2.23
+          "percentage": 2.27
         },
         {
           "code": "WLAN",
           "count": 10,
-          "percentage": 1.48
+          "percentage": 1.51
         },
         {
           "code": "W1LG",
           "count": 8,
-          "percentage": 1.19
+          "percentage": 1.21
         },
         {
           "code": "WGMS",
           "count": 8,
-          "percentage": 1.19
+          "percentage": 1.21
         },
         {
           "code": "WLGW",
           "count": 8,
-          "percentage": 1.19
+          "percentage": 1.21
         },
         {
           "code": "WG4B",
           "count": 8,
-          "percentage": 1.19
+          "percentage": 1.21
         },
         {
           "code": "WF8X",
           "count": 8,
-          "percentage": 1.19
+          "percentage": 1.21
         },
         {
           "code": "QLIX",
           "count": 8,
-          "percentage": 1.19
+          "percentage": 1.21
         },
         {
           "code": "W13L",
           "count": 6,
-          "percentage": 0.89
+          "percentage": 0.91
         },
         {
           "code": "W13F",
           "count": 6,
-          "percentage": 0.89
+          "percentage": 0.91
         },
         {
           "code": "W1WF",
           "count": 6,
-          "percentage": 0.89
+          "percentage": 0.91
         },
         {
           "code": "Q2AH",
           "count": 6,
-          "percentage": 0.89
+          "percentage": 0.91
         },
         {
           "code": "6010",
           "count": 4,
-          "percentage": 0.59
+          "percentage": 0.6
         },
         {
           "code": "6017",
           "count": 4,
-          "percentage": 0.59
+          "percentage": 0.6
         }
       ],
       "shifts": {
@@ -1154,23 +1188,13 @@
               "code1": "QUIR",
               "code2": "",
               "code": "QUIR",
-              "qtyTarget": 10,
-              "qtyProduced": 10,
+              "qtyTarget": 2,
+              "qtyProduced": 2,
               "qtySapphire": 0,
-              "totalQty": 10
-            },
-            {
-              "partId": "TL00067",
-              "code1": "QUIR",
-              "code2": "",
-              "code": "QUIR",
-              "qtyTarget": 4,
-              "qtyProduced": 4,
-              "qtySapphire": 0,
-              "totalQty": 4
+              "totalQty": 2
             }
           ],
-          "totalQty": 102
+          "totalQty": 90
         }
       }
     }
@@ -1190,77 +1214,77 @@
     "output": {
       "hasData": true,
       "day": 22,
-      "grandTotal": 653,
+      "grandTotal": 660,
       "codeBreakdown": [
         {
           "code": "A801",
           "count": 200,
-          "percentage": 30.63
+          "percentage": 30.3
         },
         {
           "code": "B228",
           "count": 107,
-          "percentage": 16.39
+          "percentage": 16.21
         },
         {
           "code": "B427",
           "count": 84,
-          "percentage": 12.86
+          "percentage": 12.73
         },
         {
           "code": "A156",
           "count": 67,
-          "percentage": 10.26
+          "percentage": 10.15
         },
         {
           "code": "B351",
           "count": 60,
-          "percentage": 9.19
+          "percentage": 9.09
         },
         {
           "code": "B491",
           "count": 47,
-          "percentage": 7.2
+          "percentage": 7.12
         },
         {
           "code": "WA8X",
           "count": 11,
-          "percentage": 1.68
+          "percentage": 1.67
+        },
+        {
+          "code": "WAIK",
+          "count": 11,
+          "percentage": 1.67
         },
         {
           "code": "WLAN",
           "count": 9,
-          "percentage": 1.38
+          "percentage": 1.36
         },
         {
           "code": "W1CX",
           "count": 8,
-          "percentage": 1.23
+          "percentage": 1.21
         },
         {
           "code": "WYWF",
           "count": 8,
-          "percentage": 1.23
+          "percentage": 1.21
         },
         {
           "code": "WG4B",
           "count": 6,
-          "percentage": 0.92
+          "percentage": 0.91
         },
         {
           "code": "QLIX",
           "count": 6,
-          "percentage": 0.92
-        },
-        {
-          "code": "WAIK",
-          "count": 6,
-          "percentage": 0.92
+          "percentage": 0.91
         },
         {
           "code": "W1BX",
           "count": 6,
-          "percentage": 0.92
+          "percentage": 0.91
         },
         {
           "code": "W12F",
@@ -1275,37 +1299,42 @@
         {
           "code": "B200",
           "count": 3,
-          "percentage": 0.46
+          "percentage": 0.45
         },
         {
           "code": "B627",
           "count": 3,
-          "percentage": 0.46
+          "percentage": 0.45
         },
         {
           "code": "WLGW",
           "count": 3,
-          "percentage": 0.46
+          "percentage": 0.45
         },
         {
           "code": "WF8X",
           "count": 3,
-          "percentage": 0.46
+          "percentage": 0.45
         },
         {
           "code": "Q2AH",
           "count": 3,
-          "percentage": 0.46
+          "percentage": 0.45
         },
         {
           "code": "WGMS",
           "count": 3,
-          "percentage": 0.46
+          "percentage": 0.45
         },
         {
           "code": "B404",
           "count": 2,
-          "percentage": 0.31
+          "percentage": 0.3
+        },
+        {
+          "code": "WILG",
+          "count": 2,
+          "percentage": 0.3
         }
       ],
       "shifts": {
@@ -1519,9 +1548,23 @@
               "qtyTarget": 4,
               "qtyProduced": 3,
               "totalQty": 3
+            },
+            {
+              "partId": "SW08402",
+              "code": "WILG",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "totalQty": 2
+            },
+            {
+              "partId": "SW08753",
+              "code": "WAIK",
+              "qtyTarget": 5,
+              "qtyProduced": 5,
+              "totalQty": 5
             }
           ],
-          "totalQty": 131
+          "totalQty": 138
         }
       }
     }
@@ -1993,7 +2036,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 74.8,
+        "avg": 75.5,
         "target": 76.6,
         "count": 2,
         "isMet": false
@@ -2130,7 +2173,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 74.8,
+          "avg": 75.5,
           "target": 76.6,
           "count": 2,
           "isMet": false
