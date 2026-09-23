@@ -1,6 +1,6 @@
 {
   "date": "2026-09-23",
-  "generatedAt": "2026-09-23T02:54:32.964Z",
+  "generatedAt": "2026-09-23T04:01:25.150Z",
   "waste": {
     "date": "2026-09-23",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-23",
     "mixing1": {
-      "batch": 72,
-      "ar": 85.1,
-      "pr": 89.3,
-      "qr": 70.6,
-      "oee2": 53.7
+      "batch": 98,
+      "ar": 80.5,
+      "pr": 89.2,
+      "qr": 76.4,
+      "oee2": 54.9
     },
     "mixing2": {
-      "batch": 79,
-      "ar": 90.8,
-      "pr": 93.4,
+      "batch": 119,
+      "ar": 92.2,
+      "pr": 93.2,
       "qr": 100,
-      "oee2": 84.8
+      "oee2": 85.9
     },
-    "totalAr": 87.9,
-    "totalPr": 91.4,
-    "totalQr": 85.3,
-    "totalOee2": 68.6
+    "totalAr": 86.4,
+    "totalPr": 91.3,
+    "totalQr": 88.8,
+    "totalOee2": 70
   },
-  "target3Roll": 8,
+  "target3Roll": 13,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -92,7 +92,41 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 14,
+      "totalWbr": 14,
+      "totalSapphire": 0,
+      "totalAngleChanges": 2,
+      "totalNormal": 14,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 14,
+          "sapphire": 0,
+          "angleChanges": 2,
+          "normal": 14,
+          "sticky": 0,
+          "total": 14
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -101,26 +135,26 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 8,
-    "totalRelease": 8,
+    "totalRolls": 13,
+    "totalRelease": 13,
     "totalHold": 0,
-    "totalPending": 30,
+    "totalPending": 25,
     "totalScheduled": 38,
     "codeBreakdown": [
       {
+        "code": "RP08",
+        "count": 7,
+        "percentage": 53.85
+      },
+      {
         "code": "NU27",
         "count": 4,
-        "percentage": 50
+        "percentage": 30.77
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 25
-      },
-      {
-        "code": "RP08",
-        "count": 2,
-        "percentage": 25
+        "percentage": 15.38
       }
     ],
     "holdBreakdown": [],
@@ -267,17 +301,27 @@
     "output": {
       "hasData": true,
       "day": 23,
-      "grandTotal": 87,
+      "grandTotal": 647,
       "codeBreakdown": [
+        {
+          "code": "6015",
+          "count": 280,
+          "percentage": 43.28
+        },
+        {
+          "code": "6017",
+          "count": 280,
+          "percentage": 43.28
+        },
         {
           "code": "6013",
           "count": 84,
-          "percentage": 96.55
+          "percentage": 12.98
         },
         {
           "code": "WAIK",
           "count": 3,
-          "percentage": 3.45
+          "percentage": 0.46
         }
       ],
       "shifts": {
@@ -297,9 +341,23 @@
               "qtyTarget": 80,
               "qtyProduced": 84,
               "totalQty": 84
+            },
+            {
+              "partId": "PX00453",
+              "code": "6017",
+              "qtyTarget": 280,
+              "qtyProduced": 280,
+              "totalQty": 280
+            },
+            {
+              "partId": "PX00566",
+              "code": "6015",
+              "qtyTarget": 280,
+              "qtyProduced": 280,
+              "totalQty": 280
             }
           ],
-          "totalQty": 87
+          "totalQty": 647
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -725,7 +783,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.2,
+        "avg": 73.77,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -862,7 +920,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.2,
+          "avg": 73.77,
           "target": 76.6,
           "count": 3,
           "isMet": false

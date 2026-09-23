@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-23T02:48:29.521Z",
+  "generatedAt": "2026-09-23T04:00:59.563Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 159.2,
@@ -213,41 +213,7 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": true,
-      "totalProduce": 82,
-      "totalWbr": 67,
-      "totalSapphire": 15,
-      "totalAngleChanges": 17,
-      "totalNormal": 67,
-      "totalSticky": 0,
-      "normalPct": 100,
-      "stickyPct": 0,
-      "shifts": {
-        "shift1": {
-          "wbr": 20,
-          "sapphire": 2,
-          "angleChanges": 4,
-          "normal": 20,
-          "sticky": 0,
-          "total": 22
-        },
-        "shift2": {
-          "wbr": 22,
-          "sapphire": 8,
-          "angleChanges": 7,
-          "normal": 22,
-          "sticky": 0,
-          "total": 30
-        },
-        "shift3": {
-          "wbr": 25,
-          "sapphire": 5,
-          "angleChanges": 6,
-          "normal": 25,
-          "sticky": 0,
-          "total": 30
-        }
-      }
+      "hasData": false
     }
   },
   "roll3": {
