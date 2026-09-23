@@ -1,39 +1,70 @@
 {
   "date": "2026-09-23",
-  "generatedAt": "2026-09-23T04:01:25.150Z",
+  "generatedAt": "2026-09-23T06:00:53.713Z",
   "waste": {
     "date": "2026-09-23",
     "millingSummary": 0,
-    "frictionSummary": 0,
+    "frictionSummary": 15.4,
     "beadSummary": 0,
     "millingTop": [],
-    "frictionTop": [],
+    "frictionTop": [
+      {
+        "code": "F24",
+        "amount": 5.4,
+        "reason": "ELEC/MECH",
+        "isHigh": true
+      },
+      {
+        "code": "F01",
+        "amount": 3,
+        "reason": "ANGLE CHANGE",
+        "isHigh": true
+      },
+      {
+        "code": "F53",
+        "amount": 3,
+        "reason": "TIGHT EDGES",
+        "isHigh": false
+      },
+      {
+        "code": "F35",
+        "amount": 2,
+        "reason": "POOR ANGLE AT ROLL END",
+        "isHigh": false
+      },
+      {
+        "code": "F44",
+        "amount": 2,
+        "reason": "ROLL ENDS",
+        "isHigh": false
+      }
+    ],
     "beadTop": [],
     "dataDate": "2026-09-23",
-    "hasData": false
+    "hasData": true
   },
   "cms": {
     "date": "2026-09-23",
     "mixing1": {
-      "batch": 98,
-      "ar": 80.5,
-      "pr": 89.2,
-      "qr": 76.4,
-      "oee2": 54.9
+      "batch": 146,
+      "ar": 77.5,
+      "pr": 89.6,
+      "qr": 81.2,
+      "oee2": 56.3
     },
     "mixing2": {
-      "batch": 119,
-      "ar": 92.2,
-      "pr": 93.2,
+      "batch": 180,
+      "ar": 90.1,
+      "pr": 92.3,
       "qr": 100,
-      "oee2": 85.9
+      "oee2": 83.2
     },
-    "totalAr": 86.4,
-    "totalPr": 91.3,
-    "totalQr": 88.8,
-    "totalOee2": 70
+    "totalAr": 83.8,
+    "totalPr": 91.1,
+    "totalQr": 91,
+    "totalOee2": 69.4
   },
-  "target3Roll": 13,
+  "target3Roll": 21,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -93,22 +124,22 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 14,
-      "totalWbr": 14,
-      "totalSapphire": 0,
-      "totalAngleChanges": 2,
-      "totalNormal": 14,
+      "totalProduce": 22,
+      "totalWbr": 20,
+      "totalSapphire": 2,
+      "totalAngleChanges": 4,
+      "totalNormal": 20,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 14,
-          "sapphire": 0,
-          "angleChanges": 2,
-          "normal": 14,
+          "wbr": 20,
+          "sapphire": 2,
+          "angleChanges": 4,
+          "normal": 20,
           "sticky": 0,
-          "total": 14
+          "total": 22
         },
         "shift2": {
           "wbr": 0,
@@ -135,26 +166,46 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 13,
-    "totalRelease": 13,
+    "totalRolls": 21,
+    "totalRelease": 21,
     "totalHold": 0,
-    "totalPending": 25,
+    "totalPending": 17,
     "totalScheduled": 38,
     "codeBreakdown": [
       {
         "code": "RP08",
-        "count": 7,
-        "percentage": 53.85
+        "count": 8,
+        "percentage": 38.1
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 30.77
+        "percentage": 19.05
+      },
+      {
+        "code": "RU53",
+        "count": 4,
+        "percentage": 19.05
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 15.38
+        "percentage": 9.52
+      },
+      {
+        "code": "RT27",
+        "count": 1,
+        "percentage": 4.76
+      },
+      {
+        "code": "NE45",
+        "count": 1,
+        "percentage": 4.76
+      },
+      {
+        "code": "JR45",
+        "count": 1,
+        "percentage": 4.76
       }
     ],
     "holdBreakdown": [],
@@ -208,22 +259,42 @@
     "output": {
       "hasData": true,
       "day": 23,
-      "grandTotal": 22,
+      "grandTotal": 52,
       "codeBreakdown": [
         {
           "code": "QUIR",
           "count": 12,
-          "percentage": 54.55
+          "percentage": 23.08
         },
         {
-          "code": "WGMS",
+          "code": "WYAL",
+          "count": 12,
+          "percentage": 23.08
+        },
+        {
+          "code": "W13L",
           "count": 8,
-          "percentage": 36.36
+          "percentage": 15.38
+        },
+        {
+          "code": "W13F",
+          "count": 8,
+          "percentage": 15.38
+        },
+        {
+          "code": "W1CX",
+          "count": 8,
+          "percentage": 15.38
         },
         {
           "code": "W1LG",
           "count": 2,
-          "percentage": 9.09
+          "percentage": 3.85
+        },
+        {
+          "code": "WYAF",
+          "count": 2,
+          "percentage": 3.85
         }
       ],
       "shifts": {
@@ -261,17 +332,67 @@
               "totalQty": 2
             },
             {
-              "partId": "TL00074",
-              "code1": "WGMS",
+              "partId": "TL00443",
+              "code1": "W13L",
               "code2": "",
-              "code": "WGMS",
+              "code": "W13L",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00442",
+              "code1": "W13F",
+              "code2": "",
+              "code": "W13F",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00182",
+              "code1": "WYAF",
+              "code2": "",
+              "code": "WYAF",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "TL00183",
+              "code1": "WYAL",
+              "code2": "",
+              "code": "WYAL",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00183",
+              "code1": "WYAL",
+              "code2": "",
+              "code": "WYAL",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "TL00203",
+              "code1": "W1CX",
+              "code2": "",
+              "code": "W1CX",
               "qtyTarget": 8,
               "qtyProduced": 8,
               "qtySapphire": 0,
               "totalQty": 8
             }
           ],
-          "totalQty": 22
+          "totalQty": 52
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -301,27 +422,32 @@
     "output": {
       "hasData": true,
       "day": 23,
-      "grandTotal": 647,
+      "grandTotal": 921,
       "codeBreakdown": [
         {
           "code": "6015",
           "count": 280,
-          "percentage": 43.28
+          "percentage": 30.4
         },
         {
           "code": "6017",
           "count": 280,
-          "percentage": 43.28
+          "percentage": 30.4
+        },
+        {
+          "code": "6010",
+          "count": 274,
+          "percentage": 29.75
         },
         {
           "code": "6013",
           "count": 84,
-          "percentage": 12.98
+          "percentage": 9.12
         },
         {
           "code": "WAIK",
           "count": 3,
-          "percentage": 0.46
+          "percentage": 0.33
         }
       ],
       "shifts": {
@@ -355,9 +481,16 @@
               "qtyTarget": 280,
               "qtyProduced": 280,
               "totalQty": 280
+            },
+            {
+              "partId": "PX00582",
+              "code": "6010",
+              "qtyTarget": 280,
+              "qtyProduced": 274,
+              "totalQty": 274
             }
           ],
-          "totalQty": 647
+          "totalQty": 921
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -783,7 +916,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.77,
+        "avg": 73.47,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -920,7 +1053,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.77,
+          "avg": 73.47,
           "target": 76.6,
           "count": 3,
           "isMet": false
