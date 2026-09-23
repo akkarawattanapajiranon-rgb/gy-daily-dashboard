@@ -1,10 +1,10 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-23T01:33:39.073Z",
+  "generatedAt": "2026-09-23T02:01:02.875Z",
   "waste": {
     "date": "2026-09-22",
     "millingSummary": 137,
-    "frictionSummary": 266.2,
+    "frictionSummary": 300,
     "beadSummary": 63.3,
     "millingTop": [
       {
@@ -29,7 +29,7 @@
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 70.2,
+        "amount": 96,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -47,7 +47,7 @@
       },
       {
         "code": "F01",
-        "amount": 20.299999999999997,
+        "amount": 22.299999999999997,
         "reason": "ANGLE CHANGE",
         "isHigh": false
       },
@@ -107,31 +107,77 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-22",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Auto Pigment",
+        "totalDurationMin": 90,
+        "details": [
+          {
+            "shift": "3",
+            "zone": "Bagging",
+            "symptom": "ซีลถุงไม่ติด",
+            "cause": "ลวด Heater ขาด",
+            "action": "เปลี่ยนลวดใหม่ 2 ข้าง",
+            "fixType": "ชั่วคราว",
+            "durationMin": 90,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "Quad",
+        "totalDurationMin": 40,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Windup 4",
+            "symptom": "Safety ตัดเอง",
+            "cause": "Safety Scanner สกปรก",
+            "action": "ทำความสะอาด",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ริน/เอฟ"
+          },
+          {
+            "shift": "2",
+            "zone": "Extruder",
+            "symptom": "Extruder 4 Can't Auto.",
+            "cause": "Card error.",
+            "action": "ReStart card.",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "BD",
+            "fixBy": "ไพลิน/บาส"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.3889,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.3472,
+      "hasData": true
     }
   },
   "fischer": {
@@ -161,41 +207,7 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": true,
-      "totalProduce": 82,
-      "totalWbr": 67,
-      "totalSapphire": 15,
-      "totalAngleChanges": 17,
-      "totalNormal": 67,
-      "totalSticky": 0,
-      "normalPct": 100,
-      "stickyPct": 0,
-      "shifts": {
-        "shift1": {
-          "wbr": 20,
-          "sapphire": 2,
-          "angleChanges": 4,
-          "normal": 20,
-          "sticky": 0,
-          "total": 22
-        },
-        "shift2": {
-          "wbr": 22,
-          "sapphire": 8,
-          "angleChanges": 7,
-          "normal": 22,
-          "sticky": 0,
-          "total": 30
-        },
-        "shift3": {
-          "wbr": 25,
-          "sapphire": 5,
-          "angleChanges": 6,
-          "normal": 25,
-          "sticky": 0,
-          "total": 30
-        }
-      }
+      "hasData": false
     }
   },
   "roll3": {
