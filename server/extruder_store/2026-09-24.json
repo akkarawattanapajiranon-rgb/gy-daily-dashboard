@@ -1,6 +1,6 @@
 {
   "date": "2026-09-24",
-  "fetchedAtMs": 1790208041964,
+  "fetchedAtMs": 1790208067467,
   "lines": {
     "QUAD": {
       "rows": [
@@ -59,6 +59,42 @@
           "s24": 5.681667
         },
         {
+          "dt": "2026-09-24 07:00:51",
+          "runNum": 172243,
+          "recipeName": "Q2AH-TOOS",
+          "recipeId": 2378,
+          "tatawAct": 6.996395,
+          "tawSpec": 14,
+          "efficiency": 0.4997425,
+          "hpress1": 0.2916667,
+          "hpress2": 6.766667,
+          "hpress3": 4.713333,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 2.403333,
+          "s24": 4.713333
+        },
+        {
+          "dt": "2026-09-24 07:00:41",
+          "runNum": 172243,
+          "recipeName": "Q2AH-TOOS",
+          "recipeId": 2378,
+          "tatawAct": 7.00233,
+          "tawSpec": 14,
+          "efficiency": 0.5001664285714286,
+          "hpress1": 0.2566667,
+          "hpress2": 7.361667,
+          "hpress3": 5.285,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 2.881667,
+          "s24": 5.285
+        },
+        {
           "dt": "2026-09-24 07:00:31",
           "runNum": 172243,
           "recipeName": "Q2AH-TOOS",
@@ -77,12 +113,49 @@
           "s24": 5.343333
         }
       ],
-      "lastDt": "2026-09-24 07:00:31",
+      "lastDt": "2026-09-24 07:00:51",
       "truncated": false
     },
     "DUPLEX": {
-      "rows": [],
-      "lastDt": null,
+      "rows": [
+        {
+          "dt": "2026-09-24 07:01:00",
+          "runNum": 161276,
+          "recipeName": "VLR553",
+          "recipeId": 1014,
+          "tatawAct": 21.93021,
+          "tawSpec": 25,
+          "efficiency": 0.8772084,
+          "hpress1": 0,
+          "hpress2": 3.539529,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0,
+          "s24": 0
+        },
+        {
+          "dt": "2026-09-24 07:00:30",
+          "runNum": 161276,
+          "recipeName": "VLR553",
+          "recipeId": 1014,
+          "tatawAct": 21.95747,
+          "tawSpec": 25,
+          "efficiency": 0.8782988,
+          "hpress1": 0,
+          "hpress2": 3.746245,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0,
+          "s24": 0
+        }
+      ],
+      "lastDt": "2026-09-24 07:01:00",
       "truncated": false
     }
   }
