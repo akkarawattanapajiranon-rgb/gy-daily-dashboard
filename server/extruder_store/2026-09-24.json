@@ -1,6 +1,6 @@
 {
   "date": "2026-09-24",
-  "fetchedAtMs": 1790215867035,
+  "fetchedAtMs": 1790215889715,
   "lines": {
     "QUAD": {
       "rows": [
@@ -14097,9 +14097,45 @@
           "s22": 0,
           "s23": 44.695,
           "s24": 130.13
+        },
+        {
+          "dt": "2026-09-24 09:11:12",
+          "runNum": 172246,
+          "recipeName": "WAIK-TOOS",
+          "recipeId": 2607,
+          "tatawAct": 18.25862,
+          "tawSpec": 17,
+          "efficiency": 1.0740364705882353,
+          "hpress1": 43.90167,
+          "hpress2": 126.56,
+          "hpress3": 130.9467,
+          "hpress4": 135.2517,
+          "lineSpeed": 17.71016,
+          "s21": 0,
+          "s22": 0,
+          "s23": 40.53,
+          "s24": 130.9467
+        },
+        {
+          "dt": "2026-09-24 09:11:02",
+          "runNum": 172246,
+          "recipeName": "WAIK-TOOS",
+          "recipeId": 2607,
+          "tatawAct": 18.24205,
+          "tawSpec": 17,
+          "efficiency": 1.0730617647058824,
+          "hpress1": 43.87833,
+          "hpress2": 126.5017,
+          "hpress3": 130.4917,
+          "hpress4": 134.9717,
+          "lineSpeed": 17.70787,
+          "s21": 0,
+          "s22": 0,
+          "s23": 43.75,
+          "s24": 130.4917
         }
       ],
-      "lastDt": "2026-09-24 09:10:52",
+      "lastDt": "2026-09-24 09:11:12",
       "truncated": false
     },
     "DUPLEX": {
@@ -18441,9 +18477,27 @@
           "s22": 0,
           "s23": 0,
           "s24": 0
+        },
+        {
+          "dt": "2026-09-24 09:11:13",
+          "runNum": 161282,
+          "recipeName": "AC004",
+          "recipeId": 1420,
+          "tatawAct": 0,
+          "tawSpec": 8.32,
+          "efficiency": 0,
+          "hpress1": 0,
+          "hpress2": 3.063571,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0,
+          "s24": 0
         }
       ],
-      "lastDt": "2026-09-24 09:07:48",
+      "lastDt": "2026-09-24 09:11:13",
       "truncated": false
     }
   }

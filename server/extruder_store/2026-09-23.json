@@ -1,6 +1,6 @@
 {
   "date": "2026-09-23",
-  "fetchedAtMs": 1790215866610,
+  "fetchedAtMs": 1790215898209,
   "lines": {
     "QUAD": {
       "rows": [
@@ -120425,24 +120425,6 @@
           "s24": 0
         },
         {
-          "dt": "2026-09-24 06:50:21",
-          "runNum": 172243,
-          "recipeName": "Q2AH-TOOS",
-          "recipeId": 2378,
-          "tatawAct": 13.99921,
-          "tawSpec": 14,
-          "efficiency": 0.9999435714285714,
-          "hpress1": 0.2333333,
-          "hpress2": 0.7816667,
-          "hpress3": 0,
-          "hpress4": 0,
-          "lineSpeed": 0,
-          "s21": 0,
-          "s22": 0,
-          "s23": 0.8866667,
-          "s24": 0
-        },
-        {
           "dt": "2026-09-24 06:50:11",
           "runNum": 172243,
           "recipeName": "Q2AH-TOOS",
@@ -120836,24 +120818,6 @@
           "s21": 0,
           "s22": 0,
           "s23": 0.6766667,
-          "s24": 0
-        },
-        {
-          "dt": "2026-09-24 06:55:21",
-          "runNum": 172243,
-          "recipeName": "Q2AH-TOOS",
-          "recipeId": 2378,
-          "tatawAct": 15.99892,
-          "tawSpec": 14,
-          "efficiency": 1.14278,
-          "hpress1": 0.28,
-          "hpress2": 0.63,
-          "hpress3": 0,
-          "hpress4": 0,
-          "lineSpeed": 0,
-          "s21": 0,
-          "s22": 0,
-          "s23": 1.05,
           "s24": 0
         },
         {
@@ -121379,6 +121343,24 @@
           "s24": 0
         },
         {
+          "dt": "2026-09-24 06:50:21",
+          "runNum": 172243,
+          "recipeName": "Q2AH-TOOS",
+          "recipeId": 2378,
+          "tatawAct": 13.99921,
+          "tawSpec": 14,
+          "efficiency": 0.9999435714285714,
+          "hpress1": 0.2333333,
+          "hpress2": 0.7816667,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0.8866667,
+          "s24": 0
+        },
+        {
           "dt": "2026-09-24 06:59:51",
           "runNum": 172243,
           "recipeName": "Q2AH-TOOS",
@@ -121862,6 +121844,24 @@
           "s21": 0,
           "s22": 0,
           "s23": 0.98,
+          "s24": 0
+        },
+        {
+          "dt": "2026-09-24 06:55:21",
+          "runNum": 172243,
+          "recipeName": "Q2AH-TOOS",
+          "recipeId": 2378,
+          "tatawAct": 15.99892,
+          "tawSpec": 14,
+          "efficiency": 1.14278,
+          "hpress1": 0.28,
+          "hpress2": 0.63,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 1.05,
           "s24": 0
         }
       ],
