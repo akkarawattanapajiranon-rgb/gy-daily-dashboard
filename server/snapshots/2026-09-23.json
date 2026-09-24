@@ -1,10 +1,10 @@
 {
   "date": "2026-09-23",
-  "generatedAt": "2026-09-24T00:01:17.279Z",
+  "generatedAt": "2026-09-24T01:31:47.581Z",
   "waste": {
     "date": "2026-09-23",
-    "millingSummary": 84.6,
-    "frictionSummary": 311.7,
+    "millingSummary": 93.6,
+    "frictionSummary": 347.6,
     "beadSummary": 50.5,
     "millingTop": [
       {
@@ -15,13 +15,13 @@
       },
       {
         "code": "M01",
-        "amount": 26.6,
+        "amount": 29.6,
         "reason": "LUMPY",
         "isHigh": true
       },
       {
         "code": "M05",
-        "amount": 20,
+        "amount": 26,
         "reason": "TAILING",
         "isHigh": false
       },
@@ -34,15 +34,15 @@
     ],
     "frictionTop": [
       {
-        "code": "F39",
-        "amount": 77,
-        "reason": "O'LAY TRIM",
+        "code": "F44",
+        "amount": 89.5,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F44",
-        "amount": 63.6,
-        "reason": "ROLL ENDS",
+        "code": "F39",
+        "amount": 77,
+        "reason": "O'LAY TRIM",
         "isHigh": true
       },
       {
@@ -53,13 +53,13 @@
       },
       {
         "code": "F46",
-        "amount": 25,
+        "amount": 27,
         "reason": "SHORT PIECES",
         "isHigh": false
       },
       {
         "code": "F01",
-        "amount": 23.7,
+        "amount": 25.7,
         "reason": "ANGLE CHANGE",
         "isHigh": false
       }
@@ -91,10 +91,10 @@
     "date": "2026-09-23",
     "mixing1": {
       "batch": 625,
-      "ar": 84.3,
+      "ar": 85.2,
       "pr": 88.7,
       "qr": 86.1,
-      "oee2": 64.4
+      "oee2": 65.1
     },
     "mixing2": {
       "batch": 646,
@@ -103,68 +103,209 @@
       "qr": 100,
       "oee2": 82.1
     },
-    "totalAr": 88.3,
+    "totalAr": 88.8,
     "totalPr": 88.7,
     "totalQr": 92.9,
-    "totalOee2": 72.8
+    "totalOee2": 73.2
   },
   "target3Roll": 38,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-23",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Fischer",
+        "totalDurationMin": 100,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Windup 3",
+            "symptom": "เดิน Auto ไม่ได้",
+            "cause": "ขาStop Roll In หัก",
+            "action": "ให้กด Manaul Run ไปก่อนหมดงานต้องถอดมาทำ",
+            "fixType": "งานค้าง",
+            "durationMin": 70,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/ริน/เท่ห์"
+          },
+          {
+            "shift": "2",
+            "zone": "Wind up 3",
+            "symptom": "Machine Can't Auto",
+            "cause": "Reed Switch ไม่ต่อ",
+            "action": "ปรับ Reed Switch",
+            "fixType": "ชั่วคราว",
+            "durationMin": 15,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/บาส/ไพลิน"
+          },
+          {
+            "shift": "3",
+            "zone": "Gripper",
+            "symptom": "Gripper หนีบไม่ติด",
+            "cause": "Gripper หนีบไม่แน่น",
+            "action": "ปรับลม",
+            "fixType": "ชั่วคราว",
+            "durationMin": 15,
+            "jobType": "BD",
+            "fixBy": "มินท์/แอ๊ด"
+          }
+        ]
+      },
+      {
+        "machine": "Hex Bead",
+        "totalDurationMin": 75,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "EXT",
+            "symptom": "Safety Reset ไม่ได้",
+            "cause": "Feed ปิดไม่สนิด",
+            "action": "ปิด เปิด Feedใหม่",
+            "fixType": "ถาวร",
+            "durationMin": 45,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/ริน/เท่ห์"
+          },
+          {
+            "shift": "3",
+            "zone": "Former",
+            "symptom": "Former ไม่กาง",
+            "cause": "กระบอกสูบเสีย",
+            "action": "เปลี่ยนกระบอกสูบ",
+            "fixType": "ชั่วคราว",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "มินท์/แอ๊ด"
+          }
+        ]
+      },
+      {
+        "machine": "Auto Pigment",
+        "totalDurationMin": 60,
+        "details": [
+          {
+            "shift": "2",
+            "zone": "MOP",
+            "symptom": "Sefety can't reset.",
+            "cause": "I/O Safety fault.",
+            "action": "Restart module.",
+            "fixType": "ถาวร",
+            "durationMin": 60,
+            "jobType": "BD",
+            "fixBy": ""
+          }
+        ]
+      },
+      {
+        "machine": "Quad",
+        "totalDurationMin": 55,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Ultrasonic",
+            "symptom": "Safety Reset ไม่ได้",
+            "cause": "ปุ่มหมุนได้รอบทำให้สายสาด",
+            "action": "เปลี่ยนปุ่ม และ ต่อสายใหม่",
+            "fixType": "ถาวร",
+            "durationMin": 30,
+            "jobType": "BD",
+            "fixBy": "ทีป/มด/ริน/เท่ห์"
+          },
+          {
+            "shift": "3",
+            "zone": "Skiver",
+            "symptom": "ตัวกั้นยางแตก",
+            "cause": "ยางยัด",
+            "action": "เชื่อมใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 25,
+            "jobType": "BD",
+            "fixBy": "มินท์/แอ๊ด"
+          }
+        ]
+      },
+      {
+        "machine": "Buff 2",
+        "totalDurationMin": 45,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Control",
+            "symptom": "Motor ไม่หมุน",
+            "cause": "Buffกดหนักเกินไป",
+            "action": "Reset Overload วัดตรวจเช็คขดลวดมอเตอร์",
+            "fixType": "ถาวร",
+            "durationMin": 45,
+            "jobType": "BD",
+            "fixBy": "ริน/เท่ห์"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.875,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.6667,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.6354,
+      "hasData": true
     }
   },
   "fischer": {
     "date": "2026-09-23",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 89.72,
+      "ar_pct": 48.45,
+      "pr_pct": 99.94,
+      "qr_pct": 99.56,
+      "oee1_pct": 43.26,
+      "oee2_pct": 48.21
     },
     "loss": {
       "hasData": true,
-      "noSchedule": 0,
-      "noCart": 0,
+      "noSchedule": 148,
+      "noCart": 45,
       "noGum": 0,
       "noTreatment": 0,
-      "breakdown": 0,
-      "angleChange": 0,
-      "produce": 0,
+      "breakdown": 83,
+      "angleChange": 21,
+      "produce": 84,
       "target": 90,
-      "breakdownComment": "",
-      "commentAuthor": "",
-      "otherComments": []
+      "breakdownComment": "Repair A3 sensor position error",
+      "commentAuthor": "Paisal Phoompong",
+      "otherComments": [
+        {
+          "category": "No Schedule",
+          "author": "Paisal Phoompong",
+          "text": "Break 90 min\nNo schedule 58 min"
+        },
+        {
+          "category": "No Cart",
+          "author": "Paisal Phoompong",
+          "text": "VMI cart delay"
+        }
+      ]
     },
     "checksheet": {
       "hasData": true,
@@ -778,108 +919,108 @@
     "date": "2026-09-23",
     "oee": {
       "hasData": true,
-      "sr_pct": 60.07,
-      "ar_pct": 59.65,
-      "pr_pct": 94.59,
-      "qr_pct": 88.32,
-      "oee1_pct": 29.94,
-      "oee2_pct": 49.84,
-      "bd_pct": 0
+      "sr_pct": 63.54,
+      "ar_pct": 78.58,
+      "pr_pct": 63.92,
+      "qr_pct": 94.92,
+      "oee1_pct": 30.29,
+      "oee2_pct": 47.67,
+      "bd_pct": 3.47
     },
     "output": {
       "hasData": true,
       "day": 23,
-      "grandTotal": 688,
+      "grandTotal": 1867.2,
       "codeBreakdown": [
         {
           "code": "B351",
-          "count": 188,
-          "percentage": 27.33
+          "count": 601.6,
+          "percentage": 32.22
         },
         {
           "code": "B491",
-          "count": 188,
-          "percentage": 27.33
+          "count": 601.6,
+          "percentage": 32.22
         },
         {
           "code": "B427",
-          "count": 160,
-          "percentage": 23.26
+          "count": 512,
+          "percentage": 27.42
         },
         {
           "code": "W1CX",
           "count": 20,
-          "percentage": 2.91
+          "percentage": 1.07
         },
         {
           "code": "WYAL",
           "count": 16,
-          "percentage": 2.33
+          "percentage": 0.86
         },
         {
           "code": "W13L",
           "count": 14,
-          "percentage": 2.03
+          "percentage": 0.75
         },
         {
           "code": "W13F",
           "count": 14,
-          "percentage": 2.03
+          "percentage": 0.75
         },
         {
           "code": "QUIR",
           "count": 12,
-          "percentage": 1.74
+          "percentage": 0.64
         },
         {
           "code": "WAIK",
           "count": 12,
-          "percentage": 1.74
+          "percentage": 0.64
         },
         {
           "code": "WA8X",
           "count": 10,
-          "percentage": 1.45
+          "percentage": 0.54
         },
         {
           "code": "WF8X",
           "count": 10,
-          "percentage": 1.45
+          "percentage": 0.54
         },
         {
           "code": "W1WF",
           "count": 10,
-          "percentage": 1.45
+          "percentage": 0.54
         },
         {
           "code": "W1WL",
           "count": 10,
-          "percentage": 1.45
+          "percentage": 0.54
         },
         {
           "code": "WLAN",
           "count": 8,
-          "percentage": 1.16
+          "percentage": 0.43
         },
         {
           "code": "WGMS",
           "count": 6,
-          "percentage": 0.87
+          "percentage": 0.32
         },
         {
           "code": "WYAF",
           "count": 4,
-          "percentage": 0.58
+          "percentage": 0.21
         },
         {
           "code": "Q2AH",
           "count": 4,
-          "percentage": 0.58
+          "percentage": 0.21
         },
         {
           "code": "W1LG",
           "count": 2,
-          "percentage": 0.29
+          "percentage": 0.11
         }
       ],
       "shifts": {
@@ -989,8 +1130,8 @@
               "code": "B351",
               "qtyTarget": 200,
               "qtyProduced": 188,
-              "qtySapphire": 0,
-              "totalQty": 188
+              "qtySapphire": 413.6,
+              "totalQty": 601.6
             },
             {
               "partId": "SC00554",
@@ -999,8 +1140,8 @@
               "code": "B491",
               "qtyTarget": 200,
               "qtyProduced": 188,
-              "qtySapphire": 0,
-              "totalQty": 188
+              "qtySapphire": 413.6,
+              "totalQty": 601.6
             },
             {
               "partId": "SC00526",
@@ -1009,8 +1150,8 @@
               "code": "B427",
               "qtyTarget": 300,
               "qtyProduced": 160,
-              "qtySapphire": 0,
-              "totalQty": 160
+              "qtySapphire": 352,
+              "totalQty": 512
             },
             {
               "partId": "TL00192",
@@ -1043,7 +1184,7 @@
               "totalQty": 10
             }
           ],
-          "totalQty": 560
+          "totalQty": 1739.2
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
@@ -1177,59 +1318,59 @@
   "tuber": {
     "date": "2026-09-23",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 75.35,
+      "ar_pct": 85.62,
+      "pr_pct": 60.06,
+      "qr_pct": 97.16,
+      "oee1_pct": 37.64,
+      "oee2_pct": 49.96,
       "bd_pct": 0
     },
     "output": {
       "hasData": true,
       "day": 23,
-      "grandTotal": 1271,
+      "grandTotal": 1277,
       "codeBreakdown": [
         {
           "code": "6015",
-          "count": 280,
-          "percentage": 22.03
+          "count": 283,
+          "percentage": 22.16
         },
         {
           "code": "6017",
           "count": 280,
-          "percentage": 22.03
+          "percentage": 21.93
         },
         {
           "code": "6010",
           "count": 274,
-          "percentage": 21.56
+          "percentage": 21.46
         },
         {
           "code": "B198",
           "count": 221,
-          "percentage": 17.39
+          "percentage": 17.31
         },
         {
           "code": "6013",
-          "count": 84,
-          "percentage": 6.61
+          "count": 87,
+          "percentage": 6.81
         },
         {
           "code": "B635",
           "count": 57,
-          "percentage": 4.48
+          "percentage": 4.46
         },
         {
           "code": "WAIK",
           "count": 10,
-          "percentage": 0.79
+          "percentage": 0.78
         },
         {
           "code": "W13L",
           "count": 9,
-          "percentage": 0.71
+          "percentage": 0.7
         },
         {
           "code": "W1WF",
@@ -1325,9 +1466,23 @@
               "qtyTarget": 280,
               "qtyProduced": 274,
               "totalQty": 274
+            },
+            {
+              "partId": "SW08962",
+              "code": "6013",
+              "qtyTarget": 4,
+              "qtyProduced": 3,
+              "totalQty": 3
+            },
+            {
+              "partId": "SW08984",
+              "code": "6015",
+              "qtyTarget": 4,
+              "qtyProduced": 3,
+              "totalQty": 3
             }
           ],
-          "totalQty": 921
+          "totalQty": 927
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -1459,7 +1614,7 @@
       "sum": 71307,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
+      "consume": 18609,
       "newGenerate": 8885,
       "slowMoving": 55069,
       "disposition": 7353,
@@ -1818,7 +1973,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 71307,
-        "consume": 0,
+        "consume": 18609,
         "newGenerate": 8885,
         "newGenerateBTA": 5950,
         "newGenerateWBR": 2935,
@@ -1913,25 +2068,25 @@
       "label": "Wk39 (21/9 - 30/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 53.18,
+        "avg": 52.45,
         "target": 62,
         "count": 3,
         "isMet": false
       },
       "tuber": {
-        "avg": 55.51,
+        "avg": 53.66,
         "target": 62,
-        "count": 2,
+        "count": 3,
         "isMet": false
       },
       "fischer": {
-        "avg": 53.74,
+        "avg": 51.9,
         "target": 60,
-        "count": 2,
+        "count": 3,
         "isMet": false
       },
       "mixing": {
-        "avg": 74.6,
+        "avg": 74.73,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -2050,25 +2205,25 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 53.18,
+          "avg": 52.45,
           "target": 62,
           "count": 3,
           "isMet": false
         },
         "tuber": {
-          "avg": 55.51,
+          "avg": 53.66,
           "target": 62,
-          "count": 2,
+          "count": 3,
           "isMet": false
         },
         "fischer": {
-          "avg": 53.74,
+          "avg": 51.9,
           "target": 60,
-          "count": 2,
+          "count": 3,
           "isMet": false
         },
         "mixing": {
-          "avg": 74.6,
+          "avg": 74.73,
           "target": 76.6,
           "count": 3,
           "isMet": false
