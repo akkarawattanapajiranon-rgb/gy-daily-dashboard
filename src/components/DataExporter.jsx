@@ -48,8 +48,85 @@ export function getStatusColor(metricKey, value, customTarget = null) {
   }
 }
 
+export function parseSnapshotToRow(dStr, snap = {}) {
+  const cms = snap.cms || {};
+  const quad = snap.quad || {};
+  const tuber = snap.tuber || {};
+  const fischer = snap.fischer || {};
+  const bd = snap.breakdown || {};
+  const waste = snap.waste || {};
+
+  const batch1 = Number(cms.mixing1?.batch) || 0;
+  const batch2 = Number(cms.mixing2?.batch) || 0;
+
+  return {
+    date: dStr,
+    mixerBatchmix: batch1 + batch2,
+    mixerOee2: Number(Number(cms.totalOee2 || 0).toFixed(2)),
+    quadOee2: Number(Number(quad.oee?.oee2_pct || 0).toFixed(2)),
+    tuberOee2: Number(Number(tuber.oee?.oee2_pct || 0).toFixed(2)),
+    fischerOee2: Number(Number(fischer.oee?.oee2_pct || 0).toFixed(2)),
+    bdMixer: Number(Number(bd.Banbury?.actual_bd_pct || 0).toFixed(4)),
+    bdExtruder: Number(Number(bd.Extruder?.actual_bd_pct || 0).toFixed(4)),
+    bdCalender: Number(Number(bd.Calender?.actual_bd_pct || 0).toFixed(4)),
+    bdCutting: Number(Number(bd.Cutting?.actual_bd_pct || 0).toFixed(4)),
+    frictionWaste: Number(Number(waste.frictionSummary || 0).toFixed(2)),
+    millingWaste: Number(Number(waste.millingSummary || 0).toFixed(2)),
+    targets: {
+      mixerBatchmix: 1300,
+      mixerOee2: 76.6,
+      quadOee2: 62.0,
+      tuberOee2: 62.0,
+      fischerOee2: 60.0,
+      bdMixer: Number(Number(bd.Banbury?.target_bd_pct || 0.5827).toFixed(4)),
+      bdExtruder: Number(Number(bd.Extruder?.target_bd_pct || 0.5098).toFixed(4)),
+      bdCalender: Number(Number(bd.Calender?.target_bd_pct || 0.4662).toFixed(4)),
+      bdCutting: Number(Number(bd.Cutting?.target_bd_pct || 0.1166).toFixed(4)),
+      frictionWaste: 285,
+      millingWaste: 265
+    }
+  };
+}
+
+export function getDateList(start, end) {
+  if (!start || !end) return [];
+  const [sY, sM, sD] = start.split('-').map(Number);
+  const [eY, eM, eD] = end.split('-').map(Number);
+  if (!sY || !sM || !sD || !eY || !eM || !eD) return [];
+
+  const curr = new Date(sY, sM - 1, sD);
+  const stop = new Date(eY, eM - 1, eD);
+  if (curr > stop) return [start];
+
+  const dates = [];
+  let count = 0;
+  while (curr <= stop && count < 60) {
+    const yyyy = curr.getFullYear();
+    const mm = String(curr.getMonth() + 1).padStart(2, '0');
+    const dd = String(curr.getDate()).padStart(2, '0');
+    dates.push(`${yyyy}-${mm}-${dd}`);
+    curr.setDate(curr.getDate() + 1);
+    count++;
+  }
+  return dates;
+}
+
+export function computeLocalRows(start, end) {
+  const dates = getDateList(start, end);
+  return dates.map(dStr => {
+    const snap = getLocalSnapshot(dStr) || {};
+    return parseSnapshotToRow(dStr, snap);
+  });
+}
+
 export default function DataExporter({ refreshTrigger }) {
-  const todayStr = new Date().toISOString().split('T')[0];
+  const getTodayDateStr = () => {
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+  };
 
   const getInitialDates = () => {
     const today = new Date();
@@ -68,82 +145,50 @@ export default function DataExporter({ refreshTrigger }) {
   const initialDates = getInitialDates();
   const [startDate, setStartDate] = useState(initialDates.start);
   const [endDate, setEndDate] = useState(initialDates.end);
-  const [dataRows, setDataRows] = useState([]);
+  const [dataRows, setDataRows] = useState(() => computeLocalRows(initialDates.start, initialDates.end));
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const fetchExportData = async (start, end, force = false) => {
+    if (!start || !end) return;
+
+    // 1. Immediately compute & show local snapshot rows (instant 0ms feedback)
+    const localRows = computeLocalRows(start, end);
+    setDataRows(localRows);
+
     setLoading(true);
     try {
-      const url = `/api/export-metrics?startDate=${start}&endDate=${end}${force ? '&refresh=true' : ''}`;
-      const res = await fetchFast(url, force ? 25000 : 8000);
-      const contentType = res.headers.get('content-type');
-      if (res.ok && contentType && contentType.includes('application/json')) {
-        const json = await res.json();
-        if (json.rows && json.rows.length > 0) {
-          setDataRows(json.rows);
-          return;
-        }
-      }
-      throw new Error('API unavailable, falling back to snapshots');
-    } catch (err) {
-      console.warn('Falling back to snapshot metrics calculation:', err.message);
-      const dates = [];
-      const sDate = new Date(start);
-      const eDate = new Date(end);
-      const curr = new Date(sDate);
-      let count = 0;
-      while (curr <= eDate && count < 60) {
-        const yyyy = curr.getFullYear();
-        const mm = String(curr.getMonth() + 1).padStart(2, '0');
-        const dd = String(curr.getDate()).padStart(2, '0');
-        dates.push(`${yyyy}-${mm}-${dd}`);
-        curr.setDate(curr.getDate() + 1);
-        count++;
-      }
-
-      const rows = await Promise.all(dates.map(async (dStr) => {
-        const snap = (await getFirebaseSnapshot(dStr)) || getLocalSnapshot(dStr) || {};
-        const cms = snap.cms || {};
-        const quad = snap.quad || {};
-        const tuber = snap.tuber || {};
-        const fischer = snap.fischer || {};
-        const bd = snap.breakdown || {};
-        const waste = snap.waste || {};
-
-        const batch1 = Number(cms.mixing1?.batch) || 0;
-        const batch2 = Number(cms.mixing2?.batch) || 0;
-
-        return {
-          date: dStr,
-          mixerBatchmix: batch1 + batch2,
-          mixerOee2: Number(Number(cms.totalOee2 || 0).toFixed(2)),
-          quadOee2: Number(Number(quad.oee?.oee2_pct || 0).toFixed(2)),
-          tuberOee2: Number(Number(tuber.oee?.oee2_pct || 0).toFixed(2)),
-          fischerOee2: Number(Number(fischer.oee?.oee2_pct || 0).toFixed(2)),
-          bdMixer: Number(Number(bd.Banbury?.actual_bd_pct || 0).toFixed(4)),
-          bdExtruder: Number(Number(bd.Extruder?.actual_bd_pct || 0).toFixed(4)),
-          bdCalender: Number(Number(bd.Calender?.actual_bd_pct || 0).toFixed(4)),
-          bdCutting: Number(Number(bd.Cutting?.actual_bd_pct || 0).toFixed(4)),
-          frictionWaste: Number(Number(waste.frictionSummary || 0).toFixed(2)),
-          millingWaste: Number(Number(waste.millingSummary || 0).toFixed(2)),
-          targets: {
-            mixerBatchmix: 1300,
-            mixerOee2: 76.6,
-            quadOee2: 62.0,
-            tuberOee2: 62.0,
-            fischerOee2: 60.0,
-            bdMixer: Number(Number(bd.Banbury?.target_bd_pct || 0.5827).toFixed(4)),
-            bdExtruder: Number(Number(bd.Extruder?.target_bd_pct || 0.5098).toFixed(4)),
-            bdCalender: Number(Number(bd.Calender?.target_bd_pct || 0.4662).toFixed(4)),
-            bdCutting: Number(Number(bd.Cutting?.target_bd_pct || 0.1166).toFixed(4)),
-            frictionWaste: 285,
-            millingWaste: 265
+      // 2. If local Express server is running, try /api/export-metrics (with short 2.5s timeout)
+      try {
+        const url = `/api/export-metrics?startDate=${start}&endDate=${end}${force ? '&refresh=true' : ''}`;
+        const res = await fetchFast(url, force ? 5000 : 2500);
+        const contentType = res.headers.get('content-type');
+        if (res.ok && contentType && contentType.includes('application/json')) {
+          const json = await res.json();
+          if (json.rows && json.rows.length > 0) {
+            const hasData = json.rows.some(r => r.mixerBatchmix > 0 || r.mixerOee2 > 0 || r.quadOee2 > 0 || r.frictionWaste > 0);
+            if (hasData) {
+              setDataRows(json.rows);
+              return;
+            }
           }
-        };
+        }
+      } catch (apiErr) {
+        // Express server not responding or hosted on static Vercel; proceed to Firebase
+      }
+
+      // 3. Fallback to Firebase snapshots in parallel
+      const dates = getDateList(start, end);
+      const rows = await Promise.all(dates.map(async (dStr) => {
+        const snap = (await getFirebaseSnapshot(dStr, force)) || getLocalSnapshot(dStr) || {};
+        return parseSnapshotToRow(dStr, snap);
       }));
 
-      setDataRows(rows);
+      if (rows && rows.length > 0) {
+        setDataRows(rows);
+      }
+    } catch (err) {
+      console.warn('Error fetching export metrics:', err);
     } finally {
       setLoading(false);
     }
@@ -157,6 +202,8 @@ export default function DataExporter({ refreshTrigger }) {
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const todayStr = `${yyyy}-${mm}-${dd}`;
 
     if (presetKey === '1-3') {
       setStartDate(`${yyyy}-${mm}-01`);
@@ -381,7 +428,7 @@ export default function DataExporter({ refreshTrigger }) {
             />
           </div>
           <button
-            onClick={() => fetchExportData(startDate, endDate)}
+            onClick={() => fetchExportData(startDate, endDate, true)}
             className="self-end px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all shadow-sm mb-0.5 flex items-center gap-1.5 cursor-pointer"
             title="Refresh Data"
           >
