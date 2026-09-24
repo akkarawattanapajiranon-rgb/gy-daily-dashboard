@@ -1,6 +1,6 @@
 {
   "date": "2026-09-23",
-  "generatedAt": "2026-09-23T23:46:33.485Z",
+  "generatedAt": "2026-09-24T00:00:41.234Z",
   "waste": {
     "date": "2026-09-23",
     "millingSummary": 84.6,
@@ -90,23 +90,23 @@
   "cms": {
     "date": "2026-09-23",
     "mixing1": {
-      "batch": 619,
-      "ar": 83.9,
+      "batch": 625,
+      "ar": 84.3,
       "pr": 88.7,
-      "qr": 86.2,
-      "oee2": 64.1
+      "qr": 86.1,
+      "oee2": 64.4
     },
     "mixing2": {
-      "batch": 644,
-      "ar": 88.1,
-      "pr": 88.8,
+      "batch": 646,
+      "ar": 92.5,
+      "pr": 88.7,
       "qr": 100,
-      "oee2": 78.3
+      "oee2": 82.1
     },
-    "totalAr": 86,
-    "totalPr": 88.8,
+    "totalAr": 88.3,
+    "totalPr": 88.7,
     "totalQr": 92.9,
-    "totalOee2": 70.9
+    "totalOee2": 72.8
   },
   "target3Roll": 38,
   "breakdown": {
@@ -789,52 +789,52 @@
     "output": {
       "hasData": true,
       "day": 23,
-      "grandTotal": 692,
+      "grandTotal": 688,
       "codeBreakdown": [
         {
           "code": "B351",
           "count": 188,
-          "percentage": 27.17
+          "percentage": 27.33
         },
         {
           "code": "B491",
           "count": 188,
-          "percentage": 27.17
+          "percentage": 27.33
         },
         {
           "code": "B427",
           "count": 160,
-          "percentage": 23.12
+          "percentage": 23.26
         },
         {
           "code": "W1CX",
           "count": 20,
-          "percentage": 2.89
+          "percentage": 2.91
         },
         {
           "code": "WYAL",
           "count": 16,
-          "percentage": 2.31
+          "percentage": 2.33
         },
         {
           "code": "W13L",
           "count": 14,
-          "percentage": 2.02
+          "percentage": 2.03
         },
         {
           "code": "W13F",
           "count": 14,
-          "percentage": 2.02
+          "percentage": 2.03
         },
         {
           "code": "QUIR",
           "count": 12,
-          "percentage": 1.73
+          "percentage": 1.74
         },
         {
           "code": "WAIK",
           "count": 12,
-          "percentage": 1.73
+          "percentage": 1.74
         },
         {
           "code": "WA8X",
@@ -862,17 +862,17 @@
           "percentage": 1.16
         },
         {
-          "code": "Q2AH",
-          "count": 8,
-          "percentage": 1.16
-        },
-        {
           "code": "WGMS",
           "count": 6,
           "percentage": 0.87
         },
         {
           "code": "WYAF",
+          "count": 4,
+          "percentage": 0.58
+        },
+        {
+          "code": "Q2AH",
           "count": 4,
           "percentage": 0.58
         },
@@ -1163,13 +1163,13 @@
               "code1": "Q2AH",
               "code2": "",
               "code": "Q2AH",
-              "qtyTarget": 8,
-              "qtyProduced": 8,
+              "qtyTarget": 4,
+              "qtyProduced": 4,
               "qtySapphire": 0,
-              "totalQty": 8
+              "totalQty": 4
             }
           ],
-          "totalQty": 80
+          "totalQty": 76
         }
       }
     }
@@ -1931,7 +1931,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.97,
+        "avg": 74.6,
         "target": 76.6,
         "count": 3,
         "isMet": false
@@ -2068,7 +2068,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.97,
+          "avg": 74.6,
           "target": 76.6,
           "count": 3,
           "isMet": false
@@ -2088,8 +2088,8 @@
     "totalCompHours": 7,
     "summary": {
       "extrusionCount": 0,
-      "compCount": 3,
-      "totalItems": 3
+      "compCount": 4,
+      "totalItems": 4
     },
     "items": [
       {
@@ -2113,7 +2113,17 @@
         "durationHours": 2
       },
       {
-        "id": "59-2",
+        "id": "52-2",
+        "machine": "UP",
+        "rawText": "d/l band ,first tire",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      },
+      {
+        "id": "59-3",
         "machine": "US",
         "rawText": "d/l band=1 12147 b.",
         "category": "Comp",
