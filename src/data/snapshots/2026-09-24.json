@@ -1,6 +1,6 @@
 {
   "date": "2026-09-24",
-  "generatedAt": "2026-09-24T01:31:23.985Z",
+  "generatedAt": "2026-09-24T01:39:25.746Z",
   "waste": {
     "date": "2026-09-24",
     "millingSummary": 0,
@@ -16,22 +16,22 @@
     "date": "2026-09-24",
     "mixing1": {
       "batch": 27,
-      "ar": 58.5,
+      "ar": 56.1,
       "pr": 98.3,
       "qr": 100,
-      "oee2": 57.5
+      "oee2": 55.1
     },
     "mixing2": {
-      "batch": 32,
-      "ar": 68.1,
-      "pr": 88.3,
+      "batch": 33,
+      "ar": 67.4,
+      "pr": 88.4,
       "qr": 100,
-      "oee2": 60.1
+      "oee2": 59.6
     },
-    "totalAr": 63.4,
+    "totalAr": 61.8,
     "totalPr": 92.8,
     "totalQr": 100,
-    "totalOee2": 58.8
+    "totalOee2": 57.4
   },
   "target3Roll": 1,
   "breakdown": {
@@ -287,7 +287,7 @@
               "totalQty": 2
             },
             {
-              "partId": "",
+              "partId": "TL00055",
               "code1": "WI76",
               "code2": "",
               "code": "WI76",
@@ -870,7 +870,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 70.45,
+        "avg": 70.4,
         "target": 76.6,
         "count": 4,
         "isMet": false
@@ -1007,7 +1007,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 70.45,
+          "avg": 70.4,
           "target": 76.6,
           "count": 4,
           "isMet": false
