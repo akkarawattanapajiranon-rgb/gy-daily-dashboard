@@ -1,6 +1,6 @@
 {
   "date": "2026-09-24",
-  "generatedAt": "2026-09-24T02:01:38.056Z",
+  "generatedAt": "2026-09-24T02:11:16.789Z",
   "waste": {
     "date": "2026-09-24",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-24",
     "mixing1": {
-      "batch": 33,
-      "ar": 51.6,
-      "pr": 95.4,
-      "qr": 93.5,
-      "oee2": 46
+      "batch": 39,
+      "ar": 55.6,
+      "pr": 94,
+      "qr": 94.5,
+      "oee2": 49.4
     },
     "mixing2": {
-      "batch": 37,
-      "ar": 62.8,
-      "pr": 86.8,
+      "batch": 41,
+      "ar": 66.1,
+      "pr": 86.1,
       "qr": 100,
-      "oee2": 54.5
+      "oee2": 56.9
     },
-    "totalAr": 57.1,
-    "totalPr": 90.7,
-    "totalQr": 97,
-    "totalOee2": 50.3
+    "totalAr": 60.8,
+    "totalPr": 89.7,
+    "totalQr": 97.4,
+    "totalOee2": 53.1
   },
-  "target3Roll": 1,
+  "target3Roll": 5,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -135,21 +135,31 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 1,
-    "totalRelease": 1,
+    "totalRolls": 5,
+    "totalRelease": 5,
     "totalHold": 1,
-    "totalPending": 33,
+    "totalPending": 29,
     "totalScheduled": 35,
     "codeBreakdown": [
       {
         "code": "EESV",
+        "count": 2,
+        "percentage": 40
+      },
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 40
+      },
+      {
+        "code": "RP08",
         "count": 1,
-        "percentage": 100
+        "percentage": 20
       }
     ],
     "holdBreakdown": [
       {
-        "code": "EESV",
+        "code": "RP08",
         "count": 1,
         "percentage": 100
       }
@@ -870,7 +880,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 68.63,
+        "avg": 69.33,
         "target": 76.6,
         "count": 4,
         "isMet": false
@@ -1007,7 +1017,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 68.63,
+          "avg": 69.33,
           "target": 76.6,
           "count": 4,
           "isMet": false
