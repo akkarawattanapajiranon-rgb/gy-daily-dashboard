@@ -1,25 +1,32 @@
 {
   "date": "2026-09-25",
-  "generatedAt": "2026-09-25T00:14:04.573Z",
+  "generatedAt": "2026-09-25T01:30:31.031Z",
   "waste": {
     "date": "2026-09-25",
-    "millingSummary": 0,
+    "millingSummary": 5,
     "frictionSummary": 0,
     "beadSummary": 0,
-    "millingTop": [],
+    "millingTop": [
+      {
+        "code": "M05",
+        "amount": 5,
+        "reason": "TAILING",
+        "isHigh": true
+      }
+    ],
     "frictionTop": [],
     "beadTop": [],
     "dataDate": "2026-09-25",
-    "hasData": false
+    "hasData": true
   },
   "cms": {
     "date": "2026-09-25",
     "mixing1": {
-      "batch": 6,
-      "ar": 100,
-      "pr": 79.5,
+      "batch": 43,
+      "ar": 93.9,
+      "pr": 85.3,
       "qr": 100,
-      "oee2": 79.5
+      "oee2": 80.1
     },
     "mixing2": {
       "batch": 5,
@@ -28,12 +35,12 @@
       "qr": 100,
       "oee2": 83.8
     },
-    "totalAr": 98.9,
-    "totalPr": 82.5,
+    "totalAr": 94.4,
+    "totalPr": 85.3,
     "totalQr": 100,
-    "totalOee2": 81.6
+    "totalOee2": 80.5
   },
-  "target3Roll": 0,
+  "target3Roll": 1,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -92,7 +99,41 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 5,
+      "totalWbr": 5,
+      "totalSapphire": 0,
+      "totalAngleChanges": 1,
+      "totalNormal": 5,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 5,
+          "sapphire": 0,
+          "angleChanges": 1,
+          "normal": 5,
+          "sticky": 0,
+          "total": 5
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -101,14 +142,20 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
-    "totalRelease": 0,
+    "totalRolls": 1,
+    "totalRelease": 1,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 39,
+    "totalScheduled": 40,
+    "codeBreakdown": [
+      {
+        "code": "NB32",
+        "count": 1,
+        "percentage": 100
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-25",
@@ -599,7 +646,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 69887,
-        "consume": 0,
+        "consume": 16983,
         "newGenerate": 12080,
         "newGenerateBTA": 9550,
         "newGenerateWBR": 2530,
@@ -638,25 +685,25 @@
       "label": "Wk39 (21/9 - 30/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 54.36,
+        "avg": 51.63,
         "target": 62,
         "count": 5,
         "isMet": false
       },
       "tuber": {
-        "avg": 53.66,
+        "avg": 57.04,
         "target": 62,
-        "count": 3,
+        "count": 4,
         "isMet": false
       },
       "fischer": {
-        "avg": 51.9,
+        "avg": 52.92,
         "target": 60,
-        "count": 3,
+        "count": 4,
         "isMet": false
       },
       "mixing": {
-        "avg": 75.28,
+        "avg": 75.06,
         "target": 76.6,
         "count": 5,
         "isMet": false
@@ -775,25 +822,25 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 54.36,
+          "avg": 51.63,
           "target": 62,
           "count": 5,
           "isMet": false
         },
         "tuber": {
-          "avg": 53.66,
+          "avg": 57.04,
           "target": 62,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "fischer": {
-          "avg": 51.9,
+          "avg": 52.92,
           "target": 60,
-          "count": 3,
+          "count": 4,
           "isMet": false
         },
         "mixing": {
-          "avg": 75.28,
+          "avg": 75.06,
           "target": 76.6,
           "count": 5,
           "isMet": false
