@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { mockData } from './data/mockData';
 import MixingKPIs from './components/MixingKPIs';
 import MachineOEE from './components/MachineOEE';
@@ -188,7 +188,7 @@ function App() {
     return true;
   };
 
-  const loadData = async (dateStr, forceRefresh = false) => {
+  const loadData = useCallback(async (dateStr, forceRefresh = false) => {
     const dateToFetch = dateStr || selectedDate;
     
     // 1. Instant 0ms Preload: If cached local snapshot exists, paint UI immediately!
@@ -206,7 +206,7 @@ function App() {
 
     try {
       const [waste, cms, target3Roll, breakdown, fischer, roll3, roll42, quad, tuber, workaway, weeklyOee] = await Promise.all([
-        fetchWasteData(dateToFetch),
+        fetchWasteData(dateToFetch, forceRefresh),
         fetchCmsData(dateToFetch, forceRefresh),
         fetchTarget3Roll(dateToFetch, forceRefresh),
         fetchBreakdownData(dateToFetch, forceRefresh),
@@ -262,13 +262,109 @@ function App() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [selectedDate]);
 
   useEffect(() => {
     if (!appMode) {
       loadData();
     }
-  }, [selectedDate, appMode]);
+  }, [selectedDate, appMode, loadData]);
+
+  // Emergency Watchdog: Prevent loading spinner from ever being stuck
+  useEffect(() => {
+    if (isLoading) {
+      const watchdog = setTimeout(() => {
+        setIsLoading(false);
+      }, 12000);
+      return () => clearTimeout(watchdog);
+    }
+  }, [isLoading]);
+
+  // Wake-from-Sleep, Screen Sleep & Tab Visibility Auto-Recovery
+  useEffect(() => {
+    let lastActiveTime = Date.now();
+
+    const handleWakeOrVisible = () => {
+      const now = Date.now();
+      const timeElapsed = now - lastActiveTime;
+      lastActiveTime = now;
+
+      // Always clear any hung loading state on wake
+      setIsLoading(false);
+
+      if (document.visibilityState === 'visible') {
+        console.log(`[App] Tab resumed / woke from sleep (${Math.round(timeElapsed / 1000)}s inactive). Auto-refreshing live data...`);
+        
+        // Auto-advance date if PC was asleep across midnight
+        const d = new Date();
+        const curToday = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        
+        setSelectedDate(prev => {
+          const prevD = new Date(now - timeElapsed);
+          const prevToday = `${prevD.getFullYear()}-${String(prevD.getMonth() + 1).padStart(2, '0')}-${String(prevD.getDate()).padStart(2, '0')}`;
+          if (prev === prevToday && curToday !== prevToday) {
+            return curToday;
+          }
+          return prev;
+        });
+
+        // Trigger immediate live refresh
+        setRefreshTrigger(prev => prev + 1);
+        loadData(undefined, true);
+      }
+    };
+
+    // Heartbeat check every 10s: Detect if timer drifted (indicating Windows Sleep / Standby / Tab throttling)
+    const heartbeatTimer = setInterval(() => {
+      const now = Date.now();
+      if (now - lastActiveTime > 25000) {
+        handleWakeOrVisible();
+      } else {
+        lastActiveTime = now;
+      }
+    }, 10000);
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        handleWakeOrVisible();
+      }
+    };
+
+    const onFocus = () => {
+      handleWakeOrVisible();
+    };
+
+    const onOnline = () => {
+      console.log('[App] Network restored (online). Refreshing...');
+      handleWakeOrVisible();
+    };
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('focus', onFocus);
+    window.addEventListener('pageshow', onFocus);
+    window.addEventListener('online', onOnline);
+
+    return () => {
+      clearInterval(heartbeatTimer);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('focus', onFocus);
+      window.removeEventListener('pageshow', onFocus);
+      window.removeEventListener('online', onOnline);
+    };
+  }, [loadData]);
+
+  // Periodic 3-Minute Background Live Poller (Keeps dashboard active & updated)
+  useEffect(() => {
+    if (appMode) return;
+    const pollInterval = setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        console.log('[App] 3-Minute auto-poll refreshing live data...');
+        loadData(selectedDate, false);
+      }
+    }, 180000);
+
+    return () => clearInterval(pollInterval);
+  }, [selectedDate, appMode, loadData]);
 
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 

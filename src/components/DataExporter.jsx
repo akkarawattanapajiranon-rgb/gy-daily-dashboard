@@ -274,6 +274,32 @@ export default function DataExporter({ refreshTrigger, page1Data, onRefreshPage1
     }
   }, [page1Data, startDate, endDate]);
 
+  // Watchdog: Ensure loading spinner never hangs
+  useEffect(() => {
+    if (loading) {
+      const t = setTimeout(() => setLoading(false), 12000);
+      return () => clearTimeout(t);
+    }
+  }, [loading]);
+
+  // Wake-from-sleep recovery for Page 5
+  useEffect(() => {
+    const handleVis = () => {
+      setLoading(false);
+      if (document.visibilityState === 'visible') {
+        fetchExportData(startDate, endDate, true);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVis);
+    window.addEventListener('focus', handleVis);
+    window.addEventListener('pageshow', handleVis);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVis);
+      window.removeEventListener('focus', handleVis);
+      window.removeEventListener('pageshow', handleVis);
+    };
+  }, [startDate, endDate]);
+
   const handleRefreshClick = async () => {
     if (onRefreshPage1) {
       try {
