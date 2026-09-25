@@ -43,7 +43,7 @@ function calculateRangeDurationMinutes(startStr, endStr) {
   return diff;
 }
 
-function parseAeroDelayLine(lineText) {
+function parseAeroDelayLine(lineText, row = []) {
   const text = lineText.trim();
   if (!text.toLowerCase().includes('d/l')) return null;
 
@@ -86,7 +86,7 @@ function parseAeroDelayLine(lineText) {
     componentName = 'Component';
   }
 
-  // Time range regex: e.g. "19.30 - 23.00", "23.00 -02.30", "02.30-07.00", "07.00-9.30"
+  // Time range regex: e.g. "19.30 - 23.00", "23.00 -02.30", "02.30-07.00", "07.00-9.30", "08.20-09.20"
   const match = text.match(/(\d{1,2}\.\d{2})\s*[-–>]\s*(\d{1,2}\.\d{2})/);
   let durationMin = 0;
   let timeRangeStr = '';
@@ -96,6 +96,18 @@ function parseAeroDelayLine(lineText) {
     const endStr = match[2];
     timeRangeStr = `${startStr} - ${endStr}`;
     durationMin = calculateRangeDurationMinutes(startStr, endStr);
+  } else {
+    // If no explicit time string in description, check Lost (mins) Col 15 or TT Lost (tires) Col 21
+    const col15Min = Number(row[15]) || 0;
+    const col21Tires = Math.abs(Number(row[21]) || Number(row[20]) || 0);
+    if (col15Min > 0) {
+      durationMin = col15Min;
+      timeRangeStr = `${col15Min} mins`;
+    } else if (col21Tires > 0) {
+      // Estimate delay time ~15 mins per lost tire unit if building cycle delayed
+      durationMin = Math.max(15, Math.min(180, col21Tires * 10));
+      timeRangeStr = `${col21Tires} tires lost`;
+    }
   }
 
   return {
@@ -134,30 +146,35 @@ function parseAeroDelay(dateStr) {
 
     data.forEach((row, rowIdx) => {
       const mc0 = String(row[0] || '').trim().toUpperCase();
+      const mc23 = String(row[23] || '').trim().toUpperCase();
       const mc33 = String(row[33] || '').trim().toUpperCase();
 
       if (validMcRegex.test(mc0)) {
         currentMachine = mc0;
+      } else if (validMcRegex.test(mc23)) {
+        currentMachine = mc23;
       } else if (validMcRegex.test(mc33)) {
         currentMachine = mc33;
       } else if (mc0 && mc0.length <= 4 && !['MC', 'DATE', 'TOTAL', 'REQUIRE'].includes(mc0) && isNaN(Number(mc0))) {
         currentMachine = mc0;
       }
 
-      // Check text in description columns (AB/AC/AD/AE/AF, indices 27..31)
-      const textCols = [row[27], row[28], row[29], row[30], row[31]]
-        .map(c => String(c || '').trim())
-        .filter(c => c.length > 0);
-
-      textCols.forEach(text => {
-        if (text.toLowerCase().includes('d/l')) {
-          const parsed = parseAeroDelayLine(text);
-          if (parsed) {
-            items.push({
-              id: `${rowIdx}-${items.length}`,
-              machine: currentMachine || 'Aero',
-              ...parsed
-            });
+      // Check text in description columns (indices 26..32 and full row scan for 'd/l')
+      const checkedTexts = new Set();
+      row.forEach((cell, cIdx) => {
+        if (typeof cell === 'string' && cell.toLowerCase().includes('d/l')) {
+          const text = cell.trim();
+          if (text && !checkedTexts.has(text)) {
+            checkedTexts.add(text);
+            const rowMachine = (validMcRegex.test(mc23) && cIdx >= 20) ? mc23 : (currentMachine || 'Aero');
+            const parsed = parseAeroDelayLine(text, row);
+            if (parsed) {
+              items.push({
+                id: `${rowIdx}-${cIdx}-${items.length}`,
+                machine: rowMachine,
+                ...parsed
+              });
+            }
           }
         }
       });

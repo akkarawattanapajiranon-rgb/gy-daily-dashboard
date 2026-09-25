@@ -34,28 +34,52 @@ function getStoreFilePath(dateStr) {
 }
 
 function loadDayFromDisk(dateStr) {
-  const filePath = getStoreFilePath(dateStr);
-  if (!fs.existsSync(filePath)) return null;
+  const possiblePaths = [
+    getStoreFilePath(dateStr),
+    path.join(__dirname, '..', '..', 'public', 'data', 'extruder', `${dateStr}.json`),
+    path.join(__dirname, '..', '..', 'dist', 'data', 'extruder', `${dateStr}.json`)
+  ];
 
-  try {
-    const raw = fs.readFileSync(filePath, 'utf8');
-    const json = JSON.parse(raw);
-    const day = emptyDay();
-    day.fetchedAtMs = json.fetchedAtMs || Date.now();
+  for (const filePath of possiblePaths) {
+    if (fs.existsSync(filePath)) {
+      try {
+        const raw = fs.readFileSync(filePath, 'utf8');
+        const json = JSON.parse(raw);
+        const day = emptyDay();
+        day.fetchedAtMs = json.fetchedAtMs || json.asOfMs || Date.now();
 
-    for (const [line, stateData] of Object.entries(json.lines || {})) {
-      day.lines.set(line, {
-        rows: stateData.rows || [],
-        lastDt: stateData.lastDt || null,
-        truncated: Boolean(stateData.truncated),
-        error: null
-      });
+        if (json.lines && typeof json.lines === 'object') {
+          if (Array.isArray(json.lines)) {
+            // Format from public JSON (lines array)
+            for (const lineObj of json.lines) {
+              const lineName = lineObj.line;
+              const rows = lineObj.rows || [];
+              day.lines.set(lineName, {
+                rows,
+                lastDt: rows.length > 0 ? rows[rows.length - 1].dt : null,
+                truncated: Boolean(lineObj.truncated),
+                error: null
+              });
+            }
+          } else {
+            // Format from store JSON (lines object)
+            for (const [line, stateData] of Object.entries(json.lines)) {
+              day.lines.set(line, {
+                rows: stateData.rows || [],
+                lastDt: stateData.lastDt || null,
+                truncated: Boolean(stateData.truncated),
+                error: null
+              });
+            }
+          }
+        }
+        return day;
+      } catch (e) {
+        console.warn(`[Extruder Store] Failed to read ${filePath}:`, e.message);
+      }
     }
-    return day;
-  } catch (e) {
-    console.warn(`[Extruder Store] Failed to read ${dateStr}.json:`, e.message);
-    return null;
   }
+  return null;
 }
 
 function saveDayToDisk(dateStr, day) {
@@ -254,13 +278,16 @@ async function getExtruderTimeline(date, now = () => new Date(), forceRefresh = 
     const pending = current.inFlight
       || (current.inFlight = refresh(date, current).finally(() => { current.inFlight = null; }));
 
-    // Non-blocking serving: ONLY for current day if we already have data from disk/memory and not a manual forced refresh,
+    // Non-blocking serving: If we already have data from disk/memory and not a manual forced refresh,
     // serve immediately without making the user wait, and let refresh finish in the background.
-    // For past days that were never fully closed, wait for pending so the user gets complete 24h data.
-    if (hasAnyData && isCurrent && !forceRefresh) {
+    if (hasAnyData && !forceRefresh) {
       pending.catch((err) => console.warn(`[Extruder Store] Background refresh error for ${date}:`, err.message));
     } else {
-      await pending.catch(() => {});
+      // If we don't have data yet or forced refresh, wait max 5 seconds for Oracle
+      await Promise.race([
+        pending.catch(() => {}),
+        new Promise((resolve) => setTimeout(resolve, 5000))
+      ]);
     }
   }
 

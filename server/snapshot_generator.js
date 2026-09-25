@@ -23,16 +23,27 @@ async function generateSnapshot(dateStr) {
   console.log(`[Snapshot Generator] Building daily snapshot for ${dateStr}...`);
   try {
     const waste = await parseWasteDataAsync(dateStr);
+    await new Promise(r => setImmediate(r));
     const cms = await fetchLiveCmsData(dateStr);
+    await new Promise(r => setImmediate(r));
     const breakdown = parseBreakdown(dateStr);
+    await new Promise(r => setImmediate(r));
     const fischer = parseFischerData(dateStr);
+    await new Promise(r => setImmediate(r));
     const roll3 = parse3RollData(dateStr);
+    await new Promise(r => setImmediate(r));
     const roll42 = parse4Roll2Data(dateStr);
+    await new Promise(r => setImmediate(r));
     const quad = parseQuadData(dateStr);
+    await new Promise(r => setImmediate(r));
     const tuber = parseTuberData(dateStr);
+    await new Promise(r => setImmediate(r));
     const workaway = parseWorkawayData(dateStr);
+    await new Promise(r => setImmediate(r));
     const weeklyOee = parseWeeklyOee(dateStr);
+    await new Promise(r => setImmediate(r));
     const aeroDelay = parseAeroDelay(dateStr);
+    await new Promise(r => setImmediate(r));
     const wbrDelay = parseWbrDelay(dateStr);
 
     const target3Roll = roll3?.totalRolls || 0;

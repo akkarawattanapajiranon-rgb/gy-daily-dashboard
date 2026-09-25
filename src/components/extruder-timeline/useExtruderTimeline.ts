@@ -68,8 +68,8 @@ export function useExtruderTimeline(
       const todayStr = bangkokProductionDate();
       const isPastDate = target < todayStr;
 
-      // 1. For past dates: load pre-built JSON immediately (0 latency, 5ms instant load)
-      if (isPastDate && !forceRefresh) {
+      // 1. Instant Fast-Path: check static cached JSON for ANY date (0ms latency instant paint)
+      if (!forceRefresh) {
         try {
           const staticRes = await fetch(`/data/extruder/${encodeURIComponent(target)}.json`, {
             cache: "no-store",
@@ -81,45 +81,54 @@ export function useExtruderTimeline(
               const staticData = JSON.parse(text);
               if (staticData && (staticData.success !== false || staticData.lines)) {
                 json = staticData as ExtruderTimelineResponse;
+                if (s === seq.current) {
+                  setData(json);
+                  setError(null);
+                  setLastOkMs(Date.now());
+                }
               }
             }
           }
         } catch (e) {
-          // Fall through to API
+          // Fall through to live API
         }
       }
 
-      // 2. Query live Express API / Vercel API if needed (for today or if static not found)
-      if (!json) {
-        try {
-          const queryParams = new URLSearchParams({ date: target });
-          if (forceRefresh) queryParams.set("refresh", "true");
-          const controller = new AbortController();
-          const timeoutMs = isLocalhost ? 15000 : 12000;
-          const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-          const res = await fetch(`${endpoint}?${queryParams.toString()}`, {
-            cache: "no-store",
-            headers: { accept: "application/json" },
-            signal: controller.signal
-          });
-          clearTimeout(timeoutId);
-          if (res.ok) {
-            const text = await res.text();
-            if (text && !text.trim().startsWith("<")) {
-              const resData = JSON.parse(text);
-              if (resData && (resData.success !== false || resData.lines)) {
-                json = resData as ExtruderTimelineResponse;
-              }
+      // If it's a past date and we already got valid static data, we're done!
+      if (json && isPastDate && !forceRefresh) {
+        if (s === seq.current) setLoading(false);
+        return;
+      }
+
+      // 2. Query live Express API / Vercel API (for current day or forced refresh or when static not found)
+      try {
+        const queryParams = new URLSearchParams({ date: target });
+        if (forceRefresh) queryParams.set("refresh", "true");
+        const controller = new AbortController();
+        const timeoutMs = isLocalhost ? 15000 : 12000;
+        const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+        const res = await fetch(`${endpoint}?${queryParams.toString()}`, {
+          cache: "no-store",
+          headers: { accept: "application/json" },
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        if (res.ok) {
+          const text = await res.text();
+          if (text && !text.trim().startsWith("<")) {
+            const resData = JSON.parse(text);
+            if (resData && (resData.success !== false || resData.lines)) {
+              json = resData as ExtruderTimelineResponse;
             }
-          } else {
-            fetchError = new Error(`HTTP ${res.status}`);
           }
-        } catch (e) {
-          fetchError = e instanceof Error ? e : new Error("API network error");
+        } else {
+          fetchError = new Error(`HTTP ${res.status}`);
         }
+      } catch (e) {
+        fetchError = e instanceof Error ? e : new Error("API network error");
       }
 
-      // 3. Last fallback: try static JSON with cache buster if API failed
+      // 3. Fallback: try static JSON with cache buster if live API failed and we didn't have json
       if (!json) {
         try {
           const cacheBuster = forceRefresh ? `?_t=${Date.now()}` : "";
@@ -142,7 +151,7 @@ export function useExtruderTimeline(
       }
 
       if (!json) {
-        throw new Error(`ไม่พบข้อมูล Extruder Timeline สำหรับวันที่ ${target} (หรือกำลังประมวลผล)`);
+        throw (fetchError || new Error(`ไม่พบข้อมูล Extruder Timeline สำหรับวันที่ ${target} (หรือกำลังประมวลผล)`));
       }
 
       if (s !== seq.current) return;          // a newer request already won
@@ -150,10 +159,9 @@ export function useExtruderTimeline(
       setError(null);
       setLastOkMs(Date.now());
     } catch (err) {
-      // Deliberately NOT setData(null) — see the header.
+      // Deliberately NOT setData(null) — keep showing stale/cached data if available
       const errMsg = err instanceof Error ? err.message : "request failed";
       if (s === seq.current) {
-        // Clean up internal abort text for display
         const cleanMsg = errMsg.includes("aborted") 
           ? `กำลังโหลดหรือเชื่อมต่อฐานข้อมูลสำหรับวันที่ ${target}` 
           : errMsg;

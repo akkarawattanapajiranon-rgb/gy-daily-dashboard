@@ -27,7 +27,8 @@ import {
   fetchTuberDetail,
   fetchWorkawayData,
   fetchWeeklyOeeData,
-  fetchFast
+  fetchFast,
+  getLocalSnapshot
 } from './services/api';
 
 class TabErrorBoundary extends React.Component {
@@ -149,10 +150,61 @@ function App() {
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   });
 
+  const applySnapshotData = (snap) => {
+    if (!snap) return false;
+    if (snap.waste) setWasteData(snap.waste);
+    if (snap.cms) {
+      setMixingData({
+        mixing1: { 
+          batch: Number(snap.cms.mixing1?.batch) || 0,
+          ar: Number(snap.cms.mixing1?.ar) || 0,
+          pr: Number(snap.cms.mixing1?.pr) || 0,
+          qr: Number(snap.cms.mixing1?.qr) || 0,
+          oee2: Number(snap.cms.mixing1?.oee2) || 0 
+        },
+        mixing2: { 
+          batch: Number(snap.cms.mixing2?.batch) || 0,
+          ar: Number(snap.cms.mixing2?.ar) || 0,
+          pr: Number(snap.cms.mixing2?.pr) || 0,
+          qr: Number(snap.cms.mixing2?.qr) || 0,
+          oee2: Number(snap.cms.mixing2?.oee2) || 0 
+        },
+        totalOee2: Number(snap.cms.totalOee2) || 0
+      });
+    }
+    setOutput3RollData({
+      actual: snap.roll3?.totalRolls || 0,
+      target: snap.target3Roll || 0,
+      unit: 'meters'
+    });
+    if (snap.breakdown) setBreakdownData(snap.breakdown);
+    if (snap.fischer) setFischerData(snap.fischer);
+    if (snap.roll3) setRoll3Detail(snap.roll3);
+    if (snap.roll42) setRoll42Data(snap.roll42);
+    if (snap.quad) setQuadData(snap.quad);
+    if (snap.tuber) setTuberData(snap.tuber);
+    if (snap.workaway) setWorkawayData(snap.workaway);
+    if (snap.weeklyOee) setWeeklyOeeData(snap.weeklyOee);
+    return true;
+  };
+
   const loadData = async (dateStr, forceRefresh = false) => {
-    setIsLoading(true);
+    const dateToFetch = dateStr || selectedDate;
+    
+    // 1. Instant 0ms Preload: If cached local snapshot exists, paint UI immediately!
+    if (!forceRefresh) {
+      const localSnap = getLocalSnapshot(dateToFetch);
+      if (localSnap) {
+        applySnapshotData(localSnap);
+        setIsLoading(false);
+      } else {
+        setIsLoading(true);
+      }
+    } else {
+      setIsLoading(true);
+    }
+
     try {
-      const dateToFetch = dateStr || selectedDate;
       const [waste, cms, target3Roll, breakdown, fischer, roll3, roll42, quad, tuber, workaway, weeklyOee] = await Promise.all([
         fetchWasteData(dateToFetch),
         fetchCmsData(dateToFetch, forceRefresh),
@@ -189,12 +241,6 @@ function App() {
           },
           totalOee2: Number(cms.totalOee2) || 0
         });
-      } else {
-        setMixingData({
-          mixing1: { batch: 0, ar: 0, pr: 0, qr: 0, oee2: 0 },
-          mixing2: { batch: 0, ar: 0, pr: 0, qr: 0, oee2: 0 },
-          totalOee2: 0
-        });
       }
 
       setOutput3RollData({
@@ -203,14 +249,14 @@ function App() {
         unit: 'meters'
       });
 
-      setBreakdownData(breakdown);
-      setFischerData(fischer);
-      setRoll3Detail(roll3);
-      setRoll42Data(roll42);
-      setQuadData(quad);
-      setTuberData(tuber);
-      setWorkawayData(workaway);
-      setWeeklyOeeData(weeklyOee);
+      if (breakdown) setBreakdownData(breakdown);
+      if (fischer) setFischerData(fischer);
+      if (roll3) setRoll3Detail(roll3);
+      if (roll42) setRoll42Data(roll42);
+      if (quad) setQuadData(quad);
+      if (tuber) setTuberData(tuber);
+      if (workaway) setWorkawayData(workaway);
+      if (weeklyOee) setWeeklyOeeData(weeklyOee);
     } catch (error) {
       console.error('Error in loadData:', error);
     } finally {
@@ -431,7 +477,12 @@ function App() {
         {/* PAGE 3: Extruder — TAW Actual vs Spec */}
         {activeTab === 'extruder' && (
           <div className="space-y-6">
-            <ExtruderTimeline endpoint="/api/extruder-timeline" pollMs={600000} />
+            <ExtruderTimeline 
+              endpoint="/api/extruder-timeline" 
+              pollMs={600000} 
+              date={selectedDate}
+              onDateChange={setSelectedDate}
+            />
           </div>
         )}
 

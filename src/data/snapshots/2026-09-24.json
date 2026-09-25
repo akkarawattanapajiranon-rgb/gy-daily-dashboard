@@ -1,11 +1,11 @@
 {
   "date": "2026-09-24",
-  "generatedAt": "2026-09-25T01:30:42.477Z",
+  "generatedAt": "2026-09-25T02:24:54.175Z",
   "waste": {
     "date": "2026-09-24",
-    "millingSummary": 86.8,
-    "frictionSummary": 275.8,
-    "beadSummary": 15.4,
+    "millingSummary": 94.8,
+    "frictionSummary": 284,
+    "beadSummary": 44.8,
     "millingTop": [
       {
         "code": "M04",
@@ -15,13 +15,13 @@
       },
       {
         "code": "M05",
-        "amount": 33,
+        "amount": 38,
         "reason": "TAILING",
         "isHigh": true
       },
       {
         "code": "M01",
-        "amount": 8.8,
+        "amount": 11.8,
         "reason": "LUMPY",
         "isHigh": false
       },
@@ -35,7 +35,7 @@
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 55.5,
+        "amount": 61.699999999999996,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -58,13 +58,19 @@
         "isHigh": false
       },
       {
-        "code": "F40",
-        "amount": 22,
-        "reason": "PLY EDGE TRIM",
+        "code": "F46",
+        "amount": 22.6,
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
     "beadTop": [
+      {
+        "code": "F11",
+        "amount": 29,
+        "reason": "COAT OFF",
+        "isHigh": true
+      },
       {
         "code": "F08",
         "amount": 11.4,
@@ -72,10 +78,10 @@
         "isHigh": true
       },
       {
-        "code": "F11",
-        "amount": 4,
-        "reason": "COAT OFF",
-        "isHigh": true
+        "code": "F51",
+        "amount": 4.4,
+        "reason": "STRAND CHANGE",
+        "isHigh": false
       }
     ],
     "dataDate": "2026-09-24",
@@ -85,53 +91,155 @@
     "date": "2026-09-24",
     "mixing1": {
       "batch": 646,
-      "ar": 83.2,
+      "ar": 88.1,
       "pr": 87.4,
       "qr": 87.7,
-      "oee2": 63.8
+      "oee2": 67.5
     },
     "mixing2": {
       "batch": 638,
-      "ar": 88.3,
+      "ar": 88.8,
       "pr": 88.7,
       "qr": 100,
-      "oee2": 78.3
+      "oee2": 78.7
     },
-    "totalAr": 85.8,
+    "totalAr": 88.5,
     "totalPr": 88.1,
     "totalQr": 93.5,
-    "totalOee2": 70.6
+    "totalOee2": 72.9
   },
   "target3Roll": 39,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-24",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "Quad",
+        "totalDurationMin": 105,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "EXT 4",
+            "symptom": "EXT 4 MOTOR ไม่หมุน",
+            "cause": "I/O Safety fault.",
+            "action": "REPOWER SAFETY FAULT",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "ริน"
+          },
+          {
+            "shift": "1",
+            "zone": "EXT 3",
+            "symptom": "ยางยัด",
+            "cause": "สกรูไม่กินยาง",
+            "action": "เอาHoist ดึงออก",
+            "fixType": "ถาวร",
+            "durationMin": 25,
+            "jobType": "BD",
+            "fixBy": "ทีป/โต/โฟร์ค"
+          },
+          {
+            "shift": "2",
+            "zone": "Converyor Blower",
+            "symptom": "ตัวกันยาง ขูดสายพาน",
+            "cause": "ยางยัด เหล็กงอ",
+            "action": "ดัด เชื่อมใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 40,
+            "jobType": "BD",
+            "fixBy": "อ๋อย/โฟร์ค/แอ็ด"
+          },
+          {
+            "shift": "3",
+            "zone": "Head Extruder",
+            "symptom": "Top Head ปิดไม่สุด",
+            "cause": "Prox Close เสีย",
+            "action": "เปลี่ยน Prox",
+            "fixType": "ชั่วคราว",
+            "durationMin": 20,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/บาส"
+          }
+        ]
+      },
+      {
+        "machine": "4 Roll 1",
+        "totalDurationMin": 70,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Conveyor",
+            "symptom": "SWITCH LIMIT SLOW เสีย",
+            "cause": "หมดสภาพจากการใช้งานมานาน",
+            "action": "SWITCH LIMIT ของไม่มีเลยหารุ่นอื่นมาโมใส่ (ของที่ใช้งาน SAP 2005323 )",
+            "fixType": "ถาวร",
+            "durationMin": 70,
+            "jobType": "BD",
+            "fixBy": "ทีีป/ริน/เท่ห์"
+          }
+        ]
+      },
+      {
+        "machine": "3 Roll",
+        "totalDurationMin": 45,
+        "details": [
+          {
+            "shift": "2",
+            "zone": "Calender 1",
+            "symptom": "Roller มีเสียงดัง",
+            "cause": "ลูกปืนแตก Plan เปลี่ยน",
+            "action": "ตรวจสอบ Roller",
+            "fixType": "ชั่วคราว",
+            "durationMin": 45,
+            "jobType": "BD",
+            "fixBy": "อ๋อย/โฟร์ค/แอ็ด"
+          }
+        ]
+      },
+      {
+        "machine": "Mixer 1",
+        "totalDurationMin": 10,
+        "details": [
+          {
+            "shift": "3",
+            "zone": "Oil",
+            "symptom": "Non Stainning Oil ไม่ชั่ง",
+            "cause": "loss step S891k",
+            "action": "Jog Manaul",
+            "fixType": "ชั่วคราว",
+            "durationMin": 10,
+            "jobType": "BD",
+            "fixBy": "อ๊อฟ/บาส"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0.3472,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 2.9514,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 3.1944,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 1.6233,
+      "hasData": true
     }
   },
   "fischer": {
@@ -1993,7 +2101,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.7,
+        "avg": 74.28,
         "target": 76.6,
         "count": 4,
         "isMet": false
@@ -2130,7 +2238,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.7,
+          "avg": 74.28,
           "target": 76.6,
           "count": 4,
           "isMet": false
@@ -2142,12 +2250,12 @@
     "_file": "09 Aero Build September 2026.xls",
     "_sheet": "24",
     "_date": "2026-09-24",
-    "totalDelayMin": 0,
-    "totalDelayHours": 0,
+    "totalDelayMin": 260,
+    "totalDelayHours": 4.3,
     "totalExtrusionMin": 0,
     "totalExtrusionHours": 0,
-    "totalCompMin": 0,
-    "totalCompHours": 0,
+    "totalCompMin": 260,
+    "totalCompHours": 4.3,
     "summary": {
       "extrusionCount": 0,
       "compCount": 3,
@@ -2155,7 +2263,7 @@
     },
     "items": [
       {
-        "id": "51-0",
+        "id": "51-27-0",
         "machine": "UP",
         "rawText": "d/l breaker",
         "category": "Comp",
@@ -2165,24 +2273,24 @@
         "durationHours": 0
       },
       {
-        "id": "60-1",
+        "id": "60-27-1",
         "machine": "US",
         "rawText": "d/l breaker",
         "category": "Comp",
         "componentName": "Breaker",
-        "timeRangeStr": "",
-        "durationMin": 0,
-        "durationHours": 0
+        "timeRangeStr": "8 tires lost",
+        "durationMin": 80,
+        "durationHours": 1.3
       },
       {
-        "id": "64-2",
+        "id": "64-27-2",
         "machine": "TAKU",
         "rawText": "B/out ,d/l ply.,chafer",
         "category": "Comp",
         "componentName": "Chafer",
-        "timeRangeStr": "",
-        "durationMin": 0,
-        "durationHours": 0
+        "timeRangeStr": "32 tires lost",
+        "durationMin": 180,
+        "durationHours": 3
       }
     ]
   },

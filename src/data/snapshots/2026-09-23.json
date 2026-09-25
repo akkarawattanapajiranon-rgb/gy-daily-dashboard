@@ -1,6 +1,6 @@
 {
   "date": "2026-09-23",
-  "generatedAt": "2026-09-25T01:30:53.420Z",
+  "generatedAt": "2026-09-25T02:25:20.779Z",
   "waste": {
     "date": "2026-09-23",
     "millingSummary": 93.6,
@@ -2235,12 +2235,12 @@
     "_file": "09 Aero Build September 2026.xls",
     "_sheet": "23",
     "_date": "2026-09-23",
-    "totalDelayMin": 420,
-    "totalDelayHours": 7,
+    "totalDelayMin": 520,
+    "totalDelayHours": 8.7,
     "totalExtrusionMin": 0,
     "totalExtrusionHours": 0,
-    "totalCompMin": 420,
-    "totalCompHours": 7,
+    "totalCompMin": 520,
+    "totalCompHours": 8.7,
     "summary": {
       "extrusionCount": 0,
       "compCount": 4,
@@ -2248,7 +2248,7 @@
     },
     "items": [
       {
-        "id": "47-0",
+        "id": "47-27-0",
         "machine": "UO",
         "rawText": "d/l band 10.00-15.00",
         "category": "Comp",
@@ -2258,7 +2258,7 @@
         "durationHours": 5
       },
       {
-        "id": "50-1",
+        "id": "50-27-1",
         "machine": "UP",
         "rawText": "d/l band=1 07.00-09.00",
         "category": "Comp",
@@ -2268,7 +2268,7 @@
         "durationHours": 2
       },
       {
-        "id": "52-2",
+        "id": "52-27-2",
         "machine": "UP",
         "rawText": "d/l band ,first tire",
         "category": "Comp",
@@ -2278,14 +2278,14 @@
         "durationHours": 0
       },
       {
-        "id": "59-3",
+        "id": "59-27-3",
         "machine": "US",
         "rawText": "d/l band=1 12147 b.",
         "category": "Comp",
         "componentName": "Band",
-        "timeRangeStr": "",
-        "durationMin": 0,
-        "durationHours": 0
+        "timeRangeStr": "10 tires lost",
+        "durationMin": 100,
+        "durationHours": 1.7
       }
     ]
   },

@@ -38,11 +38,18 @@ setInterval(() => {
   }
 }, 60 * 1000);
 
-// Immediate Catch-Up Sync on Startup (Triggers 5s after PC boots up / Server starts)
-setTimeout(() => {
-  console.log('[Server Startup] Running immediate catch-up sync for past days & weekend data...');
-  runMorningSync().catch(err => console.error('[Startup Sync Error]', err.message));
-}, 5000);
+// Immediate Catch-Up Sync on Startup (Triggers 15s after startup non-blockingly)
+setTimeout(async () => {
+  const now = new Date();
+  const bangkokTime = new Date(now.getTime() + (7 * 3600 * 1000));
+  const todayStr = `${bangkokTime.getUTCFullYear()}-${String(bangkokTime.getUTCMonth() + 1).padStart(2, '0')}-${String(bangkokTime.getUTCDate()).padStart(2, '0')}`;
+  console.log(`[Server Startup] Refreshing initial snapshot for ${todayStr}...`);
+  try {
+    await generateSnapshot(todayStr);
+  } catch (err) {
+    console.warn('[Startup Sync Error]', err.message);
+  }
+}, 15000);
 
 // Auto-Refresh Current Day Data & Snapshot every 5 minutes (300,000 ms)
 setInterval(async () => {
@@ -88,6 +95,21 @@ app.get('/api/breakdown', (req, res) => {
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.breakdown) {
+      setCached(cacheKey, snap.breakdown);
+      res.json(snap.breakdown);
+      setImmediate(() => {
+        try {
+          const fresh = parseBreakdown(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
+
   console.log(`Fetching Breakdown data for date: ${date}`);
   const data = parseBreakdown(date);
   if (data.error) {
@@ -109,6 +131,21 @@ app.get('/api/aero-delay', (req, res) => {
   const forceRefresh = !!req.query._t;
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
+
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.aeroDelay) {
+      setCached(cacheKey, snap.aeroDelay);
+      res.json(snap.aeroDelay);
+      setImmediate(() => {
+        try {
+          const fresh = parseAeroDelay(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
 
   console.log(`Fetching Aero Delay data for date: ${date}`);
   const data = parseAeroDelay(date);
@@ -132,6 +169,21 @@ app.get('/api/wbr-delay', (req, res) => {
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.wbrDelay) {
+      setCached(cacheKey, snap.wbrDelay);
+      res.json(snap.wbrDelay);
+      setImmediate(() => {
+        try {
+          const fresh = parseWbrDelay(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
+
   console.log(`Fetching WBR Delay data for date: ${date}`);
   const data = parseWbrDelay(date);
   if (data.error) {
@@ -153,6 +205,21 @@ app.get('/api/fischer', (req, res) => {
   const forceRefresh = !!req.query._t;
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
+
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.fischer) {
+      setCached(cacheKey, snap.fischer);
+      res.json(snap.fischer);
+      setImmediate(() => {
+        try {
+          const fresh = parseFischerData(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
 
   console.log(`Fetching Fischer data for date: ${date}`);
   const data = parseFischerData(date);
@@ -176,6 +243,21 @@ app.get('/api/3roll', (req, res) => {
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.roll3) {
+      setCached(cacheKey, snap.roll3);
+      res.json(snap.roll3);
+      setImmediate(() => {
+        try {
+          const fresh = parse3RollData(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
+
   console.log(`Fetching 3 Roll WINDUP data for date: ${date}`);
   const data = parse3RollData(date);
   if (data.error) {
@@ -196,6 +278,21 @@ app.get('/api/4roll2', (req, res) => {
   const forceRefresh = !!req.query._t;
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
+
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.roll42) {
+      setCached(cacheKey, snap.roll42);
+      res.json(snap.roll42);
+      setImmediate(() => {
+        try {
+          const fresh = parse4Roll2Data(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
 
   console.log(`Fetching 4 Roll 2 Productivity data for date: ${date}`);
   const data = parse4Roll2Data(date);
@@ -219,6 +316,21 @@ app.get('/api/oee-weekly', (req, res) => {
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.weeklyOee) {
+      setCached(cacheKey, snap.weeklyOee);
+      res.json(snap.weeklyOee);
+      setImmediate(() => {
+        try {
+          const fresh = parseWeeklyOee(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
+
   console.log(`Fetching Weekly OEE WTD data for date: ${date}`);
   const data = parseWeeklyOee(date);
   if (data.error) {
@@ -241,6 +353,21 @@ app.get('/api/workaway', (req, res) => {
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.workaway) {
+      setCached(cacheKey, snap.workaway);
+      res.json(snap.workaway);
+      setImmediate(() => {
+        try {
+          const fresh = parseWorkawayData(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
+
   console.log(`Fetching Workaway Inventory data for date: ${date}`);
   const data = parseWorkawayData(date);
   if (data.error) {
@@ -261,6 +388,21 @@ app.get('/api/quad', (req, res) => {
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.quad) {
+      setCached(cacheKey, snap.quad);
+      res.json(snap.quad);
+      setImmediate(() => {
+        try {
+          const fresh = parseQuadData(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
+
   console.log(`Fetching Quad data for date: ${date}`);
   const data = parseQuadData(date);
   if (data.error) {
@@ -280,6 +422,21 @@ app.get('/api/tuber', (req, res) => {
   const forceRefresh = !!req.query._t;
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
+
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.tuber) {
+      setCached(cacheKey, snap.tuber);
+      res.json(snap.tuber);
+      setImmediate(() => {
+        try {
+          const fresh = parseTuberData(date);
+          if (fresh && !fresh.error) setCached(cacheKey, fresh);
+        } catch (e) {}
+      });
+      return;
+    }
+  }
 
   console.log(`Fetching Tuber data for date: ${date}`);
   const data = parseTuberData(date);
@@ -371,21 +528,27 @@ app.get('/api/extruder-timeline', async (req, res) => {
   const forceRefresh = req.query.refresh === 'true';
   console.log(`Fetching Extruder Timeline for date: ${date}${forceRefresh ? ' (forceRefresh)' : ''}`);
 
-  // Instant fast-path: for past dates that are confirmed fully synced after 07:00 AM
-  const isPast = date < bangkokProductionDate();
-  if (isPast && !forceRefresh) {
-    const next = nextDate(date);
-    const dayEndMs = Date.parse(`${next}T07:00:00+07:00`);
-    const publicFile = path.join(__dirname, '..', 'public', 'data', 'extruder', `${date}.json`);
-    if (fs.existsSync(publicFile)) {
-      try {
-        const fileContent = fs.readFileSync(publicFile, 'utf8');
-        const json = JSON.parse(fileContent);
-        if (json.asOfMs && json.asOfMs >= dayEndMs) {
-          res.setHeader('Cache-Control', 'public, max-age=86400');
-          return res.type('json').send(fileContent);
-        }
-      } catch (e) {}
+  // Instant fast-path: for any date with existing public or store cache
+  if (!forceRefresh) {
+    const candidateFiles = [
+      path.join(__dirname, '..', 'public', 'data', 'extruder', `${date}.json`),
+      path.join(__dirname, '..', 'dist', 'data', 'extruder', `${date}.json`),
+      path.join(__dirname, 'extruder_store', `${date}.json`)
+    ];
+    for (const f of candidateFiles) {
+      if (fs.existsSync(f)) {
+        try {
+          const fileContent = fs.readFileSync(f, 'utf8');
+          const json = JSON.parse(fileContent);
+          if (json && (json.success !== false || json.lines)) {
+            res.setHeader('Cache-Control', 'public, max-age=300');
+            res.type('json').send(fileContent);
+            // Trigger background sync if needed
+            getExtruderTimeline(date, undefined, false).catch(() => {});
+            return;
+          }
+        } catch (e) {}
+      }
     }
   }
 

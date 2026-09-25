@@ -252,8 +252,11 @@ const btaDb = getFirestore(btaApp);
 async function parseWasteDataAsync(dateStr) {
   try {
     const q = query(collection(btaDb, 'gy_reports'), where('date', '==', dateStr));
-    const snap = await getDocs(q);
-    if (!snap.empty) {
+    const snap = await Promise.race([
+      getDocs(q),
+      new Promise((_, reject) => setTimeout(() => reject(new Error('Firestore timeout')), 3500))
+    ]);
+    if (snap && !snap.empty) {
       let millingSummary = 0, frictionSummary = 0, beadSummary = 0;
       const millingMap = {}, frictionMap = {}, beadMap = {};
 

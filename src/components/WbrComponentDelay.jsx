@@ -12,7 +12,7 @@ export default function WbrComponentDelay({ date }) {
     async function loadData() {
       setLoading(true);
       try {
-        const res = await fetchFast(`/api/wbr-delay?date=${date}`, 3000);
+        const res = await fetchFast(`/api/wbr-delay?date=${date}`, 15000);
         if (res.ok) {
           const json = await res.json();
           if (isMounted) {
