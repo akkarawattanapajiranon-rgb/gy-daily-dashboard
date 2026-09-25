@@ -499,7 +499,19 @@ function App() {
         {activeTab === 'exporter' && (
           <div className="space-y-6">
             <TabErrorBoundary>
-              <DataExporter refreshTrigger={refreshTrigger} />
+              <DataExporter 
+                refreshTrigger={refreshTrigger}
+                page1Data={{
+                  date: selectedDate,
+                  waste: wasteData,
+                  mixing: mixingData,
+                  breakdown: breakdownData,
+                  quad: quadData,
+                  tuber: tuberData,
+                  fischer: fischerData
+                }}
+                onRefreshPage1={() => loadData(selectedDate, true)}
+              />
             </TabErrorBoundary>
           </div>
         )}

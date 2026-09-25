@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Download, FileSpreadsheet, Copy, Calendar, RefreshCw, CheckCircle2, Table, Sparkles } from 'lucide-react';
 import * as XLSX from 'xlsx';
-import { getFirebaseSnapshot, getLocalSnapshot, fetchFast } from '../services/api.js';
+import { getFirebaseSnapshot, getLocalSnapshot, fetchFast, fetchWasteData } from '../services/api.js';
 
 export const METRIC_TARGETS = {
   mixerBatchmix: { target: 1300, type: 'higher', unit: '', label: '≥ 1,300' },
@@ -111,15 +111,46 @@ export function getDateList(start, end) {
   return dates;
 }
 
-export function computeLocalRows(start, end) {
+export function applyPage1DataToSnap(snap = {}, page1Data) {
+  if (!page1Data) return snap;
+  const merged = { ...snap };
+  if (page1Data.waste && (page1Data.waste.hasData || page1Data.waste.frictionSummary > 0 || page1Data.waste.millingSummary > 0)) {
+    merged.waste = { ...merged.waste, ...page1Data.waste };
+  }
+  if (page1Data.mixing) {
+    const b1 = Number(page1Data.mixing.mixing1?.batch) || 0;
+    const b2 = Number(page1Data.mixing.mixing2?.batch) || 0;
+    if (b1 > 0 || b2 > 0 || page1Data.mixing.totalOee2 > 0) {
+      merged.cms = { ...merged.cms, ...page1Data.mixing };
+    }
+  }
+  if (page1Data.breakdown && (page1Data.breakdown.Banbury || page1Data.breakdown.topLoss)) {
+    merged.breakdown = { ...merged.breakdown, ...page1Data.breakdown };
+  }
+  if (page1Data.quad && page1Data.quad.oee) {
+    merged.quad = { ...merged.quad, ...page1Data.quad };
+  }
+  if (page1Data.tuber && page1Data.tuber.oee) {
+    merged.tuber = { ...merged.tuber, ...page1Data.tuber };
+  }
+  if (page1Data.fischer && page1Data.fischer.oee) {
+    merged.fischer = { ...merged.fischer, ...page1Data.fischer };
+  }
+  return merged;
+}
+
+export function computeLocalRows(start, end, page1Data = null) {
   const dates = getDateList(start, end);
   return dates.map(dStr => {
-    const snap = getLocalSnapshot(dStr) || {};
+    let snap = getLocalSnapshot(dStr) || {};
+    if (page1Data && page1Data.date === dStr) {
+      snap = applyPage1DataToSnap(snap, page1Data);
+    }
     return parseSnapshotToRow(dStr, snap);
   });
 }
 
-export default function DataExporter({ refreshTrigger }) {
+export default function DataExporter({ refreshTrigger, page1Data, onRefreshPage1 }) {
   const getTodayDateStr = () => {
     const now = new Date();
     const yyyy = now.getFullYear();
@@ -145,15 +176,15 @@ export default function DataExporter({ refreshTrigger }) {
   const initialDates = getInitialDates();
   const [startDate, setStartDate] = useState(initialDates.start);
   const [endDate, setEndDate] = useState(initialDates.end);
-  const [dataRows, setDataRows] = useState(() => computeLocalRows(initialDates.start, initialDates.end));
+  const [dataRows, setDataRows] = useState(() => computeLocalRows(initialDates.start, initialDates.end, page1Data));
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const fetchExportData = async (start, end, force = false) => {
     if (!start || !end) return;
 
-    // 1. Immediately compute & show local snapshot rows (instant 0ms feedback)
-    const localRows = computeLocalRows(start, end);
+    // 1. Immediately compute & show local snapshot rows (instant 0ms feedback) with page1Data
+    const localRows = computeLocalRows(start, end, page1Data);
     setDataRows(localRows);
 
     setLoading(true);
@@ -168,7 +199,17 @@ export default function DataExporter({ refreshTrigger }) {
           if (json.rows && json.rows.length > 0) {
             const hasData = json.rows.some(r => r.mixerBatchmix > 0 || r.mixerOee2 > 0 || r.quadOee2 > 0 || r.frictionWaste > 0);
             if (hasData) {
-              setDataRows(json.rows);
+              let rows = json.rows;
+              if (page1Data && page1Data.date) {
+                rows = rows.map(r => {
+                  if (r.date === page1Data.date) {
+                    const snap = applyPage1DataToSnap(getLocalSnapshot(r.date) || {}, page1Data);
+                    return parseSnapshotToRow(r.date, snap);
+                  }
+                  return r;
+                });
+              }
+              setDataRows(rows);
               return;
             }
           }
@@ -177,10 +218,27 @@ export default function DataExporter({ refreshTrigger }) {
         // Express server not responding or hosted on static Vercel; proceed to Firebase
       }
 
-      // 3. Fallback to Firebase snapshots in parallel
+      // 3. Fallback to Firebase snapshots in parallel & Live Firestore Waste query
       const dates = getDateList(start, end);
       const rows = await Promise.all(dates.map(async (dStr) => {
-        const snap = (await getFirebaseSnapshot(dStr, force)) || getLocalSnapshot(dStr) || {};
+        let snap = (await getFirebaseSnapshot(dStr, force)) || getLocalSnapshot(dStr) || {};
+
+        // When force refreshing (user pressed "ดึงข้อมูล"), also fetch live Firestore waste
+        // so that any real-time edits in the waste system are immediately reflected!
+        if (force) {
+          try {
+            const liveWaste = await fetchWasteData(dStr, true);
+            if (liveWaste && liveWaste.hasData) {
+              snap = { ...snap, waste: liveWaste };
+            }
+          } catch (e) {}
+        }
+
+        // Overlay latest Page 1 data if matching date
+        if (page1Data && page1Data.date === dStr) {
+          snap = applyPage1DataToSnap(snap, page1Data);
+        }
+
         return parseSnapshotToRow(dStr, snap);
       }));
 
@@ -197,6 +255,33 @@ export default function DataExporter({ refreshTrigger }) {
   useEffect(() => {
     fetchExportData(startDate, endDate, !!refreshTrigger);
   }, [startDate, endDate, refreshTrigger]);
+
+  // Synchronize immediately whenever Page 1's live data changes or is edited
+  useEffect(() => {
+    if (page1Data && page1Data.date && startDate && endDate) {
+      const dates = getDateList(startDate, endDate);
+      if (dates.includes(page1Data.date)) {
+        setDataRows(prevRows => {
+          return prevRows.map(row => {
+            if (row.date === page1Data.date) {
+              const snap = applyPage1DataToSnap(getLocalSnapshot(row.date) || {}, page1Data);
+              return parseSnapshotToRow(row.date, snap);
+            }
+            return row;
+          });
+        });
+      }
+    }
+  }, [page1Data, startDate, endDate]);
+
+  const handleRefreshClick = async () => {
+    if (onRefreshPage1) {
+      try {
+        await onRefreshPage1();
+      } catch (e) {}
+    }
+    await fetchExportData(startDate, endDate, true);
+  };
 
   const handlePresetSelect = (presetKey) => {
     const today = new Date();
@@ -428,9 +513,10 @@ export default function DataExporter({ refreshTrigger }) {
             />
           </div>
           <button
-            onClick={() => fetchExportData(startDate, endDate, true)}
-            className="self-end px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all shadow-sm mb-0.5 flex items-center gap-1.5 cursor-pointer"
-            title="Refresh Data"
+            onClick={handleRefreshClick}
+            disabled={loading}
+            className="self-end px-4 py-2 bg-slate-900 hover:bg-slate-800 disabled:opacity-60 text-white rounded-xl text-xs font-bold transition-all shadow-sm mb-0.5 flex items-center gap-1.5 cursor-pointer"
+            title="ดึงข้อมูลและรีเฟรชจากหน้าแรก (Live Sync)"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
             <span>ดึงข้อมูล</span>

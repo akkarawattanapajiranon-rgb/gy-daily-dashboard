@@ -1,6 +1,6 @@
 {
   "date": "2026-09-25",
-  "generatedAt": "2026-09-25T04:25:37.141Z",
+  "generatedAt": "2026-09-25T04:33:40.463Z",
   "waste": {
     "date": "2026-09-25",
     "millingSummary": 5,
@@ -29,11 +29,11 @@
   "cms": {
     "date": "2026-09-25",
     "mixing1": {
-      "batch": 118,
+      "batch": 122,
       "ar": 83.4,
-      "pr": 86.1,
-      "qr": 81.3,
-      "oee2": 58.4
+      "pr": 86.3,
+      "qr": 81.9,
+      "oee2": 59
     },
     "mixing2": {
       "batch": 5,
@@ -42,10 +42,10 @@
       "qr": 100,
       "oee2": 83.8
     },
-    "totalAr": 84.1,
-    "totalPr": 86.1,
-    "totalQr": 82,
-    "totalOee2": 59.3
+    "totalAr": 84,
+    "totalPr": 86.3,
+    "totalQr": 82.5,
+    "totalOee2": 59.8
   },
   "target3Roll": 12,
   "breakdown": {
@@ -706,7 +706,78 @@
         "hasData": false
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1692",
+        "qty": 6430,
+        "qtyMt": 6.43,
+        "percentage": 12.2
+      },
+      {
+        "rank": 2,
+        "code": "N1128",
+        "qty": 4599,
+        "qtyMt": 4.6,
+        "percentage": 8.7
+      },
+      {
+        "rank": 3,
+        "code": "K33M1",
+        "qty": 3980,
+        "qtyMt": 3.98,
+        "percentage": 7.6
+      },
+      {
+        "rank": 4,
+        "code": "N1717",
+        "qty": 3430,
+        "qtyMt": 3.43,
+        "percentage": 6.5
+      },
+      {
+        "rank": 5,
+        "code": "K27T4",
+        "qty": 3240,
+        "qtyMt": 3.24,
+        "percentage": 6.2
+      },
+      {
+        "rank": 6,
+        "code": "F7894",
+        "qty": 3150,
+        "qtyMt": 3.15,
+        "percentage": 6
+      },
+      {
+        "rank": 7,
+        "code": "N1508",
+        "qty": 2420,
+        "qtyMt": 2.42,
+        "percentage": 4.6
+      },
+      {
+        "rank": 8,
+        "code": "K11M2",
+        "qty": 2205,
+        "qtyMt": 2.21,
+        "percentage": 4.2
+      },
+      {
+        "rank": 9,
+        "code": "K12J5",
+        "qty": 2190,
+        "qtyMt": 2.19,
+        "percentage": 4.2
+      },
+      {
+        "rank": 10,
+        "code": "K16V5",
+        "qty": 1870,
+        "qtyMt": 1.87,
+        "percentage": 3.6
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
@@ -739,7 +810,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 71.32,
+        "avg": 71.38,
         "target": 76.6,
         "count": 5,
         "isMet": false
@@ -876,7 +947,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.32,
+          "avg": 71.38,
           "target": 76.6,
           "count": 5,
           "isMet": false
