@@ -3,16 +3,24 @@ import { Clock, Layers, ShieldAlert, Cpu, CheckCircle2, ChevronRight, Activity }
 import { getFirebaseSnapshot, getLocalSnapshot, fetchFast } from '../services/api';
 
 export default function AeroComponentDelay({ date }) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const initialSnap = getLocalSnapshot(date);
+  const [data, setData] = useState(initialSnap?.aeroDelay || null);
+  const [loading, setLoading] = useState(!initialSnap?.aeroDelay);
   const [filter, setFilter] = useState('ALL'); // 'ALL' | 'Extrusion' | 'Comp'
 
   useEffect(() => {
     let isMounted = true;
-    async function loadData() {
+    const snap = getLocalSnapshot(date);
+    if (snap?.aeroDelay) {
+      setData(snap.aeroDelay);
+      setLoading(false);
+    } else {
       setLoading(true);
+    }
+
+    async function loadData() {
       try {
-        const res = await fetchFast(`/api/aero-delay?date=${date}`, 15000);
+        const res = await fetchFast(`/api/aero-delay?date=${date}`, 5000);
         if (res.ok) {
           const json = await res.json();
           if (isMounted) {
@@ -22,18 +30,15 @@ export default function AeroComponentDelay({ date }) {
           }
         }
       } catch (err) {
-        console.warn('Aero delay API failed, fallback to snapshot:', err.message);
+        // quiet fallback
       }
 
-      // Snapshot fallback
-      const snap = (await getFirebaseSnapshot(date)) || getLocalSnapshot(date);
-      if (isMounted) {
-        if (snap && snap.aeroDelay) {
-          setData(snap.aeroDelay);
-        } else {
-          setData(null);
+      if (isMounted && !snap?.aeroDelay) {
+        const fbSnap = await getFirebaseSnapshot(date);
+        if (isMounted) {
+          setData(fbSnap?.aeroDelay || null);
+          setLoading(false);
         }
-        setLoading(false);
       }
     }
 

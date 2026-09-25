@@ -99,14 +99,7 @@ app.get('/api/breakdown', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.breakdown) {
       setCached(cacheKey, snap.breakdown);
-      res.json(snap.breakdown);
-      setImmediate(() => {
-        try {
-          const fresh = parseBreakdown(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.breakdown);
     }
   }
 
@@ -136,14 +129,7 @@ app.get('/api/aero-delay', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.aeroDelay) {
       setCached(cacheKey, snap.aeroDelay);
-      res.json(snap.aeroDelay);
-      setImmediate(() => {
-        try {
-          const fresh = parseAeroDelay(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.aeroDelay);
     }
   }
 
@@ -173,14 +159,7 @@ app.get('/api/wbr-delay', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.wbrDelay) {
       setCached(cacheKey, snap.wbrDelay);
-      res.json(snap.wbrDelay);
-      setImmediate(() => {
-        try {
-          const fresh = parseWbrDelay(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.wbrDelay);
     }
   }
 
@@ -210,14 +189,7 @@ app.get('/api/fischer', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.fischer) {
       setCached(cacheKey, snap.fischer);
-      res.json(snap.fischer);
-      setImmediate(() => {
-        try {
-          const fresh = parseFischerData(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.fischer);
     }
   }
 
@@ -247,14 +219,7 @@ app.get('/api/3roll', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.roll3) {
       setCached(cacheKey, snap.roll3);
-      res.json(snap.roll3);
-      setImmediate(() => {
-        try {
-          const fresh = parse3RollData(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.roll3);
     }
   }
 
@@ -283,14 +248,7 @@ app.get('/api/4roll2', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.roll42) {
       setCached(cacheKey, snap.roll42);
-      res.json(snap.roll42);
-      setImmediate(() => {
-        try {
-          const fresh = parse4Roll2Data(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.roll42);
     }
   }
 
@@ -320,14 +278,7 @@ app.get('/api/oee-weekly', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.weeklyOee) {
       setCached(cacheKey, snap.weeklyOee);
-      res.json(snap.weeklyOee);
-      setImmediate(() => {
-        try {
-          const fresh = parseWeeklyOee(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.weeklyOee);
     }
   }
 
@@ -357,14 +308,7 @@ app.get('/api/workaway', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.workaway) {
       setCached(cacheKey, snap.workaway);
-      res.json(snap.workaway);
-      setImmediate(() => {
-        try {
-          const fresh = parseWorkawayData(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.workaway);
     }
   }
 
@@ -392,14 +336,7 @@ app.get('/api/quad', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.quad) {
       setCached(cacheKey, snap.quad);
-      res.json(snap.quad);
-      setImmediate(() => {
-        try {
-          const fresh = parseQuadData(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.quad);
     }
   }
 
@@ -427,14 +364,7 @@ app.get('/api/tuber', (req, res) => {
     const snap = getSnapshot(date);
     if (snap && snap.tuber) {
       setCached(cacheKey, snap.tuber);
-      res.json(snap.tuber);
-      setImmediate(() => {
-        try {
-          const fresh = parseTuberData(date);
-          if (fresh && !fresh.error) setCached(cacheKey, fresh);
-        } catch (e) {}
-      });
-      return;
+      return res.json(snap.tuber);
     }
   }
 
@@ -454,26 +384,34 @@ const { parseWasteData, parseWasteDataAsync } = require('./waste_parser');
 
 app.get('/api/waste', async (req, res) => {
   const date = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `waste:${date}`;
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
+  if (cached) return res.json(cached);
+
+  if (!forceRefresh) {
+    const snap = getSnapshot(date);
+    if (snap && snap.waste) {
+      setCached(cacheKey, snap.waste);
+      return res.json(snap.waste);
+    }
+  }
+
   console.log(`Fetching Waste data for date: ${date}`);
   const data = await parseWasteDataAsync(date);
-  if ((!data || data.error || !data.hasData)) {
-    const snap = getSnapshot(date);
-    if (snap && snap.waste && snap.waste.hasData) return res.json(snap.waste);
-  }
-  if (!data) {
-    return res.json({
-      date,
-      millingSummary: 0,
-      frictionSummary: 0,
-      beadSummary: 0,
-      millingTop: [],
-      frictionTop: [],
-      beadTop: [],
-      dataDate: date,
-      hasData: false
-    });
-  }
-  res.json(data);
+  const result = (data && !data.error) ? data : (getSnapshot(date)?.waste || {
+    date,
+    millingSummary: 0,
+    frictionSummary: 0,
+    beadSummary: 0,
+    millingTop: [],
+    frictionTop: [],
+    beadTop: [],
+    dataDate: date,
+    hasData: false
+  });
+  setCached(cacheKey, result);
+  res.json(result);
 });
 
 // CMS live parser
@@ -481,11 +419,31 @@ const { fetchLiveCmsData } = require('./cms_parser');
 
 app.get('/api/cms', async (req, res) => {
   const targetDate = req.query.date || new Date().toISOString().split('T')[0];
+  const cacheKey = `cms:${targetDate}`;
+  const forceRefresh = !!req.query._t;
+  const cached = getCached(cacheKey, forceRefresh);
+  if (cached) return res.json(cached);
+
+  if (!forceRefresh) {
+    const snap = getSnapshot(targetDate);
+    if (snap && snap.cms && (snap.cms.mixing1?.batch > 0 || snap.cms.totalOee2)) {
+      setCached(cacheKey, snap.cms);
+      return res.json(snap.cms);
+    }
+  }
+
   console.log(`Fetching CMS Data for date: ${targetDate}`);
   const liveData = await fetchLiveCmsData(targetDate);
 
   if (liveData && !liveData.error) {
+    setCached(cacheKey, liveData);
     return res.json(liveData);
+  }
+
+  const snap = getSnapshot(targetDate);
+  if (snap && snap.cms) {
+    setCached(cacheKey, snap.cms);
+    return res.json(snap.cms);
   }
 
   // Fallback data if CMS server is offline or unreachable

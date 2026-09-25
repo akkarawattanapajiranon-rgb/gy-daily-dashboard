@@ -3,16 +3,24 @@ import { Clock, Layers, ShieldAlert, Cpu, Activity, Info, CheckCircle2 } from 'l
 import { getFirebaseSnapshot, getLocalSnapshot, fetchFast } from '../services/api';
 
 export default function WbrComponentDelay({ date }) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const initialSnap = getLocalSnapshot(date);
+  const [data, setData] = useState(initialSnap?.wbrDelay || null);
+  const [loading, setLoading] = useState(!initialSnap?.wbrDelay);
   const [filter, setFilter] = useState('ALL'); // 'ALL' | 'Extrusion' | 'Comp' | 'Shift1' | 'Shift2' | 'Shift3'
 
   useEffect(() => {
     let isMounted = true;
-    async function loadData() {
+    const snap = getLocalSnapshot(date);
+    if (snap?.wbrDelay) {
+      setData(snap.wbrDelay);
+      setLoading(false);
+    } else {
       setLoading(true);
+    }
+
+    async function loadData() {
       try {
-        const res = await fetchFast(`/api/wbr-delay?date=${date}`, 15000);
+        const res = await fetchFast(`/api/wbr-delay?date=${date}`, 5000);
         if (res.ok) {
           const json = await res.json();
           if (isMounted) {
@@ -22,18 +30,15 @@ export default function WbrComponentDelay({ date }) {
           }
         }
       } catch (err) {
-        console.warn('WBR delay API failed, fallback to snapshot:', err.message);
+        // quiet fallback
       }
 
-      // Snapshot fallback
-      const snap = (await getFirebaseSnapshot(date)) || getLocalSnapshot(date);
-      if (isMounted) {
-        if (snap && snap.wbrDelay) {
-          setData(snap.wbrDelay);
-        } else {
-          setData(null);
+      if (isMounted && !snap?.wbrDelay) {
+        const fbSnap = await getFirebaseSnapshot(date);
+        if (isMounted) {
+          setData(fbSnap?.wbrDelay || null);
+          setLoading(false);
         }
-        setLoading(false);
       }
     }
 
