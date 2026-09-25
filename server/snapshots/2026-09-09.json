@@ -1,74 +1,86 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-25T02:14:42.281Z",
+  "generatedAt": "2026-09-25T06:06:52.213Z",
   "waste": {
     "date": "2026-09-09",
-    "millingSummary": 97,
-    "frictionSummary": 315.4,
-    "beadSummary": 37,
+    "millingSummary": 105,
+    "frictionSummary": 455,
+    "beadSummary": 34,
     "millingTop": [
       {
-        "code": "M04",
-        "amount": 39,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "N11F3",
+        "amount": 19,
+        "reason": "ยางตัดขอบ",
         "isHigh": true
       },
       {
-        "code": "M01",
-        "amount": 33,
-        "reason": "LUMPY",
+        "code": "N1717",
+        "amount": 17,
+        "reason": "ยางตัดขอบ",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 25,
-        "reason": "TAILING",
+        "code": "39",
+        "amount": 16,
+        "reason": "CALENDER STOP / CORD DEFECT",
+        "isHigh": false
+      },
+      {
+        "code": "B1423",
+        "amount": 15.4,
+        "reason": "ยางไหม้",
+        "isHigh": false
+      },
+      {
+        "code": "B56N2",
+        "amount": 13,
+        "reason": "ขี้ยาง  6 \"",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F39",
-        "amount": 93,
-        "reason": "O'LAY TRIM",
+        "code": "40",
+        "amount": 91.8,
+        "reason": "supphire",
         "isHigh": true
       },
       {
-        "code": "F44",
-        "amount": 62.5,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 86.3,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F01",
-        "amount": 24.2,
-        "reason": "ANGLE CHANGE",
+        "code": "39",
+        "amount": 67,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": false
       },
       {
-        "code": "F24",
-        "amount": 20,
-        "reason": "ELEC/MECH",
+        "code": "1",
+        "amount": 34.2,
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       },
       {
-        "code": "F06",
+        "code": "6",
         "amount": 18.2,
-        "reason": "BROKEN CAL SPLICE",
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
+        "code": "11",
         "amount": 28,
-        "reason": "COAT OFF",
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F51",
-        "amount": 9,
-        "reason": "STRAND CHANGE",
+        "code": "51",
+        "amount": 6,
+        "reason": "COAT OFF",
         "isHigh": true
       }
     ],
@@ -1795,7 +1807,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.56,
+          "avg": 71.94,
           "target": 76.6,
           "count": 5,
           "isMet": false
@@ -1820,8 +1832,8 @@
     },
     "items": [
       {
-        "id": "12-0",
-        "machine": "UI",
+        "id": "12-27-0",
+        "machine": "UC",
         "rawText": "d/l tread > 19.30 - 23.00",
         "category": "Extrusion",
         "componentName": "Tread",
@@ -1830,7 +1842,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "13-1",
+        "id": "13-27-1",
         "machine": "UJ",
         "rawText": "d/l tread > 23.00 -02.30",
         "category": "Extrusion",
@@ -1840,8 +1852,8 @@
         "durationHours": 3.5
       },
       {
-        "id": "15-2",
-        "machine": "UL",
+        "id": "15-27-2",
+        "machine": "UD",
         "rawText": "d/l tread > 19.30 - 23.00",
         "category": "Extrusion",
         "componentName": "Tread",
@@ -1850,7 +1862,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "16-3",
+        "id": "16-27-3",
         "machine": "UM",
         "rawText": "d/l tread > 23.00 -02.30",
         "category": "Extrusion",
@@ -1860,7 +1872,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "30-4",
+        "id": "30-27-4",
         "machine": "UI",
         "rawText": "d/l band 4 > 18.30 -20.30",
         "category": "Comp",
@@ -1870,7 +1882,7 @@
         "durationHours": 2
       },
       {
-        "id": "31-5",
+        "id": "31-27-5",
         "machine": "UI",
         "rawText": "d/l band=1 02.30-07.00",
         "category": "Comp",
@@ -1880,7 +1892,7 @@
         "durationHours": 4.5
       },
       {
-        "id": "32-6",
+        "id": "32-27-6",
         "machine": "UJ",
         "rawText": "d/l band 6=07.00-9.30",
         "category": "Comp",
@@ -1890,7 +1902,7 @@
         "durationHours": 2.5
       },
       {
-        "id": "34-7",
+        "id": "34-27-7",
         "machine": "UJ",
         "rawText": "d/l tread > 33.00 -07.00",
         "category": "Extrusion",
@@ -1900,7 +1912,7 @@
         "durationHours": 8
       },
       {
-        "id": "39-8",
+        "id": "39-27-8",
         "machine": "UL",
         "rawText": "d/l band 4 > 18.30 -20.30",
         "category": "Comp",
@@ -1910,7 +1922,7 @@
         "durationHours": 2
       },
       {
-        "id": "40-9",
+        "id": "40-27-9",
         "machine": "UL",
         "rawText": "d/l band=1 02.30-07.00",
         "category": "Comp",
@@ -1920,7 +1932,7 @@
         "durationHours": 4.5
       },
       {
-        "id": "42-10",
+        "id": "42-27-10",
         "machine": "UM",
         "rawText": "d/l tread > 19.30 - 23.00",
         "category": "Extrusion",
@@ -1930,7 +1942,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "43-11",
+        "id": "43-27-11",
         "machine": "UM",
         "rawText": "d/l tread > 23.00 -02.30",
         "category": "Extrusion",
@@ -1940,7 +1952,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "45-12",
+        "id": "45-27-12",
         "machine": "UN",
         "rawText": "d/l tread > 19.30 - 23.00",
         "category": "Extrusion",
@@ -1950,7 +1962,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "46-13",
+        "id": "46-27-13",
         "machine": "UN",
         "rawText": "d/l tread > 23.00 -02.30",
         "category": "Extrusion",
@@ -1960,7 +1972,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "48-14",
+        "id": "48-27-14",
         "machine": "UO",
         "rawText": "d/l band 1 > 17.30 - 20.00",
         "category": "Comp",
@@ -1970,7 +1982,7 @@
         "durationHours": 2.5
       },
       {
-        "id": "50-15",
+        "id": "50-27-15",
         "machine": "UP",
         "rawText": "d/l side wall 10.00-15.00",
         "category": "Extrusion",
@@ -1980,7 +1992,7 @@
         "durationHours": 5
       },
       {
-        "id": "57-16",
+        "id": "57-27-16",
         "machine": "UR",
         "rawText": "d/l band 1 > 17.30 - 20.00",
         "category": "Comp",
@@ -1990,7 +2002,7 @@
         "durationHours": 2.5
       },
       {
-        "id": "58-17",
+        "id": "58-27-17",
         "machine": "UR",
         "rawText": "d/l bead 24.00-01.30",
         "category": "Comp",
@@ -2000,7 +2012,7 @@
         "durationHours": 1.5
       },
       {
-        "id": "60-18",
+        "id": "60-27-18",
         "machine": "US",
         "rawText": "d/l bead > 17.00 - 18.30",
         "category": "Comp",
@@ -2010,7 +2022,7 @@
         "durationHours": 1.5
       },
       {
-        "id": "61-19",
+        "id": "61-27-19",
         "machine": "US",
         "rawText": "d/l breaker 23.00-24.30",
         "category": "Comp",
@@ -2020,7 +2032,7 @@
         "durationHours": 1.5
       },
       {
-        "id": "63-20",
+        "id": "63-27-20",
         "machine": "TAKU",
         "rawText": "d/l ply. > 21.00 - 23.00",
         "category": "Comp",
@@ -2030,7 +2042,7 @@
         "durationHours": 2
       },
       {
-        "id": "64-21",
+        "id": "64-27-21",
         "machine": "TAKU",
         "rawText": "no sch.d/l ply",
         "category": "Comp",

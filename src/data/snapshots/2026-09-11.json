@@ -1,86 +1,92 @@
 {
   "date": "2026-09-11",
-  "generatedAt": "2026-09-25T02:15:28.749Z",
+  "generatedAt": "2026-09-25T06:07:17.127Z",
   "waste": {
     "date": "2026-09-11",
-    "millingSummary": 212.5,
-    "frictionSummary": 327.2,
-    "beadSummary": 47.4,
+    "millingSummary": 119,
+    "frictionSummary": 509,
+    "beadSummary": 47,
     "millingTop": [
       {
-        "code": "M04",
-        "amount": 79.5,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "N11F3",
+        "amount": 21,
+        "reason": "ยางตัดขอบ",
         "isHigh": true
       },
       {
-        "code": "M01",
-        "amount": 77.8,
-        "reason": "LUMPY",
+        "code": "N1717",
+        "amount": 21,
+        "reason": "ยางตัดขอบ",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 47,
-        "reason": "TAILING",
+        "code": "B1423",
+        "amount": 15.3,
+        "reason": "ยางไหม้",
         "isHigh": false
       },
       {
-        "code": "M06",
-        "amount": 8.2,
-        "reason": "CLEANER",
+        "code": "K11M2",
+        "amount": 15,
+        "reason": "เศษยางไหม้ในกะละมัง",
+        "isHigh": false
+      },
+      {
+        "code": "F1252",
+        "amount": 11.7,
+        "reason": "ยางเป็นก้อน",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 87.00000000000001,
-        "reason": "ROLL ENDS",
+        "code": "40",
+        "amount": 150.8,
+        "reason": "supphire",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 50,
-        "reason": "O'LAY TRIM",
+        "code": "44",
+        "amount": 87.2,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F10",
-        "amount": 38,
-        "reason": "CALENDER STOP",
+        "code": "39",
+        "amount": 39,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": false
       },
       {
-        "code": "F01",
-        "amount": 27.900000000000002,
-        "reason": "ANGLE CHANGE",
+        "code": "F6857",
+        "amount": 27,
+        "reason": "ยางไหม้",
         "isHigh": false
       },
       {
-        "code": "F11",
-        "amount": 18.7,
-        "reason": "COAT OFF",
+        "code": "1",
+        "amount": 24.9,
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
+        "code": "11",
         "amount": 22,
-        "reason": "COAT OFF",
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F08",
+        "code": "8",
         "amount": 19,
-        "reason": "BROKEN WIRE",
+        "reason": "8",
         "isHigh": true
       },
       {
-        "code": "F51",
-        "amount": 6.4,
-        "reason": "STRAND CHANGE",
+        "code": "51",
+        "amount": 6,
+        "reason": "COAT OFF",
         "isHigh": false
       }
     ],
@@ -1961,7 +1967,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.56,
+          "avg": 71.94,
           "target": 76.6,
           "count": 5,
           "isMet": false
@@ -1986,8 +1992,8 @@
     },
     "items": [
       {
-        "id": "18-0",
-        "machine": "UO",
+        "id": "18-27-0",
+        "machine": "UE",
         "rawText": "vacancy G. d/l tread  18.00-20.00",
         "category": "Extrusion",
         "componentName": "Tread",
@@ -1996,8 +2002,8 @@
         "durationHours": 2
       },
       {
-        "id": "21-1",
-        "machine": "UR",
+        "id": "21-27-1",
+        "machine": "UF",
         "rawText": "3105  L/W d/l tread  18.00-20.00",
         "category": "Extrusion",
         "componentName": "Tread",
@@ -2006,7 +2012,7 @@
         "durationHours": 2
       },
       {
-        "id": "26-2",
+        "id": "26-27-2",
         "machine": "UH",
         "rawText": "d/l tread 700-8.30- d/l tread 13.30-15.00",
         "category": "Extrusion",
@@ -2016,7 +2022,7 @@
         "durationHours": 1.5
       },
       {
-        "id": "27-3",
+        "id": "27-27-3",
         "machine": "UH",
         "rawText": "d/l tread 15.00-18.00",
         "category": "Extrusion",
@@ -2026,7 +2032,7 @@
         "durationHours": 3
       },
       {
-        "id": "34-4",
+        "id": "34-27-4",
         "machine": "UJ",
         "rawText": "d/l band=6 01.00-07.00",
         "category": "Comp",
@@ -2036,7 +2042,7 @@
         "durationHours": 6
       },
       {
-        "id": "51-5",
+        "id": "51-27-5",
         "machine": "UP",
         "rawText": "d/l bead 20.00-22.00",
         "category": "Comp",
@@ -2046,7 +2052,7 @@
         "durationHours": 2
       },
       {
-        "id": "59-6",
+        "id": "59-27-6",
         "machine": "US",
         "rawText": "d/l breaker9.00-14.00",
         "category": "Comp",

@@ -139,18 +139,15 @@ export function applyPage1DataToSnap(snap = {}, page1Data) {
   return merged;
 }
 
-export function computeLocalRows(start, end, page1Data = null) {
+export function computeLocalRows(start, end) {
   const dates = getDateList(start, end);
   return dates.map(dStr => {
-    let snap = getLocalSnapshot(dStr) || {};
-    if (page1Data && page1Data.date === dStr) {
-      snap = applyPage1DataToSnap(snap, page1Data);
-    }
+    const snap = getLocalSnapshot(dStr) || {};
     return parseSnapshotToRow(dStr, snap);
   });
 }
 
-export default function DataExporter({ refreshTrigger, page1Data, onRefreshPage1 }) {
+export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPage1 }) {
   const getTodayDateStr = () => {
     const now = new Date();
     const yyyy = now.getFullYear();
@@ -176,15 +173,15 @@ export default function DataExporter({ refreshTrigger, page1Data, onRefreshPage1
   const initialDates = getInitialDates();
   const [startDate, setStartDate] = useState(initialDates.start);
   const [endDate, setEndDate] = useState(initialDates.end);
-  const [dataRows, setDataRows] = useState(() => computeLocalRows(initialDates.start, initialDates.end, page1Data));
+  const [dataRows, setDataRows] = useState(() => computeLocalRows(initialDates.start, initialDates.end));
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const fetchExportData = async (start, end, force = false) => {
     if (!start || !end) return;
 
-    // 1. Immediately compute & show local snapshot rows (instant 0ms feedback) with page1Data
-    const localRows = computeLocalRows(start, end, page1Data);
+    // 1. Immediately compute & show local snapshot rows (instant 0ms feedback)
+    const localRows = computeLocalRows(start, end);
     setDataRows(localRows);
 
     setLoading(true);
@@ -199,17 +196,7 @@ export default function DataExporter({ refreshTrigger, page1Data, onRefreshPage1
           if (json.rows && json.rows.length > 0) {
             const hasData = json.rows.some(r => r.mixerBatchmix > 0 || r.mixerOee2 > 0 || r.quadOee2 > 0 || r.frictionWaste > 0);
             if (hasData) {
-              let rows = json.rows;
-              if (page1Data && page1Data.date) {
-                rows = rows.map(r => {
-                  if (r.date === page1Data.date) {
-                    const snap = applyPage1DataToSnap(getLocalSnapshot(r.date) || {}, page1Data);
-                    return parseSnapshotToRow(r.date, snap);
-                  }
-                  return r;
-                });
-              }
-              setDataRows(rows);
+              setDataRows(json.rows);
               return;
             }
           }
@@ -234,11 +221,6 @@ export default function DataExporter({ refreshTrigger, page1Data, onRefreshPage1
           } catch (e) {}
         }
 
-        // Overlay latest Page 1 data if matching date
-        if (page1Data && page1Data.date === dStr) {
-          snap = applyPage1DataToSnap(snap, page1Data);
-        }
-
         return parseSnapshotToRow(dStr, snap);
       }));
 
@@ -256,24 +238,6 @@ export default function DataExporter({ refreshTrigger, page1Data, onRefreshPage1
     fetchExportData(startDate, endDate, !!refreshTrigger);
   }, [startDate, endDate, refreshTrigger]);
 
-  // Synchronize immediately whenever Page 1's live data changes or is edited
-  useEffect(() => {
-    if (page1Data && page1Data.date && startDate && endDate) {
-      const dates = getDateList(startDate, endDate);
-      if (dates.includes(page1Data.date)) {
-        setDataRows(prevRows => {
-          return prevRows.map(row => {
-            if (row.date === page1Data.date) {
-              const snap = applyPage1DataToSnap(getLocalSnapshot(row.date) || {}, page1Data);
-              return parseSnapshotToRow(row.date, snap);
-            }
-            return row;
-          });
-        });
-      }
-    }
-  }, [page1Data, startDate, endDate]);
-
   // Watchdog: Ensure loading spinner never hangs
   useEffect(() => {
     if (loading) {
@@ -281,24 +245,6 @@ export default function DataExporter({ refreshTrigger, page1Data, onRefreshPage1
       return () => clearTimeout(t);
     }
   }, [loading]);
-
-  // Wake-from-sleep recovery for Page 5
-  useEffect(() => {
-    const handleVis = () => {
-      setLoading(false);
-      if (document.visibilityState === 'visible') {
-        fetchExportData(startDate, endDate, true);
-      }
-    };
-    document.addEventListener('visibilitychange', handleVis);
-    window.addEventListener('focus', handleVis);
-    window.addEventListener('pageshow', handleVis);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVis);
-      window.removeEventListener('focus', handleVis);
-      window.removeEventListener('pageshow', handleVis);
-    };
-  }, [startDate, endDate]);
 
   const handleRefreshClick = async () => {
     if (onRefreshPage1) {

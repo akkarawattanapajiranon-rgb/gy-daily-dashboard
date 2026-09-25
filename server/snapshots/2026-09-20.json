@@ -1,60 +1,72 @@
 {
   "date": "2026-09-20",
-  "generatedAt": "2026-09-25T02:19:04.351Z",
+  "generatedAt": "2026-09-25T06:09:12.289Z",
   "waste": {
     "date": "2026-09-20",
-    "millingSummary": 94,
-    "frictionSummary": 294.3,
+    "millingSummary": 67.7,
+    "frictionSummary": 314.1,
     "beadSummary": 0,
     "millingTop": [
       {
-        "code": "M01",
-        "amount": 42,
-        "reason": "LUMPY",
-        "isHigh": true
-      },
-      {
-        "code": "M04",
-        "amount": 36,
-        "reason": "PUSH/CLEAN IN/OUT",
-        "isHigh": true
-      },
-      {
-        "code": "M05",
+        "code": "B56N2",
         "amount": 16,
-        "reason": "TAILING",
+        "reason": "ขี้ยาง  6 \"",
+        "isHigh": true
+      },
+      {
+        "code": "39",
+        "amount": 11,
+        "reason": "CALENDER STOP / CORD DEFECT",
+        "isHigh": true
+      },
+      {
+        "code": "B1423",
+        "amount": 10,
+        "reason": "ยางเป็นก้อน",
+        "isHigh": false
+      },
+      {
+        "code": "N1717",
+        "amount": 10,
+        "reason": "ขี้ยางเปลี่ยนไดร้,ปาดหัวยางไหม้",
+        "isHigh": false
+      },
+      {
+        "code": "B2201",
+        "amount": 9,
+        "reason": "ยางตัดขอบ",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 94.6,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 94.4,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 32,
-        "reason": "O'LAY TRIM",
+        "code": "F6857",
+        "amount": 42,
+        "reason": "ยางไหม้",
         "isHigh": true
       },
       {
-        "code": "F06",
-        "amount": 30,
-        "reason": "BROKEN CAL SPLICE",
-        "isHigh": false
-      },
-      {
-        "code": "F40",
+        "code": "40",
         "amount": 28,
-        "reason": "PLY EDGE TRIM",
+        "reason": "supphire",
         "isHigh": false
       },
       {
-        "code": "F01",
-        "amount": 24.299999999999997,
-        "reason": "ANGLE CHANGE",
+        "code": "1",
+        "amount": 24.3,
+        "reason": "CALENDER DEFECT",
+        "isHigh": false
+      },
+      {
+        "code": "39",
+        "amount": 21,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": false
       }
     ],
@@ -1822,7 +1834,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.56,
+          "avg": 71.94,
           "target": 76.6,
           "count": 5,
           "isMet": false
@@ -1847,7 +1859,7 @@
     },
     "items": [
       {
-        "id": "40-0",
+        "id": "40-27-0",
         "machine": "UL",
         "rawText": "d/l tread 02.0-04.00",
         "category": "Extrusion",
@@ -1857,7 +1869,7 @@
         "durationHours": 0
       },
       {
-        "id": "49-1",
+        "id": "49-27-1",
         "machine": "UO",
         "rawText": "d/l chafer 04.30-07.00",
         "category": "Comp",
@@ -1867,7 +1879,7 @@
         "durationHours": 2.5
       },
       {
-        "id": "50-2",
+        "id": "50-27-2",
         "machine": "UP",
         "rawText": "d/l band > 11.30 - 14.00",
         "category": "Comp",
@@ -1877,7 +1889,7 @@
         "durationHours": 2.5
       },
       {
-        "id": "51-3",
+        "id": "51-27-3",
         "machine": "UP",
         "rawText": "d/l chafer 16.00-17.00 d/l band 21.00-23.00",
         "category": "Comp",
@@ -1887,7 +1899,7 @@
         "durationHours": 1
       },
       {
-        "id": "59-4",
+        "id": "59-27-4",
         "machine": "US",
         "rawText": "d/l band > 11.30 - 14.00",
         "category": "Comp",
@@ -1897,7 +1909,7 @@
         "durationHours": 2.5
       },
       {
-        "id": "60-5",
+        "id": "60-27-5",
         "machine": "US",
         "rawText": "d/l bead 19.00-20.00 d/l band 21.00-23.00",
         "category": "Comp",
@@ -1907,7 +1919,7 @@
         "durationHours": 1
       },
       {
-        "id": "62-6",
+        "id": "62-27-6",
         "machine": "TAKU",
         "rawText": "d/l ply.3 > 11.30 - 12.30",
         "category": "Comp",

@@ -1,80 +1,86 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-25T02:12:53.872Z",
+  "generatedAt": "2026-09-25T06:06:06.638Z",
   "waste": {
     "date": "2026-09-05",
-    "millingSummary": 185.9,
-    "frictionSummary": 308.6,
-    "beadSummary": 44,
+    "millingSummary": 192,
+    "frictionSummary": 306.1,
+    "beadSummary": 67,
     "millingTop": [
       {
-        "code": "M04",
-        "amount": 124,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "B1182",
+        "amount": 59,
+        "reason": "clean out ยางไหม้[รอบสูง]",
         "isHigh": true
       },
       {
-        "code": "M05",
+        "code": "K16V5",
         "amount": 39,
-        "reason": "TAILING",
+        "reason": "เครื่องเสียสายพายพานไม่หมุน",
         "isHigh": true
       },
       {
-        "code": "M01",
-        "amount": 14.9,
-        "reason": "LUMPY",
+        "code": "N1717",
+        "amount": 32,
+        "reason": "เศษยางไหม้ในกะละมัง",
         "isHigh": false
       },
       {
-        "code": "M06",
-        "amount": 8,
-        "reason": "CLEANER",
+        "code": "39",
+        "amount": 26,
+        "reason": "CALENDER STOP / CORD DEFECT",
+        "isHigh": false
+      },
+      {
+        "code": "B1423",
+        "amount": 24,
+        "reason": "ยางไหม้",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 81.8,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 77.8,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 65,
-        "reason": "O'LAY TRIM",
+        "code": "39",
+        "amount": 39,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F01",
-        "amount": 34.6,
-        "reason": "ANGLE CHANGE",
+        "code": "1",
+        "amount": 28.6,
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       },
       {
-        "code": "F46",
-        "amount": 30.900000000000002,
-        "reason": "SHORT PIECES",
+        "code": "46",
+        "amount": 27.400000000000002,
+        "reason": "46",
         "isHigh": false
       },
       {
-        "code": "F11",
+        "code": "11",
         "amount": 22.6,
-        "reason": "COAT OFF",
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
-        "amount": 38,
-        "reason": "COAT OFF",
+        "code": "11",
+        "amount": 61,
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F51",
+        "code": "51",
         "amount": 6,
-        "reason": "STRAND CHANGE",
+        "reason": "COAT OFF",
         "isHigh": true
       }
     ],
@@ -1863,7 +1869,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.56,
+          "avg": 71.94,
           "target": 76.6,
           "count": 5,
           "isMet": false
@@ -1888,8 +1894,8 @@
     },
     "items": [
       {
-        "id": "6-0",
-        "machine": "UC",
+        "id": "6-27-0",
+        "machine": "UA",
         "rawText": "d/l chafer > 17.00 - 20.00",
         "category": "Comp",
         "componentName": "Chafer",
@@ -1898,8 +1904,8 @@
         "durationHours": 3
       },
       {
-        "id": "9-1",
-        "machine": "UF",
+        "id": "9-27-1",
+        "machine": "UB",
         "rawText": "d/l chafer > 17.00 - 20.00",
         "category": "Comp",
         "componentName": "Chafer",
@@ -1908,7 +1914,7 @@
         "durationHours": 3
       },
       {
-        "id": "26-2",
+        "id": "26-27-2",
         "machine": "UH",
         "rawText": "d/l tread > 7.00-10.00",
         "category": "Extrusion",
@@ -1918,7 +1924,7 @@
         "durationHours": 3
       },
       {
-        "id": "29-3",
+        "id": "29-27-3",
         "machine": "UI",
         "rawText": "vacancy G. d/l band1= 11.30-15.00",
         "category": "Comp",
@@ -1928,7 +1934,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "30-4",
+        "id": "30-27-4",
         "machine": "UI",
         "rawText": "d/l band1= 15.00 - 21.00",
         "category": "Comp",
@@ -1938,7 +1944,7 @@
         "durationHours": 6
       },
       {
-        "id": "31-5",
+        "id": "31-27-5",
         "machine": "UI",
         "rawText": "d/l band > 03.00 - 06.00",
         "category": "Comp",
@@ -1948,7 +1954,7 @@
         "durationHours": 3
       },
       {
-        "id": "32-6",
+        "id": "32-27-6",
         "machine": "UJ",
         "rawText": "d/l band 6 > 7.00-7.00-10.00",
         "category": "Comp",
@@ -1958,7 +1964,7 @@
         "durationHours": 24
       },
       {
-        "id": "37-7",
+        "id": "37-27-7",
         "machine": "UK",
         "rawText": "d/l bead > 01.00 - 02.00",
         "category": "Comp",
@@ -1968,7 +1974,7 @@
         "durationHours": 1
       },
       {
-        "id": "38-8",
+        "id": "38-27-8",
         "machine": "UL",
         "rawText": "d/l band1= 11.30-15.00",
         "category": "Comp",
@@ -1978,7 +1984,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "39-9",
+        "id": "39-27-9",
         "machine": "UL",
         "rawText": "d/l band1= 15.00 - 21.00",
         "category": "Comp",
@@ -1988,7 +1994,7 @@
         "durationHours": 6
       },
       {
-        "id": "40-10",
+        "id": "40-27-10",
         "machine": "UL",
         "rawText": "d/l band > 03.00 - 06.00",
         "category": "Comp",
@@ -1998,7 +2004,7 @@
         "durationHours": 3
       },
       {
-        "id": "54-11",
+        "id": "54-27-11",
         "machine": "UQ",
         "rawText": "vacancy G.,d/l chafer > 16.30 - 17.30,d/l band1 > 20.30 - 21.30",
         "category": "Comp",
@@ -2008,7 +2014,7 @@
         "durationHours": 1
       },
       {
-        "id": "55-12",
+        "id": "55-27-12",
         "machine": "UQ",
         "rawText": "d/l band 2 > 23.00 - 02.00",
         "category": "Comp",
@@ -2018,7 +2024,7 @@
         "durationHours": 3
       },
       {
-        "id": "59-13",
+        "id": "59-27-13",
         "machine": "US",
         "rawText": "d/l bead 10.30-15.00",
         "category": "Comp",
@@ -2028,7 +2034,7 @@
         "durationHours": 4.5
       },
       {
-        "id": "61-14",
+        "id": "61-27-14",
         "machine": "US",
         "rawText": "d/l bead > 04.00 - 05.00",
         "category": "Comp",

@@ -1,80 +1,92 @@
 {
   "date": "2026-09-15",
-  "generatedAt": "2026-09-25T02:17:01.438Z",
+  "generatedAt": "2026-09-25T06:08:08.117Z",
   "waste": {
     "date": "2026-09-15",
-    "millingSummary": 178.8,
-    "frictionSummary": 387,
-    "beadSummary": 64.8,
+    "millingSummary": 118,
+    "frictionSummary": 458,
+    "beadSummary": 66,
     "millingTop": [
       {
-        "code": "M01",
-        "amount": 107.60000000000001,
-        "reason": "LUMPY",
+        "code": "N1717",
+        "amount": 30,
+        "reason": "เศษยางไหม้ในกะละมัง",
         "isHigh": true
       },
       {
-        "code": "M04",
-        "amount": 43.2,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "B1423",
+        "amount": 19.4,
+        "reason": "ยางไหม้",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 28,
-        "reason": "TAILING",
+        "code": "B1026",
+        "amount": 16.6,
+        "reason": "ยางไหม้เป็นเม็ด",
+        "isHigh": false
+      },
+      {
+        "code": "B1443",
+        "amount": 16,
+        "reason": "ขี้ยาง  6 \"",
+        "isHigh": false
+      },
+      {
+        "code": "39",
+        "amount": 12,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 89.2,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 95.89999999999999,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 64,
-        "reason": "O'LAY TRIM",
+        "code": "40",
+        "amount": 71.3,
+        "reason": "supphire",
         "isHigh": true
       },
       {
-        "code": "F11",
+        "code": "39",
+        "amount": 52,
+        "reason": "CALENDER STOP / CORD DEFECT",
+        "isHigh": false
+      },
+      {
+        "code": "11",
         "amount": 48.6,
-        "reason": "COAT OFF",
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": false
       },
       {
-        "code": "F40",
-        "amount": 29,
-        "reason": "PLY EDGE TRIM",
-        "isHigh": false
-      },
-      {
-        "code": "F01",
+        "code": "1",
         "amount": 26.7,
-        "reason": "ANGLE CHANGE",
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
-        "amount": 32.5,
-        "reason": "COAT OFF",
+        "code": "11",
+        "amount": 33.7,
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F08",
+        "code": "8",
         "amount": 24.8,
-        "reason": "BROKEN WIRE",
+        "reason": "8",
         "isHigh": true
       },
       {
-        "code": "F51",
+        "code": "51",
         "amount": 7.5,
-        "reason": "STRAND CHANGE",
+        "reason": "COAT OFF",
         "isHigh": false
       }
     ],
@@ -1949,7 +1961,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.56,
+          "avg": 71.94,
           "target": 76.6,
           "count": 5,
           "isMet": false
@@ -1974,7 +1986,7 @@
     },
     "items": [
       {
-        "id": "62-0",
+        "id": "62-27-0",
         "machine": "TAKU",
         "rawText": "d/l ply.3,bead > 13.00 - 15.00",
         "category": "Comp",
@@ -1984,7 +1996,7 @@
         "durationHours": 2
       },
       {
-        "id": "63-1",
+        "id": "63-27-1",
         "machine": "TAKU",
         "rawText": "d/l ply.3,bead >  15.00 -21.00",
         "category": "Comp",

@@ -1,60 +1,72 @@
 {
   "date": "2026-09-13",
-  "generatedAt": "2026-09-25T02:16:11.924Z",
+  "generatedAt": "2026-09-25T06:07:43.390Z",
   "waste": {
     "date": "2026-09-13",
-    "millingSummary": 152.8,
-    "frictionSummary": 199.6,
+    "millingSummary": 80.9,
+    "frictionSummary": 371.5,
     "beadSummary": 0,
     "millingTop": [
       {
-        "code": "M01",
-        "amount": 57.8,
-        "reason": "LUMPY",
+        "code": "N2139",
+        "amount": 17,
+        "reason": "ขี้ยาง  6 \"",
         "isHigh": true
       },
       {
-        "code": "M04",
-        "amount": 48,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "B1423",
+        "amount": 14,
+        "reason": "ยางไหม้",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 47,
-        "reason": "TAILING",
+        "code": "N1508",
+        "amount": 14,
+        "reason": "ยางตัดขอบ",
+        "isHigh": false
+      },
+      {
+        "code": "N1692",
+        "amount": 12,
+        "reason": "ขี้ยางเปลี่ยนไดร้,ปาดหัวยางไหม้",
+        "isHigh": false
+      },
+      {
+        "code": "B61C7",
+        "amount": 12,
+        "reason": "ขี้ยางเปลี่ยนไดร้,ปาดหัวยางไหม้",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 44.800000000000004,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 78.7,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F46",
-        "amount": 26.300000000000004,
-        "reason": "SHORT PIECES",
+        "code": "j26r7",
+        "amount": 30,
+        "reason": "ยางถอยออกจากcalender",
         "isHigh": true
       },
       {
-        "code": "F24",
+        "code": "40",
+        "amount": 27,
+        "reason": "supphire",
+        "isHigh": false
+      },
+      {
+        "code": "24",
         "amount": 25,
-        "reason": "ELEC/MECH",
+        "reason": "BEAD DEFECT",
         "isHigh": false
       },
       {
-        "code": "F39",
-        "amount": 22,
-        "reason": "O'LAY TRIM",
-        "isHigh": false
-      },
-      {
-        "code": "F01",
-        "amount": 19.1,
-        "reason": "ANGLE CHANGE",
+        "code": "46",
+        "amount": 24.5,
+        "reason": "46",
         "isHigh": false
       }
     ],
@@ -1578,7 +1590,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.56,
+          "avg": 71.94,
           "target": 76.6,
           "count": 5,
           "isMet": false
@@ -1603,7 +1615,7 @@
     },
     "items": [
       {
-        "id": "13-0",
+        "id": "13-27-0",
         "machine": "UJ",
         "rawText": "d/l bead >03.00-05.00",
         "category": "Comp",
@@ -1613,7 +1625,7 @@
         "durationHours": 2
       },
       {
-        "id": "16-1",
+        "id": "16-27-1",
         "machine": "UM",
         "rawText": "vacancy g.,d/l bead > 03.00-05.00",
         "category": "Comp",
@@ -1623,8 +1635,8 @@
         "durationHours": 2
       },
       {
-        "id": "18-2",
-        "machine": "UO",
+        "id": "18-27-2",
+        "machine": "UE",
         "rawText": "d/l tread > 19.00 - 20.30",
         "category": "Extrusion",
         "componentName": "Tread",
@@ -1633,8 +1645,8 @@
         "durationHours": 1.5
       },
       {
-        "id": "21-3",
-        "machine": "UR",
+        "id": "21-27-3",
+        "machine": "UF",
         "rawText": "d/l tread > 19.00 - 20.30",
         "category": "Extrusion",
         "componentName": "Tread",
@@ -1643,7 +1655,7 @@
         "durationHours": 1.5
       },
       {
-        "id": "30-4",
+        "id": "30-27-4",
         "machine": "UI",
         "rawText": "d/l bead > 20.00 - 22.00",
         "category": "Comp",
@@ -1653,7 +1665,7 @@
         "durationHours": 2
       },
       {
-        "id": "39-5",
+        "id": "39-27-5",
         "machine": "UL",
         "rawText": "d/l bead > 20.00 - 22.00",
         "category": "Comp",
@@ -1663,7 +1675,7 @@
         "durationHours": 2
       },
       {
-        "id": "43-6",
+        "id": "43-27-6",
         "machine": "UM",
         "rawText": "d/l bead > 03.00-05.00",
         "category": "Comp",
@@ -1673,7 +1685,7 @@
         "durationHours": 2
       },
       {
-        "id": "46-7",
+        "id": "46-27-7",
         "machine": "UN",
         "rawText": "vacancy g.,d/l bead > 03.00-05.00",
         "category": "Comp",
@@ -1683,7 +1695,7 @@
         "durationHours": 2
       },
       {
-        "id": "63-8",
+        "id": "63-27-8",
         "machine": "TAKU",
         "rawText": "liner  spc 5.70 act. 5.24   d/l liner   15.00 - 19.00",
         "category": "Comp",
@@ -1693,7 +1705,7 @@
         "durationHours": 4
       },
       {
-        "id": "64-9",
+        "id": "64-27-9",
         "machine": "TAKU",
         "rawText": "d/l bkk 03.00-07.00",
         "category": "Comp",

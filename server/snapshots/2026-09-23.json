@@ -1,86 +1,92 @@
 {
   "date": "2026-09-23",
-  "generatedAt": "2026-09-25T06:01:02.124Z",
+  "generatedAt": "2026-09-25T06:09:50.351Z",
   "waste": {
     "date": "2026-09-23",
-    "millingSummary": 93.6,
-    "frictionSummary": 352.6,
-    "beadSummary": 50.5,
+    "millingSummary": 77,
+    "frictionSummary": 473,
+    "beadSummary": 50,
     "millingTop": [
       {
-        "code": "M04",
-        "amount": 31,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "B1423",
+        "amount": 17,
+        "reason": "ยางไหม้",
         "isHigh": true
       },
       {
-        "code": "M01",
-        "amount": 29.6,
-        "reason": "LUMPY",
+        "code": "N11F3",
+        "amount": 15,
+        "reason": "ยางตัดขอบ",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 26,
-        "reason": "TAILING",
+        "code": "B252G",
+        "amount": 13,
+        "reason": "เศษยางไหม้ในกะละมัง",
         "isHigh": false
       },
       {
-        "code": "M06",
-        "amount": 7,
-        "reason": "CLEANER",
+        "code": "39",
+        "amount": 9,
+        "reason": "CALENDER STOP / CORD DEFECT",
+        "isHigh": false
+      },
+      {
+        "code": "G1211",
+        "amount": 9,
+        "reason": "ยางตัดขอบ",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 94.5,
-        "reason": "ROLL ENDS",
+        "code": "40",
+        "amount": 124.4,
+        "reason": "supphire",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 77,
-        "reason": "O'LAY TRIM",
+        "code": "44",
+        "amount": 86.49999999999999,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F56",
-        "amount": 29.200000000000003,
-        "reason": "WRINKLES",
+        "code": "39",
+        "amount": 68,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": false
       },
       {
-        "code": "F46",
-        "amount": 27,
-        "reason": "SHORT PIECES",
+        "code": "56",
+        "amount": 33.2,
+        "reason": "FISCHER DEFECT",
         "isHigh": false
       },
       {
-        "code": "F01",
-        "amount": 25.7,
-        "reason": "ANGLE CHANGE",
+        "code": "1",
+        "amount": 27.7,
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
+        "code": "11",
         "amount": 30,
-        "reason": "COAT OFF",
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F08",
+        "code": "8",
         "amount": 13,
-        "reason": "BROKEN WIRE",
+        "reason": "8",
         "isHigh": true
       },
       {
-        "code": "F51",
-        "amount": 7.5,
-        "reason": "STRAND CHANGE",
+        "code": "51",
+        "amount": 7,
+        "reason": "COAT OFF",
         "isHigh": false
       }
     ],

@@ -1,86 +1,98 @@
 {
   "date": "2026-09-03",
-  "generatedAt": "2026-09-25T02:12:05.916Z",
+  "generatedAt": "2026-09-25T06:05:42.161Z",
   "waste": {
     "date": "2026-09-03",
-    "millingSummary": 135,
-    "frictionSummary": 321.2,
-    "beadSummary": 46.6,
+    "millingSummary": 140,
+    "frictionSummary": 350,
+    "beadSummary": 59,
     "millingTop": [
       {
-        "code": "M05",
-        "amount": 57,
-        "reason": "TAILING",
+        "code": "N11F3",
+        "amount": 29,
+        "reason": "ยางตัดขอบ",
         "isHigh": true
       },
       {
-        "code": "M04",
-        "amount": 42,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "N1717",
+        "amount": 24,
+        "reason": "ยางตัดขอบ",
         "isHigh": true
       },
       {
-        "code": "M01",
-        "amount": 35,
-        "reason": "LUMPY",
+        "code": "B1443",
+        "amount": 22,
+        "reason": "ขี้ยาง  6 \"",
         "isHigh": false
       },
       {
-        "code": "M02",
-        "amount": 1,
-        "reason": "NO IDENTIFICATION",
+        "code": "B1423",
+        "amount": 16.6,
+        "reason": "ยางไหม้",
+        "isHigh": false
+      },
+      {
+        "code": "39",
+        "amount": 11,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 79.89999999999999,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 75.60000000000001,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 54,
-        "reason": "O'LAY TRIM",
+        "code": "39",
+        "amount": 43,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F01",
-        "amount": 24.099999999999998,
-        "reason": "ANGLE CHANGE",
-        "isHigh": false
-      },
-      {
-        "code": "F46",
-        "amount": 21.400000000000002,
-        "reason": "SHORT PIECES",
-        "isHigh": false
-      },
-      {
-        "code": "F06",
+        "code": "6",
         "amount": 20,
-        "reason": "BROKEN CAL SPLICE",
+        "reason": "3 ROLLS / ROLL ENDS",
+        "isHigh": false
+      },
+      {
+        "code": "F4111",
+        "amount": 20,
+        "reason": "ยางไหม้เป็นเม็ด",
+        "isHigh": false
+      },
+      {
+        "code": "1",
+        "amount": 19.200000000000003,
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
+        "code": "11",
         "amount": 32,
-        "reason": "COAT OFF",
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F34",
+        "code": "24",
+        "amount": 12.4,
+        "reason": "BEAD DEFECT",
+        "isHigh": true
+      },
+      {
+        "code": "34",
         "amount": 8,
-        "reason": "OFF TICKET",
-        "isHigh": true
+        "reason": "WIRE BEAD DEFECT",
+        "isHigh": false
       },
       {
-        "code": "F51",
+        "code": "51",
         "amount": 6.6,
-        "reason": "STRAND CHANGE",
+        "reason": "COAT OFF",
         "isHigh": false
       }
     ],
@@ -1862,7 +1874,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.56,
+          "avg": 71.94,
           "target": 76.6,
           "count": 5,
           "isMet": false
@@ -1874,12 +1886,12 @@
     "_file": "09 Aero Build September 2026.xls",
     "_sheet": "03",
     "_date": "2026-09-03",
-    "totalDelayMin": 1330,
-    "totalDelayHours": 22.2,
+    "totalDelayMin": 1345,
+    "totalDelayHours": 22.4,
     "totalExtrusionMin": 220,
     "totalExtrusionHours": 3.7,
-    "totalCompMin": 1110,
-    "totalCompHours": 18.5,
+    "totalCompMin": 1125,
+    "totalCompHours": 18.8,
     "summary": {
       "extrusionCount": 1,
       "compCount": 7,
@@ -1887,17 +1899,17 @@
     },
     "items": [
       {
-        "id": "5-0",
+        "id": "5-27-0",
         "machine": "UA",
         "rawText": "vacancy G.  d/l chafer",
         "category": "Comp",
         "componentName": "Chafer",
-        "timeRangeStr": "",
-        "durationMin": 0,
-        "durationHours": 0
+        "timeRangeStr": "1 tires lost",
+        "durationMin": 15,
+        "durationHours": 0.3
       },
       {
-        "id": "23-1",
+        "id": "23-27-1",
         "machine": "UG",
         "rawText": "vacancy G.    d/l tread 07.00-10.40",
         "category": "Extrusion",
@@ -1907,7 +1919,7 @@
         "durationHours": 3.7
       },
       {
-        "id": "34-2",
+        "id": "34-27-2",
         "machine": "UJ",
         "rawText": "d/l band 6,7 > 23.00 - 07.00",
         "category": "Comp",
@@ -1917,7 +1929,7 @@
         "durationHours": 8
       },
       {
-        "id": "47-3",
+        "id": "47-27-3",
         "machine": "UO",
         "rawText": "vacancy G   d/l bead 09.30-10.00",
         "category": "Comp",
@@ -1927,7 +1939,7 @@
         "durationHours": 0.5
       },
       {
-        "id": "48-4",
+        "id": "48-27-4",
         "machine": "UO",
         "rawText": "d/l bead 18.00-20.00",
         "category": "Comp",
@@ -1937,7 +1949,7 @@
         "durationHours": 2
       },
       {
-        "id": "54-5",
+        "id": "54-27-5",
         "machine": "UQ",
         "rawText": "d/l band16.00-16.30",
         "category": "Comp",
@@ -1947,7 +1959,7 @@
         "durationHours": 0.5
       },
       {
-        "id": "55-6",
+        "id": "55-27-6",
         "machine": "UQ",
         "rawText": "d/l breaker > 03.30 - 07.00",
         "category": "Comp",
@@ -1957,7 +1969,7 @@
         "durationHours": 3.5
       },
       {
-        "id": "59-7",
+        "id": "59-27-7",
         "machine": "US",
         "rawText": "d/l chafer 11.00-15.00",
         "category": "Comp",

@@ -1,80 +1,86 @@
 {
   "date": "2026-09-21",
-  "generatedAt": "2026-09-25T02:19:29.273Z",
+  "generatedAt": "2026-09-25T06:09:23.555Z",
   "waste": {
     "date": "2026-09-21",
-    "millingSummary": 420,
-    "frictionSummary": 327.7,
+    "millingSummary": 119,
+    "frictionSummary": 373.7,
     "beadSummary": 32,
     "millingTop": [
       {
-        "code": "M01",
-        "amount": 282.5,
-        "reason": "LUMPY",
+        "code": "B1026",
+        "amount": 21,
+        "reason": "ยางเป็นก้อน",
         "isHigh": true
       },
       {
-        "code": "M04",
-        "amount": 93,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "N11F3",
+        "amount": 21,
+        "reason": "ยางตัดขอบ",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 40.5,
-        "reason": "TAILING",
+        "code": "N1717",
+        "amount": 18,
+        "reason": "ยางไหม้ตัดหัวสามเหลี่ยม",
         "isHigh": false
       },
       {
-        "code": "M06",
-        "amount": 4,
-        "reason": "CLEANER",
+        "code": "B1443",
+        "amount": 16,
+        "reason": "ขี้ยาง  6 \"",
+        "isHigh": false
+      },
+      {
+        "code": "B1423",
+        "amount": 13,
+        "reason": "ยางไหม้",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
+        "code": "44",
         "amount": 95.2,
-        "reason": "ROLL ENDS",
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 62,
-        "reason": "O'LAY TRIM",
+        "code": "39",
+        "amount": 52,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F01",
-        "amount": 40.3,
-        "reason": "ANGLE CHANGE",
+        "code": "1",
+        "amount": 39.3,
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       },
       {
-        "code": "F46",
-        "amount": 31.5,
-        "reason": "SHORT PIECES",
+        "code": "46",
+        "amount": 31.500000000000004,
+        "reason": "46",
         "isHigh": false
       },
       {
-        "code": "F06",
-        "amount": 17.4,
-        "reason": "BROKEN CAL SPLICE",
+        "code": "F1145",
+        "amount": 18,
+        "reason": "ยางไหม้",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
+        "code": "11",
         "amount": 25,
-        "reason": "COAT OFF",
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F51",
+        "code": "51",
         "amount": 7,
-        "reason": "STRAND CHANGE",
+        "reason": "COAT OFF",
         "isHigh": true
       }
     ],
@@ -2235,7 +2241,7 @@
     },
     "items": [
       {
-        "id": "5-0",
+        "id": "5-27-0",
         "machine": "UA",
         "rawText": "d/l chafer > 09.00 - 10.30",
         "category": "Comp",
@@ -2245,7 +2251,7 @@
         "durationHours": 1.5
       },
       {
-        "id": "8-1",
+        "id": "8-27-1",
         "machine": "UB",
         "rawText": "d/l chafer > 09.00 - 10.30",
         "category": "Comp",
@@ -2255,7 +2261,7 @@
         "durationHours": 1.5
       },
       {
-        "id": "35-2",
+        "id": "35-27-2",
         "machine": "UK",
         "rawText": "d/l band 2  > 12.00 - 15.00",
         "category": "Comp",
@@ -2265,7 +2271,7 @@
         "durationHours": 3
       },
       {
-        "id": "36-3",
+        "id": "36-27-3",
         "machine": "UK",
         "rawText": "d/l band 2 > 15.00 -23.00",
         "category": "Comp",
@@ -2275,7 +2281,7 @@
         "durationHours": 8
       },
       {
-        "id": "47-4",
+        "id": "47-27-4",
         "machine": "UO",
         "rawText": "d/l chafer > 08.00 - 09.00,d/l band 2 > 12.00 - 14.00",
         "category": "Comp",
@@ -2285,7 +2291,7 @@
         "durationHours": 1
       },
       {
-        "id": "48-5",
+        "id": "48-27-5",
         "machine": "UO",
         "rawText": "d/l band 1,2 >15.00-20.00",
         "category": "Comp",
@@ -2295,7 +2301,7 @@
         "durationHours": 5
       },
       {
-        "id": "49-6",
+        "id": "49-27-6",
         "machine": "UO",
         "rawText": "d/l band2=04.00-07.00",
         "category": "Comp",
@@ -2305,7 +2311,7 @@
         "durationHours": 3
       },
       {
-        "id": "51-7",
+        "id": "51-27-7",
         "machine": "UP",
         "rawText": "d/l band 20.00- 23.00",
         "category": "Comp",
@@ -2315,7 +2321,7 @@
         "durationHours": 3
       },
       {
-        "id": "52-8",
+        "id": "52-27-8",
         "machine": "UP",
         "rawText": "d/l band 23.00-07.00",
         "category": "Comp",
@@ -2325,7 +2331,7 @@
         "durationHours": 8
       },
       {
-        "id": "60-9",
+        "id": "60-27-9",
         "machine": "US",
         "rawText": "d/l band 20.00-23.00",
         "category": "Comp",
@@ -2335,7 +2341,7 @@
         "durationHours": 3
       },
       {
-        "id": "61-10",
+        "id": "61-27-10",
         "machine": "US",
         "rawText": "d/l band 23.00-07.00",
         "category": "Comp",
@@ -2345,7 +2351,7 @@
         "durationHours": 8
       },
       {
-        "id": "62-11",
+        "id": "62-27-11",
         "machine": "TAKU",
         "rawText": "rep.plc. > 10.00 - 11.00,d/l chafer > 13.00 - 15.00",
         "category": "Comp",
@@ -2355,7 +2361,7 @@
         "durationHours": 1
       },
       {
-        "id": "63-12",
+        "id": "63-27-12",
         "machine": "TAKU",
         "rawText": "d/l chafer > 15.00 -17.00   d/l ply2 17.00-21.00",
         "category": "Comp",

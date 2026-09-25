@@ -266,9 +266,9 @@ function App() {
 
   useEffect(() => {
     if (!appMode) {
-      loadData();
+      loadData(selectedDate);
     }
-  }, [selectedDate, appMode, loadData]);
+  }, [selectedDate, appMode]);
 
   // Emergency Watchdog: Prevent loading spinner from ever being stuck
   useEffect(() => {
@@ -280,27 +280,25 @@ function App() {
     }
   }, [isLoading]);
 
-  // Wake-from-Sleep, Screen Sleep & Tab Visibility Auto-Recovery
+  // Wake-from-Sleep Auto-Recovery (Triggers only when PC wakes from standby/sleep)
   useEffect(() => {
     let lastActiveTime = Date.now();
 
-    const handleWakeOrVisible = () => {
+    const heartbeatTimer = setInterval(() => {
       const now = Date.now();
-      const timeElapsed = now - lastActiveTime;
+      const elapsed = now - lastActiveTime;
       lastActiveTime = now;
 
-      // Always clear any hung loading state on wake
-      setIsLoading(false);
+      // If timer was suspended for > 35s (computer slept or lid closed)
+      if (elapsed > 35000) {
+        console.log(`[App] Computer resumed from sleep (${Math.round(elapsed / 1000)}s paused). Auto-refreshing...`);
+        setIsLoading(false);
 
-      if (document.visibilityState === 'visible') {
-        console.log(`[App] Tab resumed / woke from sleep (${Math.round(timeElapsed / 1000)}s inactive). Auto-refreshing live data...`);
-        
         // Auto-advance date if PC was asleep across midnight
         const d = new Date();
         const curToday = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-        
         setSelectedDate(prev => {
-          const prevD = new Date(now - timeElapsed);
+          const prevD = new Date(now - elapsed);
           const prevToday = `${prevD.getFullYear()}-${String(prevD.getMonth() + 1).padStart(2, '0')}-${String(prevD.getDate()).padStart(2, '0')}`;
           if (prev === prevToday && curToday !== prevToday) {
             return curToday;
@@ -308,49 +306,11 @@ function App() {
           return prev;
         });
 
-        // Trigger immediate live refresh
-        setRefreshTrigger(prev => prev + 1);
         loadData(undefined, true);
-      }
-    };
-
-    // Heartbeat check every 10s: Detect if timer drifted (indicating Windows Sleep / Standby / Tab throttling)
-    const heartbeatTimer = setInterval(() => {
-      const now = Date.now();
-      if (now - lastActiveTime > 25000) {
-        handleWakeOrVisible();
-      } else {
-        lastActiveTime = now;
       }
     }, 10000);
 
-    const onVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        handleWakeOrVisible();
-      }
-    };
-
-    const onFocus = () => {
-      handleWakeOrVisible();
-    };
-
-    const onOnline = () => {
-      console.log('[App] Network restored (online). Refreshing...');
-      handleWakeOrVisible();
-    };
-
-    document.addEventListener('visibilitychange', onVisibilityChange);
-    window.addEventListener('focus', onFocus);
-    window.addEventListener('pageshow', onFocus);
-    window.addEventListener('online', onOnline);
-
-    return () => {
-      clearInterval(heartbeatTimer);
-      document.removeEventListener('visibilitychange', onVisibilityChange);
-      window.removeEventListener('focus', onFocus);
-      window.removeEventListener('pageshow', onFocus);
-      window.removeEventListener('online', onOnline);
-    };
+    return () => clearInterval(heartbeatTimer);
   }, [loadData]);
 
   // Periodic 3-Minute Background Live Poller (Keeps dashboard active & updated)
@@ -597,15 +557,7 @@ function App() {
             <TabErrorBoundary>
               <DataExporter 
                 refreshTrigger={refreshTrigger}
-                page1Data={{
-                  date: selectedDate,
-                  waste: wasteData,
-                  mixing: mixingData,
-                  breakdown: breakdownData,
-                  quad: quadData,
-                  tuber: tuberData,
-                  fischer: fischerData
-                }}
+                selectedDate={selectedDate}
                 onRefreshPage1={() => loadData(selectedDate, true)}
               />
             </TabErrorBoundary>
