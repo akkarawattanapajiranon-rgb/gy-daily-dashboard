@@ -58,7 +58,7 @@ export default function TuberReport({ data, loading }) {
       </div>
 
       {/* OEE Metrics Cards */}
-      {hasOee && (
+      {hasOee ? (
         <div className="grid grid-cols-4 sm:grid-cols-7 gap-1.5">
           <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200/60 rounded-lg p-2 text-center min-w-0">
             <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-tight whitespace-nowrap">OEE2</p>
@@ -88,6 +88,10 @@ export default function TuberReport({ data, loading }) {
             <p className="text-[9px] font-bold text-rose-500 uppercase tracking-tight whitespace-nowrap">BD %</p>
             <p className="text-xs sm:text-sm font-extrabold text-rose-600 whitespace-nowrap">{oee.bd_pct}%</p>
           </div>
+        </div>
+      ) : (
+        <div className="bg-amber-50 border border-amber-200/60 rounded-lg p-2.5 text-center text-xs text-amber-700 font-medium">
+          ⚠️ ไม่มีข้อมูล OEE บันทึกในไฟล์ Excel สำหรับวันที่เลือก
         </div>
       )}
 
