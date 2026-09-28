@@ -1,92 +1,80 @@
 {
   "date": "2026-09-14",
-  "generatedAt": "2026-09-25T06:18:52.669Z",
+  "generatedAt": "2026-09-25T07:31:53.656Z",
   "waste": {
     "date": "2026-09-14",
-    "millingSummary": 95,
-    "frictionSummary": 469,
-    "beadSummary": 44,
+    "millingSummary": 549,
+    "frictionSummary": 340.8,
+    "beadSummary": 44.5,
     "millingTop": [
       {
-        "code": "N11F3",
-        "amount": 34,
-        "reason": "เศษยางไหม้ในกะละมัง",
+        "code": "M01",
+        "amount": 450,
+        "reason": "LUMPY",
         "isHigh": true
       },
       {
-        "code": "B1423",
-        "amount": 12,
-        "reason": "ยางไหม้",
+        "code": "M04",
+        "amount": 81,
+        "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
       {
-        "code": "N1692",
-        "amount": 10,
-        "reason": "ขี้ยางเปลี่ยนไดร้,ปาดหัวยางไหม้",
-        "isHigh": false
-      },
-      {
-        "code": "K33M1",
-        "amount": 9,
-        "reason": "เศษยางไหม้ในกะละมัง",
-        "isHigh": false
-      },
-      {
-        "code": "B1026",
-        "amount": 8,
-        "reason": "ยางเป็นก้อน",
+        "code": "M05",
+        "amount": 18,
+        "reason": "TAILING",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "40",
-        "amount": 103.7,
-        "reason": "supphire",
+        "code": "F44",
+        "amount": 77,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "44",
-        "amount": 101.6,
-        "reason": "3 ROLLS / ROLL ENDS",
-        "isHigh": true
-      },
-      {
-        "code": "39",
+        "code": "F39",
         "amount": 62,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "reason": "O'LAY TRIM",
+        "isHigh": true
+      },
+      {
+        "code": "F40",
+        "amount": 36,
+        "reason": "PLY EDGE TRIM",
         "isHigh": false
       },
       {
-        "code": "1",
-        "amount": 30.400000000000002,
-        "reason": "CALENDER DEFECT",
-        "isHigh": false
-      },
-      {
-        "code": "30",
+        "code": "F30",
         "amount": 27.4,
-        "reason": "FISCHER STOP / DEFECT",
+        "reason": "LINER DEFECT",
+        "isHigh": false
+      },
+      {
+        "code": "F01",
+        "amount": 26.900000000000002,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "24",
-        "amount": 20,
-        "reason": "BEAD DEFECT",
+        "code": "F27",
+        "amount": 25,
+        "reason": "FOREIGN MAT",
         "isHigh": true
       },
       {
-        "code": "11",
-        "amount": 15,
-        "reason": "COAT OFF / BEAD COAT",
-        "isHigh": true
-      },
-      {
-        "code": "51",
-        "amount": 9,
+        "code": "F11",
+        "amount": 15.5,
         "reason": "COAT OFF",
+        "isHigh": true
+      },
+      {
+        "code": "F51",
+        "amount": 4,
+        "reason": "STRAND CHANGE",
         "isHigh": false
       }
     ],
@@ -2202,7 +2190,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 71.72,
+          "avg": 70.82,
           "target": 76.6,
           "count": 5,
           "isMet": false
