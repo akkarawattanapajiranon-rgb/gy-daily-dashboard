@@ -1,6 +1,6 @@
 {
   "date": "2026-09-28",
-  "generatedAt": "2026-09-28T02:09:03.011Z",
+  "generatedAt": "2026-09-28T02:10:41.823Z",
   "waste": {
     "date": "2026-09-28",
     "millingSummary": 0,
@@ -15,23 +15,23 @@
   "cms": {
     "date": "2026-09-28",
     "mixing1": {
-      "batch": 44,
-      "ar": 87.2,
+      "batch": 47,
+      "ar": 84.2,
       "pr": 96.1,
-      "qr": 91.2,
-      "oee2": 76.4
+      "qr": 90.8,
+      "oee2": 73.4
     },
     "mixing2": {
-      "batch": 62,
-      "ar": 91,
-      "pr": 84.8,
+      "batch": 68,
+      "ar": 91.7,
+      "pr": 85.4,
       "qr": 100,
-      "oee2": 77.1
+      "oee2": 78.4
     },
-    "totalAr": 89.2,
-    "totalPr": 90,
-    "totalQr": 96,
-    "totalOee2": 77
+    "totalAr": 88.1,
+    "totalPr": 90.3,
+    "totalQr": 95.9,
+    "totalOee2": 76.3
   },
   "target3Roll": 12,
   "breakdown": {
@@ -211,15 +211,112 @@
       "bd_pct": 0
     },
     "output": {
-      "hasData": false,
+      "hasData": true,
       "day": 28,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 56,
+      "codeBreakdown": [
+        {
+          "code": "WA8X",
+          "count": 16,
+          "percentage": 28.57
+        },
+        {
+          "code": "W1CX",
+          "count": 12,
+          "percentage": 21.43
+        },
+        {
+          "code": "WAIK",
+          "count": 10,
+          "percentage": 17.86
+        },
+        {
+          "code": "W1WF",
+          "count": 9,
+          "percentage": 16.07
+        },
+        {
+          "code": "W1WL",
+          "count": 9,
+          "percentage": 16.07
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "TL00203",
+              "code1": "W1CX",
+              "code2": "",
+              "code": "W1CX",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00203",
+              "code1": "W1CX",
+              "code2": "",
+              "code": "W1CX",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "TL00232",
+              "code1": "W1WF",
+              "code2": "",
+              "code": "W1WF",
+              "qtyTarget": 9,
+              "qtyProduced": 9,
+              "qtySapphire": 0,
+              "totalQty": 9
+            },
+            {
+              "partId": "TL00233",
+              "code1": "W1WL",
+              "code2": "",
+              "code": "W1WL",
+              "qtyTarget": 9,
+              "qtyProduced": 9,
+              "qtySapphire": 0,
+              "totalQty": 9
+            },
+            {
+              "partId": "TL00184",
+              "code1": "WA8X",
+              "code2": "",
+              "code": "WA8X",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00184",
+              "code1": "WA8X",
+              "code2": "",
+              "code": "WA8X",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            },
+            {
+              "partId": "TL00153",
+              "code1": "WAIK",
+              "code2": "",
+              "code": "WAIK",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            }
+          ],
+          "totalQty": 56
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -812,13 +909,13 @@
         "isMet": false
       },
       "fischer": {
-        "avg": 52.92,
+        "avg": 51.57,
         "target": 60,
-        "count": 4,
+        "count": 6,
         "isMet": false
       },
       "mixing": {
-        "avg": 75.64,
+        "avg": 75.54,
         "target": 76.6,
         "count": 7,
         "isMet": false
@@ -949,13 +1046,13 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 52.92,
+          "avg": 51.57,
           "target": 60,
-          "count": 4,
+          "count": 6,
           "isMet": false
         },
         "mixing": {
-          "avg": 75.64,
+          "avg": 75.54,
           "target": 76.6,
           "count": 7,
           "isMet": false

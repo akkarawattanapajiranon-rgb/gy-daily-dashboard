@@ -1,6 +1,6 @@
 {
   "date": "2026-09-26",
-  "generatedAt": "2026-09-28T02:09:25.567Z",
+  "generatedAt": "2026-09-28T02:11:05.311Z",
   "waste": {
     "date": "2026-09-26",
     "millingSummary": 61,
@@ -143,14 +143,14 @@
   "fischer": {
     "date": "2026-09-26",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 45.83,
+      "ar_pct": 77.88,
+      "pr_pct": 59.43,
+      "qr_pct": 99.69,
+      "oee1_pct": 21.15,
+      "oee2_pct": 46.14
     },
     "loss": {
       "hasData": true,
@@ -1051,9 +1051,9 @@
         "isMet": false
       },
       "fischer": {
-        "avg": 52.92,
+        "avg": 51.57,
         "target": 60,
-        "count": 4,
+        "count": 6,
         "isMet": false
       },
       "mixing": {
@@ -1188,9 +1188,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 52.92,
+          "avg": 51.57,
           "target": 60,
-          "count": 4,
+          "count": 6,
           "isMet": false
         },
         "mixing": {
