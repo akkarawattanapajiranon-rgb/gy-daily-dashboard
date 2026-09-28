@@ -166,8 +166,10 @@ function getTuberOutput(dateStr) {
     }))
     .sort((a, b) => b.count - a.count);
 
+  const hasOutputData = grandTotal > 0 || (shifts[1].items.length > 0 || shifts[2].items.length > 0 || shifts[3].items.length > 0);
+
   return {
-    hasData: true,
+    hasData: hasOutputData,
     day: dayNum,
     grandTotal,
     codeBreakdown,

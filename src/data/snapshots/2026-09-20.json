@@ -1,60 +1,72 @@
 {
   "date": "2026-09-20",
-  "generatedAt": "2026-09-25T07:32:57.277Z",
+  "generatedAt": "2026-09-28T00:42:01.250Z",
   "waste": {
     "date": "2026-09-20",
-    "millingSummary": 94,
-    "frictionSummary": 294.3,
+    "millingSummary": 67.7,
+    "frictionSummary": 314.1,
     "beadSummary": 0,
     "millingTop": [
       {
-        "code": "M01",
-        "amount": 42,
-        "reason": "LUMPY",
-        "isHigh": true
-      },
-      {
-        "code": "M04",
-        "amount": 36,
-        "reason": "PUSH/CLEAN IN/OUT",
-        "isHigh": true
-      },
-      {
-        "code": "M05",
+        "code": "B56N2",
         "amount": 16,
-        "reason": "TAILING",
+        "reason": "ขี้ยาง  6 \"",
+        "isHigh": true
+      },
+      {
+        "code": "39",
+        "amount": 11,
+        "reason": "CALENDER STOP / CORD DEFECT",
+        "isHigh": true
+      },
+      {
+        "code": "B1423",
+        "amount": 10,
+        "reason": "ยางเป็นก้อน",
+        "isHigh": false
+      },
+      {
+        "code": "N1717",
+        "amount": 10,
+        "reason": "ขี้ยางเปลี่ยนไดร้,ปาดหัวยางไหม้",
+        "isHigh": false
+      },
+      {
+        "code": "B2201",
+        "amount": 9,
+        "reason": "ยางตัดขอบ",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 94.6,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 94.4,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 32,
-        "reason": "O'LAY TRIM",
+        "code": "F6857",
+        "amount": 42,
+        "reason": "ยางไหม้",
         "isHigh": true
       },
       {
-        "code": "F06",
-        "amount": 30,
-        "reason": "BROKEN CAL SPLICE",
-        "isHigh": false
-      },
-      {
-        "code": "F40",
+        "code": "40",
         "amount": 28,
-        "reason": "PLY EDGE TRIM",
+        "reason": "supphire",
         "isHigh": false
       },
       {
-        "code": "F01",
-        "amount": 24.299999999999997,
-        "reason": "ANGLE CHANGE",
+        "code": "1",
+        "amount": 24.3,
+        "reason": "CALENDER DEFECT",
+        "isHigh": false
+      },
+      {
+        "code": "39",
+        "amount": 21,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": false
       }
     ],
@@ -1804,15 +1816,15 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 53.68,
+          "avg": 52.9,
           "target": 62,
           "count": 7,
           "isMet": false
         },
         "tuber": {
-          "avg": 57.04,
+          "avg": 57.31,
           "target": 62,
-          "count": 4,
+          "count": 5,
           "isMet": false
         },
         "fischer": {
@@ -1822,9 +1834,9 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 70.82,
+          "avg": 73.11,
           "target": 76.6,
-          "count": 5,
+          "count": 7,
           "isMet": false
         }
       }

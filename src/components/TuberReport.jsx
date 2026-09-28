@@ -20,8 +20,18 @@ export default function TuberReport({ data, loading }) {
   }
 
   const { oee, output } = data;
-  const hasOee = oee && oee.hasData;
-  const hasOutput = output && output.hasData;
+  const hasOee = Boolean(oee && oee.hasData);
+  const hasOutput = Boolean(output && output.hasData);
+
+  if (!hasOee && !hasOutput) {
+    return (
+      <div className="bg-white rounded-xl shadow-xs border border-slate-100 p-6 text-center text-slate-400">
+        <Cpu className="w-10 h-10 mx-auto text-slate-300 mb-2" />
+        <p className="font-semibold text-slate-600">TUBER Performance & Output</p>
+        <p className="text-xs text-slate-400 mt-1">ไม่พบข้อมูล TUBER สำหรับวันที่เลือก (ยังไม่มีการบันทึกข้อมูล OEE และยอดผลิต)</p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-xl shadow-xs border border-slate-100 p-4 space-y-4">

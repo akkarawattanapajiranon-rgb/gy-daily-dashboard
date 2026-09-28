@@ -1,6 +1,6 @@
 {
   "date": "2026-09-28",
-  "generatedAt": "2026-09-28T00:01:14.432Z",
+  "generatedAt": "2026-09-28T01:31:02.944Z",
   "waste": {
     "date": "2026-09-28",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-28",
     "mixing1": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 30,
+      "ar": 71.6,
+      "pr": 94.8,
+      "qr": 94.3,
+      "oee2": 64
     },
     "mixing2": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 46,
+      "ar": 86.3,
+      "pr": 81.5,
+      "qr": 100,
+      "oee2": 70.3
     },
-    "totalAr": 0,
-    "totalPr": 0,
-    "totalQr": 0,
-    "totalOee2": 0
+    "totalAr": 79,
+    "totalPr": 87.5,
+    "totalQr": 97.5,
+    "totalOee2": 67.4
   },
-  "target3Roll": 0,
+  "target3Roll": 12,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -92,7 +92,41 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 6,
+      "totalWbr": 6,
+      "totalSapphire": 0,
+      "totalAngleChanges": 1,
+      "totalNormal": 0,
+      "totalSticky": 6,
+      "normalPct": 0,
+      "stickyPct": 100,
+      "shifts": {
+        "shift1": {
+          "wbr": 6,
+          "sapphire": 0,
+          "angleChanges": 1,
+          "normal": 0,
+          "sticky": 6,
+          "total": 6
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -101,14 +135,35 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
+    "totalRolls": 12,
     "totalRelease": 0,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 12,
+    "totalScheduled": 12,
+    "codeBreakdown": [
+      {
+        "code": "NU27",
+        "count": 4,
+        "percentage": 33.33
+      },
+      {
+        "code": "RP08",
+        "count": 4,
+        "percentage": 33.33
+      },
+      {
+        "code": "NB32",
+        "count": 2,
+        "percentage": 16.67
+      },
+      {
+        "code": "RU53",
+        "count": 2,
+        "percentage": 16.67
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-28",
@@ -187,13 +242,75 @@
     "output": {
       "hasData": true,
       "day": 28,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 660,
+      "codeBreakdown": [
+        {
+          "code": "B427",
+          "count": 300,
+          "percentage": 45.45
+        },
+        {
+          "code": "B435",
+          "count": 90,
+          "percentage": 13.64
+        },
+        {
+          "code": "B627",
+          "count": 90,
+          "percentage": 13.64
+        },
+        {
+          "code": "B404",
+          "count": 90,
+          "percentage": 13.64
+        },
+        {
+          "code": "B455",
+          "count": 90,
+          "percentage": 13.64
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "XP02316",
+              "code": "B427",
+              "qtyTarget": 10,
+              "qtyProduced": 300,
+              "totalQty": 300
+            },
+            {
+              "partId": "XP02305",
+              "code": "B435",
+              "qtyTarget": 3,
+              "qtyProduced": 90,
+              "totalQty": 90
+            },
+            {
+              "partId": "XP02323",
+              "code": "B627",
+              "qtyTarget": 3,
+              "qtyProduced": 90,
+              "totalQty": 90
+            },
+            {
+              "partId": "XP02296",
+              "code": "B404",
+              "qtyTarget": 3,
+              "qtyProduced": 90,
+              "totalQty": 90
+            },
+            {
+              "partId": "XP02326",
+              "code": "B455",
+              "qtyTarget": 3,
+              "qtyProduced": 90,
+              "totalQty": 90
+            }
+          ],
+          "totalQty": 660
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -694,9 +811,9 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.13,
+        "avg": 74.06,
         "target": 76.6,
-        "count": 6,
+        "count": 7,
         "isMet": false
       }
     },
@@ -831,9 +948,9 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.13,
+          "avg": 74.06,
           "target": 76.6,
-          "count": 6,
+          "count": 7,
           "isMet": false
         }
       }

@@ -30,43 +30,35 @@ function getQuadOee(dateStr) {
 
   const wb = XLSX.readFile(file);
   
-  // Find official Quad sheet for selected month (prioritize current year and sheets with actual filled data)
+  // Find official Quad sheet for selected month and year
   const yy = yearStr.slice(-2);
-  const candidateSheets = wb.SheetNames.filter(s => matchesMonth(s, monthNum));
-  candidateSheets.sort((a, b) => {
-    const aLower = a.toLowerCase();
-    const bLower = b.toLowerCase();
-    const aHasYear = (aLower.includes(yearStr) || aLower.includes(yy) || aLower.includes(` ${yy}`) || aLower.includes(`,${yy}`) || aLower.includes(`, ${yy}`)) ? 50 : 0;
-    const bHasYear = (bLower.includes(yearStr) || bLower.includes(yy) || bLower.includes(` ${yy}`) || bLower.includes(`,${yy}`) || bLower.includes(`, ${yy}`)) ? 50 : 0;
-    const aScore = aHasYear +
-                   (aLower.includes('all oee') && aLower.includes('quad') ? 20 : 0) +
-                   (aLower.includes('quad') ? 10 : 0) +
-                   (aLower.includes('update') || aLower.includes('up date') ? 5 : 0);
-    const bScore = bHasYear +
-                   (bLower.includes('all oee') && bLower.includes('quad') ? 20 : 0) +
-                   (bLower.includes('quad') ? 10 : 0) +
-                   (bLower.includes('update') || bLower.includes('up date') ? 5 : 0);
-    return bScore - aScore;
+  const targetYearNum = parseInt(yearStr, 10);
+
+  // Filter sheets for selected month, strictly excluding other years (e.g. 2025)
+  const candidateSheets = wb.SheetNames.filter(s => {
+    if (!matchesMonth(s, monthNum)) return false;
+    const sLower = s.toLowerCase();
+    if (sLower.includes('2025') || sLower.includes(',25') || sLower.includes(' 25')) return false;
+    return true;
   });
 
-  let dayRow = null;
-  for (const s of candidateSheets) {
-    const ws = wb.Sheets[s];
-    if (!ws) continue;
-    const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
-    const row = data.slice(2).find(r => parseInt(r[0], 10) === dayNum);
-    if (row) {
-      const sr = Number(row[1]) || 0;
-      const ar = Number(row[3]) || 0;
-      const pr = Number(row[4]) || 0;
-      const oee2 = Number(row[8]) || Number(row[7]) || 0;
-      if (sr > 0 || ar > 0 || pr > 0 || oee2 > 0) {
-        dayRow = row;
-        break;
-      }
-    }
+  const officialSheetName = candidateSheets.find(s => {
+    const l = s.toLowerCase();
+    return (l.includes(yearStr) || l.includes(yy)) && l.includes('quad');
+  }) || candidateSheets.find(s => s.toLowerCase().includes('quad')) || candidateSheets[0];
+
+  if (!officialSheetName || !wb.Sheets[officialSheetName]) {
+    return { hasData: false };
   }
 
+  const ws = wb.Sheets[officialSheetName];
+  const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+  const titleRow = data[0] ? String(data[0][0] || '').toLowerCase() : '';
+  if (titleRow.includes('2025') && targetYearNum === 2026) {
+    return { hasData: false };
+  }
+
+  const dayRow = data.slice(2).find(r => parseInt(r[0], 10) === dayNum);
   if (!dayRow) return { hasData: false };
 
   const sr = Number(dayRow[1]) || 0;
@@ -218,8 +210,10 @@ function getQuadOutput(dateStr) {
     }))
     .sort((a, b) => b.count - a.count);
 
+  const hasOutputData = grandTotal > 0 || (shifts[1].items.length > 0 || shifts[2].items.length > 0 || shifts[3].items.length > 0);
+
   return {
-    hasData: true,
+    hasData: hasOutputData,
     day: dayNum,
     grandTotal,
     codeBreakdown,

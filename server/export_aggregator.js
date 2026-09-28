@@ -52,20 +52,27 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
 
   const batch1 = Number(cmsData?.mixing1?.batch) || 0;
   const batch2 = Number(cmsData?.mixing2?.batch) || 0;
-  const mixerBatchmix = batch1 + batch2;
+  const hasCms = (batch1 > 0 || batch2 > 0 || Number(cmsData?.totalOee2 || 0) > 0);
+  const mixerBatchmix = hasCms ? (batch1 + batch2) : null;
+  const mixerOee2 = hasCms ? Number((Number(cmsData?.totalOee2) || 0).toFixed(2)) : null;
 
-  const mixerOee2 = Number(cmsData?.totalOee2) || 0;
-  const quadOee2 = Number(quadData?.oee?.oee2_pct) || 0;
-  const tuberOee2 = Number(tuberData?.oee?.oee2_pct) || 0;
-  const fischerOee2 = Number(fischerData?.oee?.oee2_pct) || 0;
+  const quadOee2 = (quadData?.oee && quadData.oee.hasData) ? Number(Number(quadData.oee.oee2_pct || 0).toFixed(2)) : null;
+  const tuberOee2 = (tuberData?.oee && tuberData.oee.hasData) ? Number(Number(tuberData.oee.oee2_pct || 0).toFixed(2)) : null;
+  const fischerOee2 = (fischerData?.oee && fischerData.oee.hasData) ? Number(Number(fischerData.oee.oee2_pct || 0).toFixed(2)) : null;
 
-  const bdMixer = Number(bdData?.Banbury?.actual_bd_pct) || 0;
-  const bdExtruder = Number(bdData?.Extruder?.actual_bd_pct) || 0;
-  const bdCalender = Number(bdData?.Calender?.actual_bd_pct) || 0;
-  const bdCutting = Number(bdData?.Cutting?.actual_bd_pct) || 0;
+  const hasBdMixer = bdData?.Banbury?.hasData && bdData.Banbury.actual_bd_pct !== null && bdData.Banbury.actual_bd_pct !== undefined;
+  const hasBdExtruder = bdData?.Extruder?.hasData && bdData.Extruder.actual_bd_pct !== null && bdData.Extruder.actual_bd_pct !== undefined;
+  const hasBdCalender = bdData?.Calender?.hasData && bdData.Calender.actual_bd_pct !== null && bdData.Calender.actual_bd_pct !== undefined;
+  const hasBdCutting = bdData?.Cutting?.hasData && bdData.Cutting.actual_bd_pct !== null && bdData.Cutting.actual_bd_pct !== undefined;
 
-  const frictionWaste = Number(wasteData?.frictionSummary) || 0;
-  const millingWaste = Number(wasteData?.millingSummary) || 0;
+  const bdMixer = hasBdMixer ? Number(Number(bdData.Banbury.actual_bd_pct).toFixed(4)) : null;
+  const bdExtruder = hasBdExtruder ? Number(Number(bdData.Extruder.actual_bd_pct).toFixed(4)) : null;
+  const bdCalender = hasBdCalender ? Number(Number(bdData.Calender.actual_bd_pct).toFixed(4)) : null;
+  const bdCutting = hasBdCutting ? Number(Number(bdData.Cutting.actual_bd_pct).toFixed(4)) : null;
+
+  const hasWaste = wasteData && wasteData.hasData;
+  const frictionWaste = hasWaste ? Number(Number(wasteData.frictionSummary || 0).toFixed(2)) : null;
+  const millingWaste = hasWaste ? Number(Number(wasteData.millingSummary || 0).toFixed(2)) : null;
 
   const bdMixerTarget = Number((Number(bdData?.Banbury?.target_bd_pct) || 0.5827).toFixed(4));
   const bdExtruderTarget = Number((Number(bdData?.Extruder?.target_bd_pct) || 0.5098).toFixed(4));
@@ -75,16 +82,16 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
   const res = {
     date: dateStr,
     mixerBatchmix,
-    mixerOee2: Number(mixerOee2.toFixed(2)),
-    quadOee2: Number(quadOee2.toFixed(2)),
-    tuberOee2: Number(tuberOee2.toFixed(2)),
-    fischerOee2: Number(fischerOee2.toFixed(2)),
-    bdMixer: Number(bdMixer.toFixed(4)),
-    bdExtruder: Number(bdExtruder.toFixed(4)),
-    bdCalender: Number(bdCalender.toFixed(4)),
-    bdCutting: Number(bdCutting.toFixed(4)),
-    frictionWaste: Number(frictionWaste.toFixed(2)),
-    millingWaste: Number(millingWaste.toFixed(2)),
+    mixerOee2,
+    quadOee2,
+    tuberOee2,
+    fischerOee2,
+    bdMixer,
+    bdExtruder,
+    bdCalender,
+    bdCutting,
+    frictionWaste,
+    millingWaste,
     targets: {
       mixerBatchmix: 1300,
       mixerOee2: 76.6,

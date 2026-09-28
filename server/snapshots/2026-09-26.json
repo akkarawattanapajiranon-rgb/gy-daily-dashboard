@@ -1,6 +1,6 @@
 {
   "date": "2026-09-26",
-  "generatedAt": "2026-09-28T00:01:51.291Z",
+  "generatedAt": "2026-09-28T01:31:34.787Z",
   "waste": {
     "date": "2026-09-26",
     "millingSummary": 61,
@@ -159,8 +159,8 @@
       "noGum": 0,
       "noTreatment": 0,
       "breakdown": 0,
-      "angleChange": 0,
-      "produce": 0,
+      "angleChange": 10,
+      "produce": 39,
       "target": 90,
       "breakdownComment": "",
       "commentAuthor": "",
@@ -168,11 +168,11 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 40,
-      "totalWbr": 35,
+      "totalProduce": 39,
+      "totalWbr": 34,
       "totalSapphire": 5,
-      "totalAngleChanges": 11,
-      "totalNormal": 35,
+      "totalAngleChanges": 10,
+      "totalNormal": 34,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
@@ -186,12 +186,12 @@
           "total": 25
         },
         "shift2": {
-          "wbr": 15,
+          "wbr": 14,
           "sapphire": 0,
-          "angleChanges": 5,
-          "normal": 15,
+          "angleChanges": 4,
+          "normal": 14,
           "sticky": 0,
-          "total": 15
+          "total": 14
         },
         "shift3": {
           "wbr": 0,

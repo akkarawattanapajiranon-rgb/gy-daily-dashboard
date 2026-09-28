@@ -152,31 +152,28 @@ function parseWeeklyOee(dateStr) {
       const fullPath = path.join(QUAD_DIR, quadOeeFile);
       const wb = XLSX.readFile(fullPath);
 
-      // Quad sheets (scan all candidate sheets for month in priority order, prioritizing current year)
+      // Quad sheets (select strictly the official current year sheet)
       const yy = yearStr.slice(-2);
-      const candidateQuadSheets = wb.SheetNames.filter(s => matchesMonth(s, monthNum) && (s.toLowerCase().includes('quad') || s.toLowerCase().includes('sep') || s.toLowerCase().includes('aug') || s.toLowerCase().includes('oct') || s.toLowerCase().includes('nov') || s.toLowerCase().includes('dec') || s.toLowerCase().includes('jan') || s.toLowerCase().includes('feb') || s.toLowerCase().includes('mar') || s.toLowerCase().includes('apr') || s.toLowerCase().includes('may') || s.toLowerCase().includes('jun') || s.toLowerCase().includes('jul')));
-      candidateQuadSheets.sort((a, b) => {
-        const aLower = a.toLowerCase();
-        const bLower = b.toLowerCase();
-        const aHasYear = (aLower.includes(yearStr) || aLower.includes(yy) || aLower.includes(` ${yy}`) || aLower.includes(`,${yy}`) || aLower.includes(`, ${yy}`)) ? 50 : 0;
-        const bHasYear = (bLower.includes(yearStr) || bLower.includes(yy) || bLower.includes(` ${yy}`) || bLower.includes(`,${yy}`) || bLower.includes(`, ${yy}`)) ? 50 : 0;
-        const aScore = aHasYear +
-                       (aLower.includes('all oee') && aLower.includes('quad') ? 20 : 0) +
-                       (aLower.includes('quad') ? 10 : 0) +
-                       (aLower.includes('update') || aLower.includes('up date') ? 5 : 0);
-        const bScore = bHasYear +
-                       (bLower.includes('all oee') && bLower.includes('quad') ? 20 : 0) +
-                       (bLower.includes('quad') ? 10 : 0) +
-                       (bLower.includes('update') || bLower.includes('up date') ? 5 : 0);
-        return bScore - aScore;
+      const targetYearNum = parseInt(yearStr, 10);
+      const candidateQuadSheets = wb.SheetNames.filter(s => {
+        if (!matchesMonth(s, monthNum)) return false;
+        const sLower = s.toLowerCase();
+        if (sLower.includes('2025') || sLower.includes(',25') || sLower.includes(' 25')) return false;
+        return true;
       });
 
-      for (const quadSheetName of candidateQuadSheets) {
-        if (wb.Sheets[quadSheetName]) {
-          const data = XLSX.utils.sheet_to_json(wb.Sheets[quadSheetName], { header: 1, defval: '' });
+      const officialQuadSheet = candidateQuadSheets.find(s => {
+        const l = s.toLowerCase();
+        return (l.includes(yearStr) || l.includes(yy)) && l.includes('quad');
+      }) || candidateQuadSheets.find(s => s.toLowerCase().includes('quad')) || candidateQuadSheets[0];
+
+      if (officialQuadSheet && wb.Sheets[officialQuadSheet]) {
+        const data = XLSX.utils.sheet_to_json(wb.Sheets[officialQuadSheet], { header: 1, defval: '' });
+        const titleRow = data[0] ? String(data[0][0] || '').toLowerCase() : '';
+        if (!(titleRow.includes('2025') && targetYearNum === 2026)) {
           data.slice(2).forEach(r => {
             const d = parseInt(r[0], 10);
-            if (!isNaN(d) && d > 0 && d <= 31 && !quadDaily[d]) {
+            if (!isNaN(d) && d > 0 && d <= 31) {
               const oee2 = Number(r[8]) || Number(r[7]) || 0;
               if (oee2 > 0) quadDaily[d] = oee2 * 100;
             }
@@ -184,19 +181,22 @@ function parseWeeklyOee(dateStr) {
         }
       }
 
-      // Tuber 6x8 sheets
+      // Tuber 6x8 sheets (select strictly the official current year sheet)
       const candidateTuberSheets = wb.SheetNames.filter(s => matchesMonth(s, monthNum) && (s.toLowerCase().includes('6x8') || s.toLowerCase().includes('ext')));
-      for (const tuberSheetName of candidateTuberSheets) {
-        if (wb.Sheets[tuberSheetName]) {
-          const data = XLSX.utils.sheet_to_json(wb.Sheets[tuberSheetName], { header: 1, defval: '' });
-          data.slice(2).forEach(r => {
-            const d = parseInt(r[0], 10);
-            if (!isNaN(d) && d > 0 && d <= 31 && !tuberDaily[d]) {
-              const oee2 = Number(r[7]) || Number(r[6]) || 0;
-              if (oee2 > 0) tuberDaily[d] = oee2 * 100;
-            }
-          });
-        }
+      const officialTuberSheet = candidateTuberSheets.find(s => {
+        const l = s.toLowerCase();
+        return (l.includes(yearStr) || l.includes(yy));
+      }) || candidateTuberSheets[0];
+
+      if (officialTuberSheet && wb.Sheets[officialTuberSheet]) {
+        const data = XLSX.utils.sheet_to_json(wb.Sheets[officialTuberSheet], { header: 1, defval: '' });
+        data.slice(2).forEach(r => {
+          const d = parseInt(r[0], 10);
+          if (!isNaN(d) && d > 0 && d <= 31) {
+            const oee2 = Number(r[7]) || Number(r[6]) || 0;
+            if (oee2 > 0) tuberDaily[d] = oee2 * 100;
+          }
+        });
       }
     }
 

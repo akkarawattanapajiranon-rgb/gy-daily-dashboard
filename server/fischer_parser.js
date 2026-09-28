@@ -183,8 +183,10 @@ function getOeeAndLossData(dateStr) {
           }
         });
 
+        const hasLossData = (noSchedule > 0 || noCart > 0 || noGum > 0 || noTreatment > 0 || breakdown > 0 || angleChange > 0 || produce > 0 || breakdownComment !== '' || otherComments.length > 0);
+
         loss = {
-          hasData: true,
+          hasData: hasLossData,
           noSchedule,
           noCart,
           noGum,

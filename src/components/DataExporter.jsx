@@ -58,20 +58,32 @@ export function parseSnapshotToRow(dStr, snap = {}) {
 
   const batch1 = Number(cms.mixing1?.batch) || 0;
   const batch2 = Number(cms.mixing2?.batch) || 0;
+  const hasCms = (batch1 > 0 || batch2 > 0 || Number(cms.totalOee2 || 0) > 0);
+
+  const hasQuad = Boolean(quad.oee && quad.oee.hasData);
+  const hasTuber = Boolean(tuber.oee && tuber.oee.hasData);
+  const hasFischer = Boolean(fischer.oee && fischer.oee.hasData);
+
+  const hasBdMixer = Boolean(bd.Banbury?.hasData && bd.Banbury?.actual_bd_pct !== null && bd.Banbury?.actual_bd_pct !== undefined);
+  const hasBdExtruder = Boolean(bd.Extruder?.hasData && bd.Extruder?.actual_bd_pct !== null && bd.Extruder?.actual_bd_pct !== undefined);
+  const hasBdCalender = Boolean(bd.Calender?.hasData && bd.Calender?.actual_bd_pct !== null && bd.Calender?.actual_bd_pct !== undefined);
+  const hasBdCutting = Boolean(bd.Cutting?.hasData && bd.Cutting?.actual_bd_pct !== null && bd.Cutting?.actual_bd_pct !== undefined);
+
+  const hasWaste = Boolean(waste && waste.hasData);
 
   return {
     date: dStr,
-    mixerBatchmix: batch1 + batch2,
-    mixerOee2: Number(Number(cms.totalOee2 || 0).toFixed(2)),
-    quadOee2: Number(Number(quad.oee?.oee2_pct || 0).toFixed(2)),
-    tuberOee2: Number(Number(tuber.oee?.oee2_pct || 0).toFixed(2)),
-    fischerOee2: Number(Number(fischer.oee?.oee2_pct || 0).toFixed(2)),
-    bdMixer: Number(Number(bd.Banbury?.actual_bd_pct || 0).toFixed(4)),
-    bdExtruder: Number(Number(bd.Extruder?.actual_bd_pct || 0).toFixed(4)),
-    bdCalender: Number(Number(bd.Calender?.actual_bd_pct || 0).toFixed(4)),
-    bdCutting: Number(Number(bd.Cutting?.actual_bd_pct || 0).toFixed(4)),
-    frictionWaste: Number(Number(waste.frictionSummary || 0).toFixed(2)),
-    millingWaste: Number(Number(waste.millingSummary || 0).toFixed(2)),
+    mixerBatchmix: hasCms ? (batch1 + batch2) : null,
+    mixerOee2: hasCms ? Number(Number(cms.totalOee2 || 0).toFixed(2)) : null,
+    quadOee2: hasQuad ? Number(Number(quad.oee?.oee2_pct || 0).toFixed(2)) : null,
+    tuberOee2: hasTuber ? Number(Number(tuber.oee?.oee2_pct || 0).toFixed(2)) : null,
+    fischerOee2: hasFischer ? Number(Number(fischer.oee?.oee2_pct || 0).toFixed(2)) : null,
+    bdMixer: hasBdMixer ? Number(Number(bd.Banbury?.actual_bd_pct || 0).toFixed(4)) : null,
+    bdExtruder: hasBdExtruder ? Number(Number(bd.Extruder?.actual_bd_pct || 0).toFixed(4)) : null,
+    bdCalender: hasBdCalender ? Number(Number(bd.Calender?.actual_bd_pct || 0).toFixed(4)) : null,
+    bdCutting: hasBdCutting ? Number(Number(bd.Cutting?.actual_bd_pct || 0).toFixed(4)) : null,
+    frictionWaste: hasWaste ? Number(Number(waste.frictionSummary || 0).toFixed(2)) : null,
+    millingWaste: hasWaste ? Number(Number(waste.millingSummary || 0).toFixed(2)) : null,
     targets: {
       mixerBatchmix: 1300,
       mixerOee2: 76.6,
@@ -284,23 +296,26 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
     }
   };
 
+  // Helper for export strings
+  const exportVal = (v) => (v !== null && v !== undefined ? v : '');
+
   // 1. Download Excel (.xlsx)
   const downloadExcel = () => {
     if (dataRows.length === 0) return;
 
     const formattedData = dataRows.map(r => ({
       'Date (วันที่)': r.date,
-      'Mixer-Batchmix (Batches)': r.mixerBatchmix,
-      'Mixer-OEE2 (%)': r.mixerOee2,
-      'Quad-OEE2 (%)': r.quadOee2,
-      'Tuber-OEE2 (%)': r.tuberOee2,
-      'Ficher-OEE2 (%)': r.fischerOee2,
-      'BD-Mixer (%)': r.bdMixer,
-      'BD-Extruder (%)': r.bdExtruder,
-      'BD-Calender (%)': r.bdCalender,
-      'BD-Cutting (%)': r.bdCutting,
-      'Friction Waste (kg)': r.frictionWaste,
-      'Milling Waste (kg)': r.millingWaste
+      'Mixer-Batchmix (Batches)': exportVal(r.mixerBatchmix),
+      'Mixer-OEE2 (%)': exportVal(r.mixerOee2),
+      'Quad-OEE2 (%)': exportVal(r.quadOee2),
+      'Tuber-OEE2 (%)': exportVal(r.tuberOee2),
+      'Ficher-OEE2 (%)': exportVal(r.fischerOee2),
+      'BD-Mixer (%)': exportVal(r.bdMixer),
+      'BD-Extruder (%)': exportVal(r.bdExtruder),
+      'BD-Calender (%)': exportVal(r.bdCalender),
+      'BD-Cutting (%)': exportVal(r.bdCutting),
+      'Friction Waste (kg)': exportVal(r.frictionWaste),
+      'Milling Waste (kg)': exportVal(r.millingWaste)
     }));
 
     const ws = XLSX.utils.json_to_sheet(formattedData);
@@ -321,8 +336,18 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
     const csvRows = [headers.join(',')];
     dataRows.forEach(r => {
       csvRows.push([
-        r.date, r.mixerBatchmix, r.mixerOee2, r.quadOee2, r.tuberOee2, r.fischerOee2,
-        r.bdMixer, r.bdExtruder, r.bdCalender, r.bdCutting, r.frictionWaste, r.millingWaste
+        r.date,
+        exportVal(r.mixerBatchmix),
+        exportVal(r.mixerOee2),
+        exportVal(r.quadOee2),
+        exportVal(r.tuberOee2),
+        exportVal(r.fischerOee2),
+        exportVal(r.bdMixer),
+        exportVal(r.bdExtruder),
+        exportVal(r.bdCalender),
+        exportVal(r.bdCutting),
+        exportVal(r.frictionWaste),
+        exportVal(r.millingWaste)
       ].join(','));
     });
 
@@ -349,8 +374,18 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
     const rows = [headers.join('\t')];
     dataRows.forEach(r => {
       rows.push([
-        r.date, r.mixerBatchmix, r.mixerOee2, r.quadOee2, r.tuberOee2, r.fischerOee2,
-        r.bdMixer, r.bdExtruder, r.bdCalender, r.bdCutting, r.frictionWaste, r.millingWaste
+        r.date,
+        exportVal(r.mixerBatchmix),
+        exportVal(r.mixerOee2),
+        exportVal(r.quadOee2),
+        exportVal(r.tuberOee2),
+        exportVal(r.fischerOee2),
+        exportVal(r.bdMixer),
+        exportVal(r.bdExtruder),
+        exportVal(r.bdCalender),
+        exportVal(r.bdCutting),
+        exportVal(r.frictionWaste),
+        exportVal(r.millingWaste)
       ].join('\t'));
     });
 
@@ -359,22 +394,35 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Averages / Totals calculation for Summary Row
-  const totalDays = dataRows.length || 1;
-  const totalBatch = Math.round(dataRows.reduce((a, b) => a + b.mixerBatchmix, 0));
-  const avgBatch = Math.round(totalBatch / totalDays);
-  const avgMixerOee = (dataRows.reduce((a, b) => a + b.mixerOee2, 0) / totalDays).toFixed(1);
-  const avgQuadOee = (dataRows.reduce((a, b) => a + b.quadOee2, 0) / totalDays).toFixed(1);
-  const avgTuberOee = (dataRows.reduce((a, b) => a + b.tuberOee2, 0) / totalDays).toFixed(1);
-  const avgFischerOee = (dataRows.reduce((a, b) => a + b.fischerOee2, 0) / totalDays).toFixed(1);
-  const avgBdMixer = (dataRows.reduce((a, b) => a + b.bdMixer, 0) / totalDays).toFixed(2);
-  const avgBdExtruder = (dataRows.reduce((a, b) => a + b.bdExtruder, 0) / totalDays).toFixed(2);
-  const avgBdCalender = (dataRows.reduce((a, b) => a + b.bdCalender, 0) / totalDays).toFixed(2);
-  const avgBdCutting = (dataRows.reduce((a, b) => a + b.bdCutting, 0) / totalDays).toFixed(2);
-  const totalFrictionWaste = (dataRows.reduce((a, b) => a + b.frictionWaste, 0)).toFixed(1);
-  const avgFrictionWaste = (Number(totalFrictionWaste) / totalDays).toFixed(1);
-  const totalMillingWaste = (dataRows.reduce((a, b) => a + b.millingWaste, 0)).toFixed(1);
-  const avgMillingWaste = (Number(totalMillingWaste) / totalDays).toFixed(1);
+  // Safe Averages / Totals calculation for Summary Row (excludes unrecorded days)
+  const calcAvg = (key, decimals = 1) => {
+    const valid = dataRows.filter(r => r[key] !== null && r[key] !== undefined && !isNaN(Number(r[key])));
+    if (valid.length === 0) return '-';
+    const sum = valid.reduce((a, b) => a + Number(b[key]), 0);
+    return (sum / valid.length).toFixed(decimals);
+  };
+
+  const calcSum = (key, decimals = 0) => {
+    const valid = dataRows.filter(r => r[key] !== null && r[key] !== undefined && !isNaN(Number(r[key])));
+    if (valid.length === 0) return '-';
+    const sum = valid.reduce((a, b) => a + Number(b[key]), 0);
+    return decimals === 0 ? Math.round(sum) : sum.toFixed(decimals);
+  };
+
+  const totalBatch = calcSum('mixerBatchmix', 0);
+  const avgBatch = calcAvg('mixerBatchmix', 0);
+  const avgMixerOee = calcAvg('mixerOee2', 1);
+  const avgQuadOee = calcAvg('quadOee2', 1);
+  const avgTuberOee = calcAvg('tuberOee2', 1);
+  const avgFischerOee = calcAvg('fischerOee2', 1);
+  const avgBdMixer = calcAvg('bdMixer', 2);
+  const avgBdExtruder = calcAvg('bdExtruder', 2);
+  const avgBdCalender = calcAvg('bdCalender', 2);
+  const avgBdCutting = calcAvg('bdCutting', 2);
+  const totalFrictionWaste = calcSum('frictionWaste', 1);
+  const avgFrictionWaste = calcAvg('frictionWaste', 1);
+  const totalMillingWaste = calcSum('millingWaste', 1);
+  const avgMillingWaste = calcAvg('millingWaste', 1);
 
   return (
     <div className="space-y-6">
@@ -588,37 +636,37 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
                       {r.date}
                     </td>
                     <td className={`p-3 text-right ${cBatch.text} ${cBatch.bg}`}>
-                      {r.mixerBatchmix.toLocaleString()}
+                      {r.mixerBatchmix !== null && r.mixerBatchmix !== undefined ? r.mixerBatchmix.toLocaleString() : '-'}
                     </td>
                     <td className={`p-3 text-right ${cMixerOee.text} ${cMixerOee.bg}`}>
-                      {r.mixerOee2}%
+                      {r.mixerOee2 !== null && r.mixerOee2 !== undefined ? `${r.mixerOee2}%` : '-'}
                     </td>
                     <td className={`p-3 text-right ${cQuadOee.text} ${cQuadOee.bg}`}>
-                      {r.quadOee2}%
+                      {r.quadOee2 !== null && r.quadOee2 !== undefined ? `${r.quadOee2}%` : '-'}
                     </td>
                     <td className={`p-3 text-right ${cTuberOee.text} ${cTuberOee.bg}`}>
-                      {r.tuberOee2}%
+                      {r.tuberOee2 !== null && r.tuberOee2 !== undefined ? `${r.tuberOee2}%` : '-'}
                     </td>
                     <td className={`p-3 text-right ${cFischerOee.text} ${cFischerOee.bg}`}>
-                      {r.fischerOee2}%
+                      {r.fischerOee2 !== null && r.fischerOee2 !== undefined ? `${r.fischerOee2}%` : '-'}
                     </td>
                     <td className={`p-3 text-right ${cBdMixer.text} ${cBdMixer.bg}`}>
-                      {r.bdMixer}%
+                      {r.bdMixer !== null && r.bdMixer !== undefined ? `${r.bdMixer}%` : '-'}
                     </td>
                     <td className={`p-3 text-right ${cBdExtruder.text} ${cBdExtruder.bg}`}>
-                      {r.bdExtruder}%
+                      {r.bdExtruder !== null && r.bdExtruder !== undefined ? `${r.bdExtruder}%` : '-'}
                     </td>
                     <td className={`p-3 text-right ${cBdCalender.text} ${cBdCalender.bg}`}>
-                      {r.bdCalender}%
+                      {r.bdCalender !== null && r.bdCalender !== undefined ? `${r.bdCalender}%` : '-'}
                     </td>
                     <td className={`p-3 text-right ${cBdCutting.text} ${cBdCutting.bg}`}>
-                      {r.bdCutting}%
+                      {r.bdCutting !== null && r.bdCutting !== undefined ? `${r.bdCutting}%` : '-'}
                     </td>
                     <td className={`p-3 text-right ${cFriction.text} ${cFriction.bg}`}>
-                      {r.frictionWaste} kg
+                      {r.frictionWaste !== null && r.frictionWaste !== undefined ? `${r.frictionWaste} kg` : '-'}
                     </td>
                     <td className={`p-3 text-right pr-4 ${cMilling.text} ${cMilling.bg}`}>
-                      {r.millingWaste} kg
+                      {r.millingWaste !== null && r.millingWaste !== undefined ? `${r.millingWaste} kg` : '-'}
                     </td>
                   </tr>
                 );
@@ -630,41 +678,41 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
                   <td className="p-3 pl-4 sticky left-0 bg-slate-900 shadow-sm text-emerald-400">
                     Average / Total
                   </td>
-                  <td className={`p-3 text-right ${avgBatch >= 1300 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    <div>{totalBatch.toLocaleString()} (Total)</div>
-                    <div className="text-[10px] font-normal text-slate-300">เฉลี่ย {avgBatch.toLocaleString()}/วัน</div>
+                  <td className={`p-3 text-right ${avgBatch !== '-' && Number(avgBatch) >= 1300 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    <div>{totalBatch !== '-' ? `${totalBatch.toLocaleString()} (Total)` : '-'}</div>
+                    <div className="text-[10px] font-normal text-slate-300">{avgBatch !== '-' ? `เฉลี่ย ${avgBatch.toLocaleString()}/วัน` : ''}</div>
                   </td>
-                  <td className={`p-3 text-right ${Number(avgMixerOee) >= 76.6 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {avgMixerOee}%
+                  <td className={`p-3 text-right ${avgMixerOee !== '-' && Number(avgMixerOee) >= 76.6 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    {avgMixerOee !== '-' ? `${avgMixerOee}%` : '-'}
                   </td>
-                  <td className={`p-3 text-right ${Number(avgQuadOee) >= 62.0 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {avgQuadOee}%
+                  <td className={`p-3 text-right ${avgQuadOee !== '-' && Number(avgQuadOee) >= 62.0 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    {avgQuadOee !== '-' ? `${avgQuadOee}%` : '-'}
                   </td>
-                  <td className={`p-3 text-right ${Number(avgTuberOee) >= 62.0 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {avgTuberOee}%
+                  <td className={`p-3 text-right ${avgTuberOee !== '-' && Number(avgTuberOee) >= 62.0 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    {avgTuberOee !== '-' ? `${avgTuberOee}%` : '-'}
                   </td>
-                  <td className={`p-3 text-right ${Number(avgFischerOee) >= 60.0 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {avgFischerOee}%
+                  <td className={`p-3 text-right ${avgFischerOee !== '-' && Number(avgFischerOee) >= 60.0 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    {avgFischerOee !== '-' ? `${avgFischerOee}%` : '-'}
                   </td>
-                  <td className={`p-3 text-right ${Number(avgBdMixer) <= 0.5827 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {avgBdMixer}%
+                  <td className={`p-3 text-right ${avgBdMixer !== '-' && Number(avgBdMixer) <= 0.5827 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    {avgBdMixer !== '-' ? `${avgBdMixer}%` : '-'}
                   </td>
-                  <td className={`p-3 text-right ${Number(avgBdExtruder) <= 0.5098 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {avgBdExtruder}%
+                  <td className={`p-3 text-right ${avgBdExtruder !== '-' && Number(avgBdExtruder) <= 0.5098 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    {avgBdExtruder !== '-' ? `${avgBdExtruder}%` : '-'}
                   </td>
-                  <td className={`p-3 text-right ${Number(avgBdCalender) <= 0.4662 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {avgBdCalender}%
+                  <td className={`p-3 text-right ${avgBdCalender !== '-' && Number(avgBdCalender) <= 0.4662 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    {avgBdCalender !== '-' ? `${avgBdCalender}%` : '-'}
                   </td>
-                  <td className={`p-3 text-right ${Number(avgBdCutting) <= 0.1166 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {avgBdCutting}%
+                  <td className={`p-3 text-right ${avgBdCutting !== '-' && Number(avgBdCutting) <= 0.1166 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    {avgBdCutting !== '-' ? `${avgBdCutting}%` : '-'}
                   </td>
-                  <td className={`p-3 text-right ${Number(avgFrictionWaste) <= 285 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    <div>{totalFrictionWaste} kg</div>
-                    <div className="text-[10px] font-normal text-slate-300">เฉลี่ย {avgFrictionWaste} kg/วัน</div>
+                  <td className={`p-3 text-right ${avgFrictionWaste !== '-' && Number(avgFrictionWaste) <= 285 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    <div>{totalFrictionWaste !== '-' ? `${totalFrictionWaste} kg` : '-'}</div>
+                    <div className="text-[10px] font-normal text-slate-300">{avgFrictionWaste !== '-' ? `เฉลี่ย ${avgFrictionWaste} kg/วัน` : ''}</div>
                   </td>
-                  <td className={`p-3 text-right pr-4 ${Number(avgMillingWaste) <= 265 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    <div>{totalMillingWaste} kg</div>
-                    <div className="text-[10px] font-normal text-slate-300">เฉลี่ย {avgMillingWaste} kg/วัน</div>
+                  <td className={`p-3 text-right pr-4 ${avgMillingWaste !== '-' && Number(avgMillingWaste) <= 265 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                    <div>{totalMillingWaste !== '-' ? `${totalMillingWaste} kg` : '-'}</div>
+                    <div className="text-[10px] font-normal text-slate-300">{avgMillingWaste !== '-' ? `เฉลี่ย ${avgMillingWaste} kg/วัน` : ''}</div>
                   </td>
                 </tr>
               )}
