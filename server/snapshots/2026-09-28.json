@@ -1,6 +1,6 @@
 {
   "date": "2026-09-28",
-  "generatedAt": "2026-09-28T01:39:40.990Z",
+  "generatedAt": "2026-09-28T01:51:52.653Z",
   "waste": {
     "date": "2026-09-28",
     "millingSummary": 0,
@@ -15,23 +15,23 @@
   "cms": {
     "date": "2026-09-28",
     "mixing1": {
-      "batch": 35,
-      "ar": 74.5,
-      "pr": 95.3,
-      "qr": 92.9,
-      "oee2": 65.9
+      "batch": 41,
+      "ar": 86.4,
+      "pr": 95.8,
+      "qr": 91.7,
+      "oee2": 75.9
     },
     "mixing2": {
-      "batch": 51,
-      "ar": 89.3,
-      "pr": 82.7,
+      "batch": 58,
+      "ar": 90.5,
+      "pr": 84.1,
       "qr": 100,
-      "oee2": 73.9
+      "oee2": 76.1
     },
-    "totalAr": 81.8,
-    "totalPr": 88.5,
-    "totalQr": 96.8,
-    "totalOee2": 70.1
+    "totalAr": 88.5,
+    "totalPr": 89.5,
+    "totalQr": 96.2,
+    "totalOee2": 76.3
   },
   "target3Roll": 12,
   "breakdown": {
@@ -78,7 +78,7 @@
       "oee2_pct": 0
     },
     "loss": {
-      "hasData": true,
+      "hasData": false,
       "noSchedule": 0,
       "noCart": 0,
       "noGum": 0,
@@ -201,10 +201,17 @@
   "quad": {
     "date": "2026-09-28",
     "oee": {
-      "hasData": false
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
     },
     "output": {
-      "hasData": true,
+      "hasData": false,
       "day": 28,
       "grandTotal": 0,
       "codeBreakdown": [],
@@ -793,9 +800,9 @@
       "label": "Wk39 (21/9 - 30/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 52.9,
+        "avg": 50.54,
         "target": 62,
-        "count": 7,
+        "count": 5,
         "isMet": false
       },
       "tuber": {
@@ -811,7 +818,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 74.41,
+        "avg": 75.63,
         "target": 76.6,
         "count": 7,
         "isMet": false
@@ -930,9 +937,9 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 52.9,
+          "avg": 50.54,
           "target": 62,
-          "count": 7,
+          "count": 5,
           "isMet": false
         },
         "tuber": {
@@ -948,7 +955,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 74.41,
+          "avg": 75.63,
           "target": 76.6,
           "count": 7,
           "isMet": false

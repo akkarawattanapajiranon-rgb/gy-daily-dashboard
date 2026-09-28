@@ -1,6 +1,6 @@
 {
   "date": "2026-09-27",
-  "generatedAt": "2026-09-28T01:34:51.115Z",
+  "generatedAt": "2026-09-28T01:51:43.854Z",
   "waste": {
     "date": "2026-09-27",
     "millingSummary": 0,
@@ -78,7 +78,7 @@
       "oee2_pct": 0
     },
     "loss": {
-      "hasData": true,
+      "hasData": false,
       "noSchedule": 0,
       "noCart": 0,
       "noGum": 0,
@@ -146,17 +146,17 @@
   "quad": {
     "date": "2026-09-27",
     "oee": {
-      "hasData": true,
-      "sr_pct": 60.42,
-      "ar_pct": 64.94,
-      "pr_pct": 97.92,
-      "qr_pct": 80.45,
-      "oee1_pct": 30.91,
-      "oee2_pct": 51.16,
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
       "bd_pct": 0
     },
     "output": {
-      "hasData": true,
+      "hasData": false,
       "day": 27,
       "grandTotal": 0,
       "codeBreakdown": [],
@@ -192,7 +192,7 @@
       "bd_pct": 0
     },
     "output": {
-      "hasData": true,
+      "hasData": false,
       "day": 27,
       "grandTotal": 0,
       "codeBreakdown": [],
@@ -668,9 +668,9 @@
       "label": "Wk39 (21/9 - 30/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 52.9,
+        "avg": 50.54,
         "target": 62,
-        "count": 7,
+        "count": 5,
         "isMet": false
       },
       "tuber": {
@@ -686,7 +686,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.13,
+        "avg": 75.52,
         "target": 76.6,
         "count": 6,
         "isMet": false
@@ -805,9 +805,9 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 52.9,
+          "avg": 50.54,
           "target": 62,
-          "count": 7,
+          "count": 5,
           "isMet": false
         },
         "tuber": {
@@ -823,7 +823,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.13,
+          "avg": 75.52,
           "target": 76.6,
           "count": 6,
           "isMet": false
