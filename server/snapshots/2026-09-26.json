@@ -1,6 +1,6 @@
 {
   "date": "2026-09-26",
-  "generatedAt": "2026-09-28T02:31:25.241Z",
+  "generatedAt": "2026-09-28T03:47:12.564Z",
   "waste": {
     "date": "2026-09-26",
     "millingSummary": 61,
@@ -259,23 +259,116 @@
     "date": "2026-09-26",
     "day": 26,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 0,
-    "totalRolls": 0,
-    "totalMeters": 0,
+    "totalQty": 20,
+    "totalRolls": 20,
+    "totalMeters": 5010,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 0,
-        "meters": 0,
-        "items": []
+        "qty": 12,
+        "meters": 3000,
+        "items": [
+          {
+            "sapCode": "",
+            "code": "W1CL",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "W1WF",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "WLAN",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "WA8X",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "WAIK",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "W13F",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "Q2UG",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          }
+        ]
       },
       "shift2": {
         "shiftNum": 2,
         "name": "กะ 2 (Shift 2)",
-        "qty": 0,
-        "meters": 0,
-        "items": []
+        "qty": 8,
+        "meters": 2010,
+        "items": [
+          {
+            "sapCode": "",
+            "code": "WA8X",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "WLAN",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "WAIK",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "W1CL",
+            "qty": 1,
+            "meters": 260,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "W13F",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "",
+            "code": "W1WF",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          }
+        ]
       },
       "shift3": {
         "shiftNum": 3,
@@ -285,8 +378,93 @@
         "items": []
       }
     },
-    "topCodes": [],
-    "hasData": false
+    "topCodes": [
+      {
+        "code": "WLAN",
+        "sapCode": "",
+        "qty": 4,
+        "meters": 1000,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 2,
+          "3": 0
+        }
+      },
+      {
+        "code": "WA8X",
+        "sapCode": "",
+        "qty": 4,
+        "meters": 1000,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 2,
+          "3": 0
+        }
+      },
+      {
+        "code": "W1CL",
+        "sapCode": "",
+        "qty": 3,
+        "meters": 760,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 1,
+          "3": 0
+        }
+      },
+      {
+        "code": "W1WF",
+        "sapCode": "",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 1,
+          "3": 0
+        }
+      },
+      {
+        "code": "WAIK",
+        "sapCode": "",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 1,
+          "3": 0
+        }
+      },
+      {
+        "code": "W13F",
+        "sapCode": "",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 1,
+          "3": 0
+        }
+      },
+      {
+        "code": "Q2UG",
+        "sapCode": "",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
+      }
+    ],
+    "hasData": true
   },
   "quad": {
     "date": "2026-09-26",
@@ -1052,7 +1230,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.67,
+        "avg": 75.83,
         "target": 76.6,
         "count": 6,
         "isMet": false
@@ -1189,7 +1367,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.67,
+          "avg": 75.83,
           "target": 76.6,
           "count": 6,
           "isMet": false

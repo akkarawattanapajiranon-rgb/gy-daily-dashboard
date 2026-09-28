@@ -1,39 +1,46 @@
 {
   "date": "2026-09-28",
-  "generatedAt": "2026-09-28T02:31:51.546Z",
+  "generatedAt": "2026-09-28T03:47:35.045Z",
   "waste": {
     "date": "2026-09-28",
     "millingSummary": 0,
-    "frictionSummary": 0,
+    "frictionSummary": 5,
     "beadSummary": 0,
     "millingTop": [],
-    "frictionTop": [],
+    "frictionTop": [
+      {
+        "code": "F22",
+        "amount": 5,
+        "reason": "DEVELOPMENT",
+        "isHigh": true
+      }
+    ],
     "beadTop": [],
     "dataDate": "2026-09-28",
-    "hasData": false
+    "hasData": true
   },
   "cms": {
     "date": "2026-09-28",
     "mixing1": {
-      "batch": 53,
-      "ar": 79.9,
-      "pr": 96,
-      "qr": 90.1,
-      "oee2": 69.1
+      "batch": 77,
+      "ar": 74.2,
+      "pr": 96.1,
+      "qr": 87.9,
+      "oee2": 62.7
     },
     "mixing2": {
-      "batch": 80,
-      "ar": 92.9,
-      "pr": 86.4,
+      "batch": 117,
+      "ar": 94,
+      "pr": 88,
       "qr": 100,
-      "oee2": 80.3
+      "oee2": 82.8
     },
-    "totalAr": 86.7,
-    "totalPr": 90.7,
-    "totalQr": 95.7,
-    "totalOee2": 75.2
+    "totalAr": 84.3,
+    "totalPr": 91.5,
+    "totalQr": 94.7,
+    "totalOee2": 73.1
   },
-  "target3Roll": 1,
+  "target3Roll": 5,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -96,18 +103,18 @@
       "totalProduce": 20,
       "totalWbr": 20,
       "totalSapphire": 0,
-      "totalAngleChanges": 3,
-      "totalNormal": 14,
-      "totalSticky": 6,
-      "normalPct": 70,
-      "stickyPct": 30,
+      "totalAngleChanges": 6,
+      "totalNormal": 6,
+      "totalSticky": 14,
+      "normalPct": 30,
+      "stickyPct": 70,
       "shifts": {
         "shift1": {
           "wbr": 20,
           "sapphire": 0,
-          "angleChanges": 3,
-          "normal": 14,
-          "sticky": 6,
+          "angleChanges": 6,
+          "normal": 6,
+          "sticky": 14,
           "total": 20
         },
         "shift2": {
@@ -135,16 +142,26 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 1,
-    "totalRelease": 1,
+    "totalRolls": 5,
+    "totalRelease": 5,
     "totalHold": 1,
-    "totalPending": 8,
-    "totalScheduled": 10,
+    "totalPending": 14,
+    "totalScheduled": 20,
     "codeBreakdown": [
+      {
+        "code": "NU27",
+        "count": 2,
+        "percentage": 40
+      },
+      {
+        "code": "RP08",
+        "count": 2,
+        "percentage": 40
+      },
       {
         "code": "NB32",
         "count": 1,
-        "percentage": 100
+        "percentage": 20
       }
     ],
     "holdBreakdown": [
@@ -204,32 +221,42 @@
     "output": {
       "hasData": true,
       "day": 28,
-      "grandTotal": 56,
+      "grandTotal": 63,
       "codeBreakdown": [
         {
           "code": "WA8X",
           "count": 16,
-          "percentage": 28.57
+          "percentage": 25.4
         },
         {
           "code": "W1CX",
           "count": 12,
-          "percentage": 21.43
+          "percentage": 19.05
         },
         {
           "code": "WAIK",
           "count": 10,
-          "percentage": 17.86
+          "percentage": 15.87
         },
         {
           "code": "W1WF",
           "count": 9,
-          "percentage": 16.07
+          "percentage": 14.29
         },
         {
           "code": "W1WL",
           "count": 9,
-          "percentage": 16.07
+          "percentage": 14.29
+        },
+        {
+          "code": "QU9W",
+          "count": 5,
+          "percentage": 7.94
+        },
+        {
+          "code": "QU8V",
+          "count": 2,
+          "percentage": 3.17
         }
       ],
       "shifts": {
@@ -305,9 +332,39 @@
               "qtyProduced": 10,
               "qtySapphire": 0,
               "totalQty": 10
+            },
+            {
+              "partId": "PRD298",
+              "code1": "QU9W",
+              "code2": "C/T",
+              "code": "QU9W",
+              "qtyTarget": 4,
+              "qtyProduced": 3,
+              "qtySapphire": 0,
+              "totalQty": 3
+            },
+            {
+              "partId": "PRD910",
+              "code1": "QU9W",
+              "code2": "C/T",
+              "code": "QU9W",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "PRD281",
+              "code1": "QU8V",
+              "code2": "C/T",
+              "code": "QU8V",
+              "qtyTarget": 4,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
             }
           ],
-          "totalQty": 56
+          "totalQty": 63
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -337,32 +394,32 @@
     "output": {
       "hasData": true,
       "day": 28,
-      "grandTotal": 660,
+      "grandTotal": 665,
       "codeBreakdown": [
         {
           "code": "B427",
           "count": 300,
-          "percentage": 45.45
+          "percentage": 45.11
         },
         {
           "code": "B435",
           "count": 90,
-          "percentage": 13.64
+          "percentage": 13.53
         },
         {
           "code": "B627",
           "count": 90,
-          "percentage": 13.64
+          "percentage": 13.53
         },
         {
           "code": "B404",
           "count": 90,
-          "percentage": 13.64
+          "percentage": 13.53
         },
         {
           "code": "B455",
           "count": 90,
-          "percentage": 13.64
+          "percentage": 13.53
         }
       ],
       "shifts": {
@@ -403,9 +460,16 @@
               "qtyTarget": 3,
               "qtyProduced": 90,
               "totalQty": 90
+            },
+            {
+              "partId": "XP02462",
+              "code": "",
+              "qtyTarget": 5,
+              "qtyProduced": 5,
+              "totalQty": 5
             }
           ],
-          "totalQty": 660
+          "totalQty": 665
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -906,7 +970,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.6,
+        "avg": 75.44,
         "target": 76.6,
         "count": 7,
         "isMet": false
@@ -1043,7 +1107,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.6,
+          "avg": 75.44,
           "target": 76.6,
           "count": 7,
           "isMet": false

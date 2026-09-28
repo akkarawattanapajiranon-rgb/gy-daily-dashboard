@@ -80,7 +80,15 @@ function parse4Roll2Data(dateStr) {
       const sapCode = String(r[1] || '').trim();
       const cartNo = String(r[16] || '').trim();
 
-      if (sapCode && sapCode.toUpperCase() !== 'SAP CODE' && !sapCode.toLowerCase().includes('shift') && !sapCode.toLowerCase().includes('check sheet')) {
+      const isHeader = rStr.includes('shift 1') || rStr.includes('shift 2') || rStr.includes('shift 3') || 
+                       rStr.includes('shift  1') || rStr.includes('shift  2') || rStr.includes('shift  3') || 
+                       rStr.includes('check sheet') || rStr.includes('sap code') || rStr.includes('vmi dual liner') ||
+                       sapCode.toUpperCase() === 'SAP CODE';
+
+      const hasComp = [2, 4, 6, 8, 10, 12].some(col => r[col] !== undefined && String(r[col]).trim() !== '');
+      const hasMeter = [3, 5, 7, 9, 11, 13].some(col => Number(r[col]) > 0);
+
+      if (!isHeader && (hasComp || hasMeter || (sapCode && !sapCode.toLowerCase().includes('shift')))) {
         // Dual Liner rows (SAP=LD*), PLY rows (SAP=PL*) and Gumstrip rows (SAP=GF*/GX*)
         // Count all rows that have component names or meter values.
 
