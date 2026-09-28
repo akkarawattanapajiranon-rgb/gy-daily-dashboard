@@ -28,7 +28,7 @@ export default function TuberReport({ data, loading }) {
       <div className="bg-white rounded-xl shadow-xs border border-slate-100 p-6 text-center text-slate-400">
         <Cpu className="w-10 h-10 mx-auto text-slate-300 mb-2" />
         <p className="font-semibold text-slate-600">TUBER Performance & Output</p>
-        <p className="text-xs text-slate-400 mt-1">ไม่พบข้อมูล TUBER สำหรับวันที่เลือก (ยังไม่มีการบันทึกข้อมูล OEE และยอดผลิต)</p>
+        <p className="text-xs text-slate-400 mt-1">ไม่พบข้อมูลสำหรับวันที่เลือก</p>
       </div>
     );
   }
@@ -58,7 +58,7 @@ export default function TuberReport({ data, loading }) {
       </div>
 
       {/* OEE Metrics Cards */}
-      {hasOee ? (
+      {hasOee && (
         <div className="grid grid-cols-4 sm:grid-cols-7 gap-1.5">
           <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200/60 rounded-lg p-2 text-center min-w-0">
             <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-tight whitespace-nowrap">OEE2</p>
@@ -88,10 +88,6 @@ export default function TuberReport({ data, loading }) {
             <p className="text-[9px] font-bold text-rose-500 uppercase tracking-tight whitespace-nowrap">BD %</p>
             <p className="text-xs sm:text-sm font-extrabold text-rose-600 whitespace-nowrap">{oee.bd_pct}%</p>
           </div>
-        </div>
-      ) : (
-        <div className="bg-amber-50 border border-amber-200/60 rounded-lg p-2.5 text-center text-xs text-amber-700">
-          ⚠️ ไม่มีข้อมูล OEE บันทึกในไฟล์ Excel สำหรับวันที่เลือก
         </div>
       )}
 
