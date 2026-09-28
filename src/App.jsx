@@ -337,8 +337,7 @@ function App() {
     setRefreshTrigger(prev => prev + 1);
     await loadData(selectedDate, true);
     try {
-      const yyyyMm = selectedDate.substring(0, 7);
-      fetchFast(`/api/export-metrics?startDate=${yyyyMm}-01&endDate=${selectedDate}&refresh=true`, 25000).catch(() => {});
+      fetchFast(`/api/export-metrics?startDate=${selectedDate}&endDate=${selectedDate}&refresh=true`, 15000).catch(() => {});
     } catch (e) {}
   };
 

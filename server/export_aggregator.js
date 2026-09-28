@@ -15,11 +15,17 @@ const CACHE_TTL_MS = 60 * 1000; // 1-minute TTL
  * Extract 11 metrics for a single date
  */
 async function getMetricsForDate(dateStr, forceRefresh = false) {
+  const todayStr = new Date().toISOString().split('T')[0];
+  const isToday = (dateStr === todayStr);
+
   if (forceRefresh) {
     metricsMemoryCache.delete(dateStr);
-    try {
-      await generateSnapshot(dateStr);
-    } catch (e) {}
+    // Only regenerate snapshot for today or if snapshot does not exist to protect event loop
+    if (isToday || !getSnapshot(dateStr)) {
+      try {
+        await generateSnapshot(dateStr);
+      } catch (e) {}
+    }
   } else {
     const cached = metricsMemoryCache.get(dateStr);
     if (cached && (Date.now() - cached.ts < CACHE_TTL_MS)) {
@@ -28,9 +34,6 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
   }
 
   const snap = getSnapshot(dateStr) || {};
-
-  const todayStr = new Date().toISOString().split('T')[0];
-  const isToday = (dateStr === todayStr);
 
   const useSnapshot = !isToday && !forceRefresh;
 

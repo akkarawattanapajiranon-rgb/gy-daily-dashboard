@@ -1,42 +1,35 @@
 {
   "date": "2026-09-28",
-  "generatedAt": "2026-09-28T03:47:35.045Z",
+  "generatedAt": "2026-09-28T03:53:54.699Z",
   "waste": {
     "date": "2026-09-28",
     "millingSummary": 0,
-    "frictionSummary": 5,
+    "frictionSummary": 0,
     "beadSummary": 0,
     "millingTop": [],
-    "frictionTop": [
-      {
-        "code": "F22",
-        "amount": 5,
-        "reason": "DEVELOPMENT",
-        "isHigh": true
-      }
-    ],
+    "frictionTop": [],
     "beadTop": [],
     "dataDate": "2026-09-28",
-    "hasData": true
+    "hasData": false
   },
   "cms": {
     "date": "2026-09-28",
     "mixing1": {
-      "batch": 77,
-      "ar": 74.2,
-      "pr": 96.1,
-      "qr": 87.9,
+      "batch": 78,
+      "ar": 74.4,
+      "pr": 96,
+      "qr": 87.8,
       "oee2": 62.7
     },
     "mixing2": {
-      "batch": 117,
-      "ar": 94,
+      "batch": 118,
+      "ar": 94.1,
       "pr": 88,
       "qr": 100,
       "oee2": 82.8
     },
-    "totalAr": 84.3,
-    "totalPr": 91.5,
+    "totalAr": 84.5,
+    "totalPr": 91.4,
     "totalQr": 94.7,
     "totalOee2": 73.1
   },
@@ -221,42 +214,42 @@
     "output": {
       "hasData": true,
       "day": 28,
-      "grandTotal": 63,
+      "grandTotal": 876,
       "codeBreakdown": [
+        {
+          "code": "QU9W",
+          "count": 492,
+          "percentage": 56.16
+        },
+        {
+          "code": "QU8V",
+          "count": 328,
+          "percentage": 37.44
+        },
         {
           "code": "WA8X",
           "count": 16,
-          "percentage": 25.4
+          "percentage": 1.83
         },
         {
           "code": "W1CX",
           "count": 12,
-          "percentage": 19.05
+          "percentage": 1.37
         },
         {
           "code": "WAIK",
           "count": 10,
-          "percentage": 15.87
+          "percentage": 1.14
         },
         {
           "code": "W1WF",
           "count": 9,
-          "percentage": 14.29
+          "percentage": 1.03
         },
         {
           "code": "W1WL",
           "count": 9,
-          "percentage": 14.29
-        },
-        {
-          "code": "QU9W",
-          "count": 5,
-          "percentage": 7.94
-        },
-        {
-          "code": "QU8V",
-          "count": 2,
-          "percentage": 3.17
+          "percentage": 1.03
         }
       ],
       "shifts": {
@@ -339,9 +332,9 @@
               "code2": "C/T",
               "code": "QU9W",
               "qtyTarget": 4,
-              "qtyProduced": 3,
+              "qtyProduced": 328,
               "qtySapphire": 0,
-              "totalQty": 3
+              "totalQty": 328
             },
             {
               "partId": "PRD910",
@@ -349,9 +342,9 @@
               "code2": "C/T",
               "code": "QU9W",
               "qtyTarget": 2,
-              "qtyProduced": 2,
+              "qtyProduced": 164,
               "qtySapphire": 0,
-              "totalQty": 2
+              "totalQty": 164
             },
             {
               "partId": "PRD281",
@@ -359,12 +352,12 @@
               "code2": "C/T",
               "code": "QU8V",
               "qtyTarget": 4,
-              "qtyProduced": 2,
+              "qtyProduced": 328,
               "qtySapphire": 0,
-              "totalQty": 2
+              "totalQty": 328
             }
           ],
-          "totalQty": 63
+          "totalQty": 876
         },
         "2": {
           "name": "Shift 2 (กะ 2)",

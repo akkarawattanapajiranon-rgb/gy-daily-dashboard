@@ -1,67 +1,85 @@
 {
   "date": "2026-09-12",
-  "generatedAt": "2026-09-28T03:46:23.891Z",
+  "generatedAt": "2026-09-28T03:54:30.356Z",
   "waste": {
     "date": "2026-09-12",
-    "millingSummary": 134.8,
-    "frictionSummary": 287.4,
-    "beadSummary": 6,
+    "millingSummary": 235.1,
+    "frictionSummary": 308,
+    "beadSummary": 69,
     "millingTop": [
       {
-        "code": "M04",
-        "amount": 54,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "K27T4",
+        "amount": 83,
+        "reason": "ไฟฟ้าดับยางไหม้",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 42,
-        "reason": "TAILING",
+        "code": "B1026",
+        "amount": 30,
+        "reason": "ยางเป็นก้อน",
         "isHigh": true
       },
       {
-        "code": "M01",
-        "amount": 38.8,
-        "reason": "LUMPY",
+        "code": "N11F3",
+        "amount": 20,
+        "reason": "ยางตัดขอบ",
+        "isHigh": false
+      },
+      {
+        "code": "F1252",
+        "amount": 18.6,
+        "reason": "6",
+        "isHigh": false
+      },
+      {
+        "code": "B1578",
+        "amount": 17,
+        "reason": "ขี้ยาง  6 \"",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 69.6,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 83.3,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 56,
-        "reason": "O'LAY TRIM",
+        "code": "39",
+        "amount": 35,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F24",
+        "code": "24",
         "amount": 32,
-        "reason": "ELEC/MECH",
+        "reason": "BEAD DEFECT",
         "isHigh": false
       },
       {
-        "code": "F01",
-        "amount": 27.3,
-        "reason": "ANGLE CHANGE",
+        "code": "46",
+        "amount": 23.2,
+        "reason": "46",
         "isHigh": false
       },
       {
-        "code": "F11",
-        "amount": 19,
-        "reason": "COAT OFF",
+        "code": "1",
+        "amount": 22.9,
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
-        "amount": 6,
+        "code": "11",
+        "amount": 54,
+        "reason": "COAT OFF / BEAD COAT",
+        "isHigh": true
+      },
+      {
+        "code": "51",
+        "amount": 15,
         "reason": "COAT OFF",
         "isHigh": true
       }
@@ -1918,7 +1936,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.3,
+          "avg": 75.44,
           "target": 76.6,
           "count": 7,
           "isMet": false

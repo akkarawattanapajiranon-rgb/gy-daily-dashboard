@@ -1,66 +1,72 @@
 {
   "date": "2026-09-06",
-  "generatedAt": "2026-09-28T03:45:56.768Z",
+  "generatedAt": "2026-09-28T03:54:12.312Z",
   "waste": {
     "date": "2026-09-06",
-    "millingSummary": 144,
-    "frictionSummary": 211.9,
+    "millingSummary": 152,
+    "frictionSummary": 284.3,
     "beadSummary": 0,
     "millingTop": [
       {
-        "code": "M04",
-        "amount": 58,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "K16V5",
+        "amount": 26,
+        "reason": "เครื่องเสียนาน",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 47,
-        "reason": "TAILING",
+        "code": "B1508",
+        "amount": 18,
+        "reason": "ขี้ยาง  6 \"",
         "isHigh": true
       },
       {
-        "code": "M01",
-        "amount": 31,
-        "reason": "LUMPY",
+        "code": "G1211",
+        "amount": 16,
+        "reason": "ยางตัดขอบ",
         "isHigh": false
       },
       {
-        "code": "M06",
-        "amount": 8,
-        "reason": "CLEANER",
+        "code": "B56N2",
+        "amount": 13,
+        "reason": "ขี้ยาง  6 \"",
+        "isHigh": false
+      },
+      {
+        "code": "B1423",
+        "amount": 11,
+        "reason": "ยางไหม้",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 55.099999999999994,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 76.29999999999998,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F24",
-        "amount": 48.5,
-        "reason": "ELEC/MECH",
+        "code": "24",
+        "amount": 59.5,
+        "reason": "BEAD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F39",
+        "code": "39",
         "amount": 32,
-        "reason": "O'LAY TRIM",
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": false
       },
       {
-        "code": "F01",
-        "amount": 19.299999999999997,
-        "reason": "ANGLE CHANGE",
+        "code": "F4111",
+        "amount": 19,
+        "reason": "ยางเป็นเม็ด",
         "isHigh": false
       },
       {
-        "code": "F06",
+        "code": "6",
         "amount": 18,
-        "reason": "BROKEN CAL SPLICE",
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": false
       }
     ],
@@ -1451,7 +1457,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.3,
+          "avg": 75.44,
           "target": 76.6,
           "count": 7,
           "isMet": false

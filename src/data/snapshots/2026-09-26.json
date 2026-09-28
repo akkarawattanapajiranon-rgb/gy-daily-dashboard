@@ -1,86 +1,74 @@
 {
   "date": "2026-09-26",
-  "generatedAt": "2026-09-28T03:47:12.564Z",
+  "generatedAt": "2026-09-28T03:52:24.813Z",
   "waste": {
     "date": "2026-09-26",
-    "millingSummary": 61,
-    "frictionSummary": 132.5,
-    "beadSummary": 40,
+    "millingSummary": 20,
+    "frictionSummary": 150.7,
+    "beadSummary": 38,
     "millingTop": [
       {
-        "code": "M04",
-        "amount": 47,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "39",
+        "amount": 17,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 12,
-        "reason": "TAILING",
+        "code": "50",
+        "amount": 3,
+        "reason": "STOCK OUT",
         "isHigh": true
-      },
-      {
-        "code": "M01",
-        "amount": 2,
-        "reason": "LUMPY",
-        "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F39",
-        "amount": 69,
-        "reason": "O'LAY TRIM",
+        "code": "39",
+        "amount": 59,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F46",
-        "amount": 13.7,
-        "reason": "SHORT PIECES",
+        "code": "44",
+        "amount": 21.9,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F06",
+        "code": "10",
+        "amount": 14,
+        "reason": "CALENDER STOP",
+        "isHigh": false
+      },
+      {
+        "code": "6",
         "amount": 12.8,
-        "reason": "BROKEN CAL SPLICE",
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": false
       },
       {
-        "code": "F50",
-        "amount": 9.8,
-        "reason": "START UP",
-        "isHigh": false
-      },
-      {
-        "code": "F44",
-        "amount": 7.4,
-        "reason": "ROLL ENDS",
+        "code": "46",
+        "amount": 9.2,
+        "reason": "46",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
+        "code": "11",
         "amount": 20,
-        "reason": "COAT OFF",
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F24",
+        "code": "24",
         "amount": 10,
-        "reason": "ELEC/MECH",
+        "reason": "BEAD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F05",
-        "amount": 5,
-        "reason": "BLOOM/DRY",
-        "isHigh": false
-      },
-      {
-        "code": "F51",
-        "amount": 5,
-        "reason": "STRAND CHANGE",
+        "code": "51",
+        "amount": 8,
+        "reason": "COAT OFF",
         "isHigh": false
       }
     ],
