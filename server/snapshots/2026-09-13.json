@@ -1,60 +1,72 @@
 {
   "date": "2026-09-13",
-  "generatedAt": "2026-09-28T01:36:36.295Z",
+  "generatedAt": "2026-09-28T02:06:56.673Z",
   "waste": {
     "date": "2026-09-13",
-    "millingSummary": 152.8,
-    "frictionSummary": 199.6,
+    "millingSummary": 80.9,
+    "frictionSummary": 371.5,
     "beadSummary": 0,
     "millingTop": [
       {
-        "code": "M01",
-        "amount": 57.8,
-        "reason": "LUMPY",
+        "code": "N2139",
+        "amount": 17,
+        "reason": "ขี้ยาง  6 \"",
         "isHigh": true
       },
       {
-        "code": "M04",
-        "amount": 48,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "B1423",
+        "amount": 14,
+        "reason": "ยางไหม้",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 47,
-        "reason": "TAILING",
+        "code": "N1508",
+        "amount": 14,
+        "reason": "ยางตัดขอบ",
+        "isHigh": false
+      },
+      {
+        "code": "N1692",
+        "amount": 12,
+        "reason": "ขี้ยางเปลี่ยนไดร้,ปาดหัวยางไหม้",
+        "isHigh": false
+      },
+      {
+        "code": "B61C7",
+        "amount": 12,
+        "reason": "ขี้ยางเปลี่ยนไดร้,ปาดหัวยางไหม้",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 44.800000000000004,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 78.7,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F46",
-        "amount": 26.300000000000004,
-        "reason": "SHORT PIECES",
+        "code": "j26r7",
+        "amount": 30,
+        "reason": "ยางถอยออกจากcalender",
         "isHigh": true
       },
       {
-        "code": "F24",
+        "code": "40",
+        "amount": 27,
+        "reason": "supphire",
+        "isHigh": false
+      },
+      {
+        "code": "24",
         "amount": 25,
-        "reason": "ELEC/MECH",
+        "reason": "BEAD DEFECT",
         "isHigh": false
       },
       {
-        "code": "F39",
-        "amount": 22,
-        "reason": "O'LAY TRIM",
-        "isHigh": false
-      },
-      {
-        "code": "F01",
-        "amount": 19.1,
-        "reason": "ANGLE CHANGE",
+        "code": "46",
+        "amount": 24.5,
+        "reason": "46",
         "isHigh": false
       }
     ],
@@ -1560,9 +1572,9 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 52.9,
+          "avg": 50.54,
           "target": 62,
-          "count": 7,
+          "count": 5,
           "isMet": false
         },
         "tuber": {
@@ -1578,7 +1590,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 74.11,
+          "avg": 75.64,
           "target": 76.6,
           "count": 7,
           "isMet": false

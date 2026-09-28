@@ -1,80 +1,86 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-28T01:35:52.852Z",
+  "generatedAt": "2026-09-28T02:06:33.548Z",
   "waste": {
     "date": "2026-09-05",
-    "millingSummary": 185.9,
-    "frictionSummary": 308.6,
-    "beadSummary": 44,
+    "millingSummary": 192,
+    "frictionSummary": 306.1,
+    "beadSummary": 67,
     "millingTop": [
       {
-        "code": "M04",
-        "amount": 124,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "B1182",
+        "amount": 59,
+        "reason": "clean out ยางไหม้[รอบสูง]",
         "isHigh": true
       },
       {
-        "code": "M05",
+        "code": "K16V5",
         "amount": 39,
-        "reason": "TAILING",
+        "reason": "เครื่องเสียสายพายพานไม่หมุน",
         "isHigh": true
       },
       {
-        "code": "M01",
-        "amount": 14.9,
-        "reason": "LUMPY",
+        "code": "N1717",
+        "amount": 32,
+        "reason": "เศษยางไหม้ในกะละมัง",
         "isHigh": false
       },
       {
-        "code": "M06",
-        "amount": 8,
-        "reason": "CLEANER",
+        "code": "39",
+        "amount": 26,
+        "reason": "CALENDER STOP / CORD DEFECT",
+        "isHigh": false
+      },
+      {
+        "code": "B1423",
+        "amount": 24,
+        "reason": "ยางไหม้",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 81.8,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 77.8,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 65,
-        "reason": "O'LAY TRIM",
+        "code": "39",
+        "amount": 39,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F01",
-        "amount": 34.6,
-        "reason": "ANGLE CHANGE",
+        "code": "1",
+        "amount": 28.6,
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       },
       {
-        "code": "F46",
-        "amount": 30.900000000000002,
-        "reason": "SHORT PIECES",
+        "code": "46",
+        "amount": 27.400000000000002,
+        "reason": "46",
         "isHigh": false
       },
       {
-        "code": "F11",
+        "code": "11",
         "amount": 22.6,
-        "reason": "COAT OFF",
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
-        "amount": 38,
-        "reason": "COAT OFF",
+        "code": "11",
+        "amount": 61,
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F51",
+        "code": "51",
         "amount": 6,
-        "reason": "STRAND CHANGE",
+        "reason": "COAT OFF",
         "isHigh": true
       }
     ],
@@ -1845,9 +1851,9 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": false,
         "quad": {
-          "avg": 52.9,
+          "avg": 50.54,
           "target": 62,
-          "count": 7,
+          "count": 5,
           "isMet": false
         },
         "tuber": {
@@ -1863,7 +1869,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 74.11,
+          "avg": 75.64,
           "target": 76.6,
           "count": 7,
           "isMet": false

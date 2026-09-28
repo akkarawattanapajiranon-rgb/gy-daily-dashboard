@@ -1,86 +1,104 @@
 {
   "date": "2026-09-25",
-  "generatedAt": "2026-09-28T01:51:24.958Z",
+  "generatedAt": "2026-09-28T02:07:35.824Z",
   "waste": {
     "date": "2026-09-25",
-    "millingSummary": 450,
-    "frictionSummary": 235.6,
-    "beadSummary": 53.5,
+    "millingSummary": 501.8,
+    "frictionSummary": 288.8,
+    "beadSummary": 70.2,
     "millingTop": [
       {
-        "code": "M03",
+        "code": "T1400",
         "amount": 356,
-        "reason": "FOREIGN MAT (FM)",
+        "reason": "มีเศษสายพานในยาง",
         "isHigh": true
       },
       {
-        "code": "M04",
-        "amount": 42,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "K33M1",
+        "amount": 24,
+        "reason": "5",
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 40,
-        "reason": "TAILING",
+        "code": "B1423",
+        "amount": 20.8,
+        "reason": "1",
         "isHigh": false
       },
       {
-        "code": "M01",
-        "amount": 12,
-        "reason": "LUMPY",
+        "code": "39",
+        "amount": 18,
+        "reason": "CALENDER STOP / CORD DEFECT",
+        "isHigh": false
+      },
+      {
+        "code": "B1443",
+        "amount": 18,
+        "reason": "ขี้ยาง  6 \"",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "F44",
-        "amount": 54.900000000000006,
-        "reason": "ROLL ENDS",
+        "code": "44",
+        "amount": 59.2,
+        "reason": "3 ROLLS / ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F39",
-        "amount": 41,
-        "reason": "O'LAY TRIM",
+        "code": "39",
+        "amount": 33,
+        "reason": "CALENDER STOP / CORD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F01",
-        "amount": 24.5,
-        "reason": "ANGLE CHANGE",
+        "code": "56",
+        "amount": 25.8,
+        "reason": "FISCHER DEFECT",
         "isHigh": false
       },
       {
-        "code": "F52",
-        "amount": 18,
-        "reason": "TACKY",
+        "code": "1",
+        "amount": 24,
+        "reason": "CALENDER DEFECT",
         "isHigh": false
       },
       {
-        "code": "F11",
-        "amount": 17.599999999999998,
-        "reason": "COAT OFF",
+        "code": "46",
+        "amount": 20.9,
+        "reason": "46",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "F11",
-        "amount": 28.5,
-        "reason": "COAT OFF",
+        "code": "11",
+        "amount": 42,
+        "reason": "COAT OFF / BEAD COAT",
         "isHigh": true
       },
       {
-        "code": "F24",
+        "code": "24",
         "amount": 13,
-        "reason": "ELEC/MECH",
+        "reason": "BEAD DEFECT",
         "isHigh": true
       },
       {
-        "code": "F51",
+        "code": "51",
         "amount": 12,
-        "reason": "STRAND CHANGE",
+        "reason": "COAT OFF",
+        "isHigh": false
+      },
+      {
+        "code": "B337X",
+        "amount": 2,
+        "reason": "1",
+        "isHigh": false
+      },
+      {
+        "code": "B1182",
+        "amount": 1.2,
+        "reason": "4",
         "isHigh": false
       }
     ],
@@ -1955,7 +1973,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 74.08,
+        "avg": 73.96,
         "target": 76.6,
         "count": 5,
         "isMet": false
@@ -2092,7 +2110,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 74.08,
+          "avg": 73.96,
           "target": 76.6,
           "count": 5,
           "isMet": false

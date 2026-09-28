@@ -1,6 +1,6 @@
 {
   "date": "2026-09-27",
-  "generatedAt": "2026-09-28T01:51:43.854Z",
+  "generatedAt": "2026-09-28T02:09:17.101Z",
   "waste": {
     "date": "2026-09-27",
     "millingSummary": 0,
@@ -653,7 +653,78 @@
         "hasData": false
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1692",
+        "qty": 5450,
+        "qtyMt": 5.45,
+        "percentage": 10.4
+      },
+      {
+        "rank": 2,
+        "code": "N1128",
+        "qty": 4349,
+        "qtyMt": 4.35,
+        "percentage": 8.3
+      },
+      {
+        "rank": 3,
+        "code": "K27T4",
+        "qty": 3830,
+        "qtyMt": 3.83,
+        "percentage": 7.3
+      },
+      {
+        "rank": 4,
+        "code": "K33M1",
+        "qty": 3810,
+        "qtyMt": 3.81,
+        "percentage": 7.3
+      },
+      {
+        "rank": 5,
+        "code": "N1717",
+        "qty": 3390,
+        "qtyMt": 3.39,
+        "percentage": 6.5
+      },
+      {
+        "rank": 6,
+        "code": "F7894",
+        "qty": 2740,
+        "qtyMt": 2.74,
+        "percentage": 5.2
+      },
+      {
+        "rank": 7,
+        "code": "N1508",
+        "qty": 2420,
+        "qtyMt": 2.42,
+        "percentage": 4.6
+      },
+      {
+        "rank": 8,
+        "code": "N1778",
+        "qty": 2300,
+        "qtyMt": 2.3,
+        "percentage": 4.4
+      },
+      {
+        "rank": 9,
+        "code": "K12J5",
+        "qty": 2260,
+        "qtyMt": 2.26,
+        "percentage": 4.3
+      },
+      {
+        "rank": 10,
+        "code": "K11M2",
+        "qty": 2170,
+        "qtyMt": 2.17,
+        "percentage": 4.2
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
@@ -686,7 +757,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.52,
+        "avg": 75.42,
         "target": 76.6,
         "count": 6,
         "isMet": false
@@ -823,7 +894,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.52,
+          "avg": 75.42,
           "target": 76.6,
           "count": 6,
           "isMet": false
