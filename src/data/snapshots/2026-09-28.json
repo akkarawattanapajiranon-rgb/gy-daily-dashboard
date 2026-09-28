@@ -1,37 +1,44 @@
 {
   "date": "2026-09-28",
-  "generatedAt": "2026-09-28T03:53:54.699Z",
+  "generatedAt": "2026-09-28T04:00:55.436Z",
   "waste": {
     "date": "2026-09-28",
     "millingSummary": 0,
-    "frictionSummary": 0,
+    "frictionSummary": 5,
     "beadSummary": 0,
     "millingTop": [],
-    "frictionTop": [],
+    "frictionTop": [
+      {
+        "code": "F22",
+        "amount": 5,
+        "reason": "DEVELOPMENT",
+        "isHigh": true
+      }
+    ],
     "beadTop": [],
     "dataDate": "2026-09-28",
-    "hasData": false
+    "hasData": true
   },
   "cms": {
     "date": "2026-09-28",
     "mixing1": {
-      "batch": 78,
-      "ar": 74.4,
-      "pr": 96,
-      "qr": 87.8,
-      "oee2": 62.7
+      "batch": 84,
+      "ar": 75.6,
+      "pr": 95.8,
+      "qr": 87.3,
+      "oee2": 63.2
     },
     "mixing2": {
-      "batch": 118,
-      "ar": 94.1,
+      "batch": 123,
+      "ar": 94.3,
       "pr": 88,
       "qr": 100,
-      "oee2": 82.8
+      "oee2": 83
     },
-    "totalAr": 84.5,
+    "totalAr": 85.2,
     "totalPr": 91.4,
-    "totalQr": 94.7,
-    "totalOee2": 73.1
+    "totalQr": 94.4,
+    "totalOee2": 73.5
   },
   "target3Roll": 5,
   "breakdown": {
@@ -387,32 +394,42 @@
     "output": {
       "hasData": true,
       "day": 28,
-      "grandTotal": 665,
+      "grandTotal": 677,
       "codeBreakdown": [
         {
           "code": "B427",
           "count": 300,
-          "percentage": 45.11
+          "percentage": 44.31
         },
         {
           "code": "B435",
           "count": 90,
-          "percentage": 13.53
+          "percentage": 13.29
         },
         {
           "code": "B627",
           "count": 90,
-          "percentage": 13.53
+          "percentage": 13.29
         },
         {
           "code": "B404",
           "count": 90,
-          "percentage": 13.53
+          "percentage": 13.29
         },
         {
           "code": "B455",
           "count": 90,
-          "percentage": 13.53
+          "percentage": 13.29
+        },
+        {
+          "code": "WA8X",
+          "count": 12,
+          "percentage": 1.77
+        },
+        {
+          "code": "QUIR",
+          "count": 5,
+          "percentage": 0.74
         }
       ],
       "shifts": {
@@ -456,13 +473,20 @@
             },
             {
               "partId": "XP02462",
-              "code": "",
+              "code": "QUIR",
               "qtyTarget": 5,
               "qtyProduced": 5,
               "totalQty": 5
+            },
+            {
+              "partId": "SW08662",
+              "code": "WA8X",
+              "qtyTarget": 12,
+              "qtyProduced": 12,
+              "totalQty": 12
             }
           ],
-          "totalQty": 665
+          "totalQty": 677
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -963,7 +987,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.44,
+        "avg": 75.5,
         "target": 76.6,
         "count": 7,
         "isMet": false
@@ -1100,7 +1124,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.44,
+          "avg": 75.5,
           "target": 76.6,
           "count": 7,
           "isMet": false
