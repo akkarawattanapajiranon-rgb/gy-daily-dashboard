@@ -1,6 +1,6 @@
 {
   "date": "2026-09-28",
-  "generatedAt": "2026-09-28T02:15:24.506Z",
+  "generatedAt": "2026-09-28T02:31:51.546Z",
   "waste": {
     "date": "2026-09-28",
     "millingSummary": 0,
@@ -15,25 +15,25 @@
   "cms": {
     "date": "2026-09-28",
     "mixing1": {
-      "batch": 49,
-      "ar": 84.7,
-      "pr": 96.2,
-      "qr": 90.5,
-      "oee2": 73.8
+      "batch": 53,
+      "ar": 79.9,
+      "pr": 96,
+      "qr": 90.1,
+      "oee2": 69.1
     },
     "mixing2": {
-      "batch": 71,
-      "ar": 92.1,
-      "pr": 85.7,
+      "batch": 80,
+      "ar": 92.9,
+      "pr": 86.4,
       "qr": 100,
-      "oee2": 78.9
+      "oee2": 80.3
     },
-    "totalAr": 88.6,
-    "totalPr": 90.4,
+    "totalAr": 86.7,
+    "totalPr": 90.7,
     "totalQr": 95.7,
-    "totalOee2": 76.7
+    "totalOee2": 75.2
   },
-  "target3Roll": 12,
+  "target3Roll": 1,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -93,22 +93,22 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 6,
-      "totalWbr": 6,
+      "totalProduce": 20,
+      "totalWbr": 20,
       "totalSapphire": 0,
-      "totalAngleChanges": 1,
-      "totalNormal": 0,
+      "totalAngleChanges": 3,
+      "totalNormal": 14,
       "totalSticky": 6,
-      "normalPct": 0,
-      "stickyPct": 100,
+      "normalPct": 70,
+      "stickyPct": 30,
       "shifts": {
         "shift1": {
-          "wbr": 6,
+          "wbr": 20,
           "sapphire": 0,
-          "angleChanges": 1,
-          "normal": 0,
+          "angleChanges": 3,
+          "normal": 14,
           "sticky": 6,
-          "total": 6
+          "total": 20
         },
         "shift2": {
           "wbr": 0,
@@ -135,34 +135,25 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 12,
-    "totalRelease": 0,
-    "totalHold": 0,
-    "totalPending": 12,
-    "totalScheduled": 12,
+    "totalRolls": 1,
+    "totalRelease": 1,
+    "totalHold": 1,
+    "totalPending": 8,
+    "totalScheduled": 10,
     "codeBreakdown": [
       {
-        "code": "NU27",
-        "count": 4,
-        "percentage": 33.33
-      },
-      {
-        "code": "RP08",
-        "count": 4,
-        "percentage": 33.33
-      },
-      {
         "code": "NB32",
-        "count": 2,
-        "percentage": 16.67
-      },
-      {
-        "code": "RU53",
-        "count": 2,
-        "percentage": 16.67
+        "count": 1,
+        "percentage": 100
       }
     ],
-    "holdBreakdown": [],
+    "holdBreakdown": [
+      {
+        "code": "NB32",
+        "count": 1,
+        "percentage": 100
+      }
+    ],
     "hasData": true
   },
   "roll42": {
@@ -828,7 +819,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 62357,
-        "consume": 0,
+        "consume": 13106,
         "newGenerate": 10040,
         "newGenerateBTA": 8080,
         "newGenerateWBR": 1960,
@@ -842,14 +833,14 @@
         "dateLabel": "26/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
-        "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "sum": 63142,
+        "consume": 1195,
+        "newGenerate": 12210,
+        "newGenerateBTA": 9990,
+        "newGenerateWBR": 2220,
+        "slowMoving": 42449,
+        "disposition": 8483,
+        "hasData": true
       },
       {
         "day": 27,
@@ -857,14 +848,14 @@
         "dateLabel": "27/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 63142,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 12210,
+        "newGenerateBTA": 9990,
+        "newGenerateWBR": 2220,
+        "slowMoving": 42449,
+        "disposition": 8483,
+        "hasData": true
       },
       {
         "day": 28,
@@ -903,13 +894,13 @@
         "isMet": false
       },
       "tuber": {
-        "avg": 57.31,
+        "avg": 58.13,
         "target": 62,
-        "count": 5,
+        "count": 6,
         "isMet": false
       },
       "fischer": {
-        "avg": 51.57,
+        "avg": 52.13,
         "target": 60,
         "count": 6,
         "isMet": false
@@ -1040,13 +1031,13 @@
           "isMet": false
         },
         "tuber": {
-          "avg": 57.31,
+          "avg": 58.13,
           "target": 62,
-          "count": 5,
+          "count": 6,
           "isMet": false
         },
         "fischer": {
-          "avg": 51.57,
+          "avg": 52.13,
           "target": 60,
           "count": 6,
           "isMet": false

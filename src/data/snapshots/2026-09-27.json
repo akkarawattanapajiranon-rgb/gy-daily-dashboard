@@ -1,6 +1,6 @@
 {
   "date": "2026-09-27",
-  "generatedAt": "2026-09-28T02:10:56.256Z",
+  "generatedAt": "2026-09-28T02:31:33.095Z",
   "waste": {
     "date": "2026-09-27",
     "millingSummary": 0,
@@ -219,17 +219,17 @@
     "date": "2026-09-27",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "27/9",
-      "sum": 0,
+      "sum": 63142,
       "target": 35056,
       "minTarget": 20000,
       "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "newGenerate": 12210,
+      "slowMoving": 42449,
+      "disposition": 8483,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -614,7 +614,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 62357,
-        "consume": 0,
+        "consume": 13106,
         "newGenerate": 10040,
         "newGenerateBTA": 8080,
         "newGenerateWBR": 1960,
@@ -628,14 +628,14 @@
         "dateLabel": "26/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
-        "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "sum": 63142,
+        "consume": 1195,
+        "newGenerate": 12210,
+        "newGenerateBTA": 9990,
+        "newGenerateWBR": 2220,
+        "slowMoving": 42449,
+        "disposition": 8483,
+        "hasData": true
       },
       {
         "day": 27,
@@ -643,14 +643,14 @@
         "dateLabel": "27/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 63142,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 12210,
+        "newGenerateBTA": 9990,
+        "newGenerateWBR": 2220,
+        "slowMoving": 42449,
+        "disposition": 8483,
+        "hasData": true
       }
     ],
     "top10": [
@@ -739,25 +739,25 @@
       "label": "Wk39 (21/9 - 30/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 50.54,
+        "avg": 51.1,
         "target": 62,
-        "count": 5,
+        "count": 6,
         "isMet": false
       },
       "tuber": {
-        "avg": 57.31,
+        "avg": 58.13,
         "target": 62,
-        "count": 5,
+        "count": 6,
         "isMet": false
       },
       "fischer": {
-        "avg": 51.57,
+        "avg": 52.13,
         "target": 60,
         "count": 6,
         "isMet": false
       },
       "mixing": {
-        "avg": 75.42,
+        "avg": 75.67,
         "target": 76.6,
         "count": 6,
         "isMet": false
@@ -876,25 +876,25 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 50.54,
+          "avg": 51.1,
           "target": 62,
-          "count": 5,
+          "count": 6,
           "isMet": false
         },
         "tuber": {
-          "avg": 57.31,
+          "avg": 58.13,
           "target": 62,
-          "count": 5,
+          "count": 6,
           "isMet": false
         },
         "fischer": {
-          "avg": 51.57,
+          "avg": 52.13,
           "target": 60,
           "count": 6,
           "isMet": false
         },
         "mixing": {
-          "avg": 75.42,
+          "avg": 75.67,
           "target": 76.6,
           "count": 6,
           "isMet": false

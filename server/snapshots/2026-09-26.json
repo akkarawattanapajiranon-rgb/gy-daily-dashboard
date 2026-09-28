@@ -1,6 +1,6 @@
 {
   "date": "2026-09-26",
-  "generatedAt": "2026-09-28T02:11:05.311Z",
+  "generatedAt": "2026-09-28T02:31:25.241Z",
   "waste": {
     "date": "2026-09-26",
     "millingSummary": 61,
@@ -91,10 +91,10 @@
     "date": "2026-09-26",
     "mixing1": {
       "batch": 36,
-      "ar": 89.7,
+      "ar": 100,
       "pr": 86,
       "qr": 81,
-      "oee2": 62.5
+      "oee2": 69.6
     },
     "mixing2": {
       "batch": 183,
@@ -103,10 +103,10 @@
       "qr": 100,
       "oee2": 87.4
     },
-    "totalAr": 92.6,
+    "totalAr": 94.2,
     "totalPr": 92.5,
     "totalQr": 96.6,
-    "totalOee2": 82.7
+    "totalOee2": 84.2
   },
   "target3Roll": 23,
   "breakdown": {
@@ -145,16 +145,16 @@
     "oee": {
       "hasData": true,
       "target_pct": 60,
-      "sr_pct": 45.83,
-      "ar_pct": 77.88,
-      "pr_pct": 59.43,
+      "sr_pct": 43.61,
+      "ar_pct": 76.75,
+      "pr_pct": 63.38,
       "qr_pct": 99.69,
       "oee1_pct": 21.15,
-      "oee2_pct": 46.14
+      "oee2_pct": 48.49
     },
     "loss": {
       "hasData": true,
-      "noSchedule": 0,
+      "noSchedule": 812,
       "noCart": 0,
       "noGum": 0,
       "noTreatment": 0,
@@ -291,13 +291,13 @@
   "quad": {
     "date": "2026-09-26",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 17.71,
+      "ar_pct": 64.71,
+      "pr_pct": 70.39,
+      "qr_pct": 93.98,
+      "oee1_pct": 7.58,
+      "oee2_pct": 42.8,
       "bd_pct": 0
     },
     "output": {
@@ -404,13 +404,13 @@
   "tuber": {
     "date": "2026-09-26",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 29.86,
+      "ar_pct": 83.95,
+      "pr_pct": 79.47,
+      "qr_pct": 93.27,
+      "oee1_pct": 18.58,
+      "oee2_pct": 62.22,
       "bd_pct": 0
     },
     "output": {
@@ -418,11 +418,6 @@
       "day": 26,
       "grandTotal": 651,
       "codeBreakdown": [
-        {
-          "code": "6015",
-          "count": 400,
-          "percentage": 61.44
-        },
         {
           "code": "WTWL",
           "count": 6,
@@ -502,7 +497,7 @@
             },
             {
               "partId": "WD00372",
-              "code": "6015",
+              "code": "",
               "qtyTarget": 400,
               "qtyProduced": 400,
               "totalQty": 400
@@ -534,17 +529,17 @@
     "date": "2026-09-26",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "26/9",
-      "sum": 0,
+      "sum": 63142,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "consume": 1195,
+      "newGenerate": 12210,
+      "slowMoving": 42449,
+      "disposition": 8483,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -929,7 +924,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 62357,
-        "consume": 0,
+        "consume": 13106,
         "newGenerate": 10040,
         "newGenerateBTA": 8080,
         "newGenerateWBR": 1960,
@@ -943,14 +938,14 @@
         "dateLabel": "26/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
-        "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "sum": 63142,
+        "consume": 1195,
+        "newGenerate": 12210,
+        "newGenerateBTA": 9990,
+        "newGenerateWBR": 2220,
+        "slowMoving": 42449,
+        "disposition": 8483,
+        "hasData": true
       }
     ],
     "top10": [
@@ -1039,25 +1034,25 @@
       "label": "Wk39 (21/9 - 30/9)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 50.54,
+        "avg": 51.1,
         "target": 62,
-        "count": 5,
+        "count": 6,
         "isMet": false
       },
       "tuber": {
-        "avg": 57.31,
+        "avg": 58.13,
         "target": 62,
-        "count": 5,
+        "count": 6,
         "isMet": false
       },
       "fischer": {
-        "avg": 51.57,
+        "avg": 52.13,
         "target": 60,
         "count": 6,
         "isMet": false
       },
       "mixing": {
-        "avg": 75.42,
+        "avg": 75.67,
         "target": 76.6,
         "count": 6,
         "isMet": false
@@ -1176,25 +1171,25 @@
         "label": "Wk39 (21/9 - 30/9)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 50.54,
+          "avg": 51.1,
           "target": 62,
-          "count": 5,
+          "count": 6,
           "isMet": false
         },
         "tuber": {
-          "avg": 57.31,
+          "avg": 58.13,
           "target": 62,
-          "count": 5,
+          "count": 6,
           "isMet": false
         },
         "fischer": {
-          "avg": 51.57,
+          "avg": 52.13,
           "target": 60,
           "count": 6,
           "isMet": false
         },
         "mixing": {
-          "avg": 75.42,
+          "avg": 75.67,
           "target": 76.6,
           "count": 6,
           "isMet": false
