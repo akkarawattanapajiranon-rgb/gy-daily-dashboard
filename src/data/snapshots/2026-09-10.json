@@ -1,92 +1,80 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-28T00:41:06.850Z",
+  "generatedAt": "2026-09-28T01:36:19.232Z",
   "waste": {
     "date": "2026-09-10",
-    "millingSummary": 242,
-    "frictionSummary": 438,
-    "beadSummary": 32,
+    "millingSummary": 257,
+    "frictionSummary": 255.2,
+    "beadSummary": 38.3,
     "millingTop": [
       {
-        "code": "K27T4",
-        "amount": 90,
-        "reason": "เศษยางไหม้ทำความสะอาดเครื่อง",
+        "code": "M01",
+        "amount": 113,
+        "reason": "LUMPY",
         "isHigh": true
       },
       {
-        "code": "N11F3",
-        "amount": 72,
-        "reason": "ยางตัดขอบ",
+        "code": "M05",
+        "amount": 95,
+        "reason": "TAILING",
         "isHigh": true
       },
       {
-        "code": "B1423",
-        "amount": 17.3,
-        "reason": "ยางไหม้",
-        "isHigh": false
-      },
-      {
-        "code": "B1443",
-        "amount": 17,
-        "reason": "ขี้ยาง  6 \"",
-        "isHigh": false
-      },
-      {
-        "code": "39",
-        "amount": 13,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "code": "M04",
+        "amount": 49,
+        "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "40",
-        "amount": 124.8,
-        "reason": "supphire",
+        "code": "F39",
+        "amount": 64,
+        "reason": "O'LAY TRIM",
         "isHigh": true
       },
       {
-        "code": "44",
-        "amount": 68.8,
-        "reason": "3 ROLLS / ROLL ENDS",
+        "code": "F44",
+        "amount": 61.1,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "39",
-        "amount": 51,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "code": "F01",
+        "amount": 25.6,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       },
       {
-        "code": "F4111",
-        "amount": 35,
-        "reason": "ยางไหม้เป็นเม็ด",
+        "code": "F06",
+        "amount": 19.6,
+        "reason": "BROKEN CAL SPLICE",
         "isHigh": false
       },
       {
-        "code": "1",
-        "amount": 23.6,
-        "reason": "CALENDER DEFECT",
+        "code": "F46",
+        "amount": 16.5,
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "11",
-        "amount": 21,
-        "reason": "COAT OFF / BEAD COAT",
-        "isHigh": true
-      },
-      {
-        "code": "51",
-        "amount": 6,
+        "code": "F11",
+        "amount": 21.5,
         "reason": "COAT OFF",
         "isHigh": true
       },
       {
-        "code": "24",
-        "amount": 5,
-        "reason": "BEAD DEFECT",
+        "code": "F24",
+        "amount": 11.2,
+        "reason": "ELEC/MECH",
+        "isHigh": true
+      },
+      {
+        "code": "F51",
+        "amount": 5.6,
+        "reason": "STRAND CHANGE",
         "isHigh": false
       }
     ],
@@ -1851,7 +1839,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.11,
+          "avg": 74.11,
           "target": 76.6,
           "count": 7,
           "isMet": false

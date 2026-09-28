@@ -1,98 +1,80 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-28T00:40:49.905Z",
+  "generatedAt": "2026-09-28T01:36:03.257Z",
   "waste": {
     "date": "2026-09-07",
-    "millingSummary": 98,
-    "frictionSummary": 442,
-    "beadSummary": 38,
+    "millingSummary": 124.8,
+    "frictionSummary": 385.2,
+    "beadSummary": 35.5,
     "millingTop": [
       {
-        "code": "B1423",
-        "amount": 24.4,
-        "reason": "ยางเป็นก้อน",
+        "code": "M04",
+        "amount": 76.8,
+        "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
       {
-        "code": "N11F3",
+        "code": "M05",
+        "amount": 26,
+        "reason": "TAILING",
+        "isHigh": true
+      },
+      {
+        "code": "M01",
         "amount": 22,
-        "reason": "เศษยางไหม้ในกะละมัง",
-        "isHigh": true
-      },
-      {
-        "code": "T1400",
-        "amount": 19,
-        "reason": "ขี้ยางเปลี่ยนไดร้",
-        "isHigh": false
-      },
-      {
-        "code": "B1026",
-        "amount": 15.6,
-        "reason": "ยางเป็นก้อน",
-        "isHigh": false
-      },
-      {
-        "code": "F1252",
-        "amount": 8,
-        "reason": "6",
+        "reason": "LUMPY",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "44",
-        "amount": 114,
-        "reason": "3 ROLLS / ROLL ENDS",
+        "code": "F44",
+        "amount": 96.7,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "39",
-        "amount": 80,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "code": "F39",
+        "amount": 69,
+        "reason": "O'LAY TRIM",
         "isHigh": true
       },
       {
-        "code": "1",
-        "amount": 44,
-        "reason": "CALENDER DEFECT",
+        "code": "F01",
+        "amount": 57.6,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       },
       {
-        "code": "40",
-        "amount": 28.1,
-        "reason": "supphire",
-        "isHigh": false
-      },
-      {
-        "code": "11",
+        "code": "F11",
         "amount": 24.4,
-        "reason": "COAT OFF / BEAD COAT",
+        "reason": "COAT OFF",
+        "isHigh": false
+      },
+      {
+        "code": "F46",
+        "amount": 23.499999999999996,
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "8",
+        "code": "F08",
         "amount": 15,
-        "reason": "8",
+        "reason": "BROKEN WIRE",
         "isHigh": true
       },
       {
-        "code": "11",
-        "amount": 13,
-        "reason": "COAT OFF / BEAD COAT",
-        "isHigh": true
-      },
-      {
-        "code": "51",
-        "amount": 6,
+        "code": "F11",
+        "amount": 14.5,
         "reason": "COAT OFF",
-        "isHigh": false
+        "isHigh": true
       },
       {
-        "code": "24",
-        "amount": 4,
-        "reason": "BEAD DEFECT",
+        "code": "F51",
+        "amount": 6,
+        "reason": "STRAND CHANGE",
         "isHigh": false
       }
     ],
@@ -1925,7 +1907,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.11,
+          "avg": 74.11,
           "target": 76.6,
           "count": 7,
           "isMet": false

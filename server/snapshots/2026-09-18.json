@@ -1,80 +1,74 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-28T00:41:50.201Z",
+  "generatedAt": "2026-09-28T01:37:02.682Z",
   "waste": {
     "date": "2026-09-18",
-    "millingSummary": 107,
-    "frictionSummary": 483,
-    "beadSummary": 51,
+    "millingSummary": 419.9,
+    "frictionSummary": 408.4,
+    "beadSummary": 55.5,
     "millingTop": [
       {
-        "code": "N11F3",
-        "amount": 48,
-        "reason": "ยางตัดขอบ",
+        "code": "M01",
+        "amount": 277,
+        "reason": "LUMPY",
         "isHigh": true
       },
       {
-        "code": "N1508",
-        "amount": 21,
-        "reason": "ขี้ยาง  6 \"",
+        "code": "M05",
+        "amount": 79.4,
+        "reason": "TAILING",
         "isHigh": true
       },
       {
-        "code": "N1597",
-        "amount": 16,
-        "reason": "ยางตัดขอบ",
-        "isHigh": false
-      },
-      {
-        "code": "B1423",
-        "amount": 7,
-        "reason": "ยางไหม้",
-        "isHigh": false
-      },
-      {
-        "code": "B1182",
-        "amount": 5,
-        "reason": "ยางไหม้",
+        "code": "M04",
+        "amount": 63.5,
+        "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
-        "code": "44",
-        "amount": 92.1,
-        "reason": "3 ROLLS / ROLL ENDS",
+        "code": "F44",
+        "amount": 92.39999999999999,
+        "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "39",
+        "code": "F39",
         "amount": 63,
-        "reason": "CALENDER STOP / CORD DEFECT",
+        "reason": "O'LAY TRIM",
         "isHigh": true
       },
       {
-        "code": "27",
-        "amount": 40.9,
-        "reason": "supphire",
+        "code": "F27",
+        "amount": 52,
+        "reason": "FOREIGN MAT",
         "isHigh": false
       },
       {
-        "code": "1",
+        "code": "F01",
         "amount": 32.3,
-        "reason": "CALENDER DEFECT",
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       },
       {
-        "code": "46",
+        "code": "F46",
         "amount": 28,
-        "reason": "46",
+        "reason": "SHORT PIECES",
         "isHigh": false
       }
     ],
     "beadTop": [
       {
-        "code": "11",
-        "amount": 51,
-        "reason": "COAT OFF / BEAD COAT",
+        "code": "F11",
+        "amount": 51.5,
+        "reason": "COAT OFF",
+        "isHigh": true
+      },
+      {
+        "code": "F51",
+        "amount": 4,
+        "reason": "STRAND CHANGE",
         "isHigh": true
       }
     ],
@@ -2300,7 +2294,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.11,
+          "avg": 74.11,
           "target": 76.6,
           "count": 7,
           "isMet": false
