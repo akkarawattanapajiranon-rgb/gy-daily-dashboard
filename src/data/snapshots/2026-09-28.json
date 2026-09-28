@@ -1,46 +1,77 @@
 {
   "date": "2026-09-28",
-  "generatedAt": "2026-09-28T06:01:03.499Z",
+  "generatedAt": "2026-09-28T08:00:14.612Z",
   "waste": {
     "date": "2026-09-28",
     "millingSummary": 0,
-    "frictionSummary": 14,
-    "beadSummary": 0,
+    "frictionSummary": 100.4,
+    "beadSummary": 3,
     "millingTop": [],
     "frictionTop": [
+      {
+        "code": "F11",
+        "amount": 36,
+        "reason": "COAT OFF",
+        "isHigh": true
+      },
       {
         "code": "F22",
         "amount": 14,
         "reason": "DEVELOPMENT",
         "isHigh": true
+      },
+      {
+        "code": "F35",
+        "amount": 10.3,
+        "reason": "POOR ANGLE AT ROLL END",
+        "isHigh": false
+      },
+      {
+        "code": "F06",
+        "amount": 10,
+        "reason": "BROKEN CAL SPLICE",
+        "isHigh": false
+      },
+      {
+        "code": "F44",
+        "amount": 9,
+        "reason": "ROLL ENDS",
+        "isHigh": false
       }
     ],
-    "beadTop": [],
+    "beadTop": [
+      {
+        "code": "F11",
+        "amount": 3,
+        "reason": "COAT OFF",
+        "isHigh": true
+      }
+    ],
     "dataDate": "2026-09-28",
     "hasData": true
   },
   "cms": {
     "date": "2026-09-28",
     "mixing1": {
-      "batch": 144,
-      "ar": 82.7,
-      "pr": 92.3,
-      "qr": 84.2,
-      "oee2": 64.3
+      "batch": 192,
+      "ar": 81.2,
+      "pr": 92.1,
+      "qr": 83.8,
+      "oee2": 62.7
     },
     "mixing2": {
-      "batch": 182,
-      "ar": 92.8,
-      "pr": 89.6,
+      "batch": 242,
+      "ar": 90.5,
+      "pr": 89.7,
       "qr": 100,
-      "oee2": 83.2
+      "oee2": 81.1
     },
-    "totalAr": 87.8,
-    "totalPr": 90.9,
-    "totalQr": 92.6,
-    "totalOee2": 73.9
+    "totalAr": 85.9,
+    "totalPr": 90.8,
+    "totalQr": 92.4,
+    "totalOee2": 72.1
   },
-  "target3Roll": 14,
+  "target3Roll": 19,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -99,41 +130,7 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": true,
-      "totalProduce": 20,
-      "totalWbr": 20,
-      "totalSapphire": 0,
-      "totalAngleChanges": 4,
-      "totalNormal": 0,
-      "totalSticky": 20,
-      "normalPct": 0,
-      "stickyPct": 100,
-      "shifts": {
-        "shift1": {
-          "wbr": 20,
-          "sapphire": 0,
-          "angleChanges": 4,
-          "normal": 0,
-          "sticky": 20,
-          "total": 20
-        },
-        "shift2": {
-          "wbr": 0,
-          "sapphire": 0,
-          "angleChanges": 0,
-          "normal": 0,
-          "sticky": 0,
-          "total": 0
-        },
-        "shift3": {
-          "wbr": 0,
-          "sapphire": 0,
-          "angleChanges": 0,
-          "normal": 0,
-          "sticky": 0,
-          "total": 0
-        }
-      }
+      "hasData": false
     }
   },
   "roll3": {
@@ -142,46 +139,56 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 14,
-    "totalRelease": 14,
+    "totalRolls": 19,
+    "totalRelease": 19,
     "totalHold": 1,
-    "totalPending": 5,
+    "totalPending": 0,
     "totalScheduled": 20,
     "codeBreakdown": [
       {
         "code": "RP08",
         "count": 4,
-        "percentage": 28.57
+        "percentage": 21.05
       },
       {
         "code": "NU27",
         "count": 2,
-        "percentage": 14.29
+        "percentage": 10.53
       },
       {
         "code": "RU53",
         "count": 2,
-        "percentage": 14.29
+        "percentage": 10.53
       },
       {
         "code": "JM11",
         "count": 2,
-        "percentage": 14.29
+        "percentage": 10.53
       },
       {
         "code": "JM45",
         "count": 2,
-        "percentage": 14.29
+        "percentage": 10.53
+      },
+      {
+        "code": "N815",
+        "count": 2,
+        "percentage": 10.53
+      },
+      {
+        "code": "N825",
+        "count": 2,
+        "percentage": 10.53
+      },
+      {
+        "code": "N813",
+        "count": 2,
+        "percentage": 10.53
       },
       {
         "code": "NB32",
         "count": 1,
-        "percentage": 7.14
-      },
-      {
-        "code": "N815",
-        "count": 1,
-        "percentage": 7.14
+        "percentage": 5.26
       }
     ],
     "holdBreakdown": [
@@ -471,42 +478,47 @@
     "output": {
       "hasData": true,
       "day": 28,
-      "grandTotal": 876,
+      "grandTotal": 894,
       "codeBreakdown": [
         {
           "code": "QU9W",
           "count": 492,
-          "percentage": 56.16
+          "percentage": 55.03
         },
         {
           "code": "QU8V",
           "count": 328,
-          "percentage": 37.44
+          "percentage": 36.69
         },
         {
           "code": "WA8X",
           "count": 16,
-          "percentage": 1.83
+          "percentage": 1.79
+        },
+        {
+          "code": "WLAN",
+          "count": 16,
+          "percentage": 1.79
         },
         {
           "code": "W1CX",
           "count": 12,
-          "percentage": 1.37
+          "percentage": 1.34
         },
         {
           "code": "WAIK",
-          "count": 10,
-          "percentage": 1.14
+          "count": 12,
+          "percentage": 1.34
         },
         {
           "code": "W1WF",
           "count": 9,
-          "percentage": 1.03
+          "percentage": 1.01
         },
         {
           "code": "W1WL",
           "count": 9,
-          "percentage": 1.03
+          "percentage": 1.01
         }
       ],
       "shifts": {
@@ -612,9 +624,39 @@
               "qtyProduced": 328,
               "qtySapphire": 0,
               "totalQty": 328
+            },
+            {
+              "partId": "TL00153",
+              "code1": "WAIK",
+              "code2": "",
+              "code": "WAIK",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            },
+            {
+              "partId": "TL00192",
+              "code1": "WLAN",
+              "code2": "",
+              "code": "WLAN",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00192",
+              "code1": "WLAN",
+              "code2": "",
+              "code": "WLAN",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
             }
           ],
-          "totalQty": 876
+          "totalQty": 894
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -644,47 +686,52 @@
     "output": {
       "hasData": true,
       "day": 28,
-      "grandTotal": 689,
+      "grandTotal": 694,
       "codeBreakdown": [
         {
           "code": "B427",
           "count": 300,
-          "percentage": 43.54
+          "percentage": 43.23
         },
         {
           "code": "B435",
           "count": 90,
-          "percentage": 13.06
+          "percentage": 12.97
         },
         {
           "code": "B627",
           "count": 90,
-          "percentage": 13.06
+          "percentage": 12.97
         },
         {
           "code": "B404",
           "count": 90,
-          "percentage": 13.06
+          "percentage": 12.97
         },
         {
           "code": "B455",
           "count": 90,
-          "percentage": 13.06
+          "percentage": 12.97
         },
         {
           "code": "WA8X",
           "count": 12,
-          "percentage": 1.74
+          "percentage": 1.73
         },
         {
           "code": "W1WL",
           "count": 12,
-          "percentage": 1.74
+          "percentage": 1.73
         },
         {
           "code": "QUIR",
           "count": 5,
-          "percentage": 0.73
+          "percentage": 0.72
+        },
+        {
+          "code": "WAIS",
+          "count": 5,
+          "percentage": 0.72
         }
       ],
       "shifts": {
@@ -746,9 +793,16 @@
               "qtyTarget": 12,
               "qtyProduced": 12,
               "totalQty": 12
+            },
+            {
+              "partId": "SW08753",
+              "code": "WAIS",
+              "qtyTarget": 5,
+              "qtyProduced": 5,
+              "totalQty": 5
             }
           ],
-          "totalQty": 689
+          "totalQty": 694
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -1320,7 +1374,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.56,
+        "avg": 75.3,
         "target": 76.6,
         "count": 7,
         "isMet": false
@@ -1457,7 +1511,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.56,
+          "avg": 75.3,
           "target": 76.6,
           "count": 7,
           "isMet": false
@@ -1469,12 +1523,12 @@
     "_file": "09 Aero Build September 2026.xls",
     "_sheet": "28",
     "_date": "2026-09-28",
-    "totalDelayMin": 100,
-    "totalDelayHours": 1.7,
+    "totalDelayMin": 210,
+    "totalDelayHours": 3.5,
     "totalExtrusionMin": 0,
     "totalExtrusionHours": 0,
-    "totalCompMin": 100,
-    "totalCompHours": 1.7,
+    "totalCompMin": 210,
+    "totalCompHours": 3.5,
     "summary": {
       "extrusionCount": 0,
       "compCount": 1,
@@ -1484,12 +1538,12 @@
       {
         "id": "50-27-0",
         "machine": "UP",
-        "rawText": "d/l brakker >11.30-",
+        "rawText": "d/l brakker >11.30-15.00",
         "category": "Comp",
         "componentName": "Component",
-        "timeRangeStr": "10 tires lost",
-        "durationMin": 100,
-        "durationHours": 1.7
+        "timeRangeStr": "11.30 - 15.00",
+        "durationMin": 210,
+        "durationHours": 3.5
       }
     ]
   },
@@ -1497,19 +1551,42 @@
     "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
     "_sheet": "(28)",
     "_date": "2026-09-28",
-    "totalDelayMin": 0,
-    "totalDelayHours": 0,
-    "shift1Min": 0,
-    "shift1Hours": 0,
+    "totalDelayMin": 265,
+    "totalDelayHours": 4.4,
+    "shift1Min": 265,
+    "shift1Hours": 4.4,
     "shift2Min": 0,
     "shift2Hours": 0,
     "shift3Min": 0,
     "shift3Hours": 0,
     "summary": {
-      "totalItems": 0,
-      "itemsWithDetail": 0,
-      "itemsOnlyMin": 0
+      "totalItems": 2,
+      "itemsWithDetail": 1,
+      "itemsOnlyMin": 1
     },
-    "items": []
+    "items": [
+      {
+        "id": "r31-กะ 1-1",
+        "machine": "V3",
+        "shift": "กะ 1",
+        "code": "W1WL",
+        "delayMin": 30,
+        "delayHours": 0.5,
+        "detail": null,
+        "timeRangeStr": "13:40 - 14:10",
+        "category": "Comp"
+      },
+      {
+        "id": "r55-กะ 1-2",
+        "machine": "V5",
+        "shift": "กะ 1",
+        "code": "W1CX",
+        "delayMin": 235,
+        "delayHours": 3.9,
+        "detail": "[07:00 - 10:55] tread",
+        "timeRangeStr": "07:00 - 10:55",
+        "category": "Extrusion"
+      }
+    ]
   }
 }

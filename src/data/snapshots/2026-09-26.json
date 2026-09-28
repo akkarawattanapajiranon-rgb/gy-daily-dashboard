@@ -1,6 +1,6 @@
 {
   "date": "2026-09-26",
-  "generatedAt": "2026-09-28T06:01:39.768Z",
+  "generatedAt": "2026-09-28T08:00:42.623Z",
   "waste": {
     "date": "2026-09-26",
     "millingSummary": 61,
@@ -167,41 +167,7 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": true,
-      "totalProduce": 39,
-      "totalWbr": 34,
-      "totalSapphire": 5,
-      "totalAngleChanges": 10,
-      "totalNormal": 34,
-      "totalSticky": 0,
-      "normalPct": 100,
-      "stickyPct": 0,
-      "shifts": {
-        "shift1": {
-          "wbr": 20,
-          "sapphire": 5,
-          "angleChanges": 6,
-          "normal": 20,
-          "sticky": 0,
-          "total": 25
-        },
-        "shift2": {
-          "wbr": 14,
-          "sapphire": 0,
-          "angleChanges": 4,
-          "normal": 14,
-          "sticky": 0,
-          "total": 14
-        },
-        "shift3": {
-          "wbr": 0,
-          "sapphire": 0,
-          "angleChanges": 0,
-          "normal": 0,
-          "sticky": 0,
-          "total": 0
-        }
-      }
+      "hasData": false
     }
   },
   "roll3": {
@@ -1417,31 +1383,19 @@
     "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
     "_sheet": "(26)",
     "_date": "2026-09-26",
-    "totalDelayMin": 110,
-    "totalDelayHours": 1.8,
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
     "shift1Min": 0,
     "shift1Hours": 0,
-    "shift2Min": 110,
-    "shift2Hours": 1.8,
+    "shift2Min": 0,
+    "shift2Hours": 0,
     "shift3Min": 0,
     "shift3Hours": 0,
     "summary": {
-      "totalItems": 1,
-      "itemsWithDetail": 1,
+      "totalItems": 0,
+      "itemsWithDetail": 0,
       "itemsOnlyMin": 0
     },
-    "items": [
-      {
-        "id": "r59-กะ 2-1",
-        "machine": "V5",
-        "shift": "กะ 2",
-        "code": "",
-        "delayMin": 110,
-        "delayHours": 1.8,
-        "detail": "[21:10 - 23:00] tread",
-        "timeRangeStr": "21:10 - 23:00",
-        "category": "Extrusion"
-      }
-    ]
+    "items": []
   }
 }
