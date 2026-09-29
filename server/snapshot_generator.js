@@ -46,24 +46,48 @@ async function generateSnapshot(dateStr) {
     await new Promise(r => setImmediate(r));
     const wbrDelay = parseWbrDelay(dateStr);
 
-    const target3Roll = roll3?.totalRolls || 0;
+    const existing = getSnapshot(dateStr) || {};
+
+    const target3Roll = roll3?.totalRolls ?? existing.target3Roll ?? 0;
+
+    function hasValidData(val) {
+      if (!val || val.error) return false;
+      if (val.hasData === true) return true;
+      if (Array.isArray(val) && val.length > 0) return true;
+      if (val.topLoss && val.topLoss.length > 0) return true;
+      if (val.activeWeek) return true;
+      if (val.output && val.output.hasData) return true;
+      if (val.oee && val.oee.hasData) return true;
+      if (val.checksheet && val.checksheet.hasData) return true;
+      if (val.summary) return true;
+      if (val.items && val.items.length > 0) return true;
+      if (val.totalRolls !== undefined && val.totalRolls !== null && val.totalRolls > 0) return true;
+      if (val.totalQty !== undefined && val.totalQty !== null && val.totalQty > 0) return true;
+      return false;
+    }
+
+    function pickBest(newVal, existingVal) {
+      if (hasValidData(newVal)) return newVal;
+      if (hasValidData(existingVal)) return existingVal;
+      return (newVal && !newVal.error) ? newVal : (existingVal || null);
+    }
 
     const snapshot = {
       date: dateStr,
       generatedAt: new Date().toISOString(),
-      waste: waste && !waste.error ? waste : null,
-      cms: cms && !cms.error ? cms : null,
+      waste: pickBest(waste, existing.waste),
+      cms: pickBest(cms, existing.cms),
       target3Roll,
-      breakdown: breakdown && !breakdown.error ? breakdown : null,
-      fischer: fischer && !fischer.error ? fischer : null,
-      roll3: roll3 && !roll3.error ? roll3 : null,
-      roll42: roll42 && !roll42.error ? roll42 : null,
-      quad: quad && !quad.error ? quad : null,
-      tuber: tuber && !tuber.error ? tuber : null,
-      workaway: workaway && !workaway.error ? workaway : null,
-      weeklyOee: weeklyOee && !weeklyOee.error ? weeklyOee : null,
-      aeroDelay: aeroDelay && !aeroDelay.error ? aeroDelay : null,
-      wbrDelay: wbrDelay && !wbrDelay.error ? wbrDelay : null
+      breakdown: pickBest(breakdown, existing.breakdown),
+      fischer: pickBest(fischer, existing.fischer),
+      roll3: pickBest(roll3, existing.roll3),
+      roll42: pickBest(roll42, existing.roll42),
+      quad: pickBest(quad, existing.quad),
+      tuber: pickBest(tuber, existing.tuber),
+      workaway: pickBest(workaway, existing.workaway),
+      weeklyOee: pickBest(weeklyOee, existing.weeklyOee),
+      aeroDelay: pickBest(aeroDelay, existing.aeroDelay),
+      wbrDelay: pickBest(wbrDelay, existing.wbrDelay)
     };
 
     const fileName = `${dateStr}.json`;
