@@ -156,6 +156,136 @@
   },
   "workaway": null,
   "weeklyOee": null,
-  "aeroDelay": null,
-  "wbrDelay": null
+  "aeroDelay": {
+    "_file": "09 Aero Build September 2026.xls",
+    "_sheet": "28",
+    "_date": "2026-09-28",
+    "totalDelayMin": 1240,
+    "totalDelayHours": 20.7,
+    "totalExtrusionMin": 1030,
+    "totalExtrusionHours": 17.2,
+    "totalCompMin": 210,
+    "totalCompHours": 3.5,
+    "summary": {
+      "extrusionCount": 5,
+      "compCount": 1,
+      "totalItems": 6
+    },
+    "items": [
+      {
+        "id": "50-27-0",
+        "machine": "UP",
+        "shift": "1st",
+        "code": "B198",
+        "rawText": "d/l brakker >11.30-15.00",
+        "category": "Comp",
+        "componentName": "Breaker",
+        "timeRangeStr": "11.30 - 15.00",
+        "durationMin": 210,
+        "durationHours": 3.5
+      },
+      {
+        "id": "51-27-1",
+        "machine": "UP",
+        "shift": "2nd",
+        "code": "B198",
+        "rawText": "d/l tread 17.30-23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "17.30 - 23.00",
+        "durationMin": 330,
+        "durationHours": 5.5
+      },
+      {
+        "id": "52-27-2",
+        "machine": "UP",
+        "shift": "3rd",
+        "code": "B198",
+        "rawText": "d/l tread > 23.00 - 02.00,bkk.06.00 - 07.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "60-27-3",
+        "machine": "US",
+        "shift": "2nd",
+        "code": "B198",
+        "rawText": "d/l tread 19.00-23.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "19.00 - 23.00",
+        "durationMin": 240,
+        "durationHours": 4
+      },
+      {
+        "id": "61-27-4",
+        "machine": "US",
+        "shift": "3rd",
+        "code": "B198",
+        "rawText": "d/l tread > 23.00 - 02.00,bkk.06.00 - 07.00",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "23.00 - 02.00",
+        "durationMin": 180,
+        "durationHours": 3
+      },
+      {
+        "id": "63-27-5",
+        "machine": "TAKU",
+        "shift": "2nd",
+        "code": "A602",
+        "rawText": "c/c A602 d/l tread",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "10 tires lost",
+        "durationMin": 100,
+        "durationHours": 1.7
+      }
+    ]
+  },
+  "wbrDelay": {
+    "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(28)",
+    "_date": "2026-09-28",
+    "totalDelayMin": 265,
+    "totalDelayHours": 4.4,
+    "shift1Min": 265,
+    "shift1Hours": 4.4,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 2,
+      "itemsWithDetail": 1,
+      "itemsOnlyMin": 1
+    },
+    "items": [
+      {
+        "id": "r31-กะ 1-1",
+        "machine": "V3",
+        "shift": "กะ 1",
+        "code": "W1WL",
+        "delayMin": 30,
+        "delayHours": 0.5,
+        "detail": null,
+        "timeRangeStr": "13:40 - 14:10",
+        "category": "Comp"
+      },
+      {
+        "id": "r55-กะ 1-2",
+        "machine": "V5",
+        "shift": "กะ 1",
+        "code": "W1CX",
+        "delayMin": 235,
+        "delayHours": 3.9,
+        "detail": "[07:00 - 10:55] tread",
+        "timeRangeStr": "07:00 - 10:55",
+        "category": "Extrusion"
+      }
+    ]
+  }
 }
