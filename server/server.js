@@ -55,31 +55,8 @@ setInterval(() => {
   }
 }, 60 * 1000);
 
-// Immediate Catch-Up Sync on Startup (Triggers 15s after startup non-blockingly)
-setTimeout(async () => {
-  const now = new Date();
-  const bangkokTime = new Date(now.getTime() + (7 * 3600 * 1000));
-  const todayStr = `${bangkokTime.getUTCFullYear()}-${String(bangkokTime.getUTCMonth() + 1).padStart(2, '0')}-${String(bangkokTime.getUTCDate()).padStart(2, '0')}`;
-  console.log(`[Server Startup] Refreshing initial snapshot for ${todayStr}...`);
-  try {
-    await generateSnapshot(todayStr);
-  } catch (err) {
-    console.warn('[Startup Sync Error]', err.message);
-  }
-}, 15000);
+// Periodic snapshot updates are scheduled in morning review to keep Express 100% responsive.
 
-// Auto-Refresh Current Day Data & Snapshot every 5 minutes (300,000 ms)
-setInterval(async () => {
-  const now = new Date();
-  const bangkokTime = new Date(now.getTime() + (7 * 3600 * 1000));
-  const todayStr = `${bangkokTime.getUTCFullYear()}-${String(bangkokTime.getUTCMonth() + 1).padStart(2, '0')}-${String(bangkokTime.getUTCDate()).padStart(2, '0')}`;
-  try {
-    console.log(`[5-Minute Auto Poller] Refreshing today's data & snapshot (${todayStr})...`);
-    await generateSnapshot(todayStr);
-  } catch (err) {
-    console.warn(`[5-Minute Auto Poller] Notice for ${todayStr}:`, err.message);
-  }
-}, 5 * 60 * 1000);
 
 // In-memory API cache: 5 minute TTL — ป้องกัน Excel parse ซ้ำๆ จาก T: drive ทุก request
 // (กด F5/Live Data จะ bypass cache ด้วย forceRefresh=true → _t= query param)
