@@ -1,6 +1,6 @@
 {
   "date": "2026-09-29",
-  "generatedAt": "2026-09-28T23:53:19.258Z",
+  "generatedAt": "2026-09-29T00:00:21.219Z",
   "waste": {
     "date": "2026-09-29",
     "millingSummary": 0,
@@ -31,8 +31,7 @@
     "totalAr": 0,
     "totalPr": 0,
     "totalQr": 0,
-    "totalOee2": 0,
-    "hasData": false
+    "totalOee2": 0
   },
   "target3Roll": 0,
   "breakdown": {
@@ -898,18 +897,39 @@
     "_file": "09 Aero Build September 2026.xls",
     "_sheet": "29",
     "_date": "2026-09-29",
-    "totalDelayMin": 0,
-    "totalDelayHours": 0,
+    "totalDelayMin": 200,
+    "totalDelayHours": 3.3,
     "totalExtrusionMin": 0,
     "totalExtrusionHours": 0,
-    "totalCompMin": 0,
-    "totalCompHours": 0,
+    "totalCompMin": 200,
+    "totalCompHours": 3.3,
     "summary": {
       "extrusionCount": 0,
-      "compCount": 0,
-      "totalItems": 0
+      "compCount": 2,
+      "totalItems": 2
     },
-    "items": []
+    "items": [
+      {
+        "id": "50-27-0",
+        "machine": "UP",
+        "rawText": "d/l breaker > 07.00 -",
+        "category": "Comp",
+        "componentName": "Breaker",
+        "timeRangeStr": "10 tires lost",
+        "durationMin": 100,
+        "durationHours": 1.7
+      },
+      {
+        "id": "59-27-1",
+        "machine": "US",
+        "rawText": "d/l breaker > 07.00 -",
+        "category": "Comp",
+        "componentName": "Breaker",
+        "timeRangeStr": "10 tires lost",
+        "durationMin": 100,
+        "durationHours": 1.7
+      }
+    ]
   },
   "wbrDelay": {
     "_file": "09 SEP 2026 Building lost daily report- update including OT -.xlsx",
