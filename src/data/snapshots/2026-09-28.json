@@ -1,6 +1,6 @@
 {
   "date": "2026-09-28",
-  "generatedAt": "2026-09-29T03:09:46.287Z",
+  "generatedAt": "2026-09-29T06:01:15.169Z",
   "waste": {
     "date": "2026-09-28",
     "millingSummary": 66,
@@ -188,7 +188,7 @@
       "totalProduce": 83,
       "totalWbr": 76,
       "totalSapphire": 7,
-      "totalAngleChanges": 15,
+      "totalAngleChanges": 18,
       "totalNormal": 45,
       "totalSticky": 31,
       "normalPct": 59.21,
@@ -213,7 +213,7 @@
         "shift3": {
           "wbr": 30,
           "sapphire": 0,
-          "angleChanges": 3,
+          "angleChanges": 6,
           "normal": 30,
           "sticky": 0,
           "total": 30
