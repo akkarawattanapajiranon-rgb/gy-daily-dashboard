@@ -525,19 +525,23 @@ function App() {
                 <RefreshCw className={`w-4 h-4 text-emerald-300 group-hover:rotate-180 transition-transform duration-500 ${isLoading ? 'animate-spin' : ''}`} />
               </button>
             </header>
-            <ComponentDelayContainer date={selectedDate} />
+            <TabErrorBoundary>
+              <ComponentDelayContainer date={selectedDate} />
+            </TabErrorBoundary>
           </div>
         )}
 
         {/* PAGE 3: Extruder — TAW Actual vs Spec */}
         {activeTab === 'extruder' && (
           <div className="space-y-6">
-            <ExtruderTimeline 
-              endpoint="/api/extruder-timeline" 
-              pollMs={600000} 
-              date={selectedDate}
-              onDateChange={setSelectedDate}
-            />
+            <TabErrorBoundary>
+              <ExtruderTimeline 
+                endpoint="/api/extruder-timeline" 
+                pollMs={600000} 
+                date={selectedDate}
+                onDateChange={setSelectedDate}
+              />
+            </TabErrorBoundary>
           </div>
         )}
 

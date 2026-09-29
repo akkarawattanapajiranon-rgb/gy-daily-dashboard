@@ -446,7 +446,7 @@ export default function ExtruderTimeline({
   // Everything below is derived from the shift window, so every number on
   // screen reflects the selection rather than the whole day.
   const lanes = useMemo(() => {
-    if (!response) return [];
+    if (!response || !Array.isArray(response.lines)) return [];
     return response.lines.map((line) => {
       const isDuplex = line.line.toUpperCase().includes("DUPLEX") || line.line.toUpperCase().includes("TUBER");
       const lineSamples = isDuplex
