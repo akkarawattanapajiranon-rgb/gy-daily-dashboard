@@ -1,10 +1,30 @@
+process.env.UV_THREADPOOL_SIZE = '64';
 require('dotenv').config();
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; // Ignore self-signed certs globally
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
 app.use(cors());
+
+// Instant fast-path for static extruder timeline JSON files (BEFORE any heavy middlewares)
+app.get('/data/extruder/:file', (req, res) => {
+  const file = req.params.file;
+  const paths = [
+    path.join(__dirname, '..', 'public', 'data', 'extruder', file),
+    path.join(__dirname, '..', 'dist', 'data', 'extruder', file),
+    path.join(__dirname, 'extruder_store', file)
+  ];
+  for (const p of paths) {
+    if (fs.existsSync(p)) {
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      return res.sendFile(p);
+    }
+  }
+  res.status(404).json({ error: 'Extruder timeline file not found' });
+});
 
 // Disable all browser HTTP caching for API endpoints and HTML pages
 app.use((req, res, next) => {
@@ -15,9 +35,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-
-const path = require('path');
-const fs = require('fs');
 
 const { getSnapshot, generateSnapshot } = require('./snapshot_generator');
 const { runMorningSync } = require('./cron_morning_sync');
@@ -501,8 +518,10 @@ app.get('/api/extruder-timeline', async (req, res) => {
           if (json && (json.success !== false || json.lines)) {
             res.setHeader('Cache-Control', 'public, max-age=300');
             res.type('json').send(fileContent);
-            // Trigger background sync if needed
-            getExtruderTimeline(date, undefined, false).catch(() => {});
+            // Trigger background sync ONLY for current day
+            if (date === bangkokProductionDate()) {
+              getExtruderTimeline(date, undefined, false).catch(() => {});
+            }
             return;
           }
         } catch (e) {}

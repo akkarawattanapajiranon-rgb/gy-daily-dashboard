@@ -265,13 +265,8 @@ async function getExtruderTimeline(date, now = () => new Date(), forceRefresh = 
   });
 
   const next = nextDate(date);
-  const dayEndMs = Date.parse(`${next}T07:00:00+07:00`);
-  // A past production day is fully complete if fetchedAtMs was after the 24-hr day ended at 07:00 AM
-  const isPastDayFullySynced = (!isCurrent && day.fetchedAtMs >= dayEndMs);
-
-  const ttl = isCurrent ? REFRESH_AFTER_MS : 86400000;
-  const ageMs = Date.now() - day.fetchedAtMs;
-  const cached = hasAnyData && (isCurrent ? (ageMs < ttl) : isPastDayFullySynced) && !forceRefresh;
+  // For past dates, if we already have data from disk/store, it's permanent and fully complete
+  const cached = hasAnyData && (isCurrent ? (ageMs < ttl) : true) && !forceRefresh;
 
   if (!cached) {
     const current = day;
