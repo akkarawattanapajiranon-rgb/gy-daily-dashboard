@@ -7,7 +7,7 @@ netstat -ano | findstr :3001 | findstr LISTENING >nul 2>&1
 if %errorlevel% equ 0 goto launchBrowser
 
 echo Starting DOR Backend Server...
-start /min "" cmd /c "node -r dotenv/config server/server.js"
+start "DOR_Backend" /min cmd /c "node -r dotenv/config server/server.js"
 
 set attempts=0
 :checkPort
