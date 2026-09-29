@@ -37,26 +37,7 @@ app.use((req, res, next) => {
 });
 
 const { getSnapshot, generateSnapshot } = require('./snapshot_generator');
-const { runMorningSync } = require('./cron_morning_sync');
-
-// Automatic Cloud Sync Schedule: Updates snapshots & Vercel automatically (08:30, 09:00, 09:10 AM and every 2 hours)
-setInterval(() => {
-  const now = new Date();
-  const bangkokTime = new Date(now.getTime() + (7 * 3600 * 1000));
-  const hours = bangkokTime.getUTCHours();
-  const minutes = bangkokTime.getUTCMinutes();
-  
-  const isMorningReview = (hours === 9 && (minutes === 0 || minutes === 10)) || (hours === 8 && minutes === 30);
-  const isPeriodicSync = (minutes === 0 && [11, 13, 15, 17, 19, 21, 23, 7].includes(hours));
-
-  if (isMorningReview || isPeriodicSync) {
-    console.log(`[Server Schedule] Running automatic cloud data sync (${hours}:${String(minutes).padStart(2, '0')})...`);
-    runMorningSync().catch(err => console.error('[Automatic Sync Error]', err.message));
-  }
-}, 60 * 1000);
-
-// Periodic snapshot updates are scheduled in morning review to keep Express 100% responsive.
-
+const { fork } = require('child_process');
 
 // In-memory API cache: 5 minute TTL — ป้องกัน Excel parse ซ้ำๆ จาก T: drive ทุก request
 // (กด F5/Live Data จะ bypass cache ด้วย forceRefresh=true → _t= query param)
@@ -77,6 +58,79 @@ function setCached(key, data) {
     apiMemoryCache.set(key, { data, ts: Date.now() });
   }
 }
+
+// Preload recent snapshots (last 7 days) into memory cache on startup for 0ms boot responses
+function preloadSnapshots() {
+  try {
+    const snapshotDir = path.join(__dirname, 'snapshots');
+    if (!fs.existsSync(snapshotDir)) return;
+    const files = fs.readdirSync(snapshotDir).filter(f => f.endsWith('.json')).sort().reverse().slice(0, 7);
+    let count = 0;
+    for (const f of files) {
+      const date = f.replace('.json', '');
+      try {
+        const snap = JSON.parse(fs.readFileSync(path.join(snapshotDir, f), 'utf8'));
+        if (snap) {
+          if (snap.breakdown) { apiMemoryCache.set(`breakdown:${date}`, { data: snap.breakdown, ts: Date.now() }); count++; }
+          if (snap.aeroDelay) apiMemoryCache.set(`aeroDelay:${date}`, { data: snap.aeroDelay, ts: Date.now() });
+          if (snap.wbrDelay) apiMemoryCache.set(`wbrDelay:${date}`, { data: snap.wbrDelay, ts: Date.now() });
+          if (snap.fischer) apiMemoryCache.set(`fischer:${date}`, { data: snap.fischer, ts: Date.now() });
+          if (snap.roll3) apiMemoryCache.set(`3roll:${date}`, { data: snap.roll3, ts: Date.now() });
+          if (snap.roll42) apiMemoryCache.set(`4roll2:${date}`, { data: snap.roll42, ts: Date.now() });
+          if (snap.weeklyOee) apiMemoryCache.set(`oee-weekly:${date}`, { data: snap.weeklyOee, ts: Date.now() });
+          if (snap.workaway) apiMemoryCache.set(`workaway:${date}`, { data: snap.workaway, ts: Date.now() });
+          if (snap.quad) apiMemoryCache.set(`quad:${date}`, { data: snap.quad, ts: Date.now() });
+          if (snap.tuber) apiMemoryCache.set(`tuber:${date}`, { data: snap.tuber, ts: Date.now() });
+          if (snap.waste) apiMemoryCache.set(`waste:${date}`, { data: snap.waste, ts: Date.now() });
+          if (snap.cms) apiMemoryCache.set(`cms:${date}`, { data: snap.cms, ts: Date.now() });
+        }
+      } catch (e) {}
+    }
+    console.log(`[Server Cache] Preloaded ${files.length} recent snapshot dates into memory cache.`);
+  } catch (err) {
+    console.warn('[Server Cache] Preload notice:', err.message);
+  }
+}
+preloadSnapshots();
+
+// Automatic Cloud Sync Worker (Runs in completely separate OS process to never block Express)
+let syncWorkerProcess = null;
+function triggerBackgroundCloudSync() {
+  if (syncWorkerProcess && syncWorkerProcess.exitCode === null) {
+    console.log('[Server Schedule] Cloud sync already running in background process, skipping duplicate.');
+    return;
+  }
+  const scriptPath = path.join(__dirname, 'cron_morning_sync.js');
+  console.log('[Server Schedule] 🚀 Spawning isolated background worker for scheduled sync...');
+  try {
+    syncWorkerProcess = fork(scriptPath, [], {
+      stdio: 'inherit'
+    });
+    syncWorkerProcess.on('exit', (code) => {
+      console.log(`[Server Schedule] Background cloud sync worker completed (code ${code})`);
+      syncWorkerProcess = null;
+      preloadSnapshots();
+    });
+  } catch (err) {
+    console.warn('[Server Schedule] Failed to spawn background sync worker:', err.message);
+  }
+}
+
+// Check schedule every minute: 08:30, 09:00, 09:10 AM and every 2 hours
+setInterval(() => {
+  const now = new Date();
+  const bangkokTime = new Date(now.getTime() + (7 * 3600 * 1000));
+  const hours = bangkokTime.getUTCHours();
+  const minutes = bangkokTime.getUTCMinutes();
+  
+  const isMorningReview = (hours === 9 && (minutes === 0 || minutes === 10)) || (hours === 8 && minutes === 30);
+  const isPeriodicSync = (minutes === 0 && [11, 13, 15, 17, 19, 21, 23, 7].includes(hours));
+
+  if (isMorningReview || isPeriodicSync) {
+    console.log(`[Server Schedule] Scheduled trigger at ${hours}:${String(minutes).padStart(2, '0')}`);
+    triggerBackgroundCloudSync();
+  }
+}, 60 * 1000);
 
 // Breakdown parser (reads local Excel on T: drive)
 const { parseBreakdown } = require('./breakdown_parser');

@@ -91,10 +91,21 @@ async function generateSnapshot(dateStr) {
     };
 
     const fileName = `${dateStr}.json`;
-    fs.writeFileSync(path.join(SNAPSHOT_DIR, fileName), JSON.stringify(snapshot, null, 2), 'utf8');
-    fs.writeFileSync(path.join(CLIENT_SNAPSHOT_DIR, fileName), JSON.stringify(snapshot, null, 2), 'utf8');
+    const snapJson = JSON.stringify(snapshot, null, 2);
+    fs.writeFileSync(path.join(SNAPSHOT_DIR, fileName), snapJson, 'utf8');
+    fs.writeFileSync(path.join(CLIENT_SNAPSHOT_DIR, fileName), snapJson, 'utf8');
 
-    console.log(`[Snapshot Generator] Successfully saved ${fileName} (${(JSON.stringify(snapshot).length / 1024).toFixed(1)} KB)`);
+    const publicSnapDir = path.join(__dirname, '..', 'public', 'data', 'snapshots');
+    if (!fs.existsSync(publicSnapDir)) fs.mkdirSync(publicSnapDir, { recursive: true });
+    fs.writeFileSync(path.join(publicSnapDir, fileName), snapJson, 'utf8');
+
+    const distSnapDir = path.join(__dirname, '..', 'dist', 'data', 'snapshots');
+    if (fs.existsSync(path.join(__dirname, '..', 'dist'))) {
+      if (!fs.existsSync(distSnapDir)) fs.mkdirSync(distSnapDir, { recursive: true });
+      fs.writeFileSync(path.join(distSnapDir, fileName), snapJson, 'utf8');
+    }
+
+    console.log(`[Snapshot Generator] Successfully saved ${fileName} (${(snapJson.length / 1024).toFixed(1)} KB)`);
 
     return snapshot;
   } catch (err) {

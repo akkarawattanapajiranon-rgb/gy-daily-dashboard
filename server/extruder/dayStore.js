@@ -115,6 +115,12 @@ function saveDayToDisk(dateStr, day) {
         })),
       });
       fs.writeFileSync(path.join(publicExtruderDir, `${dateStr}.json`), JSON.stringify(timelineData), 'utf8');
+
+      const distExtruderDir = path.join(__dirname, '..', '..', 'dist', 'data', 'extruder');
+      if (fs.existsSync(path.join(__dirname, '..', '..', 'dist'))) {
+        if (!fs.existsSync(distExtruderDir)) fs.mkdirSync(distExtruderDir, { recursive: true });
+        fs.writeFileSync(path.join(distExtruderDir, `${dateStr}.json`), JSON.stringify(timelineData), 'utf8');
+      }
     } catch (pubErr) {
       // Non-critical
     }
@@ -264,7 +270,9 @@ async function getExtruderTimeline(date, now = () => new Date(), forceRefresh = 
     return l && l.rows && l.rows.length > 0;
   });
 
-  const next = nextDate(date);
+  const nowMs = now().getTime();
+  const ageMs = nowMs - (day.fetchedAtMs || 0);
+  const ttl = REFRESH_AFTER_MS;
   // For past dates, if we already have data from disk/store, it's permanent and fully complete
   const cached = hasAnyData && (isCurrent ? (ageMs < ttl) : true) && !forceRefresh;
 
@@ -331,10 +339,10 @@ async function syncCurrentDayDaemon() {
 function startExtruderDaemon() {
   if (daemonTimer) return;
   console.log('[Extruder Daemon] Starting automatic 5-minute background saver for current day...');
-  // Initial sync after 3s delay
+  // Initial sync delayed by 90s after boot to allow network & VPN connections to be ready
   setTimeout(() => {
     syncCurrentDayDaemon().catch(() => {});
-  }, 3000);
+  }, 90000);
   // Recurring every 10 minutes (REFRESH_AFTER_MS)
   daemonTimer = setInterval(() => {
     syncCurrentDayDaemon().catch(() => {});

@@ -31,11 +31,20 @@ async function runMorningSync() {
 
   try {
     for (const dateStr of datesToSync) {
+      const isToday = (dateStr === datesToSync[0]);
+      const existingSnap = getSnapshot(dateStr);
+
+      // Performance optimization (especially for Mondays):
+      // If a past date (e.g. Saturday or Sunday) already has a complete snapshot, skip re-parsing heavy network Excel files!
+      if (!isToday && existingSnap && existingSnap.waste && (existingSnap.quad || existingSnap.breakdown)) {
+        console.log(`[Morning Sync Cron] ⏩ Past date ${dateStr} already has complete snapshot. Skipping heavy Excel re-parse.`);
+        continue;
+      }
+
       await generateSnapshot(dateStr);
       try {
-        const isToday = (dateStr === datesToSync[0]);
         const isYesterday = (dateStr === datesToSync[1]);
-        // Force refresh today and yesterday to capture full overnight shifts from Oracle
+        // Refresh today and yesterday to capture overnight shifts from Oracle
         await getExtruderTimeline(dateStr, undefined, isToday || isYesterday);
       } catch (extErr) {
         console.warn(`[Morning Sync Cron] Extruder sync notice for ${dateStr}:`, extErr.message);
@@ -49,17 +58,14 @@ async function runMorningSync() {
       console.warn('[Morning Sync Cron] LSP parse notice:', lspErr.message);
     }
 
-    console.log('[Morning Sync Cron] 📦 Building static production assets...');
-    const projectRoot = path.join(__dirname, '..');
-    await execPromise('node node_modules/vite/bin/vite.js build', { cwd: projectRoot });
-
     console.log('[Morning Sync Cron] ☁️ Checking for changes to push to Vercel/GitHub...');
-    await execPromise('git add .', { cwd: projectRoot });
+    const projectRoot = path.join(__dirname, '..');
+    await execPromise('git add src/data/snapshots public/data server/snapshots server/extruder_store', { cwd: projectRoot });
     const { stdout: statusOut } = await execPromise('git status --porcelain', { cwd: projectRoot });
     const status = statusOut ? statusOut.trim() : '';
     
     if (status) {
-      const msg = `Auto Sync Update: ${datesToSync[0]} (Startup / Scheduled Sync)`;
+      const msg = `Auto Sync Update: ${datesToSync[0]} (Scheduled Sync)`;
       await execPromise(`git commit -m "${msg}"`, { cwd: projectRoot });
       await execPromise('git push origin master', { cwd: projectRoot });
       console.log(`[Morning Sync Cron] ✅ Successfully pushed updated data to Vercel/GitHub!`);
