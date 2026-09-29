@@ -79,7 +79,7 @@ export function useExtruderTimeline(
             const text = await staticRes.text();
             if (text && !text.trim().startsWith("<")) {
               const staticData = JSON.parse(text);
-              if (staticData && (staticData.success !== false || staticData.lines)) {
+              if (staticData && Array.isArray(staticData.lines)) {
                 json = staticData as ExtruderTimelineResponse;
                 if (s === seq.current) {
                   setData(json);
@@ -117,7 +117,7 @@ export function useExtruderTimeline(
           const text = await res.text();
           if (text && !text.trim().startsWith("<")) {
             const resData = JSON.parse(text);
-            if (resData && (resData.success !== false || resData.lines)) {
+            if (resData && Array.isArray(resData.lines)) {
               json = resData as ExtruderTimelineResponse;
             }
           }
@@ -140,7 +140,7 @@ export function useExtruderTimeline(
             const text = await staticRes.text();
             if (text && !text.trim().startsWith("<")) {
               const staticData = JSON.parse(text);
-              if (staticData && (staticData.success !== false || staticData.lines)) {
+              if (staticData && Array.isArray(staticData.lines)) {
                 json = staticData as ExtruderTimelineResponse;
               }
             }

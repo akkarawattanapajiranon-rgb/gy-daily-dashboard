@@ -503,25 +503,20 @@ app.get('/api/extruder-timeline', async (req, res) => {
   const forceRefresh = req.query.refresh === 'true';
   console.log(`Fetching Extruder Timeline for date: ${date}${forceRefresh ? ' (forceRefresh)' : ''}`);
 
-  // Instant fast-path: for any date with existing public or store cache
+  // Instant fast-path: for any date with pre-built client JSON
   if (!forceRefresh) {
     const candidateFiles = [
       path.join(__dirname, '..', 'public', 'data', 'extruder', `${date}.json`),
-      path.join(__dirname, '..', 'dist', 'data', 'extruder', `${date}.json`),
-      path.join(__dirname, 'extruder_store', `${date}.json`)
+      path.join(__dirname, '..', 'dist', 'data', 'extruder', `${date}.json`)
     ];
     for (const f of candidateFiles) {
       if (fs.existsSync(f)) {
         try {
           const fileContent = fs.readFileSync(f, 'utf8');
           const json = JSON.parse(fileContent);
-          if (json && (json.success !== false || json.lines)) {
+          if (json && Array.isArray(json.lines)) {
             res.setHeader('Cache-Control', 'public, max-age=300');
             res.type('json').send(fileContent);
-            // Trigger background sync ONLY for current day
-            if (date === bangkokProductionDate()) {
-              getExtruderTimeline(date, undefined, false).catch(() => {});
-            }
             return;
           }
         } catch (e) {}
