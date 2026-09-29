@@ -77,8 +77,14 @@ export default function AeroComponentDelay({ date }) {
 
   const filteredItems = (data.items || []).filter(item => {
     if (filter === 'ALL') return true;
-    return item.category === filter;
+    if (filter === 'Extrusion' || filter === 'Comp') return item.category === filter;
+    if (filter === '1st' || filter === '2nd' || filter === '3rd') return item.shift === filter;
+    return true;
   });
+
+  const shift1Count = (data.items || []).filter(i => i.shift === '1st').length;
+  const shift2Count = (data.items || []).filter(i => i.shift === '2nd').length;
+  const shift3Count = (data.items || []).filter(i => i.shift === '3rd').length;
 
   return (
     <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-6">
@@ -104,7 +110,7 @@ export default function AeroComponentDelay({ date }) {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-1.5 bg-slate-100/80 p-1 rounded-xl shrink-0">
+        <div className="flex items-center gap-1.5 bg-slate-100/80 p-1 rounded-xl shrink-0 flex-wrap">
           <button
             onClick={() => setFilter('ALL')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -134,6 +140,37 @@ export default function AeroComponentDelay({ date }) {
             }`}
           >
             Comp ({data.summary?.compCount || 0})
+          </button>
+          <span className="w-px h-4 bg-slate-300 mx-0.5" />
+          <button
+            onClick={() => setFilter('1st')}
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              filter === '1st'
+                ? 'bg-indigo-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            1st ({shift1Count})
+          </button>
+          <button
+            onClick={() => setFilter('2nd')}
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              filter === '2nd'
+                ? 'bg-indigo-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            2nd ({shift2Count})
+          </button>
+          <button
+            onClick={() => setFilter('3rd')}
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              filter === '3rd'
+                ? 'bg-indigo-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            3rd ({shift3Count})
           </button>
         </div>
       </div>
@@ -194,12 +231,14 @@ export default function AeroComponentDelay({ date }) {
 
       {/* List Table of Items */}
       <div className="overflow-x-auto border border-slate-200 rounded-xl">
-        <table className="w-full text-left border-collapse min-w-[640px]">
+        <table className="w-full text-left border-collapse min-w-[720px]">
           <thead>
             <tr className="bg-slate-50 text-slate-600 text-xs font-bold border-b border-slate-200">
               <th className="py-3 px-4 w-16">เครื่อง</th>
-              <th className="py-3 px-4 w-32">ประเภท (Source)</th>
-              <th className="py-3 px-4 w-32">ส่วนประกอบ</th>
+              <th className="py-3 px-3 w-16 text-center">กะ</th>
+              <th className="py-3 px-3 w-20">Code</th>
+              <th className="py-3 px-4 w-28">ประเภท (Source)</th>
+              <th className="py-3 px-4 w-28">ส่วนประกอบ</th>
               <th className="py-3 px-4">รายละเอียดจากรายงาน (Description)</th>
               <th className="py-3 px-4 w-36 text-center">ช่วงเวลา</th>
               <th className="py-3 px-4 w-28 text-right">เวลาที่ Delay</th>
@@ -208,7 +247,7 @@ export default function AeroComponentDelay({ date }) {
           <tbody className="divide-y divide-slate-100 text-xs font-medium text-slate-700">
             {filteredItems.length === 0 ? (
               <tr>
-                <td colSpan={6} className="py-6 text-center text-slate-400 italic">
+                <td colSpan={8} className="py-6 text-center text-slate-400 italic">
                   ไม่มีรายการ Delay ในหมวดหมู่นี้
                 </td>
               </tr>
@@ -219,6 +258,24 @@ export default function AeroComponentDelay({ date }) {
                     <span className="px-2 py-0.5 bg-slate-100 rounded text-slate-800 border border-slate-200">
                       {item.machine}
                     </span>
+                  </td>
+                  <td className="py-3 px-3 text-center">
+                    {item.shift ? (
+                      <span className="px-2 py-0.5 bg-slate-100 rounded text-slate-700 font-bold border border-slate-200 text-[11px]">
+                        {item.shift}
+                      </span>
+                    ) : (
+                      <span className="text-slate-300">—</span>
+                    )}
+                  </td>
+                  <td className="py-3 px-3 font-bold text-slate-800">
+                    {item.code ? (
+                      <span className="px-2 py-0.5 bg-indigo-50 text-indigo-700 font-mono font-bold rounded border border-indigo-200 text-[11px]">
+                        {item.code}
+                      </span>
+                    ) : (
+                      <span className="text-slate-300">—</span>
+                    )}
                   </td>
                   <td className="py-3 px-4">
                     {item.category === 'Extrusion' ? (

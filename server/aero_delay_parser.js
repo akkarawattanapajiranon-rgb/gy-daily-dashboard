@@ -45,15 +45,16 @@ function calculateRangeDurationMinutes(startStr, endStr) {
 
 function parseAeroDelayLine(lineText, row = []) {
   const text = lineText.trim();
-  if (!text.toLowerCase().includes('d/l')) return null;
-
   const lower = text.toLowerCase();
+  const isDelay = lower.includes('d/l') || lower.includes('c/c') || lower.includes('cal c') || lower.includes('code change');
+  if (!isDelay) return null;
+
   let category = null;
   let componentName = '';
 
   // Extrusion vs Comp classification rules:
   // Extrusion: Tread, SW (Sidewall)
-  // Comp: Band, Bead, Liner, Chafer, Breaker, Ply, Apex
+  // Comp: Band, Bead, Liner, Chafer, Breaker, Ply, Apex, Calender
   if (lower.includes('tread')) {
     category = 'Extrusion';
     componentName = 'Tread';
@@ -72,7 +73,7 @@ function parseAeroDelayLine(lineText, row = []) {
   } else if (lower.includes('chafer')) {
     category = 'Comp';
     componentName = 'Chafer';
-  } else if (lower.includes('breaker')) {
+  } else if (lower.includes('breaker') || lower.includes('brakker') || lower.includes('bkk')) {
     category = 'Comp';
     componentName = 'Breaker';
   } else if (lower.includes('ply')) {
@@ -81,6 +82,9 @@ function parseAeroDelayLine(lineText, row = []) {
   } else if (lower.includes('apex')) {
     category = 'Comp';
     componentName = 'Apex';
+  } else if (lower.includes('cal') || lower.includes('calender') || lower.includes('calemard')) {
+    category = 'Comp';
+    componentName = 'Calender';
   } else {
     category = 'Comp';
     componentName = 'Component';
@@ -108,6 +112,11 @@ function parseAeroDelayLine(lineText, row = []) {
       durationMin = Math.max(15, Math.min(180, col21Tires * 10));
       timeRangeStr = `${col21Tires} tires lost`;
     }
+  }
+
+  // If not explicitly containing 'd/l' and duration is 0, do not count as delay item
+  if (!lower.includes('d/l') && durationMin <= 0) {
+    return null;
   }
 
   return {
@@ -144,6 +153,28 @@ function parseAeroDelay(dateStr) {
 
     const validMcRegex = /^(U[A-Z]|TAKU|A\d{3}|B\d{3})$/i;
 
+    // Pre-pass: map machines to their schedule/actual code in this sheet
+    const machineCodeMap = {};
+    let scanMc = '';
+    for (let r = 4; r < data.length; r++) {
+      const rData = data[r] || [];
+      const m0 = String(rData[0] || '').trim().toUpperCase();
+      const m23 = String(rData[23] || '').trim().toUpperCase();
+      const m33 = String(rData[33] || '').trim().toUpperCase();
+      const codeCandidate = String(rData[1] || '').trim().toUpperCase();
+
+      if (validMcRegex.test(m0)) scanMc = m0;
+      else if (validMcRegex.test(m23)) scanMc = m23;
+      else if (validMcRegex.test(m33)) scanMc = m33;
+      else if (m0 && m0.length <= 4 && !['MC', 'DATE', 'TOTAL', 'REQUIRE'].includes(m0) && isNaN(Number(m0))) {
+        scanMc = m0;
+      }
+
+      if (scanMc && codeCandidate && !['CODE', 'TARGET', 'MC'].includes(codeCandidate) && isNaN(Number(codeCandidate))) {
+        machineCodeMap[scanMc] = codeCandidate;
+      }
+    }
+
     data.forEach((row, rowIdx) => {
       const mc0 = String(row[0] || '').trim().toUpperCase();
       const mc23 = String(row[23] || '').trim().toUpperCase();
@@ -159,21 +190,47 @@ function parseAeroDelay(dateStr) {
         currentMachine = mc0;
       }
 
-      // Check text in description columns (indices 26..32 and full row scan for 'd/l')
+      // Extract shift from Col C (index 2) or Col Y (index 24)
+      const colC = String(row[2] || '').trim();
+      const colY = String(row[24] || '').trim();
+      let shift = colC || colY || '';
+
+      // Check text in description columns (indices 26..32 and full row scan for 'd/l' or 'c/c')
       const checkedTexts = new Set();
       row.forEach((cell, cIdx) => {
-        if (typeof cell === 'string' && cell.toLowerCase().includes('d/l')) {
-          const text = cell.trim();
-          if (text && !checkedTexts.has(text)) {
-            checkedTexts.add(text);
-            const rowMachine = (validMcRegex.test(mc23) && cIdx >= 20) ? mc23 : (currentMachine || 'Aero');
-            const parsed = parseAeroDelayLine(text, row);
-            if (parsed) {
-              items.push({
-                id: `${rowIdx}-${cIdx}-${items.length}`,
-                machine: rowMachine,
-                ...parsed
-              });
+        if (typeof cell === 'string') {
+          const lowerCell = cell.toLowerCase();
+          if (lowerCell.includes('d/l') || lowerCell.includes('c/c') || lowerCell.includes('cal c') || lowerCell.includes('code change')) {
+            const text = cell.trim();
+            if (text && !checkedTexts.has(text)) {
+              checkedTexts.add(text);
+              const rowMachine = (validMcRegex.test(mc23) && cIdx >= 20) ? mc23 : (currentMachine || 'Aero');
+              const parsed = parseAeroDelayLine(text, row);
+              if (parsed) {
+                // Determine Code: explicit from c/c text, or row[1], or machineCodeMap
+                let code = '';
+                const ccMatch = text.match(/(?:c\/c|cal\s*c|code\s*change)\s*([A-Za-z]\d{2,4})/i) ||
+                                text.match(/\b([A-Za-z]\d{3,4})\b/);
+                if (ccMatch) {
+                  code = ccMatch[1].toUpperCase();
+                }
+                if (!code) {
+                  const rCode = String(row[1] || '').trim().toUpperCase();
+                  if (rCode && !['CODE', 'TARGET', 'MC'].includes(rCode) && isNaN(Number(rCode))) {
+                    code = rCode;
+                  } else if (rowMachine && machineCodeMap[rowMachine]) {
+                    code = machineCodeMap[rowMachine];
+                  }
+                }
+
+                items.push({
+                  id: `${rowIdx}-${cIdx}-${items.length}`,
+                  machine: rowMachine,
+                  shift,
+                  code,
+                  ...parsed
+                });
+              }
             }
           }
         }
