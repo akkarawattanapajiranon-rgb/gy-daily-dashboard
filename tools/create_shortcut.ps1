@@ -1,19 +1,23 @@
-﻿$desktop = [Environment]::GetFolderPath('Desktop')
-$toolsExe = "c:\Users\aa11909\OneDrive - Goodyear\Documents\AI\DOR\daily-dashboard\tools\DOR_Dashboard.exe"
+$targetBat = "C:\Users\aa11909\OneDrive - Goodyear\Documents\AI\DOR\daily-dashboard\launch_dor.bat"
+$workDir = "C:\Users\aa11909\OneDrive - Goodyear\Documents\AI\DOR\daily-dashboard"
+$icon = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe,0"
 
-Copy-Item -Path $toolsExe -Destination "public\download\DOR_Dashboard.exe" -Force
+$desktopFolders = @(
+    "C:\Users\aa11909\OneDrive - Goodyear\Desktop",
+    "C:\Users\aa11909\Desktop"
+)
 
 $wsh = New-Object -ComObject WScript.Shell
-$lnkPath = Join-Path $desktop "DOR Dashboard.lnk"
-$sc = $wsh.CreateShortcut($lnkPath)
-$sc.TargetPath = $toolsExe
-$sc.WorkingDirectory = "c:\Users\aa11909\OneDrive - Goodyear\Documents\AI\DOR\daily-dashboard\tools"
-$sc.Description = "Goodyear MU_DOR Daily Operations Report Dashboard"
-$sc.IconLocation = "shell32.dll,220"
-$sc.Save()
 
-$exePath = Join-Path $desktop "DOR Dashboard.exe"
-Copy-Item -Path $toolsExe -Destination $exePath -Force
-
-Write-Output "Successfully created:"
-Get-ChildItem -Path $desktop -Filter "*DOR*" | Select-Object Name, FullName, LastWriteTime
+foreach ($folder in $desktopFolders) {
+    if (Test-Path $folder) {
+        $lnkPath = Join-Path $folder "DOR Dashboard.lnk"
+        $shortcut = $wsh.CreateShortcut($lnkPath)
+        $shortcut.TargetPath = $targetBat
+        $shortcut.WorkingDirectory = $workDir
+        $shortcut.IconLocation = $icon
+        $shortcut.Description = "Goodyear DOR Daily Dashboard"
+        $shortcut.Save()
+        Write-Output "Created shortcut: $lnkPath"
+    }
+}

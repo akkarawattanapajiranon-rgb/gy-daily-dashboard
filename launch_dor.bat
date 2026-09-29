@@ -6,7 +6,7 @@ cd /d "c:\Users\aa11909\OneDrive - Goodyear\Documents\AI\DOR\daily-dashboard"
 netstat -ano | findstr :3001 | findstr LISTENING >nul 2>&1
 if %errorlevel% neq 0 (
     echo Starting DOR Backend Server...
-    start /b cmd /c "node server/server.js"
+    start /min "" cmd /c "node -r dotenv/config server/server.js"
     timeout /t 2 /nobreak >nul 2>&1
 )
 
