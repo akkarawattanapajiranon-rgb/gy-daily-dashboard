@@ -1,34 +1,47 @@
 {
   "date": "2026-09-30",
-  "generatedAt": "2026-09-30T04:00:47.931Z",
+  "generatedAt": "2026-09-30T08:00:39.351Z",
   "waste": {
     "date": "2026-09-30",
-    "millingSummary": 0,
-    "frictionSummary": 19,
+    "millingSummary": 1226.5,
+    "frictionSummary": 86.8,
     "beadSummary": 0,
-    "millingTop": [],
+    "millingTop": [
+      {
+        "code": "M01",
+        "amount": 1226.5,
+        "reason": "LUMPY",
+        "isHigh": true
+      }
+    ],
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 6,
+        "amount": 23.6,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
-        "code": "F01",
-        "amount": 5,
-        "reason": "ANGLE CHANGE",
+        "code": "F39",
+        "amount": 19,
+        "reason": "O'LAY TRIM",
         "isHigh": true
       },
       {
-        "code": "F45",
-        "amount": 5,
-        "reason": "SCORCH",
+        "code": "F01",
+        "amount": 7.5,
+        "reason": "ANGLE CHANGE",
+        "isHigh": false
+      },
+      {
+        "code": "F41",
+        "amount": 7,
+        "reason": "POOR EDGE TRIM",
         "isHigh": false
       },
       {
         "code": "F10",
-        "amount": 3,
+        "amount": 6,
         "reason": "CALENDER STOP",
         "isHigh": false
       }
@@ -40,25 +53,25 @@
   "cms": {
     "date": "2026-09-30",
     "mixing1": {
-      "batch": 124,
-      "ar": 89,
-      "pr": 86.2,
-      "qr": 85.8,
-      "oee2": 65.8
+      "batch": 259,
+      "ar": 90.4,
+      "pr": 89.4,
+      "qr": 92.7,
+      "oee2": 75
     },
     "mixing2": {
-      "batch": 76,
-      "ar": 93.6,
-      "pr": 89.2,
+      "batch": 186,
+      "ar": 92.2,
+      "pr": 87.9,
       "qr": 100,
-      "oee2": 83.4
+      "oee2": 81
     },
-    "totalAr": 90.8,
-    "totalPr": 87.4,
-    "totalQr": 91,
-    "totalOee2": 72.2
+    "totalAr": 91.2,
+    "totalPr": 88.8,
+    "totalQr": 95.7,
+    "totalOee2": 77.5
   },
-  "target3Roll": 23,
+  "target3Roll": 9,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -118,22 +131,22 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 26,
-      "totalWbr": 21,
+      "totalProduce": 30,
+      "totalWbr": 25,
       "totalSapphire": 5,
-      "totalAngleChanges": 8,
-      "totalNormal": 21,
+      "totalAngleChanges": 12,
+      "totalNormal": 25,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 21,
+          "wbr": 25,
           "sapphire": 5,
-          "angleChanges": 8,
-          "normal": 21,
+          "angleChanges": 12,
+          "normal": 25,
           "sticky": 0,
-          "total": 26
+          "total": 30
         },
         "shift2": {
           "wbr": 0,
@@ -160,50 +173,110 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 23,
-    "totalRelease": 0,
-    "totalHold": 0,
-    "totalPending": 23,
-    "totalScheduled": 23,
+    "totalRolls": 9,
+    "totalRelease": 9,
+    "totalHold": 1,
+    "totalPending": 29,
+    "totalScheduled": 39,
     "codeBreakdown": [
       {
         "code": "RP08",
-        "count": 10,
-        "percentage": 43.48
-      },
-      {
-        "code": "RU53",
-        "count": 8,
-        "percentage": 34.78
+        "count": 5,
+        "percentage": 55.56
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 17.39
-      },
+        "percentage": 44.44
+      }
+    ],
+    "holdBreakdown": [
       {
         "code": "EESV",
         "count": 1,
-        "percentage": 4.35
+        "percentage": 100
       }
     ],
-    "holdBreakdown": [],
     "hasData": true
   },
   "roll42": {
     "date": "2026-09-30",
     "day": 30,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 0,
-    "totalRolls": 0,
-    "totalMeters": 0,
+    "totalQty": 17,
+    "totalRolls": 17,
+    "totalMeters": 4020,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
         "name": "กะ 1 (Shift 1)",
-        "qty": 0,
-        "meters": 0,
-        "items": []
+        "qty": 17,
+        "meters": 4020,
+        "items": [
+          {
+            "sapCode": "PL08162",
+            "code": "WA8X",
+            "qty": 3,
+            "meters": 750,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03552",
+            "code": "W1CX",
+            "qty": 3,
+            "meters": 750,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "PL07247",
+            "code": "WGMS",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03525",
+            "code": "WLAN",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03642",
+            "code": "W1WF",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03543",
+            "code": "WAIK",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "PL07185",
+            "code": "WTWL",
+            "qty": 1,
+            "meters": 20,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "LD03572",
+            "code": "W13F",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03524",
+            "code": "WI76",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          }
+        ]
       },
       "shift2": {
         "shiftNum": 2,
@@ -220,8 +293,117 @@
         "items": []
       }
     },
-    "topCodes": [],
-    "hasData": false
+    "topCodes": [
+      {
+        "code": "WA8X",
+        "sapCode": "PL08162",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 3,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "W1CX",
+        "sapCode": "LD03552",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 3,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WGMS",
+        "sapCode": "PL07247",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WLAN",
+        "sapCode": "LD03525",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "W1WF",
+        "sapCode": "LD03642",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WAIK",
+        "sapCode": "LD03543",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WTWL",
+        "sapCode": "PL07185",
+        "qty": 1,
+        "meters": 20,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "W13F",
+        "sapCode": "LD03572",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
+      },
+      {
+        "code": "WI76",
+        "sapCode": "LD03524",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 0
+        }
+      }
+    ],
+    "hasData": true
   },
   "quad": {
     "date": "2026-09-30",
@@ -238,22 +420,32 @@
     "output": {
       "hasData": true,
       "day": 30,
-      "grandTotal": 48,
+      "grandTotal": 550,
       "codeBreakdown": [
+        {
+          "code": "W1WL",
+          "count": 492,
+          "percentage": 89.45
+        },
         {
           "code": "W1CX",
           "count": 20,
-          "percentage": 41.67
+          "percentage": 3.64
         },
         {
           "code": "WAIK",
           "count": 14,
-          "percentage": 29.17
+          "percentage": 2.55
         },
         {
           "code": "WA8X",
           "count": 14,
-          "percentage": 29.17
+          "percentage": 2.55
+        },
+        {
+          "code": "W13L",
+          "count": 10,
+          "percentage": 1.82
         }
       ],
       "shifts": {
@@ -329,9 +521,29 @@
               "qtyProduced": 10,
               "qtySapphire": 0,
               "totalQty": 10
+            },
+            {
+              "partId": "TL00443",
+              "code1": "W13L",
+              "code2": "",
+              "code": "W13L",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TH00233",
+              "code1": "W1WL",
+              "code2": "",
+              "code": "W1WL",
+              "qtyTarget": 6,
+              "qtyProduced": 492,
+              "qtySapphire": 0,
+              "totalQty": 492
             }
           ],
-          "totalQty": 48
+          "totalQty": 550
         }
       }
     }
@@ -351,22 +563,37 @@
     "output": {
       "hasData": true,
       "day": 30,
-      "grandTotal": 230,
+      "grandTotal": 714,
       "codeBreakdown": [
+        {
+          "code": "B427",
+          "count": 290,
+          "percentage": 40.62
+        },
         {
           "code": "B346",
           "count": 220,
-          "percentage": 95.65
+          "percentage": 30.81
+        },
+        {
+          "code": "6005",
+          "count": 114,
+          "percentage": 15.97
+        },
+        {
+          "code": "B429",
+          "count": 80,
+          "percentage": 11.2
         },
         {
           "code": "W13F",
           "count": 6,
-          "percentage": 2.61
+          "percentage": 0.84
         },
         {
           "code": "WLGW",
           "count": 4,
-          "percentage": 1.74
+          "percentage": 0.56
         }
       ],
       "shifts": {
@@ -393,9 +620,37 @@
               "qtyTarget": 200,
               "qtyProduced": 220,
               "totalQty": 220
+            },
+            {
+              "partId": "SC00526",
+              "code": "B427",
+              "qtyTarget": 200,
+              "qtyProduced": 200,
+              "totalQty": 200
+            },
+            {
+              "partId": "TR10974",
+              "code": "6005",
+              "qtyTarget": 100,
+              "qtyProduced": 114,
+              "totalQty": 114
+            },
+            {
+              "partId": "TA01292",
+              "code": "B429",
+              "qtyTarget": 80,
+              "qtyProduced": 80,
+              "totalQty": 80
+            },
+            {
+              "partId": "TA00633",
+              "code": "B427",
+              "qtyTarget": 80,
+              "qtyProduced": 90,
+              "totalQty": 90
             }
           ],
-          "totalQty": 230
+          "totalQty": 714
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -414,17 +669,17 @@
     "date": "2026-09-30",
     "sheet": "SEPTEMBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "30/9",
-      "sum": 0,
+      "sum": 68426,
       "target": 35056,
       "minTarget": 20000,
       "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "newGenerate": 14905,
+      "slowMoving": 45388,
+      "disposition": 8133,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -883,17 +1138,88 @@
         "dateLabel": "30/9",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 68426,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 14905,
+        "newGenerateBTA": 12035,
+        "newGenerateWBR": 2870,
+        "slowMoving": 45388,
+        "disposition": 8133,
+        "hasData": true
       }
     ],
-    "top10": [],
+    "top10": [
+      {
+        "rank": 1,
+        "code": "N1692",
+        "qty": 6320,
+        "qtyMt": 6.32,
+        "percentage": 10.8
+      },
+      {
+        "rank": 2,
+        "code": "N1128",
+        "qty": 4888,
+        "qtyMt": 4.89,
+        "percentage": 8.3
+      },
+      {
+        "rank": 3,
+        "code": "F7894",
+        "qty": 3990,
+        "qtyMt": 3.99,
+        "percentage": 6.8
+      },
+      {
+        "rank": 4,
+        "code": "N1717",
+        "qty": 3830,
+        "qtyMt": 3.83,
+        "percentage": 6.5
+      },
+      {
+        "rank": 5,
+        "code": "T1400",
+        "qty": 3620,
+        "qtyMt": 3.62,
+        "percentage": 6.2
+      },
+      {
+        "rank": 6,
+        "code": "K27T4",
+        "qty": 3355,
+        "qtyMt": 3.35,
+        "percentage": 5.7
+      },
+      {
+        "rank": 7,
+        "code": "N1508",
+        "qty": 2670,
+        "qtyMt": 2.67,
+        "percentage": 4.5
+      },
+      {
+        "rank": 8,
+        "code": "N1778",
+        "qty": 2650,
+        "qtyMt": 2.65,
+        "percentage": 4.5
+      },
+      {
+        "rank": 9,
+        "code": "K33M1",
+        "qty": 2560,
+        "qtyMt": 2.56,
+        "percentage": 4.4
+      },
+      {
+        "rank": 10,
+        "code": "N11F3",
+        "qty": 2510,
+        "qtyMt": 2.51,
+        "percentage": 4.3
+      }
+    ],
     "top10File": "Work awayTop 5 อันดับ September.xlsx"
   },
   "weeklyOee": {
@@ -926,7 +1252,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.37,
+        "avg": 75.96,
         "target": 76.6,
         "count": 9,
         "isMet": false
@@ -1063,7 +1389,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.37,
+          "avg": 75.96,
           "target": 76.6,
           "count": 9,
           "isMet": false
