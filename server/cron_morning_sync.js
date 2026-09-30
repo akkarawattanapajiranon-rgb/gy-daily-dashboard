@@ -1,4 +1,4 @@
-const { generateSnapshot } = require('./snapshot_generator');
+const { getSnapshot, generateSnapshot } = require('./snapshot_generator');
 const { getExtruderTimeline } = require('./extruder/dayStore');
 const { parseLspData } = require('./lsp_parser');
 const { exec } = require('child_process');

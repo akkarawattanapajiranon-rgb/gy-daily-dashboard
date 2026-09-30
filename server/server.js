@@ -1,6 +1,13 @@
 process.env.UV_THREADPOOL_SIZE = '64';
 require('dotenv').config();
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; // Ignore self-signed certs globally
+
+process.on('uncaughtException', (err) => {
+  console.error('[Server Uncaught Exception]', err.message);
+});
+process.on('unhandledRejection', (reason) => {
+  console.warn('[Server Unhandled Rejection]', reason);
+});
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -126,7 +133,11 @@ function triggerBackgroundCloudSync() {
   console.log('[Server Schedule] 🚀 Spawning isolated background worker for scheduled sync...');
   try {
     syncWorkerProcess = fork(scriptPath, [], {
-      stdio: 'inherit'
+      stdio: 'ignore'
+    });
+    syncWorkerProcess.on('error', (workerErr) => {
+      console.warn('[Server Schedule] Sync worker error notice:', workerErr.message);
+      syncWorkerProcess = null;
     });
     syncWorkerProcess.on('exit', (code) => {
       console.log(`[Server Schedule] Background cloud sync worker completed (code ${code})`);
@@ -154,363 +165,176 @@ setInterval(() => {
   }
 }, 60 * 1000);
 
-// Breakdown parser (reads local Excel on T: drive)
-const { parseBreakdown } = require('./breakdown_parser');
+function getBangkokDateStr() {
+  const d = new Date(Date.now() + 7 * 3600 * 1000);
+  return d.toISOString().split('T')[0];
+}
 
-// Breakdown API endpoint
-app.get('/api/breakdown', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `breakdown:${date}`;
+let bgSnapshotTimer = null;
+let isBgSnapshotRunning = false;
+function triggerDebouncedBackgroundSnapshot(dateStr) {
+  if (isBgSnapshotRunning) return;
+  if (bgSnapshotTimer) clearTimeout(bgSnapshotTimer);
+  bgSnapshotTimer = setTimeout(() => {
+    isBgSnapshotRunning = true;
+    console.log(`[Background Sync] Refreshing snapshot for ${dateStr} in background...`);
+    generateSnapshot(dateStr).finally(() => {
+      isBgSnapshotRunning = false;
+      preloadSnapshots();
+    });
+  }, 1500);
+}
+
+function handleDataEndpoint(req, res, metricKey, parseFn) {
+  const date = req.query.date || getBangkokDateStr();
+  const cacheKey = `${metricKey}:${date}`;
   const forceRefresh = !!req.query._t;
+
+  // 1. Memory cache hit
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.breakdown) {
-      setCached(cacheKey, snap.breakdown);
-      return res.json(snap.breakdown);
+  const todayStr = getBangkokDateStr();
+  const isPastDate = date < todayStr;
+  const snap = getSnapshot(date);
+
+  // 2. Snapshot fast-path (instant zero-blocking response)
+  if (snap && snap[metricKey]) {
+    if (forceRefresh && !isPastDate) {
+      triggerDebouncedBackgroundSnapshot(date);
     }
+    setCached(cacheKey, snap[metricKey]);
+    return res.json(snap[metricKey]);
   }
 
-  console.log(`Fetching Breakdown data for date: ${date}`);
-  const data = parseBreakdown(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.breakdown) return res.json(snap.breakdown);
-    return res.status(404).json({ error: data.error });
+  // 3. Fallback to parser (only if snapshot missing)
+  console.log(`Fetching ${metricKey} data for date: ${date}`);
+  try {
+    const data = parseFn(date);
+    if (data && !data.error) {
+      setCached(cacheKey, data);
+      return res.json(data);
+    }
+    if (snap && snap[metricKey]) return res.json(snap[metricKey]);
+    return res.status(404).json({ error: data?.error || 'Data not found' });
+  } catch (err) {
+    if (snap && snap[metricKey]) return res.json(snap[metricKey]);
+    return res.status(500).json({ error: err.message });
   }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+}
+
+// Breakdown parser (reads local Excel on T: drive)
+const { parseBreakdown } = require('./breakdown_parser');
+app.get('/api/breakdown', (req, res) => handleDataEndpoint(req, res, 'breakdown', parseBreakdown));
 
 // Aero Component Delay parser (reads local Excel on N: drive)
 const { parseAeroDelay } = require('./aero_delay_parser');
-
-// Aero Component Delay API endpoint
-app.get('/api/aero-delay', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `aeroDelay:${date}`;
-  const forceRefresh = !!req.query._t;
-  const cached = getCached(cacheKey, forceRefresh);
-  if (cached) return res.json(cached);
-
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.aeroDelay) {
-      setCached(cacheKey, snap.aeroDelay);
-      return res.json(snap.aeroDelay);
-    }
-  }
-
-  console.log(`Fetching Aero Delay data for date: ${date}`);
-  const data = parseAeroDelay(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.aeroDelay) return res.json(snap.aeroDelay);
-    return res.status(404).json({ error: data.error });
-  }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+app.get('/api/aero-delay', (req, res) => handleDataEndpoint(req, res, 'aeroDelay', parseAeroDelay));
 
 // WBR Component Delay parser (reads local Excel on N: drive)
 const { parseWbrDelay } = require('./wbr_delay_parser');
-
-// WBR Component Delay API endpoint
-app.get('/api/wbr-delay', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `wbrDelay:${date}`;
-  const forceRefresh = !!req.query._t;
-  const cached = getCached(cacheKey, forceRefresh);
-  if (cached) return res.json(cached);
-
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.wbrDelay) {
-      setCached(cacheKey, snap.wbrDelay);
-      return res.json(snap.wbrDelay);
-    }
-  }
-
-  console.log(`Fetching WBR Delay data for date: ${date}`);
-  const data = parseWbrDelay(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.wbrDelay) return res.json(snap.wbrDelay);
-    return res.status(404).json({ error: data.error });
-  }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+app.get('/api/wbr-delay', (req, res) => handleDataEndpoint(req, res, 'wbrDelay', parseWbrDelay));
 
 // Fischer parser (reads local Excel on T: drive)
 const { parseFischerData } = require('./fischer_parser');
-
-// Fischer API endpoint
-app.get('/api/fischer', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `fischer:${date}`;
-  const forceRefresh = !!req.query._t;
-  const cached = getCached(cacheKey, forceRefresh);
-  if (cached) return res.json(cached);
-
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.fischer) {
-      setCached(cacheKey, snap.fischer);
-      return res.json(snap.fischer);
-    }
-  }
-
-  console.log(`Fetching Fischer data for date: ${date}`);
-  const data = parseFischerData(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.fischer) return res.json(snap.fischer);
-    return res.status(404).json({ error: data.error });
-  }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+app.get('/api/fischer', (req, res) => handleDataEndpoint(req, res, 'fischer', parseFischerData));
 
 // 3 Roll parser (reads local Excel on T: drive)
 const { parse3RollData } = require('./roll3_parser');
-
-// 3 Roll API endpoint
-app.get('/api/3roll', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `3roll:${date}`;
-  const forceRefresh = !!req.query._t;
-  const cached = getCached(cacheKey, forceRefresh);
-  if (cached) return res.json(cached);
-
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.roll3) {
-      setCached(cacheKey, snap.roll3);
-      return res.json(snap.roll3);
-    }
-  }
-
-  console.log(`Fetching 3 Roll WINDUP data for date: ${date}`);
-  const data = parse3RollData(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.roll3) return res.json(snap.roll3);
-    return res.status(404).json({ error: data.error });
-  }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+app.get('/api/3roll', (req, res) => handleDataEndpoint(req, res, 'roll3', parse3RollData));
 
 // 4 Roll 2 parser (reads Productivity Check sheet on T: drive)
 const { parse4Roll2Data } = require('./roll42_parser');
-
-app.get('/api/4roll2', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `4roll2:${date}`;
-  const forceRefresh = !!req.query._t;
-  const cached = getCached(cacheKey, forceRefresh);
-  if (cached) return res.json(cached);
-
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.roll42) {
-      setCached(cacheKey, snap.roll42);
-      return res.json(snap.roll42);
-    }
-  }
-
-  console.log(`Fetching 4 Roll 2 Productivity data for date: ${date}`);
-  const data = parse4Roll2Data(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.roll42) return res.json(snap.roll42);
-    return res.status(404).json({ error: data.error });
-  }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+app.get('/api/4roll2', (req, res) => handleDataEndpoint(req, res, 'roll42', parse4Roll2Data));
 
 // Weekly OEE parser (reads QUAD, TUBER, FISCHER OEE for WTD AVG)
 const { parseWeeklyOee } = require('./weekly_oee_parser');
-
-// Weekly OEE API endpoint
-app.get('/api/oee-weekly', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `oee-weekly:${date}`;
-  const forceRefresh = !!req.query._t;
-  const cached = getCached(cacheKey, forceRefresh);
-  if (cached) return res.json(cached);
-
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.weeklyOee) {
-      setCached(cacheKey, snap.weeklyOee);
-      return res.json(snap.weeklyOee);
-    }
-  }
-
-  console.log(`Fetching Weekly OEE WTD data for date: ${date}`);
-  const data = parseWeeklyOee(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.weeklyOee) return res.json(snap.weeklyOee);
-    return res.status(404).json({ error: data.error });
-  }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+app.get('/api/oee-weekly', (req, res) => handleDataEndpoint(req, res, 'weeklyOee', parseWeeklyOee));
 
 // Workaway parser (reads Disposition Non-moving Excel on T: drive)
 const { parseWorkawayData } = require('./workaway_parser');
-
-// Workaway API endpoint
-app.get('/api/workaway', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `workaway:${date}`;
-  const forceRefresh = !!req.query._t;
-  const cached = getCached(cacheKey, forceRefresh);
-  if (cached) return res.json(cached);
-
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.workaway) {
-      setCached(cacheKey, snap.workaway);
-      return res.json(snap.workaway);
-    }
-  }
-
-  console.log(`Fetching Workaway Inventory data for date: ${date}`);
-  const data = parseWorkawayData(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.workaway) return res.json(snap.workaway);
-    return res.status(404).json({ error: data.error });
-  }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+app.get('/api/workaway', (req, res) => handleDataEndpoint(req, res, 'workaway', parseWorkawayData));
 
 // Quad parser
 const { parseQuadData } = require('./quad_parser');
-app.get('/api/quad', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `quad:${date}`;
-  const forceRefresh = !!req.query._t;
-  const cached = getCached(cacheKey, forceRefresh);
-  if (cached) return res.json(cached);
-
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.quad) {
-      setCached(cacheKey, snap.quad);
-      return res.json(snap.quad);
-    }
-  }
-
-  console.log(`Fetching Quad data for date: ${date}`);
-  const data = parseQuadData(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.quad) return res.json(snap.quad);
-    return res.status(404).json({ error: data.error });
-  }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+app.get('/api/quad', (req, res) => handleDataEndpoint(req, res, 'quad', parseQuadData));
 
 // Tuber parser
 const { parseTuberData } = require('./tuber_parser');
-app.get('/api/tuber', (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
-  const cacheKey = `tuber:${date}`;
-  const forceRefresh = !!req.query._t;
-  const cached = getCached(cacheKey, forceRefresh);
-  if (cached) return res.json(cached);
-
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.tuber) {
-      setCached(cacheKey, snap.tuber);
-      return res.json(snap.tuber);
-    }
-  }
-
-  console.log(`Fetching Tuber data for date: ${date}`);
-  const data = parseTuberData(date);
-  if (data.error) {
-    const snap = getSnapshot(date);
-    if (snap && snap.tuber) return res.json(snap.tuber);
-    return res.status(404).json({ error: data.error });
-  }
-  setCached(cacheKey, data);
-  res.json(data);
-});
+app.get('/api/tuber', (req, res) => handleDataEndpoint(req, res, 'tuber', parseTuberData));
 
 // Waste parser (reads gy_reports from gy-waste-report Firebase and local Excel fallback)
 const { parseWasteData, parseWasteDataAsync } = require('./waste_parser');
-
 app.get('/api/waste', async (req, res) => {
-  const date = req.query.date || new Date().toISOString().split('T')[0];
+  const date = req.query.date || getBangkokDateStr();
   const cacheKey = `waste:${date}`;
   const forceRefresh = !!req.query._t;
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
-  if (!forceRefresh) {
-    const snap = getSnapshot(date);
-    if (snap && snap.waste) {
-      setCached(cacheKey, snap.waste);
-      return res.json(snap.waste);
+  const todayStr = getBangkokDateStr();
+  const isPastDate = date < todayStr;
+  const snap = getSnapshot(date);
+
+  if (snap && snap.waste) {
+    if (forceRefresh && !isPastDate) {
+      triggerDebouncedBackgroundSnapshot(date);
     }
+    setCached(cacheKey, snap.waste);
+    return res.json(snap.waste);
   }
 
   console.log(`Fetching Waste data for date: ${date}`);
-  const data = await parseWasteDataAsync(date);
-  const result = (data && !data.error) ? data : (getSnapshot(date)?.waste || {
-    date,
-    millingSummary: 0,
-    frictionSummary: 0,
-    beadSummary: 0,
-    millingTop: [],
-    frictionTop: [],
-    beadTop: [],
-    dataDate: date,
-    hasData: false
-  });
-  setCached(cacheKey, result);
-  res.json(result);
+  try {
+    const data = await parseWasteDataAsync(date);
+    const result = (data && !data.error) ? data : (snap?.waste || {
+      date,
+      millingSummary: 0,
+      frictionSummary: 0,
+      beadSummary: 0,
+      millingTop: [],
+      frictionTop: [],
+      beadTop: [],
+      dataDate: date,
+      hasData: false
+    });
+    setCached(cacheKey, result);
+    res.json(result);
+  } catch (err) {
+    res.json(snap?.waste || { date, hasData: false });
+  }
 });
 
 // CMS live parser
 const { fetchLiveCmsData } = require('./cms_parser');
-
 app.get('/api/cms', async (req, res) => {
-  const targetDate = req.query.date || new Date().toISOString().split('T')[0];
+  const targetDate = req.query.date || getBangkokDateStr();
   const cacheKey = `cms:${targetDate}`;
   const forceRefresh = !!req.query._t;
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
-  if (!forceRefresh) {
-    const snap = getSnapshot(targetDate);
-    if (snap && snap.cms && (snap.cms.mixing1?.batch > 0 || snap.cms.totalOee2)) {
-      setCached(cacheKey, snap.cms);
-      return res.json(snap.cms);
+  const todayStr = getBangkokDateStr();
+  const isPastDate = targetDate < todayStr;
+  const snap = getSnapshot(targetDate);
+
+  if (snap && snap.cms && (snap.cms.mixing1?.batch > 0 || snap.cms.totalOee2)) {
+    if (forceRefresh && !isPastDate) {
+      triggerDebouncedBackgroundSnapshot(targetDate);
     }
+    setCached(cacheKey, snap.cms);
+    return res.json(snap.cms);
   }
 
   console.log(`Fetching CMS Data for date: ${targetDate}`);
-  const liveData = await fetchLiveCmsData(targetDate);
+  try {
+    const liveData = await fetchLiveCmsData(targetDate);
+    if (liveData && !liveData.error) {
+      setCached(cacheKey, liveData);
+      return res.json(liveData);
+    }
+  } catch (err) {}
 
-  if (liveData && !liveData.error) {
-    setCached(cacheKey, liveData);
-    return res.json(liveData);
-  }
-
-  const snap = getSnapshot(targetDate);
   if (snap && snap.cms) {
     setCached(cacheKey, snap.cms);
     return res.json(snap.cms);
