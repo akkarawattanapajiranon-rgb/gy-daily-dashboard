@@ -220,6 +220,7 @@ async function refresh(date, day) {
     const state = day.lines.get(line);
     if (!state) continue;
     if (result.error) {
+      console.warn(`[Extruder Store] ${date} ${line} query notice:`, result.error);
       if (state.rows && state.rows.length > 0) {
         state.error = null;
       } else {

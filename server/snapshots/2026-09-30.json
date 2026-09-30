@@ -1,11 +1,11 @@
 {
   "date": "2026-09-30",
-  "generatedAt": "2026-09-30T16:01:10.974Z",
+  "generatedAt": "2026-09-30T23:41:43.255Z",
   "waste": {
     "date": "2026-09-30",
-    "millingSummary": 1253.5,
-    "frictionSummary": 178.2,
-    "beadSummary": 36.5,
+    "millingSummary": 1278.5,
+    "frictionSummary": 261.7,
+    "beadSummary": 37.5,
     "millingTop": [
       {
         "code": "M01",
@@ -14,30 +14,36 @@
         "isHigh": true
       },
       {
-        "code": "M05",
-        "amount": 16,
-        "reason": "TAILING",
+        "code": "M04",
+        "amount": 27,
+        "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
       {
-        "code": "M04",
-        "amount": 11,
-        "reason": "PUSH/CLEAN IN/OUT",
+        "code": "M05",
+        "amount": 25,
+        "reason": "TAILING",
         "isHigh": false
       }
     ],
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 46.8,
+        "amount": 70.1,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
       {
         "code": "F39",
-        "amount": 34,
+        "amount": 52,
         "reason": "O'LAY TRIM",
         "isHigh": true
+      },
+      {
+        "code": "F01",
+        "amount": 21.5,
+        "reason": "ANGLE CHANGE",
+        "isHigh": false
       },
       {
         "code": "F06",
@@ -46,14 +52,8 @@
         "isHigh": false
       },
       {
-        "code": "F01",
-        "amount": 13.9,
-        "reason": "ANGLE CHANGE",
-        "isHigh": false
-      },
-      {
         "code": "F46",
-        "amount": 11.9,
+        "amount": 14.5,
         "reason": "SHORT PIECES",
         "isHigh": false
       }
@@ -61,7 +61,7 @@
     "beadTop": [
       {
         "code": "F11",
-        "amount": 15,
+        "amount": 16,
         "reason": "COAT OFF",
         "isHigh": true
       },
@@ -84,23 +84,23 @@
   "cms": {
     "date": "2026-09-30",
     "mixing1": {
-      "batch": 316,
-      "ar": 90.8,
+      "batch": 748,
+      "ar": 89.3,
       "pr": 90.3,
-      "qr": 89.5,
-      "oee2": 73.3
+      "qr": 90.7,
+      "oee2": 73.1
     },
     "mixing2": {
-      "batch": 206,
-      "ar": 83.1,
-      "pr": 87.1,
+      "batch": 623,
+      "ar": 89,
+      "pr": 89.8,
       "qr": 100,
-      "oee2": 72.4
+      "oee2": 79.9
     },
-    "totalAr": 87.3,
-    "totalPr": 88.9,
-    "totalQr": 93.6,
-    "totalOee2": 72.6
+    "totalAr": 89.2,
+    "totalPr": 90,
+    "totalQr": 94.8,
+    "totalOee2": 76.1
   },
   "target3Roll": 38,
   "breakdown": {
@@ -162,11 +162,11 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 60,
-      "totalWbr": 51,
-      "totalSapphire": 9,
-      "totalAngleChanges": 18,
-      "totalNormal": 51,
+      "totalProduce": 90,
+      "totalWbr": 76,
+      "totalSapphire": 14,
+      "totalAngleChanges": 24,
+      "totalNormal": 76,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
@@ -188,12 +188,12 @@
           "total": 30
         },
         "shift3": {
-          "wbr": 0,
-          "sapphire": 0,
-          "angleChanges": 0,
-          "normal": 0,
+          "wbr": 25,
+          "sapphire": 5,
+          "angleChanges": 6,
+          "normal": 25,
           "sticky": 0,
-          "total": 0
+          "total": 30
         }
       }
     }
@@ -274,9 +274,9 @@
     "date": "2026-09-30",
     "day": 30,
     "file": "4 Roll 2 Productivity Check sheet Sep 2026.xlsx",
-    "totalQty": 36,
-    "totalRolls": 36,
-    "totalMeters": 8150,
+    "totalQty": 54,
+    "totalRolls": 54,
+    "totalMeters": 12450,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
@@ -430,46 +430,146 @@
       "shift3": {
         "shiftNum": 3,
         "name": "กะ 3 (Shift 3)",
-        "qty": 0,
-        "meters": 0,
-        "items": []
+        "qty": 18,
+        "meters": 4300,
+        "items": [
+          {
+            "sapCode": "GF00013",
+            "code": "F4111",
+            "qty": 4,
+            "meters": 800,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "LD03552",
+            "code": "W1CX",
+            "qty": 3,
+            "meters": 750,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03642",
+            "code": "W1WF",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03572",
+            "code": "W13F",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03442",
+            "code": "WA8X",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03535",
+            "code": "WAIS",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03525",
+            "code": "WLAN",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03152",
+            "code": "WGLS",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03623",
+            "code": "QVHO",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          }
+        ]
       }
     },
     "topCodes": [
       {
         "code": "W1CX",
         "sapCode": "LD03552",
-        "qty": 6,
-        "meters": 1500,
+        "qty": 9,
+        "meters": 2250,
         "unit": "คัน",
         "shifts": {
           "1": 3,
           "2": 3,
-          "3": 0
+          "3": 3
         }
       },
       {
         "code": "WA8X",
         "sapCode": "PL08162",
-        "qty": 5,
-        "meters": 1250,
+        "qty": 7,
+        "meters": 1750,
         "unit": "คัน",
         "shifts": {
           "1": 3,
           "2": 2,
-          "3": 0
+          "3": 2
+        }
+      },
+      {
+        "code": "F4111",
+        "sapCode": "GF00013",
+        "qty": 7,
+        "meters": 1400,
+        "unit": "ม้วน",
+        "shifts": {
+          "1": 0,
+          "2": 3,
+          "3": 4
         }
       },
       {
         "code": "WLAN",
         "sapCode": "LD03525",
-        "qty": 4,
-        "meters": 1000,
+        "qty": 5,
+        "meters": 1250,
         "unit": "คัน",
         "shifts": {
           "1": 2,
           "2": 2,
-          "3": 0
+          "3": 1
+        }
+      },
+      {
+        "code": "W1WF",
+        "sapCode": "LD03642",
+        "qty": 5,
+        "meters": 1250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 1,
+          "3": 2
+        }
+      },
+      {
+        "code": "W13F",
+        "sapCode": "LD03572",
+        "qty": 5,
+        "meters": 1250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 2,
+          "3": 2
         }
       },
       {
@@ -481,42 +581,6 @@
         "shifts": {
           "1": 2,
           "2": 2,
-          "3": 0
-        }
-      },
-      {
-        "code": "W1WF",
-        "sapCode": "LD03642",
-        "qty": 3,
-        "meters": 750,
-        "unit": "คัน",
-        "shifts": {
-          "1": 2,
-          "2": 1,
-          "3": 0
-        }
-      },
-      {
-        "code": "W13F",
-        "sapCode": "LD03572",
-        "qty": 3,
-        "meters": 750,
-        "unit": "คัน",
-        "shifts": {
-          "1": 1,
-          "2": 2,
-          "3": 0
-        }
-      },
-      {
-        "code": "F4111",
-        "sapCode": "GF00013",
-        "qty": 3,
-        "meters": 600,
-        "unit": "ม้วน",
-        "shifts": {
-          "1": 0,
-          "2": 3,
           "3": 0
         }
       },
@@ -542,6 +606,18 @@
           "1": 0,
           "2": 2,
           "3": 0
+        }
+      },
+      {
+        "code": "WAIS",
+        "sapCode": "LD03535",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 0,
+          "3": 2
         }
       },
       {
@@ -591,6 +667,30 @@
           "2": 1,
           "3": 0
         }
+      },
+      {
+        "code": "WGLS",
+        "sapCode": "LD03152",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 0,
+          "3": 1
+        }
+      },
+      {
+        "code": "QVHO",
+        "sapCode": "LD03623",
+        "qty": 1,
+        "meters": 250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 0,
+          "3": 1
+        }
       }
     ],
     "hasData": true
@@ -610,57 +710,87 @@
     "output": {
       "hasData": true,
       "day": 30,
-      "grandTotal": 1200,
+      "grandTotal": 1856,
       "codeBreakdown": [
         {
           "code": "W1WL",
           "count": 492,
-          "percentage": 41
+          "percentage": 26.51
+        },
+        {
+          "code": "6005",
+          "count": 400,
+          "percentage": 21.55
         },
         {
           "code": "6010",
-          "count": 200,
-          "percentage": 16.67
+          "count": 400,
+          "percentage": 21.55
         },
         {
           "code": "B314",
           "count": 200,
-          "percentage": 16.67
+          "percentage": 10.78
         },
         {
           "code": "B309",
           "count": 198,
-          "percentage": 16.5
+          "percentage": 10.67
         },
         {
           "code": "W1CX",
-          "count": 32,
-          "percentage": 2.67
+          "count": 40,
+          "percentage": 2.16
         },
         {
           "code": "WA8X",
           "count": 26,
-          "percentage": 2.17
+          "percentage": 1.4
         },
         {
           "code": "WAIK",
           "count": 24,
-          "percentage": 2
+          "percentage": 1.29
+        },
+        {
+          "code": "WLAN",
+          "count": 14,
+          "percentage": 0.75
         },
         {
           "code": "W13L",
           "count": 10,
-          "percentage": 0.83
+          "percentage": 0.54
         },
         {
           "code": "WAIS",
           "count": 10,
-          "percentage": 0.83
+          "percentage": 0.54
+        },
+        {
+          "code": "W1WF",
+          "count": 10,
+          "percentage": 0.54
+        },
+        {
+          "code": "WYAF",
+          "count": 10,
+          "percentage": 0.54
         },
         {
           "code": "WGMS",
           "count": 8,
-          "percentage": 0.67
+          "percentage": 0.43
+        },
+        {
+          "code": "W13F",
+          "count": 8,
+          "percentage": 0.43
+        },
+        {
+          "code": "WI76",
+          "count": 6,
+          "percentage": 0.32
         }
       ],
       "shifts": {
@@ -858,8 +988,99 @@
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "TL00203",
+              "code1": "W1CX",
+              "code2": "",
+              "code": "W1CX",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00232",
+              "code1": "W1WF",
+              "code2": "",
+              "code": "W1WF",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00182",
+              "code1": "WYAF",
+              "code2": "",
+              "code": "WYAF",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00442",
+              "code1": "W13F",
+              "code2": "",
+              "code": "W13F",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00192",
+              "code1": "WLAN",
+              "code2": "",
+              "code": "WLAN",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00192",
+              "code1": "WLAN",
+              "code2": "",
+              "code": "WLAN",
+              "qtyTarget": 4,
+              "qtyProduced": 4,
+              "qtySapphire": 0,
+              "totalQty": 4
+            },
+            {
+              "partId": "TL00055",
+              "code1": "WI76",
+              "code2": "",
+              "code": "WI76",
+              "qtyTarget": 6,
+              "qtyProduced": 6,
+              "qtySapphire": 0,
+              "totalQty": 6
+            },
+            {
+              "partId": "",
+              "code1": "",
+              "code2": "6010",
+              "code": "6010",
+              "qtyTarget": 2,
+              "qtyProduced": 200,
+              "qtySapphire": 0,
+              "totalQty": 200
+            },
+            {
+              "partId": "",
+              "code1": "",
+              "code2": "6005",
+              "code": "6005",
+              "qtyTarget": 4,
+              "qtyProduced": 400,
+              "qtySapphire": 0,
+              "totalQty": 400
+            }
+          ],
+          "totalQty": 656
         }
       }
     }
@@ -879,85 +1100,120 @@
     "output": {
       "hasData": true,
       "day": 30,
-      "grandTotal": 1270,
+      "grandTotal": 1321,
       "codeBreakdown": [
         {
           "code": "B427",
-          "count": 290,
-          "percentage": 22.83
+          "count": 300,
+          "percentage": 22.71
         },
         {
           "code": "A145",
           "count": 240,
-          "percentage": 18.9
+          "percentage": 18.17
         },
         {
           "code": "B346",
           "count": 220,
-          "percentage": 17.32
+          "percentage": 16.65
         },
         {
           "code": "A602",
           "count": 162,
-          "percentage": 12.76
+          "percentage": 12.26
         },
         {
           "code": "6005",
           "count": 114,
-          "percentage": 8.98
+          "percentage": 8.63
         },
         {
           "code": "B362",
           "count": 114,
-          "percentage": 8.98
+          "percentage": 8.63
         },
         {
           "code": "B429",
           "count": 80,
-          "percentage": 6.3
+          "percentage": 6.06
+        },
+        {
+          "code": "W1CX",
+          "count": 14,
+          "percentage": 1.06
         },
         {
           "code": "W13F",
           "count": 12,
-          "percentage": 0.94
+          "percentage": 0.91
         },
         {
           "code": "WA8X",
           "count": 10,
-          "percentage": 0.79
+          "percentage": 0.76
+        },
+        {
+          "code": "WAIK",
+          "count": 10,
+          "percentage": 0.76
+        },
+        {
+          "code": "W1WF",
+          "count": 8,
+          "percentage": 0.61
         },
         {
           "code": "WLAN",
           "count": 7,
-          "percentage": 0.55
+          "percentage": 0.53
         },
         {
           "code": "WLGW",
           "count": 4,
-          "percentage": 0.31
+          "percentage": 0.3
         },
         {
           "code": "QVHO",
           "count": 4,
-          "percentage": 0.31
+          "percentage": 0.3
         },
         {
           "code": "WGMS",
           "count": 4,
-          "percentage": 0.31
+          "percentage": 0.3
         },
         {
           "code": "Q2AH",
           "count": 4,
-          "percentage": 0.31
+          "percentage": 0.3
         },
         {
           "code": "WI76",
           "count": 4,
-          "percentage": 0.31
+          "percentage": 0.3
+        },
+        {
+          "code": "WYAF",
+          "count": 4,
+          "percentage": 0.3
+        },
+        {
+          "code": "B198",
+          "count": 2,
+          "percentage": 0.15
+        },
+        {
+          "code": "B404",
+          "count": 2,
+          "percentage": 0.15
         },
         {
           "code": "Q9HM",
+          "count": 1,
+          "percentage": 0.08
+        },
+        {
+          "code": "Q2UG",
           "count": 1,
           "percentage": 0.08
         }
@@ -1103,8 +1359,65 @@
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "SW08753",
+              "code": "WAIK",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "totalQty": 10
+            },
+            {
+              "partId": "SW08853",
+              "code": "W1WF",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "totalQty": 8
+            },
+            {
+              "partId": "SW08798",
+              "code": "Q2UG",
+              "qtyTarget": 1,
+              "qtyProduced": 1,
+              "totalQty": 1
+            },
+            {
+              "partId": "SW08799",
+              "code": "W1CX",
+              "qtyTarget": 14,
+              "qtyProduced": 14,
+              "totalQty": 14
+            },
+            {
+              "partId": "SW08842",
+              "code": "WYAF",
+              "qtyTarget": 4,
+              "qtyProduced": 4,
+              "totalQty": 4
+            },
+            {
+              "partId": "XP02316",
+              "code": "B427",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "totalQty": 10
+            },
+            {
+              "partId": "XP02319",
+              "code": "B198",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "totalQty": 2
+            },
+            {
+              "partId": "XP02296",
+              "code": "B404",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "totalQty": 2
+            }
+          ],
+          "totalQty": 51
         }
       }
     }
@@ -1696,7 +2009,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.41,
+        "avg": 75.8,
         "target": 76.6,
         "count": 9,
         "isMet": false
@@ -1833,7 +2146,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.41,
+          "avg": 75.8,
           "target": 76.6,
           "count": 9,
           "isMet": false

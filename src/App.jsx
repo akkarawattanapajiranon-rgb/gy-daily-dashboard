@@ -544,7 +544,7 @@ function App() {
             <TabErrorBoundary>
               <ExtruderTimeline 
                 endpoint="/api/extruder-timeline" 
-                pollMs={600000} 
+                pollMs={30000} 
                 date={selectedDate}
                 onDateChange={setSelectedDate}
               />

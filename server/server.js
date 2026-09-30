@@ -401,12 +401,14 @@ const { getExtruderTimeline } = require('./extruder/dayStore');
 const { bangkokProductionDate, ExtruderTimelineInputError, nextDate } = require('./extruder/buildTimeline');
 
 app.get('/api/extruder-timeline', async (req, res) => {
-  const date = req.query.date || bangkokProductionDate();
+  const currentProdDate = bangkokProductionDate();
+  const date = req.query.date || currentProdDate;
   const forceRefresh = req.query.refresh === 'true';
-  console.log(`Fetching Extruder Timeline for date: ${date}${forceRefresh ? ' (forceRefresh)' : ''}`);
+  const isPastDate = date < currentProdDate;
+  console.log(`Fetching Extruder Timeline for date: ${date}${forceRefresh ? ' (forceRefresh)' : ''} [isPast: ${isPastDate}, curProd: ${currentProdDate}]`);
 
-  // Instant fast-path: for any date with pre-built client JSON
-  if (!forceRefresh) {
+  // Instant fast-path: ONLY for PAST dates with pre-built client JSON
+  if (!forceRefresh && isPastDate) {
     const candidateFiles = [
       path.join(__dirname, '..', 'public', 'data', 'extruder', `${date}.json`),
       path.join(__dirname, '..', 'dist', 'data', 'extruder', `${date}.json`)
