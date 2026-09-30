@@ -32,11 +32,14 @@ async function runMorningSync() {
   try {
     for (const dateStr of datesToSync) {
       const isToday = (dateStr === datesToSync[0]);
+      const isYesterday = (dateStr === datesToSync[1]);
       const existingSnap = getSnapshot(dateStr);
 
       // Performance optimization (especially for Mondays):
-      // If a past date (e.g. Saturday or Sunday) already has a complete snapshot, skip re-parsing heavy network Excel files!
-      if (!isToday && existingSnap && existingSnap.waste && (existingSnap.quad || existingSnap.breakdown)) {
+      // Only skip older dates (2+ days ago) IF they truly have complete data!
+      // Yesterday MUST ALWAYS be refreshed in the morning because final shifts/BD were entered this morning.
+      const isComplete = existingSnap && existingSnap.waste?.hasData && existingSnap.quad?.oee?.hasData && existingSnap.breakdown?.Banbury?.hasData;
+      if (!isToday && !isYesterday && isComplete) {
         console.log(`[Morning Sync Cron] ⏩ Past date ${dateStr} already has complete snapshot. Skipping heavy Excel re-parse.`);
         continue;
       }

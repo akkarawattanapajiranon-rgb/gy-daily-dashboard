@@ -165,8 +165,11 @@ setInterval(() => {
   }
 }, 60 * 1000);
 
-function getBangkokDateStr() {
+function getBangkokDateStr(offsetDays = 0) {
   const d = new Date(Date.now() + 7 * 3600 * 1000);
+  if (offsetDays !== 0) {
+    d.setDate(d.getDate() + offsetDays);
+  }
   return d.toISOString().split('T')[0];
 }
 
@@ -185,30 +188,52 @@ function triggerDebouncedBackgroundSnapshot(dateStr) {
   }, 1500);
 }
 
+// Endpoint to immediately generate a fresh snapshot for a given date on user demand
+app.get('/api/refresh-snapshot', async (req, res) => {
+  const date = req.query.date || getBangkokDateStr();
+  console.log(`[API] Manual refresh snapshot requested for date: ${date}`);
+  try {
+    const snap = await generateSnapshot(date);
+    preloadSnapshots();
+    res.json({ success: true, date, snapshot: snap });
+  } catch (err) {
+    console.error(`[API] Manual refresh error for ${date}:`, err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 function handleDataEndpoint(req, res, metricKey, parseFn) {
   const date = req.query.date || getBangkokDateStr();
   const cacheKey = `${metricKey}:${date}`;
   const forceRefresh = !!req.query._t;
 
-  // 1. Memory cache hit
+  // 1. Memory cache hit (skip if forceRefresh)
   const cached = getCached(cacheKey, forceRefresh);
   if (cached) return res.json(cached);
 
   const todayStr = getBangkokDateStr();
-  const isPastDate = date < todayStr;
+  const yesterdayStr = getBangkokDateStr(-1);
+  const isRecentDate = (date === todayStr || date === yesterdayStr);
   const snap = getSnapshot(date);
 
-  // 2. Snapshot fast-path (instant zero-blocking response)
-  if (snap && snap[metricKey]) {
-    if (forceRefresh && !isPastDate) {
-      triggerDebouncedBackgroundSnapshot(date);
-    }
-    setCached(cacheKey, snap[metricKey]);
-    return res.json(snap[metricKey]);
+  // If forceRefresh on a recent date, schedule background snapshot revalidation
+  if (forceRefresh && isRecentDate) {
+    triggerDebouncedBackgroundSnapshot(date);
   }
 
-  // 3. Fallback to parser (only if snapshot missing)
-  console.log(`Fetching ${metricKey} data for date: ${date}`);
+  // 2. Snapshot fast-path
+  if (snap && snap[metricKey]) {
+    const val = snap[metricKey];
+    // Check if snapshot has real data (hasData !== false, or for breakdown actual_bd_pct !== null)
+    const hasData = val && val.hasData !== false && (metricKey !== 'breakdown' || (val.Banbury && val.Banbury.hasData !== false));
+    if (hasData || !isRecentDate) {
+      setCached(cacheKey, val);
+      return res.json(val);
+    }
+  }
+
+  // 3. Fallback to parser (if snapshot is missing or hasData is false on recent dates)
+  console.log(`Fetching fresh ${metricKey} data for date: ${date}`);
   try {
     const data = parseFn(date);
     if (data && !data.error) {

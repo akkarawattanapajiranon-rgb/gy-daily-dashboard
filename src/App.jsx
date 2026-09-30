@@ -333,9 +333,16 @@ function App() {
   };
 
   const handleLiveRefresh = async () => {
-    // Force re-fetch ข้อมูลสดจาก API ทั้งหน้า 1 (DOR) และ หน้า 5 (Data Exporter)
+    // Force re-fetch ข้อมูลสดจากไฟล์ Excel และ API ทั้งหน้า 1 (DOR) และ หน้า 5 (Data Exporter)
+    setIsLoading(true);
     setRefreshTrigger(prev => prev + 1);
+    try {
+      // 1. กระตุ้นให้ Express เซิร์ฟเวอร์อ่านไฟล์ Excel บนไดรฟ์ T: ล่าสุดแล้วสร้าง snapshot ใหม่
+      await fetchFast(`/api/refresh-snapshot?date=${selectedDate}`, 15000).catch(() => {});
+    } catch (e) {}
+    // 2. โหลดข้อมูลสดเข้าหน้า 1
     await loadData(selectedDate, true);
+    // 3. กระตุ้นให้ export metrics คำนวณใหม่
     try {
       fetchFast(`/api/export-metrics?startDate=${selectedDate}&endDate=${selectedDate}&refresh=true`, 15000).catch(() => {});
     } catch (e) {}

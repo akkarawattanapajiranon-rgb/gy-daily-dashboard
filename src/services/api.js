@@ -23,7 +23,15 @@ export async function getFirebaseSnapshot(dateStr, forceRefresh = false) {
   }
 
   snapshotPromiseCache[dateStr] = (async () => {
-    const local = getLocalSnapshot(dateStr) || {};
+    let serverSnap = null;
+    try {
+      const snapRes = await fetchFast(`/data/snapshots/${dateStr}.json${forceRefresh ? '?_t=' + Date.now() : ''}`, 2000);
+      if (snapRes.ok) {
+        serverSnap = await snapRes.json();
+      }
+    } catch (e) {}
+
+    const local = serverSnap || getLocalSnapshot(dateStr) || {};
     try {
       const docRef = doc(db, 'daily_snapshots', dateStr);
       const snap = await Promise.race([

@@ -198,10 +198,10 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
 
     setLoading(true);
     try {
-      // 2. If local Express server is running, try /api/export-metrics (with short 2.5s timeout)
+      // 2. If local Express server is running, try /api/export-metrics (with robust 8s/15s timeout)
       try {
         const url = `/api/export-metrics?startDate=${start}&endDate=${end}${force ? '&refresh=true' : ''}`;
-        const res = await fetchFast(url, force ? 5000 : 2500);
+        const res = await fetchFast(url, force ? 15000 : 8000);
         const contentType = res.headers.get('content-type');
         if (res.ok && contentType && contentType.includes('application/json')) {
           const json = await res.json();
@@ -264,6 +264,10 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
         await onRefreshPage1();
       } catch (e) {}
     }
+    try {
+      if (endDate) await fetchFast(`/api/refresh-snapshot?date=${endDate}`, 15000);
+      if (startDate && startDate !== endDate) await fetchFast(`/api/refresh-snapshot?date=${startDate}`, 15000);
+    } catch (e) {}
     await fetchExportData(startDate, endDate, true);
   };
 
