@@ -449,17 +449,19 @@ export default function ExtruderTimeline({
     if (!response || !Array.isArray(response.lines)) return [];
     return response.lines.map((line) => {
       const isDuplex = line.line.toUpperCase().includes("DUPLEX") || line.line.toUpperCase().includes("TUBER");
+      const rawSamples = Array.isArray(line.samples) ? line.samples : [];
+      const rawRuns = Array.isArray(line.runs) ? line.runs : [];
       const lineSamples = isDuplex
-        ? line.samples.map(s => {
+        ? rawSamples.map(s => {
             const hp = s[4];
             if (hp !== undefined && hp !== null && hp < 100) {
               return [s[0], null, s[2], s[3], s[4]] as ExtruderSample;
             }
             return s;
           })
-        : line.samples;
+        : rawSamples;
       const samples = filterSamplesToWindow(lineSamples, bounds.startMs, bounds.endMs);
-      const runs = clampRunsToWindow(line.runs, bounds.startMs, bounds.endMs);
+      const runs = clampRunsToWindow(rawRuns, bounds.startMs, bounds.endMs);
       // Segments are built from the FULL sample list, not the filtered one: the
       // first in-window sample must measure its gap against the real previous
       // reading, which may sit just before the window.

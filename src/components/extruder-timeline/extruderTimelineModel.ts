@@ -242,7 +242,8 @@ export function filterSamplesToWindow(
   startMs: number,
   endMs: number,
 ): ExtruderSample[] {
-  return samples.filter((s) => Number.isFinite(s[0]) && s[0] >= startMs && s[0] < endMs);
+  if (!Array.isArray(samples)) return [];
+  return samples.filter((s) => s && Number.isFinite(s[0]) && s[0] >= startMs && s[0] < endMs);
 }
 
 /** Runs trimmed to the window; runs entirely outside it are dropped. */
@@ -251,6 +252,7 @@ export function clampRunsToWindow(
   startMs: number,
   endMs: number,
 ): ExtruderRun[] {
+  if (!Array.isArray(runs)) return [];
   const out: ExtruderRun[] = [];
   for (const run of runs) {
     // `endMs <= startMs` (not `<`): a run that ends exactly at the window edge

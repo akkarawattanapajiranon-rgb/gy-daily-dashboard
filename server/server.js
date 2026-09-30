@@ -14,8 +14,7 @@ app.get('/data/extruder/:file', (req, res) => {
   const file = req.params.file;
   const paths = [
     path.join(__dirname, '..', 'public', 'data', 'extruder', file),
-    path.join(__dirname, '..', 'dist', 'data', 'extruder', file),
-    path.join(__dirname, 'extruder_store', file)
+    path.join(__dirname, '..', 'dist', 'data', 'extruder', file)
   ];
   for (const p of paths) {
     if (fs.existsSync(p)) {
@@ -23,6 +22,29 @@ app.get('/data/extruder/:file', (req, res) => {
       return res.sendFile(p);
     }
   }
+
+  // Fallback to store: convert raw store to client timeline format
+  const storePath = path.join(__dirname, 'extruder_store', file);
+  if (fs.existsSync(storePath)) {
+    try {
+      const date = file.replace('.json', '');
+      const raw = JSON.parse(fs.readFileSync(storePath, 'utf8'));
+      const { buildExtruderTimeline } = require('./extruder/buildTimeline');
+      const timeline = buildExtruderTimeline({
+        date,
+        cached: true,
+        lines: Object.entries(raw.lines || {}).map(([line, s]) => ({
+          line,
+          rows: s.rows || [],
+          truncated: Boolean(s.truncated),
+          error: null
+        }))
+      });
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      return res.json(timeline);
+    } catch (e) {}
+  }
+
   res.status(404).json({ error: 'Extruder timeline file not found' });
 });
 

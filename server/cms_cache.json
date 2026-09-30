@@ -746,7 +746,7 @@
       "totalQr": 96.6,
       "totalOee2": 84.2
     },
-    "timestamp": 1790663642294
+    "timestamp": 1790726402261
   },
   "2026-09-27": {
     "data": {
@@ -770,7 +770,7 @@
       "totalQr": 0,
       "totalOee2": 0
     },
-    "timestamp": 1790663641080
+    "timestamp": 1790726505092
   },
   "2026-09-28": {
     "data": {
@@ -794,55 +794,54 @@
       "totalQr": 93.3,
       "totalOee2": 74
     },
-    "timestamp": 1790663639773
+    "timestamp": 1790726503792
   },
   "2026-09-29": {
     "data": {
       "date": "2026-09-29",
       "mixing1": {
-        "batch": 160,
-        "ar": 80.6,
-        "pr": 87.3,
-        "qr": 87.4,
-        "oee2": 61.5
+        "batch": 606,
+        "ar": 79,
+        "pr": 89.8,
+        "qr": 88.3,
+        "oee2": 62.7
       },
       "mixing2": {
-        "batch": 197,
-        "ar": 93.5,
-        "pr": 95.7,
+        "batch": 741,
+        "ar": 92.3,
+        "pr": 91.7,
         "qr": 100,
-        "oee2": 89.4
+        "oee2": 84.6
       },
-      "totalAr": 87,
-      "totalPr": 91.8,
-      "totalQr": 94.1,
-      "totalOee2": 75.2
+      "totalAr": 85.7,
+      "totalPr": 90.8,
+      "totalQr": 94.5,
+      "totalOee2": 73.5
     },
-    "timestamp": 1790663638505
+    "timestamp": 1790726502394
   },
   "2026-09-30": {
     "data": {
       "date": "2026-09-30",
       "mixing1": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
+        "batch": 1,
+        "ar": 100,
+        "pr": 89.1,
+        "qr": 78.9,
+        "oee2": 70.3
       },
       "mixing2": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
+        "batch": 1,
+        "ar": 100,
+        "pr": 88.8,
+        "qr": 100,
+        "oee2": 88.8
       },
-      "totalAr": 0,
-      "totalPr": 0,
-      "totalQr": 0,
-      "totalOee2": 0,
-      "hasData": false
+      "totalAr": 100,
+      "totalPr": 88.9,
+      "totalQr": 89.2,
+      "totalOee2": 79.3
     },
-    "timestamp": 1790321156359
+    "timestamp": 1790726501031
   }
 }
