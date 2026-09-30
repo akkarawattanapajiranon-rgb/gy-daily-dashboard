@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-01",
+  "fetchedAtMs": 1790762450056,
+  "lines": {
+    "QUAD": {
+      "rows": [],
+      "lastDt": null,
+      "truncated": false
+    },
+    "DUPLEX": {
+      "rows": [],
+      "lastDt": null,
+      "truncated": false
+    }
+  }
+}
