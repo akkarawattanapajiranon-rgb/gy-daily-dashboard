@@ -1,6 +1,6 @@
 {
   "date": "2026-09-30",
-  "generatedAt": "2026-09-30T02:35:13.480Z",
+  "generatedAt": "2026-09-30T04:00:47.931Z",
   "waste": {
     "date": "2026-09-30",
     "millingSummary": 0,
@@ -40,11 +40,11 @@
   "cms": {
     "date": "2026-09-30",
     "mixing1": {
-      "batch": 77,
-      "ar": 90.7,
-      "pr": 87.2,
-      "qr": 77.7,
-      "oee2": 61.5
+      "batch": 124,
+      "ar": 89,
+      "pr": 86.2,
+      "qr": 85.8,
+      "oee2": 65.8
     },
     "mixing2": {
       "batch": 76,
@@ -53,12 +53,12 @@
       "qr": 100,
       "oee2": 83.4
     },
-    "totalAr": 92.1,
-    "totalPr": 88.2,
-    "totalQr": 88.2,
-    "totalOee2": 71.7
+    "totalAr": 90.8,
+    "totalPr": 87.4,
+    "totalQr": 91,
+    "totalOee2": 72.2
   },
-  "target3Roll": 0,
+  "target3Roll": 23,
   "breakdown": {
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
@@ -118,22 +118,22 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 9,
-      "totalWbr": 9,
-      "totalSapphire": 0,
-      "totalAngleChanges": 3,
-      "totalNormal": 9,
+      "totalProduce": 26,
+      "totalWbr": 21,
+      "totalSapphire": 5,
+      "totalAngleChanges": 8,
+      "totalNormal": 21,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 9,
-          "sapphire": 0,
-          "angleChanges": 3,
-          "normal": 9,
+          "wbr": 21,
+          "sapphire": 5,
+          "angleChanges": 8,
+          "normal": 21,
           "sticky": 0,
-          "total": 9
+          "total": 26
         },
         "shift2": {
           "wbr": 0,
@@ -160,14 +160,35 @@
     "sheet": "WINDUP",
     "file": "9 -Treatment Release SEP 2026.xls",
     "target": null,
-    "totalRolls": 0,
+    "totalRolls": 23,
     "totalRelease": 0,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 23,
+    "totalScheduled": 23,
+    "codeBreakdown": [
+      {
+        "code": "RP08",
+        "count": 10,
+        "percentage": 43.48
+      },
+      {
+        "code": "RU53",
+        "count": 8,
+        "percentage": 34.78
+      },
+      {
+        "code": "NU27",
+        "count": 4,
+        "percentage": 17.39
+      },
+      {
+        "code": "EESV",
+        "count": 1,
+        "percentage": 4.35
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "roll42": {
     "date": "2026-09-30",
@@ -330,17 +351,22 @@
     "output": {
       "hasData": true,
       "day": 30,
-      "grandTotal": 10,
+      "grandTotal": 230,
       "codeBreakdown": [
+        {
+          "code": "B346",
+          "count": 220,
+          "percentage": 95.65
+        },
         {
           "code": "W13F",
           "count": 6,
-          "percentage": 60
+          "percentage": 2.61
         },
         {
           "code": "WLGW",
           "count": 4,
-          "percentage": 40
+          "percentage": 1.74
         }
       ],
       "shifts": {
@@ -360,9 +386,16 @@
               "qtyTarget": 4,
               "qtyProduced": 4,
               "totalQty": 4
+            },
+            {
+              "partId": "SC00972",
+              "code": "B346",
+              "qtyTarget": 200,
+              "qtyProduced": 220,
+              "totalQty": 220
             }
           ],
-          "totalQty": 10
+          "totalQty": 230
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -893,7 +926,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.31,
+        "avg": 75.37,
         "target": 76.6,
         "count": 9,
         "isMet": false
@@ -1030,7 +1063,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.31,
+          "avg": 75.37,
           "target": 76.6,
           "count": 9,
           "isMet": false
