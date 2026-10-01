@@ -1,23 +1,35 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-01T14:00:59.652Z",
+  "generatedAt": "2026-10-01T16:01:00.100Z",
   "waste": {
     "date": "2026-10-01",
-    "millingSummary": 16,
-    "frictionSummary": 191,
+    "millingSummary": 43,
+    "frictionSummary": 222.5,
     "beadSummary": 17.9,
     "millingTop": [
       {
         "code": "M05",
-        "amount": 16,
+        "amount": 29,
         "reason": "TAILING",
         "isHigh": true
+      },
+      {
+        "code": "M04",
+        "amount": 10,
+        "reason": "PUSH/CLEAN IN/OUT",
+        "isHigh": true
+      },
+      {
+        "code": "M01",
+        "amount": 4,
+        "reason": "LUMPY",
+        "isHigh": false
       }
     ],
     "frictionTop": [
       {
         "code": "F11",
-        "amount": 58.4,
+        "amount": 60.6,
         "reason": "COAT OFF",
         "isHigh": true
       },
@@ -40,9 +52,9 @@
         "isHigh": false
       },
       {
-        "code": "F24",
-        "amount": 9,
-        "reason": "ELEC/MECH",
+        "code": "F53",
+        "amount": 16,
+        "reason": "TIGHT EDGES",
         "isHigh": false
       }
     ],
@@ -902,72 +914,82 @@
     "output": {
       "hasData": true,
       "day": 1,
-      "grandTotal": 1657,
+      "grandTotal": 1682,
       "codeBreakdown": [
         {
           "code": "6010",
           "count": 339,
-          "percentage": 20.46
+          "percentage": 20.15
         },
         {
           "code": "6015",
           "count": 248,
-          "percentage": 14.97
+          "percentage": 14.74
         },
         {
           "code": "6017",
           "count": 204,
-          "percentage": 12.31
+          "percentage": 12.13
         },
         {
           "code": "6012",
           "count": 130,
-          "percentage": 7.85
+          "percentage": 7.73
         },
         {
           "code": "B275",
           "count": 120,
-          "percentage": 7.24
+          "percentage": 7.13
         },
         {
           "code": "WA45",
           "count": 120,
-          "percentage": 7.24
+          "percentage": 7.13
         },
         {
           "code": "WAS9",
           "count": 120,
-          "percentage": 7.24
+          "percentage": 7.13
         },
         {
           "code": "B314",
           "count": 91,
-          "percentage": 5.49
+          "percentage": 5.41
         },
         {
           "code": "B346",
           "count": 84,
-          "percentage": 5.07
+          "percentage": 4.99
         },
         {
           "code": "B427",
           "count": 72,
-          "percentage": 4.35
+          "percentage": 4.28
         },
         {
           "code": "B198",
           "count": 60,
-          "percentage": 3.62
+          "percentage": 3.57
         },
         {
           "code": "B832",
           "count": 56,
-          "percentage": 3.38
+          "percentage": 3.33
+        },
+        {
+          "code": "W1BX",
+          "count": 16,
+          "percentage": 0.95
         },
         {
           "code": "WA8X",
           "count": 10,
-          "percentage": 0.6
+          "percentage": 0.59
+        },
+        {
+          "code": "W1WF",
+          "count": 9,
+          "percentage": 0.54
         },
         {
           "code": "Q2AH",
@@ -1082,9 +1104,23 @@
               "qtyTarget": 1,
               "qtyProduced": 120,
               "totalQty": 120
+            },
+            {
+              "partId": "SW08853",
+              "code": "W1WF",
+              "qtyTarget": 9,
+              "qtyProduced": 9,
+              "totalQty": 9
+            },
+            {
+              "partId": "SW08799",
+              "code": "W1BX",
+              "qtyTarget": 16,
+              "qtyProduced": 16,
+              "totalQty": 16
             }
           ],
-          "totalQty": 592
+          "totalQty": 617
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
@@ -1429,12 +1465,12 @@
     "_file": "10 Aero Build October 2026.xls",
     "_sheet": "01",
     "_date": "2026-10-01",
-    "totalDelayMin": 1155,
-    "totalDelayHours": 19.3,
+    "totalDelayMin": 1185,
+    "totalDelayHours": 19.8,
     "totalExtrusionMin": 285,
     "totalExtrusionHours": 4.8,
-    "totalCompMin": 870,
-    "totalCompHours": 14.5,
+    "totalCompMin": 900,
+    "totalCompHours": 15,
     "summary": {
       "extrusionCount": 2,
       "compCount": 11,
@@ -1449,9 +1485,9 @@
         "rawText": "b-out  c/c b832 d/l band",
         "category": "Comp",
         "componentName": "Band",
-        "timeRangeStr": "1 tires lost",
-        "durationMin": 15,
-        "durationHours": 0.3
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
       },
       {
         "id": "9-27-1",
@@ -1461,9 +1497,9 @@
         "rawText": "b-out c/c b832  d/l band",
         "category": "Comp",
         "componentName": "Band",
-        "timeRangeStr": "1 tires lost",
-        "durationMin": 15,
-        "durationHours": 0.3
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
       },
       {
         "id": "11-27-2",
@@ -1542,12 +1578,12 @@
         "machine": "UP",
         "shift": "2nd",
         "code": "B198",
-        "rawText": "d/l band1=16.00-",
+        "rawText": "d/l band1=16.00-19.00",
         "category": "Comp",
         "componentName": "Band",
-        "timeRangeStr": "10 tires lost",
-        "durationMin": 100,
-        "durationHours": 1.7
+        "timeRangeStr": "16.00 - 19.00",
+        "durationMin": 180,
+        "durationHours": 3
       },
       {
         "id": "59-27-9",
@@ -1566,12 +1602,12 @@
         "machine": "US",
         "shift": "2nd",
         "code": "B198",
-        "rawText": "d/l band1 16.00-",
+        "rawText": "d/l band1 16.00-19.00",
         "category": "Comp",
         "componentName": "Band",
-        "timeRangeStr": "10 tires lost",
-        "durationMin": 100,
-        "durationHours": 1.7
+        "timeRangeStr": "16.00 - 19.00",
+        "durationMin": 180,
+        "durationHours": 3
       },
       {
         "id": "62-27-11",
@@ -1593,9 +1629,9 @@
         "rawText": "First tire  d/l  liner บาง",
         "category": "Comp",
         "componentName": "Liner",
-        "timeRangeStr": "10 tires lost",
-        "durationMin": 100,
-        "durationHours": 1.7
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
       }
     ]
   },
