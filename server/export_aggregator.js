@@ -117,17 +117,21 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
  * Extract 11 metrics for date range [startDate, endDate]
  */
 async function getExportMetricsRange(startDateStr, endDateStr, forceRefresh = false) {
-  const start = new Date(startDateStr);
-  const end = new Date(endDateStr);
+  if (!startDateStr || !endDateStr) return [];
+  const [sY, sM, sD] = startDateStr.split('-').map(Number);
+  const [eY, eM, eD] = endDateStr.split('-').map(Number);
+  if (!sY || !sM || !sD || !eY || !eM || !eD) return [];
+
+  const curr = new Date(sY, sM - 1, sD);
+  const stop = new Date(eY, eM - 1, eD);
   const dates = [];
 
-  if (start > end) {
+  if (curr > stop) {
     return [await getMetricsForDate(startDateStr, forceRefresh)];
   }
 
-  const curr = new Date(start);
   let count = 0;
-  while (curr <= end && count < 60) {
+  while (curr <= stop && count < 60) {
     const yyyy = curr.getFullYear();
     const mm = String(curr.getMonth() + 1).padStart(2, '0');
     const dd = String(curr.getDate()).padStart(2, '0');

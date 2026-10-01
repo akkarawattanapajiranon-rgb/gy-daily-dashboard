@@ -159,7 +159,12 @@ export function computeLocalRows(start, end) {
   });
 }
 
+const monthNamesThai = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+
 export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPage1 }) {
+  const curMonthIndex = new Date().getMonth();
+  const prevMonthIndex = (curMonthIndex + 11) % 12;
+
   const getTodayDateStr = () => {
     const now = new Date();
     const yyyy = now.getFullYear();
@@ -169,16 +174,25 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
   };
 
   const getInitialDates = () => {
-    const today = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
+    let base = new Date();
+    if (selectedDate) {
+      const parts = selectedDate.split('-');
+      if (parts.length === 3) {
+        const y = parseInt(parts[0], 10);
+        const m = parseInt(parts[1], 10) - 1;
+        const d = parseInt(parts[2], 10);
+        if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+          base = new Date(y, m, d);
+        }
+      }
+    }
 
-    const yyyy = yesterday.getFullYear();
-    const mm = String(yesterday.getMonth() + 1).padStart(2, '0');
-    const dd = String(yesterday.getDate()).padStart(2, '0');
+    const yyyy = base.getFullYear();
+    const mm = String(base.getMonth() + 1).padStart(2, '0');
+    const lastDay = new Date(yyyy, base.getMonth() + 1, 0).getDate();
 
     const start = `${yyyy}-${mm}-01`;
-    const end = `${yyyy}-${mm}-${dd}`;
+    const end = `${yyyy}-${mm}-${String(lastDay).padStart(2, '0')}`;
     return { start, end };
   };
 
@@ -278,25 +292,35 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
     const dd = String(today.getDate()).padStart(2, '0');
     const todayStr = `${yyyy}-${mm}-${dd}`;
 
-    if (presetKey === '1-3') {
+    if (presetKey === 'month') {
       setStartDate(`${yyyy}-${mm}-01`);
-      setEndDate(`${yyyy}-${mm}-03`);
-    } else if (presetKey === '4-7') {
-      setStartDate(`${yyyy}-${mm}-04`);
-      setEndDate(`${yyyy}-${mm}-07`);
+      const lastDay = new Date(yyyy, today.getMonth() + 1, 0).getDate();
+      setEndDate(`${yyyy}-${mm}-${String(lastDay).padStart(2, '0')}`);
+    } else if (presetKey === 'prevMonth') {
+      const prevDate = new Date(yyyy, today.getMonth() - 1, 1);
+      const pY = prevDate.getFullYear();
+      const pM = String(prevDate.getMonth() + 1).padStart(2, '0');
+      const pLastDay = new Date(pY, prevDate.getMonth() + 1, 0).getDate();
+      setStartDate(`${pY}-${pM}-01`);
+      setEndDate(`${pY}-${pM}-${String(pLastDay).padStart(2, '0')}`);
+    } else if (presetKey === 'mtd') {
+      setStartDate(`${yyyy}-${mm}-01`);
+      setEndDate(todayStr);
     } else if (presetKey === '7days') {
       const past = new Date(today);
       past.setDate(past.getDate() - 6);
       const pastStr = `${past.getFullYear()}-${String(past.getMonth() + 1).padStart(2, '0')}-${String(past.getDate()).padStart(2, '0')}`;
       setStartDate(pastStr);
       setEndDate(todayStr);
-    } else if (presetKey === 'month') {
-      setStartDate(`${yyyy}-${mm}-01`);
-      const lastDay = new Date(yyyy, today.getMonth() + 1, 0).getDate();
-      setEndDate(`${yyyy}-${mm}-${String(lastDay).padStart(2, '0')}`);
     } else if (presetKey === 'today') {
       setStartDate(todayStr);
       setEndDate(todayStr);
+    } else if (presetKey === '1-3') {
+      setStartDate(`${yyyy}-${mm}-01`);
+      setEndDate(`${yyyy}-${mm}-03`);
+    } else if (presetKey === '4-7') {
+      setStartDate(`${yyyy}-${mm}-04`);
+      setEndDate(`${yyyy}-${mm}-07`);
     }
   };
 
@@ -486,28 +510,28 @@ export default function DataExporter({ refreshTrigger, selectedDate, onRefreshPa
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-bold text-slate-500 mr-1">เลือกด่วน (Quick Presets):</span>
           <button
-            onClick={() => handlePresetSelect('1-3')}
-            className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+            onClick={() => handlePresetSelect('month')}
+            className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer shadow-sm"
           >
-            วันที่ 1 - 3
+            ทั้งเดือนปัจจุบัน ({monthNamesThai[curMonthIndex]})
           </button>
           <button
-            onClick={() => handlePresetSelect('4-7')}
+            onClick={() => handlePresetSelect('prevMonth')}
             className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
           >
-            วันที่ 4 - 7
+            เดือนก่อนหน้า ({monthNamesThai[prevMonthIndex]})
+          </button>
+          <button
+            onClick={() => handlePresetSelect('mtd')}
+            className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+          >
+            ถึงวันนี้ (MTD)
           </button>
           <button
             onClick={() => handlePresetSelect('7days')}
             className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
           >
             ย้อนหลัง 7 วัน
-          </button>
-          <button
-            onClick={() => handlePresetSelect('month')}
-            className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
-          >
-            ทั้งเดือนนี้ (MTD)
           </button>
           <button
             onClick={() => handlePresetSelect('today')}
