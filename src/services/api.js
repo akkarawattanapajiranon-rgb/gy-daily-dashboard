@@ -40,22 +40,7 @@ export async function getFirebaseSnapshot(dateStr, forceRefresh = false) {
       ]);
       if (snap && snap.exists()) {
         const data = snap.data();
-        const merged = { ...local, ...data };
-        
-        // Smart merge: if local has valid OEE data but remote doesn't, prefer local
-        if (local.quad?.oee?.hasData && !data.quad?.oee?.hasData) {
-          merged.quad = local.quad;
-        }
-        if (local.tuber?.oee?.hasData && !data.tuber?.oee?.hasData) {
-          merged.tuber = local.tuber;
-        }
-        if (local.fischer?.oee?.hasData && !data.fischer?.oee?.hasData) {
-          merged.fischer = local.fischer;
-        }
-        if (local.weeklyOee?.activeWeek?.quad?.count > (data.weeklyOee?.activeWeek?.quad?.count || 0)) {
-          merged.weeklyOee = local.weeklyOee;
-        }
-        return merged;
+        return { ...local, ...data };
       }
     } catch (e) {
       console.warn(`Firebase snapshot query for ${dateStr} failed:`, e.message);
@@ -254,28 +239,18 @@ export async function fetchBreakdownData(dateStr, forceRefresh = false) {
 }
 
 export async function fetchFischerData(dateStr, forceRefresh = false) {
-  const local = getLocalSnapshot(dateStr);
   try {
     let url = `/api/fischer?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed fischer fetch');
-    const data = await res.json();
-    if (data && data.oee?.hasData) return data;
-    if (local?.fischer?.oee?.hasData) return { ...data, oee: local.fischer.oee };
-    return data || local?.fischer || null;
+    return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
-    const result = (snap && snap.fischer) ? { ...snap.fischer } : (local?.fischer ? { ...local.fischer } : null);
-    if (result && local?.fischer?.checksheet?.hasData && (!result.checksheet || !result.checksheet.hasData)) {
-      result.checksheet = local.fischer.checksheet;
-    }
-    if (local?.fischer?.oee?.hasData && (!result || !result.oee || !result.oee.hasData)) {
-      if (result) result.oee = local.fischer.oee;
-      else return local.fischer;
-    }
-    return result || local?.fischer || null;
+    if (snap && snap.fischer) return snap.fischer;
+    const local = getLocalSnapshot(dateStr);
+    return local?.fischer || null;
   }
 }
 
@@ -312,42 +287,34 @@ export async function fetch4Roll2Detail(dateStr, forceRefresh = false) {
 }
 
 export async function fetchQuadDetail(dateStr, forceRefresh = false) {
-  const local = getLocalSnapshot(dateStr);
   try {
     let url = `/api/quad?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed quad fetch');
-    const data = await res.json();
-    if (data && data.oee?.hasData) return data;
-    if (local?.quad?.oee?.hasData) return { ...data, oee: local.quad.oee };
-    return data || local?.quad || null;
+    return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
-    if (snap?.quad?.oee?.hasData) return snap.quad;
-    if (local?.quad?.oee?.hasData) return local.quad;
-    return snap?.quad || local?.quad || null;
+    if (snap && snap.quad) return snap.quad;
+    const local = getLocalSnapshot(dateStr);
+    return local?.quad || null;
   }
 }
 
 export async function fetchTuberDetail(dateStr, forceRefresh = false) {
-  const local = getLocalSnapshot(dateStr);
   try {
     let url = `/api/tuber?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed tuber fetch');
-    const data = await res.json();
-    if (data && data.oee?.hasData) return data;
-    if (local?.tuber?.oee?.hasData) return { ...data, oee: local.tuber.oee };
-    return data || local?.tuber || null;
+    return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
-    if (snap?.tuber?.oee?.hasData) return snap.tuber;
-    if (local?.tuber?.oee?.hasData) return local.tuber;
-    return snap?.tuber || local?.tuber || null;
+    if (snap && snap.tuber) return snap.tuber;
+    const local = getLocalSnapshot(dateStr);
+    return local?.tuber || null;
   }
 }
 
@@ -368,22 +335,18 @@ export async function fetchWorkawayData(dateStr, forceRefresh = false) {
 }
 
 export async function fetchWeeklyOeeData(dateStr, forceRefresh = false) {
-  const local = getLocalSnapshot(dateStr);
   try {
     let url = `/api/oee-weekly?date=${dateStr}`;
     if (forceRefresh) url += `&_t=${Date.now()}`;
     const res = await fetchFast(url, 15000);
     const contentType = res.headers.get('content-type');
     if (!res.ok || (contentType && contentType.includes('text/html'))) throw new Error('Failed weekly oee fetch');
-    const data = await res.json();
-    if (data && data.activeWeek?.quad?.count > 0) return data;
-    if (local?.weeklyOee?.activeWeek?.quad?.count > 0) return local.weeklyOee;
-    return data || local?.weeklyOee || null;
+    return await res.json();
   } catch (err) {
     const snap = await getFirebaseSnapshot(dateStr, forceRefresh);
-    if (snap?.weeklyOee?.activeWeek?.quad?.count > 0) return snap.weeklyOee;
-    if (local?.weeklyOee?.activeWeek?.quad?.count > 0) return local.weeklyOee;
-    return snap?.weeklyOee || local?.weeklyOee || null;
+    if (snap && snap.weeklyOee) return snap.weeklyOee;
+    const local = getLocalSnapshot(dateStr);
+    return local?.weeklyOee || null;
   }
 }
 
