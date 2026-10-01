@@ -1,10 +1,10 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-01T04:00:22.497Z",
+  "generatedAt": "2026-10-01T06:00:33.217Z",
   "waste": {
     "date": "2026-10-01",
     "millingSummary": 6,
-    "frictionSummary": 0,
+    "frictionSummary": 24,
     "beadSummary": 0,
     "millingTop": [
       {
@@ -14,7 +14,26 @@
         "isHigh": true
       }
     ],
-    "frictionTop": [],
+    "frictionTop": [
+      {
+        "code": "F39",
+        "amount": 19,
+        "reason": "O'LAY TRIM",
+        "isHigh": true
+      },
+      {
+        "code": "F11",
+        "amount": 3,
+        "reason": "COAT OFF",
+        "isHigh": true
+      },
+      {
+        "code": "F50",
+        "amount": 2,
+        "reason": "START UP",
+        "isHigh": false
+      }
+    ],
     "beadTop": [],
     "dataDate": "2026-10-01",
     "hasData": true
@@ -22,25 +41,25 @@
   "cms": {
     "date": "2026-10-01",
     "mixing1": {
-      "batch": 118,
-      "ar": 90.6,
-      "pr": 89.8,
-      "qr": 77.3,
-      "oee2": 62.9
+      "batch": 169,
+      "ar": 84.7,
+      "pr": 92,
+      "qr": 78.8,
+      "oee2": 61.4
     },
     "mixing2": {
-      "batch": 129,
-      "ar": 94.4,
-      "pr": 92,
+      "batch": 189,
+      "ar": 89.8,
+      "pr": 91.2,
       "qr": 100,
-      "oee2": 86.8
+      "oee2": 81.9
     },
-    "totalAr": 92.5,
-    "totalPr": 90.9,
-    "totalQr": 88.7,
-    "totalOee2": 74.5
+    "totalAr": 87.3,
+    "totalPr": 91.6,
+    "totalQr": 89.5,
+    "totalOee2": 71.5
   },
-  "target3Roll": 10,
+  "target3Roll": 20,
   "breakdown": {
     "_date": "2026-10-01",
     "hasData": false,
@@ -141,26 +160,31 @@
     "sheet": "WINDUP",
     "file": "10 -Treatment Release OCT 2026.xls",
     "target": null,
-    "totalRolls": 10,
-    "totalRelease": 10,
+    "totalRolls": 20,
+    "totalRelease": 20,
     "totalHold": 0,
-    "totalPending": 31,
+    "totalPending": 21,
     "totalScheduled": 41,
     "codeBreakdown": [
       {
-        "code": "NU27",
-        "count": 4,
+        "code": "RP08",
+        "count": 8,
         "percentage": 40
       },
       {
-        "code": "RP08",
+        "code": "RU53",
+        "count": 6,
+        "percentage": 30
+      },
+      {
+        "code": "NU27",
         "count": 4,
-        "percentage": 40
+        "percentage": 20
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 20
+        "percentage": 10
       }
     ],
     "holdBreakdown": [],
@@ -387,42 +411,42 @@
     "output": {
       "hasData": true,
       "day": 1,
-      "grandTotal": 50,
+      "grandTotal": 536,
       "codeBreakdown": [
+        {
+          "code": "Q2AH",
+          "count": 492,
+          "percentage": 91.79
+        },
         {
           "code": "W1CX",
           "count": 14,
-          "percentage": 28
+          "percentage": 2.61
         },
         {
           "code": "WA8X",
           "count": 10,
-          "percentage": 20
+          "percentage": 1.87
         },
         {
           "code": "QVHO",
           "count": 8,
-          "percentage": 16
+          "percentage": 1.49
         },
         {
           "code": "WLAN",
           "count": 8,
-          "percentage": 16
-        },
-        {
-          "code": "Q2AH",
-          "count": 6,
-          "percentage": 12
+          "percentage": 1.49
         },
         {
           "code": "WA45",
           "count": 2,
-          "percentage": 4
+          "percentage": 0.37
         },
         {
           "code": "WAS9",
           "count": 2,
-          "percentage": 4
+          "percentage": 0.37
         }
       ],
       "shifts": {
@@ -470,7 +494,7 @@
               "totalQty": 4
             },
             {
-              "partId": "",
+              "partId": "TL00019",
               "code1": "QVHO",
               "code2": "",
               "code": "QVHO",
@@ -480,14 +504,14 @@
               "totalQty": 8
             },
             {
-              "partId": "",
+              "partId": "TR00152",
               "code1": "Q2AH",
               "code2": "",
               "code": "Q2AH",
               "qtyTarget": 6,
-              "qtyProduced": 6,
+              "qtyProduced": 492,
               "qtySapphire": 0,
-              "totalQty": 6
+              "totalQty": 492
             },
             {
               "partId": "TL00192",
@@ -510,7 +534,7 @@
               "totalQty": 10
             }
           ],
-          "totalQty": 50
+          "totalQty": 536
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -540,12 +564,27 @@
     "output": {
       "hasData": true,
       "day": 1,
-      "grandTotal": 248,
+      "grandTotal": 921,
       "codeBreakdown": [
+        {
+          "code": "6010",
+          "count": 339,
+          "percentage": 36.81
+        },
         {
           "code": "6015",
           "count": 248,
-          "percentage": 100
+          "percentage": 26.93
+        },
+        {
+          "code": "6017",
+          "count": 204,
+          "percentage": 22.15
+        },
+        {
+          "code": "6012",
+          "count": 130,
+          "percentage": 14.12
         }
       ],
       "shifts": {
@@ -558,9 +597,30 @@
               "qtyTarget": 280,
               "qtyProduced": 248,
               "totalQty": 248
+            },
+            {
+              "partId": "PX00453",
+              "code": "6017",
+              "qtyTarget": 280,
+              "qtyProduced": 204,
+              "totalQty": 204
+            },
+            {
+              "partId": "PX00472",
+              "code": "6012",
+              "qtyTarget": 100,
+              "qtyProduced": 130,
+              "totalQty": 130
+            },
+            {
+              "partId": "PX00582",
+              "code": "6010",
+              "qtyTarget": 280,
+              "qtyProduced": 339,
+              "totalQty": 339
             }
           ],
-          "totalQty": 248
+          "totalQty": 921
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -579,17 +639,17 @@
     "date": "2026-10-01",
     "sheet": "OCTOBER 2026",
     "file": "Slow Moving Work away 2026.xlsx",
-    "hasData": false,
+    "hasData": true,
     "summary": {
       "activeDate": "1/10",
-      "sum": 0,
+      "sum": 63302,
       "target": 35056,
       "minTarget": 20000,
       "consume": 0,
-      "newGenerate": 0,
-      "slowMoving": 0,
-      "disposition": 0,
-      "hasData": false
+      "newGenerate": 11780,
+      "slowMoving": 45089,
+      "disposition": 6433,
+      "hasData": true
     },
     "dailyTrend": [
       {
@@ -613,89 +673,89 @@
         "dateLabel": "1/10",
         "target": 35056,
         "minTarget": 20000,
-        "sum": 0,
+        "sum": 63302,
         "consume": 0,
-        "newGenerate": 0,
-        "newGenerateBTA": 0,
-        "newGenerateWBR": 0,
-        "slowMoving": 0,
-        "disposition": 0,
-        "hasData": false
+        "newGenerate": 11780,
+        "newGenerateBTA": 9430,
+        "newGenerateWBR": 2350,
+        "slowMoving": 45089,
+        "disposition": 6433,
+        "hasData": true
       }
     ],
     "top10": [
       {
         "rank": 1,
-        "code": "N1128",
-        "qty": 6589,
-        "qtyMt": 6.59,
-        "percentage": 12.1
+        "code": "N1692",
+        "qty": 6970,
+        "qtyMt": 6.97,
+        "percentage": 12.8
       },
       {
         "rank": 2,
-        "code": "N11F3",
-        "qty": 4450,
-        "qtyMt": 4.45,
-        "percentage": 8.2
+        "code": "F7894",
+        "qty": 3960,
+        "qtyMt": 3.96,
+        "percentage": 7.3
       },
       {
         "rank": 3,
-        "code": "K27T4",
-        "qty": 4440,
-        "qtyMt": 4.44,
-        "percentage": 8.2
+        "code": "K33M1",
+        "qty": 3770,
+        "qtyMt": 3.77,
+        "percentage": 6.9
       },
       {
         "rank": 4,
-        "code": "M36F3",
-        "qty": 4150,
-        "qtyMt": 4.15,
-        "percentage": 7.6
+        "code": "N1128",
+        "qty": 3734,
+        "qtyMt": 3.73,
+        "percentage": 6.8
       },
       {
         "rank": 5,
-        "code": "K33M1",
-        "qty": 2920,
-        "qtyMt": 2.92,
-        "percentage": 5.4
+        "code": "N11F3",
+        "qty": 3420,
+        "qtyMt": 3.42,
+        "percentage": 6.3
       },
       {
         "rank": 6,
-        "code": "K12J5",
-        "qty": 2530,
-        "qtyMt": 2.53,
-        "percentage": 4.7
+        "code": "N1508",
+        "qty": 2870,
+        "qtyMt": 2.87,
+        "percentage": 5.3
       },
       {
         "rank": 7,
-        "code": "K16V5",
-        "qty": 2430,
-        "qtyMt": 2.43,
-        "percentage": 4.5
+        "code": "M36F3",
+        "qty": 2560,
+        "qtyMt": 2.56,
+        "percentage": 4.7
       },
       {
         "rank": 8,
-        "code": "K16D4",
-        "qty": 1650,
-        "qtyMt": 1.65,
-        "percentage": 3
+        "code": "K27T4",
+        "qty": 2455,
+        "qtyMt": 2.46,
+        "percentage": 4.5
       },
       {
         "rank": 9,
-        "code": "B56N2",
-        "qty": 1640,
-        "qtyMt": 1.64,
-        "percentage": 3
+        "code": "K269A",
+        "qty": 2110,
+        "qtyMt": 2.11,
+        "percentage": 3.9
       },
       {
         "rank": 10,
-        "code": "N2139",
-        "qty": 1620,
-        "qtyMt": 1.62,
-        "percentage": 3
+        "code": "N1717",
+        "qty": 2050,
+        "qtyMt": 2.05,
+        "percentage": 3.8
       }
     ],
-    "top10File": "Work awayTop 5 อันดับ September.xlsx"
+    "top10File": "Work awayTop 5 อันดับ October.xlsx"
   },
   "weeklyOee": {
     "date": "2026-10-01",
@@ -727,7 +787,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 74.5,
+        "avg": 71.5,
         "target": 76.6,
         "count": 1,
         "isMet": false
@@ -762,7 +822,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 74.5,
+          "avg": 71.5,
           "target": 76.6,
           "count": 1,
           "isMet": false
@@ -910,32 +970,44 @@
     "_file": "10 Aero Build October 2026.xls",
     "_sheet": "01",
     "_date": "2026-10-01",
-    "totalDelayMin": 50,
-    "totalDelayHours": 0.8,
-    "totalExtrusionMin": 50,
-    "totalExtrusionHours": 0.8,
+    "totalDelayMin": 200,
+    "totalDelayHours": 3.3,
+    "totalExtrusionMin": 200,
+    "totalExtrusionHours": 3.3,
     "totalCompMin": 0,
     "totalCompHours": 0,
     "summary": {
-      "extrusionCount": 1,
+      "extrusionCount": 2,
       "compCount": 1,
-      "totalItems": 2
+      "totalItems": 3
     },
     "items": [
       {
-        "id": "26-27-0",
-        "machine": "UH",
+        "id": "50-27-0",
+        "machine": "UP",
         "shift": "1st",
-        "code": "B404",
-        "rawText": "d/l tread >",
+        "code": "B198",
+        "rawText": "d/l tread 12.00-",
         "category": "Extrusion",
         "componentName": "Tread",
-        "timeRangeStr": "5 tires lost",
-        "durationMin": 50,
-        "durationHours": 0.8
+        "timeRangeStr": "10 tires lost",
+        "durationMin": 100,
+        "durationHours": 1.7
       },
       {
-        "id": "62-27-1",
+        "id": "59-27-1",
+        "machine": "US",
+        "shift": "1st",
+        "code": "B198",
+        "rawText": "d/l tread  -10.00-",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "10 tires lost",
+        "durationMin": 100,
+        "durationHours": 1.7
+      },
+      {
+        "id": "62-27-2",
         "machine": "TAKU",
         "shift": "1st",
         "code": "A602",
