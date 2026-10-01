@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-01T00:13:14.456Z",
+  "generatedAt": "2026-10-01T01:30:36.434Z",
   "waste": {
     "date": "2026-10-01",
     "millingSummary": 6,
@@ -22,25 +22,25 @@
   "cms": {
     "date": "2026-10-01",
     "mixing1": {
-      "batch": 5,
-      "ar": 73.8,
-      "pr": 90.5,
-      "qr": 75,
-      "oee2": 50.1
+      "batch": 43,
+      "ar": 90.3,
+      "pr": 89.6,
+      "qr": 77.6,
+      "oee2": 62.7
     },
     "mixing2": {
-      "batch": 7,
-      "ar": 100,
-      "pr": 87.8,
+      "batch": 50,
+      "ar": 98,
+      "pr": 90.1,
       "qr": 100,
-      "oee2": 87.8
+      "oee2": 88.4
     },
-    "totalAr": 87.1,
-    "totalPr": 88.9,
-    "totalQr": 89.3,
-    "totalOee2": 69.2
+    "totalAr": 94.2,
+    "totalPr": 89.9,
+    "totalQr": 89.4,
+    "totalOee2": 75.6
   },
-  "target3Roll": 0,
+  "target3Roll": 1,
   "breakdown": {
     "_date": "2026-10-01",
     "hasData": false,
@@ -74,29 +74,47 @@
   "fischer": {
     "date": "2026-10-01",
     "oee": {
-      "hasData": false
+      "hasData": false,
+      "target_pct": 60,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0
     },
     "loss": {
-      "hasData": false
+      "hasData": false,
+      "noSchedule": 0,
+      "noCart": 0,
+      "noGum": 0,
+      "noTreatment": 0,
+      "breakdown": 0,
+      "angleChange": 0,
+      "produce": 0,
+      "target": 90,
+      "breakdownComment": "",
+      "commentAuthor": "",
+      "otherComments": []
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 20,
-      "totalWbr": 20,
+      "totalProduce": 6,
+      "totalWbr": 6,
       "totalSapphire": 0,
       "totalAngleChanges": 1,
-      "totalNormal": 20,
+      "totalNormal": 6,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
       "shifts": {
         "shift1": {
-          "wbr": 20,
+          "wbr": 6,
           "sapphire": 0,
           "angleChanges": 1,
-          "normal": 20,
+          "normal": 6,
           "sticky": 0,
-          "total": 20
+          "total": 6
         },
         "shift2": {
           "wbr": 0,
@@ -123,14 +141,20 @@
     "sheet": "WINDUP",
     "file": "10 -Treatment Release OCT 2026.xls",
     "target": null,
-    "totalRolls": 0,
-    "totalRelease": 0,
+    "totalRolls": 1,
+    "totalRelease": 1,
     "totalHold": 0,
-    "totalPending": 0,
-    "totalScheduled": 0,
-    "codeBreakdown": [],
+    "totalPending": 21,
+    "totalScheduled": 22,
+    "codeBreakdown": [
+      {
+        "code": "NB32",
+        "count": 1,
+        "percentage": 100
+      }
+    ],
     "holdBreakdown": [],
-    "hasData": false
+    "hasData": true
   },
   "roll42": {
     "date": "2026-10-01",
@@ -168,18 +192,42 @@
   "quad": {
     "date": "2026-10-01",
     "oee": {
-      "error": "Quad OEE file for month 10 not found"
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
     },
     "output": {
-      "hasData": false,
+      "hasData": true,
       "day": 1,
-      "grandTotal": 0,
-      "codeBreakdown": [],
+      "grandTotal": 2,
+      "codeBreakdown": [
+        {
+          "code": "WAK2",
+          "count": 2,
+          "percentage": 100
+        }
+      ],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "36F3",
+              "code1": "WAK2",
+              "code2": "",
+              "code": "WAK2",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
+            }
+          ],
+          "totalQty": 2
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -197,7 +245,14 @@
   "tuber": {
     "date": "2026-10-01",
     "oee": {
-      "error": "Tuber OEE file for month 10 not found"
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
     },
     "output": {
       "hasData": false,
@@ -375,7 +430,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 69.2,
+        "avg": 75.6,
         "target": 76.6,
         "count": 1,
         "isMet": false
@@ -410,7 +465,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 69.2,
+          "avg": 75.6,
           "target": 76.6,
           "count": 1,
           "isMet": false
@@ -597,8 +652,9 @@
     ]
   },
   "wbrDelay": {
+    "_file": "10 OCT 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(1)",
     "_date": "2026-10-01",
-    "hasData": false,
     "totalDelayMin": 0,
     "totalDelayHours": 0,
     "shift1Min": 0,
