@@ -204,9 +204,7 @@ function parseWeeklyOee(dateStr) {
     const fischerDaily = {};
     if (fs.existsSync(FISCHER_OEE_FILE)) {
       const wbFischer = XLSX.readFile(FISCHER_OEE_FILE);
-      const fSheetName = findMonthlySheet(wbFischer.SheetNames, monthNum, yearStr, ['oee']) ||
-                         wbFischer.SheetNames.find(s => s.toLowerCase().includes('oee')) ||
-                         wbFischer.SheetNames[0];
+      const fSheetName = findMonthlySheet(wbFischer.SheetNames, monthNum, yearStr, ['oee']);
       if (fSheetName && wbFischer.Sheets[fSheetName]) {
         const data = XLSX.utils.sheet_to_json(wbFischer.Sheets[fSheetName], { header: 1, defval: '' });
         data.slice(1).forEach(r => {

@@ -10,15 +10,15 @@ const FISCHER_CHECK_DIR = path.join(FISCHER_DIR, '2026');
 /**
  * Helper to match date in Excel (handles serial dates, US/Thai DD/MM swaps, and string variations)
  */
-function isDateMatch(rawDate, targetDateStr, targetYear, targetMonth, targetDay) {
+function isDateMatch(rawDate, targetDateStr, targetYear, targetMonth, targetDay, allowSwap = false) {
   if (rawDate === '' || rawDate === undefined || rawDate === null) return false;
 
   if (typeof rawDate === 'number') {
     const d = XLSX.SSF.parse_date_code(rawDate);
     if (!d) return false;
     if (d.y === targetYear && d.m === targetMonth && d.d === targetDay) return true;
-    // Excel locale swap: operator types DD/MM/YY (e.g. 11/9/26) into US Excel (stored as Nov 9, 2026: m=11, d=9)
-    if (d.y === targetYear && d.m === targetDay && d.d === targetMonth) return true;
+    // Excel locale swap only if explicitly permitted
+    if (allowSwap && d.y === targetYear && d.m === targetDay && d.d === targetMonth) return true;
     return false;
   }
 
@@ -33,7 +33,7 @@ function isDateMatch(rawDate, targetDateStr, targetYear, targetMonth, targetDay)
       const m = parseInt(isoMatch[2], 10);
       const d = parseInt(isoMatch[3], 10);
       if (y === targetYear && m === targetMonth && d === targetDay) return true;
-      if (y === targetYear && m === targetDay && d === targetMonth) return true;
+      if (allowSwap && y === targetYear && m === targetDay && d === targetMonth) return true;
     }
 
     const slashMatch = s.match(/^(\d{1,2})[\/\-](\d{1,2})(?:[\/\-](\d{2,4}))?$/);
@@ -43,9 +43,8 @@ function isDateMatch(rawDate, targetDateStr, targetYear, targetMonth, targetDay)
       let p3 = slashMatch[3] ? parseInt(slashMatch[3], 10) : targetYear;
       if (p3 < 100) p3 += 2000;
       if (p3 === targetYear) {
-        if ((p1 === targetDay && p2 === targetMonth) || (p1 === targetMonth && p2 === targetDay)) {
-          return true;
-        }
+        if (p1 === targetDay && p2 === targetMonth) return true;
+        if (allowSwap && p1 === targetMonth && p2 === targetDay) return true;
       }
     }
 
@@ -84,11 +83,8 @@ function getOeeAndLossData(dateStr) {
   const wb = XLSX.readFile(FISCHER_OEE_FILE);
 
   // 1. OEE Sheet
-  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['oee']) ||
-                    wb.SheetNames.find(s => s.toLowerCase().includes('oee')) ||
-                    wb.SheetNames[0];
-
-  const wsOee = wb.Sheets[sheetName];
+  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, yearStr, ['oee']);
+  const wsOee = sheetName ? wb.Sheets[sheetName] : null;
   let oee = { hasData: false };
 
   if (wsOee) {
@@ -137,7 +133,7 @@ function getOeeAndLossData(dateStr) {
       const rowNum = r + 1;
       const cellA = wsLoss['A' + rowNum];
       if (!cellA) continue;
-      const rawDate = cellA.w || cellA.v;
+      const rawDate = typeof cellA.v === 'number' ? cellA.v : (cellA.w || cellA.v);
       if (isDateMatch(rawDate, dateStr, yearNum, monthNum, dayNum)) {
         const noSchedule = Number(wsLoss['B' + rowNum]?.v) || 0;
         const noCart = Number(wsLoss['C' + rowNum]?.v) || 0;
@@ -221,7 +217,8 @@ function parseChecksheetWorkbook(wb, dateStr, yearNum, monthNum, dayNum) {
     });
   }
 
-  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, String(yearNum)) || wb.SheetNames[1] || wb.SheetNames[0];
+  const sheetName = findMonthlySheet(wb.SheetNames, monthNum, String(yearNum)) || wb.SheetNames.find(s => matchesMonth(s, monthNum));
+  if (!sheetName) return { hasData: false };
   const ws = wb.Sheets[sheetName];
   if (!ws) return { hasData: false };
 

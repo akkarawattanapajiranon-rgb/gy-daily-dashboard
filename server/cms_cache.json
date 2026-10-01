@@ -770,7 +770,7 @@
       "totalQr": 0,
       "totalOee2": 0
     },
-    "timestamp": 1790811944422
+    "timestamp": 1790812784671
   },
   "2026-09-28": {
     "data": {
@@ -794,7 +794,7 @@
       "totalQr": 93.3,
       "totalOee2": 74
     },
-    "timestamp": 1790811943047
+    "timestamp": 1790813581563
   },
   "2026-09-29": {
     "data": {
@@ -818,56 +818,55 @@
       "totalQr": 94.5,
       "totalOee2": 76.2
     },
-    "timestamp": 1790811941727
+    "timestamp": 1790813580158
   },
   "2026-09-30": {
     "data": {
       "date": "2026-09-30",
       "mixing1": {
-        "batch": 750,
-        "ar": 89.3,
-        "pr": 90.3,
-        "qr": 90.6,
-        "oee2": 73.1
+        "batch": 756,
+        "ar": 90.4,
+        "pr": 90.2,
+        "qr": 90.5,
+        "oee2": 73.8
       },
       "mixing2": {
-        "batch": 624,
-        "ar": 88.8,
+        "batch": 632,
+        "ar": 92.2,
         "pr": 89.8,
         "qr": 100,
-        "oee2": 79.7
+        "oee2": 82.8
       },
-      "totalAr": 89.1,
+      "totalAr": 91.2,
       "totalPr": 90,
-      "totalQr": 94.8,
-      "totalOee2": 76
+      "totalQr": 94.7,
+      "totalOee2": 77.8
     },
-    "timestamp": 1790811940418
+    "timestamp": 1790813578889
   },
   "2026-10-01": {
     "data": {
       "date": "2026-10-01",
       "mixing1": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
+        "batch": 5,
+        "ar": 73.8,
+        "pr": 90.5,
+        "qr": 75,
+        "oee2": 50.1
       },
       "mixing2": {
-        "batch": 0,
-        "ar": 0,
-        "pr": 0,
-        "qr": 0,
-        "oee2": 0
+        "batch": 7,
+        "ar": 100,
+        "pr": 87.8,
+        "qr": 100,
+        "oee2": 87.8
       },
-      "totalAr": 0,
-      "totalPr": 0,
-      "totalQr": 0,
-      "totalOee2": 0,
-      "hasData": false
+      "totalAr": 87.1,
+      "totalPr": 88.9,
+      "totalQr": 89.3,
+      "totalOee2": 69.2
     },
-    "timestamp": 1790811120635
+    "timestamp": 1790813577610
   },
   "2026-10-29": {
     "data": {

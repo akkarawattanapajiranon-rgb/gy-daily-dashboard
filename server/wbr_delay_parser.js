@@ -11,6 +11,7 @@ function getWbrFilePath(yearStr, monthNum) {
   const dirs = [WBR_DIR, WBR_FALLBACK_DIR];
   const monthShort = MONTH_SHORT[monthNum - 1];
   const monthPad = String(monthNum).padStart(2, '0');
+  const yearShort = yearStr ? yearStr.slice(-2) : '26';
 
   for (const dir of dirs) {
     if (!fs.existsSync(dir)) continue;
@@ -24,7 +25,9 @@ function getWbrFilePath(yearStr, monthNum) {
 
     const match = files.find(f => {
       const l = f.toLowerCase();
-      return (l.startsWith(monthPad) || l.includes(monthShort)) && l.includes('building lost');
+      const hasMonth = l.startsWith(monthPad) || l.includes(monthShort);
+      const hasYear = l.includes(yearStr) || l.includes(yearShort);
+      return hasMonth && hasYear && l.includes('building lost');
     });
 
     if (match) return path.join(dir, match);
@@ -107,16 +110,43 @@ function parseWbrDelay(dateStr) {
 
     const file = getWbrFilePath(year, monthNum);
     if (!file || !fs.existsSync(file)) {
-      return { error: `WBR Building loss report not found for ${dateStr}` };
+      return {
+        _date: dateStr,
+        hasData: false,
+        totalDelayMin: 0,
+        totalDelayHours: 0,
+        shift1Min: 0,
+        shift1Hours: 0,
+        shift2Min: 0,
+        shift2Hours: 0,
+        shift3Min: 0,
+        shift3Hours: 0,
+        summary: { totalItems: 0, itemsWithDetail: 0, itemsOnlyMin: 0 },
+        items: []
+      };
     }
 
     const wb = XLSX.readFile(file);
     const targetSheetPattern = `(${dayNum})`;
-    const sheetName = wb.SheetNames.find(s => s.trim() === targetSheetPattern || s.trim() === String(dayNum)) || wb.SheetNames[0];
-    const ws = wb.Sheets[sheetName];
-    if (!ws) {
-      return { error: `Sheet ${sheetName} not found in report` };
+    const sheetName = wb.SheetNames.find(s => s.trim() === targetSheetPattern || s.trim() === String(dayNum));
+    if (!sheetName || !wb.Sheets[sheetName]) {
+      return {
+        _file: path.basename(file),
+        _date: dateStr,
+        hasData: false,
+        totalDelayMin: 0,
+        totalDelayHours: 0,
+        shift1Min: 0,
+        shift1Hours: 0,
+        shift2Min: 0,
+        shift2Hours: 0,
+        shift3Min: 0,
+        shift3Hours: 0,
+        summary: { totalItems: 0, itemsWithDetail: 0, itemsOnlyMin: 0 },
+        items: []
+      };
     }
+    const ws = wb.Sheets[sheetName];
 
     const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
 

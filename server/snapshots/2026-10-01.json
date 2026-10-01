@@ -1,43 +1,49 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-01T00:00:53.769Z",
+  "generatedAt": "2026-10-01T00:13:14.456Z",
   "waste": {
     "date": "2026-10-01",
-    "millingSummary": 0,
+    "millingSummary": 6,
     "frictionSummary": 0,
     "beadSummary": 0,
-    "millingTop": [],
+    "millingTop": [
+      {
+        "code": "M05",
+        "amount": 6,
+        "reason": "TAILING",
+        "isHigh": true
+      }
+    ],
     "frictionTop": [],
     "beadTop": [],
     "dataDate": "2026-10-01",
-    "hasData": false
+    "hasData": true
   },
   "cms": {
     "date": "2026-10-01",
     "mixing1": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 5,
+      "ar": 73.8,
+      "pr": 90.5,
+      "qr": 75,
+      "oee2": 50.1
     },
     "mixing2": {
-      "batch": 0,
-      "ar": 0,
-      "pr": 0,
-      "qr": 0,
-      "oee2": 0
+      "batch": 7,
+      "ar": 100,
+      "pr": 87.8,
+      "qr": 100,
+      "oee2": 87.8
     },
-    "totalAr": 0,
-    "totalPr": 0,
-    "totalQr": 0,
-    "totalOee2": 0
+    "totalAr": 87.1,
+    "totalPr": 88.9,
+    "totalQr": 89.3,
+    "totalOee2": 69.2
   },
   "target3Roll": 0,
   "breakdown": {
-    "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
-    "_sheet": "Summary BCA",
     "_date": "2026-10-01",
+    "hasData": false,
     "topLoss": [],
     "Banbury": {
       "target_bd_pct": 0,
@@ -68,35 +74,17 @@
   "fischer": {
     "date": "2026-10-01",
     "oee": {
-      "hasData": true,
-      "target_pct": 50,
-      "sr_pct": 78.13,
-      "ar_pct": 66.36,
-      "pr_pct": 80.43,
-      "qr_pct": 99.59,
-      "oee1_pct": 41.53,
-      "oee2_pct": 53.15
+      "hasData": false
     },
     "loss": {
-      "hasData": true,
-      "noSchedule": 0,
-      "noCart": 0,
-      "noGum": 70,
-      "noTreatment": 0,
-      "breakdown": 0,
-      "angleChange": 0,
-      "produce": 0,
-      "target": 0,
-      "breakdownComment": "",
-      "commentAuthor": "",
-      "otherComments": []
+      "hasData": false
     },
     "checksheet": {
       "hasData": true,
       "totalProduce": 20,
       "totalWbr": 20,
       "totalSapphire": 0,
-      "totalAngleChanges": 0,
+      "totalAngleChanges": 1,
       "totalNormal": 20,
       "totalSticky": 0,
       "normalPct": 100,
@@ -105,7 +93,7 @@
         "shift1": {
           "wbr": 20,
           "sapphire": 0,
-          "angleChanges": 0,
+          "angleChanges": 1,
           "normal": 20,
           "sticky": 0,
           "total": 20
@@ -450,9 +438,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 46.03,
+          "avg": null,
           "target": 60,
-          "count": 7,
+          "count": 0,
           "isMet": false
         },
         "mixing": {
@@ -484,9 +472,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 44.51,
+          "avg": null,
           "target": 60,
-          "count": 7,
+          "count": 0,
           "isMet": false
         },
         "mixing": {
@@ -518,9 +506,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 48.95,
+          "avg": null,
           "target": 60,
-          "count": 7,
+          "count": 0,
           "isMet": false
         },
         "mixing": {
@@ -552,9 +540,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": 47.82,
+          "avg": null,
           "target": 60,
-          "count": 6,
+          "count": 0,
           "isMet": false
         },
         "mixing": {
@@ -609,89 +597,21 @@
     ]
   },
   "wbrDelay": {
-    "_file": "Copy of 10. Building lost daily report Oct.. 2022 .xlsx",
-    "_sheet": "(1)",
     "_date": "2026-10-01",
-    "totalDelayMin": 368,
-    "totalDelayHours": 6.1,
-    "shift1Min": 113,
-    "shift1Hours": 1.9,
-    "shift2Min": 255,
-    "shift2Hours": 4.3,
+    "hasData": false,
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
     "shift3Min": 0,
     "shift3Hours": 0,
     "summary": {
-      "totalItems": 6,
-      "itemsWithDetail": 6,
+      "totalItems": 0,
+      "itemsWithDetail": 0,
       "itemsOnlyMin": 0
     },
-    "items": [
-      {
-        "id": "r35-กะ 2-1",
-        "machine": "V3",
-        "shift": "กะ 2",
-        "code": "WA86",
-        "delayMin": 25,
-        "delayHours": 0.4,
-        "detail": "[16:15 - 16:40] sidewall",
-        "timeRangeStr": "16:15 - 16:40",
-        "category": "Extrusion"
-      },
-      {
-        "id": "r36-กะ 2-2",
-        "machine": "V3",
-        "shift": "กะ 2",
-        "code": "",
-        "delayMin": 125,
-        "delayHours": 2.1,
-        "detail": "[17:25 - 19:30] breaker WYWF",
-        "timeRangeStr": "17:25 - 19:30",
-        "category": "Comp"
-      },
-      {
-        "id": "r55-กะ 1-3",
-        "machine": "V5",
-        "shift": "กะ 1",
-        "code": "W1BX",
-        "delayMin": 98,
-        "delayHours": 1.6,
-        "detail": "[07:15 - 08:53] BREAKER",
-        "timeRangeStr": "07:15 - 08:53",
-        "category": "Comp"
-      },
-      {
-        "id": "r56-กะ 1-4",
-        "machine": "V5",
-        "shift": "กะ 1",
-        "code": "",
-        "delayMin": 15,
-        "delayHours": 0.3,
-        "detail": "[13:25 - 13:40] BREAKER",
-        "timeRangeStr": "13:25 - 13:40",
-        "category": "Comp"
-      },
-      {
-        "id": "r59-กะ 2-5",
-        "machine": "V5",
-        "shift": "กะ 2",
-        "code": "",
-        "delayMin": 70,
-        "delayHours": 1.2,
-        "detail": "[21:20 - 22:30] breaker",
-        "timeRangeStr": "21:20 - 22:30",
-        "category": "Comp"
-      },
-      {
-        "id": "r83-กะ 2-6",
-        "machine": "V7",
-        "shift": "กะ 2",
-        "code": "W1WF",
-        "delayMin": 35,
-        "delayHours": 0.6,
-        "detail": "[18:40 - 19:15] BREAKER",
-        "timeRangeStr": "18:40 - 19:15",
-        "category": "Comp"
-      }
-    ]
+    "items": []
   }
 }

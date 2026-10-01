@@ -30,6 +30,7 @@ function getCanonicalMachineName(raw) {
 function getBreakdownFilePath(yearStr, monthNum) {
   const monthNames = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
   const mName = monthNames[monthNum - 1];
+  const yearShort = yearStr ? yearStr.slice(-2) : '26';
 
   for (const dir of BREAKDOWN_DIRS) {
     if (!fs.existsSync(dir)) continue;
@@ -38,14 +39,23 @@ function getBreakdownFilePath(yearStr, monthNum) {
 
     const matched = files.find(f => {
       const l = f.toLowerCase();
-      return (l.includes(mName) || l.includes(String(monthNum).padStart(2, '0'))) && l.includes(yearStr);
+      const hasMonth = l.includes(mName) || l.includes(String(monthNum).padStart(2, '0'));
+      const hasYear = l.includes(yearStr) || l.includes(yearShort);
+      return hasMonth && hasYear;
     });
     if (matched) return path.join(dir, matched);
 
     const matchedMonth = files.find(f => f.toLowerCase().includes(mName));
     if (matchedMonth) return path.join(dir, matchedMonth);
 
-    const fallback = files.find(f => f.toLowerCase().includes('issue log'));
+    // Fallback: only match generic issue log file that does not belong to another month
+    const otherMonths = monthNames.filter(m => m !== mName);
+    const fallback = files.find(f => {
+      const l = f.toLowerCase();
+      if (!l.includes('issue log')) return false;
+      if (otherMonths.some(om => l.includes(om))) return false;
+      return true;
+    });
     if (fallback) return path.join(dir, fallback);
   }
   return null;
@@ -62,18 +72,41 @@ function parseBreakdown(dateStr) {
 
     const file = getBreakdownFilePath(year, monthNum);
     if (!file || !fs.existsSync(file)) {
-      return { error: `Breakdown file not found for ${dateStr}` };
+      return {
+        _date: dateStr,
+        hasData: false,
+        topLoss: [],
+        Banbury: { target_bd_pct: 0, actual_bd_pct: null, hasData: false },
+        Extruder: { target_bd_pct: 0, actual_bd_pct: null, hasData: false },
+        Calender: { target_bd_pct: 0, actual_bd_pct: null, hasData: false },
+        Cutting: { target_bd_pct: 0, actual_bd_pct: null, hasData: false },
+        _total: { target_bd_pct: 0, actual_bd_pct: null, hasData: false }
+      };
     }
 
     const wb = XLSX.readFile(file);
     const monthNamesUpper = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
     const mNameUpper = monthNamesUpper[monthNum - 1];
 
-    // 1. Find BD% KPI sheet (e.g., SEP2026)
+    // 1. Find BD% KPI sheet (e.g., SEP2026 or OCT2026)
     const kpiSheetName = wb.SheetNames.find(s => {
       const u = s.toUpperCase();
       return u.includes(mNameUpper + year) || (u.includes(mNameUpper) && !u.includes('DALIY') && !u.includes('DAILY') && !u.includes('SUMMARY') && !u.includes('ACTION') && !u.includes('TRACK'));
-    }) || wb.SheetNames[0];
+    });
+
+    if (!kpiSheetName) {
+      return {
+        _file: path.basename(file),
+        _date: dateStr,
+        hasData: false,
+        topLoss: [],
+        Banbury: { target_bd_pct: 0, actual_bd_pct: null, hasData: false },
+        Extruder: { target_bd_pct: 0, actual_bd_pct: null, hasData: false },
+        Calender: { target_bd_pct: 0, actual_bd_pct: null, hasData: false },
+        Cutting: { target_bd_pct: 0, actual_bd_pct: null, hasData: false },
+        _total: { target_bd_pct: 0, actual_bd_pct: null, hasData: false }
+      };
+    }
 
     const result = {
       _file: path.basename(file),
