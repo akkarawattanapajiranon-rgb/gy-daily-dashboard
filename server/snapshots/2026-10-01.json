@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-09-30T16:00:48.102Z",
+  "generatedAt": "2026-10-01T00:00:53.769Z",
   "waste": {
     "date": "2026-10-01",
     "millingSummary": 0,
@@ -31,8 +31,7 @@
     "totalAr": 0,
     "totalPr": 0,
     "totalQr": 0,
-    "totalOee2": 0,
-    "hasData": false
+    "totalOee2": 0
   },
   "target3Roll": 0,
   "breakdown": {
@@ -93,7 +92,41 @@
       "otherComments": []
     },
     "checksheet": {
-      "hasData": false
+      "hasData": true,
+      "totalProduce": 20,
+      "totalWbr": 20,
+      "totalSapphire": 0,
+      "totalAngleChanges": 0,
+      "totalNormal": 20,
+      "totalSticky": 0,
+      "normalPct": 100,
+      "stickyPct": 0,
+      "shifts": {
+        "shift1": {
+          "wbr": 20,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 20,
+          "sticky": 0,
+          "total": 20
+        },
+        "shift2": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        },
+        "shift3": {
+          "wbr": 0,
+          "sapphire": 0,
+          "angleChanges": 0,
+          "normal": 0,
+          "sticky": 0,
+          "total": 0
+        }
+      }
     }
   },
   "roll3": {
@@ -537,18 +570,43 @@
     "_file": "10 Aero Build October 2026.xls",
     "_sheet": "01",
     "_date": "2026-10-01",
-    "totalDelayMin": 0,
-    "totalDelayHours": 0,
-    "totalExtrusionMin": 0,
-    "totalExtrusionHours": 0,
+    "totalDelayMin": 50,
+    "totalDelayHours": 0.8,
+    "totalExtrusionMin": 50,
+    "totalExtrusionHours": 0.8,
     "totalCompMin": 0,
     "totalCompHours": 0,
     "summary": {
-      "extrusionCount": 0,
-      "compCount": 0,
-      "totalItems": 0
+      "extrusionCount": 1,
+      "compCount": 1,
+      "totalItems": 2
     },
-    "items": []
+    "items": [
+      {
+        "id": "26-27-0",
+        "machine": "UH",
+        "shift": "1st",
+        "code": "B404",
+        "rawText": "d/l tread >",
+        "category": "Extrusion",
+        "componentName": "Tread",
+        "timeRangeStr": "5 tires lost",
+        "durationMin": 50,
+        "durationHours": 0.8
+      },
+      {
+        "id": "62-27-1",
+        "machine": "TAKU",
+        "shift": "1st",
+        "code": "A602",
+        "rawText": "A602 d/l bead > B/out",
+        "category": "Comp",
+        "componentName": "Bead",
+        "timeRangeStr": "",
+        "durationMin": 0,
+        "durationHours": 0
+      }
+    ]
   },
   "wbrDelay": {
     "_file": "Copy of 10. Building lost daily report Oct.. 2022 .xlsx",

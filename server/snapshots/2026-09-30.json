@@ -1,10 +1,10 @@
 {
   "date": "2026-09-30",
-  "generatedAt": "2026-09-30T23:41:43.255Z",
+  "generatedAt": "2026-10-01T00:01:06.564Z",
   "waste": {
     "date": "2026-09-30",
     "millingSummary": 1278.5,
-    "frictionSummary": 261.7,
+    "frictionSummary": 269.5,
     "beadSummary": 37.5,
     "millingTop": [
       {
@@ -29,7 +29,7 @@
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 70.1,
+        "amount": 77.1,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -53,7 +53,7 @@
       },
       {
         "code": "F46",
-        "amount": 14.5,
+        "amount": 15.3,
         "reason": "SHORT PIECES",
         "isHigh": false
       }
@@ -84,23 +84,23 @@
   "cms": {
     "date": "2026-09-30",
     "mixing1": {
-      "batch": 748,
-      "ar": 89.3,
-      "pr": 90.3,
-      "qr": 90.7,
-      "oee2": 73.1
+      "batch": 756,
+      "ar": 89.2,
+      "pr": 90.2,
+      "qr": 90.5,
+      "oee2": 72.9
     },
     "mixing2": {
-      "batch": 623,
-      "ar": 89,
+      "batch": 632,
+      "ar": 88.9,
       "pr": 89.8,
       "qr": 100,
-      "oee2": 79.9
+      "oee2": 79.8
     },
-    "totalAr": 89.2,
+    "totalAr": 89.1,
     "totalPr": 90,
-    "totalQr": 94.8,
-    "totalOee2": 76.1
+    "totalQr": 94.7,
+    "totalOee2": 75.9
   },
   "target3Roll": 38,
   "breakdown": {
@@ -1060,7 +1060,7 @@
               "totalQty": 6
             },
             {
-              "partId": "",
+              "partId": "SW08965",
               "code1": "",
               "code2": "6010",
               "code": "6010",
@@ -1070,7 +1070,7 @@
               "totalQty": 200
             },
             {
-              "partId": "",
+              "partId": "SW08963",
               "code1": "",
               "code2": "6005",
               "code": "6005",
@@ -2009,7 +2009,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.8,
+        "avg": 75.78,
         "target": 76.6,
         "count": 9,
         "isMet": false
@@ -2146,7 +2146,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.8,
+          "avg": 75.78,
           "target": 76.6,
           "count": 9,
           "isMet": false

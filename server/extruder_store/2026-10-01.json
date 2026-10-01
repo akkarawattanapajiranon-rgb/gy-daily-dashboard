@@ -1,15 +1,71 @@
 {
   "date": "2026-10-01",
-  "fetchedAtMs": 1790784056191,
+  "fetchedAtMs": 1790812854204,
   "lines": {
     "QUAD": {
-      "rows": [],
-      "lastDt": null,
+      "rows": [
+        {
+          "dt": "2026-10-01 07:00:18",
+          "runNum": 172373,
+          "recipeName": "SWR016-TOOS",
+          "recipeId": 2752,
+          "tatawAct": 9.998071,
+          "tawSpec": 12.54,
+          "efficiency": 0.7972943381180223,
+          "hpress1": 0.28,
+          "hpress2": 0.175,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0.3733333,
+          "s24": 0
+        },
+        {
+          "dt": "2026-10-01 07:00:08",
+          "runNum": 172373,
+          "recipeName": "SWR016-TOOS",
+          "recipeId": 2752,
+          "tatawAct": 9.998279,
+          "tawSpec": 12.54,
+          "efficiency": 0.7973109250398724,
+          "hpress1": 0.315,
+          "hpress2": 0.2333333,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0.28,
+          "s24": 0
+        }
+      ],
+      "lastDt": "2026-10-01 07:00:18",
       "truncated": false
     },
     "DUPLEX": {
-      "rows": [],
-      "lastDt": null,
+      "rows": [
+        {
+          "dt": "2026-10-01 07:00:21",
+          "runNum": 161514,
+          "recipeName": "SWR021",
+          "recipeId": 1470,
+          "tatawAct": 11.78911,
+          "tawSpec": 15,
+          "efficiency": 0.7859406666666666,
+          "hpress1": 1563.772,
+          "hpress2": 1288.654,
+          "hpress3": 0,
+          "hpress4": 0,
+          "lineSpeed": 0,
+          "s21": 0,
+          "s22": 0,
+          "s23": 0,
+          "s24": 0
+        }
+      ],
+      "lastDt": "2026-10-01 07:00:21",
       "truncated": false
     }
   }
