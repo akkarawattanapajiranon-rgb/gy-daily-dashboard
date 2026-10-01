@@ -1,10 +1,10 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-01T07:48:01.983Z",
+  "generatedAt": "2026-10-01T08:00:30.697Z",
   "waste": {
     "date": "2026-10-01",
     "millingSummary": 6,
-    "frictionSummary": 89.2,
+    "frictionSummary": 94.2,
     "beadSummary": 17.9,
     "millingTop": [
       {
@@ -17,7 +17,7 @@
     "frictionTop": [
       {
         "code": "F44",
-        "amount": 25.6,
+        "amount": 30.6,
         "reason": "ROLL ENDS",
         "isHigh": true
       },
@@ -66,25 +66,25 @@
   "cms": {
     "date": "2026-10-01",
     "mixing1": {
-      "batch": 215,
-      "ar": 85.4,
-      "pr": 91.4,
-      "qr": 83.3,
-      "oee2": 65.1
+      "batch": 222,
+      "ar": 85.7,
+      "pr": 91.5,
+      "qr": 83.9,
+      "oee2": 65.8
     },
     "mixing2": {
-      "batch": 246,
-      "ar": 90.3,
+      "batch": 253,
+      "ar": 90.5,
       "pr": 91.1,
       "qr": 100,
-      "oee2": 82.2
+      "oee2": 82.5
     },
-    "totalAr": 87.9,
-    "totalPr": 91.2,
-    "totalQr": 91.8,
-    "totalOee2": 73.6
+    "totalAr": 88.2,
+    "totalPr": 91.3,
+    "totalQr": 92,
+    "totalOee2": 74
   },
-  "target3Roll": 25,
+  "target3Roll": 27,
   "breakdown": {
     "_date": "2026-10-01",
     "hasData": false,
@@ -185,55 +185,54 @@
     "sheet": "WINDUP",
     "file": "10 -Treatment Release OCT 2026.xls",
     "target": null,
-    "totalRolls": 25,
-    "totalRelease": 25,
-    "totalHold": 1,
-    "totalPending": 15,
+    "totalRolls": 27,
+    "totalRelease": 27,
+    "totalHold": 0,
+    "totalPending": 14,
     "totalScheduled": 41,
     "codeBreakdown": [
       {
         "code": "RP08",
         "count": 8,
-        "percentage": 32
+        "percentage": 29.63
       },
       {
         "code": "RU53",
         "count": 8,
-        "percentage": 32
+        "percentage": 29.63
       },
       {
         "code": "NU27",
         "count": 4,
-        "percentage": 16
+        "percentage": 14.81
       },
       {
         "code": "NB32",
         "count": 2,
-        "percentage": 8
+        "percentage": 7.41
+      },
+      {
+        "code": "JR11",
+        "count": 2,
+        "percentage": 7.41
       },
       {
         "code": "JM06",
         "count": 1,
-        "percentage": 4
+        "percentage": 3.7
       },
       {
         "code": "JR45",
         "count": 1,
-        "percentage": 4
+        "percentage": 3.7
       },
       {
-        "code": "JR11",
+        "code": "N815",
         "count": 1,
-        "percentage": 4
+        "percentage": 3.7
       }
     ],
-    "holdBreakdown": [
-      {
-        "code": "JR11",
-        "count": 1,
-        "percentage": 100
-      }
-    ],
+    "holdBreakdown": [],
     "hasData": true
   },
   "roll42": {
@@ -620,37 +619,37 @@
     "output": {
       "hasData": true,
       "day": 1,
-      "grandTotal": 1089,
+      "grandTotal": 1065,
       "codeBreakdown": [
         {
           "code": "6010",
           "count": 339,
-          "percentage": 31.13
+          "percentage": 31.83
         },
         {
           "code": "6015",
           "count": 248,
-          "percentage": 22.77
+          "percentage": 23.29
         },
         {
           "code": "6017",
           "count": 204,
-          "percentage": 18.73
+          "percentage": 19.15
         },
         {
           "code": "6012",
           "count": 130,
-          "percentage": 11.94
+          "percentage": 12.21
         },
         {
           "code": "B346",
           "count": 84,
-          "percentage": 7.71
+          "percentage": 7.89
         },
         {
           "code": "B198",
-          "count": 84,
-          "percentage": 7.71
+          "count": 60,
+          "percentage": 5.63
         }
       ],
       "shifts": {
@@ -696,11 +695,11 @@
               "partId": "TA01472",
               "code": "B198",
               "qtyTarget": 60,
-              "qtyProduced": 84,
-              "totalQty": 84
+              "qtyProduced": 60,
+              "totalQty": 60
             }
           ],
-          "totalQty": 1089
+          "totalQty": 1065
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -867,7 +866,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73.6,
+        "avg": 74,
         "target": 76.6,
         "count": 1,
         "isMet": false
@@ -902,7 +901,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73.6,
+          "avg": 74,
           "target": 76.6,
           "count": 1,
           "isMet": false
