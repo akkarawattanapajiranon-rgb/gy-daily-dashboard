@@ -1,6 +1,6 @@
 {
   "date": "2026-09-30",
-  "generatedAt": "2026-10-01T01:30:46.116Z",
+  "generatedAt": "2026-10-01T02:12:44.428Z",
   "waste": {
     "date": "2026-09-30",
     "millingSummary": 1280.5,
@@ -107,31 +107,66 @@
     "_file": "Issue log 2026 _ BCA SEP2026.xlsx",
     "_sheet": "SEP2026",
     "_date": "2026-09-30",
-    "topLoss": [],
+    "topLoss": [
+      {
+        "machine": "3 Roll",
+        "totalDurationMin": 180,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "CAL 2",
+            "symptom": "Motorวิ่งเร็วผิดปกติ",
+            "cause": "Encoder เสียอ่านรอบมอเตอร์ไม่ได้",
+            "action": "เปลี่ยน Encoder",
+            "fixType": "ถาวร",
+            "durationMin": 180,
+            "jobType": "BD",
+            "fixBy": "ริน/เท่ห์/ทีม PM"
+          }
+        ]
+      },
+      {
+        "machine": "Quad",
+        "totalDurationMin": 120,
+        "details": [
+          {
+            "shift": "1",
+            "zone": "Ultrasonic",
+            "symptom": "Roller หลุด",
+            "cause": "น็อตยึดRoller ขาด",
+            "action": "ถอดเพลาโรลเลอร์ออกมาบ่งน็อตที่หักคา ตาปเกลียวใหม่",
+            "fixType": "ชั่วคราว",
+            "durationMin": 120,
+            "jobType": "BD",
+            "fixBy": "มด/โต"
+          }
+        ]
+      }
+    ],
     "Banbury": {
       "target_bd_pct": 0.5827,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "Extruder": {
       "target_bd_pct": 0.5098,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 4.1667,
+      "hasData": true
     },
     "Calender": {
       "target_bd_pct": 0.4662,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 5,
+      "hasData": true
     },
     "Cutting": {
       "target_bd_pct": 0.1166,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 0,
+      "hasData": true
     },
     "_total": {
       "target_bd_pct": 0.6475,
-      "actual_bd_pct": null,
-      "hasData": false
+      "actual_bd_pct": 2.2917,
+      "hasData": true
     }
   },
   "fischer": {
@@ -1443,7 +1478,7 @@
       "sum": 68426,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
+      "consume": 13481,
       "newGenerate": 14905,
       "slowMoving": 45388,
       "disposition": 8133,
@@ -1907,7 +1942,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 68426,
-        "consume": 0,
+        "consume": 13481,
         "newGenerate": 14905,
         "newGenerateBTA": 12035,
         "newGenerateWBR": 2870,
@@ -2020,7 +2055,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.99,
+        "avg": 76.03,
         "target": 76.6,
         "count": 9,
         "isMet": false
@@ -2157,7 +2192,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.99,
+          "avg": 76.03,
           "target": 76.6,
           "count": 9,
           "isMet": false

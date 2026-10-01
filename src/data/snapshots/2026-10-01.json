@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-01T01:30:36.434Z",
+  "generatedAt": "2026-10-01T02:01:18.731Z",
   "waste": {
     "date": "2026-10-01",
     "millingSummary": 6,
@@ -22,23 +22,23 @@
   "cms": {
     "date": "2026-10-01",
     "mixing1": {
-      "batch": 43,
-      "ar": 90.3,
-      "pr": 89.6,
-      "qr": 77.6,
-      "oee2": 62.7
+      "batch": 58,
+      "ar": 90.2,
+      "pr": 90.2,
+      "qr": 78.8,
+      "oee2": 64.2
     },
     "mixing2": {
-      "batch": 50,
-      "ar": 98,
-      "pr": 90.1,
+      "batch": 70,
+      "ar": 98.5,
+      "pr": 92.5,
       "qr": 100,
-      "oee2": 88.4
+      "oee2": 91.2
     },
-    "totalAr": 94.2,
-    "totalPr": 89.9,
-    "totalQr": 89.4,
-    "totalOee2": 75.6
+    "totalAr": 94.4,
+    "totalPr": 91.4,
+    "totalQr": 90.1,
+    "totalOee2": 77.8
   },
   "target3Roll": 1,
   "breakdown": {
@@ -99,10 +99,10 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 6,
+      "totalProduce": 9,
       "totalWbr": 6,
-      "totalSapphire": 0,
-      "totalAngleChanges": 1,
+      "totalSapphire": 3,
+      "totalAngleChanges": 3,
       "totalNormal": 6,
       "totalSticky": 0,
       "normalPct": 100,
@@ -110,11 +110,11 @@
       "shifts": {
         "shift1": {
           "wbr": 6,
-          "sapphire": 0,
-          "angleChanges": 1,
+          "sapphire": 3,
+          "angleChanges": 3,
           "normal": 6,
           "sticky": 0,
-          "total": 6
+          "total": 9
         },
         "shift2": {
           "wbr": 0,
@@ -204,12 +204,17 @@
     "output": {
       "hasData": true,
       "day": 1,
-      "grandTotal": 2,
+      "grandTotal": 4,
       "codeBreakdown": [
         {
           "code": "WAK2",
           "count": 2,
-          "percentage": 100
+          "percentage": 50
+        },
+        {
+          "code": "WAS9",
+          "count": 2,
+          "percentage": 50
         }
       ],
       "shifts": {
@@ -225,9 +230,19 @@
               "qtyProduced": 2,
               "qtySapphire": 0,
               "totalQty": 2
+            },
+            {
+              "partId": "36F3",
+              "code1": "WAS9",
+              "code2": "",
+              "code": "WAS9",
+              "qtyTarget": 2,
+              "qtyProduced": 2,
+              "qtySapphire": 0,
+              "totalQty": 2
             }
           ],
-          "totalQty": 2
+          "totalQty": 4
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
@@ -430,10 +445,10 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 75.6,
+        "avg": 77.8,
         "target": 76.6,
         "count": 1,
-        "isMet": false
+        "isMet": true
       }
     },
     "weeks": [
@@ -465,10 +480,10 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 75.6,
+          "avg": 77.8,
           "target": 76.6,
           "count": 1,
-          "isMet": false
+          "isMet": true
         }
       },
       {

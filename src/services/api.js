@@ -25,7 +25,7 @@ export async function getFirebaseSnapshot(dateStr, forceRefresh = false) {
   snapshotPromiseCache[dateStr] = (async () => {
     let serverSnap = null;
     try {
-      const snapRes = await fetchFast(`/data/snapshots/${dateStr}.json${forceRefresh ? '?_t=' + Date.now() : ''}`, 2000);
+      const snapRes = await fetchFast(`/data/snapshots/${dateStr}.json${forceRefresh ? '?_t=' + Date.now() : ''}`, 6000);
       if (snapRes.ok) {
         serverSnap = await snapRes.json();
       }

@@ -26,12 +26,6 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
 
   if (forceRefresh) {
     metricsMemoryCache.delete(dateStr);
-    // Regenerate snapshot if recent date or if snapshot has missing data
-    if (isRecent || isMissingData) {
-      try {
-        await generateSnapshot(dateStr);
-      } catch (e) {}
-    }
   } else {
     const cached = metricsMemoryCache.get(dateStr);
     if (cached && (Date.now() - cached.ts < CACHE_TTL_MS)) {
@@ -41,23 +35,22 @@ async function getMetricsForDate(dateStr, forceRefresh = false) {
 
   const snap = getSnapshot(dateStr) || {};
   const isToday = (dateStr === todayStr);
-  const useSnapshot = !isToday && !forceRefresh;
 
-  let cmsData = (useSnapshot && snap.cms) ? snap.cms : null;
-  if (!cmsData) {
+  let cmsData = snap.cms || null;
+  if (!cmsData && isToday) {
     try {
       cmsData = await fetchLiveCmsData(dateStr);
     } catch (e) {
       cmsData = {};
     }
   }
-  cmsData = cmsData || snap.cms || {};
+  cmsData = cmsData || {};
 
-  const quadData = (useSnapshot && snap.quad) ? snap.quad : (parseQuadData(dateStr) || snap.quad || {});
-  const tuberData = (useSnapshot && snap.tuber) ? snap.tuber : (parseTuberData(dateStr) || snap.tuber || {});
-  const fischerData = (useSnapshot && snap.fischer) ? snap.fischer : (parseFischerData(dateStr) || snap.fischer || {});
-  const bdData = (useSnapshot && snap.breakdown) ? snap.breakdown : (parseBreakdown(dateStr) || snap.breakdown || {});
-  const wasteData = (useSnapshot && snap.waste) ? snap.waste : (await parseWasteDataAsync(dateStr) || snap.waste || {});
+  const quadData = snap.quad || (isToday ? parseQuadData(dateStr) : null) || {};
+  const tuberData = snap.tuber || (isToday ? parseTuberData(dateStr) : null) || {};
+  const fischerData = snap.fischer || (isToday ? parseFischerData(dateStr) : null) || {};
+  const bdData = snap.breakdown || (isToday ? parseBreakdown(dateStr) : null) || {};
+  const wasteData = snap.waste || (isToday ? await parseWasteDataAsync(dateStr) : null) || {};
 
   const batch1 = Number(cmsData?.mixing1?.batch) || 0;
   const batch2 = Number(cmsData?.mixing2?.batch) || 0;
