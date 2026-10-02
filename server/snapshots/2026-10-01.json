@@ -1,10 +1,10 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-01T16:01:00.100Z",
+  "generatedAt": "2026-10-02T00:00:25.525Z",
   "waste": {
     "date": "2026-10-01",
     "millingSummary": 43,
-    "frictionSummary": 222.5,
+    "frictionSummary": 223,
     "beadSummary": 17.9,
     "millingTop": [
       {
@@ -155,11 +155,11 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 52,
-      "totalWbr": 45,
+      "totalProduce": 58,
+      "totalWbr": 51,
       "totalSapphire": 7,
-      "totalAngleChanges": 13,
-      "totalNormal": 45,
+      "totalAngleChanges": 14,
+      "totalNormal": 51,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
@@ -181,12 +181,12 @@
           "total": 23
         },
         "shift3": {
-          "wbr": 0,
+          "wbr": 6,
           "sapphire": 0,
-          "angleChanges": 0,
-          "normal": 0,
+          "angleChanges": 1,
+          "normal": 6,
           "sticky": 0,
-          "total": 0
+          "total": 6
         }
       }
     }
@@ -600,82 +600,92 @@
     "output": {
       "hasData": true,
       "day": 1,
-      "grandTotal": 1448,
+      "grandTotal": 1490,
       "codeBreakdown": [
         {
           "code": "Q2AH",
           "count": 492,
-          "percentage": 33.98
+          "percentage": 33.02
         },
         {
           "code": "6010",
           "count": 400,
-          "percentage": 27.62
+          "percentage": 26.85
         },
         {
           "code": "B427",
           "count": 200,
-          "percentage": 13.81
+          "percentage": 13.42
         },
         {
           "code": "B832",
           "count": 128,
-          "percentage": 8.84
+          "percentage": 8.59
         },
         {
           "code": "B404",
           "count": 120,
-          "percentage": 8.29
+          "percentage": 8.05
+        },
+        {
+          "code": "W1CX",
+          "count": 34,
+          "percentage": 2.28
         },
         {
           "code": "WA8X",
           "count": 32,
-          "percentage": 2.21
-        },
-        {
-          "code": "W1CX",
-          "count": 14,
-          "percentage": 0.97
+          "percentage": 2.15
         },
         {
           "code": "WAIS",
-          "count": 14,
-          "percentage": 0.97
+          "count": 18,
+          "percentage": 1.21
         },
         {
           "code": "W1WF",
           "count": 10,
-          "percentage": 0.69
+          "percentage": 0.67
+        },
+        {
+          "code": "WAIK",
+          "count": 10,
+          "percentage": 0.67
         },
         {
           "code": "WLGW",
           "count": 10,
-          "percentage": 0.69
+          "percentage": 0.67
         },
         {
           "code": "QVHO",
           "count": 8,
-          "percentage": 0.55
+          "percentage": 0.54
         },
         {
           "code": "WLAN",
           "count": 8,
-          "percentage": 0.55
+          "percentage": 0.54
         },
         {
-          "code": "WAIK",
+          "code": "W13L",
           "count": 8,
-          "percentage": 0.55
+          "percentage": 0.54
+        },
+        {
+          "code": "W13F",
+          "count": 8,
+          "percentage": 0.54
         },
         {
           "code": "WA45",
           "count": 2,
-          "percentage": 0.14
+          "percentage": 0.13
         },
         {
           "code": "WAS9",
           "count": 2,
-          "percentage": 0.14
+          "percentage": 0.13
         }
       ],
       "shifts": {
@@ -853,30 +863,36 @@
               "code1": "WAIS",
               "code2": "",
               "code": "WAIS",
-              "qtyTarget": 10,
-              "qtyProduced": 10,
+              "qtyTarget": 8,
+              "qtyProduced": 8,
               "qtySapphire": 0,
-              "totalQty": 10
-            },
+              "totalQty": 8
+            }
+          ],
+          "totalQty": 880
+        },
+        "3": {
+          "name": "Shift 3 (กะ 3)",
+          "items": [
             {
               "partId": "TL00038",
               "code1": "WAIS",
               "code2": "",
               "code": "WAIS",
-              "qtyTarget": 4,
-              "qtyProduced": 4,
+              "qtyTarget": 6,
+              "qtyProduced": 10,
               "qtySapphire": 0,
-              "totalQty": 4
+              "totalQty": 10
             },
             {
               "partId": "TL00152",
               "code1": "WAIK",
               "code2": "",
               "code": "WAIK",
-              "qtyTarget": 8,
-              "qtyProduced": 8,
+              "qtyTarget": 10,
+              "qtyProduced": 10,
               "qtySapphire": 0,
-              "totalQty": 8
+              "totalQty": 10
             },
             {
               "partId": "TL00353",
@@ -887,14 +903,49 @@
               "qtyProduced": 10,
               "qtySapphire": 0,
               "totalQty": 10
+            },
+            {
+              "partId": "TL00203",
+              "code1": "W1CX",
+              "code2": "",
+              "code": "W1CX",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00203",
+              "code1": "W1CX",
+              "code2": "",
+              "code": "W1CX",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "qtySapphire": 0,
+              "totalQty": 10
+            },
+            {
+              "partId": "TL00443",
+              "code1": "W13L",
+              "code2": "",
+              "code": "W13L",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
+            },
+            {
+              "partId": "TL00442",
+              "code1": "W13F",
+              "code2": "",
+              "code": "W13F",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
             }
           ],
-          "totalQty": 904
-        },
-        "3": {
-          "name": "Shift 3 (กะ 3)",
-          "items": [],
-          "totalQty": 0
+          "totalQty": 66
         }
       }
     }
@@ -1465,16 +1516,16 @@
     "_file": "10 Aero Build October 2026.xls",
     "_sheet": "01",
     "_date": "2026-10-01",
-    "totalDelayMin": 1185,
-    "totalDelayHours": 19.8,
+    "totalDelayMin": 1245,
+    "totalDelayHours": 20.8,
     "totalExtrusionMin": 285,
     "totalExtrusionHours": 4.8,
-    "totalCompMin": 900,
-    "totalCompHours": 15,
+    "totalCompMin": 960,
+    "totalCompHours": 16,
     "summary": {
       "extrusionCount": 2,
-      "compCount": 11,
-      "totalItems": 13
+      "compCount": 13,
+      "totalItems": 15
     },
     "items": [
       {
@@ -1490,7 +1541,19 @@
         "durationHours": 0
       },
       {
-        "id": "9-27-1",
+        "id": "7-27-1",
+        "machine": "UD",
+        "shift": "3rd",
+        "code": "B832",
+        "rawText": "c/c first tire B832",
+        "category": "Comp",
+        "componentName": "Component",
+        "timeRangeStr": "3 tires lost",
+        "durationMin": 30,
+        "durationHours": 0.5
+      },
+      {
+        "id": "9-27-2",
         "machine": "UB",
         "shift": "2nd",
         "code": "B832",
@@ -1502,7 +1565,19 @@
         "durationHours": 0
       },
       {
-        "id": "11-27-2",
+        "id": "10-27-3",
+        "machine": "UG",
+        "shift": "3rd",
+        "code": "B832",
+        "rawText": "c/c first tire B832",
+        "category": "Comp",
+        "componentName": "Component",
+        "timeRangeStr": "3 tires lost",
+        "durationMin": 30,
+        "durationHours": 0.5
+      },
+      {
+        "id": "11-27-4",
         "machine": "UC",
         "shift": "1st",
         "code": "B427",
@@ -1514,7 +1589,7 @@
         "durationHours": 2
       },
       {
-        "id": "14-27-3",
+        "id": "14-27-5",
         "machine": "UD",
         "shift": "1st",
         "code": "B427",
@@ -1526,7 +1601,7 @@
         "durationHours": 1
       },
       {
-        "id": "38-27-4",
+        "id": "38-27-6",
         "machine": "UL",
         "shift": "1st",
         "code": "B427",
@@ -1538,7 +1613,7 @@
         "durationHours": 2
       },
       {
-        "id": "41-27-5",
+        "id": "41-27-7",
         "machine": "UM",
         "shift": "1st",
         "code": "B427",
@@ -1550,7 +1625,7 @@
         "durationHours": 2
       },
       {
-        "id": "44-27-6",
+        "id": "44-27-8",
         "machine": "UN",
         "shift": "1st",
         "code": "B427",
@@ -1562,7 +1637,7 @@
         "durationHours": 2
       },
       {
-        "id": "50-27-7",
+        "id": "50-27-9",
         "machine": "UP",
         "shift": "1st",
         "code": "B198",
@@ -1574,7 +1649,7 @@
         "durationHours": 0.3
       },
       {
-        "id": "51-27-8",
+        "id": "51-27-10",
         "machine": "UP",
         "shift": "2nd",
         "code": "B198",
@@ -1586,7 +1661,7 @@
         "durationHours": 3
       },
       {
-        "id": "59-27-9",
+        "id": "59-27-11",
         "machine": "US",
         "shift": "1st",
         "code": "B198",
@@ -1598,7 +1673,7 @@
         "durationHours": 4.5
       },
       {
-        "id": "60-27-10",
+        "id": "60-27-12",
         "machine": "US",
         "shift": "2nd",
         "code": "B198",
@@ -1610,7 +1685,7 @@
         "durationHours": 3
       },
       {
-        "id": "62-27-11",
+        "id": "62-27-13",
         "machine": "TAKU",
         "shift": "1st",
         "code": "A602",
@@ -1622,7 +1697,7 @@
         "durationHours": 0
       },
       {
-        "id": "63-27-12",
+        "id": "63-27-14",
         "machine": "TAKU",
         "shift": "2nd",
         "code": "A145",
@@ -1636,9 +1711,8 @@
     ]
   },
   "wbrDelay": {
-    "_file": "10 OCT 2026 Building lost daily report- update including OT -.xlsx",
-    "_sheet": "(1)",
     "_date": "2026-10-01",
+    "hasData": false,
     "totalDelayMin": 0,
     "totalDelayHours": 0,
     "shift1Min": 0,

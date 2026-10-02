@@ -1,6 +1,6 @@
 {
   "date": "2026-10-02",
-  "generatedAt": "2026-10-01T16:00:38.655Z",
+  "generatedAt": "2026-10-02T00:00:24.333Z",
   "waste": {
     "date": "2026-10-02",
     "millingSummary": 0,
@@ -68,31 +68,13 @@
   "fischer": {
     "date": "2026-10-02",
     "oee": {
-      "hasData": false,
-      "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "error": "OEE File not found"
     },
     "loss": {
-      "hasData": false,
-      "noSchedule": 0,
-      "noCart": 0,
-      "noGum": 0,
-      "noTreatment": 0,
-      "breakdown": 0,
-      "angleChange": 0,
-      "produce": 0,
-      "target": 90,
-      "breakdownComment": "",
-      "commentAuthor": "",
-      "otherComments": []
+      "hasData": false
     },
     "checksheet": {
-      "hasData": false
+      "error": "Check Sheet Directory not found"
     }
   },
   "roll3": {
@@ -152,37 +134,10 @@
   "quad": {
     "date": "2026-10-02",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
-      "bd_pct": 0
+      "error": "Quad OEE file for month 10 not found"
     },
     "output": {
-      "hasData": false,
-      "day": 2,
-      "grandTotal": 0,
-      "codeBreakdown": [],
-      "shifts": {
-        "1": {
-          "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
-        },
-        "2": {
-          "name": "Shift 2 (กะ 2)",
-          "items": [],
-          "totalQty": 0
-        },
-        "3": {
-          "name": "Shift 3 (กะ 3)",
-          "items": [],
-          "totalQty": 0
-        }
-      }
+      "error": "Quad Booking file for month 10 not found"
     }
   },
   "tuber": {
@@ -528,9 +483,8 @@
     "items": []
   },
   "wbrDelay": {
-    "_file": "10 OCT 2026 Building lost daily report- update including OT -.xlsx",
-    "_sheet": "(2)",
     "_date": "2026-10-02",
+    "hasData": false,
     "totalDelayMin": 0,
     "totalDelayHours": 0,
     "shift1Min": 0,
