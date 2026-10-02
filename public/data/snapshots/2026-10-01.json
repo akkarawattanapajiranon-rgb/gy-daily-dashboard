@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-02T02:10:52.017Z",
+  "generatedAt": "2026-10-02T04:01:04.448Z",
   "waste": {
     "date": "2026-10-01",
     "millingSummary": 76,
@@ -136,27 +136,27 @@
   "fischer": {
     "date": "2026-10-01",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 84.24,
+      "ar_pct": 67.19,
+      "pr_pct": 70,
+      "qr_pct": 99.78,
+      "oee1_pct": 39.53,
+      "oee2_pct": 46.93
     },
     "loss": {
       "hasData": true,
-      "noSchedule": 0,
+      "noSchedule": 227,
       "noCart": 0,
       "noGum": 0,
       "noTreatment": 0,
-      "breakdown": 0,
+      "breakdown": 25,
       "angleChange": 18,
       "produce": 80,
       "target": 90,
-      "breakdownComment": "",
-      "commentAuthor": "",
+      "breakdownComment": "เดรนน้ำ และเช็ค BUTT splice",
+      "commentAuthor": "Paisal Phoompong",
       "otherComments": []
     },
     "checksheet": {
@@ -716,13 +716,13 @@
     "date": "2026-10-01",
     "oee": {
       "hasData": true,
-      "sr_pct": 63.54,
-      "ar_pct": 77.49,
+      "sr_pct": 61.46,
+      "ar_pct": 80.11,
       "pr_pct": 77.5,
       "qr_pct": 91.19,
-      "oee1_pct": 34.19,
-      "oee2_pct": 54.76,
-      "bd_pct": 2.08
+      "oee1_pct": 34.8,
+      "oee2_pct": 56.62,
+      "bd_pct": 0
     },
     "output": {
       "hasData": true,
@@ -1534,7 +1534,7 @@
       "label": "Wk40 (1/10 - 4/10)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 54.76,
+        "avg": 56.62,
         "target": 62,
         "count": 1,
         "isMet": false
@@ -1546,9 +1546,9 @@
         "isMet": false
       },
       "fischer": {
-        "avg": null,
+        "avg": 46.93,
         "target": 60,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "mixing": {
@@ -1569,7 +1569,7 @@
         "label": "Wk40 (1/10 - 4/10)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 54.76,
+          "avg": 56.62,
           "target": 62,
           "count": 1,
           "isMet": false
@@ -1581,9 +1581,9 @@
           "isMet": false
         },
         "fischer": {
-          "avg": null,
+          "avg": 46.93,
           "target": 60,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "mixing": {
