@@ -1,21 +1,21 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-02T02:00:26.650Z",
+  "generatedAt": "2026-10-02T02:10:52.017Z",
   "waste": {
     "date": "2026-10-01",
-    "millingSummary": 43,
-    "frictionSummary": 223,
-    "beadSummary": 17.9,
+    "millingSummary": 76,
+    "frictionSummary": 302.6,
+    "beadSummary": 21.4,
     "millingTop": [
       {
         "code": "M05",
-        "amount": 29,
+        "amount": 39,
         "reason": "TAILING",
         "isHigh": true
       },
       {
         "code": "M04",
-        "amount": 10,
+        "amount": 33,
         "reason": "PUSH/CLEAN IN/OUT",
         "isHigh": true
       },
@@ -28,33 +28,33 @@
     ],
     "frictionTop": [
       {
+        "code": "F44",
+        "amount": 79,
+        "reason": "ROLL ENDS",
+        "isHigh": true
+      },
+      {
         "code": "F11",
         "amount": 60.6,
         "reason": "COAT OFF",
         "isHigh": true
       },
       {
-        "code": "F44",
-        "amount": 43.6,
-        "reason": "ROLL ENDS",
-        "isHigh": true
+        "code": "F24",
+        "amount": 29,
+        "reason": "ELEC/MECH",
+        "isHigh": false
       },
       {
         "code": "F39",
-        "amount": 19,
+        "amount": 23,
         "reason": "O'LAY TRIM",
         "isHigh": false
       },
       {
-        "code": "F06",
-        "amount": 18.6,
-        "reason": "BROKEN CAL SPLICE",
-        "isHigh": false
-      },
-      {
-        "code": "F53",
-        "amount": 16,
-        "reason": "TIGHT EDGES",
+        "code": "F01",
+        "amount": 19.2,
+        "reason": "ANGLE CHANGE",
         "isHigh": false
       }
     ],
@@ -70,6 +70,12 @@
         "amount": 5.9,
         "reason": "STRAND CHANGE",
         "isHigh": true
+      },
+      {
+        "code": "F46",
+        "amount": 3.5,
+        "reason": "SHORT PIECES",
+        "isHigh": false
       }
     ],
     "dataDate": "2026-10-01",
@@ -78,23 +84,23 @@
   "cms": {
     "date": "2026-10-01",
     "mixing1": {
-      "batch": 266,
-      "ar": 83.8,
-      "pr": 92,
-      "qr": 84.6,
-      "oee2": 65.2
+      "batch": 654,
+      "ar": 84.9,
+      "pr": 90.7,
+      "qr": 87.3,
+      "oee2": 67.2
     },
     "mixing2": {
-      "batch": 299,
-      "ar": 90.2,
-      "pr": 89.9,
+      "batch": 717,
+      "ar": 92.1,
+      "pr": 90.2,
       "qr": 100,
-      "oee2": 81.1
+      "oee2": 83.1
     },
-    "totalAr": 87,
-    "totalPr": 90.9,
-    "totalQr": 92.3,
-    "totalOee2": 73
+    "totalAr": 88.6,
+    "totalPr": 90.4,
+    "totalQr": 93.7,
+    "totalOee2": 75
   },
   "target3Roll": 41,
   "breakdown": {
@@ -140,14 +146,14 @@
       "oee2_pct": 0
     },
     "loss": {
-      "hasData": false,
+      "hasData": true,
       "noSchedule": 0,
       "noCart": 0,
       "noGum": 0,
       "noTreatment": 0,
       "breakdown": 0,
-      "angleChange": 0,
-      "produce": 0,
+      "angleChange": 18,
+      "produce": 80,
       "target": 90,
       "breakdownComment": "",
       "commentAuthor": "",
@@ -155,11 +161,11 @@
     },
     "checksheet": {
       "hasData": true,
-      "totalProduce": 58,
-      "totalWbr": 51,
-      "totalSapphire": 7,
-      "totalAngleChanges": 14,
-      "totalNormal": 51,
+      "totalProduce": 80,
+      "totalWbr": 65,
+      "totalSapphire": 15,
+      "totalAngleChanges": 18,
+      "totalNormal": 65,
       "totalSticky": 0,
       "normalPct": 100,
       "stickyPct": 0,
@@ -181,12 +187,12 @@
           "total": 23
         },
         "shift3": {
-          "wbr": 6,
-          "sapphire": 0,
-          "angleChanges": 1,
-          "normal": 6,
+          "wbr": 20,
+          "sapphire": 8,
+          "angleChanges": 5,
+          "normal": 20,
           "sticky": 0,
-          "total": 6
+          "total": 28
         }
       }
     }
@@ -271,9 +277,9 @@
     "date": "2026-10-01",
     "day": 1,
     "file": "4 Roll 2 Productivity Check sheet Oct 2026.xlsx",
-    "totalQty": 29,
-    "totalRolls": 29,
-    "totalMeters": 6860,
+    "totalQty": 46,
+    "totalRolls": 46,
+    "totalMeters": 10530,
     "shifts": {
       "shift1": {
         "shiftNum": 1,
@@ -420,82 +426,179 @@
       "shift3": {
         "shiftNum": 3,
         "name": "กะ 3 (Shift 3)",
-        "qty": 0,
-        "meters": 0,
-        "items": []
+        "qty": 17,
+        "meters": 3670,
+        "items": [
+          {
+            "sapCode": "GF00013",
+            "code": "F4111",
+            "qty": 4,
+            "meters": 800,
+            "unit": "ม้วน"
+          },
+          {
+            "sapCode": "LD03552",
+            "code": "W1CL",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03525",
+            "code": "WLAN",
+            "qty": 2,
+            "meters": 500,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03442",
+            "code": "WA8X",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03062",
+            "code": "Q2AH",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03572",
+            "code": "W13F",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03642",
+            "code": "W1WF",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03524",
+            "code": "WI76",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LN04623",
+            "code": "WA45",
+            "qty": 1,
+            "meters": 60,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LN04702",
+            "code": "WAS9",
+            "qty": 1,
+            "meters": 60,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03543",
+            "code": "WAIK",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          },
+          {
+            "sapCode": "LD03535",
+            "code": "WAIS",
+            "qty": 1,
+            "meters": 250,
+            "unit": "คัน"
+          }
+        ]
       }
     },
     "topCodes": [
       {
         "code": "W1CL",
         "sapCode": "LD03552",
-        "qty": 6,
-        "meters": 1500,
+        "qty": 8,
+        "meters": 2000,
         "unit": "คัน",
         "shifts": {
           "1": 2,
           "2": 4,
-          "3": 0
-        }
-      },
-      {
-        "code": "WA8X",
-        "sapCode": "LD03442",
-        "qty": 4,
-        "meters": 1000,
-        "unit": "คัน",
-        "shifts": {
-          "1": 2,
-          "2": 2,
-          "3": 0
-        }
-      },
-      {
-        "code": "W1WF",
-        "sapCode": "LD03642",
-        "qty": 4,
-        "meters": 1000,
-        "unit": "คัน",
-        "shifts": {
-          "1": 2,
-          "2": 2,
-          "3": 0
-        }
-      },
-      {
-        "code": "WAIS",
-        "sapCode": "LD03535",
-        "qty": 3,
-        "meters": 750,
-        "unit": "คัน",
-        "shifts": {
-          "1": 1,
-          "2": 2,
-          "3": 0
-        }
-      },
-      {
-        "code": "WAIK",
-        "sapCode": "LD03543",
-        "qty": 2,
-        "meters": 500,
-        "unit": "คัน",
-        "shifts": {
-          "1": 1,
-          "2": 1,
-          "3": 0
+          "3": 2
         }
       },
       {
         "code": "F4111",
         "sapCode": "GF00013",
-        "qty": 2,
-        "meters": 400,
+        "qty": 6,
+        "meters": 1200,
         "unit": "ม้วน",
         "shifts": {
           "1": 0,
           "2": 2,
-          "3": 0
+          "3": 4
+        }
+      },
+      {
+        "code": "WA8X",
+        "sapCode": "LD03442",
+        "qty": 5,
+        "meters": 1250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 2,
+          "3": 1
+        }
+      },
+      {
+        "code": "W1WF",
+        "sapCode": "LD03642",
+        "qty": 5,
+        "meters": 1250,
+        "unit": "คัน",
+        "shifts": {
+          "1": 2,
+          "2": 2,
+          "3": 1
+        }
+      },
+      {
+        "code": "WAIS",
+        "sapCode": "LD03535",
+        "qty": 4,
+        "meters": 1000,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 2,
+          "3": 1
+        }
+      },
+      {
+        "code": "WLAN",
+        "sapCode": "LD03525",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 0,
+          "3": 2
+        }
+      },
+      {
+        "code": "WAIK",
+        "sapCode": "LD03543",
+        "qty": 3,
+        "meters": 750,
+        "unit": "คัน",
+        "shifts": {
+          "1": 1,
+          "2": 1,
+          "3": 1
         }
       },
       {
@@ -508,6 +611,30 @@
           "1": 0,
           "2": 2,
           "3": 0
+        }
+      },
+      {
+        "code": "Q2AH",
+        "sapCode": "LD03062",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 1,
+          "3": 1
+        }
+      },
+      {
+        "code": "W13F",
+        "sapCode": "LD03572",
+        "qty": 2,
+        "meters": 500,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 1,
+          "3": 1
         }
       },
       {
@@ -535,18 +662,6 @@
         }
       },
       {
-        "code": "WLAN",
-        "sapCode": "LD03525",
-        "qty": 1,
-        "meters": 250,
-        "unit": "คัน",
-        "shifts": {
-          "1": 1,
-          "2": 0,
-          "3": 0
-        }
-      },
-      {
         "code": "WYAF",
         "sapCode": "LD03602",
         "qty": 1,
@@ -559,27 +674,39 @@
         }
       },
       {
-        "code": "Q2AH",
-        "sapCode": "LD03062",
+        "code": "WI76",
+        "sapCode": "LD03524",
         "qty": 1,
         "meters": 250,
         "unit": "คัน",
         "shifts": {
           "1": 0,
-          "2": 1,
-          "3": 0
+          "2": 0,
+          "3": 1
         }
       },
       {
-        "code": "W13F",
-        "sapCode": "LD03572",
+        "code": "WA45",
+        "sapCode": "LN04623",
         "qty": 1,
-        "meters": 250,
+        "meters": 60,
         "unit": "คัน",
         "shifts": {
           "1": 0,
-          "2": 1,
-          "3": 0
+          "2": 0,
+          "3": 1
+        }
+      },
+      {
+        "code": "WAS9",
+        "sapCode": "LN04702",
+        "qty": 1,
+        "meters": 60,
+        "unit": "คัน",
+        "shifts": {
+          "1": 0,
+          "2": 0,
+          "3": 1
         }
       }
     ],
@@ -588,64 +715,64 @@
   "quad": {
     "date": "2026-10-01",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
-      "bd_pct": 0
+      "hasData": true,
+      "sr_pct": 63.54,
+      "ar_pct": 77.49,
+      "pr_pct": 77.5,
+      "qr_pct": 91.19,
+      "oee1_pct": 34.19,
+      "oee2_pct": 54.76,
+      "bd_pct": 2.08
     },
     "output": {
       "hasData": true,
       "day": 1,
-      "grandTotal": 1490,
+      "grandTotal": 1498,
       "codeBreakdown": [
         {
           "code": "Q2AH",
           "count": 492,
-          "percentage": 33.02
+          "percentage": 32.84
         },
         {
           "code": "6010",
           "count": 400,
-          "percentage": 26.85
+          "percentage": 26.7
         },
         {
           "code": "B427",
           "count": 200,
-          "percentage": 13.42
+          "percentage": 13.35
         },
         {
           "code": "B832",
           "count": 128,
-          "percentage": 8.59
+          "percentage": 8.54
         },
         {
           "code": "B404",
           "count": 120,
-          "percentage": 8.05
+          "percentage": 8.01
         },
         {
           "code": "W1CX",
           "count": 34,
-          "percentage": 2.28
+          "percentage": 2.27
         },
         {
           "code": "WA8X",
           "count": 32,
-          "percentage": 2.15
+          "percentage": 2.14
+        },
+        {
+          "code": "W1WF",
+          "count": 18,
+          "percentage": 1.2
         },
         {
           "code": "WAIS",
           "count": 18,
-          "percentage": 1.21
-        },
-        {
-          "code": "W1WF",
-          "count": 10,
-          "percentage": 0.67
+          "percentage": 1.2
         },
         {
           "code": "WAIK",
@@ -660,22 +787,22 @@
         {
           "code": "QVHO",
           "count": 8,
-          "percentage": 0.54
+          "percentage": 0.53
         },
         {
           "code": "WLAN",
           "count": 8,
-          "percentage": 0.54
+          "percentage": 0.53
         },
         {
           "code": "W13L",
           "count": 8,
-          "percentage": 0.54
+          "percentage": 0.53
         },
         {
           "code": "W13F",
           "count": 8,
-          "percentage": 0.54
+          "percentage": 0.53
         },
         {
           "code": "WA45",
@@ -943,9 +1070,19 @@
               "qtyProduced": 8,
               "qtySapphire": 0,
               "totalQty": 8
+            },
+            {
+              "partId": "TL00232",
+              "code1": "W1WF",
+              "code2": "",
+              "code": "W1WF",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "qtySapphire": 0,
+              "totalQty": 8
             }
           ],
-          "totalQty": 66
+          "totalQty": 74
         }
       }
     }
@@ -953,99 +1090,124 @@
   "tuber": {
     "date": "2026-10-01",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 75,
+      "ar_pct": 83.7,
+      "pr_pct": 69.31,
+      "qr_pct": 95.27,
+      "oee1_pct": 41.46,
+      "oee2_pct": 55.28,
       "bd_pct": 0
     },
     "output": {
       "hasData": true,
       "day": 1,
-      "grandTotal": 1682,
+      "grandTotal": 1757,
       "codeBreakdown": [
         {
           "code": "6010",
           "count": 339,
-          "percentage": 20.15
+          "percentage": 19.29
         },
         {
           "code": "6015",
           "count": 248,
-          "percentage": 14.74
+          "percentage": 14.11
         },
         {
           "code": "6017",
           "count": 204,
-          "percentage": 12.13
+          "percentage": 11.61
         },
         {
           "code": "6012",
-          "count": 130,
-          "percentage": 7.73
+          "count": 159,
+          "percentage": 9.05
         },
         {
           "code": "B275",
           "count": 120,
-          "percentage": 7.13
+          "percentage": 6.83
         },
         {
           "code": "WA45",
           "count": 120,
-          "percentage": 7.13
+          "percentage": 6.83
         },
         {
           "code": "WAS9",
           "count": 120,
-          "percentage": 7.13
+          "percentage": 6.83
         },
         {
           "code": "B314",
           "count": 91,
-          "percentage": 5.41
+          "percentage": 5.18
         },
         {
           "code": "B346",
           "count": 84,
-          "percentage": 4.99
+          "percentage": 4.78
         },
         {
           "code": "B427",
-          "count": 72,
-          "percentage": 4.28
+          "count": 82,
+          "percentage": 4.67
         },
         {
           "code": "B198",
           "count": 60,
-          "percentage": 3.57
+          "percentage": 3.41
         },
         {
           "code": "B832",
-          "count": 56,
-          "percentage": 3.33
+          "count": 59,
+          "percentage": 3.36
         },
         {
           "code": "W1BX",
           "count": 16,
-          "percentage": 0.95
+          "percentage": 0.91
+        },
+        {
+          "code": "WAIS",
+          "count": 14,
+          "percentage": 0.8
         },
         {
           "code": "WA8X",
           "count": 10,
-          "percentage": 0.59
+          "percentage": 0.57
         },
         {
           "code": "W1WF",
           "count": 9,
-          "percentage": 0.54
+          "percentage": 0.51
+        },
+        {
+          "code": "W13F",
+          "count": 8,
+          "percentage": 0.46
+        },
+        {
+          "code": "WLGW",
+          "count": 5,
+          "percentage": 0.28
         },
         {
           "code": "Q2AH",
           "count": 3,
-          "percentage": 0.18
+          "percentage": 0.17
+        },
+        {
+          "code": "B627",
+          "count": 3,
+          "percentage": 0.17
+        },
+        {
+          "code": "B255",
+          "count": 3,
+          "percentage": 0.17
         }
       ],
       "shifts": {
@@ -1175,8 +1337,65 @@
         },
         "3": {
           "name": "Shift 3 (กะ 3)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "SW08800",
+              "code": "W13F",
+              "qtyTarget": 8,
+              "qtyProduced": 8,
+              "totalQty": 8
+            },
+            {
+              "partId": "SW09084",
+              "code": "WLGW",
+              "qtyTarget": 5,
+              "qtyProduced": 5,
+              "totalQty": 5
+            },
+            {
+              "partId": "SW08753",
+              "code": "WAIS",
+              "qtyTarget": 14,
+              "qtyProduced": 14,
+              "totalQty": 14
+            },
+            {
+              "partId": "XP02316",
+              "code": "B427",
+              "qtyTarget": 10,
+              "qtyProduced": 10,
+              "totalQty": 10
+            },
+            {
+              "partId": "XP02323",
+              "code": "B627",
+              "qtyTarget": 3,
+              "qtyProduced": 3,
+              "totalQty": 3
+            },
+            {
+              "partId": "XP02296",
+              "code": "B255",
+              "qtyTarget": 4,
+              "qtyProduced": 3,
+              "totalQty": 3
+            },
+            {
+              "partId": "XP02312",
+              "code": "B832",
+              "qtyTarget": 3,
+              "qtyProduced": 3,
+              "totalQty": 3
+            },
+            {
+              "partId": "PX00473",
+              "code": "6012",
+              "qtyTarget": 220,
+              "qtyProduced": 29,
+              "totalQty": 29
+            }
+          ],
+          "totalQty": 75
         }
       }
     }
@@ -1191,7 +1410,7 @@
       "sum": 63302,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
+      "consume": 17860,
       "newGenerate": 11780,
       "slowMoving": 45089,
       "disposition": 6433,
@@ -1220,7 +1439,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 63302,
-        "consume": 0,
+        "consume": 17860,
         "newGenerate": 11780,
         "newGenerateBTA": 9430,
         "newGenerateWBR": 2350,
@@ -1315,15 +1534,15 @@
       "label": "Wk40 (1/10 - 4/10)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": null,
+        "avg": 54.76,
         "target": 62,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "tuber": {
-        "avg": null,
+        "avg": 55.28,
         "target": 62,
-        "count": 0,
+        "count": 1,
         "isMet": false
       },
       "fischer": {
@@ -1333,7 +1552,7 @@
         "isMet": false
       },
       "mixing": {
-        "avg": 73,
+        "avg": 75,
         "target": 76.6,
         "count": 1,
         "isMet": false
@@ -1350,15 +1569,15 @@
         "label": "Wk40 (1/10 - 4/10)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": null,
+          "avg": 54.76,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "tuber": {
-          "avg": null,
+          "avg": 55.28,
           "target": 62,
-          "count": 0,
+          "count": 1,
           "isMet": false
         },
         "fischer": {
@@ -1368,7 +1587,7 @@
           "isMet": false
         },
         "mixing": {
-          "avg": 73,
+          "avg": 75,
           "target": 76.6,
           "count": 1,
           "isMet": false
@@ -1516,16 +1735,16 @@
     "_file": "10 Aero Build October 2026.xls",
     "_sheet": "01",
     "_date": "2026-10-01",
-    "totalDelayMin": 1245,
-    "totalDelayHours": 20.8,
+    "totalDelayMin": 1525,
+    "totalDelayHours": 25.4,
     "totalExtrusionMin": 285,
     "totalExtrusionHours": 4.8,
-    "totalCompMin": 960,
-    "totalCompHours": 16,
+    "totalCompMin": 1240,
+    "totalCompHours": 20.7,
     "summary": {
       "extrusionCount": 2,
-      "compCount": 13,
-      "totalItems": 15
+      "compCount": 15,
+      "totalItems": 17
     },
     "items": [
       {
@@ -1548,9 +1767,9 @@
         "rawText": "c/c first tire B832",
         "category": "Comp",
         "componentName": "Component",
-        "timeRangeStr": "3 tires lost",
-        "durationMin": 30,
-        "durationHours": 0.5
+        "timeRangeStr": "2 tires lost",
+        "durationMin": 20,
+        "durationHours": 0.3
       },
       {
         "id": "9-27-2",
@@ -1572,9 +1791,9 @@
         "rawText": "c/c first tire B832",
         "category": "Comp",
         "componentName": "Component",
-        "timeRangeStr": "3 tires lost",
-        "durationMin": 30,
-        "durationHours": 0.5
+        "timeRangeStr": "2 tires lost",
+        "durationMin": 20,
+        "durationHours": 0.3
       },
       {
         "id": "11-27-4",
@@ -1661,7 +1880,19 @@
         "durationHours": 3
       },
       {
-        "id": "59-27-11",
+        "id": "52-27-11",
+        "machine": "UP",
+        "shift": "3rd",
+        "code": "B198",
+        "rawText": "d/l band1=24.00-02.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "24.00 - 02.30",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "59-27-12",
         "machine": "US",
         "shift": "1st",
         "code": "B198",
@@ -1673,7 +1904,7 @@
         "durationHours": 4.5
       },
       {
-        "id": "60-27-12",
+        "id": "60-27-13",
         "machine": "US",
         "shift": "2nd",
         "code": "B198",
@@ -1685,7 +1916,19 @@
         "durationHours": 3
       },
       {
-        "id": "62-27-13",
+        "id": "61-27-14",
+        "machine": "US",
+        "shift": "3rd",
+        "code": "B198",
+        "rawText": "d/l band1=24.00-02.30",
+        "category": "Comp",
+        "componentName": "Band",
+        "timeRangeStr": "24.00 - 02.30",
+        "durationMin": 150,
+        "durationHours": 2.5
+      },
+      {
+        "id": "62-27-15",
         "machine": "TAKU",
         "shift": "1st",
         "code": "A602",
@@ -1697,7 +1940,7 @@
         "durationHours": 0
       },
       {
-        "id": "63-27-14",
+        "id": "63-27-16",
         "machine": "TAKU",
         "shift": "2nd",
         "code": "A145",
@@ -1711,8 +1954,9 @@
     ]
   },
   "wbrDelay": {
+    "_file": "10 OCT 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(1)",
     "_date": "2026-10-01",
-    "hasData": false,
     "totalDelayMin": 0,
     "totalDelayHours": 0,
     "shift1Min": 0,
