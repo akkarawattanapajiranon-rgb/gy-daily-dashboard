@@ -1,0 +1,544 @@
+{
+  "date": "2026-10-03",
+  "generatedAt": "2026-10-02T10:00:59.009Z",
+  "waste": {
+    "date": "2026-10-03",
+    "millingSummary": 0,
+    "frictionSummary": 0,
+    "beadSummary": 0,
+    "millingTop": [],
+    "frictionTop": [],
+    "beadTop": [],
+    "dataDate": "2026-10-03",
+    "hasData": false
+  },
+  "cms": {
+    "date": "2026-10-03",
+    "mixing1": {
+      "batch": 0,
+      "ar": 0,
+      "pr": 0,
+      "qr": 0,
+      "oee2": 0
+    },
+    "mixing2": {
+      "batch": 0,
+      "ar": 0,
+      "pr": 0,
+      "qr": 0,
+      "oee2": 0
+    },
+    "totalAr": 0,
+    "totalPr": 0,
+    "totalQr": 0,
+    "totalOee2": 0,
+    "hasData": false
+  },
+  "target3Roll": 0,
+  "breakdown": {
+    "_date": "2026-10-03",
+    "hasData": false,
+    "topLoss": [],
+    "Banbury": {
+      "target_bd_pct": 0,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Extruder": {
+      "target_bd_pct": 0,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Calender": {
+      "target_bd_pct": 0,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "Cutting": {
+      "target_bd_pct": 0,
+      "actual_bd_pct": null,
+      "hasData": false
+    },
+    "_total": {
+      "target_bd_pct": 0,
+      "actual_bd_pct": null,
+      "hasData": false
+    }
+  },
+  "fischer": {
+    "date": "2026-10-03",
+    "oee": {
+      "hasData": false,
+      "target_pct": 60,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0
+    },
+    "loss": {
+      "hasData": false,
+      "noSchedule": 0,
+      "noCart": 0,
+      "noGum": 0,
+      "noTreatment": 0,
+      "breakdown": 0,
+      "angleChange": 0,
+      "produce": 0,
+      "target": 90,
+      "breakdownComment": "",
+      "commentAuthor": "",
+      "otherComments": []
+    },
+    "checksheet": {
+      "hasData": false
+    }
+  },
+  "roll3": {
+    "date": "2026-10-03",
+    "day": 3,
+    "sheet": "WINDUP",
+    "file": "10 -Treatment Release OCT 2026.xls",
+    "target": null,
+    "totalRolls": 0,
+    "totalRelease": 0,
+    "totalHold": 0,
+    "totalPending": 0,
+    "totalScheduled": 0,
+    "codeBreakdown": [],
+    "holdBreakdown": [],
+    "hasData": false
+  },
+  "roll42": {
+    "date": "2026-10-03",
+    "day": 3,
+    "file": "4 Roll 2 Productivity Check sheet Oct 2026.xlsx",
+    "totalQty": 0,
+    "totalRolls": 0,
+    "totalMeters": 0,
+    "shifts": {
+      "shift1": {
+        "shiftNum": 1,
+        "name": "กะ 1 (Shift 1)",
+        "qty": 0,
+        "meters": 0,
+        "items": []
+      },
+      "shift2": {
+        "shiftNum": 2,
+        "name": "กะ 2 (Shift 2)",
+        "qty": 0,
+        "meters": 0,
+        "items": []
+      },
+      "shift3": {
+        "shiftNum": 3,
+        "name": "กะ 3 (Shift 3)",
+        "qty": 0,
+        "meters": 0,
+        "items": []
+      }
+    },
+    "topCodes": [],
+    "hasData": false
+  },
+  "quad": {
+    "date": "2026-10-03",
+    "oee": {
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
+    },
+    "output": {
+      "hasData": false,
+      "day": 3,
+      "grandTotal": 0,
+      "codeBreakdown": [],
+      "shifts": {
+        "1": {
+          "name": "Shift 1 (กะ 1)",
+          "items": [],
+          "totalQty": 0
+        },
+        "2": {
+          "name": "Shift 2 (กะ 2)",
+          "items": [],
+          "totalQty": 0
+        },
+        "3": {
+          "name": "Shift 3 (กะ 3)",
+          "items": [],
+          "totalQty": 0
+        }
+      }
+    }
+  },
+  "tuber": {
+    "date": "2026-10-03",
+    "oee": {
+      "hasData": false,
+      "sr_pct": 0,
+      "ar_pct": 0,
+      "pr_pct": 0,
+      "qr_pct": 0,
+      "oee1_pct": 0,
+      "oee2_pct": 0,
+      "bd_pct": 0
+    },
+    "output": {
+      "hasData": false,
+      "day": 3,
+      "grandTotal": 0,
+      "codeBreakdown": [],
+      "shifts": {
+        "1": {
+          "name": "Shift 1 (กะ 1)",
+          "items": [],
+          "totalQty": 0
+        },
+        "2": {
+          "name": "Shift 2 (กะ 2)",
+          "items": [],
+          "totalQty": 0
+        },
+        "3": {
+          "name": "Shift 3 (กะ 3)",
+          "items": [],
+          "totalQty": 0
+        }
+      }
+    }
+  },
+  "workaway": {
+    "date": "2026-10-03",
+    "sheet": "OCTOBER 2026",
+    "file": "Slow Moving Work away 2026.xlsx",
+    "hasData": false,
+    "summary": {
+      "activeDate": "3/10",
+      "sum": 0,
+      "target": 35056,
+      "minTarget": 20000,
+      "consume": 0,
+      "newGenerate": 0,
+      "slowMoving": 0,
+      "disposition": 0,
+      "hasData": false
+    },
+    "dailyTrend": [
+      {
+        "day": 30,
+        "month": 9,
+        "dateLabel": "30/9",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 68426,
+        "consume": 13481,
+        "newGenerate": 14905,
+        "newGenerateBTA": 12035,
+        "newGenerateWBR": 2870,
+        "slowMoving": 45388,
+        "disposition": 8133,
+        "hasData": true
+      },
+      {
+        "day": 1,
+        "month": 10,
+        "dateLabel": "1/10",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 63302,
+        "consume": 17860,
+        "newGenerate": 11780,
+        "newGenerateBTA": 9430,
+        "newGenerateWBR": 2350,
+        "slowMoving": 45089,
+        "disposition": 6433,
+        "hasData": true
+      },
+      {
+        "day": 2,
+        "month": 10,
+        "dateLabel": "2/10",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 68882,
+        "consume": 0,
+        "newGenerate": 17360,
+        "newGenerateBTA": 14560,
+        "newGenerateWBR": 2800,
+        "slowMoving": 43819,
+        "disposition": 7703,
+        "hasData": true
+      },
+      {
+        "day": 3,
+        "month": 10,
+        "dateLabel": "3/10",
+        "target": 35056,
+        "minTarget": 20000,
+        "sum": 0,
+        "consume": 0,
+        "newGenerate": 0,
+        "newGenerateBTA": 0,
+        "newGenerateWBR": 0,
+        "slowMoving": 0,
+        "disposition": 0,
+        "hasData": false
+      }
+    ],
+    "top10": [],
+    "top10File": "Work awayTop 5 อันดับ October.xlsx"
+  },
+  "weeklyOee": {
+    "date": "2026-10-03",
+    "activeWeek": {
+      "weekNum": 40,
+      "monthWeekNum": 1,
+      "code": "Wk40",
+      "shortLabel": "Wk40",
+      "startDay": 1,
+      "endDay": 4,
+      "label": "Wk40 (1/10 - 4/10)",
+      "isCurrentWeek": true,
+      "quad": {
+        "avg": 56.62,
+        "target": 62,
+        "count": 1,
+        "isMet": false
+      },
+      "tuber": {
+        "avg": 55.28,
+        "target": 62,
+        "count": 1,
+        "isMet": false
+      },
+      "fischer": {
+        "avg": 46.93,
+        "target": 60,
+        "count": 1,
+        "isMet": false
+      },
+      "mixing": {
+        "avg": 76.07,
+        "target": 76.6,
+        "count": 3,
+        "isMet": false
+      }
+    },
+    "weeks": [
+      {
+        "weekNum": 40,
+        "monthWeekNum": 1,
+        "code": "Wk40",
+        "shortLabel": "Wk40",
+        "startDay": 1,
+        "endDay": 4,
+        "label": "Wk40 (1/10 - 4/10)",
+        "isCurrentWeek": true,
+        "quad": {
+          "avg": 56.62,
+          "target": 62,
+          "count": 1,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": 55.28,
+          "target": 62,
+          "count": 1,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": 46.93,
+          "target": 60,
+          "count": 1,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": 76.07,
+          "target": 76.6,
+          "count": 3,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 41,
+        "monthWeekNum": 2,
+        "code": "Wk41",
+        "shortLabel": "Wk41",
+        "startDay": 5,
+        "endDay": 11,
+        "label": "Wk41 (5/10 - 11/10)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 42,
+        "monthWeekNum": 3,
+        "code": "Wk42",
+        "shortLabel": "Wk42",
+        "startDay": 12,
+        "endDay": 18,
+        "label": "Wk42 (12/10 - 18/10)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 43,
+        "monthWeekNum": 4,
+        "code": "Wk43",
+        "shortLabel": "Wk43",
+        "startDay": 19,
+        "endDay": 25,
+        "label": "Wk43 (19/10 - 25/10)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      },
+      {
+        "weekNum": 44,
+        "monthWeekNum": 5,
+        "code": "Wk44",
+        "shortLabel": "Wk44",
+        "startDay": 26,
+        "endDay": 31,
+        "label": "Wk44 (26/10 - 31/10)",
+        "isCurrentWeek": false,
+        "quad": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "tuber": {
+          "avg": null,
+          "target": 62,
+          "count": 0,
+          "isMet": false
+        },
+        "fischer": {
+          "avg": null,
+          "target": 60,
+          "count": 0,
+          "isMet": false
+        },
+        "mixing": {
+          "avg": null,
+          "target": 76.6,
+          "count": 0,
+          "isMet": false
+        }
+      }
+    ]
+  },
+  "aeroDelay": {
+    "_file": "10 Aero Build October 2026.xls",
+    "_sheet": "03",
+    "_date": "2026-10-03",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "totalExtrusionMin": 0,
+    "totalExtrusionHours": 0,
+    "totalCompMin": 0,
+    "totalCompHours": 0,
+    "summary": {
+      "extrusionCount": 0,
+      "compCount": 0,
+      "totalItems": 0
+    },
+    "items": []
+  },
+  "wbrDelay": {
+    "_file": "10 OCT 2026 Building lost daily report- update including OT -.xlsx",
+    "_sheet": "(3)",
+    "_date": "2026-10-03",
+    "totalDelayMin": 0,
+    "totalDelayHours": 0,
+    "shift1Min": 0,
+    "shift1Hours": 0,
+    "shift2Min": 0,
+    "shift2Hours": 0,
+    "shift3Min": 0,
+    "shift3Hours": 0,
+    "summary": {
+      "totalItems": 0,
+      "itemsWithDetail": 0,
+      "itemsOnlyMin": 0
+    },
+    "items": []
+  }
+}
