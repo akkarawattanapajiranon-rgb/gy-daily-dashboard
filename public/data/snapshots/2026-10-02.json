@@ -1,6 +1,6 @@
 {
   "date": "2026-10-02",
-  "generatedAt": "2026-10-03T01:31:32.107Z",
+  "generatedAt": "2026-10-03T02:01:31.623Z",
   "waste": {
     "date": "2026-10-02",
     "millingSummary": 142,
@@ -1354,7 +1354,7 @@
       "sum": 68882,
       "target": 35056,
       "minTarget": 20000,
-      "consume": 0,
+      "consume": 17274,
       "newGenerate": 17360,
       "slowMoving": 43819,
       "disposition": 7703,
@@ -1398,7 +1398,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 68882,
-        "consume": 0,
+        "consume": 17274,
         "newGenerate": 17360,
         "newGenerateBTA": 14560,
         "newGenerateWBR": 2800,

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-03",
-  "generatedAt": "2026-10-03T01:31:09.731Z",
+  "generatedAt": "2026-10-03T02:01:08.286Z",
   "waste": {
     "date": "2026-10-03",
     "millingSummary": 11,
@@ -41,7 +41,7 @@
     "totalOee2": 0,
     "hasData": false
   },
-  "target3Roll": 25,
+  "target3Roll": 2,
   "breakdown": {
     "_date": "2026-10-03",
     "hasData": false,
@@ -103,7 +103,7 @@
       "totalProduce": 20,
       "totalWbr": 20,
       "totalSapphire": 0,
-      "totalAngleChanges": 2,
+      "totalAngleChanges": 3,
       "totalNormal": 20,
       "totalSticky": 0,
       "normalPct": 100,
@@ -112,7 +112,7 @@
         "shift1": {
           "wbr": 20,
           "sapphire": 0,
-          "angleChanges": 2,
+          "angleChanges": 3,
           "normal": 20,
           "sticky": 0,
           "total": 20
@@ -142,84 +142,30 @@
     "sheet": "WINDUP",
     "file": "10 -Treatment Release OCT 2026.xls",
     "target": null,
-    "totalRolls": 25,
-    "totalRelease": 0,
-    "totalHold": 0,
-    "totalPending": 25,
+    "totalRolls": 2,
+    "totalRelease": 2,
+    "totalHold": 1,
+    "totalPending": 22,
     "totalScheduled": 25,
     "codeBreakdown": [
       {
-        "code": "RU53",
-        "count": 4,
-        "percentage": 16
-      },
-      {
-        "code": "N815",
-        "count": 4,
-        "percentage": 16
+        "code": "DDSV",
+        "count": 1,
+        "percentage": 50
       },
       {
         "code": "NB32",
-        "count": 2,
-        "percentage": 8
-      },
-      {
-        "code": "RP08",
-        "count": 2,
-        "percentage": 8
-      },
-      {
-        "code": "N825",
-        "count": 2,
-        "percentage": 8
-      },
-      {
-        "code": "N814",
-        "count": 2,
-        "percentage": 8
-      },
-      {
-        "code": "JM02",
-        "count": 2,
-        "percentage": 8
-      },
-      {
-        "code": "DDSV",
         "count": 1,
-        "percentage": 4
-      },
+        "percentage": 50
+      }
+    ],
+    "holdBreakdown": [
       {
         "code": "EESV",
         "count": 1,
-        "percentage": 4
-      },
-      {
-        "code": "JR45",
-        "count": 1,
-        "percentage": 4
-      },
-      {
-        "code": "JR11",
-        "count": 1,
-        "percentage": 4
-      },
-      {
-        "code": "JR52",
-        "count": 1,
-        "percentage": 4
-      },
-      {
-        "code": "NC50",
-        "count": 1,
-        "percentage": 4
-      },
-      {
-        "code": "NC16",
-        "count": 1,
-        "percentage": 4
+        "percentage": 100
       }
     ],
-    "holdBreakdown": [],
     "hasData": true
   },
   "roll42": {
@@ -461,7 +407,7 @@
         "target": 35056,
         "minTarget": 20000,
         "sum": 68882,
-        "consume": 0,
+        "consume": 17274,
         "newGenerate": 17360,
         "newGenerateBTA": 14560,
         "newGenerateWBR": 2800,
