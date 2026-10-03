@@ -1,6 +1,6 @@
 {
   "date": "2026-10-02",
-  "generatedAt": "2026-10-03T00:01:28.253Z",
+  "generatedAt": "2026-10-03T01:31:32.107Z",
   "waste": {
     "date": "2026-10-02",
     "millingSummary": 142,
@@ -117,28 +117,34 @@
   "fischer": {
     "date": "2026-10-02",
     "oee": {
-      "hasData": false,
+      "hasData": true,
       "target_pct": 60,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0
+      "sr_pct": 87.36,
+      "ar_pct": 59.59,
+      "pr_pct": 91.17,
+      "qr_pct": 99.69,
+      "oee1_pct": 47.31,
+      "oee2_pct": 54.16
     },
     "loss": {
-      "hasData": false,
-      "noSchedule": 0,
+      "hasData": true,
+      "noSchedule": 182,
       "noCart": 0,
       "noGum": 0,
       "noTreatment": 0,
       "breakdown": 0,
-      "angleChange": 0,
-      "produce": 0,
+      "angleChange": 22,
+      "produce": 89,
       "target": 90,
       "breakdownComment": "",
       "commentAuthor": "",
-      "otherComments": []
+      "otherComments": [
+        {
+          "category": "No Schedule",
+          "author": "Paisal Phoompong",
+          "text": "Break 90 min\nNo schedule 92 min"
+        }
+      ]
     },
     "checksheet": {
       "hasData": true,
@@ -640,13 +646,13 @@
   "quad": {
     "date": "2026-10-02",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 68.75,
+      "ar_pct": 81.72,
+      "pr_pct": 76.2,
+      "qr_pct": 89.91,
+      "oee1_pct": 38.49,
+      "oee2_pct": 55.99,
       "bd_pct": 0
     },
     "output": {
@@ -1035,13 +1041,13 @@
   "tuber": {
     "date": "2026-10-02",
     "oee": {
-      "hasData": false,
-      "sr_pct": 0,
-      "ar_pct": 0,
-      "pr_pct": 0,
-      "qr_pct": 0,
-      "oee1_pct": 0,
-      "oee2_pct": 0,
+      "hasData": true,
+      "sr_pct": 91.67,
+      "ar_pct": 87.73,
+      "pr_pct": 73.74,
+      "qr_pct": 97.69,
+      "oee1_pct": 57.93,
+      "oee2_pct": 63.2,
       "bd_pct": 0
     },
     "output": {
@@ -1487,21 +1493,21 @@
       "label": "Wk40 (1/10 - 4/10)",
       "isCurrentWeek": true,
       "quad": {
-        "avg": 56.62,
+        "avg": 56.3,
         "target": 62,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "tuber": {
-        "avg": 55.28,
+        "avg": 59.24,
         "target": 62,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "fischer": {
-        "avg": 46.93,
+        "avg": 50.54,
         "target": 60,
-        "count": 1,
+        "count": 2,
         "isMet": false
       },
       "mixing": {
@@ -1522,21 +1528,21 @@
         "label": "Wk40 (1/10 - 4/10)",
         "isCurrentWeek": true,
         "quad": {
-          "avg": 56.62,
+          "avg": 56.3,
           "target": 62,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "tuber": {
-          "avg": 55.28,
+          "avg": 59.24,
           "target": 62,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "fischer": {
-          "avg": 46.93,
+          "avg": 50.54,
           "target": 60,
-          "count": 1,
+          "count": 2,
           "isMet": false
         },
         "mixing": {
