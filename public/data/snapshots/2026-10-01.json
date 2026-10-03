@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-02T16:01:49.715Z",
+  "generatedAt": "2026-10-03T00:01:50.240Z",
   "waste": {
     "date": "2026-10-01",
     "millingSummary": 76,
@@ -1012,7 +1012,7 @@
               "totalQty": 10
             },
             {
-              "partId": "TL00152",
+              "partId": "TL00153",
               "code1": "WAIK",
               "code2": "",
               "code": "WAIK",

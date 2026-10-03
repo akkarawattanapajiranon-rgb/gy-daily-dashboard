@@ -1,6 +1,6 @@
 {
   "date": "2026-10-03",
-  "generatedAt": "2026-10-02T16:01:05.839Z",
+  "generatedAt": "2026-10-03T00:01:05.903Z",
   "waste": {
     "date": "2026-10-03",
     "millingSummary": 0,
@@ -192,15 +192,23 @@
       "bd_pct": 0
     },
     "output": {
-      "hasData": false,
+      "hasData": true,
       "day": 3,
-      "grandTotal": 0,
+      "grandTotal": 105,
       "codeBreakdown": [],
       "shifts": {
         "1": {
           "name": "Shift 1 (กะ 1)",
-          "items": [],
-          "totalQty": 0
+          "items": [
+            {
+              "partId": "WD00372",
+              "code": "",
+              "qtyTarget": 210,
+              "qtyProduced": 105,
+              "totalQty": 105
+            }
+          ],
+          "totalQty": 105
         },
         "2": {
           "name": "Shift 2 (กะ 2)",
